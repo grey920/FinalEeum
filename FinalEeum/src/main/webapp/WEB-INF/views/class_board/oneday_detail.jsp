@@ -1,28 +1,31 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Nokshi - Minimalist eCommerce HTML5 Template</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
-		
-		<!-- all css here -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/animate.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="assets/css/chosen.min.css">
-        <link rel="stylesheet" href="assets/css/meanmenu.min.css">
-        <link rel="stylesheet" href="assets/css/themify-icons.css">
-        <link rel="stylesheet" href="assets/css/ionicons.min.css">
-        <link rel="stylesheet" href="assets/css/bundle.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/responsive.css">
-        <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    </head>
-    <body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Nokshi - Minimalist eCommerce HTML5 Template</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon"
+	href="resources/img/favicon.png">
+
+<!-- all css here -->
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/css/animate.css">
+<link rel="stylesheet" href="resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="resources/css/chosen.min.css">
+<link rel="stylesheet" href="resources/css/meanmenu.min.css">
+<link rel="stylesheet" href="resources/css/themify-icons.css">
+<link rel="stylesheet" href="resources/css/ionicons.min.css">
+<link rel="stylesheet" href="resources/css/bundle.css">
+<link rel="stylesheet" href="resources/css/style.css">
+<link rel="stylesheet" href="resources/css/responsive.css">
+<script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+ <body>
         <div class="wrapper">
             <!-- header start -->
             <header>
@@ -47,16 +50,16 @@
                                     </div>
                                 </div>
                                 <div class="sticky-logo">
-                                    <a href="index.html"><img src="assets/img/logo/2.png" alt="" /></a>
+                                    <a href="index.html"><img src="resources/img/logo/2.png" alt="" /></a>
                                 </div>
                                 <div class="logo-small-device">
-                                    <a href="index.html"><img alt="" src="assets/img/logo/logo.png"></a>
+                                    <a href="index.html"><img alt="" src="resources/img/logo/logo.png"></a>
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-8 d-none d-md-block">
                                 <div class="logo-menu-wrapper text-center">
                                     <div class="logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo.png" alt="" /></a>
+                                        <a href="index.html"><img src="resources/img/logo/logo.png" alt="" /></a>
                                     </div>
                                     <div class="main-menu">
                                         <nav>
@@ -225,7 +228,7 @@
             <div class="banner-area hm-4-padding">
                 <div class="container-fluid">
                     <div class="banner-img">
-                        <a href="#"><img src="assets/img/banner/16.jpg" alt=""></a>
+                        <a href="#"><img src="resources/img/banner/16.jpg" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -237,7 +240,7 @@
                             <div class="blog-details-wrapper">
                                 <div class="single-blog-wrapper">
                                     <div class="blog-img mb-30">
-                                        <img src="assets/img/blog/blog-1.jpg" alt="">
+                                        <img src="resources/img/blog/blog-1.jpg" alt="">
                                     </div>
                                     <div class="blog-content">
                                         <h2>new shop collection our shop</h2>
@@ -251,7 +254,7 @@
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprhendit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qei officia deser mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et</p>
                                     <div class="highlights-title-wrapper">
                                         <div class="highlights-img">
-                                            <img src="assets/img/blog/blog-link-post2.png" alt="">
+                                            <img src="resources/img/blog/blog-link-post2.png" alt="">
                                         </div>
                                         <div class="importent-title">
                                             <h4>Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmod tempor incididunt labo dolor magna aliqua. Ut enim ad minim veniam quis nostrud.</h4>
@@ -262,12 +265,12 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="dec-img">
-                                                    <img src="assets/img/blog/blog-dec-img1.jpg" alt="">
+                                                    <img src="resources/img/blog/blog-dec-img1.jpg" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="dec-img dec-mrg">
-                                                    <img src="assets/img/blog/blog-dec-img2.jpg" alt="">
+                                                    <img src="resources/img/blog/blog-dec-img2.jpg" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -293,7 +296,7 @@
                                     </div>
                                     <div class="administrator-wrapper">
                                         <div class="administrator-img">
-                                            <img src="assets/img/blog/blog-administrator.png" alt="">
+                                            <img src="resources/img/blog/blog-administrator.png" alt="">
                                         </div>
                                         <div class="administrator-content">
                                             <h4>Mildred Barnett</h4>
@@ -305,7 +308,7 @@
                                     <h4 class="blog-dec-title">comments : 02</h4>
                                     <div class="single-comment-wrapper mt-35">
                                         <div class="blog-comment-img">
-                                            <img src="assets/img/blog/blog-comment1.png" alt="">
+                                            <img src="resources/img/blog/blog-comment1.png" alt="">
                                         </div>
                                         <div class="blog-comment-content">
                                             <h4>Anthony Stephens</h4>
@@ -318,7 +321,7 @@
                                     </div>
                                     <div class="single-comment-wrapper mt-50 ml-125">
                                         <div class="blog-comment-img">
-                                            <img src="assets/img/blog/blog-comment2.png" alt="">
+                                            <img src="resources/img/blog/blog-comment2.png" alt="">
                                         </div>
                                         <div class="blog-comment-content">
                                             <h4>Anthony Stephens</h4>
@@ -369,7 +372,7 @@
                                 </div>
                                 <div class="blog-widget mb-60">
                                     <div class="blog-author">
-                                        <a href="#"><img src="assets/img/blog/blog-author.png" alt=""></a>
+                                        <a href="#"><img src="resources/img/blog/blog-author.png" alt=""></a>
                                         <h4><a href="#">Kathy Gibson</a></h4>
                                         <span>Head of Director, SEO</span>
                                     </div>
@@ -379,7 +382,7 @@
                                     <div class="blog-recent-post">
                                         <div class="recent-post-wrapper mb-25">
                                             <div class="recent-post-img">
-                                                <a href="#"><img src="assets/img/blog/blog-recentpost-1.jpg" alt=""></a>
+                                                <a href="#"><img src="resources/img/blog/blog-recentpost-1.jpg" alt=""></a>
                                             </div>
                                             <div class="recent-post-content">
                                                 <h4><a href="#">New Products</a></h4>
@@ -388,7 +391,7 @@
                                         </div>
                                         <div class="recent-post-wrapper mb-25">
                                             <div class="recent-post-img">
-                                                <a href="#"><img src="assets/img/blog/blog-recentpost-2.jpg" alt=""></a>
+                                                <a href="#"><img src="resources/img/blog/blog-recentpost-2.jpg" alt=""></a>
                                             </div>
                                             <div class="recent-post-content">
                                                 <h4><a href="#">New Products</a></h4>
@@ -397,7 +400,7 @@
                                         </div>
                                         <div class="recent-post-wrapper mb-25">
                                             <div class="recent-post-img">
-                                                <a href="#"><img src="assets/img/blog/blog-recentpost-3.jpg" alt=""></a>
+                                                <a href="#"><img src="resources/img/blog/blog-recentpost-3.jpg" alt=""></a>
                                             </div>
                                             <div class="recent-post-content">
                                                 <h4><a href="#">New Products</a></h4>
@@ -406,7 +409,7 @@
                                         </div>
                                         <div class="recent-post-wrapper mb-25">
                                             <div class="recent-post-img">
-                                                <a href="#"><img src="assets/img/blog/blog-recentpost-4.jpg" alt=""></a>
+                                                <a href="#"><img src="resources/img/blog/blog-recentpost-4.jpg" alt=""></a>
                                             </div>
                                             <div class="recent-post-content">
                                                 <h4><a href="#">New Products</a></h4>
@@ -432,12 +435,12 @@
                                     <h4 class="blog-widget-title mb-35">INSTAGRAM</h4>
                                     <div class="blog-instagram">
                                         <ul>
-                                            <li><a href="#"><img src="assets/img/instagram/instagram1.jpg" alt=""></a></li>
-                                            <li><a href="#"><img src="assets/img/instagram/instagram2.jpg" alt=""></a></li>
-                                            <li><a href="#"><img src="assets/img/instagram/instagram3.jpg" alt=""></a></li>
-                                            <li><a href="#"><img src="assets/img/instagram/instagram4.jpg" alt=""></a></li>
-                                            <li><a href="#"><img src="assets/img/instagram/instagram5.jpg" alt=""></a></li>
-                                            <li><a href="#"><img src="assets/img/instagram/instagram6.jpg" alt=""></a></li>
+                                            <li><a href="#"><img src="resources/img/instagram/instagram1.jpg" alt=""></a></li>
+                                            <li><a href="#"><img src="resources/img/instagram/instagram2.jpg" alt=""></a></li>
+                                            <li><a href="#"><img src="resources/img/instagram/instagram3.jpg" alt=""></a></li>
+                                            <li><a href="#"><img src="resources/img/instagram/instagram4.jpg" alt=""></a></li>
+                                            <li><a href="#"><img src="resources/img/instagram/instagram5.jpg" alt=""></a></li>
+                                            <li><a href="#"><img src="resources/img/instagram/instagram6.jpg" alt=""></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -477,22 +480,22 @@
                 <div class="container-fluid">
                     <div class="brand-logo-active owl-carousel gray-bg ptb-130">
                         <div class="single-logo">
-                            <img alt="" src="assets/img/brand-logo/1.png">
+                            <img alt="" src="resources/img/brand-logo/1.png">
                         </div>
                         <div class="single-logo">
-                            <img alt="" src="assets/img/brand-logo/2.png">
+                            <img alt="" src="resources/img/brand-logo/2.png">
                         </div>
                         <div class="single-logo">
-                            <img alt="" src="assets/img/brand-logo/3.png">
+                            <img alt="" src="resources/img/brand-logo/3.png">
                         </div>
                         <div class="single-logo">
-                            <img alt="" src="assets/img/brand-logo/4.png">
+                            <img alt="" src="resources/img/brand-logo/4.png">
                         </div>
                         <div class="single-logo">
-                            <img alt="" src="assets/img/brand-logo/5.png">
+                            <img alt="" src="resources/img/brand-logo/5.png">
                         </div>
                         <div class="single-logo">
-                            <img alt="" src="assets/img/brand-logo/3.png">
+                            <img alt="" src="resources/img/brand-logo/3.png">
                         </div>
                     </div>
                 </div>
@@ -628,7 +631,7 @@
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="footer-payment-method">
-                                    <a href="#"><img alt="" src="assets/img/icon-img/7.png"></a>
+                                    <a href="#"><img alt="" src="resources/img/icon-img/7.png"></a>
                                 </div>
                             </div>
                         </div>
@@ -649,16 +652,16 @@
 		
 		
 		<!-- all js here -->
-        <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
-        <script src="assets/js/popper.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/isotope.pkgd.min.js"></script>
-        <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-        <script src="assets/js/jquery.counterup.min.js"></script>
-        <script src="assets/js/waypoints.min.js"></script>
-        <script src="assets/js/ajax-mail.js"></script>
-        <script src="assets/js/owl.carousel.min.js"></script>
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="resources/js/popper.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/isotope.pkgd.min.js"></script>
+        <script src="resources/js/imagesloaded.pkgd.min.js"></script>
+        <script src="resources/js/jquery.counterup.min.js"></script>
+        <script src="resources/js/waypoints.min.js"></script>
+        <script src="resources/js/ajax-mail.js"></script>
+        <script src="resources/js/owl.carousel.min.js"></script>
+        <script src="resources/js/plugins.js"></script>
+        <script src="resources/js/main.js"></script>
     </body>
 </html>
