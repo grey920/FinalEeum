@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Users">
+
+	<insert id="insert" parameterType="user">
+		insert into user_table
+		values(#{user_profile}, #{user_jumin1},#{user_jumin2}, #{user_name}, #{user_nick}, 
+				#{user_id}, #{user_pass}, #{user_addr1}, #{user_addr2}, 
+				#{user_phone1}, #{user_phone2}, #{user_phone3}, #{user_email1}, #{user_email2})
+	</insert>
+	
+	<select id="idcheck" resultType="user" parameterType="String">
+		select * from user_table 
+		where user_id = #{user_id}
+	</select>
+	
+	<select id="nickcheck" resultType="user" parameterType="String">
+		select * from user_table 
+	    where user_nick = #{user_nick}
+	</select>
+	
+</mapper>
