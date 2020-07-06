@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!--  빈의 이름이 정해져 있습니다. -->
 	<!--  파일 업로드 설정 id 값 꼭 일치 시켜야 합니다.
@@ -19,5 +21,8 @@
 						name="maxUploadSize"를 지정하지 않으면 
 						기본으로 "-1"이 설정되는데 파일 크기가 무제한이라는 의미입니다.
 						최대 업로드 가능한 바이트크기, -1은 제한이 없음을 의미, 기본값은 -1  -->
-		
+	<bean id="bcryptPasswordEncoder"
+	 					class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	 					
+	 <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>
