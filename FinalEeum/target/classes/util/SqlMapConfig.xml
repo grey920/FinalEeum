@@ -4,10 +4,10 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias alias="test" 	type="com.kh.eeum.DTO"/>
+		<typeAlias alias="user" 	type="com.kh.eeum.domain.User"/>
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="sql/test.xml"	/>
+		<mapper resource="sql/user.xml"	/>
 	</mappers>
 </configuration>
