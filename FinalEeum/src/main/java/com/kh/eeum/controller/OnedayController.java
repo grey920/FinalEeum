@@ -9,6 +9,8 @@ public class OnedayController {
 	
 	@RequestMapping(value = "/OnedayList.one")
 	public String OnedayList() {
+		
+		
 		return "class_board/oneday_main";
 	}
 	
