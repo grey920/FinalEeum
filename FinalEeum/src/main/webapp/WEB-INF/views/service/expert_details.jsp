@@ -7,21 +7,21 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="resources/img/favicon.png">
 		
 		<!-- all css here -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/animate.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="assets/css/chosen.min.css">
-        <link rel="stylesheet" href="assets/css/easyzoom.css">
-        <link rel="stylesheet" href="assets/css/meanmenu.min.css">
-        <link rel="stylesheet" href="assets/css/themify-icons.css">
-        <link rel="stylesheet" href="assets/css/ionicons.min.css">
-        <link rel="stylesheet" href="assets/css/bundle.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/responsive.css">
-        <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="resources/css/animate.css">
+        <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="resources/css/chosen.min.css">
+        <link rel="stylesheet" href="resources/css/easyzoom.css">
+        <link rel="stylesheet" href="resources/css/meanmenu.min.css">
+        <link rel="stylesheet" href="resources/css/themify-icons.css">
+        <link rel="stylesheet" href="resources/css/ionicons.min.css">
+        <link rel="stylesheet" href="resources/css/bundle.css">
+        <link rel="stylesheet" href="resources/css/style.css">
+        <link rel="stylesheet" href="resources/css/responsive.css">
+        <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
         <div class="wrapper">
@@ -48,16 +48,16 @@
                                     </div>
                                 </div>
                                 <div class="sticky-logo">
-                                    <a href="index.html"><img src="assets/img/logo/2.png" alt="" /></a>
+                                    <a href="index.html"><img src="resources/img/logo/2.png" alt="" /></a>
                                 </div>
                                 <div class="logo-small-device">
-                                    <a href="index.html"><img alt="" src="assets/img/logo/logo.png"></a>
+                                    <a href="index.html"><img alt="" src="resources/img/logo/logo.png"></a>
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-8 d-none d-md-block">
                                 <div class="logo-menu-wrapper text-center">
                                     <div class="logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo.png" alt="" /></a>
+                                        <a href="index.html"><img src="resources/img/logo/logo.png" alt="" /></a>
                                     </div>
                                     <div class="main-menu">
                                         <nav>
@@ -226,7 +226,7 @@
             <div class="banner-area hm-4-padding">
                 <div class="container-fluid">
                     <div class="banner-img">
-                        <a href="#"><img src="assets/img/banner/16.jpg" alt=""></a>
+                        <a href="#"><img src="resources/img/banner/16.jpg" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -239,55 +239,55 @@
                                     <div class="product-details-large tab-content">
                                         <div class="tab-pane active" id="pro-details1">
                                             <div class="easyzoom easyzoom--overlay">
-                                                <a href="assets/img/product-details/bl1.jpg">
-                                                    <img src="assets/img/product-details/l1.jpg" alt="">
+                                                <a href="resources/img/product-details/bl1.jpg">
+                                                    <img src="resources/img/product-details/l1.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="pro-details2">
                                             <div class="easyzoom easyzoom--overlay">
-                                                <a href="assets/img/product-details/bl2.jpg">
-                                                    <img src="assets/img/product-details/l2.jpg" alt="">
+                                                <a href="resources/img/product-details/bl2.jpg">
+                                                    <img src="resources/img/product-details/l2.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="pro-details3">
                                             <div class="easyzoom easyzoom--overlay">
-                                                <a href="assets/img/product-details/bl3.jpg">
-                                                    <img src="assets/img/product-details/l3.jpg" alt="">
+                                                <a href="resources/img/product-details/bl3.jpg">
+                                                    <img src="resources/img/product-details/l3.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="pro-details4">
                                             <div class="easyzoom easyzoom--overlay">
-                                                <a href="assets/img/product-details/bl4.jpg">
-                                                    <img src="assets/img/product-details/l4.jpg" alt="">
+                                                <a href="resources/img/product-details/bl4.jpg">
+                                                    <img src="resources/img/product-details/l4.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="pro-details5">
                                             <div class="easyzoom easyzoom--overlay">
-                                                <a href="assets/img/product-details/bl3.jpg">
-                                                    <img src="assets/img/product-details/l3.jpg" alt="">
+                                                <a href="resources/img/product-details/bl3.jpg">
+                                                    <img src="resources/img/product-details/l3.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="product-details-small nav mt-12 product-dec-slider owl-carousel">
                                         <a class="active" href="#pro-details1">
-                                            <img src="assets/img/product-details/s1.jpg" alt="">
+                                            <img src="resources/img/product-details/s1.jpg" alt="">
                                         </a>
                                         <a href="#pro-details2">
-                                            <img src="assets/img/product-details/s2.jpg" alt="">
+                                            <img src="resources/img/product-details/s2.jpg" alt="">
                                         </a>
                                         <a href="#pro-details3">
-                                            <img src="assets/img/product-details/s3.jpg" alt="">
+                                            <img src="resources/img/product-details/s3.jpg" alt="">
                                         </a>
                                         <a href="#pro-details4">
-                                            <img src="assets/img/product-details/s4.jpg" alt="">
+                                            <img src="resources/img/product-details/s4.jpg" alt="">
                                         </a>
                                         <a href="#pro-details5">
-                                            <img src="assets/img/product-details/s3.jpg" alt="">
+                                            <img src="resources/img/product-details/s3.jpg" alt="">
                                         </a>
                                     </div>
                                 </div>
@@ -400,22 +400,22 @@
                 <div class="container-fluid">
                     <div class="brand-logo-active owl-carousel gray-bg ptb-130">
                         <div class="single-logo">
-                            <img alt="" src="assets/img/brand-logo/1.png">
+                            <img alt="" src="resources/img/brand-logo/1.png">
                         </div>
                         <div class="single-logo">
-                            <img alt="" src="assets/img/brand-logo/2.png">
+                            <img alt="" src="resources/img/brand-logo/2.png">
                         </div>
                         <div class="single-logo">
-                            <img alt="" src="assets/img/brand-logo/3.png">
+                            <img alt="" src="resources/img/brand-logo/3.png">
                         </div>
                         <div class="single-logo">
-                            <img alt="" src="assets/img/brand-logo/4.png">
+                            <img alt="" src="resources/img/brand-logo/4.png">
                         </div>
                         <div class="single-logo">
-                            <img alt="" src="assets/img/brand-logo/5.png">
+                            <img alt="" src="resources/img/brand-logo/5.png">
                         </div>
                         <div class="single-logo">
-                            <img alt="" src="assets/img/brand-logo/3.png">
+                            <img alt="" src="resources/img/brand-logo/3.png">
                         </div>
                     </div>
                 </div>
@@ -551,7 +551,7 @@
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="footer-payment-method">
-                                    <a href="#"><img alt="" src="assets/img/icon-img/7.png"></a>
+                                    <a href="#"><img alt="" src="resources/img/icon-img/7.png"></a>
                                 </div>
                             </div>
                         </div>
@@ -571,16 +571,16 @@
 		
 		
 		<!-- all js here -->
-        <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
-        <script src="assets/js/popper.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/isotope.pkgd.min.js"></script>
-        <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-        <script src="assets/js/jquery.counterup.min.js"></script>
-        <script src="assets/js/waypoints.min.js"></script>
-        <script src="assets/js/ajax-mail.js"></script>
-        <script src="assets/js/owl.carousel.min.js"></script>
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="resources/js/popper.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/isotope.pkgd.min.js"></script>
+        <script src="resources/js/imagesloaded.pkgd.min.js"></script>
+        <script src="resources/js/jquery.counterup.min.js"></script>
+        <script src="resources/js/waypoints.min.js"></script>
+        <script src="resources/js/ajax-mail.js"></script>
+        <script src="resources/js/owl.carousel.min.js"></script>
+        <script src="resources/js/plugins.js"></script>
+        <script src="resources/js/main.js"></script>
     </body>
 </html>
