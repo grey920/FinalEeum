@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Nokshi - Minimalist eCommerce HTML5 Template</title>
+<title>사용자 - 회원가입</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
@@ -24,11 +24,12 @@
 <link rel="stylesheet" href="resources/css/responsive.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<style>
-select {font-size:13pt}
-.text-center h2{font-weight:900}
-.ptb-130 {padding-top:30px}
-</style>
+	<style>
+	select {font-size:13pt}
+	.text-center h2{font-weight:900}
+	.ptb-130 {padding-top:30px}
+	input[type=button] {background-color:#72A0E0;color:white}
+	</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -55,7 +56,7 @@ select {font-size:13pt}
 								</div>
 							</div>
 							<div class="sticky-logo"> <!-- 스크롤내렸을 때,메뉴바 로고  -->
-								<a href="index.html"><img src="resources/img/logo/eeeum_logo_36518f.png"
+								<a href="index.html"><img src="resources/img/logo/eeum_logo_small.png"
 									alt="" /></a>
 							</div>
 							<div class="logo-small-device">	<!-- 반응형 웹 작게했을 때 로고 -->
@@ -247,7 +248,7 @@ select {font-size:13pt}
 												<input type="file" id="user_profile" name="uploadfile" 
 															accept="image/gif, image/jpeg, image/png, image/jpg" style="visibility:hidden"><br>
 												<label for="user_profile">
-												  <img src="resources/img/profile/profile.png" alt="profile" id="profile" 
+												  <img src="resources/img/profile/profile2.png" alt="profile" id="profile" 
 												   			style="width:100%; height:auto;border-radius:50%;">
 												</label>
 												</div>
@@ -279,10 +280,10 @@ select {font-size:13pt}
 												<span id="message_pass2"></span>
 												
 												<p>주소 *</p> 
-												<input type="text" size="5" maxLength="5" id="post" name="post" style="width:190px;margin-bottom:10px;margin-right:3px" >
+												<input type="text" size="5" maxLength="5" id="user_addr1" name="user_addr1" style="width:190px;margin-bottom:10px;margin-right:3px" >
 												<input type="button" value="우편번호 검색" id="postcode" style="width:190px;font-weight:600">
-												<input type="text" id="user_addr1" name="user_addr1" placeholder="주소를 입력하세요" style="margin-bottom:10px;">
-												<input type="text" id="user_add2" name="user_addr2" placeholder="상세 주소를 입력하세요">
+												<input type="text" id="user_addr1" name="user_addr2" placeholder="주소를 입력하세요" style="margin-bottom:10px;">
+												<input type="text" id="user_add2" name="user_addr3" placeholder="상세 주소를 입력하세요">
 												<span></span>
 												
 											
