@@ -164,16 +164,20 @@ $(document).ready(function() {
     	  var english = pw.search(/[a-z]/ig);
     	  var special = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
     	  
-    	  if(pw.length < 8 || pw.length > 12) {
-    		  $("#message_pass1").css("color", "red").html("영문 대소문자, 숫자, 특수문자를 모두 포함하여 8~12자로 입력하세요");
+    	  if(pw.length < 8) {
+    		  $("#message_pass1").css("color", "red").html("영문 대문자 또는 소문자, 숫자, 특수문자를 모두 포함하여 8~14자로 입력하세요");
     		  return false;
     		  
+    	  } else if (pw.length > 14) {
+    		  $("#message_pass1").css("color", "red").html("8~14자 내로 입력하세요");
+    		  return false;
+
     	  } else if (pw.search(/\s/) != -1) {
     		  $("#message_pass1").css("color", "red").html("공백없이 입력하세요");
     		  return false;
     		  
     	  } else if (number < 0 || english < 0 || special < 0) {
-    		  $("#message_pass1").css("color","red").html("영문 대소문자, 숫자, 특수문자를 모두 포함하여 8~12자로 입력하세요");
+    		  $("#message_pass1").css("color","red").html("영문 대문자 또는 소문자, 숫자, 특수문자를 모두 포함하세요");
     		  return false;
     		  
     	  } else {
