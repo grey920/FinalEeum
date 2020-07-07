@@ -303,28 +303,28 @@ $(document).ready(function() {
         	 return false;
          }
 
-         if ($.trim($("#post").val()) == "") {
-            alert("우편번호를 입력하세요");
-            $('#post1').focus();
-            return false;
-         }
-
-         if (!$.isNumeric($("#post").val())) {
-            alert("숫자만 입력 가능합니다");
-            $("#post").val("");
-            $("#post").focus();
-            return false;
-         }
-
          if ($.trim($("#user_addr1").val()) == "") {
-            alert("주소를 입력하세요");
+            alert("우편번호를 입력하세요");
+            $('#user_addr1').focus();
+            return false;
+         }
+
+         if (!$.isNumeric($("#user_addr1").val())) {
+            alert("숫자만 입력 가능합니다");
+            $("#user_addr1").val("");
             $("#user_addr1").focus();
             return false;
          }
+
+         if ($.trim($("#user_addr2").val()) == "") {
+            alert("주소를 입력하세요");
+            $("#user_addr2").focus();
+            return false;
+         }
          
-        if($.trim($("#user_addr2")) == ""){
+        if($.trim($("#user_addr3")) == ""){
         	alert("상세 주소를 입력하세요");
-        	$("#user_addr2").focus();
+        	$("#user_addr3").focus();
         	return false;
         }
          
