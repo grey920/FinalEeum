@@ -87,4 +87,9 @@ public class UEController {
 	public String login() {
 		return "login";
 	}
+	
+	@RequestMapping(value="userpage.net")
+	public String userpage() {
+		return "user_page";
+	}
 }
