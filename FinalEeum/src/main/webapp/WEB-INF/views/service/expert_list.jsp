@@ -25,8 +25,18 @@
 <link rel="stylesheet" href="resources/css/responsive.css">
 
 <!-- js끝 -->
-<script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet" />
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
 <style>
 input#structure1 {
 	width: 15px;
@@ -55,6 +65,10 @@ button.close {
 	color: gray;
 }
 
+.close {
+	color: gray;
+}
+
 .ti-heart {
 	color: red;
 	padding-right: 10px;
@@ -63,28 +77,764 @@ button.close {
 .ti-heart-broken {
 	padding-right: 10px;
 }
+
+#userimg {
+	display: block;
+	width: 165px;
+	height: 180px;
+	position: relative;
+	left: 57px;
+	top: 50px;
+	background-origin: border-box;
+	background-clip: content-box, border-box;
+	border-radius: 5px;
+}
+
+
+
+
+#expert_name {
+	position: relative;
+	left: 90px;
+	top: 60px;
+	font-size: 30px;
+	font-weight: 700;
+}
+
+#expert_intro {
+	position: relative;
+	left: 45px;
+	top: 70px;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+#list-name {
+	position: relative;
+	top: 30px;
+}
+
+@font-face {
+	font-family: 'NanumGothic';
+	src: url(resources/fonts/NanumGothic.ttf) format('truetype');
+}
+
+body {
+	font-family: NanumGothic;
+}
+
+.btn-hover.cr-btn {
+	background-color: #4E8092;
+}
+
+/*여기서브모달 css*/
+* {
+	margin: 0;
+	padding: 0
+}
+
+html {
+	height: 100%
+}
+
+#msform {
+	text-align: center;
+	position: relative;
+	margin-top: 20px
+}
+
+#msform fieldset .form-card {
+	background: white;
+	border: 0 none;
+	border-radius: 0px;
+	box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+	padding: 20px 40px 30px 40px;
+	box-sizing: border-box;
+	width: 94%;
+	margin: 0 3% 20px 3%;
+	position: relative
+}
+
+#msform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 0.5rem;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0;
+	padding-bottom: 20px;
+	position: relative;
+}
+
+#myModal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#msform
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fieldset
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:not
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(
+:first-of-type
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+{
+display
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+none
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+#msform fieldset .form-card {
+	text-align: left;
+	color: #9E9E9E
+}
+
+#msform input, #msform textarea {
+	padding: 0px 8px 4px 8px;
+	border: none;
+	border-bottom: 1px solid #ccc;
+	border-radius: 0px;
+	margin-bottom: 25px;
+	margin-top: 2px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 16px;
+	letter-spacing: 1px
+}
+
+#msform input:focus, #msform textarea:focus {
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	border: none;
+	font-weight: bold;
+	border-bottom: 2px solid #428092;
+	outline-width: 0
+}
+
+#msform .action-button {
+	width: 100px;
+	background: #428092;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 0px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #428092
+}
+
+#msform .action-button-previous {
+	width: 100px;
+	background: #616161;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 0px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px
+}
+
+#msform .action-button-previous:hover, #msform .action-button-previous:focus
+	{
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #616161
+}
+
+select.list-dt {
+	border: none;
+	outline: 0;
+	border-bottom: 1px solid #ccc;
+	padding: 2px 5px 3px 5px;
+	margin: 2px
+}
+
+select.list-dt:focus {
+	border-bottom: 2px solid #428092
+}
+
+.card {
+	z-index: 0;
+	border: none;
+	border-radius: 0.5rem;
+	position: relative
+}
+
+.fs-title {
+	font-size: 25px;
+	color: #2C3E50;
+	margin-bottom: 10px;
+	font-weight: bold;
+	text-align: left
+}
+
+#progressbar {
+	margin-bottom: 30px;
+	overflow: hidden;
+	color: lightgrey
+}
+
+#progressbar .active {
+	color: #000000
+}
+
+#progressbar li {
+	list-style-type: none;
+	font-size: 12px;
+	width: 25%;
+	float: left;
+	position: relative
+}
+
+#progressbar #account:before {
+	font-family: FontAwesome;
+	content: "\f023"
+}
+
+#progressbar #personal:before {
+	font-family: FontAwesome;
+	content: "\f007"
+}
+
+#progressbar #payment:before {
+	font-family: FontAwesome;
+	content: "\f09d"
+}
+
+#progressbar #confirm:before {
+	font-family: FontAwesome;
+	content: "\f00c"
+}
+
+#progressbar li:before {
+	width: 50px;
+	height: 50px;
+	line-height: 45px;
+	display: block;
+	font-size: 18px;
+	color: #ffffff;
+	background: lightgray;
+	border-radius: 50%;
+	margin: 0 auto 10px auto;
+	padding: 2px
+}
+
+#progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: lightgray;
+	position: absolute;
+	left: 0;
+	top: 25px;
+	z-index: -1
+}
+
+#progressbar li.active:before, #progressbar li.active:after {
+	background: #428092
+}
+
+.radio-group {
+	position: relative;
+	margin-bottom: 25px
+}
+
+.radio {
+	display: inline-block;
+	width: 204;
+	height: 104;
+	border-radius: 0;
+	background: lightblue;
+	box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	cursor: pointer;
+	margin: 8px 2px
+}
+
+.radio:hover {
+	box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3)
+}
+
+.radio.selected {
+	box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1)
+}
+
+.fit-image {
+	width: 100%;
+	object-fit: cover
+}
+
+#myModal {
+	height: auto;
+	min-height: 100%;
+	border-radius: 0;
+}
+
+span {
+	font-size: 20px;
+	color: gray;
+	font-weight: bold;
+	padding-left: 1.0em;
+}
+
+textarea {
+	resize: none;
+}
+
+input#structure1 {
+	width: 10px;
+	height: 10px;
+}
+
+input#structure2 {
+	width: 10px;
+	height: 10px;
+}
+
+.page_number {
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	padding-left: 270px;
+}
+
+#top.step-1:after {
+	content: "청소할 건물 유형은 무엇입니까?";
+	font-weight: bold;
+}
+
+#top.step-2:after {
+	content: "수리할 유형을 선택해주세요.";
+	font-weight: bold;
+}
+
+#top.step-3:after {
+	content: "사진을 첨부해주세요.";
+	font-weight: bold;
+}
+
+#top.step-4:after {
+	content: "기타 요청 사항을 입력해주세요.";
+	font-weight: bold;
+}
+
+.product-img {
+	width: 280px;
+	height: 375px;
+	background-color: #FAFAFA;
+}
 </style>
 
 <script>
 	//하트 누르면 문구 나옴
-	$(document).ready(function() {
-		$('.ti-heart').mouseover(function() {
-			var text1 = '<p>이미 찜한 전문가 입니다.</p>'
-			$('.product-addtocart').append(text1);
-			$(this).removeClass('ti-heart');
-			$(this).addClass('ti-heart-broken');
-		});
+	$(document).ready(
+			function() {
 
-		$('.ti-heart').mouseleave(function() {
-			$(this).removeClass('ti-heart-broken');
-			$(this).addClass('ti-heart');
-		});
+				var current_fs, next_fs, previous_fs; //fieldsets
+				var opacity;
 
-		//하트 누르면 찜 해제 문구 뜨기
+				$('#top').addClass('step-1');
 
-			
+				$(".next").click(
+						function() {
 
-	})
+							current_fs = $(this).parent(); //.next 이 자손 div가 본인 fieldset이 부모 즉, fieldset 을 가져옴
+							current_fs_index = $(this).parent().index();
+							next_fs = $(this).parent().next(); // 첫번째 filedset의 다음을 가져옴. 
+
+							$("#progressbar li").eq(
+									$("fieldset").index(next_fs)).addClass(
+									"active"); // "active" 클래스 추가 : prograssbar 의 
+
+							//탑		
+							console.log("다음:" + current_fs_index);
+							for (var i = 1; i < current_fs_index + 1; i++) {
+								if (current_fs_index == i) {
+									i++;
+									$("#top").removeClass('step-' + (i - 1));
+									$('#top').addClass('step-' + i);
+								} else {
+									$("#top").removeClass('step-' + i);
+								}
+							}
+							//show the next fieldset
+							next_fs.show();
+							//hide the current fieldset with style
+							current_fs.animate({
+								opacity : 0
+							}, {
+								step : function(now) {
+									// for making fielset appear animation
+									opacity = 1 - now;
+
+									current_fs.css({
+										'display' : 'none',
+										'position' : 'relative'
+									});
+									next_fs.css({
+										'opacity' : opacity
+									});
+
+									//여기
+								},
+								duration : 600
+							});
+						});
+
+				$(".previous").click(
+						function() {
+
+							current_fs = $(this).parent();
+							current_fs_index = $(this).parent().index();
+							previous_fs = $(this).parent().prev();
+
+							console.log("이전:" + current_fs_index);
+							//Remove class active
+							$("#progressbar li").eq(
+									$("fieldset").index(current_fs))
+									.removeClass("active");
+
+							//이전 누르면 top 문구 바껴야됨.
+							if (current_fs_index == 2) {
+								$("#top").removeClass('step-2');
+								$('#top').addClass('step-1'); // 1이 나와야함. 
+							}
+
+							if (current_fs_index == 3) {
+								$("#top").removeClass('step-3');
+								$('#top').addClass('step-2'); // 1이 나와야함. 
+							}
+
+							if (current_fs_index == 4) {
+								$("#top").removeClass('step-4');
+								$('#top').addClass('step-3'); // 1이 나와야함. 
+							}
+
+							for (i = 2; i <= 4; i++) {
+								if (current_fs_index == i) {
+									var j = 1;
+									$("#top").removeClass('step-' + i);
+									$('#top').addClass('step-' + j); // 1이 나와야함. 
+								}
+							}
+
+							//show the previous fieldset
+							previous_fs.show();
+
+							//hide the current fieldset with style
+							current_fs.animate({
+								opacity : 0
+							}, {
+								step : function(now) {
+									// for making fielset appear animation
+									opacity = 1 - now;
+
+									current_fs.css({
+										'display' : 'none',
+										'position' : 'relative'
+									});
+									previous_fs.css({
+										'opacity' : opacity
+									});
+								},
+								duration : 600
+							});
+						});
+
+				$('.radio-group .radio').click(function() {
+					$(this).parent().find('.radio').removeClass('selected');
+					$(this).addClass('selected');
+				});
+
+				$(".submit").click(function() {
+					return false;
+				});
+
+				$('.ti-heart').mouseover(function() {
+					var text1 = '<p>이미 찜한 전문가 입니다.</p>'
+					$('.product-addtocart').append(text1);
+					$(this).removeClass('ti-heart');
+					$(this).addClass('ti-heart-broken');
+				});
+
+				$('.ti-heart').mouseleave(function() {
+					$(this).removeClass('ti-heart-broken');
+					$(this).addClass('ti-heart');
+				});
+
+				$('.modal-child').on('show.bs.modal', function() {
+					var modalParent = $(this).attr('data-modal-parent');
+					$(modalParent).css('opacity', 0);
+				});
+
+				$('.modal-child').on('hidden.bs.modal', function() {
+					var modalParent = $(this).attr('data-modal-parent');
+					$(modalParent).css('opacity', 1);
+				});
+
+				//하트 누르면 찜 해제 문구 뜨기
+
+				//list 아이콘 누르면 간략히 보기 없앰..
+				$('.ion-navicon').click(function() {
+					$('.product-action-3').removeClass();
+					$('.action-plus-2').empty();
+					$('.ti-plus').removeClass();
+
+				});
+				
+				$('.product-img').click(function(){
+					
+					location.href = "expert_details";
+				});
+
+			});
 </script>
 </head>
 <body>
@@ -364,18 +1114,24 @@ button.close {
 							<div class="product-width col-md-6 col-xl-3 col-lg-4">
 								<div class="product-wrapper mb-35">
 									<div class="product-img">
-										<a href="#"> <img src="resources/img/product/21.jpg"
-											alt="">
-										</a>
+										<div id="circle">
+											<img src="resources/img/blog/cat2.jpg" alt="" id="userimg">
+
+										</div>
+										<b id="expert_name">안연지</b><b
+											style="font-size: 10px; position: relative; top: 60px; left: 100px;">전문가</b>
+										<br> <b id="expert_intro">뭐든지 깔끔하게 만들어 드립니다.</b>
+
 
 										<!-- 전체 리스트로 조회한 경우 전문가별 카테고리가 나옴. -->
 										<div class="price-decrease">
-											<span>[청소]</span>
+											<span style="font-family: NanumGothic; font-weight: bold;">[청소]</span>
 										</div>
 										<div class="product-action-3">
 											<a class="action-plus-2" title="간략히 보기" data-toggle="modal"
-												data-target="#exampleModal" href="#"> <i class="ti-plus"></i>
-												간략히 보기
+												data-target="#myModal" href="#"
+												style="text-decoration: none;"> <i class="ti-plus"></i>
+												<span style="color: white;">간략히 보기</span>
 											</a>
 										</div>
 									</div>
@@ -388,7 +1144,7 @@ button.close {
 												</h4>
 											</div>
 											<div class="product-wishlist-3">
-											<i class="ti-heart"></i>
+												<i class="ti-heart"></i>
 											</div>
 										</div>
 										<div class="product-peice-addtocart">
@@ -403,9 +1159,7 @@ button.close {
 										</div>
 									</div>
 									<div class="product-list-details">
-										<h2>
-											<a href="product-details.html">Awesome Cloth Jewelry</a>
-										</h2>
+										<h1 id="list-name">안연지</h1>
 										<div class="product-rating">
 											<i class="ion-ios-star"></i> <i class="ion-ios-star"></i> <i
 												class="ion-ios-star"></i> <i class="ion-ios-star"></i> <i
@@ -441,8 +1195,7 @@ button.close {
 
 										<div class="product-action-3">
 											<a class="action-plus-2" title="간략히 보기" data-toggle="modal"
-												data-target="#exampleModal" href="#"> <i class="ti-plus"></i>
-												간략히 보기
+												href="#exampleModal1"> <i class="ti-plus"></i> 간략히 보기
 											</a>
 										</div>
 									</div>
@@ -502,7 +1255,7 @@ button.close {
 										</div>
 										<div class="product-action-3">
 											<a class="action-plus-2" title="Quick View"
-												data-toggle="modal" data-target="#exampleModal" href="#">
+												data-toggle="modal" data-target="#exampleModal1" href="#">
 												<i class="ti-plus"></i> Quict View
 											</a>
 										</div>
@@ -1058,61 +1811,38 @@ button.close {
 				</div>
 			</div>
 		</footer>
-		<!-- modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 			aria-hidden="true">
 
 			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-body">
+				<div class="modal-content " style="font-weight: bold;">
+					<div class="modal-body" style="padding: 50px; padding-top: 40px;">
+
+						<!-- 부모 모달 -->
 						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
+							aria-label="Close"
+							style="position: relative; bottom: 220px; left: 770px;">
 							<span class="ion-android-close" aria-hidden="true"></span>
 						</button>
-						<div class="qwick-view-left">
-							<div class="quick-view-learg-img">
-								<div class="quick-view-tab-content tab-content">
-									<div class="tab-pane active show fade" id="modal1"
-										role="tabpanel">
-										<img src="resources/img/quick-view/l1.jpg" alt="">
-									</div>
-									<div class="tab-pane fade" id="modal2" role="tabpanel">
-										<img src="resources/img/quick-view/l2.jpg" alt="">
-									</div>
-									<div class="tab-pane fade" id="modal3" role="tabpanel">
-										<img src="resources/img/quick-view/l3.jpg" alt="">
-									</div>
+						<div class="qwick-view-right ">
+							<div class="qwick-view-content" style="width: 550px;">
+								<h3 style="font-family: NanumGothic; font-weight: 700;">[청소]</h3>
+								<div class="price" style="margin: 0px;">
+									<h1 style="font-size:30px; position: relative; right: 10px; font-family: NanumGothic; font-weight: 700;">안연지</h1> <br>
 								</div>
-							</div>
-							<div class="quick-view-list nav" role="tablist">
-								<a class="active" href="#modal1" data-toggle="tab"> <img
-									src="resources/img/quick-view/s1.jpg" alt="">
-								</a> <a href="#modal2" data-toggle="tab"> <img
-									src="resources/img/quick-view/s2.jpg" alt="">
-								</a> <a href="#modal3" data-toggle="tab"> <img
-									src="resources/img/quick-view/s3.jpg" alt="">
-								</a>
-							</div>
-						</div>
-						<div class="qwick-view-right">
-							<div class="qwick-view-content">
-								<h3>[청소]</h3>
-								<div class="price">
-									<span style="font-size: 30px;">안연지</span> <br>
-								</div>
-								<div class="rating-number">
+								<div class="rating-number" style="position: relative; bottom: 20px;">
 									<div class="quick-view-rating">
 										<i class="ion-ios-star red-star"></i> <i
 											class="ion-ios-star red-star"></i> <i
 											class="ion-ios-star red-star"></i> <i
 											class="ion-ios-star red-star"></i> <i
 											class="ion-ios-star red-star"></i>
+											<span>4.0</span>
 									</div>
 								</div>
-								<span style="font-weight: bold; font-size: large;">서비스
-									상세설명</span><br>
-								<br>
-								<p style="font-size: 15px;">
+								<span style="font-size:45px; position: relative; right: 50px; bottom: 40px; font-family: NanumGothic; font-weight: 700; color: black;">서비스
+									상세설명</span><br> <br>
+								<p style="font-family: NanumGothic; font-weight: 700; position: relative;  bottom: 40px; font-size:20px;">
 									<!-- 서비스 상세설명 -->
 									이사입주청소<br> (싱크대상판연마코팅.욕실나노코팅.마루왁스코팅.찌든때.묵은때.물때.기름때.곰팡이.
 									스티커 제거 )<br> 신축입주청소<br> ( 화학성분 유해물질 미세먼지 제거
@@ -1122,9 +1852,12 @@ button.close {
 								<div class="quickview-plus-minus">
 
 									<div class="quickview-btn-wishlist">
-										<a class="btn-hover cr-btn" href="#"><span><i
-												class="ion-ios-heart-outline"></i>&nbsp;찜하기</span></a>
+										<button class="btn-hover cr-btn btn" data-toggle="modal"
+											data-target="#myModal1" style="position: relative; bottom: 40px; padding: 0px;width: 130px;">
+											<span style="color: white;">견적요청</span>
+										</button>
 									</div>
+
 								</div>
 
 							</div>
@@ -1133,6 +1866,134 @@ button.close {
 				</div>
 			</div>
 		</div>
+
+		<!-- 서브 모달  -->
+		<div id="myModal1" class="modal modal-child" data-backdrop-limit="1"
+			tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+			aria-hidden="true" data-modal-parent="#myModal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<!-- body -->
+					<div class="modal-body" style="padding: 50px; padding-top: 40px; width: 500px; height: 780px;">
+
+						<!-- 부모 모달 -->
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"
+							style="position: relative; bottom: 320px; left: 770px;">
+							<span class="ion-android-close" aria-hidden="true"></span>
+						</button>
+						<div class="row justify-content-center mt-0">
+							<div
+								class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2"
+								style="width: 500px; padding-left: 10px;">
+								<div class="card px-0 pt-4 pb-0 mt-3 mb-3" style="width: 700px; position: relative;right: 140px;">
+									<h3 id="top"></h3>
+									<div class="row">
+										<div class="col-md-12 mx-0">
+											<form id="msform" action="" method="post"
+												enctype="multipart/form-data">
+												<!-- progressbar -->
+												<ul id="progressbar">
+													<li class="active" id="account"><strong>건물 유형</strong></li>
+													<li id="personal"><strong>수리 유형</strong></li>
+													<li id="payment"><strong>첨부 사진</strong></li>
+													<li id="confirm"><strong>간단 요청</strong></li>
+												</ul>
+												<!-- fieldsets -->
+												<fieldset>
+													<div class="form-card " style="height: 350px;">
+														<!-- 여기 라디오 버튼 : form -->
+														<b>* 선택해주세요.</b><br> <br> <input type="radio"
+															name="structure1" id="structure1" checked="checked"><span>아파트</span>
+														<input type="radio" name="structure1" id="structure1" style="position: relative; left: 270px;">
+														<span style="position: relative; left: 275px;">단독주택</span><br>
+														<input type="radio" name="structure1" id="structure1">
+														<span> 빌라/연립주택</span>
+														<input type="radio" name="structure1" id="structure1" style="position: relative; left: 202px;">
+														<span style="position: relative; left: 209px;">빌딩/상가</span><br>
+														<input type="radio" name="structure1" id="structure1"><span>기타</span><br>
+														<textarea rows="4" cols="20" maxlength="50"
+															style="border: 1px solid lightgray;"></textarea>
+														<b class="page_number">1/4</b>
+													</div>
+													<!-- 버튼 -->
+													<input type="button" name="next" class="next action-button"
+														value="다음" id="next" />
+
+												</fieldset>
+												<fieldset style="display: none;">
+													
+													<div class="form-card " style="height: 400px;">
+														<!-- 여기 라디오 버튼 : form -->
+														<b>* 선택해주세요.</b><br> <br> <input type="radio"
+															name="structure1" id="structure1" checked="checked"><span>전자제품 수리</span>
+														<input type="radio" name="structure1" id="structure2" style="position: relative; left: 232px;">
+														<span style="position: relative; left: 239px;">가구수리</span><br>
+														<input type="radio" name="structure1" id="structure2">
+														<span> 열쇠/도어락 수리</span>
+														<input type="radio" name="structure1" id="structure2" style="position: relative; left: 202px;">
+														<span style="position: relative; left: 209px;">전기 배선 수리</span><br>
+															<input type="radio" name="structure1" id="structure2">
+														<span>방충망 및 방범창 수리</span>
+															<input type="radio" name="structure1" id="structure2" style="position: relative; left: 161px;">
+														<span style="position: relative; left: 167px;">문 수리</span><br>
+															<input type="radio" name="structure1" id="structure2"style="position: relative; left: 385px;" >
+														<span style="position: relative; left: 390px;" >수도 관련 수리</span>
+														<input type="radio" name="structure1" id="structure2" style="position: relative; right: 162px;">
+														<span style="position: relative; right: 161px;">기타</span><br>
+														<textarea rows="4" cols="20" maxlength="50"
+															style="border: 1px solid lightgray;"></textarea>
+														<b class="page_number">2/4</b>
+													</div>
+													<!-- 버튼 -->
+													<input type="button" name="previous"
+														class="previous action-button-previous" value="이전" /> <input
+														type="button" name="next" class="next action-button"
+														value="다음" />
+												</fieldset>
+												<fieldset style="display: none;">
+													<div class="form-card" style="height: 400px;">
+														<!-- 사진을 첨부해주세요.: form -->
+														<span style="font-size: 15px; color: lightgray;">*최대
+															10장</span>
+														<textarea rows="8" cols="25"></textarea>
+														<input type="file" id="upfile" name="BOARD_FILE">
+														<b class="page_number">3/4</b>
+													</div>
+													<!-- 버튼 -->
+													<input type="button" name="previous"
+														class="previous action-button-previous" value="이전" /> <input
+														type="button" name="next" class="next action-button"
+														value="다음" />
+												</fieldset>
+												<fieldset style="display: none;">
+													<div class="form-card">
+														<b>* 공식적인 요청 외 전문가에게 무리한 요구시 요청이 거절될 수 있습니다.</b>
+														<textarea rows="10" cols="20" maxlength="70"
+															style="border: 1px solid lightgray;">내용을 입력하세요.</textarea>
+
+														<b class="page_number">4/4</b>
+													</div>
+													<input type="button"
+														class="previous action-button-previous" value="이전" /> <input
+														type="button" name="finish" class="action-button"
+														value="요청" />
+												</fieldset>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- modal-body -->
+				</div>
+				<!-- .modal -->
+			</div>
+			<!-- .modal-dialog -->
+		</div>
+
 	</div>
 
 
@@ -1142,7 +2003,7 @@ button.close {
 	<!-- all js here -->
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
 	<script src="resources/js/popper.js"></script>
-	<script src="resources/js/bootstrap.min.js"></script>
+	<!--  <script src="resources/js/bootstrap.min.js"></script>-->
 	<script src="resources/js/isotope.pkgd.min.js"></script>
 	<script src="resources/js/imagesloaded.pkgd.min.js"></script>
 	<script src="resources/js/jquery.counterup.min.js"></script>
