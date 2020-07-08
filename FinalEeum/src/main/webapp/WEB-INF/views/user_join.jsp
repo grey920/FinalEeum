@@ -1,18 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>로그인</title>
+<title>사용자 - 회원가입</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon"
 	href="resources/img/favicon.png">
-
 <!-- all css here -->
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/animate.css">
@@ -25,17 +23,13 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/responsive.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
-<style>
-.login-form-container {
-    padding: 80px 60px 80px 60px;
-}
-.login-form-container input {
-    padding: 0 15px;
-    margin-bottom:30px;
-}
-.text-center h2{font-weight:900}
-.ptb-130 {padding-top:30px}
-</style>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<style>
+	select {font-size:13pt}
+	.text-center h2{font-weight:900}
+	.ptb-130 {padding-top:30px}
+	input[type=button] {background-color:#72A0E0;color:white}
+	</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -61,20 +55,20 @@
 									</select>
 								</div>
 							</div>
-							<div class="sticky-logo">
-								<a href="index.html"><img src="resources/img/logo/eeeum_logo_36518f.png"
+							<div class="sticky-logo"> <!-- 스크롤내렸을 때,메뉴바 로고  -->
+								<a href="index.html"><img src="resources/img/logo/eeum_logo_small.png"
 									alt="" /></a>
 							</div>
-							<div class="logo-small-device">
+							<div class="logo-small-device">	<!-- 반응형 웹 작게했을 때 로고 -->
 								<a href="index.html"><img alt=""
-									src="resources/img/logo/eeum_logo_small4.png""></a>
+									src="resources/img/logo/eeum_logo_small4.png"></a>
 							</div>
 						</div>
 						<div class="col-lg-8 col-md-8 d-none d-md-block">
 							<div class="logo-menu-wrapper text-center">
-								<div class="logo">
+								<div class="logo">	<!-- 반응형 웹 크게했을 때 로고 -->
 									<a href="index.html"><img src="resources/img/logo/eeum_logo_small4.png"
-										alt="" /></a>
+										alt=""  /></a>
 								</div>
 								<div class="main-menu">
 									<nav>
@@ -228,91 +222,111 @@
 		   <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
-                        <h2>LOGIN</h2>
+                        <h2>SIGN UP</h2>
                     </div>
                 </div>
             </div>
-		<!-- 회원가입폼-->
-            <div class="login-register-area ptb-130 hm-3-padding">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-7 ml-auto mr-auto">
-                            <div class="login-register-wrapper">
-                                <div class="login-register-tab-list nav">
-                                    <a class="active" data-toggle="tab" href="#lg1">
-                                        <h4> 사용자 </h4>
-                                    </a>
-                                    <a data-toggle="tab" href="#lg2">
-                                        <h4> 전문가 </h4>
-                                    </a>
-                                </div>
-                                <div class="tab-content">
-                                    <div id="lg1" class="tab-pane active">
-                                        <div class="login-form-container">
-                                            <div class="login-form">
-                                                <form name="userLoginform" action="user_loginProcess.net" method="post">
-                                                
-                                                    <input type="text" id="user_id" name="user_id" placeholder="사용자 ID" required
-                                                    		<c:if test="${ !empty saveid }">
-                                                    			value="${saveid}"
-                                                    		</c:if>
-                                                    > 
-                                                    <input type="password" id="user_pass" name="user_pass" placeholder="사용자 비밀번호" required>
-                                                    
-                                                    <div class="button-box">
-                                                        <div class="login-toggle-btn">
-                                                            <input type="checkbox" name="user_remember"
-                                                            	<c:if test="${ !empty saveid }">
-                                                            	checked
-                                                            	</c:if>
-                                                            >
-                                                            <label>ID 기억하기</label>
-                                                            <a href="#">아이디 / 비밀번호 찾기</a>
-                                                        </div>
-                                                        <div style="text-align:center; margin:0 auto">
-                                                        <button type="submit" class="btn-style cr-btn"><span>사용자 LOGIN</span></button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="lg2" class="tab-pane">
-                                        <div class="login-form-container">
-                                            <div class="login-form">
-                                                <form name="expertLoginform" action="expert_loginProcess.net" method="post">
-                                                
-                                                    <input type="text" id="expert_id" name="expert_id" placeholder="전문가 ID" required
-                                                    		<c:if test="${ !empty saveid }">
-                                                    			value="${saveid}"
-                                                    		</c:if>
-                                                    >
-                                                    <input type="password" id="expert_pass" name="expert_pass" placeholder="전문가 비밀번호" required>
-                                                    
-                                                    <div class="button-box">
-                                                        <div class="login-toggle-btn">
-                                                            <input type="checkbox" id="expert_remember"
-                                                               <c:if test="${ !empty saveid }">
-                                                            	checked
-                                                            	</c:if>
-                                                            >
-                                                            <label>ID 기억하기</label>
-                                                            <a href="#">아이디 / 비밀번호 찾기</a>
-                                                        </div>
-                                                        <div style="text-align:center; margin:0 auto">
-                                                        <button type="submit" class="btn-style cr-btn"><span>전문가 LOGIN</span></button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+		<!-- 회원가입폼 -->
+		<div class="login-register-area ptb-130 hm-3-padding">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-7 ml-auto mr-auto">
+						<div class="login-register-wrapper">
+							<div class="login-register-tab-list nav">
+								<a class="active" data-toggle="tab" href="#lg1" style="font-weight:700">
+									<h4>회원가입</h4>
+								</a> 
+							</div>
+							<div class="tab-content">
+								<div id="lg1" class="tab-pane active">
+									<div class="login-form-container">
+										<div class="login-form">
+											<form action="userJoinProcess.net" method="post" enctype="multipart/form-data">
+											
+												<!--프로필 사진 -->
+												<div class="profile_image" style="width:200px;text-align:center;margin:0 auto">
+												<input type="file" id="user_profile" name="uploadfile" 
+															accept="image/gif, image/jpeg, image/png, image/jpg" style="visibility:hidden"><br>
+												<label for="user_profile">
+												  <img src="resources/img/profile/profile.png" alt="profile" id="profile" 
+												   			style="width:100%; height:auto;border-radius:50%;">
+												</label>
+												</div>
+												
+												<p>주민등록 번호 *</p><!-- 숫자만 -->
+												<input type="text" id="user_jumin1" name="user_jumin1"  maxLength="6" style="width:47%;margin-bottom:10px">
+												<b>&nbsp;-&nbsp;</b>
+												<input type="password" id="user_jumin2" name="user_jumin2" maxLength="7" style="width:49%;">
+												<span id="message_jumin"></span>
+												
+												<p>이름 *	</p><!-- 한글만 -->
+												<input type="text" id="user_name" name="user_name" placeholder="이름을 입력하세요" >
+												<span></span>
+																							
+												<p>닉네임(별명) *</p> <!-- 중복 X -->
+												<input type="text" id="user_nick" name="user_nick" placeholder="별명을 입력하세요" >
+												<span id="message_nick"></span>
+												
+												<p>아이디 *</p> <!-- 영문 대소문자 + 숫자, 4~16자  -->
+												<input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요" >
+												<span id="message_id"></span>
+												
+												<p>비밀번호 *</p> <!-- 영문 대소문자/숫자/특수문자 모두 조합 8-12자 -->
+												<input type="password" id="user_pass" name="user_pass" placeholder="비밀번호를 입력하세요" >
+												<span id="message_pass1"></span>
+												
+												<p>비밀번호 확인 *</p>	<!-- 위의 것과 맞는지 -->
+												<input type="password" id="password_check" name="password_check" placeholder="비밀번호를 한 번 더 입력하세요" >
+												<span id="message_pass2"></span>
+												
+												<p>주소 *</p> 
+												<input type="text" size="5" maxLength="5" id="user_addr1" name="user_addr1" style="width:190px;margin-bottom:10px;margin-right:3px" >
+												<input type="button" value="우편번호 검색" id="postcode" style="width:190px;font-weight:600">
+												<input type="text" id="user_addr2" name="user_addr2" placeholder="주소를 입력하세요" style="margin-bottom:10px;">
+												<input type="text" id="user_addr3" name="user_addr3" placeholder="상세 주소를 입력하세요">
+												<span></span>
+												
+											
+												<p>휴대폰 번호 * </p> <!-- 숫자만 -->
+												<input type="text" id="user_phone1" name="user_phone1" value="010" style="width:31%;text-align:center;margin-bottom:10px;" disabled>
+												<b>-</b>
+												<input type="text" id="user_phone2" name="user_phone2" maxLength="4" style="width:32%;text-align:center;margin-bottom:10px;" >
+												<b>-</b>
+												<input type="text" id="user_phone3" name="user_phone3" maxLength="4" style="width:32%;text-align:center;margin-bottom:10px;" >
+												<span id="message_phone"></span>
+												
+												<p>이메일 주소 *</p>
+												<input type="text" id="user_email1" name="user_email1" placeholder="이메일 주소를 입력하세요" style="width:43%;margin-bottom:10px">
+												<b>&nbsp;@&nbsp;</b>
+												<select id="user_email2" name="user_email2" style="width:51%;">
+													<option value="">이메일 선택</option>
+													<option value="naver.com">naver.com</option>
+													<option value="gmail.com">gmail.com</option>
+													<option value="nate.com">nate.com</option>
+													<option value="hanmail.net">hanmail.net</option>
+													<option value="hotmail.com">hotmail.com</option>
+													<option value="daum.net">daum.net</option>
+												</select>
+												<span></span>
+												
+												<div class="button-box" style="text-align:center;margin:0 auto">
+													<button type="submit" class="btn-style cr-btn">
+														<span>가입하기</span>
+													</button>
+													<button type="reset" class="btn-style cr-btn">
+														<span>다시 작성</span>
+													</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<footer class="hm-4-padding">
 			<div class="container-fluid">
@@ -483,6 +497,7 @@
 
 	<!-- all js here -->
 	<script src="resources/js/jquery-3.5.0.js"></script>
+	<script src="resources/js/userValidate.js"></script>
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
 	<script src="resources/js/popper.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>

@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>사용자 - 회원가입</title>
+<title>사용자 정보 수정</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
@@ -24,12 +25,13 @@
 <link rel="stylesheet" href="resources/css/responsive.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<style>
-	select {font-size:13pt}
-	.text-center h2{font-weight:900}
-	.ptb-130 {padding-top:30px}
-	input[type=button] {background-color:#72A0E0;color:white}
-	</style>
+<style>
+select {font-size:13pt}
+.text-center h2{font-weight:900}
+.ptb-130 {padding-top:30px}
+input[type=button] {background-color:#72A0E0;color:white;margin-bottom:10px}
+input:readonly{background-color:#E4E8F0}
+</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -56,7 +58,7 @@
 								</div>
 							</div>
 							<div class="sticky-logo"> <!-- 스크롤내렸을 때,메뉴바 로고  -->
-								<a href="index.html"><img src="resources/img/logo/eeum_logo_small.png"
+								<a href="index.html"><img src="resources/img/logo/eeeum_logo_36518f.png"
 									alt="" /></a>
 							</div>
 							<div class="logo-small-device">	<!-- 반응형 웹 작게했을 때 로고 -->
@@ -222,11 +224,12 @@
 		   <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
-                        <h2>SIGN UP</h2>
+                        <h2>MY INFO</h2>
                     </div>
                 </div>
             </div>
 		<!-- 회원가입폼 -->
+		<c:set var="u" value="${userinfo}"/>
 		<div class="login-register-area ptb-130 hm-3-padding">
 			<div class="container-fluid">
 				<div class="row">
@@ -234,42 +237,47 @@
 						<div class="login-register-wrapper">
 							<div class="login-register-tab-list nav">
 								<a class="active" data-toggle="tab" href="#lg1" style="font-weight:700">
-									<h4>회원가입</h4>
+									<h4>사용자 정보 수정</h4>
 								</a> 
 							</div>
 							<div class="tab-content">
 								<div id="lg1" class="tab-pane active">
 									<div class="login-form-container">
 										<div class="login-form">
-											<form action="joinProcess.net" method="post" enctype="multipart/form-data">
+											<form action="userUpdateProcess.net" method="post" enctype="multipart/form-data">
 											
 												<!--프로필 사진 -->
 												<div class="profile_image" style="width:200px;text-align:center;margin:0 auto">
 												<input type="file" id="user_profile" name="uploadfile" 
 															accept="image/gif, image/jpeg, image/png, image/jpg" style="visibility:hidden"><br>
 												<label for="user_profile">
-												  <img src="resources/img/profile/profile2.png" alt="profile" id="profile" 
+												  <img src="resources/profile/${u.user_saveprofile }" alt="profile" id="profile" 
 												   			style="width:100%; height:auto;border-radius:50%;">
 												</label>
 												</div>
 												
-												<p>주민등록 번호 *</p><!-- 숫자만 -->
-												<input type="text" id="user_jumin1" name="user_jumin1"  maxLength="6" style="width:47%;margin-bottom:10px">
+												<p>주민등록 번호</p><!-- 숫자만 -->
+												<input type="text" id="user_jumin1" name="user_jumin1"  maxLength="6" style="width:47%;margin-bottom:10px"
+															value="${u.user_jumin1}" readonly>
 												<b>&nbsp;-&nbsp;</b>
-												<input type="password" id="user_jumin2" name="user_jumin2" maxLength="7" style="width:49%;">
-												<span id="message_jumin"></span>
+												<input type="password" id="user_jumin2" name="user_jumin2" maxLength="7" style="width:49%;"
+															value="${u.user_jumin2}" readonly>
+												<span></span>
 												
-												<p>이름 *	</p><!-- 한글만 -->
-												<input type="text" id="user_name" name="user_name" placeholder="이름을 입력하세요" >
+												<p>이름</p><!-- 한글만 -->
+												<input type="text" id="user_name" name="user_name" placeholder="이름을 입력하세요" 
+															value="${u.user_name}" readonly>
 												<span></span>
 																							
 												<p>닉네임(별명) *</p> <!-- 중복 X -->
-												<input type="text" id="user_nick" name="user_nick" placeholder="별명을 입력하세요" >
+												<input type="text" id="user_nick" name="user_nick" placeholder="별명을 입력하세요" 
+															value="${u.user_nick}">
 												<span id="message_nick"></span>
 												
-												<p>아이디 *</p> <!-- 영문 대소문자 + 숫자, 4~16자  -->
-												<input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요" >
-												<span id="message_id"></span>
+												<p>아이디</p> <!-- 영문 대소문자 + 숫자, 4~16자  -->
+												<input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요" 
+															value="${u.user_id}" readonly>
+												<span></span>
 												
 												<p>비밀번호 *</p> <!-- 영문 대소문자/숫자/특수문자 모두 조합 8-12자 -->
 												<input type="password" id="user_pass" name="user_pass" placeholder="비밀번호를 입력하세요" >
@@ -280,41 +288,38 @@
 												<span id="message_pass2"></span>
 												
 												<p>주소 *</p> 
-												<input type="text" size="5" maxLength="5" id="user_addr1" name="user_addr1" style="width:190px;margin-bottom:10px;margin-right:3px" >
+												<input type="text" size="5" maxLength="5" id="user_addr1" name="user_addr1" style="width:190px;margin-bottom:10px;margin-right:3px" value="${u.user_addr1 }">
 												<input type="button" value="우편번호 검색" id="postcode" style="width:190px;font-weight:600">
-												<input type="text" id="user_addr1" name="user_addr2" placeholder="주소를 입력하세요" style="margin-bottom:10px;">
-												<input type="text" id="user_add2" name="user_addr3" placeholder="상세 주소를 입력하세요">
+												<input type="text" id="user_addr2" name="user_addr2" placeholder="주소를 입력하세요" style="margin-bottom:10px;" value="${u.user_addr2 }">
+												<input type="text" id="user_add3" name="user_addr3" placeholder="상세 주소를 입력하세요" value="${u.user_addr3 }">
 												<span></span>
 												
 											
 												<p>휴대폰 번호 * </p> <!-- 숫자만 -->
-												<input type="text" id="user_phone1" name="user_phone1" value="010" style="width:31%;text-align:center;margin-bottom:10px;" >
+												<input type="text" id="user_phone1" name="user_phone1" value="010" style="width:31%;text-align:center;margin-bottom:10px;" value="${u.user_phone1}" readonly>
 												<b>-</b>
-												<input type="text" id="user_phone2" name="user_phone2" maxLength="4" style="width:32%;text-align:center;margin-bottom:10px;" >
+												<input type="text" id="user_phone2" name="user_phone2" maxLength="4" style="width:32%;text-align:center;margin-bottom:10px;" value="${u.user_phone2}">
 												<b>-</b>
-												<input type="text" id="user_phone3" name="user_phone3" maxLength="4" style="width:32%;text-align:center;margin-bottom:10px;" >
+												<input type="text" id="user_phone3" name="user_phone3" maxLength="4" style="width:32%;text-align:center;margin-bottom:10px;" value="${u.user_phone3}">
 												<span id="message_phone"></span>
 												
 												<p>이메일 주소 *</p>
-												<input type="text" id="user_email1" name="user_email1" placeholder="이메일 주소를 입력하세요" style="width:43%;margin-bottom:10px">
+												<input type="text" id="user_email1" name="user_email1" placeholder="이메일 주소를 입력하세요" style="width:43%;margin-bottom:10px" value="${u.user_email1 }">
 												<b>&nbsp;@&nbsp;</b>
 												<select id="user_email2" name="user_email2" style="width:51%;">
 													<option value="">이메일 선택</option>
-													<option value="naver.com">naver.com</option>
-													<option value="gmail.com">gmail.com</option>
-													<option value="nate.com">nate.com</option>
-													<option value="hanmail.net">hanmail.net</option>
-													<option value="hotmail.com">hotmail.com</option>
-													<option value="daum.net">daum.net</option>
+													<option value="naver.com" <c:if test="${u.user_email2 == 'naver.com'}"> selected</c:if>>naver.com</option>
+													<option value="gmail.com" <c:if test="${u.user_email2 == 'gmail.com'}"> selected</c:if>>gmail.com</option>
+													<option value="nate.com" <c:if test="${u.user_email2 == 'nate.com'}"> selected</c:if>>nate.com</option>
+													<option value="hanmail.net" <c:if test="${u.user_email2 == 'hanmail.net'}"> selected</c:if>>hanmail.net</option>
+													<option value="hotmail.com" <c:if test="${u.user_email2 == 'hotmail.com'}"> selected</c:if>>hotmail.com</option>
+													<option value="daum.net" <c:if test="${u.user_email2 == 'daum.net'}"> selected</c:if>>daum.net</option>
 												</select>
 												<span></span>
 												
 												<div class="button-box" style="text-align:center;margin:0 auto">
 													<button type="submit" class="btn-style cr-btn">
-														<span>가입하기</span>
-													</button>
-													<button type="reset" class="btn-style cr-btn">
-														<span>다시 작성</span>
+														<span>수정하기</span>
 													</button>
 												</div>
 											</form>
@@ -497,7 +502,7 @@
 
 	<!-- all js here -->
 	<script src="resources/js/jquery-3.5.0.js"></script>
-	<script src="resources/js/validate.js"></script>
+	<script src="resources/js/userUpdate.js"></script>
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
 	<script src="resources/js/popper.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>

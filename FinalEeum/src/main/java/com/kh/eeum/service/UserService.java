@@ -7,5 +7,6 @@ public interface UserService {
 	public int isId(String user_id, String user_password);
 	public int isId(String user_id);
 	public int isNick(String user_nick);
-
+	public User user_info(String user_id);
+	public int user_update(User u);
 }
