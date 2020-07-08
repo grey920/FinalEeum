@@ -3,7 +3,8 @@ package com.kh.eeum.domain;
 import org.springframework.web.multipart.MultipartFile;
 
 public class User {
-	private String user_profile;
+	private String user_profile = "/profile.png";
+	private String user_saveprofile = "/profile.png";
 	private String user_jumin1;
 	private String user_jumin2;
 	private String user_name;
@@ -12,6 +13,7 @@ public class User {
 	private String user_pass;
 	private String user_addr1;
 	private String user_addr2;
+	private String user_addr3;
 	private String user_phone1;
 	private String user_phone2;
 	private String user_phone3;
@@ -28,6 +30,14 @@ public class User {
 		this.user_profile = user_profile;
 	}
 	
+	public String getUser_saveprofile() {
+		return user_saveprofile;
+	}
+
+	public void setUser_saveprofile(String user_saveprofile) {
+		this.user_saveprofile = user_saveprofile;
+	}
+
 	public String getUser_jumin1() {
 		return user_jumin1;
 	}
@@ -92,6 +102,14 @@ public class User {
 		this.user_addr2 = user_addr2;
 	}
 	
+	public String getUser_addr3() {
+		return user_addr3;
+	}
+
+	public void setUser_addr3(String user_addr3) {
+		this.user_addr3 = user_addr3;
+	}
+
 	public String getUser_phone1() {
 		return user_phone1;
 	}

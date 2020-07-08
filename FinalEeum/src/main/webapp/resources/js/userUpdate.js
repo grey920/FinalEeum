@@ -1,6 +1,5 @@
 $(document).ready(function() {
-	   
-	   var checkid = false;
+
 	   var checknick = false;
 	   
 	   //프로필사진 미리보기 
@@ -26,76 +25,6 @@ $(document).ready(function() {
             Postcode();
       });
       
-
-      //주민번호 앞자리 
-      $("#user_jumin1").keyup(function(){
-            if($('#user_jumin1').val().length == 6) {	//6자리가 맞으면 
-               pattern = /^[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|[3][01])$/;
-                  
-                  if(pattern.test($("#user_jumin1").val())){	//주민번호 앞자리가 형식에 맞을 경우 
-                     $("#user_jumin2").focus();   //주민번호 뒷자리로 포커스 이동 
-                     $("#message_jumin").empty();
-                     
-                  } else {
-                     $("#message_jumin").css('color','red').html("주민등록번호 형식이 맞지 않습니다.");
-                     $('#user_jumin1').val("");
-                     $('#user_jumin1').focus();
-                  }
-                
-             } else if (!$.isNumeric($("#user_jumin1").val())) {	//숫자로만 이뤄지지 않으면 
-            	   $("#message_jumin").css('color', 'red').html("숫자로만 입력하세요");
-            	   $("#user_jumin1").val("");
-            	   $("#user_jumin1").focus();
-               }
-            });
-      
-       //주민번호 뒷자리 
-      $("#user_jumin2").keyup(function(){
-         if($("#user_jumin2").val().length == 7) {
-        	 
-        	 if( ($("#user_jumin2").val()).substr(0,1) == 2 || ($("#user_jumin2").val()).substr(0,1) == 4 || 
-        		 ($("#user_jumin2").val()).substr(0,1) == 6 || ($("#user_jumin2").val()).substr(0,1) == 8 ) {		//여자인 경우 
-        		 
-        		 var jumin1 = (($("#user_jumin1").val()).substr(0,1))  * 2;
-        		 var jumin2 = (($("#user_jumin1").val()).substr(1,1))  * 3;
-        		 var jumin3 = (($("#user_jumin1").val()).substr(2,1)) * 4;
-        		 var jumin4 = (($("#user_jumin1").val()).substr(3,1)) * 5;
-        		 var jumin5 = (($("#user_jumin1").val()).substr(4,1)) * 6;
-        		 var jumin6 = (($("#user_jumin1").val()).substr(5,1)) * 7;
-        		 
-        		 var jumin7 = (($("#user_jumin2").val()).substr(0,1)) * 8;
-        		 var jumin8 = (($("#user_jumin2").val()).substr(1,1)) * 9;
-        		 var jumin9 = (($("#user_jumin2").val()).substr(2,1)) * 2;
-        		 var jumin10 = (($("#user_jumin2").val()).substr(3,1)) * 3;
-        		 var jumin11 = (($("#user_jumin2").val()).substr(4,1)) * 4;
-        		 var jumin12 = (($("#user_jumin2").val()).substr(5,1)) * 5;
-        		 
-        		 var juminRest = (jumin1 + jumin2 + jumin3 + jumin4 + jumin5 + jumin6
-        				 + jumin7 + jumin8 + jumin9 + jumin10 + jumin11 + jumin12) % 11;
-        		 
-        		 var juminRight = 11 - juminRest;
-        		 
-	        		 if( (($("#user_jumin2").val()).substr(6,1)) == juminRight ) {
-	        			 $("#message_jumin").empty();
-	        			 
-	        		 } else {
-	        			 $("#message_jumin").css('color','red').html("올바른 주민등록번호가 아닙니다.");
-	        			 $("#user_jumin2").val("");
-	        			 $("#user_jumin2").focus();
-	        		 }
-        		 
-        	 } else {
-        		 alert("이음은 여성만 이용할 수 있습니다. 감사합니다.");
-        		 $("#user_jumin1").val("");
-        		 $("#user_jumin2").val("");
-        	 }
-        	 
-         } else if (!$.isNumeric($("#user_jumin2").val())) {	//숫자로만 이뤄지지 않으면 
-      	   $("#message_jumin").css('color', 'red').html("숫자로만 입력하세요");
-      	   $("#user_jumin2").val("");
-      	   $("#user_jumin2").focus();
-         }
-      });
       
       //닉네임 확인
       $("#user_nick").keyup(function(){
@@ -125,38 +54,7 @@ $(document).ready(function() {
     	  })
       });
       
-      
-      //아이디 확인
-      $("#user_id").keyup(function() {
-    	  var pattern = /^\w{8,16}$/;
-    	  var user_id = $("#user_id").val();
-    	  
-    	  if(!pattern.test(user_id)) {
-    		  $("#message_id").css("color","red").html("영대소문자, 숫자를 모두 포함하여 8~16자로 입력하세요");
-    		  checkid = false;
-    		  return;
-    	  } else {
-    		  $("#message_id").empty();
-    	  }  
-    	  
-    		  $.ajax({
-    			  url : "idcheck.net",
-    			  data : {"user_id" : user_id},
-    			  success : function(resp) {
-    				  if (resp == -1) {
-    					  console.log("&");
-    					  $("#message_id").css("color", "blue").html("사용가능한 아이디입니다.");
-    					  checkid = true;
-    					  
-    				  } else {
-    					  $("#message_id").css("color", "red").html("사용중인 아이디입니다.");
-    					  checkid = false;
-    				  }
-    			  }
-    		  });
-      });
-      
-      
+
     //비밀번호 유효성 검사 
       $("#user_pass").keyup(function(){		
     	  var pw = $("#user_pass").val();
@@ -200,20 +98,7 @@ $(document).ready(function() {
     	  $("#password_check").val("");
     	  $("#message_pass2").empty();
       })
-      
-      $("#user_phone1").keyup(function() {
-    	  if($("#user_phone1").val().length == 3 || !$.isNumeric($("#user_phone1").val())) {
-    		  pattern = /^[0][1][0]$/;
-    		  
-    		  if(!pattern.test($("#user_phone1").val())) {
-    			  $("#message_phone").css('color', 'red').html("휴대폰 번호가 형식에 맞지 않습니다.");
-    			  $("#user_phone1").val("");
-    			  $("#user_phone1").focus();
-    		  } else {
-    			  $("#message_phone").empty();
-    		  }
-    	  }
-      });
+     
       
       $("#user_phone2").keyup(function(){
     	  if($("#user_phone2").val().length == 4 || !$.isNumeric($("#user_phone2").val())) {
@@ -246,38 +131,6 @@ $(document).ready(function() {
       
       //회원가입 버튼 클릭할 때 이벤트 처리 부분 (공백제거) 
       $("form").submit(function() {
-    	  
-         if ($.trim($("#user_jumin1").val()) == "") {
-             alert("주민번호 앞자리를 입력 하세요");
-             $("#user_jumin1").focus();
-             return false;
-         }
-
-         if ($.trim($("#user_jumin1").val()).length != 6) {
-            alert("주민번호 앞자리 6자리를 입력 하세요");
-            $("#user_jumin1").val("");
-            $("#user_jumin1").focus();
-            return false;
-         }
-    	  
-         if ($.trim($("#user_jumin2").val()) == "") {
-             alert("주민번호 뒷자리를 입력 하세요");
-             $("#user_jumin2").focus();
-             return false;
-         }
-
-         if ($.trim($("#user_jumin2").val()).length != 7) {
-            alert("주민번호 뒷자리 6자리를 입력 하세요");
-            $("#user_jumin2").val("");
-            $("#user_jumin2").focus();
-            return false;
-         }
-         
-         if($.trim($("#user_name").val()) == "") {
-        	 alert("이름을 입력하세요");
-        	 $("#user_name").focus();
-        	 return false;
-         }
          
          if($.trim($("#user_nick").val()) == "") {
         	 alert("닉네임(별명)을 입력하세요");
@@ -285,12 +138,6 @@ $(document).ready(function() {
         	 return false;
          }
            
-         if ($.trim($("#user_id").val()) == "") {
-            alert("ID를 입력하세요");
-            $("#user_id").focus();
-            return false;
-         }
-         
          if ($.trim($("#user_pass").val()) == "") {
             alert("비밀번호를 입력하세요");
             $("#user_pass").focus();
@@ -390,8 +237,8 @@ $(document).ready(function() {
                    
                    
                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                   $('#post').val(data.zonecode); //5자리 새우편번호 사용
-                   $('#user_addr1').val(fullRoadAddr); //주소
+                   $('#user_addr1').val(data.zonecode); //5자리 새우편번호 사용
+                   $('#user_addr2').val(fullRoadAddr); //주소
                }
            }).open();
        }
