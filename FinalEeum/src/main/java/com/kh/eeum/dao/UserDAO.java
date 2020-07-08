@@ -24,4 +24,11 @@ public class UserDAO {
 		return sqlSession.selectOne("Users.nickcheck", user_nick);
 	}
 
+	public User user_info(String user_id) {
+		return sqlSession.selectOne("Users.idcheck", user_id);
+	}
+	
+	public int update(User u) {
+		return sqlSession.update("Users.userupdate", u);
+	}
 }

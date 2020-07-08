@@ -238,14 +238,14 @@
                                 <div class="product-width col-md-6 col-lg-4">
                                     <div class="product-wrapper mb-35" style="width:200px">
                                         <div class="product-img">
-                                            <a href="#">
+                                            <a href="userUpdate.net">
                                                 <img src="resources/img/mypage/write.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-content">
                                             <div class="product-title-wishlist">
                                                 <div class="product-title-3">
-                                                    <h3><a href="product-details.html">회원 정보 수정</a></h3>
+                                                    <h3><a href="userUpdate.net">사용자 정보 수정</a></h3>
                                                 </div>
                                             </div>
                                         </div>
