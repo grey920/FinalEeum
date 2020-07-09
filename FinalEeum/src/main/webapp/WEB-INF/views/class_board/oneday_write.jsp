@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>원데이클래스 상세페이지</title>
+<title>원데이 클래스</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
@@ -24,37 +24,22 @@
 <link rel="stylesheet" href="resources/css/bundle.css">
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/responsive.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
-<style>
-.oneday-title_h1 {
-	font-size: 38px;
-}
 
-.oneday-title_h2 {
-	font-size: 18px;
-}
+<!-- include libraries(jQuery, bootstrap) -->
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-.oneday-title_h3 {
-	font-size: 24px;
-	margin: 100px 0 30px 0;
-}
-
-.quickview-btn-cart {
-	margin: 30px 0;
-}
-
-.dec-img, .oneday_poster {
-	width: 597px;
-	height: 597px;
-}
-
-#oneday_submit {
-	position: absolute;
-	bottom: 0;
-}
-</style>
+<!-- include summernote css/js -->
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"
+	defer></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -246,10 +231,10 @@
 		<div class="breadcrumb-area mt-37 hm-4-padding">
 			<div class="container-fluid">
 				<div class="breadcrumb-content text-center">
-					<h2>standerd post</h2>
+					<h2>login register</h2>
 					<ul>
 						<li><a href="#">home</a></li>
-						<li>standerd post</li>
+						<li>login register</li>
 					</ul>
 				</div>
 			</div>
@@ -261,282 +246,256 @@
 				</div>
 			</div>
 		</div>
-		<!-- blog-area start -->
-		<div class="blog-area pt-130 pb-125 hm-3-padding">
+		<div class="login-register-area ptb-130 hm-3-padding">
 			<div class="container-fluid">
 				<div class="row">
+					<div class="col-lg-7 ml-auto mr-auto">
+						<div class="login-register-wrapper">
+							<div class="login-register-tab-list nav">
+								<div class="index">
+									<h2>원데이 클래스 글쓰기</h2>
+								</div>
 
+							</div>
+							<div class="tab-content">
+								<div class="tab-pane active">
+									<div class="login-form-container">
+										<div class="login-form">
+											<form action="OnedayAddAction.one" method="post"
+												enctype="multipart/form-data" name="onedayform">
 
-					<div class="col-lg-12 col-xl-12">
-						<div class="blog-details-wrapper">
-							<div class="single-blog-wrapper">
+												작성자 <input type="text" id="oneday_name" name="WRITER_ID"
+													placeholder="Username" class="oneday_write_form">
 
-								<div class="dec-img-wrapper">
-									<div class="row">
-										<div class="col-md-6">
-											<!-- 포스터부분 -->
-											<div class="dec-img">
-												<img src="resources/OBoardupload${onedaydata.SAVEFILE}"
-													alt="oneday_poster" class="oneday_poster"
-													style="height: 500px; width: 500px; position: absolute; right: 20px;">
-											</div>
-										</div>
-										<div class="col-md-6" style="height: 500px;">
-											<!-- 중요 정보 부분  -->
-											<div class="dec-img dec-mrg">
-												<p><a href="./OnedayList.one">원데이 클래스</a> > ${onedaydata.ONE_TYPE}</p>
-												<h1 class="oneday-title oneday-title_h1">${onedaydata.ONE_TITLE}</h1>
-												<h2 class="oneday-title oneday-title_h2">${onedaydata.ONE_LINE}</h2>
-												<h2 class="oneday-title oneday-title_h2">일시 |
-													${onedaydata.ONE_RDATE}</h2>
-												<h3 class="oneday-title oneday-title_h3">${onedaydata.ONE_PRICE}원</h3>
-												<div class="seat">가능 인원 ${onedaydata.ONE_SEAT - onedaydata.ONE_ACTUAL_SEAT}명&nbsp;&nbsp;|&nbsp;&nbsp;정원
-													${onedaydata.ONE_SEAT}명</div>
-												<div class="quickview-btn-cart">
-													<a class="btn-style cr-btn" href="#my_modal"
-														data-toggle="modal" id="oneday_submit"><span>신청하기</span><b
-														style="top: 37.7812px; left: -3px;"></b></a>
+												분류 <select name="ONE_TYPE" id="oneday_type" style="margin-bottom: 30px">
+													<option value="">분류 선택</option>
+													<option value="원데이클래스">원데이 클래스</option>
+													<option value="커피챗">전문가 커피챗</option>
+												</select> 제목 <input type="text" name="ONE_TITLE"
+													placeholder="subject" size="50" class="oneday_write_form">
+
+												한 줄 소개 <input type="text" name="ONE_LINE"
+													placeholder="description" size="50"
+													class="onrday_write_form"> 내용
+												<textarea name="ONE_CONTENT" id="summernote"></textarea>
+
+												일시 <input type="date" name="ONE_RDATE" id="rdate"
+													min="${sysdate}">
+
+												<div class="quantity-range">
+													<span> 정원</span> <input class="seat_count qty text"
+														type="number" step="1" min="0" value="1" name="ONE_SEAT"
+														title="Qty" size="4">
 												</div>
-											</div>
+
+												가격 <input type="text" name="ONE_PRICE" placeholder="price"
+													class="onrday_write_form">
+
+												<div class="file_form-group">
+													<label for="savefile">포스터 첨부</label> <label for="upfile">
+														<img src="resources/img/attach.png" alt="파일첨부">
+													</label> <input type="file" id="upfile" name="uploadfile">
+													<!-- domain에 있는 private MultipartFile uploadfile;랑 input의 name이 맞나 꼭 확인! -->
+													<span id="filevalue"></span>
+												</div>
+												<div class="button-box">
+													<button type="submit" class="btn-style cr-btn"
+														onclick="goWrite(this.form)">
+														<span>등록</span>
+													</button>
+													<button type="reset" class="btn-style cr-btn">
+														<span>취소</span>
+													</button>
+												</div>
+											</form>
 										</div>
 									</div>
 								</div>
-								<p>${onedaydata.ONE_CONTENT}</p>
-							</div>
-							<hr>
-							<%-- 	<a href="./BoardModifyView.bo?num=${onedaydata.ONE_INDEX}"
-								class="nounderline">
-								<button class="btn-style cr-btn">수정</button>
-							</a> --%>
-							<%-- href의 주소를 #으로 설정합니다. --%>
 
-							<a href="#" class="nounderline">
-								<button class="btn-style cr-btn" data-toggle="modal"
-									data-target="#modalConfirmDelete"
-									style="position: absolute; right: 0;border: none;">삭제</button>
-							</a>
-
-						</div>
-					</div>
-
-					<%--modal 시작 --%>
-					<!--Modal: modalConfirmDelete-->
-					<div class="modal fade" id="modalConfirmDelete" tabindex="-1"
-						role="dialog" aria-labelledby="exampleModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog modal-sm modal-notify modal-danger"
-							role="document">
-							<!--Content-->
-							<div class="modal-content text-center"
-								style="width: 40%; margin: 0 auto;">
-								<!--Header-->
-								<div class="modal-header d-flex justify-content-center">
-									<p class="heading">정말로 삭제하시겠습니까?</p>
-								</div>
-
-								<!--Body-->
-								<div class="modal-body">
-
-									<i class="fa fa-times fa-4x animated rotateIn"
-										style="width: auto; margin: 0 auto;color: #dc3545;"></i>
-
-								</div>
-
-								<!--Footer-->
-								<div class="modal-footer flex-center">
-									<a href="" class="btn  btn-outline-danger">네</a> <a
-										type="button" class="btn  btn-danger waves-effect"
-										data-dismiss="modal" style="color: white;">아니오</a>
-								</div>
-							</div>
-							<!--/.Content-->
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- blog-area end -->
-	<!--<div class="brand-logo-area hm-4-padding">
-		<div class="container-fluid">
-			 <div class="brand-logo-active owl-carousel gray-bg ptb-130">
-				<div class="single-logo">
-					<img alt="" src="resources/img/brand-logo/1.png">
-				</div>
-				<div class="single-logo">
-					<img alt="" src="resources/img/brand-logo/2.png">
-				</div>
-				<div class="single-logo">
-					<img alt="" src="resources/img/brand-logo/3.png">
-				</div>
-				<div class="single-logo">
-					<img alt="" src="resources/img/brand-logo/4.png">
-				</div>
-				<div class="single-logo">
-					<img alt="" src="resources/img/brand-logo/5.png">
-				</div>
-				<div class="single-logo">
-					<img alt="" src="resources/img/brand-logo/3.png">
-				</div>
-			</div> 
-		</div>
-	</div>-->
-	<footer class="hm-4-padding">
-		<div class="container-fluid">
-			<div class="footer-top pt-125 pb-25">
-				<div class="row">
-					<div class="col-lg-3 col-md-5">
-						<div class="footer-widget mb-30">
-							<div class="footer-widget-title">
-								<h3>Get in Touch</h3>
-							</div>
-							<div class="food-info-wrapper">
-								<div class="food-address">
-									<div class="food-info-icon">
-										<i class="ion-ios-home-outline"></i>
-									</div>
-									<div class="food-info-content">
-										<p>
-											2020 Willshire Glen, Out of <br>Alpharetta, GA-30009
-										</p>
-									</div>
-								</div>
-								<div class="food-address">
-									<div class="food-info-icon">
-										<i class="ion-ios-telephone-outline"></i>
-									</div>
-									<div class="food-info-content">
-										<p>(+00) 121 025 0214</p>
-									</div>
-								</div>
-								<div class="food-address">
-									<div class="food-info-icon">
-										<i class="ion-ios-email-outline"></i>
-									</div>
-									<div class="food-info-content">
-										<p>
-											<a href="#">info@example.com</a>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-2 col-md-4">
-						<div class="footer-widget mb-30 pl-10">
-							<div class="footer-widget-title">
-								<h3>Information</h3>
-							</div>
-							<div class="food-widget-content">
-								<ul class="quick-link">
-									<li><a href="#">Delivery</a></li>
-									<li><a href="#">Legal Notice</a></li>
-									<li><a href="#">Terms & Conditions</a></li>
-									<li><a href="about-us.html">About Us</a></li>
-									<li><a href="#">Secure Payment</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-2 col-md-3">
-						<div class="footer-widget mb-30 pl-100">
-							<div class="footer-widget-title">
-								<h3>accounts</h3>
-							</div>
-							<div class="food-widget-content">
-								<ul class="quick-link">
-									<li><a href="login-register.html">Sign In</a></li>
-									<li><a href="cart.html">View Cart</a></li>
-									<li><a href="wishlist.html">My Wishlist</a></li>
-									<li><a href="#">Track My Order</a></li>
-									<li><a href="#">Help</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-2 col-md-6">
-						<div class="footer-widget mb-30 pl-125">
-							<div class="footer-widget-title">
-								<h3>support</h3>
-							</div>
-							<div class="food-widget-content">
-								<ul class="quick-link">
-									<li><a href="contact.html">Hello & Contact</a></li>
-									<li><a href="#">Shipping & Tax</a></li>
-									<li><a href="#">Return Policy</a></li>
-									<li><a href="#">Affiliates</a></li>
-									<li><a href="#">Legal Notice</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="footer-widget mb-30 f-right">
-							<div class="footer-widget-title">
-								<h3>twitter feed</h3>
-							</div>
-							<div class="twitter-info-wrapper">
-								<div class="single-twitter">
-									<div class="twitter-icon">
-										<i class="ion-social-twitter-outline"></i>
-									</div>
-									<div class="twitter-content">
-										<p>
-											A modern <a href="#">#Shopify theme </a> <a class="link1"
-												href="#">@devitems</a> <br> <a class="link2" href="#">https://twitter.com/devitemsllc</a>
-										</p>
-									</div>
-								</div>
-								<div class="single-twitter">
-									<div class="twitter-icon">
-										<i class="ion-social-twitter-outline"></i>
-									</div>
-									<div class="twitter-content">
-										<p>
-											A modern <a href="#">#Shopify theme </a> <a class="link1"
-												href="#">@devitems</a> <br> <a class="link2" href="#">https://twitter.com/devitemsllc</a>
-										</p>
-									</div>
-								</div>
-								<div class="single-twitter">
-									<div class="twitter-icon">
-										<i class="ion-social-twitter-outline"></i>
-									</div>
-									<div class="twitter-content">
-										<p>
-											A modern <a href="#">#Shopify theme </a> <a class="link1"
-												href="#">@devitems</a> <br> <a class="link2" href="#">https://twitter.com/devitemsllc</a>
-										</p>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="footer-bottom border-top-1 ptb-15">
-				<div class="row">
-					<div class="col-md-6 col-12">
-						<div class="copyright-payment">
-							<div class="copyright">
-								<p>
-									Copyright © 2018 <a href="https://freethemescloud.com/">Free
-										themes Cloud</a> All RIght Reserved.
-								</p>
-							</div>
-						</div>
+		</div>
+		<div class="brand-logo-area hm-4-padding">
+			<div class="container-fluid">
+				<div class="brand-logo-active owl-carousel gray-bg ptb-130">
+					<div class="single-logo">
+						<img alt="" src="resources/img/brand-logo/1.png">
 					</div>
-					<div class="col-md-6 col-12">
-						<div class="footer-payment-method">
-							<a href="#"><img alt="" src="resources/img/icon-img/7.png"></a>
-						</div>
+					<div class="single-logo">
+						<img alt="" src="resources/img/brand-logo/2.png">
+					</div>
+					<div class="single-logo">
+						<img alt="" src="resources/img/brand-logo/3.png">
+					</div>
+					<div class="single-logo">
+						<img alt="" src="resources/img/brand-logo/4.png">
+					</div>
+					<div class="single-logo">
+						<img alt="" src="resources/img/brand-logo/5.png">
+					</div>
+					<div class="single-logo">
+						<img alt="" src="resources/img/brand-logo/3.png">
 					</div>
 				</div>
 			</div>
 		</div>
-	</footer>
-	<!-- modal -->
+		<footer class="hm-4-padding">
+			<div class="container-fluid">
+				<div class="footer-top pt-125 pb-25">
+					<div class="row">
+						<div class="col-lg-3 col-md-5">
+							<div class="footer-widget mb-30">
+								<div class="footer-widget-title">
+									<h3>Get in Touch</h3>
+								</div>
+								<div class="food-info-wrapper">
+									<div class="food-address">
+										<div class="food-info-icon">
+											<i class="ion-ios-home-outline"></i>
+										</div>
+										<div class="food-info-content">
+											<p>
+												2020 Willshire Glen, Out of <br>Alpharetta, GA-30009
+											</p>
+										</div>
+									</div>
+									<div class="food-address">
+										<div class="food-info-icon">
+											<i class="ion-ios-telephone-outline"></i>
+										</div>
+										<div class="food-info-content">
+											<p>(+00) 121 025 0214</p>
+										</div>
+									</div>
+									<div class="food-address">
+										<div class="food-info-icon">
+											<i class="ion-ios-email-outline"></i>
+										</div>
+										<div class="food-info-content">
+											<p>
+												<a href="#">info@example.com</a>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4">
+							<div class="footer-widget mb-30 pl-10">
+								<div class="footer-widget-title">
+									<h3>Information</h3>
+								</div>
+								<div class="food-widget-content">
+									<ul class="quick-link">
+										<li><a href="#">Delivery</a></li>
+										<li><a href="#">Legal Notice</a></li>
+										<li><a href="#">Terms & Conditions</a></li>
+										<li><a href="about-us.html">About Us</a></li>
+										<li><a href="#">Secure Payment</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-3">
+							<div class="footer-widget mb-30 pl-100">
+								<div class="footer-widget-title">
+									<h3>accounts</h3>
+								</div>
+								<div class="food-widget-content">
+									<ul class="quick-link">
+										<li><a href="login-register.html">Sign In</a></li>
+										<li><a href="cart.html">View Cart</a></li>
+										<li><a href="wishlist.html">My Wishlist</a></li>
+										<li><a href="#">Track My Order</a></li>
+										<li><a href="#">Help</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-6">
+							<div class="footer-widget mb-30 pl-125">
+								<div class="footer-widget-title">
+									<h3>support</h3>
+								</div>
+								<div class="food-widget-content">
+									<ul class="quick-link">
+										<li><a href="contact.html">Hello & Contact</a></li>
+										<li><a href="#">Shipping & Tax</a></li>
+										<li><a href="#">Return Policy</a></li>
+										<li><a href="#">Affiliates</a></li>
+										<li><a href="#">Legal Notice</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="footer-widget mb-30 f-right">
+								<div class="footer-widget-title">
+									<h3>twitter feed</h3>
+								</div>
+								<div class="twitter-info-wrapper">
+									<div class="single-twitter">
+										<div class="twitter-icon">
+											<i class="ion-social-twitter-outline"></i>
+										</div>
+										<div class="twitter-content">
+											<p>
+												A modern <a href="#">#Shopify theme </a> <a class="link1"
+													href="#">@devitems</a> <br> <a class="link2" href="#">https://twitter.com/devitemsllc</a>
+											</p>
+										</div>
+									</div>
+									<div class="single-twitter">
+										<div class="twitter-icon">
+											<i class="ion-social-twitter-outline"></i>
+										</div>
+										<div class="twitter-content">
+											<p>
+												A modern <a href="#">#Shopify theme </a> <a class="link1"
+													href="#">@devitems</a> <br> <a class="link2" href="#">https://twitter.com/devitemsllc</a>
+											</p>
+										</div>
+									</div>
+									<div class="single-twitter">
+										<div class="twitter-icon">
+											<i class="ion-social-twitter-outline"></i>
+										</div>
+										<div class="twitter-content">
+											<p>
+												A modern <a href="#">#Shopify theme </a> <a class="link1"
+													href="#">@devitems</a> <br> <a class="link2" href="#">https://twitter.com/devitemsllc</a>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-bottom border-top-1 ptb-15">
+					<div class="row">
+						<div class="col-md-6 col-12">
+							<div class="copyright-payment">
+								<div class="copyright">
+									<p>
+										Copyright © 2018 <a href="https://freethemescloud.com/">Free
+											themes Cloud</a> All RIght Reserved.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-12">
+							<div class="footer-payment-method">
+								<a href="#"><img alt="" src="resources/img/icon-img/7.png"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
 	</div>
 
 
@@ -545,11 +504,39 @@
 
 
 
+	<script>
+		$(function() {
+			$("#summernote").summernote({
+				height : 500
+			});
 
+		});// document.ready
 
+		function goWrite(frm) {
+			var title = frm.ONE_TITLE.value;
+			var seat = frm.ONE_SEAT.value;
+			var content = frm.ONE_CONTENT.value;
 
+			if (title.trim() == '') {
+				alert("제목을 입력해주세요");
+				return false;
+			}
+			if (seat.trim() == '') {
+				alert("정원을 선택해주세요");
+				return false;
+			}
+			if (content.trim() == '') {
+				alert("내용을 입력해주세요");
+				return false;
+			}
+			frm.submit();
+		}
+	</script>
 
 	<!-- all js here -->
+
+
+	<!-- 	<script src="resources/js/jquery-3.5.0.js"></script> -->
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
 	<script src="resources/js/popper.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
