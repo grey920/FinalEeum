@@ -3,13 +3,19 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-	<typeAliases>
-		<typeAlias alias="user" 	type="com.kh.eeum.domain.User"/>
-		<typeAlias alias="expert" 	type="com.kh.eeum.domain.Expert"/>
-	</typeAliases>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
 	
+	<typeAliases>
+		<typeAlias alias="user" type="com.kh.eeum.domain.User" />
+		<typeAlias alias="expert" type="com.kh.eeum.domain.Expert" />
+		<typeAlias alias="oneday" type="com.kh.eeum.domain.Oneday"/>
+	</typeAliases>
+
 	<mappers>
-		<mapper resource="sql/user.xml"	/>
-		<mapper resource="sql/expert.xml"	/>
+		<mapper resource="sql/user.xml" />
+		<mapper resource="sql/expert.xml" />
+		<mapper resource="sql/oneday.xml"/>	
 	</mappers>
 </configuration>
