@@ -60,6 +60,9 @@ MANIFEST.MF
 
 servlet-context.xml
 
+# gyuwoon add
+savefolder.properties
+
 # Code Recommenders
 .recommenders/
 
