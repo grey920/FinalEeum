@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- SQL 맵퍼 파일은 xml이기 때문에 제일 먼저 xml 선언이 옵니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Applys">
+	<insert id="insert" parameterType="apply">
+	insert into apply
+	(AP_INDEX,AP_ID,AP_RDATE,AP_CINDEX,AP_TITLE,AP_LOCATE,AP_CDATE,AP_PROG)
+	values
+	(#{AP_INDEX}, #{AP_ID}, sysdate, #{AP_CINDEX}, #{AP_TITLE}, #{AP_LOCATE}, #{AP_CDATE},#{AP_PROG})
+	</insert>
+</mapper>

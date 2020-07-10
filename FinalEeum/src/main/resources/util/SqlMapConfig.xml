@@ -11,11 +11,13 @@
 		<typeAlias alias="user" type="com.kh.eeum.domain.User" />
 		<typeAlias alias="expert" type="com.kh.eeum.domain.Expert" />
 		<typeAlias alias="oneday" type="com.kh.eeum.domain.Oneday"/>
+		<typeAlias alias="apply" type="com.kh.eeum.domain.Apply"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="sql/user.xml" />
 		<mapper resource="sql/expert.xml" />
 		<mapper resource="sql/oneday.xml"/>	
+		<mapper resource="sql/apply.xml"/>
 	</mappers>
 </configuration>

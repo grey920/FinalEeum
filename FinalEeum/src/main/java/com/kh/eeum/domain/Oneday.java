@@ -17,6 +17,7 @@ public class Oneday {
 	private String ONE_RDATE;
 	private String ONE_PODATE;
 	private String ONE_TYPE;
+	private String ONE_LOCATE;
 	private int ONE_READCOUNT;
 	//qna_board_write.jsp에서 name 속성 확인하세요.
 	//<input type="file" id="upfile" name="uploadfile"> 확인
@@ -111,6 +112,13 @@ public class Oneday {
 	public void setONE_TYPE(String oNE_TYPE) {
 		ONE_TYPE = oNE_TYPE;
 	}
+	public String getONE_LOCATE() {
+		return ONE_LOCATE;
+	}
+	public void setONE_LOCATE(String oNE_LOCATE) {
+		ONE_LOCATE = oNE_LOCATE;
+	}
+
 	
 
 
