@@ -320,7 +320,72 @@
 										<b id="expert_name">안연지</b><b
 											style="font-size: 10px; position: relative; top: 60px; left: 100px;">전문가</b>
 										<br> <b id="expert_intro">뭐든지 깔끔하게 만들어 드립니다.</b>
+										<div class="modal fade" id="myModal" tabindex="-1"
+											role="dialog" aria-hidden="true">
 
+											<div class="modal-dialog" role="document">
+												<div class="modal-content "
+													style="font-weight: bold; width: 870px; height: 840px;">
+													<div class="modal-body"
+														style="padding: 50px; padding-top: 40px;">
+
+														<!-- 부모 모달 -->
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close" id="realclose"
+															style="position: relative; bottom: 410px; left: 770px;">
+															<span class="ion-android-close" aria-hidden="true"></span>
+														</button>
+														<div class="qwick-view-right ">
+															<div class="qwick-view-content" style="width: 550px;">
+																<h3 style="font-weight: 700;">[청소]</h3>
+																<img src="resources/img/blog/cat2.jpg" alt=""
+																	id="userimg"
+																	style="position: relative; left: 0px; right: 0px;">
+
+																<div class="price" style="margin: 0px;">
+																	<h1
+																		style="font-size: 60px; position: relative; right: 10px; left: 210px; bottom: 160px; font-family: NanumGothic; font-weight: 700;">안연지</h1>
+																	<br>
+																</div>
+																<button class="btn-hover cr-btn btn" data-toggle="modal" 
+																	data-target="#myModal1"
+																	style="position: relative; bottom: 40px; padding: 0px; width: 130px;">
+																	<span style="color: white; position: relative;">견적요청</span>
+																</button>
+																<div class="rating-number"
+																	style="position: relative; bottom: 160px; left: 220px; right: 0px;">
+																	<div class="quick-view-rating">
+																		<i class="ion-ios-star red-star"></i> <i
+																			class="ion-ios-star red-star"></i> <i
+																			class="ion-ios-star red-star"></i> <i
+																			class="ion-ios-star red-star"></i> <i
+																			class="ion-ios-star red-star"></i> <span>4.0</span>
+																	</div>
+																</div>
+																<span
+																	style="font-size: 45px; position: relative; right: 50px; bottom: 100px; font-family: NanumGothic; font-weight: 700; color: black;">서비스
+																	상세설명</span><br> <br>
+																<table
+																	style="border: 1px solid lightgray; position: relative; width: 650px; height: 320px; bottom: 100px;">
+																	<tr>
+																		<th style="font-size: 20px; font-weight: 300;">
+																			이사입주청소<br>
+																			(싱크대상판연마코팅.욕실나노코팅.마루왁스코팅.찌든때.묵은때.물때.기름때.곰팡이. 스티커 제거 )<br>
+																			신축입주청소<br> ( 화학성분 유해물질 미세먼지 제거 싱크대상판코팅.욕실나노코팅 )<br>
+																		</th>
+																	</tr>
+
+																</table>
+
+
+																<div class="quickview-btn-wishlist"></div>
+
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 
 										<!-- 전체 리스트로 조회한 경우 전문가별 카테고리가 나옴. -->
 										<div class="price-decrease">
@@ -329,14 +394,82 @@
 										<div class="product-action-3">
 											<a class="action-plus-2" title="간략히 보기" data-toggle="modal"
 												data-target="#myModal" href="#"
-												style="text-decoration: none;"> <i class="ti-plus" style="position: relative; width: 20px; height: 20px; left: 20px;
-												 bottom: 8px;" ></i>
+												style="text-decoration: none;"> <i class="ti-plus"
+												style="position: relative; width: 20px; height: 20px; left: 20px; bottom: 8px;"></i>
 												<span style="color: white;">간략히 보기</span>
 											</a>
 										</div>
+										<div class="modal fade" id="myModal" tabindex="-1"
+											role="dialog" aria-hidden="true">
+
+											<div class="modal-dialog" role="document">
+												<div class="modal-content "
+													style="font-weight: bold; width: 870px; height: 840px;">
+													<div class="modal-body"
+														style="padding: 50px; padding-top: 40px;">
+
+														<!-- 부모 모달 -->
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close"
+															style="position: relative; bottom: 410px; left: 770px;">
+															<span class="ion-android-close" aria-hidden="true"></span>
+														</button>
+														<div class="qwick-view-right ">
+															<div class="qwick-view-content" style="width: 550px;">
+																<h3 style="font-weight: 700;">[청소]</h3>
+																<img src="resources/img/blog/cat2.jpg" alt=""
+																	id="userimg"
+																	style="position: relative; left: 0px; right: 0px;">
+
+																<div class="price" style="margin: 0px;">
+																	<h1
+																		style="font-size: 60px; position: relative; right: 10px; left: 210px; bottom: 160px; font-family: NanumGothic; font-weight: 700;">안연지</h1>
+																	<br>
+																</div>
+																<div class="rating-number"
+																	style="position: relative; bottom: 160px; left: 220px; right: 0px;">
+																	<div class="quick-view-rating">
+																		<i class="ion-ios-star red-star"></i> <i
+																			class="ion-ios-star red-star"></i> <i
+																			class="ion-ios-star red-star"></i> <i
+																			class="ion-ios-star red-star"></i> <i
+																			class="ion-ios-star red-star"></i> <span>4.0</span>
+																	</div>
+																</div>
+																<span
+																	style="font-size: 45px; position: relative; right: 50px; bottom: 100px; font-family: NanumGothic; font-weight: 700; color: black;">서비스
+																	상세설명</span><br> <br>
+																<table
+																	style="border: 1px solid lightgray; position: relative; width: 650px; height: 320px; bottom: 100px;">
+																	<tr>
+																		<th style="font-size: 20px; font-weight: 300;">
+																			이사입주청소<br>
+																			(싱크대상판연마코팅.욕실나노코팅.마루왁스코팅.찌든때.묵은때.물때.기름때.곰팡이. 스티커 제거 )<br>
+																			신축입주청소<br> ( 화학성분 유해물질 미세먼지 제거 싱크대상판코팅.욕실나노코팅 )<br>
+																		</th>
+																	</tr>
+
+																</table>
+
+
+																<div class="quickview-btn-wishlist">
+																	<button class="btn-hover cr-btn btn"
+																		data-toggle="modal" data-target="#myModal1"
+																		style="position: relative; bottom: 40px; padding: 0px; width: 130px;">
+																		<span style="color: white; position: relative;">견적요청</span>
+																	</button>
+																</div>
+
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 
-				
+
+
 									<div class="product-list-details">
 										<h1 id="list-name">안연지</h1>
 										<div class="product-rating">
@@ -361,7 +494,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 
 						</div>
 						<div class="pagination-style text-center mt-30">
@@ -555,76 +688,19 @@
 				</div>
 			</div>
 		</footer>
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-			aria-hidden="true">
-
-			<div class="modal-dialog" role="document">
-				<div class="modal-content " style="font-weight: bold; width: 870px; height: 840px;">
-					<div class="modal-body" style="padding: 50px; padding-top: 40px;">
-
-						<!-- 부모 모달 -->
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close"
-							style="position: relative; bottom: 410px; left: 770px;">
-							<span class="ion-android-close" aria-hidden="true"></span>
-						</button>
-						<div class="qwick-view-right ">
-							<div class="qwick-view-content" style="width: 550px;">
-								<h3 style="font-weight: 700; ">[청소]</h3>
-								<img src="resources/img/blog/cat2.jpg" alt="" id="userimg" style="position: relative; left: 0px; right: 0px;">
-								
-								<div class="price" style="margin: 0px;">
-									<h1 style="font-size:60px; position: relative; right: 10px; left:210px; bottom:160px; font-family: NanumGothic; font-weight: 700;">안연지</h1> <br>
-								</div>
-								<div class="rating-number" style="position: relative; bottom: 160px; left: 220px; right: 0px;">
-									<div class="quick-view-rating">
-										<i class="ion-ios-star red-star"></i> <i
-											class="ion-ios-star red-star"></i> <i
-											class="ion-ios-star red-star"></i> <i
-											class="ion-ios-star red-star"></i> <i
-											class="ion-ios-star red-star"></i>
-											<span>4.0</span>
-									</div>
-								</div>
-								<span style="font-size:45px; position: relative; right: 50px; bottom: 100px; font-family: NanumGothic; font-weight: 700; color: black;">서비스
-									상세설명</span><br> <br>
-									<table style="border: 1px solid lightgray; position:relative; width: 650px; height: 320px; bottom: 100px;">
-										<tr>
-											<th style="font-size: 20px; font-weight: 300;">
-									이사입주청소<br> (싱크대상판연마코팅.욕실나노코팅.마루왁스코팅.찌든때.묵은때.물때.기름때.곰팡이.
-									스티커 제거 )<br> 신축입주청소<br> ( 화학성분 유해물질 미세먼지 제거
-									싱크대상판코팅.욕실나노코팅 )<br>
-											</th>
-										</tr>
-
-									</table>
-
-								                              
-									<div class="quickview-btn-wishlist">
-										<button class="btn-hover cr-btn btn" data-toggle="modal"
-											data-target="#myModal1" style="position: relative; bottom: 40px; padding: 0px;width: 130px;">
-											<span style="color: white; position: relative;">견적요청</span>
-										</button>
-									</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<!-- 서브 모달  -->
 		<div id="myModal1" class="modal modal-child" data-backdrop-limit="1"
 			tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 			aria-hidden="true" data-modal-parent="#myModal">
 			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
+				<div class="modal-content" style="height: 700px;">
 					<!-- body -->
-					<div class="modal-body" style="padding: 50px; padding-top: 40px; width: 440px; height: 750px;">
-                          
+					<div class="modal-body"
+						style="padding: 50px; padding-top: 40px; width: 440px; height: 750px;">
+
 						<!-- 부모 모달 -->
-						<button type="button" class="close" data-dismiss="modal"
+						<button type="button" class="close" data-dismiss="modal" id="close1"
 							aria-label="Close"
 							style="position: relative; bottom: 320px; left: 770px;">
 							<span class="ion-android-close" aria-hidden="true"></span>
@@ -633,7 +709,8 @@
 							<div
 								class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2"
 								style="width: 500px; padding-left: 10px;">
-								<div class="card px-0 pt-4 pb-0 mt-3 mb-3" style="width: 700px; position: relative;right: 140px;">
+								<div class="card px-0 pt-4 pb-0 mt-3 mb-3"
+									style="width: 700px; position: relative; right: 140px;">
 									<h3 id="top"></h3>
 									<div class="row">
 										<div class="col-md-12 mx-0">
@@ -652,11 +729,12 @@
 														<!-- 여기 라디오 버튼 : form -->
 														<b>* 선택해주세요.</b><br> <br> <input type="radio"
 															name="structure1" id="structure1" checked="checked"><span>아파트</span>
-														<input type="radio" name="structure1" id="structure1" style="position: relative; left: 270px;">
-														<span style="position: relative; left: 275px;">단독주택</span><br>
+														<input type="radio" name="structure1" id="structure1"
+															style="position: relative; left: 270px;"> <span
+															style="position: relative; left: 275px;">단독주택</span><br>
 														<input type="radio" name="structure1" id="structure1">
-														<span>빌라/연립주택</span>
-														<input type="radio" name="structure1" id="structure1" style="position: relative; left: 197px;">
+														<span>빌라/연립주택</span> <input type="radio" name="structure1"
+															id="structure1" style="position: relative; left: 197px;">
 														<span style="position: relative; left: 202px;">빌딩/상가</span><br>
 														<input type="radio" name="structure1" id="structure1"><span>기타</span><br>
 														<textarea rows="4" cols="20" maxlength="50"
@@ -669,25 +747,30 @@
 
 												</fieldset>
 												<fieldset style="display: none;">
-													
+
 													<div class="form-card " style="height: 400px;">
 														<!-- 여기 라디오 버튼 : form -->
 														<b>* 선택해주세요.</b><br> <br> <input type="radio"
-															name="structure1" id="structure1" checked="checked"><span>전자제품 수리</span>
-														<input type="radio" name="structure1" id="structure2" style="position: relative; left: 232px;">
-														<span style="position: relative; left: 239px;">가구수리</span><br>
+															name="structure1" id="structure1" checked="checked"><span>전자제품
+															수리</span> <input type="radio" name="structure1" id="structure2"
+															style="position: relative; left: 232px;"> <span
+															style="position: relative; left: 239px;">가구수리</span><br>
 														<input type="radio" name="structure1" id="structure2">
-														<span>열쇠/도어락 수리</span>
-														<input type="radio" name="structure1" id="structure2" style="position: relative; left: 199px;">
-														<span style="position: relative; left: 205px;">전기 배선 수리</span><br>
-															<input type="radio" name="structure1" id="structure2">
-														<span>방충망 및 방범창 수리</span>
-															<input type="radio" name="structure1" id="structure2" style="position: relative; left: 155px;">
-														<span style="position: relative; left: 161px;">문 수리</span><br>
-															<input type="radio" name="structure1" id="structure2"style="position: relative; left: 396px;" >
-														<span style="position: relative; left: 400px;" >수도 관련 수리</span>
-														<input type="radio" name="structure1" id="structure2" style="position: relative; right: 173px;"  >
-														<span style="position: relative; right: 174px;" >기타</span><br>
+														<span>열쇠/도어락 수리</span> <input type="radio"
+															name="structure1" id="structure2"
+															style="position: relative; left: 199px;"> <span
+															style="position: relative; left: 205px;">전기 배선 수리</span><br>
+														<input type="radio" name="structure1" id="structure2">
+														<span>방충망 및 방범창 수리</span> <input type="radio"
+															name="structure1" id="structure2"
+															style="position: relative; left: 155px;"> <span
+															style="position: relative; left: 161px;">문 수리</span><br>
+														<input type="radio" name="structure1" id="structure2"
+															style="position: relative; left: 396px;"> <span
+															style="position: relative; left: 400px;">수도 관련 수리</span>
+														<input type="radio" name="structure1" id="structure2"
+															style="position: relative; right: 173px;"> <span
+															style="position: relative; right: 174px;">기타</span><br>
 														<textarea rows="4" cols="20" maxlength="50"
 															style="border: 1px solid lightgray;"></textarea>
 														<b class="page_number">2/4</b>

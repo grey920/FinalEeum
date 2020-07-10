@@ -1,6 +1,9 @@
 package com.kh.eeum.controller;
 
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,6 +25,20 @@ public class ExpertController {
 		System.out.println("들어왔?>");
 		return "service/expert_details";
 	}
+	
 	//
+	@GetMapping("/portfolio_list")
+	public String portfolio_list(HttpServletResponse response) throws Exception {
+		System.out.println("포폴 들어왔?");
+		
+		return "service/portfolio_list";
+	}
+	
+	@GetMapping("/review_list")
+	public String review_list(HttpServletResponse response) throws Exception {
+		System.out.println("후기 들어왔?");
+		
+		return "service/review_list";
+	}
 	
 }
