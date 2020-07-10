@@ -1,4 +1,3 @@
-//하트 누르면 문구 나옴
 $(document).ready(
 		function() {
 
@@ -125,53 +124,59 @@ $(document).ready(
 				return false;
 			});
 
-			$('.ti-heart').mouseover(function() {
-				var text1 = '<p>이미 찜한 전문가 입니다.</p>'
-				$('.product-addtocart').append(text1);
-				$(this).removeClass('ti-heart');
-				$(this).addClass('ti-heart-broken');
-			});
+			// 탭 메뉴 클릭시 이벤트 발생.
+			$('.tabmenu').click(function() {
+				// tabmenu 클래스의 data-tab 속성 값을 active 에다 담음
+				var active = $(this).attr('data-tab');
+				var tab = "";
+				console.log(active.toString());
 
-			$('.ti-heart').mouseleave(function() {
-				$(this).removeClass('ti-heart-broken');
-				$(this).addClass('ti-heart');
-			});
+				if (active.toString() == 'tab1') {
+					$('#tabText1').css('text-decoration', 'underline');
+					$('#tabText1').css('color', 'black');
+					tab = "portfolio_list";
+					for (var i = 2; i <= 4; i++) {
+						$('#tabText' + i).css('text-decoration', 'none');
+						$('#tabText' + i).css('color', 'white');
 
-			$('.modal-child').on('show.bs.modal', function() {
-				var modalParent = $(this).attr('data-modal-parent');
-				$(modalParent).css('opacity', 0);
-				$('body').css('overflow','hidden');
-			});
+					}
+				} else if (active.toString() == 'tab2') {
+					tab = "review_list";
+					for (var i = 1; i <= 4; i++) {
+						$('#tabText' + i).css('text-decoration', 'none');
+						$('#tabText' + i).css('color', 'white');
+						$('#tabText2').css('text-decoration', 'underline');
+						$('#tabText2').css('color', 'black');
+					}
 
-			$('.modal-child').on('hidden.bs.modal', function() {
-				var modalParent = $(this).attr('data-modal-parent');
+				} else if (active.toString() == 'tab3') {
+					for (var i = 1; i <= 4; i++) {
+						$('#tabText' + i).css('text-decoration', 'none');
+						$('#tabText' + i).css('color', 'white');
+						$('#tabText3').css('text-decoration', 'underline');
+						$('#tabText3').css('color', 'black');
+					}
+				} else {
+					for (var i = 1; i <= 4; i++) {
+						$('#tabText' + i).css('text-decoration', 'none');
+						$('#tabText' + i).css('color', 'white');
+						$('#tabText4').css('text-decoration', 'underline');
+						$('#tabText4').css('color', 'black');
+					}
+				}
 
-				$(modalParent).css('opacity', 1);
-			});
+				$.ajax({
+					type : 'GET',
+					url : tab, // ~~.jsp 파일이 들어옴
+					error : function() { // 통신 실패시
+						alert('통신실패!');
+					},
+					success : function(data) { // 통신 성공하면 가져옴.
+						$("#tabcontent").html(data);
+					}
 
-			$('#close1').click(function() {
-				$('#myModal').css('z-index', 99999);
-				$('header').css('z-index',0);
-				$('#myModal').css('overflow', 'scroll');
-				$('body').css('overflow','hidden');
-				alert('눌렀니');
-			});
-			// 하트 누르면 찜 해제 문구 뜨기
+				});
 
-			$("#realclose").click(function(){
-				$('body').css('overflow','scroll');
-				
-			});
-			// list 아이콘 누르면 간략히 보기 없앰..
-			$('.ion-navicon').click(function() {
-				$('.product-action-3').removeClass();
-				$('.action-plus-2').empty();
-				$('.ti-plus').removeClass();
-
-			});
-			$('#userimg').click(function() {
-
-				location.href = "expert_details";
-			});
+			});// tabmenu end
 
 		});

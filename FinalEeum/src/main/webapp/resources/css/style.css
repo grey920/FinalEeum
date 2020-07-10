@@ -1012,13 +1012,14 @@ a.slider-btn:hover::before {
     top: 20px;
 }
 .product-img img {
-    transition: all 1.5s ease 0s;
+   /* transition: all 1.5s ease 0s;*/
     width: 100%;
 }
 
-.product-wrapper:hover .product-img img {
+/*.product-wrapper:hover .product-img img {
     transform: scale(1.2);
 }
+*/
 
 /* banner style */
 .banner-content-5 {
