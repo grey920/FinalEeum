@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+	pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>사용자 - 마이페이지</title>
+        <title>사용자 - 예약내역</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -23,12 +24,25 @@
         <link rel="stylesheet" href="resources/css/style.css">
         <link rel="stylesheet" href="resources/css/responsive.css">
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
-        
         <style>
-        .product-title-3{margin:0 auto;}
-        .product-content{padding-bottom:100px}
-        .text-center h2{font-weight:900}
-        h3{font-weight:700;margin-top:0}
+        body{font-size:20px}
+        .product-subtotal{font-size:20px !important}
+        .btn-style{margin-top:10px !important;
+       					 margin-right:0 !important; 
+       					 font-size:18px;
+         				 border-radius:20px;
+         				 background-color:white;
+         				 color:#72A0E0;
+         				 border:2px solid #72A0E0;
+         				 }
+        .btn-style:hover{background-color:#72A0E0;
+         					       color:white;
+         					       border:2px solid #72A0E0;
+         						  }
+         .table-content table td {border-bottom:2px solid #e8e6e6; padding:30px 10px 30px}
+         .pt-120{padding-top:50px !important}
+         .breadcrumb-content{margin-top:5em}
+         .breadcrumb-content ul > li{font-size:13pt}
         </style>
     </head>
     <body>
@@ -39,24 +53,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-5 col-5">
-                                <div class="language-currency">
-                                    <div class="language">
-                                        <select class="select-header orderby">
-                                            <option value="">ENGLISH</option>
-                                            <option value="">BANGLA </option>
-                                            <option value="">HINDI</option>
-                                        </select>
-                                    </div>
-                                    <div class="currency">
-                                        <select class="select-header orderby">
-                                            <option value="">USD</option>
-                                            <option value="">US </option>
-                                            <option value="">EURO</option>
-                                        </select>
-                                    </div>
-                                </div>
+
  							<div class="sticky-logo"> <!-- 스크롤내렸을 때,메뉴바 로고  -->
-								<a href="index.html"><img src="resources/img/logo/eeum_logo_36518f.png"
+								<a href="index.html"><img src="resources/img/logo/eeeum_logo_36518f.png"
 									alt="" /></a>
 							</div>
 							<div class="logo-small-device">	<!-- 반응형 웹 작게했을 때 로고 -->
@@ -225,125 +224,155 @@
             <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
-                        <h2>MY PAGE</h2>
+                        <h2>RESERVATION LIST</h2>
+                        <ul>
+                            <li>예약한 서비스 목록</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="shop-wrapper hm-3-padding pt-120 pb-100" style="padding-top:0">
+            <div class="product-cart-area hm-3-padding pt-120 pb-130">
                 <div class="container-fluid">
-                    <div class="grid-list-product-wrapper">
-                        <div class="product-grid product-view">
-                            <div class="row">
-                                <div class="product-width col-md-6 col-lg-4">
-                                    <div class="product-wrapper mb-35" style="width:200px">
-                                        <div class="product-img">
-                                            <a href="userUpdate.net">
-                                                <img src="resources/img/mypage/write.png" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h3><a href="userUpdate.net">사용자 정보 수정</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-width col-md-6 col-lg-4">
-                                    <div class="product-wrapper mb-35" style="width:200px">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="resources/img/mypage/reserve.png" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h3><a href="product-details.html">예약 내역</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-width col-md-6 col-lg-4">
-                                    <div class="product-wrapper mb-35" style="width:200px">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="resources/img/mypage/review.png" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h3><a href="product-details.html">후기 내역</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-width col-md-6 col-lg-4">
-                                    <div class="product-wrapper mb-35" style="width:200px">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="resources/img/mypage/conversation.png" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h3><a href="product-details.html">상담 내역</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-width col-md-6 col-lg-4">
-                                    <div class="product-wrapper mb-35" style="width:200px">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="resources/img/mypage/class4.png" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h3><a href="product-details.html">&nbsp;&nbsp;&nbsp;&nbsp;원데이 클래스 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;신청 목록</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-width col-md-6 col-lg-4">
-                                    <div class="product-wrapper mb-35" style="width:200px">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="resources/img/mypage/wishlist.png" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h3><a href="product-details.html">찜한 전문가 목록</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="table-content table-responsive">
+                                <table style="text-align:center">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-name">전문가 프로필</th>
+                                            <th class="product-price">전문가 성함</th>
+                                            <th class="product-name">예약 날짜</th>
+                                            <th class="product-quantity">가격</th>
+                                            <th class="product-quantity">예약 상태</th>
+                                            <th class="product-subtotal">버튼</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="product-thumbnail">
+                                                <a href="#"><img src="resources/img/profile/profile_ex1.png" style="width:120px;height:150px"></a>
+                                            </td>
+                                            <td class="product-price">
+                                                <a href="#">[청소]<br>디딤돌 최유정님</a>
+                                            </td>
+                                            <td class="product-name"><span class="amount">2020년 6월 27일 <br> 오후 11시</span></td>
+                                            <td class="product-subtotal">50,000원</td>
+                                            <td class="product-subtotal">예약 대기</td>
+                                            <td class="product-subtotal">
+                                            	<div class="button-box" style="text-align:center;">
+													<button class="btn-style" onclick="location.href='#';">
+														<span>별점주기</span>
+													</button>
+													<button class="btn-style" onclick="location.href='#';">
+														<span>후기쓰기</span>
+													</button>
+													<button class="btn-style" onclick="location.href='#';">
+														<span>신고하기</span>
+													</button>
+												</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="product-thumbnail">
+                                                <a href="#"><img src="resources/img/profile/profile_ex2.png" style="width:120px;height:150px"></a>
+                                            </td>
+                                            <td class="product-price">
+                                                <a href="#">[수리]<br>마루 김도연님</a>
+                                            </td>
+                                            <td class="product-name"><span class="amount">2020년 7월 21일 <br> 오전 8시</span></td>
+                                            <td class="product-subtotal">100,000원</td>
+                                            <td class="product-subtotal">예약 확정</td>
+                                            <td class="product-subtotal">
+                                            	<div class="button-box" style="text-align:center;">
+													<button class="btn-style" onclick="location.href='#';">
+														<span>별점주기</span>
+													</button>
+													<button class="btn-style" onclick="location.href='#';">
+														<span>후기쓰기</span>
+													</button>
+													<button class="btn-style" onclick="location.href='#';">
+														<span>신고하기</span>
+													</button>
+												</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="product-thumbnail">
+                                                <a href="#"><img src="resources/img/profile/profile_ex3.png" style="width:120px;height:150px"></a>
+                                            </td>
+                                            <td class="product-price">
+                                                <a href="#">[해충]<br>우주 임보라님</a>
+                                            </td>
+                                            <td class="product-name"><span class="amount">2020년 7월 8일 <br> 오후 1시</span></td>
+                                            <td class="product-subtotal">150,000원</td>
+                                            <td class="product-subtotal">서비스 완료</td>
+                                            <td class="product-subtotal">
+                                            	<div class="button-box" style="text-align:center;">
+													<button class="btn-style" onclick="location.href='#';">
+														<span>별점주기</span>
+													</button>
+													<button class="btn-style" onclick="location.href='#';">
+														<span>후기쓰기</span>
+													</button>
+													<button class="btn-style" onclick="location.href='#';">
+														<span>신고하기</span>
+													</button>
+												</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="product-thumbnail">
+                                                <a href="#"><img src="resources/img/profile/profile_ex4.png" style="width:120px;height:150px"></a>
+                                            </td>
+                                            <td class="product-price">
+                                                <a href="#">[청소]<br>용마루 이주빈님</a>
+                                            </td>
+                                            <td class="product-name"><span class="amount">2020년 8월 1일 <br> 오후 7시</span></td>
+                                            <td class="product-subtotal">70,000원</td>
+                                            <td class="product-subtotal">예약 대기</td>
+                                            <td class="product-subtotal">
+                                            	<div class="button-box" style="text-align:center;">
+													<button class="btn-style" onclick="location.href='#';">
+														<span>별점주기</span>
+													</button>
+													<button class="btn-style" onclick="location.href='#';">
+														<span>후기쓰기</span>
+													</button>
+													<button class="btn-style" onclick="location.href='#';">
+														<span>신고하기</span>
+													</button>
+												</div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="pagination-style text-center mt-30">
+                                <ul>
+                                    <li>
+                                        <a class="active" href="#">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="ion-chevron-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-
-
-<!-- 푸터 -->
+ 
+            
+            
             <footer class="hm-4-padding">
                 <div class="container-fluid">
                     <div class="footer-top pt-125 pb-25">
@@ -351,7 +380,7 @@
                             <div class="col-lg-3 col-md-5">
                                 <div class="footer-widget mb-30">
                                     <div class="footer-widget-title">
-                                        <h4>Get in Touch</h4>
+                                        <h3>Get in Touch</h3>
                                     </div>
                                     <div class="food-info-wrapper">
                                         <div class="food-address">
@@ -384,7 +413,7 @@
                             <div class="col-lg-2 col-md-4">
                                 <div class="footer-widget mb-30 pl-10">
                                     <div class="footer-widget-title">
-                                        <h4>Information</h4>
+                                        <h3>Information</h3>
                                     </div>
                                     <div class="food-widget-content">
                                         <ul class="quick-link">
@@ -400,7 +429,7 @@
                             <div class="col-lg-2 col-md-3">
                                 <div class="footer-widget mb-30 pl-100">
                                     <div class="footer-widget-title">
-                                        <h4>accounts</h4>
+                                        <h3>accounts</h3>
                                     </div>
                                     <div class="food-widget-content">
                                         <ul class="quick-link">
@@ -416,7 +445,7 @@
                             <div class="col-lg-2 col-md-6">
                                 <div class="footer-widget mb-30 pl-125">
                                     <div class="footer-widget-title">
-                                        <h4>support</h4>
+                                        <h3>support</h3>
                                     </div>
                                     <div class="food-widget-content">
                                         <ul class="quick-link">
@@ -432,7 +461,7 @@
                             <div class="col-lg-3 col-md-6">
                                 <div class="footer-widget mb-30 f-right">
                                     <div class="footer-widget-title">
-                                        <h4>twitter feed</h4>
+                                        <h3>twitter feed</h3>
                                     </div>
                                     <div class="twitter-info-wrapper">
                                         <div class="single-twitter">
@@ -490,12 +519,7 @@
 		
 		
 		
-		
-		
-		
-		
 		<!-- all js here -->
-		<script src="resources/js/jquery-3.5.0.js"></script>
         <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="resources/js/popper.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
@@ -509,4 +533,3 @@
         <script src="resources/js/main.js"></script>
     </body>
 </html>
-

@@ -1012,14 +1012,9 @@ a.slider-btn:hover::before {
     top: 20px;
 }
 .product-img img {
-   /* transition: all 1.5s ease 0s;*/
+    transition: all 1.5s ease 0s;
     width: 100%;
 }
-
-/*.product-wrapper:hover .product-img img {
-    transform: scale(1.2);
-}
-*/
 
 /* banner style */
 .banner-content-5 {
@@ -2059,7 +2054,6 @@ input.cart-plus-minus-box {
     line-height: 24px;
     margin: 0;
 }
-/* 연지 수정
 a.cr-btn b,
 button.cr-btn b {
     background: rgba(25, 25, 25, 1) none repeat scroll 0 0;
@@ -2076,14 +2070,13 @@ button.cr-btn b {
     width: 0;
     z-index: 1;
 }
-*/
 a.cr-btn:hover b,
 button.cr-btn:hover b {
     height: 500px;
     width: 500px;
 }
 .btn-style:hover {
-    border: 0px solid #72A0E0;
+    border: 1px solid #72A0E0;
     color: #ffffff;
 }
 /* Compare style */

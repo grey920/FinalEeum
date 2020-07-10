@@ -28,6 +28,7 @@
 	.text-center h2{font-weight:900}
 	.ptb-130 {padding-top:30px}
 	input[type=button] {background-color:#72A0E0;color:white}
+	.login-form-container{padding-top:30px}
 	</style>
 </head>
 <body>
@@ -240,17 +241,7 @@
 								<div id="lg1" class="tab-pane active">
 									<div class="login-form-container">
 										<div class="login-form">
-											<form action="expertJoinProcess.net" method="post" enctype="multipart/form-data">
-											
-												<!--프로필 사진 -->
-												<div class="profile_image" style="width:200px;height:260px;text-align:center;margin:0 auto 100px;">
-												<input type="file" id="expert_profile" name="uploadfile" 
-															accept="image/gif, image/jpeg, image/png, image/jpg" style="visibility:hidden"><br>
-												<label for="expert_profile">
-												  <img src="resources/img/profile/profile_expert.png" alt="profile" id="profile" 
-												   			style="width:100%; height:auto;">
-												</label>
-												</div>
+											<form action="expertJoinProcess.net" method="post">
 												
 												<p>주민등록 번호 *</p><!-- 숫자만 -->
 												<input type="text" id="expert_jumin1" name="expert_jumin1"  maxLength="6" style="width:47%;margin-bottom:10px">
