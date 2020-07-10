@@ -1,10 +1,6 @@
 package com.kh.eeum.domain;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class Expert {
-	private String expert_profile = "/profile.png";
-	private String expert_saveprofile = "/profile.png";
 	private String expert_jumin1;
 	private String expert_jumin2;
 	private String expert_name;
@@ -15,23 +11,6 @@ public class Expert {
 	private String expert_phone3;
 	private String expert_email1;
 	private String expert_email2;
-	private MultipartFile uploadfile;
-	
-	public String getExpert_profile() {
-		return expert_profile;
-	}
-	
-	public void setExpert_profile(String expert_profile) {
-		this.expert_profile = expert_profile;
-	}
-	
-	public String getExpert_saveprofile() {
-		return expert_saveprofile;
-	}
-	
-	public void setExpert_saveprofile(String expert_saveprofile) {
-		this.expert_saveprofile = expert_saveprofile;
-	}
 	
 	public String getExpert_jumin1() {
 		return expert_jumin1;
@@ -112,13 +91,5 @@ public class Expert {
 	public void setExpert_email2(String expert_email2) {
 		this.expert_email2 = expert_email2;
 	}
-	
-	public MultipartFile getUploadfile() {
-		return uploadfile;
-	}
-	
-	public void setUploadfile(MultipartFile uploadfile) {
-		this.uploadfile = uploadfile;
-	}
-	
+
 }
