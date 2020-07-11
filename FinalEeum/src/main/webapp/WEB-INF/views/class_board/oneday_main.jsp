@@ -40,6 +40,10 @@
 	display: flex;
 	justify-content: center;
 }
+
+.product-wrapper .end:after{
+background:rgba(0,0,0,.53);
+}
 </style>
 </head>
 <body>
@@ -325,27 +329,47 @@
 							<c:forEach var="o" items="${onedaylist}">
 								<div class="product-width col-md-6 col-xl-4 col-lg-4">
 									<div class="product-wrapper mb-35">
-										<div class="product-img">
-											<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}"> <img
-												alt="oneday_main_poster" id="poster"
-												src="resources/OBoardupload${o.SAVEFILE}" width="310px"
-												height="375px">
-											</a>
 											<div style="display:none">
 											<jsp:useBean id="now" class="java.util.Date"/>
 											<fmt:formatDate value="${now}" pattern="yyyyMMdd" />
 											<fmt:parseDate value="${o.ONE_RDATE}" var="rdate" pattern="yyyy-MM-dd" />
 											<fmt:formatDate value="${rdate}" pattern="yyyyMMdd" />
 											</div>
-											<c:if test="${rdate >= now}">
+										<c:if test="${rdate >= now}">
+										<div class="product-img">
+											<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}"> 
+											<img
+												alt="oneday_main_poster" id="poster"
+												src="resources/OBoardupload${o.SAVEFILE}" width="310px"
+												height="375px">
+											</a>
+											<%-- <div style="display:none">
+											<jsp:useBean id="now" class="java.util.Date"/>
+											<fmt:formatDate value="${now}" pattern="yyyyMMdd" />
+											<fmt:parseDate value="${o.ONE_RDATE}" var="rdate" pattern="yyyy-MM-dd" />
+											<fmt:formatDate value="${rdate}" pattern="yyyyMMdd" />
+											</div> --%>
+											
 												<div class="price-decrease">
 													<span>모집중</span>
 												</div>
+											</div>
 											</c:if>
+											
 											<c:if test="${rdate < now}">
-												<div class="price-decrease">
-													<span class="ERdate">종료</span>
+											<div class="product-img end">
+											<div class="posterWrapper" >
+											<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}"> 
+											<img
+												alt="oneday_main_poster" id="poster"
+												src="resources/OBoardupload${o.SAVEFILE}" width="310px"
+												height="375px">
+											</a>
 												</div>
+												<div class="price-decrease">
+													<span class="ERdate" style="background:black">종료</span>
+												</div>
+											</div>
 											</c:if>
 											<%-- <div class="product-action-3">
 												<a class="action-plus-2" title="Quick View"
@@ -353,7 +377,7 @@
 														보러가기</span>
 												</a>
 											</div> --%>
-										</div>
+										
 										<div class="product-content">
 											<div class="product-title-wishlist">
 												<div class="product-title-3">
