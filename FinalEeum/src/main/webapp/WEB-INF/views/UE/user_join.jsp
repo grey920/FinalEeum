@@ -22,8 +22,6 @@
 <link rel="stylesheet" href="resources/css/bundle.css">
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/responsive.css">
-<script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<style>
 	select {font-size:13pt}
 	.text-center h2{font-weight:900}
@@ -288,7 +286,7 @@
 												
 											
 												<p>휴대폰 번호 * </p> <!-- 숫자만 -->
-												<input type="text" id="user_phone1" name="user_phone1" value="010" style="width:31%;text-align:center;margin-bottom:10px;" disabled>
+												<input type="text" id="user_phone1" name="user_phone1" value="010" style="width:31%;text-align:center;margin-bottom:10px;" readonly>
 												<b>-</b>
 												<input type="text" id="user_phone2" name="user_phone2" maxLength="4" style="width:32%;text-align:center;margin-bottom:10px;" >
 												<b>-</b>
@@ -498,6 +496,8 @@
 	<!-- all js here -->
 	<script src="resources/js/jquery-3.5.0.js"></script>
 	<script src="resources/js/userValidate.js"></script>
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
 	<script src="resources/js/popper.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
