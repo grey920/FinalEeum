@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,6 +78,11 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+}
+
+.modal-footer{
+    display: flex;
+    justify-content: center;
 }
 </style>
 </head>
@@ -323,11 +329,27 @@
 												<h3 class="oneday-title oneday-title_h3">${onedaydata.ONE_PRICE}원</h3>
 												<div class="seat">가능 인원 ${onedaydata.ONE_SEAT - onedaydata.ONE_ACTUAL_SEAT}명&nbsp;&nbsp;|&nbsp;&nbsp;정원
 													${onedaydata.ONE_SEAT}명</div>
-												<button class="btn-style cr-btn button" data-toggle="modal"
-													data-target="#applyModal">
+													<div style="display:none">
+											<jsp:useBean id="now" class="java.util.Date"/>
+											<fmt:formatDate value="${now}" pattern="yyyyMMdd" />
+											<fmt:parseDate value="${onedaydata.ONE_RDATE}" var="rdate" pattern="yyyy-MM-dd" />
+											<fmt:formatDate value="${rdate}" pattern="yyyyMMdd" />
+											</div>
+											<c:if test="${rdate >= now}">
+												<button class="btn-style cr-btn button" data-toggle="modal" data-target="#applyModal">
+													<c:if test="${user_id != null}">
 													<span>신청하기</span>
+													</c:if>
+													<c:if test="${user_id == null}">
+													<span>로그인시 가능합니다</span>
+													</c:if>
 												</button>
-
+											</c:if>
+											<c:if test="${rdate < now}">
+											<button class="btn-style cr-btn"> 종료된 이벤트입니다</button>
+											</c:if>
+											
+												<c:if test="${user_id != null}">
 												<!-- Modal -->
 												<div class="modal fade" id="applyModal" tabindex="-1"
 													role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -347,24 +369,53 @@
 															</div>
 															<div class="modal-body modal-apply"
 																style="margin: 0 auto">
-																<h5>${user_id}님💕</h5>
-																<p>${onedaydata.ONE_RDATE}에
-																	열리는 <b>${onedaydata.ONE_TITLE}클래스</b>에 신청하시겠습니까?
+																<h5 style="margin-top: 0px;">${user_id}님💕</h5>
+																<p>${onedaydata.ONE_RDATE}에 열리는 </p> 
+																<p><b>${onedaydata.ONE_TITLE}클래스</b>에 신청하시겠습니까?
 																</p>
-																<img src="resources/OBoardupload${onedaydata.SAVEFILE}" style="height: 200px; width: 200px; ">
+																<img src="resources/OBoardupload${onedaydata.SAVEFILE}"
+																	style="height: 200px; width: 200px;">
 															</div>
 															<div class="modal-footer">
-																<button type="button" class="btn btn-apply"
-																	onClick="applyClass();"
-																	style="background-color: #f3a395; color: #fff">신청</button>
+																<a href="./OnedayApply.one?num=${onedaydata.ONE_INDEX}">
+																	<button type="button" class="btn btn-apply"
+																		style="background-color: #f3a395; color: #fff">신청</button>
+																</a>
 																<button type="button" class="btn btn-secondary"
 																	data-dismiss="modal">취소</button>
 															</div>
 														</div>
 													</div>
 												</div>
+												</c:if>
 												<!-- Modal end -->
-
+												
+												<c:if test="${user_id == null}">
+												<div class="modal fade" id="applyModal" tabindex="-1"
+													role="dialog" aria-labelledby="exampleModalCenterTitle"
+													aria-hidden="true">
+													<div
+														class="modal-dialog modal-dialog-centered custom-class"
+														role="document">
+														<div class="modal-content"
+															style="width: 70%; margin: 0 auto;">
+															<div class="modal-body modal-apply"
+																style="margin: 0 auto">
+																<p> 로그인 페이지로 이동합니다 </p>
+															</div>
+															<div class="modal-footer">
+																<a href="./login.net">
+																	<button type="button" class="btn btn-apply"
+																		style="background-color: #f3a395; color: #fff">네</button>
+																</a>
+																<button type="button" class="btn btn-secondary"
+																	data-dismiss="modal">취소</button>
+															</div>
+														</div>
+													</div>
+												</div>
+												</c:if>
+												
 											</div>
 
 
@@ -617,11 +668,6 @@
 
 
 
-	<script>
-		function applyClass() {
-			document.location.href = "./OnedayApply.one?num=${onedaydata.ONE_INDEX}?id=${user_id}";
-		}
-	</script>
 
 
 

@@ -182,8 +182,7 @@ public class UEController {
 	
 	/* 로그인 */
 	@RequestMapping(value="login.net", method=RequestMethod.GET)
-	public ModelAndView login(ModelAndView mv,
-													@CookieValue(value="saveid", required=false) Cookie readCookie)
+	public ModelAndView login(ModelAndView mv, @CookieValue(value="saveid", required=false) Cookie readCookie)
 													throws Exception {
 		if(readCookie != null) {
 			mv.addObject("saveid", readCookie.getValue());
