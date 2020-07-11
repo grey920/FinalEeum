@@ -50,6 +50,11 @@ public class OnedayDAO {
 	public int boardDelete(Oneday oneday) {
 		return sqlSession.delete("Onedays.delete", oneday);
 	}
+
+
+	public int onedayModify(Oneday modifyoneday) {
+		return sqlSession.update("Onedays.modify", modifyoneday);
+	}
 	
 
 }

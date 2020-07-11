@@ -42,7 +42,6 @@
 	defer></script>
 </head>
 <body>
-<input type="hidden" id="loginid" value="${id }" name="loginid">
 	<div class="wrapper">
 		<!-- header start -->
 		<header>
@@ -229,24 +228,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="breadcrumb-area mt-37 hm-4-padding">
-			<div class="container-fluid">
-				<div class="breadcrumb-content text-center">
-					<h2>login register</h2>
-					<ul>
-						<li><a href="#">home</a></li>
-						<li>login register</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="banner-area hm-4-padding">
-			<div class="container-fluid">
-				<div class="banner-img">
-					<a href="#"><img src="resources/img/banner/16.jpg" alt=""></a>
-				</div>
-			</div>
-		</div>
+
 		<div class="login-register-area ptb-130 hm-3-padding">
 			<div class="container-fluid">
 				<div class="row">
@@ -254,7 +236,7 @@
 						<div class="login-register-wrapper">
 							<div class="login-register-tab-list nav">
 								<div class="index">
-									<h2>원데이 클래스 글쓰기</h2>
+									<h2>원데이 클래스 수정 폼</h2>
 								</div>
 
 							</div>
@@ -262,51 +244,60 @@
 								<div class="tab-pane active">
 									<div class="login-form-container">
 										<div class="login-form">
-											<form action="OnedayAddAction.one" method="post"
+											<form action="OnedayModifyAction.one" method="post"
 												enctype="multipart/form-data" name="onedayform">
-
-												작성자 <input type="text" id="oneday_name" name="WRITER_ID"
-													 class="oneday_write_form" value="${user_id}" readonly>
-
-												분류 <select name="ONE_TYPE" id="oneday_type" style="margin-bottom: 30px">
+												<input type="hidden" name="ONE_INDEX"
+													value="${onedaydata.ONE_INDEX }"> 
+													<input
+													type="hidden" name="SAVEFILE"
+													value="${onedaydata.SAVEFILE}"> 작성자 <input
+													type="text" value="${onedaydata.WRITER_ID}" readOnly>
+												분류 <select name="ONE_TYPE" class="ONE_TYPE" id="oneday_type"
+													style="margin-bottom: 30px">
 													<option value="">분류 선택</option>
-													<option value="원데이클래스">원데이 클래스</option>
-													<option value="커피챗">전문가 커피챗</option>
-												</select> 제목 <input type="text" name="ONE_TITLE"
-													placeholder="subject" size="50" class="oneday_write_form">
-
-												한 줄 소개 <input type="text" name="ONE_LINE"
-													placeholder="description" size="50"
-													class="onrday_write_form"> 내용
+													<option value="원데이클래스"
+														<c:if test="${onedaydata.ONE_TYPE == '원데이클래스'}">selected</c:if>>원데이
+														클래스</option>
+													<option value="커피챗"
+														<c:if test="${onedaydata.ONE_TYPE == '커피챗'}">selected</c:if>>전문가
+														커피챗</option>
+												</select> 제목 <input type="text" name="ONE_TITLE" id="oneday_title"
+													size="50" class="oneday_write_form"
+													value="${onedaydata.ONE_TITLE}"> 한 줄 소개 <input
+													type="text" name="ONE_LINE" placeholder="description"
+													size="50" class="onrday_write_form"
+													value="${onedaydata.ONE_LINE }" id="one_line"> 내용
 												<textarea name="ONE_CONTENT" id="summernote"></textarea>
 
 												일시 <input type="date" name="ONE_RDATE" id="rdate"
-													min="${sysdate}">
-
-												장소 <input type="text" name="ONE_LOCATE" id="loc">
+													value="${onedaydata.ONE_RDATE }" min="${sysdate}">
+													
+													장소 <input type="text" name="ONE_LOCATE" id="loc" value="${onedaydata.ONE_LOCATE}">
 
 												<div class="quantity-range">
 													<span> 정원</span> <input class="seat_count qty text"
-														type="number" step="1" min="0" value="1" name="ONE_SEAT"
-														title="Qty" size="4">
+														type="number" step="1" min="0"
+														value="${onedaydata.ONE_SEAT }" name="ONE_SEAT"
+														title="Qty" size="4" id="one_seat">
 												</div>
 
-												가격 <input type="text" name="ONE_PRICE" placeholder="price"
-													class="onrday_write_form">
+												가격 <input type="text" name="ONE_PRICE" id="one_price"
+													class="oneday_write_form" value="${onedaydata.ONE_PRICE }">
 
 												<div class="file_form-group">
 													<label for="savefile">포스터 첨부</label> <label for="upfile">
 														<img src="resources/img/attach.png" alt="파일첨부">
-													</label> <input type="file" id="upfile" name="uploadfile">
-													<!-- domain에 있는 private MultipartFile uploadfile;랑 input의 name이 맞나 꼭 확인! -->
-													<span id="filevalue"></span>
+													</label> <input type="file" id="upfile" name="uploadfile"
+														style="margin-bottom: 0px;"> <span id="filevalue">${onedaydata.ORIGINALFILE}</span>
+													<img src="resources/img/remove.png" alt="파일삭제" width="10px"
+														class="remove">
 												</div>
-												<div class="button-box">
-													<button type="submit" class="btn-style cr-btn"
-														onclick="goWrite(this.form)">
-														<span>등록</span>
+												<div class="button-box" style="margin-top: 30px;">
+													<button type="submit" class="btn-style cr-btn">
+														<span>글 수정</span>
 													</button>
-													<button type="reset" class="btn-style cr-btn">
+													<button type="reset" class="btn-style cr-btn"
+														onClick="history.go(-1)">
 														<span>취소</span>
 													</button>
 												</div>
@@ -512,34 +503,16 @@
 			$("#summernote").summernote({
 				height : 500
 			});
+			$("#summernote").summernote('code', '${onedaydata.ONE_CONTENT}');
 
 		});// document.ready
-
-		function goWrite(frm) {
-			var title = frm.ONE_TITLE.value;
-			var seat = frm.ONE_SEAT.value;
-			var content = frm.ONE_CONTENT.value;
-
-			if (title.trim() == '') {
-				alert("제목을 입력해주세요");
-				return false;
-			}
-			if (seat.trim() == '') {
-				alert("정원을 선택해주세요");
-				return false;
-			}
-			if (content.trim() == '') {
-				alert("내용을 입력해주세요");
-				return false;
-			}
-			frm.submit();
-		}
 	</script>
 
 	<!-- all js here -->
 
 
-	<!-- 	<script src="resources/js/jquery-3.5.0.js"></script> -->
+	<script src="resources/js/oneday_modifyform.js"></script>
+	<script src="resources/js/jquery-3.5.0.js"></script>
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
 	<script src="resources/js/popper.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>

@@ -260,9 +260,11 @@ justify-content:center;
 											class="ion-navicon"></i></a></li>
 								</ul>
 							</div>
+							<c:if test="${user_id=='admin'}">
 							<div class="shop-filter">
 								<button class="write_oneday">글쓰기</button>
 							</div>
+							</c:if>
 						</div>
 					</div>
 				</div>
@@ -341,17 +343,16 @@ justify-content:center;
 										<div class="product-content">
 											<div class="product-title-wishlist">
 												<div class="product-title-3">
-													<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}"><h4>
-															${o.ONE_TITLE}</h4></a>
+													<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}"> ${o.ONE_TITLE}</a>
 												</div>
-												<div class="product-wishlist-3">
-													<a href="#"><i class="ti-heart"></i></a>
-												</div>
+												
 											</div>
 											<div class="product-peice-addtocart">
-												<div>
-													<span>${o.ONE_PRICE}원</span>
+												<div style="display: flex; justify-content: space-between;">
+													| <span>장소 : ${o.ONE_LOCATE}</span>
+													| <span>일시 : ${o.ONE_RDATE}</span>
 												</div>
+												<span>${o.ONE_PRICE}원</span> 
 												<div class="description-oneday">${o.ONE_LINE}</div>
 											</div>
 										</div>

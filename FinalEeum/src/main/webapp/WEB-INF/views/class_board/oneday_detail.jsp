@@ -53,10 +53,36 @@
 #oneday_submit {
 	position: absolute;
 	bottom: 0;
+	width: 70%;
+	text-align: center;
+}
+
+.button {
+	border: none;
+}
+
+.custom-class {
+	width: 70%;
+}
+
+#closebtn {
+	margin-right: 0px;
+	font-size: 30px;
+	margin-left: 0px;
+	color: grey;
+}
+
+.modal-apply {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 </style>
 </head>
 <body>
+	<%-- <input type="hidden" id="loginid" value="${user_id}" name="loginid">
+ --%>
 	<div class="wrapper">
 		<!-- header start -->
 		<header>
@@ -284,78 +310,129 @@
 										<div class="col-md-6" style="height: 500px;">
 											<!-- 중요 정보 부분  -->
 											<div class="dec-img dec-mrg">
-												<p><a href="./OnedayList.one">원데이 클래스</a> > ${onedaydata.ONE_TYPE}</p>
+												<p>
+													<a href="./OnedayList.one">원데이 클래스</a> >
+													${onedaydata.ONE_TYPE}
+												</p>
 												<h1 class="oneday-title oneday-title_h1">${onedaydata.ONE_TITLE}</h1>
 												<h2 class="oneday-title oneday-title_h2">${onedaydata.ONE_LINE}</h2>
 												<h2 class="oneday-title oneday-title_h2">일시 |
 													${onedaydata.ONE_RDATE}</h2>
+												<h2 class="oneday-title oneday-title_h2">장소 |
+													${onedaydata.ONE_LOCATE}</h2>
 												<h3 class="oneday-title oneday-title_h3">${onedaydata.ONE_PRICE}원</h3>
 												<div class="seat">가능 인원 ${onedaydata.ONE_SEAT - onedaydata.ONE_ACTUAL_SEAT}명&nbsp;&nbsp;|&nbsp;&nbsp;정원
 													${onedaydata.ONE_SEAT}명</div>
-												<div class="quickview-btn-cart">
-													<a class="btn-style cr-btn" href="#my_modal"
-														data-toggle="modal" id="oneday_submit"><span>신청하기</span><b
-														style="top: 37.7812px; left: -3px;"></b></a>
+												<button class="btn-style cr-btn button" data-toggle="modal"
+													data-target="#applyModal">
+													<span>신청하기</span>
+												</button>
+
+												<!-- Modal -->
+												<div class="modal fade" id="applyModal" tabindex="-1"
+													role="dialog" aria-labelledby="exampleModalCenterTitle"
+													aria-hidden="true">
+													<div
+														class="modal-dialog modal-dialog-centered custom-class"
+														role="document">
+														<div class="modal-content"
+															style="width: 70%; margin: 0 auto;">
+															<div class="modal-header">
+																<h4 class="modal-title" id="exampleModalLongTitle"
+																	style="margin: 0 auto">${onedaydata.ONE_TITLE}</h4>
+																<button type="button" class="close" data-dismiss="modal"
+																	aria-label="Close" id="closebtn">
+																	<span>&times;</span>
+																</button>
+															</div>
+															<div class="modal-body modal-apply"
+																style="margin: 0 auto">
+																<h5>${user_id}님💕</h5>
+																<p>${onedaydata.ONE_RDATE}에
+																	열리는 <b>${onedaydata.ONE_TITLE}클래스</b>에 신청하시겠습니까?
+																</p>
+																<img src="resources/OBoardupload${onedaydata.SAVEFILE}" style="height: 200px; width: 200px; ">
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-apply"
+																	onClick="applyClass();"
+																	style="background-color: #f3a395; color: #fff">신청</button>
+																<button type="button" class="btn btn-secondary"
+																	data-dismiss="modal">취소</button>
+															</div>
+														</div>
+													</div>
 												</div>
+												<!-- Modal end -->
+
 											</div>
+
+
 										</div>
 									</div>
 								</div>
-								<p>${onedaydata.ONE_CONTENT}</p>
 							</div>
-							<hr>
-							<%-- 	<a href="./BoardModifyView.bo?num=${onedaydata.ONE_INDEX}"
+							<p>${onedaydata.ONE_CONTENT}</p>
+						</div>
+						<hr>
+
+						<c:if test="${user_id=='admin'}">
+							<a href="./OnedayModifyView.one?num=${onedaydata.ONE_INDEX}"
 								class="nounderline">
-								<button class="btn-style cr-btn">수정</button>
-							</a> --%>
+								<button class="btn-style cr-btn button">수정</button>
+							</a>
 							<%-- href의 주소를 #으로 설정합니다. --%>
 
 							<a href="#" class="nounderline">
-								<button class="btn-style cr-btn" data-toggle="modal"
+								<button class="btn-style cr-btn button" data-toggle="modal"
 									data-target="#modalConfirmDelete"
-									style="position: absolute; right: 0;border: none;">삭제</button>
+									style="position: absolute; right: 0;">삭제</button>
 							</a>
-
-						</div>
+						</c:if>
 					</div>
-
-					<%--modal 시작 --%>
-					<!--Modal: modalConfirmDelete-->
-					<div class="modal fade" id="modalConfirmDelete" tabindex="-1"
-						role="dialog" aria-labelledby="exampleModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog modal-sm modal-notify modal-danger"
-							role="document">
-							<!--Content-->
-							<div class="modal-content text-center"
-								style="width: 40%; margin: 0 auto;">
-								<!--Header-->
-								<div class="modal-header d-flex justify-content-center">
-									<p class="heading">정말로 삭제하시겠습니까?</p>
-								</div>
-
-								<!--Body-->
-								<div class="modal-body">
-
-									<i class="fa fa-times fa-4x animated rotateIn"
-										style="width: auto; margin: 0 auto;color: #dc3545;"></i>
-
-								</div>
-
-								<!--Footer-->
-								<div class="modal-footer flex-center">
-									<a href="" class="btn  btn-outline-danger">네</a> <a
-										type="button" class="btn  btn-danger waves-effect"
-										data-dismiss="modal" style="color: white;">아니오</a>
-								</div>
-							</div>
-							<!--/.Content-->
-						</div>
-					</div>
-
 				</div>
+
+				<%--modal 시작 --%>
+				<!--Modal: modalConfirmDelete-->
+				<div class="modal fade" id="modalConfirmDelete" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog modal-sm modal-notify modal-danger"
+						role="document">
+						<!--Content-->
+						<div class="modal-content text-center"
+							style="width: 40%; margin: 0 auto;">
+							<!--Header-->
+							<div class="modal-header d-flex justify-content-center">
+								<p class="heading">정말로 삭제하시겠습니까?</p>
+							</div>
+
+							<!--Body-->
+							<div class="modal-body">
+								<i class="fa fa-times fa-4x animated rotateIn"
+									style="width: auto; margin: 0 auto; color: #dc3545;"></i>
+							</div>
+
+							<!--Footer-->
+							<div class="modal-footer flex-center">
+								<form name="deleteForm" action="OnedayDeleteAction.one"
+									method="post">
+									<input type="hidden" name="num" value="${param.num }"
+										id="oneday_num">
+									<button type="submit" class="btn btn-outline-danger">네</button>
+									<button type="button" class="btn  btn-danger waves-effect"
+										data-dismiss="modal" style="color: white;">아니오</button>
+								</form>
+							</div>
+
+						</div>
+						<!--/.Content-->
+					</div>
+				</div>
+
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- blog-area end -->
 	<!--<div class="brand-logo-area hm-4-padding">
@@ -536,14 +613,15 @@
 			</div>
 		</div>
 	</footer>
-	<!-- modal -->
-	</div>
 
 
 
 
-
-
+	<script>
+		function applyClass() {
+			document.location.href = "./OnedayApply.one?num=${onedaydata.ONE_INDEX}?id=${user_id}";
+		}
+	</script>
 
 
 
