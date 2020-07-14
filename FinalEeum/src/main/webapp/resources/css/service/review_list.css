@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+#review_text{
+	font-size: 60px;
+	position: relative;
+	left: 290px;;
+	bottom: 120px;
+	font-weight: 700;
+}
+
+#to_img{
+	width: 800px;
+	height: 300px;
+	position: relative;
+	left: 240px;
+	top: 60px;
+	
+}

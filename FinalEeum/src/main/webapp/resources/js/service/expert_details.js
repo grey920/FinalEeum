@@ -150,6 +150,7 @@ $(document).ready(
 					}
 
 				} else if (active.toString() == 'tab3') {
+					tab = "price_list";
 					for (var i = 1; i <= 4; i++) {
 						$('#tabText' + i).css('text-decoration', 'none');
 						$('#tabText' + i).css('color', 'white');
@@ -158,6 +159,7 @@ $(document).ready(
 					}
 				} else {
 					for (var i = 1; i <= 4; i++) {
+						tab = "QnA_list";
 						$('#tabText' + i).css('text-decoration', 'none');
 						$('#tabText' + i).css('color', 'white');
 						$('#tabText4').css('text-decoration', 'underline');
@@ -172,11 +174,17 @@ $(document).ready(
 						alert('통신실패!');
 					},
 					success : function(data) { // 통신 성공하면 가져옴.
-						$("#tabcontent").html(data);
+
+							$("#tabcontent").html(data);
 					}
 
 				});
 
 			});// tabmenu end
+			//경력이 처음 나오게 load 함수
+			$('#tabText1').css('text-decoration', 'underline');
+			$('#tabText1').css('color', 'black');
+			$('#tabcontent').load("portfolio_list");
+
 
 		});

@@ -1,4 +1,4 @@
-//하트 누르면 문구 나옴
+// 하트 누르면 문구 나옴
 $(document).ready(
 		function() {
 
@@ -140,7 +140,7 @@ $(document).ready(
 			$('.modal-child').on('show.bs.modal', function() {
 				var modalParent = $(this).attr('data-modal-parent');
 				$(modalParent).css('opacity', 0);
-				$('body').css('overflow','hidden');
+				$('body').css('overflow', 'hidden');
 			});
 
 			$('.modal-child').on('hidden.bs.modal', function() {
@@ -151,16 +151,16 @@ $(document).ready(
 
 			$('#close1').click(function() {
 				$('#myModal').css('z-index', 99999);
-				$('header').css('z-index',0);
+				$('header').css('z-index', 0);
 				$('#myModal').css('overflow', 'scroll');
-				$('body').css('overflow','hidden');
+				$('body').css('overflow', 'hidden');
 				alert('눌렀니');
 			});
 			// 하트 누르면 찜 해제 문구 뜨기
 
-			$("#realclose").click(function(){
-				$('body').css('overflow','scroll');
-				
+			$("#realclose").click(function() {
+				$('body').css('overflow', 'scroll');
+
 			});
 			// list 아이콘 누르면 간략히 보기 없앰..
 			$('.ion-navicon').click(function() {
@@ -169,9 +169,11 @@ $(document).ready(
 				$('.ti-plus').removeClass();
 
 			});
-			$('#userimg').click(function() {
+		
 
-				location.href = "expert_details";
-			});
+			// 페이징 처리
+			$("#viewcount").change(function() {
+				go(1);// 보여줄 페이지를 1페이지로 설정합니다.
+			});// change end
 
 		});

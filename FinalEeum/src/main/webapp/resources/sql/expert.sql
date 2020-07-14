@@ -11,5 +11,19 @@ EXPERT_EMAIL1				VARCHAR2(50) NOT NULL,
 EXPERT_EMAIL2 				VARCHAR2(50) NOT NULL
 )
 
+
+insert into	 EXPERT_TABLE values
+('cat2.jpg','cat2.jpg','970918','2323233','안연지','hhh','1234','010','3375','6982','aaa','@gmail.com');
+
+select * from EXPERT_TABLE
+
+select * from EXPERT_TABLE
+where expert_id = 'ccc';
+
+delete from EXPERT_TABLE;
+
+		select * from expert_table
+		where expert_id = 'ccc';
+
 select * from EXPERT_TABLE
 drop table EXPERT_TABLE
