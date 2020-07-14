@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -223,16 +224,19 @@
 			</div>
 		</div>
 
+		
 		<div class="banner-area hm-4-padding">
 			<div class="container-fluid">
 				<!--  -->
 				<div class="banner-img">
+					
 					<div class="grad">
-						<img src="resources/img/blog/cat2.jpg" alt="" id="userimg">
+						<img src="resources/profile${expertdata.expert_profile}" alt=""
+							id="userimg">
 					</div>
 					<b
-						style="font-size: 50px; position: relative; left: 680px; bottom: 190px;">사람
-						이름</b>
+						style="font-size: 50px; position: relative; left: 680px; bottom: 190px;">${expertdata.expert_name}
+						</b>
 					<div class="heart_click">
 						<i id="fa-heart-o" class="fa fa-heart-o"
 							style="position: relative; left: 13px; top: 12px;"></i><span
@@ -242,7 +246,7 @@
 
 					<button style="font-weight: 700; font-size: 16px;"
 						data-toggle="modal" data-target="#myModal " class="heart_click2">
-						<i id="fa-pencil-square-o" class="fa fa-pencil-square-o" ></i> <b
+						<i id="fa-pencil-square-o" class="fa fa-pencil-square-o"></i> <b
 							style="color: black;">견적요청</b>
 					</button>
 
@@ -408,7 +412,9 @@
 						<!-- .modal-dialog -->
 
 					</div>
+
 				</div>
+
 
 				<hr class="hr_1">
 				<!-- 버튼 -->
@@ -428,58 +434,28 @@
 				<div class="container1">
 					<ul class="tab">
 						<li data-tab="tab1" class='tabmenu tab1' id="default"
-							style="position: relative; left: 390px; top: 14px;"><a
-							href="#"><b style="font-size: 20px; color: white;"
-								id="tabText1">포트폴리오</b></a></li>
+							style="position: relative; left: 390px; top: 14px;"><b
+							style="font-size: 20px; color: white;" id="tabText1">포트폴리오</b></li>
 						<li data-tab="tab2" class='tabmenu tab2'
-							style="position: relative; left: 640px; bottom: 15px;"><a
-							href="#"><b style="font-size: 20px; color: white;"
-								id="tabText2">후기</b></a></li>
+							style="position: relative; left: 640px; bottom: 15px;"><b
+							style="font-size: 20px; color: white;" id="tabText2">후기</b></li>
 						<li data-tab="tab3" class='tabmenu tab3'
-							style="position: relative; left: 850px; bottom: 45px;"><a
-							href="#"><b style="font-size: 20px; color: white;"
-								id="tabText3">가격</b></a></li>
+							style="position: relative; left: 850px; bottom: 45px;"><b
+							style="font-size: 20px; color: white;" id="tabText3">가격</b></li>
 						<li data-tab="tab4" class='tabmenu tab4'
-							style="position: relative; left: 1100px; bottom: 75px;"><a
-							href="#"><b style="font-size: 20px; color: white;"
-								id="tabText4">Q&A</b></a></li>
+							style="position: relative; left: 1100px; bottom: 75px;"><b
+							style="font-size: 20px; color: white;" id="tabText4">Q&A</b></li>
 					</ul>
 					<div id="tabcontent"></div>
 					<!-- 내용 들어갈 공간 -->
 				</div>
 				<!-- 탭 -->
 
-				<div class="product-details-area hm-3-padding ptb-130">
+				<div class="product-details-area hm-3-padding ptb-130"></div>
 
-					<div class="container-fluid"></div>
-				</div>
-				<div class="brand-logo-area hm-4-padding">
-					<div class="container-fluid">
-						<div class="brand-logo-active owl-carousel gray-bg ptb-130">
-							<div class="single-logo">
-								<img alt="" src="resources/img/brand-logo/1.png">
-							</div>
-							<div class="single-logo">
-								<img alt="" src="resources/img/brand-logo/2.png">
-							</div>
-							<div class="single-logo">
-								<img alt="" src="resources/img/brand-logo/3.png">
-							</div>
-							<div class="single-logo">
-								<img alt="" src="resources/img/brand-logo/4.png">
-							</div>
-							<div class="single-logo">
-								<img alt="" src="resources/img/brand-logo/5.png">
-							</div>
-							<div class="single-logo">
-								<img alt="" src="resources/img/brand-logo/3.png">
-							</div>
-						</div>
-					</div>
-				</div>
 				<footer class="hm-4-padding">
 					<div class="container-fluid">
-						<div class="footer-top pt-125 pb-25">
+						<div class="footer-top pt-125 pb-25" style="padding-top: 800px;">
 							<div class="row">
 								<div class="col-lg-3 col-md-5">
 									<div class="footer-widget mb-30">
@@ -636,6 +612,7 @@
 				</footer>
 			</div>
 		</div>
+
 	</div>
 
 
