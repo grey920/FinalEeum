@@ -124,6 +124,13 @@ public class UEController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value="user_jumincheck.net", method=RequestMethod.GET)
+	public int user_jumincheck(String user_jumin1, String user_jumin2) {
+		int result = userservice.isJumin(user_jumin1, user_jumin2);
+		return result;
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="user_idcheck.net", method=RequestMethod.GET)
 	public int user_idcheck(String user_id) {
 		int result = userservice.isId(user_id);
@@ -295,5 +302,11 @@ public class UEController {
 	@RequestMapping(value="userWishlist.net")
 	public String userWishlist() {
 		return "UE/userpage_wishlist";
+	}
+	
+	@RequestMapping(value="userDelete.net", method=RequestMethod.GET)
+	public String delete(String user_id) throws Exception {
+		userservice.user_delete(user_id);
+		return "redirect:/";
 	}
 }

@@ -6,20 +6,49 @@
 
 	<insert id="insert" parameterType="expert">
 		insert into expert_table
-		values(#{expert_jumin1},#{expert_jumin2}, #{expert_name}, 
-				#{expert_id}, #{expert_pass}, #{expert_phone1}, #{expert_phone2}, #{expert_phone3}, 
-				#{expert_email1}, #{expert_email2})
+
+		values(#{expert_profile}, #{expert_saveprofile},
+		#{expert_jumin1},#{expert_jumin2}, #{expert_name},
+		#{expert_id}, #{expert_pass}, #{expert_phone1}, #{expert_phone2}, #{expert_phone3},
+		#{expert_email1}, #{expert_email2})
+
 	</insert>
-	
+
 	<select id="idcheck" resultType="expert" parameterType="String">
-		select * from expert_table 
+		select *
+		from expert_table
 		where expert_id = #{expert_id}
 	</select>
-	
+
 	<update id="expertupdate" parameterType="expert">
 		update expert_table
-		set expert_pass = #{expert_pass}, expert_phone2 = #{expert_phone2}, expert_phone3 = #{expert_phone3},
-				expert_email1 =  #{expert_email1}, expert_email2 =  #{expert_email2}
-		where expert_id = #{expert_id}
+		set
+		expert_profile = #{expert_profile}, expert_saveprofile =
+		#{expert_saveprofile},
+		expert_pass = #{expert_pass}, expert_phone2 = #{expert_phone2}, expert_phone3 =
+		#{expert_phone3},
+		expert_email1 = #{expert_email1}, expert_email2 = #{expert_email2}
+		where expert_id =
+		#{expert_id}
 	</update>
+
+	<select id="expertcount" resultType="int">
+		select count(*) from
+		expert_table
+	</select>
+
+	<select id="expertlist" resultType="map">
+		select * from
+		( select rownum rnum, b.* from
+		(select * from expert_table) b)
+		where rnum &gt; = #{start} and rnum &lt; =
+		#{end}
+	</select>
+
+	<select id="expertdetails" resultType="expert"
+		parameterType="String">
+		select * from expert_table
+		where expert_id = #{expertid}
+	</select>
+
 </mapper>

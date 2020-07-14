@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -27,14 +28,11 @@
 
 <!-- js끝 -->
 
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	rel="stylesheet" />
+
 
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 <body>
 	<div class="wrapper">
@@ -248,6 +246,17 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="shop-topbar-wrapper">
+							<div class="rows">
+								<span>줄보기</span> <select class="form-control" id="viewcount">
+									<option value="12">12</option>
+									<option value="16">16</option>
+									<option value="20">20</option>
+									<option value="24">24</option>
+									<option value="28" selected>28</option>
+								</select>
+							</div>
+
+
 							<div class="grid-list-options">
 								<ul class="view-mode">
 									<li class="active"><a href="#product-grid"
@@ -256,439 +265,248 @@
 											class="ion-navicon"></i></a></li>
 								</ul>
 							</div>
-							<div class="shop-filter">
-								<button class="product-filter-toggle">filter</button>
-							</div>
+
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="product-filter-wrapper">
+
+				<!-- 전문가 리스트 페이지 여기서 부터 시작 -->
+				<c:if test="${listcount > 0 }">
+					<div class="grid-list-product-wrapper">
+						<div class="product-grid product-view">
 							<div class="row">
-								<div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-									<h5>Sort by</h5>
-									<ul class="sort-by">
-										<li><a href="#">Default</a></li>
-										<li><a href="#">Popularity</a></li>
-										<li><a href="#">Average rating</a></li>
-										<li><a href="#">Newness</a></li>
-										<li><a href="#">Price: Low to High</a></li>
-										<li><a href="#">Price: High to Low</a></li>
-									</ul>
-								</div>
-								<div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-									<h5>color filters</h5>
-									<ul class="color-filter">
-										<li><a href="#"><i style="background-color: #000000;"></i>Black</a></li>
-										<li><a href="#"><i style="background-color: #663300;"></i>Brown</a></li>
-										<li><a href="#"><i style="background-color: #FF6801;"></i>Orange</a></li>
-										<li><a href="#"><i style="background-color: #ff0000;"></i>red</a></li>
-										<li><a href="#"><i style="background-color: #FFEE00;"></i>Yellow</a></li>
-									</ul>
-								</div>
-								<div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-									<h5>product tags</h5>
-									<div class="product-tags">
-										<a href="#">New ,</a> <a href="#">brand ,</a> <a href="#">black
-											,</a> <a href="#">white ,</a> <a href="#">chire ,</a> <a href="#">table
-											,</a> <a href="#">Lorem ,</a> <a href="#">ipsum ,</a> <a href="#">dolor
-											,</a> <a href="#">sit ,</a> <a href="#">amet ,</a>
-									</div>
-								</div>
-								<div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-									<h5>Filter by price</h5>
-									<div id="price-range"></div>
-									<div class="price-values">
-										<span>Price:</span> <input type="text" class="price-amount">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="grid-list-product-wrapper">
-					<div class="product-grid product-view">
-						<div class="row">
-							<div class="product-width col-md-6 col-xl-3 col-lg-4">
-								<div class="product-wrapper mb-35">
-									<div class="product-img">
-										<div id="circle">
-											<img src="resources/img/blog/cat2.jpg" alt="" id="userimg">
+								<c:forEach var="e" items="${expertlist}">
+								<div class="product-width col-md-6 col-xl-3 col-lg-4z">
 
-										</div>
-										<b id="expert_name">안연지</b><b
-											style="font-size: 10px; position: relative; top: 60px; left: 100px;">전문가</b>
-										<br> <b id="expert_intro">뭐든지 깔끔하게 만들어 드립니다.</b>
-										<div class="modal fade" id="myModal" tabindex="-1"
-											role="dialog" aria-hidden="true">
+										<div class="product-wrapper mb-35">
+											<!-- 전문가 리스트 뽑아오기 시작 -->
 
-											<div class="modal-dialog" role="document">
-												<div class="modal-content "
-													style="font-weight: bold; width: 870px; height: 840px;">
-													<div class="modal-body"
-														style="padding: 50px; padding-top: 40px;">
+											<div class="product-img">
 
-														<!-- 부모 모달 -->
-														<button type="button" class="close" data-dismiss="modal"
-															aria-label="Close" id="realclose"
-															style="position: relative; bottom: 410px; left: 770px;">
-															<span class="ion-android-close" aria-hidden="true"></span>
-														</button>
-														<div class="qwick-view-right ">
-															<div class="qwick-view-content" style="width: 550px;">
-																<h3 style="font-weight: 700;">[청소]</h3>
-																<img src="resources/img/blog/cat2.jpg" alt=""
-																	id="userimg"
-																	style="position: relative; left: 0px; right: 0px;">
+												<div id="circle">
+												<a href="./expert_details?page=${page}&expert=${e.EXPERT_ID}">
+													<img src="resources/profile${e.EXPERT_PROFILE}" alt=""
+														id="userimg"></a>
 
-																<div class="price" style="margin: 0px;">
-																	<h1
-																		style="font-size: 60px; position: relative; right: 10px; left: 210px; bottom: 160px; font-family: NanumGothic; font-weight: 700;">안연지</h1>
-																	<br>
-																</div>
-																<button class="btn-hover cr-btn btn" data-toggle="modal" 
-																	data-target="#myModal1"
-																	style="position: relative; bottom: 40px; padding: 0px; width: 130px;">
-																	<span style="color: white; position: relative;">견적요청</span>
+												</div>
+												<b id="expert_name">${e.EXPERT_NAME }</b> <b
+													style="font-size: 10px; position: relative; top: 60px; left: 100px;">전문가</b>
+												<br> <b id="expert_intro">뭐든지 깔끔하게 만들어 드립니다.</b>
+												<div class="modal fade" id="myModal" tabindex="-1"
+													role="dialog" aria-hidden="true">
+
+													<div class="modal-dialog" role="document">
+														<div class="modal-content "
+															style="font-weight: bold; width: 870px; height: 840px;">
+															<div class="modal-body"
+																style="padding: 50px; padding-top: 40px;">
+
+																<!-- 부모 모달 -->
+																<button type="button" class="close" data-dismiss="modal"
+																	aria-label="Close" id="realclose"
+																	style="position: relative; bottom: 410px; left: 770px;">
+																	<span class="ion-android-close" aria-hidden="true"></span>
 																</button>
-																<div class="rating-number"
-																	style="position: relative; bottom: 160px; left: 220px; right: 0px;">
-																	<div class="quick-view-rating">
-																		<i class="ion-ios-star red-star"></i> <i
-																			class="ion-ios-star red-star"></i> <i
-																			class="ion-ios-star red-star"></i> <i
-																			class="ion-ios-star red-star"></i> <i
-																			class="ion-ios-star red-star"></i> <span>4.0</span>
+																<div class="qwick-view-right ">
+																	<div class="qwick-view-content" style="width: 550px;">
+																		<h3 style="font-weight: 700;">[청소]</h3>
+																		<img src="resources/img/blog/cat2.jpg" alt=""
+																			id="userimg"
+																			style="position: relative; left: 0px; right: 0px;">
+
+																		<div class="price" style="margin: 0px;">
+																			<h1
+																				style="font-size: 60px; position: relative; right: 10px; left: 210px; bottom: 160px; font-family: NanumGothic; font-weight: 700;">안연지</h1>
+																			<br>
+																		</div>
+																		<button class="heart_click2" data-toggle="modal"
+																			data-target="#myModal1"
+																			style="font-weight: 700; font-size: 16px;">
+																			<i id="fa-pencil-square-o"
+																				class="fa fa-pencil-square-o"></i> <b
+																				style="color: black;">견적요청</b>
+																		</button>
+																		<button class="heart_click1">
+																			<i id="fa-pencil-square-o"
+																				class="fa fa-pencil-square-o"></i> <b
+																				style="color: black;">상세페이지</b>
+																		</button>
+																		<div class="rating-number">
+																			<div class="quick-view-rating">
+																				<i class="ion-ios-star red-star"></i> <i
+																					class="ion-ios-star red-star"></i> <i
+																					class="ion-ios-star red-star"></i> <i
+																					class="ion-ios-star red-star"></i> <i
+																					class="ion-ios-star red-star"></i> <span>4.0</span>
+																			</div>
+																		</div>
+																		<span id="details_text">서비스 상세설명</span><br> <br>
+																		<table
+																			style="border: 1px solid lightgray; position: relative; width: 650px; height: 320px; bottom: 100px;">
+																			<tr>
+																				<th style="font-size: 20px; font-weight: 300;">
+																					이사입주청소<br>
+																					(싱크대상판연마코팅.욕실나노코팅.마루왁스코팅.찌든때.묵은때.물때.기름때.곰팡이. 스티커 제거
+																					)<br> 신축입주청소<br> ( 화학성분 유해물질 미세먼지 제거
+																					싱크대상판코팅.욕실나노코팅 )<br>
+																				</th>
+																			</tr>
+
+																		</table>
+
+
+																		<div class="quickview-btn-wishlist"></div>
+
 																	</div>
 																</div>
-																<span
-																	style="font-size: 45px; position: relative; right: 50px; bottom: 100px; font-family: NanumGothic; font-weight: 700; color: black;">서비스
-																	상세설명</span><br> <br>
-																<table
-																	style="border: 1px solid lightgray; position: relative; width: 650px; height: 320px; bottom: 100px;">
-																	<tr>
-																		<th style="font-size: 20px; font-weight: 300;">
-																			이사입주청소<br>
-																			(싱크대상판연마코팅.욕실나노코팅.마루왁스코팅.찌든때.묵은때.물때.기름때.곰팡이. 스티커 제거 )<br>
-																			신축입주청소<br> ( 화학성분 유해물질 미세먼지 제거 싱크대상판코팅.욕실나노코팅 )<br>
-																		</th>
-																	</tr>
-
-																</table>
-
-
-																<div class="quickview-btn-wishlist"></div>
-
 															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-										</div>
 
-										<!-- 전체 리스트로 조회한 경우 전문가별 카테고리가 나옴. -->
-										<div class="price-decrease">
-											<span style="font-family: NanumGothic; font-weight: bold;">[청소]</span>
-										</div>
-										<div class="product-action-3">
-											<a class="action-plus-2" title="간략히 보기" data-toggle="modal"
-												data-target="#myModal" href="#"
-												style="text-decoration: none;"> <i class="ti-plus"
-												style="position: relative; width: 20px; height: 20px; left: 20px; bottom: 8px;"></i>
-												<span style="color: white;">간략히 보기</span>
-											</a>
-										</div>
-										<div class="modal fade" id="myModal" tabindex="-1"
-											role="dialog" aria-hidden="true">
-
-											<div class="modal-dialog" role="document">
-												<div class="modal-content "
-													style="font-weight: bold; width: 870px; height: 840px;">
-													<div class="modal-body"
-														style="padding: 50px; padding-top: 40px;">
-
-														<!-- 부모 모달 -->
-														<button type="button" class="close" data-dismiss="modal"
-															aria-label="Close"
-															style="position: relative; bottom: 410px; left: 770px;">
-															<span class="ion-android-close" aria-hidden="true"></span>
-														</button>
-														<div class="qwick-view-right ">
-															<div class="qwick-view-content" style="width: 550px;">
-																<h3 style="font-weight: 700;">[청소]</h3>
-																<img src="resources/img/blog/cat2.jpg" alt=""
-																	id="userimg"
-																	style="position: relative; left: 0px; right: 0px;">
-
-																<div class="price" style="margin: 0px;">
-																	<h1
-																		style="font-size: 60px; position: relative; right: 10px; left: 210px; bottom: 160px; font-family: NanumGothic; font-weight: 700;">안연지</h1>
-																	<br>
-																</div>
-																<div class="rating-number"
-																	style="position: relative; bottom: 160px; left: 220px; right: 0px;">
-																	<div class="quick-view-rating">
-																		<i class="ion-ios-star red-star"></i> <i
-																			class="ion-ios-star red-star"></i> <i
-																			class="ion-ios-star red-star"></i> <i
-																			class="ion-ios-star red-star"></i> <i
-																			class="ion-ios-star red-star"></i> <span>4.0</span>
-																	</div>
-																</div>
-																<span
-																	style="font-size: 45px; position: relative; right: 50px; bottom: 100px; font-family: NanumGothic; font-weight: 700; color: black;">서비스
-																	상세설명</span><br> <br>
-																<table
-																	style="border: 1px solid lightgray; position: relative; width: 650px; height: 320px; bottom: 100px;">
-																	<tr>
-																		<th style="font-size: 20px; font-weight: 300;">
-																			이사입주청소<br>
-																			(싱크대상판연마코팅.욕실나노코팅.마루왁스코팅.찌든때.묵은때.물때.기름때.곰팡이. 스티커 제거 )<br>
-																			신축입주청소<br> ( 화학성분 유해물질 미세먼지 제거 싱크대상판코팅.욕실나노코팅 )<br>
-																		</th>
-																	</tr>
-
-																</table>
-
-
-																<div class="quickview-btn-wishlist">
-																	<button class="btn-hover cr-btn btn"
-																		data-toggle="modal" data-target="#myModal1"
-																		style="position: relative; bottom: 40px; padding: 0px; width: 130px;">
-																		<span style="color: white; position: relative;">견적요청</span>
-																	</button>
-																</div>
-
-															</div>
-														</div>
-													</div>
+												<!-- 전체 리스트로 조회한 경우 전문가별 카테고리가 나옴. -->
+												<div class="price-decrease">
+													<span style="font-family: NanumGothic; font-weight: bold;">[청소]</span>
 												</div>
+												<div class="product-action-3">
+													<a class="action-plus-2" title="간략히 보기" data-toggle="modal"
+														data-target="#myModal" 
+														style="text-decoration: none;"> <i class="ti-plus"
+														style="position: relative; width: 20px; height: 20px; left: 20px; bottom: 8px;"></i>
+														<span style="color: white;">간략히 보기</span>
+													</a>
+												</div>
+
 											</div>
+
 										</div>
+
+										<hr id="hr_3">
 									</div>
 
+								</c:forEach>
 
-
-									<div class="product-list-details">
-										<h1 id="list-name">안연지</h1>
-										<div class="product-rating">
-											<i class="ion-ios-star"></i> <i class="ion-ios-star"></i> <i
-												class="ion-ios-star"></i> <i class="ion-ios-star"></i> <i
-												class="ion-ios-star"></i>
-										</div>
-										<div class="product-price">
-											<span class="old">$22.00 </span> <span>$19.00</span>
-										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipic it, sed
-											do eiusmod tempor incididunt ut labore et dolore magna
-											aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-											ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-											aute irure dolor in reprehenderit in voluptate velit esse
-											cillum dolore eu fugiat nulla pariatur. Excepteur sint
-											occaecat cupidatat</p>
-										<div class="shop-list-cart">
-											<a href="cart.html"><i class="ti-shopping-cart"></i> Add
-												to cart</a>
-										</div>
-									</div>
-								</div>
 							</div>
+
+							<!-- 페이징 -->
+							<div class="pagination-style text-center mt-30">
+
+								<ul>
+									<!-- 1. 개수가  1보다 많거나 적을때-->
+									<c:if test="${page <= 1 }">
+										<i class="ion-chevron-left" style="visibility: hidden;"></i>
+									</c:if>
+
+									<!-- 2. 개수가 1 보다 많을때  -->
+									<c:if test="${page > 1}">
+										<li class="ion-chevron-left"><a
+											href="./expert.list?page=${page-1}"></a></li>
+									</c:if>
+
+
+									<c:forEach var="a" begin="${startpage}" end="${endpage}">
+										<c:if test="${a == page }">
+											<!-- 현재페이지와 같으면 버튼이 회색되게 하는 것  -->
+											<li><a href="#" class="active">${a}</a></li>
+										</c:if>
+										<!-- 현재 페이지와 같지 않다면 -->
+										<c:if test="${a != page}">
+											<li><a href="./expert.list?page=${a}">${a}</a></li>
+										</c:if>
+									</c:forEach>
+
+									<c:if test="${page >= maxpage}">
+										<li class="ion-chevron-right"></a></li>
+									</c:if>
+
+									<c:if test="${page < maxpage}">
+										<li class="ion-chevron-right"><a
+											href="./expert.list?page=${page+1}"></a></li>
+									</c:if>
+								</ul>
+							</div>
+							<!-- 페이징 -->
 
 
 						</div>
-						<div class="pagination-style text-center mt-30">
-							<ul>
-								<li><a class="active" href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#"> <i class="ion-chevron-right"></i>
-								</a></li>
-							</ul>
+					</div>
+				</c:if>
+				<!-- 전문가 리스트 페이지 끝 -->
+
+				<!-- 없는 경우 -->
+				<c:if test="${listcount == 0}">
+					<font size=5>등록된 전문가가 없습니다.</font>
+				</c:if>
+				<!-- 없는 경우 -->
+			</div>
+		</div>
+
+
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+			aria-hidden="true">
+
+			<div class="modal-dialog" role="document">
+				<div class="modal-content "
+					style="font-weight: bold; width: 870px; height: 840px;">
+					<div class="modal-body" style="padding: 50px; padding-top: 40px;">
+
+						<!-- 부모 모달 -->
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"
+							style="position: relative; bottom: 410px; left: 770px;">
+							<span class="ion-android-close" aria-hidden="true"></span>
+						</button>
+						<div class="qwick-view-right ">
+							<div class="qwick-view-content" style="width: 550px;">
+								<h3 style="font-weight: 700;">[청소]</h3>
+								<!-- 사진 테두리 -->
+								<img src="resources/img/blog/cat2.jpg" alt="" id="userimg"
+									style="position: relative; left: 0px; right: 0px;">
+
+								<div class="price" style="margin: 0px;">
+									<h1
+										style="font-size: 60px; position: relative; right: 10px; left: 210px; bottom: 160px; font-family: NanumGothic; font-weight: 700;">안연지</h1>
+									<br>
+								</div>
+								<div class="rating-number"
+									style="position: relative; bottom: 160px; left: 220px; right: 0px;">
+									<div class="quick-view-rating">
+										<i class="ion-ios-star red-star"></i> <i
+											class="ion-ios-star red-star"></i> <i
+											class="ion-ios-star red-star"></i> <i
+											class="ion-ios-star red-star"></i> <i
+											class="ion-ios-star red-star"></i> <span>4.0</span>
+									</div>
+								</div>
+								<span
+									style="font-size: 45px; position: relative; right: 50px; bottom: 100px; font-family: NanumGothic; font-weight: 700; color: black;">서비스
+									상세설명</span><br> <br>
+								<table
+									style="border: 1px solid lightgray; position: relative; width: 650px; height: 320px; bottom: 100px;">
+									<tr>
+										<th style="font-size: 20px; font-weight: 300;">이사입주청소<br>
+											(싱크대상판연마코팅.욕실나노코팅.마루왁스코팅.찌든때.묵은때.물때.기름때.곰팡이. 스티커 제거 )<br>
+											신축입주청소<br> ( 화학성분 유해물질 미세먼지 제거 싱크대상판코팅.욕실나노코팅 )<br>
+										</th>
+									</tr>
+
+								</table>
+
+
+								<div class="quickview-btn-wishlist">
+									<button class="btn-hover cr-btn btn" data-toggle="modal"
+										data-target="#myModal1"
+										style="position: relative; bottom: 40px; padding: 0px; width: 130px;">
+										<span style="color: white; position: relative;">견적요청</span>
+									</button>
+								</div>
+
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="brand-logo-area hm-4-padding">
-			<div class="container-fluid">
-				<div class="brand-logo-active owl-carousel gray-bg ptb-130">
-					<div class="single-logo">
-						<img alt="" src="resources/img/brand-logo/1.png">
-					</div>
-					<div class="single-logo">
-						<img alt="" src="resources/img/brand-logo/2.png">
-					</div>
-					<div class="single-logo">
-						<img alt="" src="resources/img/brand-logo/3.png">
-					</div>
-					<div class="single-logo">
-						<img alt="" src="resources/img/brand-logo/4.png">
-					</div>
-					<div class="single-logo">
-						<img alt="" src="resources/img/brand-logo/5.png">
-					</div>
-					<div class="single-logo">
-						<img alt="" src="resources/img/brand-logo/3.png">
-					</div>
-				</div>
-			</div>
-		</div>
-		<footer class="hm-4-padding">
-			<div class="container-fluid">
-				<div class="footer-top pt-125 pb-25">
-					<div class="row">
-						<div class="col-lg-3 col-md-5">
-							<div class="footer-widget mb-30">
-								<div class="footer-widget-title">
-									<h3>Get in Touch</h3>
-								</div>
-								<div class="food-info-wrapper">
-									<div class="food-address">
-										<div class="food-info-icon">
-											<i class="ion-ios-home-outline"></i>
-										</div>
-										<div class="food-info-content">
-											<p>
-												2020 Willshire Glen, Out of <br>Alpharetta, GA-30009
-											</p>
-										</div>
-									</div>
-									<div class="food-address">
-										<div class="food-info-icon">
-											<i class="ion-ios-telephone-outline"></i>
-										</div>
-										<div class="food-info-content">
-											<p>(+00) 121 025 0214</p>
-										</div>
-									</div>
-									<div class="food-address">
-										<div class="food-info-icon">
-											<i class="ion-ios-email-outline"></i>
-										</div>
-										<div class="food-info-content">
-											<p>
-												<a href="#">info@example.com</a>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4">
-							<div class="footer-widget mb-30 pl-10">
-								<div class="footer-widget-title">
-									<h3>Information</h3>
-								</div>
-								<div class="food-widget-content">
-									<ul class="quick-link">
-										<li><a href="#">Delivery</a></li>
-										<li><a href="#">Legal Notice</a></li>
-										<li><a href="#">Terms & Conditions</a></li>
-										<li><a href="about-us.html">About Us</a></li>
-										<li><a href="#">Secure Payment</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-3">
-							<div class="footer-widget mb-30 pl-100">
-								<div class="footer-widget-title">
-									<h3>accounts</h3>
-								</div>
-								<div class="food-widget-content">
-									<ul class="quick-link">
-										<li><a href="login-register.html">Sign In</a></li>
-										<li><a href="cart.html">View Cart</a></li>
-										<li><a href="wishlist.html">My Wishlist</a></li>
-										<li><a href="#">Track My Order</a></li>
-										<li><a href="#">Help</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-6">
-							<div class="footer-widget mb-30 pl-125">
-								<div class="footer-widget-title">
-									<h3>support</h3>
-								</div>
-								<div class="food-widget-content">
-									<ul class="quick-link">
-										<li><a href="contact.html">Hello & Contact</a></li>
-										<li><a href="#">Shipping & Tax</a></li>
-										<li><a href="#">Return Policy</a></li>
-										<li><a href="#">Affiliates</a></li>
-										<li><a href="#">Legal Notice</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6">
-							<div class="footer-widget mb-30 f-right">
-								<div class="footer-widget-title">
-									<h3>twitter feed</h3>
-								</div>
-								<div class="twitter-info-wrapper">
-									<div class="single-twitter">
-										<div class="twitter-icon">
-											<i class="ion-social-twitter-outline"></i>
-										</div>
-										<div class="twitter-content">
-											<p>
-												A modern <a href="#">#Shopify theme </a> <a class="link1"
-													href="#">@devitems</a> <br> <a class="link2" href="#">https://twitter.com/devitemsllc</a>
-											</p>
-										</div>
-									</div>
-									<div class="single-twitter">
-										<div class="twitter-icon">
-											<i class="ion-social-twitter-outline"></i>
-										</div>
-										<div class="twitter-content">
-											<p>
-												A modern <a href="#">#Shopify theme </a> <a class="link1"
-													href="#">@devitems</a> <br> <a class="link2" href="#">https://twitter.com/devitemsllc</a>
-											</p>
-										</div>
-									</div>
-									<div class="single-twitter">
-										<div class="twitter-icon">
-											<i class="ion-social-twitter-outline"></i>
-										</div>
-										<div class="twitter-content">
-											<p>
-												A modern <a href="#">#Shopify theme </a> <a class="link1"
-													href="#">@devitems</a> <br> <a class="link2" href="#">https://twitter.com/devitemsllc</a>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="footer-bottom border-top-1 ptb-15">
-					<div class="row">
-						<div class="col-md-6 col-12">
-							<div class="copyright-payment">
-								<div class="copyright">
-									<p>
-										Copyright Â© 2018 <a href="https://freethemescloud.com/">Free
-											themes Cloud</a> All RIght Reserved.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-12">
-							<div class="footer-payment-method">
-								<a href="#"><img alt="" src="resources/img/icon-img/7.png"></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-
 		<!-- 서브 모달  -->
 		<div id="myModal1" class="modal modal-child" data-backdrop-limit="1"
 			tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -700,8 +518,8 @@
 						style="padding: 50px; padding-top: 40px; width: 440px; height: 750px;">
 
 						<!-- 부모 모달 -->
-						<button type="button" class="close" data-dismiss="modal" id="close1"
-							aria-label="Close"
+						<button type="button" class="close" data-dismiss="modal"
+							id="close1" aria-label="Close"
 							style="position: relative; bottom: 320px; left: 770px;">
 							<span class="ion-android-close" aria-hidden="true"></span>
 						</button>

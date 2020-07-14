@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="resources/css/bundle.css">
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/responsive.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <style>
@@ -31,11 +32,18 @@ select {font-size:13pt}
 .ptb-130 {padding-top:30px}
 .login-form-container input {padding:0 20px 0 20px;border-radius:10px}
 .login-form-container select {padding:0 10px 0 10px;border-radius:10px}
-input[type=button] {background-color:#72A0E0;color:white;margin-bottom:10px}
+input[type=button] {background-color:#72A0E0;color:white;margin-bottom:10px;font-size:13pt}
 input:read-only{background-color:#d2d3d6}
 .pt-120{padding-top:50px !important}
 .breadcrumb-content{margin-top:5em}
  .breadcrumb-content ul > li{font-size:13pt}
+ button[type=submit]{color:#72A0E0;background-color:white;border:2px solid #72A0E0; 
+ 									border-radius:10px;font-weight:700}
+ button[type=submit]:hover{background-color:#72A0E0;color:white;border:2px solid #72A0E0;}
+ .login-form-container span{font-size:15pt}
+ .secession {color:white; background-color:red; border:2px solid red;border-radius:10px;font-size:13pt}
+ .secession:hover {background-color:white; color:red; border:2px solid red}
+ .modal-footer a {font-size:13pt}
 </style>
 </head>
 <body>
@@ -321,7 +329,7 @@ input:read-only{background-color:#d2d3d6}
 												<span></span>
 												
 												<div class="button-box" style="text-align:center;margin:0 auto">
-													<button type="submit" class="btn-style cr-btn">
+													<button type="submit" class="btn-style">
 														<span>수정하기</span>
 													</button>
 												</div>
@@ -335,10 +343,37 @@ input:read-only{background-color:#d2d3d6}
 				</div>
 			</div>
 			<div class="button-box" style="text-align:center;">
-				<button class="btn-style cr-btn" onclick="location.href='expertJoin.net';" style="background-color:red">
+				<button class="btn-style secession"  data-toggle="modal" data-target="#modalConfirmDelete">
 					<span>탈퇴하기</span>
 				</button>
 			</div>
+			
+			<!--Modal: modalConfirmDelete-->
+				<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+						
+						<!--Content-->
+						<div class="modal-content text-center" style="width: 40%; margin: 0 auto;">
+							
+							<!--Header-->
+							<div class="modal-header d-flex justify-content-center" style="margin-top:15px">
+								<p class="heading" style="margin-bottom:10px;color:#303030">정말로 이음을 떠나실 건가요?</p>
+							</div>
+
+							<!--Body-->
+							<div class="modal-body">
+								<i class="fa fa-times fa-4x animated rotateIn" style="width: auto; margin: 0 auto; color: #dc3545;"></i>
+							</div>
+
+							<!-- Footer -->
+							<div class="modal-footer flex-center" >
+			      				<a href="userDelete.net?user_id=${u.user_id }" class="btn  btn-outline-danger">예</a>
+			        			<a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal" style="color:white">아니요</a>
+			      			</div>
+			    		</div>
+						<!--/.Content-->
+					</div>
+				</div>
 		</div>
 
 		<footer class="hm-4-padding">
