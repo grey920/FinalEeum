@@ -1,5 +1,7 @@
 package com.kh.eeum.service;
 
+import java.util.List;
+
 import com.kh.eeum.domain.Expert;
 
 public interface ExpertService {
@@ -8,4 +10,5 @@ public interface ExpertService {
 	public int isId(String expert_id);
 	public Expert expert_info(String expert_id);
 	public int expert_update(Expert ex);
+	public List<Expert> getList();
 }

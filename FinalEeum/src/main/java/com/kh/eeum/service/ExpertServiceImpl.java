@@ -1,5 +1,7 @@
 package com.kh.eeum.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -59,6 +61,11 @@ public class ExpertServiceImpl implements ExpertService{
 	@Override
 	public int expert_update(Expert ex) {
 		return exdao.update(ex);
+	}
+
+	@Override
+	public List<Expert> getList() {
+		return exdao.getList();
 	}
 	
 
