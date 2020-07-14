@@ -26,7 +26,7 @@
 		select * from user_table 
 	    where user_nick = #{user_nick}
 	</select>
-	
+	 
 	<update id="userupdate" parameterType="user">
 		update user_table
 		set user_profile = #{user_profile}, user_saveprofile = #{user_saveprofile}, 
@@ -37,8 +37,16 @@
 		where user_id = #{user_id}
 	</update>
 	
+
+	<select id="getList" resultType="user">
+		select user_name, user_nick, user_id, user_addr2, user_addr3, user_phone1,
+						 user_phone2, user_phone3, user_email1, user_email2
+		from user_table
+	</select>
+
 	<delete id="userdelete" parameterType="String">
 		delete user_table
 		where user_id = #{user_id}
 	</delete>
+
 </mapper>
