@@ -55,5 +55,6 @@ public class ExpertDAO {
 
 	public List<Expert> getList(){
 		return sqlSession.selectList("Experts.expertList");
+
 	}
 }
