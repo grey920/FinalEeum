@@ -13,6 +13,7 @@
 		<typeAlias alias="oneday" type="com.kh.eeum.domain.Oneday"/>
 		<typeAlias alias="admin" type="com.kh.eeum.domain.Admin"/>
 		<typeAlias alias="apply" type="com.kh.eeum.domain.Apply"/>
+		<typeAlias alias="like" type="com.kh.eeum.domain.Like"/>
 	</typeAliases>
 
 	<mappers>
@@ -21,5 +22,6 @@
 		<mapper resource="sql/oneday.xml"/>	
 		<mapper resource="sql/admin.xml"/>
 		<mapper resource="sql/apply.xml"/>
+			<mapper resource="sql/like.xml"/>
 	</mappers>
 </configuration>
