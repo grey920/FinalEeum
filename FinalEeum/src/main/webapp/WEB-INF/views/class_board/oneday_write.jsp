@@ -40,6 +40,12 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"
 	defer></script>
+	
+<style>
+.oneday_write_form{
+margin-bottom:30px;
+}
+</style>	
 </head>
 <body>
 <input type="hidden" id="loginid" value="${id }" name="loginid">
@@ -229,32 +235,15 @@
 				</form>
 			</div>
 		</div>
-		<div class="breadcrumb-area mt-37 hm-4-padding">
-			<div class="container-fluid">
-				<div class="breadcrumb-content text-center">
-					<h2>login register</h2>
-					<ul>
-						<li><a href="#">home</a></li>
-						<li>login register</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="banner-area hm-4-padding">
-			<div class="container-fluid">
-				<div class="banner-img">
-					<a href="#"><img src="resources/img/banner/16.jpg" alt=""></a>
-				</div>
-			</div>
-		</div>
-		<div class="login-register-area ptb-130 hm-3-padding">
+		
+		<div class="login-register-area ptb-130 hm-4-padding">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-9 ml-auto mr-auto">
+					<div class="col-lg-7 ml-auto mr-auto">
 						<div class="login-register-wrapper">
 							<div class="login-register-tab-list nav">
 								<div class="index">
-									<h2>원데이 클래스 글쓰기</h2>
+									<h2 style="margin-bottom:20px">원데이 클래스 글쓰기</h2>
 								</div>
 
 							</div>
@@ -265,37 +254,41 @@
 											<form action="OnedayAddAction.one" method="post"
 												enctype="multipart/form-data" name="onedayform">
 
-												작성자 <input type="text" id="oneday_name" name="WRITER_ID"
+												<span style="margin-top:30px;">작성자</span> <input type="text" id="oneday_name" name="WRITER_ID"
 													 class="oneday_write_form" value="${user_id}" readonly>
 
-												분류 <select name="ONE_TYPE" id="oneday_type" style="margin-bottom: 30px">
+												<span>분류</span> <select name="ONE_TYPE" id="oneday_type" style="margin-bottom: 30px">
 													<option value="">분류 선택</option>
 													<option value="원데이클래스">원데이 클래스</option>
 													<option value="커피챗">전문가 커피챗</option>
-												</select> 제목 <input type="text" name="ONE_TITLE"
+												</select>
+												
+												 <span>제목</span> <input type="text" name="ONE_TITLE"
 													placeholder="subject" size="50" class="oneday_write_form">
 
-												한 줄 소개 <input type="text" name="ONE_LINE"
+												<span>한 줄 소개</span> <input type="text" name="ONE_LINE"
 													placeholder="description" size="50"
-													class="onrday_write_form"> 내용
+													class="oneday_write_form"> 
+													
+													<span>내용</span>
 												<textarea name="ONE_CONTENT" id="summernote"></textarea>
 
-												일시 <input type="date" name="ONE_RDATE" id="rdate"
-													min="${sysdate}">
+												<span>일시</span> <input type="date" name="ONE_RDATE" id="rdate"
+													class="oneday_write_form">
 
-												장소 <input type="text" name="ONE_LOCATE" id="loc">
+												<span>장소</span> <input type="text" name="ONE_LOCATE" id="loc" class="oneday_write_form">
 
-												<div class="quantity-range">
+												<div class="oneday_write_form">
 													<span> 정원</span> <input class="seat_count qty text"
 														type="number" step="1" min="0" value="1" name="ONE_SEAT"
 														title="Qty" size="4">
 												</div>
 
-												가격 <input type="text" name="ONE_PRICE" placeholder="price"
-													class="onrday_write_form">
+												<span>가격</span> <input type="text" name="ONE_PRICE" placeholder="price"
+													class="oneday_write_form">
 
 												<div class="file_form-group">
-													<label for="savefile">포스터 첨부</label> <label for="upfile">
+													<label for="savefile"><span>포스터 첨부</span></label> <label for="upfile">
 														<img src="resources/img/attach.png" alt="파일첨부">
 													</label> <input type="file" id="upfile" name="uploadfile">
 													<!-- domain에 있는 private MultipartFile uploadfile;랑 input의 name이 맞나 꼭 확인! -->

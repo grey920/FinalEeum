@@ -53,8 +53,8 @@ public class ExpertDAO {
 
 	}
 
-	public List<Expert> getList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Expert> getList(){
+		return sqlSession.selectList("Experts.expertList");
+
 	}
 }

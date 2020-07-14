@@ -11,6 +11,7 @@ public class Apply {
 	private String AP_LOCATE;
 	private String AP_CDATE;
 	private int AP_PROG;
+	
 	public int getAP_INDEX() {
 		return AP_INDEX;
 	}

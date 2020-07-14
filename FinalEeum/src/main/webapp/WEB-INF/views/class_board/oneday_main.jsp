@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,11 +35,15 @@
 	color: white;
 	cursor: pointer;
 }
-.paging_align{
-display:flex;
-justify-content:center;
+
+.paging_align {
+	display: flex;
+	justify-content: center;
 }
 
+.product-wrapper .end:after{
+background:rgba(0,0,0,.53);
+}
 </style>
 </head>
 <body>
@@ -261,9 +266,9 @@ justify-content:center;
 								</ul>
 							</div>
 							<c:if test="${user_id=='admin'}">
-							<div class="shop-filter">
-								<button class="write_oneday">글쓰기</button>
-							</div>
+								<div class="shop-filter">
+									<button class="write_oneday">글쓰기</button>
+								</div>
 							</c:if>
 						</div>
 					</div>
@@ -322,37 +327,71 @@ justify-content:center;
 
 							<c:set var="num" value="${listcount-(page-1)*limit}" />
 							<c:forEach var="o" items="${onedaylist}">
-								<div class="product-width col-md-6 col-xl-3 col-lg-4">
+								<div class="product-width col-md-6 col-xl-4 col-lg-4">
 									<div class="product-wrapper mb-35">
+											<div style="display:none">
+											<jsp:useBean id="now" class="java.util.Date"/>
+											<fmt:formatDate value="${now}" pattern="yyyyMMdd" />
+											<fmt:parseDate value="${o.ONE_RDATE}" var="rdate" pattern="yyyy-MM-dd" />
+											<fmt:formatDate value="${rdate}" pattern="yyyyMMdd" />
+											</div>
+										<c:if test="${rdate >= now}">
 										<div class="product-img">
-											<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}"> <img
+											<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}"> 
+											<img
 												alt="oneday_main_poster" id="poster"
 												src="resources/OBoardupload${o.SAVEFILE}" width="310px"
 												height="375px">
 											</a>
-											<div class="price-decrease">
-												<span>모집중</span>
+											<%-- <div style="display:none">
+											<jsp:useBean id="now" class="java.util.Date"/>
+											<fmt:formatDate value="${now}" pattern="yyyyMMdd" />
+											<fmt:parseDate value="${o.ONE_RDATE}" var="rdate" pattern="yyyy-MM-dd" />
+											<fmt:formatDate value="${rdate}" pattern="yyyyMMdd" />
+											</div> --%>
+											
+												<div class="price-decrease">
+													<span>모집중</span>
+												</div>
 											</div>
-											<div class="product-action-3">
+											</c:if>
+											
+											<c:if test="${rdate < now}">
+											<div class="product-img end">
+											<div class="posterWrapper" >
+											<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}"> 
+											<img
+												alt="oneday_main_poster" id="poster"
+												src="resources/OBoardupload${o.SAVEFILE}" width="310px"
+												height="375px">
+											</a>
+												</div>
+												<div class="price-decrease">
+													<span class="ERdate" style="background:black">종료</span>
+												</div>
+											</div>
+											</c:if>
+											<%-- <div class="product-action-3">
 												<a class="action-plus-2" title="Quick View"
 													href="./OnedayDetailAction.one?num=${o.ONE_INDEX}"> <span>상세정보
 														보러가기</span>
 												</a>
-											</div>
-										</div>
+											</div> --%>
+										
 										<div class="product-content">
 											<div class="product-title-wishlist">
 												<div class="product-title-3">
-													<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}"> ${o.ONE_TITLE}</a>
+													<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}">
+														${o.ONE_TITLE}</a>
 												</div>
-												
+
 											</div>
 											<div class="product-peice-addtocart">
 												<div style="display: flex; justify-content: space-between;">
-													| <span>장소 : ${o.ONE_LOCATE}</span>
-													| <span>일시 : ${o.ONE_RDATE}</span>
+													| <span>장소 : ${o.ONE_LOCATE}</span> | <span>일시 :
+														${o.ONE_RDATE}</span>
 												</div>
-												<span>${o.ONE_PRICE}원</span> 
+												<span>${o.ONE_PRICE}원</span>
 												<div class="description-oneday">${o.ONE_LINE}</div>
 											</div>
 										</div>
@@ -380,44 +419,43 @@ justify-content:center;
 							</c:forEach>
 
 
-		
+
 						</div>
 					</div>
 				</div>
 			</div>
-			
-								<!-- 부트스트랩 제공 페이징-->
-							<div class="pagination-style text-center mt-30" id="pagination">
-								<ul class="paging_align">
-									<c:if test="${page <= 1 }">
-										<li><i class="ion-chevron-left" style="display: none;"></i></li>
-									</c:if>
-									<c:if test="${page > 1}">
-										<li><a href="./OnedayList.one?page=${page-1}"><i
-												class="ion-chevron-left"></i></a>
-										</li>
-									</c:if>
 
-									<c:forEach var="a" begin="${startpage}" end="${endpage}">
-										<c:if test="${a == page }">
-											<li><a class="active" href="#">${a}</a></li>
-										</c:if>
-										<c:if test="${a != page}">
-											<li><a href="./OnedayList.one?page=${a}">${a}</a></li>
-										</c:if>
-									</c:forEach>
+			<!-- 부트스트랩 제공 페이징-->
+			<div class="pagination-style text-center mt-30" id="pagination">
+				<ul class="paging_align">
+					<c:if test="${page <= 1 }">
+						<li><i class="ion-chevron-left" style="display: none;"></i></li>
+					</c:if>
+					<c:if test="${page > 1}">
+						<li><a href="./OnedayList.one?page=${page-1}"><i
+								class="ion-chevron-left"></i></a></li>
+					</c:if>
 
-									<c:if test="${page >= maxpage}">
-										<li><i class="ion-chevron-right" style="display: none;"></i></li>
-									</c:if>
-									<c:if test="${page < maxpage}">
-										<li><a href="./OnedayList.one?page=${page+1}"> <i
-												class="ion-chevron-right"></i>
-										</a></li>
-									</c:if>
-								</ul>
-							</div>
-			
+					<c:forEach var="a" begin="${startpage}" end="${endpage}">
+						<c:if test="${a == page }">
+							<li><a class="active" href="#">${a}</a></li>
+						</c:if>
+						<c:if test="${a != page}">
+							<li><a href="./OnedayList.one?page=${a}">${a}</a></li>
+						</c:if>
+					</c:forEach>
+
+					<c:if test="${page >= maxpage}">
+						<li><i class="ion-chevron-right" style="display: none;"></i></li>
+					</c:if>
+					<c:if test="${page < maxpage}">
+						<li><a href="./OnedayList.one?page=${page+1}"> <i
+								class="ion-chevron-right"></i>
+						</a></li>
+					</c:if>
+				</ul>
+			</div>
+
 			<div class="brand-logo-area hm-4-padding">
 				<div class="container-fluid">
 					<div class="brand-logo-active owl-carousel gray-bg ptb-130">
