@@ -16,7 +16,9 @@ AP_PROG NUMBER default 1,
 
 CREATE SEQUENCE APPLY_SEQ;
 
+
 select * from APPLY;
+delete from APPLY;
 
 
 	
