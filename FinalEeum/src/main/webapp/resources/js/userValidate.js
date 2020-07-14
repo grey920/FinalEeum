@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	   
+	   var checkjumin = false;
 	   var checkid = false;
 	   var checknick = false;
 	   
@@ -21,6 +22,32 @@ $(document).ready(function() {
 		   }
 	   }
       
+	   $("#checkJumin").click(function(){
+		   var input_jumin1 = $.trim($("#user_jumin1").val());
+		   var input_jumin2 = $.trim($("#user_jumin2").val());
+		   
+		   if(input_jumin1 == "" || input_jumin2 == "") {
+			   alert("주민등록번호를 입력하세요");
+			   return false;
+			   
+		   } else {
+			   $.ajax({
+				   url : "user_jumincheck.net",
+				   data : {"user_jumin1" : input_jumin1, "user_jumin2" : input_jumin2},
+				   success : function(resp){
+					   if (resp == -1) {
+						   alert("이음에 가입이 가능합니다.");
+						   checkjumin = true;
+						   
+					   } else {
+						   alert("이미 이음에 가입하셨습니다.");
+						   checkjumin = false;
+					   }
+				   }
+			   }) 
+		   }
+	   });
+	   
       //우편검색 버튼 클릭
       $("#postcode").click(function(){
             Postcode();
@@ -90,12 +117,15 @@ $(document).ready(function() {
         		 $("#user_jumin2").val("");
         	 }
         	 
+        	 
          } else if (!$.isNumeric($("#user_jumin2").val())) {	//숫자로만 이뤄지지 않으면 
       	   $("#message_jumin").css('color', 'red').html("숫자로만 입력하세요");
       	   $("#user_jumin2").val("");
       	   $("#user_jumin2").focus();
          }
+                   
       });
+      
       
       //닉네임 확인
       $("#user_nick").keyup(function(){
