@@ -11,6 +11,7 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -212,18 +213,17 @@ public class OnedayController {
 	}
 	
 	@RequestMapping(value="OnedayApply.one")
-	public ModelAndView apply(int num, Oneday oneday, Apply apply, ModelAndView mv, 
-			HttpServletRequest request,HttpServletResponse response, String id) throws IOException {
+	public void apply(@RequestParam("num") int num,Oneday oneday, Apply apply, ModelAndView mv, 
+			HttpServletRequest request,HttpServletResponse response, HttpSession session) throws IOException {
+		String id = (String)session.getAttribute("user_id");
+		System.out.println("OnedayApply.one들어왔음");
 		apply.setAP_ID(id);
 		apply.setAP_CINDEX(num);
 		
 		int result = applyService.insertApply(apply);
-		if(result == 0) {
-			System.out.println("원데이 클래스 신청 실패 - OnedayApply.one");
-			mv.setViewName("error/error");
-			mv.addObject("url", request.getRequestURL());
-			mv.addObject("message", "클래스 신청 실패입니다.");
-		}
+		System.out.println("들어왔니");
+		
+		if(result==1) {
 		System.out.println("원데이 클래스 신청 성공");
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -232,7 +232,17 @@ public class OnedayController {
 		out.println("location.href='OnedayList.one';"); //마이페이지로 넘기기
 		out.println("</script>");
 		out.close();
-		return null;
+//		return null;
+	
+		} 
+//		else {
+//			System.out.println("원데이 클래스 신청 실패 - OnedayApply.one");
+//			mv.setViewName("error/error");
+//			mv.addObject("url", request.getRequestURL());
+//			mv.addObject("message", "클래스 신청 실패입니다.");
+//			return mv;
+//		}
+		
 	}
 
 	@GetMapping("/OnedayModifyView.one")

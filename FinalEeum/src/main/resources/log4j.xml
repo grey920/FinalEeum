@@ -14,7 +14,9 @@
 	<logger name="com.kh.eeum">
 		<level value="info" />
 	</logger>
-	
+	<logger name="Applys">
+		<level value="trace" />
+	</logger>
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
 		<level value="info" />

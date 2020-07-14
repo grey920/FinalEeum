@@ -52,4 +52,8 @@ public class ExpertDAO {
 		return sqlSession.selectOne("Experts.expertdetails", expertid);
 
 	}
+
+	public List<Expert> getList(){
+		return sqlSession.selectList("Experts.expertList");
+	}
 }

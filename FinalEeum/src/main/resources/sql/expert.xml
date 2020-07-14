@@ -12,7 +12,7 @@
 				#{expert_id}, #{expert_pass}, #{expert_phone1}, #{expert_phone2}, #{expert_phone3}, 
 				#{expert_email1}, #{expert_email2})
 	</insert>
-	
+
 	<select id="idcheck" resultType="expert" parameterType="String">
 		select * from expert_table 
 		where expert_id = #{expert_id}
@@ -26,7 +26,27 @@
 	</update>
 	
 	<select id="expertList" resultType="expert">
-      select expert_id, expert_name, expert_phone1, expert_phone2, expert_phone3, expert_email1, expert_email2
-      from expert_table
-    </select>
+		select expert_id, expert_name, expert_phone1, expert_phone2, expert_phone3, expert_email1, expert_email2
+		from expert_table
+	</select>
+
+	<select id="expertcount" resultType="int">
+		select count(*) from
+		expert_table
+	</select>
+
+	<select id="expertlist" resultType="map">
+		select * from
+		( select rownum rnum, b.* from
+		(select * from expert_table) b)
+		where rnum &gt; = #{start} and rnum &lt; =
+		#{end}
+	</select>
+
+	<select id="expertdetails" resultType="expert"
+		parameterType="String">
+		select * from expert_table
+		where expert_id = #{expertid}
+	</select>
+
 </mapper>
