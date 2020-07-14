@@ -1,34 +1,43 @@
 package com.kh.eeum.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.kh.eeum.dao.ExpertDAO;
 import com.kh.eeum.dao.UserDAO;
+import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.User;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
 
 	@Autowired
 	private UserDAO udao;
-
+	
+	@Autowired
+	private ExpertDAO exdao;
+	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-
+	
 	@Override
 	public int insert(User u) {
 		return udao.insert(u);
 	}
-
+	
 	@Override
 	public int isId(String user_id, String user_pass) {
 		User user = udao.isId(user_id);
+		
 		int result = -1;
-		if (user != null) {
-			if (passwordEncoder.matches(user_pass, user.getUser_pass())) {
+		
+		if(user != null) {
+			if(passwordEncoder.matches(user_pass, user.getUser_pass())) {
 				result = 1;
 			} else {
 				result = 0;
@@ -40,24 +49,49 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int isId(String user_id) {
 		User user = udao.isId(user_id);
+		Expert expert = exdao.isId(user_id);
+		
 		int result = -1;
-		if (user != null) {
+		
+		if(user != null || expert != null) {
 			result = 0;
 		}
+		
 		return result;
 	}
 
 	@Override
 	public int isNick(String user_nick) {
 		User user = udao.isNick(user_nick);
+		
 		int result = -1;
-		if (user != null) {
+		
+		if(user != null) {
 			result = 0;
+		}
+		
+		return result;
+	}
+	
+	@Override
+	public int isJumin(String user_jumin1, String user_jumin2) {
+		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+		list = udao.isJumin(user_jumin1);
+		
+		int result = -1;
+		
+		for(int i = 0; i < list.size(); i++) {
+			String jumin2 =  list.get(i).get("USER_JUMIN2");
+			
+			if(passwordEncoder.matches(user_jumin2, jumin2)) {
+				result = 0;
+				break;
+			}
 		}
 
 		return result;
 	}
-
+	
 	@Override
 	public User user_info(String user_id) {
 		return udao.user_info(user_id);
@@ -69,11 +103,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public void user_delete(String user_id) {
+		udao.delete(user_id);
+	}
+
+
+	@Override
 	public List<User> getList() {
 		// TODO Auto-generated method stub
 		return udao.getList();
 	}
 	
 	
-
 }

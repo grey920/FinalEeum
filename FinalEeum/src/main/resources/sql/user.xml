@@ -11,6 +11,12 @@
 				#{user_phone1}, #{user_phone2}, #{user_phone3}, #{user_email1}, #{user_email2})
 	</insert>
 	
+	<select id="jumincheck" parameterType="String" resultType="map">
+		select user_jumin2
+		from user_table
+		where user_jumin1 = #{user_jumin1}
+	</select>
+	
 	<select id="idcheck" resultType="user" parameterType="String">
 		select * from user_table 
 		where user_id = #{user_id}
@@ -31,9 +37,16 @@
 		where user_id = #{user_id}
 	</update>
 	
+
 	<select id="getList" resultType="user">
 		select user_name, user_nick, user_id, user_addr2, user_addr3, user_phone1,
 						 user_phone2, user_phone3, user_email1, user_email2
 		from user_table
 	</select>
+
+	<delete id="userdelete" parameterType="String">
+		delete user_table
+		where user_id = #{user_id}
+	</delete>
+
 </mapper>

@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+#career_text {
+	font-size: 60px;
+	position: relative;
+	left: 290px;;
+	bottom: 40px;
+	font-weight: 700;
+}
+
+#career_table {
+	position: relative;
+	width: 790px;
+	height: 320px;
+	bottom: 80px;
+	left: 390px;
+
+}
+
+#career_th {
+	font-size: 25px;
+	font-weight: 300;
+}
+
+#hr_1{
+	position: relative;
+	bottom: 150px;
+}
+#picture_text {
+	font-size: 60px;
+	position: relative;
+	left: 290px;;
+	bottom: 190px;
+		font-weight: 700;
+}
