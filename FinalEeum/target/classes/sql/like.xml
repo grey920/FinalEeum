@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Likes">
+
+<insert id="inertlike" parameterType="like">
+	insert into like_expert
+	values (like_sequence.nextval, #{user_id},#{expert_id},#{like_state})
+</insert>
+
+<select id="listLike" resultType="map">
+	select * from like_expert
+	where expert_id = #{expert_id} and user_id = #{user_id}
+
+</select>
+</mapper>

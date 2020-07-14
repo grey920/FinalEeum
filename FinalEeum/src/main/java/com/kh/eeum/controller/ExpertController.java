@@ -1,30 +1,44 @@
 package com.kh.eeum.controller;
 
+import java.io.PrintWriter;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
 import com.kh.eeum.domain.Expert;
+import com.kh.eeum.domain.Like;
 import com.kh.eeum.service.ExpertService;
+import com.kh.eeum.service.LikeService;
 
 @Controller
 public class ExpertController {
 
 	@Autowired
 	ExpertService expertservice;
+
+	@Autowired
+	LikeService likeservice;
 
 	// 전문가 리스트
 	@GetMapping("/expert.list")
@@ -72,22 +86,55 @@ public class ExpertController {
 		return mv;
 	}
 
-	//전문가 상세 페이지
+	// 전문가 상세 페이지
 	@GetMapping("/expert_details")
 	public ModelAndView service_details(ModelAndView mv,
-			@RequestParam(value = "expert", required = false) String expertid, HttpServletResponse response)
-			throws Exception {
+			@RequestParam(value = "expert", required = false) String expertid, HttpServletResponse response,
+			HttpSession session) throws Exception {
 
-		System.out.println("넘어온값 : "+ expertid);
+		System.out.println("넘어온값 : " + expertid);
+
+		String user_id = (String) session.getAttribute("user_id");
+
+		System.out.println(user_id);
 
 		Expert expert = expertservice.expertlistOne(expertid);
-	
+
 		mv.setViewName("service/expert_details");
 		mv.addObject("expertdata", expert);
+		mv.addObject("user_id", user_id); // 지금 로그인 한 사용자의 아이디 가져옴
 		return mv;
 	}
 
-	
+	@ResponseBody
+	@RequestMapping(value = "/LikeExpert.Ajax", method = RequestMethod.POST, produces = "application/json")
+	public ModelAndView likeexpert_ajax(@RequestParam(value = "expert_id", required = false) String expert_id,
+			@RequestParam(value = "user_id", required = false) String user_id, Like like, HttpServletResponse response,
+			ModelAndView mv) throws Exception {
+
+		System.out.println("ajax 로 들어온 전문가 아이디:" + expert_id + "유저 아이디 : " + user_id);
+
+		int num = 1;
+
+		like.setExpert_id(expert_id);
+		like.setUser_id(user_id);
+		like.setLike_state(num);
+
+		int liketo = likeservice.insertLike(like);
+		// int liketo = likeservice.insertLike(expert_id,user_id);
+
+		if (liketo != 0) {
+			System.out.println("값 ㅈ제대로 들어옴");
+		} else {
+			System.out.println("값 안들어옴ㅡㅡ");
+		}
+
+		// ㅡㅡㅡㅡㅡㅡㅡㅡㅡ 찜 등록 조회하기 ---------------//
+		List<Like> list = likeservice.likeList(expert_id,user_id,num);
+		
+		return mv;
+	}
+
 	//
 	@GetMapping("/portfolio_list")
 	public String portfolio_list() {

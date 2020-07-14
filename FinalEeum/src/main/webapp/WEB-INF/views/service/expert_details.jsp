@@ -231,12 +231,17 @@
 				<div class="banner-img">
 					
 					<div class="grad">
-						<img src="resources/profile${expertdata.expert_profile}" alt=""
+						<img src="resources/profile/profile.jpg" alt=""
 							id="userimg">
 					</div>
-					<b
-						style="font-size: 50px; position: relative; left: 680px; bottom: 190px;">${expertdata.expert_name}
-						</b>
+					<b style="font-size: 50px; position: relative; left: 680px; bottom: 190px;">${expertdata.expert_name} </b>
+					
+					<!-- 전문가 아이디 -->
+					<input type="hidden" value="${expertdata.expert_id}" id="expert_id">
+					<!-- 사용자 아이디 -->
+					<input type="hidden" value="${user_id}" id="user_id">
+					
+					
 					<div class="heart_click">
 						<i id="fa-heart-o" class="fa fa-heart-o"
 							style="position: relative; left: 13px; top: 12px;"></i><span

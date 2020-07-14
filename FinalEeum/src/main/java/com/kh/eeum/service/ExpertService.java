@@ -16,5 +16,4 @@ public interface ExpertService {
 	public Expert expertlistOne(String expertid);
 
 	public List<Expert> getList();
-
 }

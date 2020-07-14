@@ -30,6 +30,7 @@
 		expert_email1 = #{expert_email1}, expert_email2 = #{expert_email2}
 		where expert_id =
 		#{expert_id}
+
 	</update>
 
 	<select id="expertcount" resultType="int">

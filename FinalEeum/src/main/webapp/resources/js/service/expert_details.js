@@ -175,16 +175,47 @@ $(document).ready(
 					},
 					success : function(data) { // 통신 성공하면 가져옴.
 
-							$("#tabcontent").html(data);
+						$("#tabcontent").html(data);
 					}
 
 				});
 
 			});// tabmenu end
-			//경력이 처음 나오게 load 함수
+			// 경력이 처음 나오게 load 함수
 			$('#tabText1').css('text-decoration', 'underline');
 			$('#tabText1').css('color', 'black');
 			$('#tabcontent').load("portfolio_list");
 
+			$(".heart_click").click(
+					function() {
 
+						var expert_id = $('#expert_id').val();
+						var user_id = $('#user_id').val();
+						console.log("전문가 아이디:" + expert_id + "지금 로그인한 회원 아이디:"
+								+ user_id);
+
+						var senddata = {
+							'expert_id' : expert_id,
+							'user_id' : user_id
+						};
+
+						$.ajax({
+							type : 'POST',
+							url : "LikeExpert.Ajax", // 찜등록 db로 들어가는 주소 ,
+							cache : false,
+							dataType : "json",
+							data : senddata,
+							success : function(data) {
+								alert("찜 등록했습니다.");
+								console.log(data.expert_id);
+							},
+							error : function() {
+								alert("찜 등록이 완료되지 않았습니다.");
+							}
+
+						});
+
+						$("#fa-heart-o").removeClass();
+						$("#fa-heart-o").addClass('fa fa-heart');
+					});
 		});
