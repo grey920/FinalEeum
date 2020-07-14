@@ -6,6 +6,8 @@
 
 	<insert id="insert" parameterType="expert">
 		insert into expert_table
+		(expert_jumin1, expert_jumin2, expert_name, expert_id, expert_pass, expert_phone1, expert_phone2, expert_phone3,
+		expert_email1, expert_email2)
 		values(#{expert_jumin1},#{expert_jumin2}, #{expert_name}, 
 				#{expert_id}, #{expert_pass}, #{expert_phone1}, #{expert_phone2}, #{expert_phone3}, 
 				#{expert_email1}, #{expert_email2})
@@ -22,4 +24,11 @@
 				expert_email1 =  #{expert_email1}, expert_email2 =  #{expert_email2}
 		where expert_id = #{expert_id}
 	</update>
+	
+	<select id="expertList" resultType="expert">
+		select expert_id, expert_name, expert_phone1, expert_phone2, expert_phone3, expert_email1, expert_email2
+		from expert_table
+	</select>
+	
+	
 </mapper>
