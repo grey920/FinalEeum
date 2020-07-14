@@ -108,6 +108,11 @@ public class UserServiceImpl implements UserService{
 	}
 
 
+	@Override
+	public List<User> getList() {
+		// TODO Auto-generated method stub
+		return udao.getList();
+	}
 	
 	
 }

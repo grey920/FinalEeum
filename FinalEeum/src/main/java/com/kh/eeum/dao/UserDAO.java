@@ -43,4 +43,9 @@ public class UserDAO {
 		sqlSession.delete("Users.userdelete", user_id);
 	}
 	
+
+	public List<User> getList() {
+		return sqlSession.selectList("Users.getList");
+	}
+
 }

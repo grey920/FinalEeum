@@ -1,5 +1,7 @@
 package com.kh.eeum.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,5 +33,9 @@ public class ExpertDAO {
 	
 	public int update(Expert ex) {
 		return sqlSession.update("Experts.expertupdate", ex);
+	}
+	
+	public List<Expert> getList(){
+		return sqlSession.selectList("Experts.expertList");
 	}
 }
