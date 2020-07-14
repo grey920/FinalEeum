@@ -18,8 +18,12 @@
 	from ONEDAY
 	where ONE_INDEX = #{AP_CINDEX}
 	</insert>  
+
+	<select id="idcheck" resultType="apply">
+	select * from apply where AP_ID = #{AP_ID} and AP_CINDEX = #{AP_CINDEX}
+	</select>
 	
-<!-- 	<select id="getClassDetail" resultType="apply">
-		select 
-	</select> -->
+	<select id="count" resultType="int">
+		select count(*) from apply where AP_CINDEX = #{num}
+	</select>
 </mapper>

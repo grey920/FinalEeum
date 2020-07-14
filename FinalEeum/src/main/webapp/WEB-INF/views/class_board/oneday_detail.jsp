@@ -327,7 +327,7 @@
 												<h2 class="oneday-title oneday-title_h2">장소 |
 													${onedaydata.ONE_LOCATE}</h2>
 												<h3 class="oneday-title oneday-title_h3">${onedaydata.ONE_PRICE}원</h3>
-												<div class="seat">가능 인원 ${onedaydata.ONE_SEAT - onedaydata.ONE_ACTUAL_SEAT}명&nbsp;&nbsp;|&nbsp;&nbsp;정원
+												<div class="seat">가능 인원 ${onedaydata.ONE_SEAT - classCount}명&nbsp;&nbsp;|&nbsp;&nbsp;정원
 													${onedaydata.ONE_SEAT}명</div>
 													<div style="display:none">
 											<jsp:useBean id="now" class="java.util.Date"/>

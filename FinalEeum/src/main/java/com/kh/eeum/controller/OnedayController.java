@@ -79,6 +79,8 @@ public class OnedayController {
 	@GetMapping(value = "/OnedayDetailAction.one")
 	public ModelAndView OnedayDetail(int num, ModelAndView mv, HttpServletRequest request) {
 		Oneday oneday = onedayService.getDetail(num);
+		int classCount = applyService.getClassCount(num);//신청한 자릿수 (ONE_SEAT - ONE_ACTUAL_SEAT)
+		System.out.println("classcount = "+ classCount);
 		if(oneday == null) {
 			System.out.println("상세보기 실패");
 			mv.setViewName("error/error");
@@ -88,6 +90,7 @@ public class OnedayController {
 			System.out.println("상세보기 성공");
 			mv.setViewName("class_board/oneday_detail");
 			mv.addObject("onedaydata", oneday);
+			mv.addObject("classCount", classCount);
 		}
 		return mv;
 	}
@@ -213,18 +216,32 @@ public class OnedayController {
 	}
 	
 	@RequestMapping(value="OnedayApply.one")
-	public void apply(@RequestParam("num") int num,Oneday oneday, Apply apply, ModelAndView mv, 
+	public  ModelAndView apply(@RequestParam("num") int num,Oneday oneday, Apply apply, ModelAndView mv, 
 			HttpServletRequest request,HttpServletResponse response, HttpSession session) throws IOException {
 		String id = (String)session.getAttribute("user_id");
-		System.out.println("OnedayApply.one들어왔음");
-		apply.setAP_ID(id);
-		apply.setAP_CINDEX(num);
+		System.out.println("id, num="+id +num);
 		
-		int result = applyService.insertApply(apply);
-		System.out.println("들어왔니");
+		boolean idcheck_result = applyService.isId(id, num);	
+		if(idcheck_result == false) {
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('이미 신청한 클래스입니다. 마이페이지를 확인하세요');");
+			out.println("location.href='OnedayList.one';"); //마이페이지로 넘기기
+			out.println("</script>");
+			out.close();
+			return null;
+		} else {
+			apply.setAP_ID(id);
+			apply.setAP_CINDEX(num);
+		}
+			int result = applyService.insertApply(apply);
+			System.out.println("들어왔니");
 		
 		if(result==1) {
 		System.out.println("원데이 클래스 신청 성공");
+//		int resultUpdate = onedayService.updateProg(num);
+		
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
@@ -232,19 +249,20 @@ public class OnedayController {
 		out.println("location.href='OnedayList.one';"); //마이페이지로 넘기기
 		out.println("</script>");
 		out.close();
-//		return null;
+		return null;
 	
 		} 
-//		else {
-//			System.out.println("원데이 클래스 신청 실패 - OnedayApply.one");
-//			mv.setViewName("error/error");
-//			mv.addObject("url", request.getRequestURL());
-//			mv.addObject("message", "클래스 신청 실패입니다.");
-//			return mv;
-//		}
+		else {
+			System.out.println("원데이 클래스 신청 실패 - OnedayApply.one");
+			mv.setViewName("error/error");
+			mv.addObject("url", request.getRequestURL());
+			mv.addObject("message", "클래스 신청 실패입니다.");
+			return mv;
+		}
 		
 	}
-
+	
+	
 	@GetMapping("/OnedayModifyView.one")
 	public ModelAndView OnedayModifyView(int num, ModelAndView mv, HttpServletRequest request) {
 		Oneday onedaydata = onedayService.getDetail(num);
