@@ -20,7 +20,7 @@
 		select * from user_table 
 	    where user_nick = #{user_nick}
 	</select>
-	
+	 
 	<update id="userupdate" parameterType="user">
 		update user_table
 		set user_profile = #{user_profile}, user_saveprofile = #{user_saveprofile}, 

@@ -13,6 +13,6 @@ public class Admin {
 	public int cUsers() {
 		return sqlSession.selectOne("eeum.allUsers");
 	}
-	 
+	  
 	
 }
