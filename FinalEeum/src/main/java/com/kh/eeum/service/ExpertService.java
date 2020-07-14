@@ -10,7 +10,11 @@ public interface ExpertService {
 	public int isId(String expert_id);
 	public Expert expert_info(String expert_id);
 	public int expert_update(Expert ex);
+
 	public int getExpertListCount();
 	public List<Expert> expertlist(int page, int limit);
 	public Expert expertlistOne(String expertid);
+
+	public List<Expert> getList();
+
 }

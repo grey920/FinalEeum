@@ -1,6 +1,6 @@
 package com.kh.eeum.service;
 
-import java.util.HashMap;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +63,13 @@ public class ExpertServiceImpl implements ExpertService {
 	public int expert_update(Expert ex) {
 		return exdao.update(ex);
 	}
+
+
+	@Override
+	public List<Expert> getList() {
+		return exdao.getList();
+	}
+	
 
 	@Override
 	public int getExpertListCount() {

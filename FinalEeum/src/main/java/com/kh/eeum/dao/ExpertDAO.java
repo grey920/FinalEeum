@@ -1,6 +1,6 @@
 package com.kh.eeum.dao;
 
-import java.util.HashMap;
+
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -35,6 +35,7 @@ public class ExpertDAO {
 		return sqlSession.update("Experts.expertupdate", ex);
 	}
 
+
 	public int expert_listCount() {
 		// 전문가 총 리스수 가져옴
 		return sqlSession.selectOne("Experts.expertcount");
@@ -48,5 +49,6 @@ public class ExpertDAO {
 	public Expert getexpertListOne(String expertid) {
 		System.out.println("dao 넘어온 값: "+expertid);
 		return sqlSession.selectOne("Experts.expertdetails", expertid);
+
 	}
 }

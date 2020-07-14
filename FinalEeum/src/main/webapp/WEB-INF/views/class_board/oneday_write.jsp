@@ -42,6 +42,7 @@
 	defer></script>
 </head>
 <body>
+<input type="hidden" id="loginid" value="${id }" name="loginid">
 	<div class="wrapper">
 		<!-- header start -->
 		<header>
@@ -249,7 +250,7 @@
 		<div class="login-register-area ptb-130 hm-3-padding">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-7 ml-auto mr-auto">
+					<div class="col-lg-9 ml-auto mr-auto">
 						<div class="login-register-wrapper">
 							<div class="login-register-tab-list nav">
 								<div class="index">
@@ -265,7 +266,7 @@
 												enctype="multipart/form-data" name="onedayform">
 
 												작성자 <input type="text" id="oneday_name" name="WRITER_ID"
-													placeholder="Username" class="oneday_write_form">
+													 class="oneday_write_form" value="${user_id}" readonly>
 
 												분류 <select name="ONE_TYPE" id="oneday_type" style="margin-bottom: 30px">
 													<option value="">분류 선택</option>
@@ -281,6 +282,8 @@
 
 												일시 <input type="date" name="ONE_RDATE" id="rdate"
 													min="${sysdate}">
+
+												장소 <input type="text" name="ONE_LOCATE" id="loc">
 
 												<div class="quantity-range">
 													<span> 정원</span> <input class="seat_count qty text"

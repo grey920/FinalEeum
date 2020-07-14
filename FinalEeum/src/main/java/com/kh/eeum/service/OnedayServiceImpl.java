@@ -65,6 +65,11 @@ public class OnedayServiceImpl implements OnedayService{
 	      return result;
 	}
 
+	@Override
+	public int onedayModify(Oneday modifyoneday) {
+		return dao.onedayModify(modifyoneday);
+	}
+
 	
 	
 }

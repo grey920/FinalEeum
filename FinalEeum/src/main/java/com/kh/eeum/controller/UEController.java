@@ -51,7 +51,7 @@ public class UEController {
 	/* 회원가입 */
 	@RequestMapping(value="userJoin.net", method=RequestMethod.GET)
 	public String userJoin() {
-		return "user_join";
+		return "UE/user_join";
 	}
 	
 	@RequestMapping(value="userJoinProcess.net", method=RequestMethod.POST)
@@ -124,6 +124,13 @@ public class UEController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value="user_jumincheck.net", method=RequestMethod.GET)
+	public int user_jumincheck(String user_jumin1, String user_jumin2) {
+		int result = userservice.isJumin(user_jumin1, user_jumin2);
+		return result;
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="user_idcheck.net", method=RequestMethod.GET)
 	public int user_idcheck(String user_id) {
 		int result = userservice.isId(user_id);
@@ -139,50 +146,11 @@ public class UEController {
 	
 	@RequestMapping(value="expertJoin.net", method=RequestMethod.GET)
 	public String expert_join() {
-		return "expert_join";
+		return "UE/expert_join";
 	}
 	
 	@RequestMapping(value="expertJoinProcess.net", method=RequestMethod.POST)
 	public void joinProcess(Expert expert, HttpServletResponse response, HttpServletRequest request) throws Exception {
-		MultipartFile uploadfile = expert.getUploadfile();
-		
-		if (!uploadfile.isEmpty()) {
-			String fileName = uploadfile.getOriginalFilename();
-			expert.setExpert_profile(fileName);
-			
-			Calendar c = Calendar.getInstance();
-			int year = c.get(Calendar.YEAR);
-			int month = c.get(Calendar.MONTH) + 1;
-			int date = c.get(Calendar.DATE);
-			String saveFolder = request.getSession().getServletContext().getRealPath("resources") + "/profile/";
-			String homedir = saveFolder + year + "-" + month + "-" + date;
-			System.out.println(homedir);
-			File path1 = new File(homedir);
-			
-			if(!(path1.exists())) {
-				path1.mkdir();
-			}
-			
-			Random r = new Random();
-			int random = r.nextInt(100000000);
-			
-			int index = fileName.lastIndexOf(".");
-			System.out.println("파일이름 . 위치 = " + index);
-			
-			String fileExtension = fileName.substring(index+1);
-			System.out.println("프로필 사진 확장자 = " + fileExtension);
-			
-			String refileName = "eeum" + year + month + date + random + "." + fileExtension;
-			System.out.println("새로운 파일명 = " + refileName);
-			
-			String fileDBName = "/" + year + "-" + month + "-" + date + "/" + refileName;
-			System.out.println("DB에 저장될 파일명 = " + fileDBName);
-			
-			uploadfile.transferTo(new File(saveFolder + fileDBName));
-			
-			expert.setExpert_saveprofile(fileDBName);
-		} 
-		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
@@ -229,7 +197,7 @@ public class UEController {
 			System.out.println("cookie time = " + readCookie.getMaxAge());
 		}
 		
-		mv.setViewName("login");
+		mv.setViewName("UE/login");
 		return mv;
 	}
 	
@@ -279,14 +247,14 @@ public class UEController {
 	/* 사용자 마이페이지 */
 	@RequestMapping(value="userpage.net")
 	public String userpage() {
-		return "userpage_main";
+		return "UE/userpage_main";
 	}
 	
 	@RequestMapping(value="userUpdate.net", method=RequestMethod.GET)
 	public ModelAndView userUpdate(HttpSession session, ModelAndView mv) throws Exception {
 		String user_id = (String) session.getAttribute("user_id");
 		User user = userservice.user_info(user_id);
-		mv.setViewName("userpage_info");
+		mv.setViewName("UE/userpage_info");
 		mv.addObject("userinfo", user);
 		return mv;
 	}
@@ -301,9 +269,7 @@ public class UEController {
 	
 		response.setContentType("text/html;charset=utf-8");
 		int result = userservice.user_update(u);
-		
-		System.out.println("다녀오셨습니까");
-		
+				
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		
@@ -317,5 +283,31 @@ public class UEController {
 		}
 		out.println("</script>");
 		out.close();
+	}
+	
+	@RequestMapping(value="userReservation.net")
+	public String userReservation() {
+		return "UE/userpage_reservation";
+	}
+	
+	@RequestMapping(value="userReview.net")
+	public String userReview() {
+		return "UE/userpage_review";
+	}
+	
+	@RequestMapping(value="userOneday.net")
+	public String userOneday() {
+		return "UE/userpage_oneday";
+	}
+	
+	@RequestMapping(value="userWishlist.net")
+	public String userWishlist() {
+		return "UE/userpage_wishlist";
+	}
+	
+	@RequestMapping(value="userDelete.net", method=RequestMethod.GET)
+	public String delete(String user_id) throws Exception {
+		userservice.user_delete(user_id);
+		return "redirect:/";
 	}
 }

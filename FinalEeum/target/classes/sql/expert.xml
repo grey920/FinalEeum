@@ -6,10 +6,12 @@
 
 	<insert id="insert" parameterType="expert">
 		insert into expert_table
+
 		values(#{expert_profile}, #{expert_saveprofile},
 		#{expert_jumin1},#{expert_jumin2}, #{expert_name},
 		#{expert_id}, #{expert_pass}, #{expert_phone1}, #{expert_phone2}, #{expert_phone3},
 		#{expert_email1}, #{expert_email2})
+
 	</insert>
 
 	<select id="idcheck" resultType="expert" parameterType="String">
