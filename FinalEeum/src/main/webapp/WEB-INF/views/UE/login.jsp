@@ -104,7 +104,6 @@ button{height:50px}
 												<ul>
 													<li><a href="blog-details-standerd.html">about us</a></li>
 												</ul></li>
-											<li><a href="contact.html">contact us</a></li>
 										</ul>
 									</nav>
 								</div>
