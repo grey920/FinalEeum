@@ -19,6 +19,8 @@ public interface OnedayService {
 	public int boardDelete(int num);
 
 	public int onedayModify(Oneday oneday);
-	
+
+	public int updateProg(int num);
+
 	
 }

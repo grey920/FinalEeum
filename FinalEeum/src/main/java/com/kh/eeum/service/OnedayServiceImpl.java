@@ -70,6 +70,17 @@ public class OnedayServiceImpl implements OnedayService{
 		return dao.onedayModify(modifyoneday);
 	}
 
+	@Override
+	public int updateProg(int num) {
+		int result = 0;
+		Oneday oneday = dao.getDetail(num);
+		if(oneday != null) {
+			result = dao.updateProg(oneday);
+		}
+		return result;
+	}
+
+
 	
 	
 }

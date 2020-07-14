@@ -55,6 +55,14 @@ public class OnedayDAO {
 	public int onedayModify(Oneday modifyoneday) {
 		return sqlSession.update("Onedays.modify", modifyoneday);
 	}
+
+
+	public int updateProg(Oneday oneday) {
+		
+		return sqlSession.update("Onedays.updateProg", oneday);
+	}
+
+
 	
 
 }

@@ -89,5 +89,11 @@
 		where ONE_INDEX = #{ONE_INDEX}
 	</update>
 	
+	<update id="updateProg" parameterType="oneday">
+	update oneday
+	set 
+		ONE_ACTUAL_SEAT = #{ONE_ACTUAL_SEAT}+1
+	where ONE_INDEX = #{ONE_INDEX}	
+	</update>
 	
 </mapper>
