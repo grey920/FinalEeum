@@ -1,6 +1,7 @@
 package com.kh.eeum.dao;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -50,5 +51,9 @@ public class ExpertDAO {
 		System.out.println("dao 넘어온 값: "+expertid);
 		return sqlSession.selectOne("Experts.expertdetails", expertid);
 
+	}
+
+	public List<Expert> getList(){
+		return sqlSession.selectList("Experts.expertList");
 	}
 }
