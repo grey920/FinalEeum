@@ -19,10 +19,6 @@ public class UserDAO {
 		return sqlSession.insert("Users.insert", u);
 	}
 	
-	public List<Map<String, String>> isJumin(String user_jumin1) {			//주민번호 중복검사 
-		return sqlSession.selectList("Users.jumincheck", user_jumin1);
-	}
-	
 	public User isId(String user_id) {
 		return sqlSession.selectOne("Users.idcheck", user_id);
 	}
