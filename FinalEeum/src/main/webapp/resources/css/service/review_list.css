@@ -16,3 +16,13 @@
 	top: 60px;
 	
 }
+#comment{
+	width: 20%;
+	position: relative;
+	left: 10%;
+}
+
+#user_review{
+	position: relative;
+	top: 50px;
+}

@@ -19,11 +19,15 @@ public class LikeDAO {
 		return sqlSession.insert("Likes.inertlike", like);
 	}
 
-	public List<Like> listLike(String expert_id, String user_id, int num) {
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("expert_id", expert_id);
-		map.put("user_id",user_id);
-		return sqlSession.selectOne("Likes.listLike",map);
+
+	public Object listLike(HashMap<String, Object> map) {
+		
+		return sqlSession.selectOne("Likes.listLike", map);
+	}
+
+
+	public void deleteLike(Like like) {
+		sqlSession.delete("Likes.deleteLike",like);
 	}
 
 }

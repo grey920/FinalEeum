@@ -556,7 +556,7 @@
 														<span style="position: relative; left: 202px;">빌딩/상가</span><br>
 														<input type="radio" name="structure1" id="structure1"><span>기타</span><br>
 														<textarea rows="4" cols="20" maxlength="50"
-															style="border: 1px solid lightgray;"></textarea>
+															style="border: 1px solid lightgray;" id="textarea1" name="textarea1"></textarea>
 														<b class="page_number">1/4</b>
 													</div>
 													<!-- 버튼 -->
