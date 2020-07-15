@@ -22,6 +22,6 @@
 		<mapper resource="sql/oneday.xml"/>	
 		<mapper resource="sql/admin.xml"/>
 		<mapper resource="sql/apply.xml"/>
-			<mapper resource="sql/like.xml"/>
+		<mapper resource="sql/like.xml"/>
 	</mappers>
 </configuration>

@@ -24,182 +24,30 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/responsive.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
+<%@ include file="../header.jsp" %>
 <style>
 select {font-size:13pt}
 .text-center h2{font-weight:900}
-.ptb-130 {padding-top:30px}
-input[type=button] {background-color:#72A0E0;color:white;margin-bottom:10px}
-input:readonly{background-color:#E4E8F0}
-.login-form-container{padding-top:30px}
+.ptb-130 {padding-top:30px !important}
+.login-form-container input {padding:0 20px 0 20px;border-radius:10px}
+.login-form-container select {padding:0 10px 0 10px;border-radius:10px}
+input[type=button] {background-color:#72A0E0;color:white;margin-bottom:10px;font-size:13pt}
+input:read-only{background-color:#d2d3d6}
+.pt-120{padding-top:50px !important}
+.breadcrumb-content{padding-top:0;margin-top:1em}
+ .breadcrumb-content ul > li{font-size:13pt}
+ button[type=submit]{color:#72A0E0;background-color:white;border:2px solid #72A0E0; 
+ 									border-radius:10px;font-weight:700}
+ button[type=submit]:hover{background-color:#72A0E0;color:white;border:2px solid #72A0E0;}
+ .login-form-container span{font-size:15pt}
+ .secession {color:white; background-color:red; border:2px solid red;border-radius:10px;font-size:13pt}
+ .secession:hover {background-color:white; color:red; border:2px solid red}
+ .modal-footer a {font-size:13pt}
 </style>
 </head>
 <body>
 	<div class="wrapper">
 		<!-- header start -->
-		<header>
-			<div class="header-area transparent-bar">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-2 col-md-2 col-sm-5 col-5">
-							<div class="language-currency">
-								<div class="language">
-									<select class="select-header orderby">
-										<option value="">ENGLISH</option>
-										<option value="">BANGLA</option>
-										<option value="">HINDI</option>
-									</select>
-								</div>
-								<div class="currency">
-									<select class="select-header orderby">
-										<option value="">USD</option>
-										<option value="">US</option>
-										<option value="">EURO</option>
-									</select>
-								</div>
-							</div>
-							<div class="sticky-logo"> <!-- 스크롤내렸을 때,메뉴바 로고  -->
-								<a href="index.html"><img src="resources/img/logo/eeeum_logo_36518f.png"
-									alt="" /></a>
-							</div>
-							<div class="logo-small-device">	<!-- 반응형 웹 작게했을 때 로고 -->
-								<a href="index.html"><img alt=""
-									src="resources/img/logo/eeum_logo_small4.png"></a>
-							</div>
-						</div>
-						<div class="col-lg-8 col-md-8 d-none d-md-block">
-							<div class="logo-menu-wrapper text-center">
-								<div class="logo">	<!-- 반응형 웹 크게했을 때 로고 -->
-									<a href="index.html"><img src="resources/img/logo/eeum_logo_small4.png"
-										alt=""  /></a>
-								</div>
-								<div class="main-menu">
-									<nav>
-										<ul>
-											<li><a href="index.html">home</a></li>
-											<li><a href="about-us.html">about us </a></li>
-											<li><a href="shop.html">shop <i
-													class="ion-ios-arrow-down"></i></a>
-												<ul>
-													<li><a href="product-details.html">Product details</a></li>
-												</ul></li>
-											<li><a href="#">pages <i class="ion-ios-arrow-down"></i></a>
-												<ul>
-													<li><a href="about-us.html">about us</a></li>
-													<li><a href="cart.html">cart page</a></li>
-													<li><a href="checkout.html">checkout</a></li>
-													<li><a href="wishlist.html">wishlist</a></li>
-													<li><a href="login-register.html">login</a></li>
-													<li><a href="contact.html">contact</a></li>
-												</ul></li>
-											<li><a href="blog.html">blog <i
-													class="ion-ios-arrow-down"></i></a>
-												<ul>
-													<li><a href="blog-details-standerd.html">about us</a></li>
-												</ul></li>
-											<li><a href="contact.html">contact us</a></li>
-										</ul>
-									</nav>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-7 col-7">
-							<div class="header-site-icon">
-								<div class="header-search same-style">
-									<button class="sidebar-trigger-search">
-										<span class="ti-search"></span>
-									</button>
-								</div>
-								<div class="header-login same-style">
-									<a href="login-register.html"> <span class="ti-expert"></span>
-									</a>
-								</div>
-								<div class="header-cart same-style">
-									<button class="sidebar-trigger">
-										<i class="ti-shopping-cart"></i> <span class="count-style">03</span>
-									</button>
-								</div>
-							</div>
-						</div>
-						<div class="mobile-menu-area col-12">
-							<div class="mobile-menu">
-								<nav id="mobile-menu-active">
-									<ul class="menu-overflow">
-										<li><a href="#">HOME</a>
-											<ul>
-												<li><a href="index.html">home version 1</a></li>
-												<li><a href="index-2.html">home version 2</a></li>
-												<li><a href="index-3.html">home version 3</a></li>
-												<li><a href="index-4.html">home version 4</a></li>
-											</ul></li>
-										<li><a href="#">pages</a>
-											<ul>
-												<li><a href="about-us.html">about us</a></li>
-												<li><a href="cart.html">cart page</a></li>
-												<li><a href="checkout.html">checkout</a></li>
-												<li><a href="wishlist.html">wishlist</a></li>
-												<li><a href="login-register.html">login</a></li>
-												<li><a href="contact.html">contact</a></li>
-											</ul></li>
-										<li><a href="#">shop</a>
-											<ul>
-												<li><a href="#">shop grid</a>
-													<ul>
-														<li><a href="shop-grid-2-col.html"> grid 2 column</a></li>
-														<li><a href="shop-grid-3-col.html"> grid 3 column</a></li>
-														<li><a href="shop.html"> grid 4 column</a></li>
-														<li><a href="shop-grid-6-col.html"> grid 6 column</a></li>
-														<li><a href="shop-grid-box.html"> grid box style</a></li>
-													</ul></li>
-												<li><a href="#">shop list</a>
-													<ul>
-														<li><a href="shop-list.html"> list 1 column</a></li>
-														<li><a href="shop-list-2-col.html"> list 2 column</a></li>
-														<li><a href="shop-list-3-col.html"> list 3 column</a></li>
-														<li><a href="shop-list-box.html"> list box style</a></li>
-													</ul></li>
-												<li><a href="shop-grid-view-5-col.html">product
-														details</a>
-													<ul>
-														<li><a href="product-details.html">tab style</a></li>
-														<li><a href="product-details-sticky.html">sticky
-																style</a></li>
-														<li><a href="product-details-gallery.html">gallery
-																style</a></li>
-														<li><a href="product-details-fixed-img.html">fixed
-																image style</a></li>
-													</ul></li>
-											</ul></li>
-										<li><a href="#">BLOG</a>
-											<ul>
-												<li><a href="blog-masonry.html">Blog Masonry</a></li>
-												<li><a href="#">Blog Standard</a>
-													<ul>
-														<li><a href="blog-left-sidebar.html">left sidebar</a></li>
-														<li><a href="blog-right-sidebar.html">right
-																sidebar</a></li>
-														<li><a href="blog-no-sidebar.html">no sidebar</a></li>
-													</ul></li>
-												<li><a href="#">Post Types</a>
-													<ul>
-														<li><a href="blog-details-standerd.html">Standard
-																post</a></li>
-														<li><a href="blog-details-audio.html">audio post</a></li>
-														<li><a href="blog-details-video.html">video post</a></li>
-														<li><a href="blog-details-gallery.html">gallery
-																post</a></li>
-														<li><a href="blog-details-link.html">link post</a></li>
-														<li><a href="blog-details-quote.html">quote post</a></li>
-													</ul></li>
-											</ul></li>
-										<li><a href="contact.html"> Contact us</a></li>
-									</ul>
-								</nav>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
 		<div class="header-height"></div>
 		
 		<!-- main-search start -->
@@ -247,43 +95,43 @@ input:readonly{background-color:#E4E8F0}
 											<form action="expertUpdateProcess.net" method="post">
 												
 												<p>주민등록 번호</p><!-- 숫자만 -->
-												<input type="text" id="expert_jumin1" name="expert_jumin1"  maxLength="6" style="width:47%;margin-bottom:10px"
+												<input type="text" id="expert_jumin1" name="expert_jumin1"  maxLength="6" style="width:45%;margin-bottom:10px"
 															value="${e.expert_jumin1}" readonly>
 												<b>&nbsp;-&nbsp;</b>
-												<input type="password" id="expert_jumin2" name="expert_jumin2" maxLength="7" style="width:49%;"
+												<input type="password" id="expert_jumin2" name="expert_jumin2" maxLength="7" style="width:45%;"
 															value="${e.expert_jumin2}" readonly>
 												<span></span>
 												
 												<p>이름</p><!-- 한글만 -->
-												<input type="text" id="expert_name" name="expert_name" placeholder="이름을 입력하세요" 
+												<input type="text" id="expert_name" name="expert_name" placeholder="이름을 입력하세요" style="width:96%"
 															value="${e.expert_name}" readonly>
 												<span></span>
 												
 												<p>아이디</p> <!-- 영문 대소문자 + 숫자, 4~16자  -->
-												<input type="text" id="expert_id" name="expert_id" placeholder="아이디를 입력하세요" 
+												<input type="text" id="expert_id" name="expert_id" placeholder="아이디를 입력하세요" style="width:96%"
 															value="${e.expert_id}" readonly>
 												<span></span>
 												
 												<p>비밀번호 *</p> <!-- 영문 대소문자/숫자/특수문자 모두 조합 8-12자 -->
-												<input type="password" id="expert_pass" name="expert_pass" placeholder="비밀번호를 입력하세요" >
+												<input type="password" id="expert_pass" name="expert_pass" placeholder="비밀번호를 입력하세요" style="width:96%">
 												<span id="message_pass1"></span>
 												
 												<p>비밀번호 확인 *</p>	<!-- 위의 것과 맞는지 -->
-												<input type="password" id="password_check" name="password_check" placeholder="비밀번호를 한 번 더 입력하세요" >
+												<input type="password" id="password_check" name="password_check" placeholder="비밀번호를 한 번 더 입력하세요" style="width:96%">
 												<span id="message_pass2"></span>
 											
 												<p>휴대폰 번호 * </p> <!-- 숫자만 -->
-												<input type="text" id="expert_phone1" name="expert_phone1" value="010" style="width:31%;text-align:center;margin-bottom:10px;" value="${e.expert_phone1}" readonly>
+												<input type="text" id="expert_phone1" name="expert_phone1" value="010" style="width:26%;text-align:center;margin-bottom:10px;" value="${e.expert_phone1}" readonly>
 												<b>-</b>
 												<input type="text" id="expert_phone2" name="expert_phone2" maxLength="4" style="width:32%;text-align:center;margin-bottom:10px;" value="${e.expert_phone2}">
 												<b>-</b>
-												<input type="text" id="expert_phone3" name="expert_phone3" maxLength="4" style="width:32%;text-align:center;margin-bottom:10px;" value="${e.expert_phone3}">
+												<input type="text" id="expert_phone3" name="expert_phone3" maxLength="4" style="width:33%;text-align:center;margin-bottom:10px;" value="${e.expert_phone3}">
 												<span id="message_phone"></span>
 												
 												<p>이메일 주소 *</p>
-												<input type="text" id="expert_email1" name="expert_email1" placeholder="이메일 주소를 입력하세요" style="width:43%;margin-bottom:10px" value="${e.expert_email1 }">
+												<input type="text" id="expert_email1" name="expert_email1" placeholder="이메일 주소를 입력하세요" style="width:42%;margin-bottom:10px" value="${e.expert_email1 }">
 												<b>&nbsp;@&nbsp;</b>
-												<select id="expert_email2" name="expert_email2" style="width:51%;">
+												<select id="expert_email2" name="expert_email2" style="width:48%;">
 													<option value="">이메일 선택</option>
 													<option value="naver.com" <c:if test="${e.expert_email2 == 'naver.com'}"> selected</c:if>>naver.com</option>
 													<option value="gmail.com" <c:if test="${e.expert_email2 == 'gmail.com'}"> selected</c:if>>gmail.com</option>
@@ -295,7 +143,7 @@ input:readonly{background-color:#E4E8F0}
 												<span></span>
 												
 												<div class="button-box" style="text-align:center;margin:0 auto">
-													<button type="submit" class="btn-style cr-btn">
+													<button type="submit" class="btn-style">
 														<span>수정하기</span>
 													</button>
 												</div>
@@ -309,10 +157,37 @@ input:readonly{background-color:#E4E8F0}
 				</div>
 			</div>
 			<div class="button-box" style="text-align:center;">
-				<button class="btn-style cr-btn" onclick="location.href='expertJoin.net';" style="background-color:red">
+				<button class="btn-style secession"  data-toggle="modal" data-target="#modalConfirmDelete">
 					<span>탈퇴하기</span>
 				</button>
 			</div>
+			
+			<!--Modal: modalConfirmDelete-->
+				<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+						
+						<!--Content-->
+						<div class="modal-content text-center" style="width: 40%; margin: 0 auto;">
+							
+							<!--Header-->
+							<div class="modal-header d-flex justify-content-center" style="margin-top:15px">
+								<p class="heading" style="margin-bottom:10px;color:#303030">정말로 이음을 떠나실 건가요?</p>
+							</div>
+
+							<!--Body-->
+							<div class="modal-body">
+								<i class="fa fa-times fa-4x animated rotateIn" style="width: auto; margin: 0 auto; color: #dc3545;"></i>
+							</div>
+
+							<!-- Footer -->
+							<div class="modal-footer flex-center" >
+			      				<a href="userDelete.net?user_id=${u.user_id }" class="btn  btn-outline-danger">예</a>
+			        			<a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal" style="color:white">아니요</a>
+			      			</div>
+			    		</div>
+						<!--/.Content-->
+					</div>
+				</div>
 		</div>
 
 		<footer class="hm-4-padding">
