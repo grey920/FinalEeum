@@ -25,11 +25,23 @@
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 <%@ include file="../header.jsp" %>
 	<style>
-	select {font-size:13pt}
+	select {font-size:13pt;border-radius:10px}
 	.text-center h2{font-weight:900}
-	.ptb-130 {padding-top:30px}
-	input[type=button] {background-color:#72A0E0;color:white}
-	.login-form-container{padding-top:30px}
+	.ptb-130 {padding-top:30px !important}
+	.breadcrumb-content{padding-top:0;margin-top:1em}
+	input[type=button] {background-color:#72A0E0;color:white;font-size:13pt}
+	input{border-radius:10px}
+	p{font-weight:800}
+	.login-form button {background-color:white;
+				color:#72A0E0;
+				border:2px solid #72A0E0;
+				border-radius:10px}
+	.login-form button:hover{border:2px solid #72A0E0;
+								color:white;
+								background-color:#72A0E0 !important;
+								z-index:1}
+	 .login-form-container .button-box span{font-size:15pt}
+	  .col-lg-7{-ms-flex:0 0 60%;flex:0 0 60%;max-width:60%}
 	</style>
 </head>
 <body>
@@ -81,39 +93,40 @@
 											<form action="expertJoinProcess.net" method="post">
 												
 												<p>주민등록 번호 *</p><!-- 숫자만 -->
-												<input type="text" id="expert_jumin1" name="expert_jumin1"  maxLength="6" style="width:47%;margin-bottom:10px">
+												<input type="text" id="user_jumin1" name="expert_jumin1"  maxLength="6" style="width:32%;margin-bottom:10px;text-align:center">
 												<b>&nbsp;-&nbsp;</b>
-												<input type="password" id="expert_jumin2" name="expert_jumin2" maxLength="7" style="width:49%;">
+												<input type="password" id="user_jumin2" name="expert_jumin2" maxLength="7" style="width:32%;">
+												<input type="button" value="가입확인" id="checkJumin" style="width:26%;margin-left:5px;font-weight:600;cursor:pointer">
 												<span id="message_jumin"></span>
 												
 												<p>이름 *	</p><!-- 한글만 -->
-												<input type="text" id="expert_name" name="expert_name" placeholder="이름을 입력하세요" >
+												<input type="text" id="expert_name" name="expert_name" placeholder="이름을 입력하세요" style="width:96%">
 												<span></span>
 												
 												<p>아이디 *</p> <!-- 영문 대소문자 + 숫자, 4~16자  -->
-												<input type="text" id="expert_id" name="expert_id" placeholder="아이디를 입력하세요" >
+												<input type="text" id="expert_id" name="expert_id" placeholder="아이디를 입력하세요" style="width:96%">
 												<span id="message_id"></span>
 												
 												<p>비밀번호 *</p> <!-- 영문 대소문자/숫자/특수문자 모두 조합 8-12자 -->
-												<input type="password" id="expert_pass" name="expert_pass" placeholder="비밀번호를 입력하세요" >
+												<input type="password" id="expert_pass" name="expert_pass" placeholder="비밀번호를 입력하세요" style="width:96%">
 												<span id="message_pass1"></span>
 												
 												<p>비밀번호 확인 *</p>	<!-- 위의 것과 맞는지 -->
-												<input type="password" id="password_check" name="password_check" placeholder="비밀번호를 한 번 더 입력하세요" >
+												<input type="password" id="password_check" name="password_check" placeholder="비밀번호를 한 번 더 입력하세요" style="width:96%">
 												<span id="message_pass2"></span>
 
 												<p>휴대폰 번호 * </p> <!-- 숫자만 -->
-												<input type="text" id="expert_phone1" name="expert_phone1" value="010" style="width:31%;text-align:center;margin-bottom:10px;" readonly>
+												<input type="text" id="expert_phone1" name="expert_phone1" value="010" style="width:26%;text-align:center;margin-bottom:10px;" readonly>
 												<b>-</b>
 												<input type="text" id="expert_phone2" name="expert_phone2" maxLength="4" style="width:32%;text-align:center;margin-bottom:10px;" >
 												<b>-</b>
-												<input type="text" id="expert_phone3" name="expert_phone3" maxLength="4" style="width:32%;text-align:center;margin-bottom:10px;" >
+												<input type="text" id="expert_phone3" name="expert_phone3" maxLength="4" style="width:33%;text-align:center;margin-bottom:10px;" >
 												<span id="message_phone"></span>
 												
 												<p>이메일 주소 *</p>
-												<input type="text" id="expert_email1" name="expert_email1" placeholder="이메일 주소를 입력하세요" style="width:43%;margin-bottom:10px">
+												<input type="text" id="expert_email1" name="expert_email1" placeholder="이메일 주소를 입력하세요" style="width:42%;margin-bottom:10px">
 												<b>&nbsp;@&nbsp;</b>
-												<select id="expert_email2" name="expert_email2" style="width:51%;">
+												<select id="expert_email2" name="expert_email2" style="width:48%;">
 													<option value="">이메일 선택</option>
 													<option value="naver.com">naver.com</option>
 													<option value="gmail.com">gmail.com</option>
@@ -125,10 +138,10 @@
 												<span></span>
 												
 												<div class="button-box" style="text-align:center;margin:0 auto">
-													<button type="submit" class="btn-style cr-btn">
+													<button type="submit" class="btn-style">
 														<span>가입하기</span>
 													</button>
-													<button type="reset" class="btn-style cr-btn">
+													<button type="reset" class="btn-style">
 														<span>다시 작성</span>
 													</button>
 												</div>
