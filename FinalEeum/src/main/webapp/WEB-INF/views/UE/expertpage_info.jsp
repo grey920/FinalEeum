@@ -94,6 +94,8 @@ input:read-only{background-color:#d2d3d6}
 										<div class="login-form">
 											<form action="expertUpdateProcess.net" method="post">
 												
+												
+												
 												<p>주민등록 번호</p><!-- 숫자만 -->
 												<input type="text" id="expert_jumin1" name="expert_jumin1"  maxLength="6" style="width:45%;margin-bottom:10px"
 															value="${e.expert_jumin1}" readonly>

@@ -9,13 +9,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kh.eeum.dao.ExpertDAO;
+import com.kh.eeum.dao.PortfolioDAO;
 import com.kh.eeum.domain.Expert;
+import com.kh.eeum.domain.Portfolio;
 
 @Service
 public class ExpertServiceImpl implements ExpertService {
 
 	@Autowired
 	private ExpertDAO exdao;
+	
+	@Autowired
+	private PortfolioDAO pfDao;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -91,6 +96,11 @@ public class ExpertServiceImpl implements ExpertService {
 	public Expert expertlistOne(String expertid) {
 		System.out.println("서비스 impl 넘어온 값: "+expertid);
 		return exdao.getexpertListOne(expertid);
+	}
+
+	@Override
+	public Portfolio getPortfolio(String expert_id) {
+		return pfDao.getPortfolio(expert_id);
 	}
 
 }
