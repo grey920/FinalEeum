@@ -224,33 +224,44 @@
 			</div>
 		</div>
 
-		
+
 		<div class="banner-area hm-4-padding">
 			<div class="container-fluid">
 				<!--  -->
 				<div class="banner-img">
-					
+
 					<div class="grad">
-						<img src="resources/profile/profile.jpg" alt=""
-							id="userimg">
+						<img src="resources/profile/profile.jpg" alt="" id="userimg">
 					</div>
-					<b style="font-size: 50px; position: relative; left: 680px; bottom: 190px;">${expertdata.expert_name} </b>
-					
+					<b
+						style="font-size: 50px; position: relative; left: 680px; bottom: 190px;">${expertdata.expert_name}
+					</b>
+
 					<!-- 전문가 아이디 -->
 					<input type="hidden" value="${expertdata.expert_id}" id="expert_id">
 					<!-- 사용자 아이디 -->
 					<input type="hidden" value="${user_id}" id="user_id">
-					
-					
+
+
 					<div class="heart_click">
-						<i id="fa-heart-o" class="fa fa-heart-o"
-							style="position: relative; left: 13px; top: 12px;"></i><span
-							style="position: relative; left: 20px; font-size: 17px; top: 12px; font-weight: 700;">찜하기</span>
+						<c:if test="${like ==1 }">
+							<i id="fa-heart-o" class="fa fa-heart"
+								style="position: relative; left: 13px; top: 12px;"></i>
+							<span
+								style="position: relative; left: 20px; font-size: 17px; top: 12px; font-weight: 700;">찜하기</span>
+						</c:if>
+						<c:if test="${like == 0 }">
+							<i id="fa-heart-o" class="fa fa-heart-o"
+								style="position: relative; left: 13px; top: 12px;"></i>
+							<span
+								style="position: relative; left: 20px; font-size: 17px; top: 12px; font-weight: 700;">찜하기</span>
+						</c:if>
 					</div>
 
 
 					<button style="font-weight: 700; font-size: 16px;"
-						data-toggle="modal" data-target="#myModal " class="heart_click2">
+						data-toggle="modal" data-target="#myModal " class="heart_click2"
+						id="request_btn">
 						<i id="fa-pencil-square-o" class="fa fa-pencil-square-o"></i> <b
 							style="color: black;">견적요청</b>
 					</button>
@@ -318,19 +329,21 @@
 																<div class="form-card " style="height: 350px;">
 																	<!-- 여기 라디오 버튼 : form -->
 																	<b>* 선택해주세요.</b><br> <br> <input type="radio"
-																		name="structure1" id="structure1" checked="checked"><span>아파트</span>
-																	<input type="radio" name="structure1" id="structure1"
+																		name="structure1" id="structure1" checked="checked"
+																		value="0"><span>아파트</span> <input type="radio"
+																		name="structure1" id="structure1" value="1"
 																		style="position: relative; left: 270px;"> <span
 																		style="position: relative; left: 275px;">단독주택</span><br>
-																	<input type="radio" name="structure1" id="structure1">
-																	<span>빌라/연립주택</span> <input type="radio"
-																		name="structure1" id="structure1"
-																		style="position: relative; left: 197px;"> <span
-																		style="position: relative; left: 202px;">빌딩/상가</span><br>
-																	<input type="radio" name="structure1" id="structure1"><span>기타</span><br>
-																	<textarea rows="4" cols="20" maxlength="50"
-																		style="border: 1px solid lightgray;"></textarea>
-																	<b class="page_number">1/4</b>
+																	<input type="radio" name="structure1" id="structure1"
+																		value="2"> <span>빌라/연립주택</span> <input
+																		type="radio" name="structure1" id="structure1"
+																		style="position: relative; left: 197px;" value="3">
+																	<span style="position: relative; left: 202px;">빌딩/상가</span><br>
+																	<input type="radio" name="structure1" id="structure1"
+																		value="4"><span>기타</span><br> <input
+																		type="text" maxlength="50" id="request_input1"
+																		style="border: 1px solid lightgray;"> <b
+																		class="page_number">1/4</b>
 																</div>
 																<!-- 버튼 -->
 																<input type="button" name="next"
@@ -342,31 +355,32 @@
 																<div class="form-card " style="height: 400px;">
 																	<!-- 여기 라디오 버튼 : form -->
 																	<b>* 선택해주세요.</b><br> <br> <input type="radio"
-																		name="structure1" id="structure1" checked="checked"><span>전자제품
-																		수리</span> <input type="radio" name="structure1"
-																		id="structure2"
-																		style="position: relative; left: 232px;"> <span
-																		style="position: relative; left: 239px;">가구수리</span><br>
-																	<input type="radio" name="structure1" id="structure2">
-																	<span>열쇠/도어락 수리</span> <input type="radio"
-																		name="structure1" id="structure2"
-																		style="position: relative; left: 199px;"> <span
-																		style="position: relative; left: 205px;">전기 배선
-																		수리</span><br> <input type="radio" name="structure1"
-																		id="structure2"> <span>방충망 및 방범창 수리</span> <input
+																		name="structure1" id="structure2" checked="checked"
+																		value="10"><span>전자제품 수리</span> <input
 																		type="radio" name="structure1" id="structure2"
-																		style="position: relative; left: 155px;"> <span
-																		style="position: relative; left: 161px;">문 수리</span><br>
-																	<input type="radio" name="structure1" id="structure2"
-																		style="position: relative; left: 396px;"> <span
-																		style="position: relative; left: 400px;">수도 관련
-																		수리</span> <input type="radio" name="structure1"
+																		style="position: relative; left: 232px;" value="20">
+																	<span style="position: relative; left: 239px;">가구수리</span><br>
+																	<input type="radio" name="structure2" id="structure2"
+																		value="30"> <span>열쇠/도어락 수리</span> <input
+																		type="radio" name="structure1" id="structure2"
+																		style="position: relative; left: 199px;" value="40">
+																	<span style="position: relative; left: 205px;">전기
+																		배선 수리</span><br> <input type="radio" name="structure1"
+																		id="structure2"> <span>방충망 및 방범창 수리</span> <input
+																		type="radio" name="structure2" id="structure2"
+																		style="position: relative; left: 155px;" value="50">
+																	<span style="position: relative; left: 161px;">문
+																		수리</span><br> <input type="radio" name="structure2"
 																		id="structure2"
-																		style="position: relative; right: 173px;"> <span
-																		style="position: relative; right: 174px;">기타</span><br>
-																	<textarea rows="4" cols="20" maxlength="50"
-																		style="border: 1px solid lightgray;"></textarea>
-																	<b class="page_number">2/4</b>
+																		style="position: relative; left: 396px;" value="60">
+																	<span style="position: relative; left: 400px;">수도
+																		관련 수리</span> <input type="radio" name="structure2"
+																		id="structure2"
+																		style="position: relative; right: 173px;" value="70">
+																	<span style="position: relative; right: 174px;">기타</span><br>
+																	<input type="text" maxlength="50" id="request_input2"
+																		style="border: 1px solid lightgray;"> <b
+																		class="page_number">2/4</b>
 																</div>
 																<!-- 버튼 -->
 																<input type="button" name="previous"
@@ -379,8 +393,18 @@
 																	<!-- 사진을 첨부해주세요.: form -->
 																	<span style="font-size: 15px; color: lightgray;">*최대
 																		10장</span>
-																	<textarea rows="8" cols="25"></textarea>
-																	<input type="file" id="upfile" name="BOARD_FILE">
+																	<div>
+																		<div class="imgs_wrap">
+																			<img id="img"  />
+																		</div>
+																	</div>
+																
+																<!--  -->
+																   <div class="input_wrap">
+																   <a href="javascript:" onclick="fileUploadAction();" class="my_button">파일 업로드</a>
+																   	<input type="file" id="input_imgs" multiple/>
+																   </div>
+																<!--  -->
 																	<b class="page_number">3/4</b>
 																</div>
 																<!-- 버튼 -->
@@ -400,7 +424,7 @@
 																<input type="button"
 																	class="previous action-button-previous" value="이전" />
 																<input type="button" name="finish" class="action-button"
-																	value="요청" />
+																	value="요청" id="finish" />
 															</fieldset>
 														</form>
 													</div>

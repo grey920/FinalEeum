@@ -79,11 +79,16 @@ public class ExpertController {
 	@GetMapping("/expert_details")
 	public ModelAndView service_details(ModelAndView mv,
 			@RequestParam(value = "expert", required = false) String expertid, HttpServletResponse response,
-			HttpSession session) throws Exception {
+			@RequestParam(value = "user_id", required = false) String user_id1, HttpSession session) throws Exception {
 
 		System.out.println("넘어온값 : " + expertid);
 
 		String user_id = (String) session.getAttribute("user_id");
+
+		// 찜등록 데이터 있는지 조회
+		int result = likeservice.selectLike(expertid, user_id);
+		System.out.println("찜등록 아이디 :" + expertid + user_id);
+		System.out.println("찜등록 데이터+" + result);
 
 		System.out.println(user_id);
 
@@ -92,36 +97,48 @@ public class ExpertController {
 		mv.setViewName("service/expert_details");
 		mv.addObject("expertdata", expert);
 		mv.addObject("user_id", user_id); // 지금 로그인 한 사용자의 아이디 가져옴
+		mv.addObject("like", result); // 찜등록 데이터
 		return mv;
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/LikeExpert.Ajax", method = RequestMethod.POST, produces = "application/json")
-	public ModelAndView likeexpert_ajax(@RequestParam(value = "expert_id", required = false) String expert_id,
+	public int likeexpert_ajax(@RequestParam(value = "expert_id", required = false) String expert_id,
 			@RequestParam(value = "user_id", required = false) String user_id, Like like, HttpServletResponse response,
 			ModelAndView mv) throws Exception {
 
 		System.out.println("ajax 로 들어온 전문가 아이디:" + expert_id + "유저 아이디 : " + user_id);
 
-		int num = 1;
+		int result = likeservice.selectLike(expert_id, user_id);
 
-		like.setExpert_id(expert_id);
-		like.setUser_id(user_id);
-		like.setLike_state(num);
+		System.out.println("조회 완료:" + result);
 
-		int liketo = likeservice.insertLike(like);
-		// int liketo = likeservice.insertLike(expert_id,user_id);
+		int resultf;
 
-		if (liketo != 0) {
-			System.out.println("값 ㅈ제대로 들어옴");
+		if (result == 0) {
+
+			int num = 1;
+			like.setExpert_id(expert_id);
+			like.setUser_id(user_id);
+			like.setLike_state(num);
+			int liketo = likeservice.insertLike(like);
+
+			System.out.println("찜등록 완료");
+			resultf = 0;
+
 		} else {
-			System.out.println("값 안들어옴ㅡㅡ");
+
+			int num = 1;
+			like.setExpert_id(expert_id);
+			like.setUser_id(user_id);
+			like.setLike_state(num);
+			likeservice.deleteLike(like);
+
+			System.out.println("찜등록 삭제");
+			resultf = 1;
 		}
 
-		// ㅡㅡㅡㅡㅡㅡㅡㅡㅡ 찜 등록 조회하기 ---------------//
-		List<Like> list = likeservice.likeList(expert_id,user_id,num);
-		
-		return mv;
+		return resultf;
 	}
 
 	//

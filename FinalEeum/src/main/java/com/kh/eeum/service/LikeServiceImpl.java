@@ -1,5 +1,6 @@
 package com.kh.eeum.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,27 @@ public class LikeServiceImpl implements LikeService {
 	}
 
 	@Override
-	public List<Like> likeList(String expert_id, String user_id, int num) {
-		// TODO Auto-generated method stub
-		return null;
+	public int selectLike(String expert_id, String user_id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("expert_id", expert_id);
+		map.put("user_id", user_id);
+		Object obj = likedao.listLike(map);
+		
+		int num = 0;
+		
+		if(obj != null) {
+			num =1;
+			return num;
+		}
+		return num;
+		
 	}
+
+	@Override
+	public void deleteLike(Like like) {
+		likedao.deleteLike(like);
+	}
+
+
 
 }

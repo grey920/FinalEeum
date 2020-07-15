@@ -107,12 +107,23 @@ public class UserServiceImpl implements UserService{
 		udao.delete(user_id);
 	}
 
-
 	@Override
 	public List<User> getList() {
 		// TODO Auto-generated method stub
 		return udao.getList();
 	}
+	
+	@Override
+	public String getNick(String user_id) {
+		return udao.getNick(user_id);
+	}
+
+	@Override
+	public String getProfile(String user_id) {
+		return udao.getProfile(user_id);
+	}
+
+
 	
 	
 }

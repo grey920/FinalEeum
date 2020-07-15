@@ -26,6 +26,7 @@
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
         <style>
         body{font-size:20px}
+        .breadcrumb-content {padding-top:0;}
         .product-subtotal{font-size:20px !important}
         .btn-style{margin-top:10px !important;
        					 margin-right:0 !important; 

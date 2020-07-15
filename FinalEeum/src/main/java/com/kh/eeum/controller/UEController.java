@@ -270,7 +270,8 @@ public class UEController {
 	
 	/* 로그인 */
 	@RequestMapping(value="login.net", method=RequestMethod.GET)
-	public ModelAndView login(ModelAndView mv, @CookieValue(value="saveid", required=false) Cookie readCookie)
+	public ModelAndView login(ModelAndView mv,
+													@CookieValue(value="saveid", required=false) Cookie readCookie)
 													throws Exception {
 		if(readCookie != null) {
 			mv.addObject("saveid", readCookie.getValue());
@@ -291,8 +292,10 @@ public class UEController {
 		System.out.println("로그인 결과 : " + result);
 		
 		if (result == 1) {
+
 			session.setAttribute("expert_id", expert_id);
 			Cookie savecookie = new Cookie("saveid", expert_id);
+
 			
 			if( !expert_remember.equals("")) {
 				savecookie.setMaxAge(60*60);
@@ -340,7 +343,57 @@ public class UEController {
 	}
 	
 	@RequestMapping(value="userUpdateProcess.net", method=RequestMethod.POST)
-	public void userUpdateProcess(User u, HttpServletResponse response) throws Exception {
+	public void userUpdateProcess(@RequestParam("user_id") String user_id, User u, String checkprofile,
+														HttpServletRequest request,HttpServletResponse response, HttpSession session) 
+														throws Exception {
+		MultipartFile uploadfile = u.getUploadfile();
+		System.out.println(checkprofile);
+		
+		if(checkprofile != null && !checkprofile.equals("")) {		//기존 프로필을 그대로 유지한 경우 
+			u.setUser_profile(checkprofile);
+			
+		} else {
+			if(uploadfile != null && !uploadfile.isEmpty()) {
+				String fileName = uploadfile.getOriginalFilename();
+				u.setUser_profile(fileName);
+				
+				Calendar c = Calendar.getInstance();
+				int year = c.get(Calendar.YEAR);
+				int month = c.get(Calendar.MONTH) + 1;
+				int date = c.get(Calendar.DATE);
+				String saveFolder = request.getSession().getServletContext().getRealPath("resources") + "/profile/";
+				String homedir = saveFolder + year + "-" + month + "-" + date;
+				System.out.println(homedir);
+				File path1 = new File(homedir);
+				
+				if(!(path1.exists())) {
+					path1.mkdir();
+				}
+				
+				Random r = new Random();
+				int random = r.nextInt(100000000);
+				
+				int index = fileName.lastIndexOf(".");
+				System.out.println("파일이름 . 위치 = " + index);
+				
+				String fileExtension = fileName.substring(index+1);
+				System.out.println("프로필 사진 확장자 = " + fileExtension);
+				
+				String refileName = "eeum" + year + month + date + random + "." + fileExtension;
+				System.out.println("새로운 파일명 = " + refileName);
+				
+				String fileDBName = "/" + year + "-" + month + "-" + date + "/" + refileName;
+				System.out.println("DB에 저장될 파일명 = " + fileDBName);
+				
+				uploadfile.transferTo(new File(saveFolder + fileDBName));
+				
+				u.setUser_saveprofile(fileDBName);
+				
+			} else {
+				u.setUser_saveprofile("");
+				u.setUser_profile("");
+			}
+		}
 		
 		String encPassword = passwordEncoder.encode(u.getUser_pass());
 		
@@ -354,6 +407,12 @@ public class UEController {
 		out.println("<script>");
 		
 		if (result == 1) {
+			String user_nick = userservice.getNick(user_id);
+			session.setAttribute("user_nick", user_nick);
+			
+			String user_saveprofile = userservice.getProfile(user_id);
+			session.setAttribute("user_saveprofile", user_saveprofile);
+			
 			out.println("alert('수정되었습니다.');");
 			out.println("location.href='userpage.net';");
 			

@@ -43,9 +43,15 @@ public class UserDAO {
 		sqlSession.delete("Users.userdelete", user_id);
 	}
 	
-
 	public List<User> getList() {
 		return sqlSession.selectList("Users.getList");
 	}
-
+	
+	public String getNick(String user_id) {
+		return sqlSession.selectOne("Users.getNick", user_id);
+	}
+	
+	public String getProfile(String user_id) {
+		return sqlSession.selectOne("Users.getProfile", user_id);
+	}
 }

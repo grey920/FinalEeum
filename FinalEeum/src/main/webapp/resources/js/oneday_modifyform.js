@@ -51,7 +51,6 @@ $(document).ready(function(){
       //한 번도 변경하지 않으면 $("#filevalue").text()의 파일명을 전송 (BOARD_ORIGINAL)
       if(check==0){
          value=$('#filevalue').text();
-         alert('filevalue = '+value);
          html="<input type='text' value='"+value+"' name='check'>";
          $(this).append(html);
       }
@@ -72,7 +71,6 @@ $(document).ready(function(){
    
    /*file은 값을 정해주지 않으면 value 가 없어서 input type="text" 라는 친구를 만들어서 span에 있는 값을 value에 넣어줍니다.*/
    $("#upfile").change(function(){
-	   console.log("나와라,,제발");
       check ++;
       var inputfile = $(this).val().split("\\");
       $("#filevalue").text(inputfile[inputfile.length - 1]);

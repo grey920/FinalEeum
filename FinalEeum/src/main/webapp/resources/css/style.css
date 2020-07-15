@@ -68,13 +68,13 @@
 }
 .stick .sticky-logo {
     display: block;
-    padding-top: 4px;
+    padding-top: 10px;
 }
 .stick .logo-menu-wrapper {
     padding-top: 0px;
 }
 .stick .header-site-icon {
-    padding-top: 17px;
+    padding-top: 40px;
 }
 .stick .main-menu ul li a {
     line-height: 60px;
@@ -167,7 +167,7 @@
 }
 .main-menu ul li a {
     color: #797979;
-    font-size: 18pt;
+    font-size: 16pt;
     font-weight: 500;
     letter-spacing: 0.5px;
     line-height: 82px;
@@ -305,6 +305,38 @@
     justify-content: flex-end;
     padding-top: 56px;
 }
+.header-site-icon .header-login>li>ul {
+    background: #fff none repeat scroll 0 0;
+    display: block;
+    left: -23px;
+    opacity: 0;
+    padding: 25px 0px 10px;
+    position: absolute;
+    text-align: left;
+    top: 120%;
+    visibility: hidden;
+    width: 180px;
+    z-index: 999;
+}
+.header-site-icon .header-login>li:hover > ul {
+	border:2px solid #72A0E0;
+	border-radius:10px;
+    opacity: 1;
+    top: 90%;
+    visibility: visible;
+}
+
+.header-site-icon .header-login>li> ul > li {
+	text-align:center;
+    display: block;
+    position: relative;
+    padding-bottom:10px;
+}
+
+.header-site-icon .header-login>li> ul > li:first-child {
+	padding-bottom:20px;
+}
+
 .same-style {
     margin-left: 16px;
 }
@@ -4085,7 +4117,7 @@ p.checkout-coupon input[type="submit"] {
 	font-weight:600;
 }
 .login-form-container  p {
-	font-size:14pt;
+	font-size:13pt;
 	font-weight:600;
 	margin-top:20px;
 }

@@ -39,7 +39,6 @@
 		where user_id = #{user_id}
 	</update>
 	
-
 	<select id="getList" resultType="user">
 		select user_name, user_nick, user_id, user_addr2, user_addr3, user_phone1,
 						 user_phone2, user_phone3, user_email1, user_email2
@@ -51,4 +50,15 @@
 		where user_id = #{user_id}
 	</delete>
 
+	<select id="getNick" parameterType="String" resultType="String">
+		select user_nick
+		from user_table
+		where user_id = #{user_id}
+	</select>
+	
+	<select id="getProfile" parameterType="String" resultType="String">
+		select user_saveprofile
+		from user_table
+		where user_id = #{user_id}
+	</select>
 </mapper>

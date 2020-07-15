@@ -14,4 +14,6 @@ public interface UserService {
 	public int user_update(User u);
 	public void user_delete(String user_id);
 	public List<User> getList();
+	public String getNick(String user_id);
+	public String getProfile(String user_id);
 }
