@@ -77,7 +77,7 @@ $(document).ready(function() {
             });
       
        //주민번호 뒷자리 
-      $("#user_jumin2").keyup(function(){
+      $("#user_jumin2").keyup(function() {
          if($("#user_jumin2").val().length == 7) {
         	 
         	 if( ($("#user_jumin2").val()).substr(0,1) == 2 || ($("#user_jumin2").val()).substr(0,1) == 4 || 
@@ -98,7 +98,7 @@ $(document).ready(function() {
         		 var jumin12 = (($("#user_jumin2").val()).substr(5,1)) * 5;
         		 
         		 var juminRest = (jumin1 + jumin2 + jumin3 + jumin4 + jumin5 + jumin6
-        				 + jumin7 + jumin8 + jumin9 + jumin10 + jumin11 + jumin12) % 11;
+        				 					+ jumin7 + jumin8 + jumin9 + jumin10 + jumin11 + jumin12) % 11;
         		 
         		 var juminRight = 11 - juminRest;
         		 

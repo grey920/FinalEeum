@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/responsive.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
+<%@ include file="../header.jsp" %>
 <style>
 select {font-size:13pt}
 .text-center h2{font-weight:900}

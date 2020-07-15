@@ -24,10 +24,12 @@
 <link rel="stylesheet" href="resources/css/responsive.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<%@ include file="../header.jsp" %>
 	<style>
 	select {font-size:13pt;border-radius:10px}
 	.text-center h2{font-weight:900}
-	.ptb-130 {padding-top:30px}
+	.ptb-130 {padding-top:30px !important}
+	.breadcrumb-content{padding-top:0;margin-top:1em}
 	input[type=button] {background-color:#72A0E0;color:white;font-size:13pt}
 	input{border-radius:10px}
 	p{font-weight:800}
@@ -39,87 +41,13 @@
 								color:white;
 								background-color:#72A0E0 !important;
 								z-index:1}
-	 .login-form-container span{font-size:15pt}
+	 .login-form-container .button-box span{font-size:15pt}
+	  .col-lg-7{-ms-flex:0 0 60%;flex:0 0 60%;max-width:60%}
 	</style>
 </head>
 <body>
 	<div class="wrapper">
-	
 		<!-- header start -->
-		<header>
-			<div class="header-area transparent-bar">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-2 col-md-2 col-sm-5 col-5">
-							<div class="sticky-logo"> <!-- 스크롤내렸을 때,메뉴바 로고  -->
-								<a href="index.html"><img src="resources/img/logo/eeum_logo_small4.png" /></a>
-							</div>
-							<div class="logo-small-device">	<!-- 반응형 웹 작게했을 때 로고 -->
-								<a href="index.html"><img src="resources/img/logo/eeum_logo_small4.png"/></a>
-							</div>
-							<div class="logo" style="margin-top:30px">	<!-- 반응형 웹 크게했을 때 로고 -->
-								<a href="index.html"><img src="resources/img/logo/eeum_logo_small4.png"  /></a>
-							</div>
-						</div>
-						<div class="col-lg-8 col-md-8 d-none d-md-block" style="margin-top:35px">
-							<div class="logo-menu-wrapper text-center">
-								<div class="main-menu">
-									<nav>
-										<ul>
-											<li><a href="about-us.html">이:음 소개</a></li>
-											<li><a href="shop.html">서비스<i class="ion-ios-arrow-down" style="margin-left:5px"></i></a>
-												<ul style="text-align:center;">
-													<li style="margin-bottom:10px;"><a href="product-details.html">수리</a></li>
-													<li style="margin-bottom:10px;"><a href="product-details.html">청소</a></li>
-													<li><a href="product-details.html">해충</a></li>
-												</ul></li>
-											<li><a href="#">원데이 클래스</a></li>
-											<li><a href="#">FAQ</a></li>
-										</ul>
-									</nav>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-7 col-7">
-							<div class="header-site-icon">
-								<div class="header-search same-style">
-									<button class="sidebar-trigger-search">
-										<span class="ti-search"></span>
-									</button>
-								</div>
-								<div class="header-login same-style">
-									<a href="login-register.html"> <span class="ti-user"></span>
-									</a>
-								</div>
-								<div class="header-cart same-style">
-									<button class="sidebar-trigger">
-										<i class="ti-shopping-cart"></i> <span class="count-style">03</span>
-									</button>
-								</div>
-							</div>
-						</div>
-						<div class="mobile-menu-area col-12">
-							<div class="mobile-menu">
-								<nav id="mobile-menu-active">
-									<ul class="menu-overflow">
-										<li><a href="#">이:음 소개</a>
-										<li><a href="#">서비스</a>
-											<ul>
-												<li><a href="about-us.html">수리</a></li>
-												<li><a href="cart.html">청소</a></li>
-												<li><a href="cart.html">해충</a></li>
-											</ul></li>
-										<li><a href="#">원데이 클래스</a></li>
-										<li><a href="#">FAQ</a></li>
-									</ul>
-								</nav>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
-		
 		<div class="header-height"></div>
 		
 		<!-- main-search start -->
@@ -171,15 +99,15 @@
 															accept="image/gif, image/jpeg, image/png, image/jpg" style="visibility:hidden"><br>
 												<label for="user_profile">
 												  <img src="resources/img/profile/profile.png" alt="profile" id="profile" 
-												   			style="width:100%; height:auto;border-radius:50%;">
+												   			style="width:100%; height:auto;border-radius:50%;cursor:pointer">
 												</label>
 												</div>
 												
 												<p>주민등록 번호 *</p><!-- 숫자만 -->
 												<input type="text" id="user_jumin1" name="user_jumin1"  maxLength="6" style="width:32%;margin-bottom:10px;text-align:center">
 												<b>&nbsp;-&nbsp;</b>
-												<input type="password" id="user_jumin2" name="user_jumin2" maxLength="7" style="width:36%;">
-												<input type="button" value="주민번호 중복검사" id="checkJumin" style="width:190px;font-weight:600">
+												<input type="password" id="user_jumin2" name="user_jumin2" maxLength="7" style="width:32%;">
+												<input type="button" value="가입확인" id="checkJumin" style="width:26%;margin-left:5px;font-weight:600;cursor:pointer">
 												<span id="message_jumin"></span>
 												
 												<p>이름 *	</p><!-- 한글만 -->
@@ -204,7 +132,7 @@
 												
 												<p>주소 *</p> 
 												<input type="text" size="5" maxLength="5" id="user_addr1" name="user_addr1" style="width:170px;margin-bottom:10px;margin-right:3px" >
-												<input type="button" value="우편번호 검색" id="postcode" style="width:190px;font-weight:600">
+												<input type="button" value="우편번호 검색" id="postcode" style="width:190px;font-weight:600;cursor:pointer">
 												<input type="text" id="user_addr2" name="user_addr2" placeholder="주소를 입력하세요" style="margin-bottom:10px;width:96%">
 												<input type="text" id="user_addr3" name="user_addr3" placeholder="상세 주소를 입력하세요" style="width:96%">
 												<span></span>
