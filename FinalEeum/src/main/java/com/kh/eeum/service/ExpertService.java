@@ -3,6 +3,7 @@ package com.kh.eeum.service;
 import java.util.List;
 
 import com.kh.eeum.domain.Expert;
+import com.kh.eeum.domain.Portfolio;
 
 public interface ExpertService {
 	public int insert(Expert ex);
@@ -16,4 +17,5 @@ public interface ExpertService {
 	public Expert expertlistOne(String expertid);
 
 	public List<Expert> getList();
+	public Portfolio getPortfolio(String expert_id);
 }

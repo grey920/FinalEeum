@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.eeum.domain.Expert;
+import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.User;
 import com.kh.eeum.service.ExpertService;
 import com.kh.eeum.service.UserService;
@@ -186,6 +187,86 @@ public class UEController {
 		return result;
 	}
 	
+	@RequestMapping(value="user_loginProcess.net", method=RequestMethod.POST)
+	public String expertLoginProcess(@RequestParam("user_id") String user_id,
+														@RequestParam("user_pass") String user_pass,
+														@RequestParam(value="user_remember", defaultValue="") String user_remember,
+														HttpServletResponse response,
+														HttpSession session) throws Exception {
+		int result = userservice.isId(user_id, user_pass);
+		System.out.println("로그인 결과 : " + result);
+		
+		if (result == 1) {
+			session.setAttribute("user_id", user_id);
+			Cookie savecookie = new Cookie("saveid", user_id);
+			
+			if( !user_remember.equals("")) {
+				savecookie.setMaxAge(60*60);
+				System.out.println("ID 기억하기 체크 O -> 쿠키 저장 O");
+				
+			} else {
+				savecookie.setMaxAge(0);
+				System.out.println("ID 기억하기 체크 X -> 쿠키 저장 X");
+			}
+			
+			response.addCookie(savecookie);
+			return "redirect:/";
+			
+		} else {
+			String message = "비밀번호가 일치하지 않습니다.";	//result == 0
+			
+			if (result == -1) {
+				message = "이음에 등록되지 않은 아이디입니다.";
+			}
+			
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('" + message + "');");
+			out.println("location.href='login.net';");
+			out.println("</script>");
+			out.close();
+			return null;
+		}
+	}
+	
+	
+	/* 전문가 마이페이지 */
+	@RequestMapping(value="expertpage.net")
+	public String expertuserpage() {
+		return "UE/expertpage_main";
+	}
+	
+	@RequestMapping(value="expertUpdate.net")
+	public ModelAndView expertUpdate(HttpSession session, ModelAndView mv) {
+		String expert_id = (String) session.getAttribute("expert_id");
+		System.out.println("expert_id세션값 들어왔는가");
+		Expert expert = expertservice.expert_info(expert_id);
+		mv.setViewName("UE/expertpage_info");
+		mv.addObject("expertinfo", expert);
+		return mv;
+	
+	}
+	
+	@RequestMapping("viewPortfolio")
+	public ModelAndView viewPortfolio(ModelAndView mv, HttpSession session) {
+		String expert_id = (String)session.getAttribute("expert_id");
+		Portfolio portfolio = expertservice.getPortfolio(expert_id);
+		mv.setViewName("UE/portfolio");
+		mv.addObject("PFdata", portfolio);
+		return mv;
+	}
+
+	@RequestMapping("writePortfolio")
+	public String writePortfolio() {
+		return "UE/writePortfolio";
+	}
+	
+	@RequestMapping("writeActionPofo")
+	public String writeActionPofo() {
+		
+		return "viewPortfolio";
+	}
 	
 	/* 로그인 */
 	@RequestMapping(value="login.net", method=RequestMethod.GET)
@@ -200,20 +281,20 @@ public class UEController {
 		return mv;
 	}
 	
-	@RequestMapping(value="user_loginProcess.net", method=RequestMethod.POST)
-	public String userLoginProcess(@RequestParam("user_id") String user_id,
-														@RequestParam("user_pass") String user_pass,
-														@RequestParam(value="user_remember", defaultValue="") String user_remember,
+	@RequestMapping(value="expert_loginProcess.net", method=RequestMethod.POST)
+	public String userLoginProcess(@RequestParam("expert_id") String expert_id,
+														@RequestParam("expert_pass") String expert_pass,
+														@RequestParam(value="expert_remember", defaultValue="") String expert_remember,
 														HttpServletResponse response,
 														HttpSession session) throws Exception {
-		int result = userservice.isId(user_id, user_pass);
+		int result = expertservice.isId(expert_id, expert_pass);
 		System.out.println("로그인 결과 : " + result);
 		
 		if (result == 1) {
-			session.setAttribute("user_id", user_id);
-			Cookie savecookie = new Cookie("saveid", user_id);
+			session.setAttribute("expert_id", expert_id);
+			Cookie savecookie = new Cookie("saveid", expert_id);
 			
-			if( !user_remember.equals("")) {
+			if( !expert_remember.equals("")) {
 				savecookie.setMaxAge(60*60);
 				System.out.println("ID 기억하기 체크 O -> 쿠키 저장 O");
 				

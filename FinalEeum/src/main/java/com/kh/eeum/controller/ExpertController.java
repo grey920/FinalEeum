@@ -1,31 +1,19 @@
 package com.kh.eeum.controller;
 
-import java.io.PrintWriter;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Like;
 import com.kh.eeum.service.ExpertService;
@@ -39,7 +27,8 @@ public class ExpertController {
 
 	@Autowired
 	LikeService likeservice;
-
+	
+	
 	// 전문가 리스트
 	@GetMapping("/expert.list")
 	public ModelAndView service_list(HttpServletResponse response,

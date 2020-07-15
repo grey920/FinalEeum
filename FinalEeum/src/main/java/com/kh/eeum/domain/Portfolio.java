@@ -1,10 +1,10 @@
 package com.kh.eeum.domain;
 
-public class Porfolio {
+public class Portfolio {
 	private String PF_EXID;
 	private String PF_LOC;
 	private	int PF_GRADE;
-	private int PF_GATE;
+	private int PF_CATE;
 	private String PF_TIME;
 	private String PF_DESC;
 	private String PF_LI;
@@ -31,11 +31,12 @@ public class Porfolio {
 	public void setPF_GRADE(int pF_GRADE) {
 		PF_GRADE = pF_GRADE;
 	}
-	public int getPF_GATE() {
-		return PF_GATE;
+	
+	public int getPF_CATE() {
+		return PF_CATE;
 	}
-	public void setPF_GATE(int pF_GATE) {
-		PF_GATE = pF_GATE;
+	public void setPF_CATE(int pF_CATE) {
+		PF_CATE = pF_CATE;
 	}
 	public String getPF_TIME() {
 		return PF_TIME;
