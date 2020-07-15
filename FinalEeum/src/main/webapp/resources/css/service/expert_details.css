@@ -474,3 +474,8 @@ div.col-md-12.mx-0{
 b#tabText1,b#tabText2,b#tabText3,b#tabText4,.heart_click,.heart_click2{
 	cursor: pointer;
 }
+
+/*라디오 버튼..*/
+.banner-wrapper.overflow a img, .banner-img a img{
+	width: 20%;
+}
