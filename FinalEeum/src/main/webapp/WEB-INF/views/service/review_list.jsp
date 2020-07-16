@@ -36,7 +36,7 @@
 								currentRating, ' DOM element ', $el);
 						$('.live-rating').text(currentRating);
 					}
-				});
+				});//네
 
 	});
 </script>
