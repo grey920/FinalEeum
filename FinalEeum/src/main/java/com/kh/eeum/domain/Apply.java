@@ -28,7 +28,7 @@ public class Apply {
 		return AP_RDATE;
 	}
 	public void setAP_RDATE(String aP_RDATE) {
-		AP_RDATE = aP_RDATE.substring(0,10);
+		AP_RDATE = aP_RDATE;
 	}
 	public int getAP_CINDEX() {
 		return AP_CINDEX;
@@ -49,7 +49,7 @@ public class Apply {
 		AP_LOCATE = aP_LOCATE;
 	}
 	public String getAP_CDATE() {
-		return AP_CDATE;
+		return AP_CDATE.substring(0, 10);
 	}
 	public void setAP_CDATE(String aP_CDATE) {
 		AP_CDATE = aP_CDATE;

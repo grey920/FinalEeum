@@ -27,9 +27,31 @@
 		select count(*) from apply where AP_CINDEX = #{num}
 	</select>
 	
-	<select id="usersList" parameterType="String" resultType="map">
-		select * 
+	<select id="applyCount" parameterType="String" resultType="int">
+		select count(*)
 		from apply
-		where ap_id = #{ap_id}
+		where AP_ID = #{user_id}
 	</select>
+	
+	<select id="applyList" parameterType="map" resultType="map">
+		select * 
+		from (select rownum rnum, a.*
+				  from (select *
+				  			from apply
+				  			where AP_ID = #{ap_id}
+				  			order by AP_CINDEX desc) a
+				  )
+		where rnum &gt; = #{start} and rnum &lt; = #{end}	 
+	</select>
+	
+	<update id="cancel" parameterType="map">
+		update apply
+		set AP_PROG = #{ap_prog}
+		where AP_ID = #{ap_id} and AP_CINDEX = #{ap_cindex}
+	</update>
+	
+	<delete id="deleteAll" parameterType="String">
+		delete apply
+		where AP_ID = #{ap_id}
+	</delete>
 </mapper>

@@ -99,7 +99,7 @@ input:read-only{background-color:#d2d3d6}
 												<input type="file" id="user_profile" name="uploadfile" 
 															accept="image/gif, image/jpeg, image/png, image/jpg" style="visibility:hidden"><br>
 												<label for="user_profile">
-												  <img src="resources/profile/${u.user_saveprofile}" alt="profile" id="profile" 
+												  <img src="resources/profile${u.user_saveprofile}" alt="profile" id="profile" 
 												   			style="width:100%; height:auto;border-radius:50%;">
 												</label>
 												</div>
@@ -208,9 +208,9 @@ input:read-only{background-color:#d2d3d6}
 			        			<a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal" style="color:white">아니요</a>
 			      			</div>
 			    		</div>
-						<!--/.Content-->
 					</div>
 				</div>
+			<!--/.Content-->
 		</div>
 
 		<footer class="hm-4-padding">

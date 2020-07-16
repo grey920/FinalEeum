@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  <!doctype html>
 <html>
     <head>
@@ -23,6 +24,7 @@
         <link rel="stylesheet" href="resources/css/bundle.css">
         <link rel="stylesheet" href="resources/css/style.css">
         <link rel="stylesheet" href="resources/css/responsive.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
         <%@ include file="../header.jsp" %>
         <style>
@@ -41,12 +43,17 @@
          					       border:2px solid #72A0E0;
          						  }
          .table-content table td {border-bottom:2px solid #e8e6e6; padding:30px 10px 30px}
-         .table-content table td.product-name a {font-size: 20px;}
-         table thead tr th{font-size:25px !important}
+         .table-content table td.product-name a {font-size: 18px;}
+         table thead tr th{font-size:23px !important}
          .pt-120{padding-top:50px !important}
          .breadcrumb-content{padding-top:0;margin-top:1em}
          .breadcrumb-content ul > li{font-size:13pt}
          .table-content table td.product-name a {text-transform: none;}
+         tr td.class-state{padding-top:10px; padding-bottom:20px}
+         td.product-subtotal button.btn-style {padding-left:20px;padding-right:20px}
+          .modal-footer a {font-size:13pt}
+          .paging_align{display: flex; justify-content: center;}
+          .pagination-style li a {font-size:15pt !important}
         </style>
     </head>
     <body>
@@ -86,6 +93,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-content table-responsive">
+                            
                                 <table style="text-align:center">
                                     <thead>
                                         <tr>
@@ -93,83 +101,145 @@
                                             <th class="product-name">클래스 제목</th>
                                             <th class="product-name">일시</th>
                                             <th class="product-quantity">장소</th>
-                                            <th class="product-quantity">가격</th>
                                             <th class="product-quantity">상태</th>
+                                            <th class="product-quantity"></th>
                                         </tr>
                                     </thead>
+                                    
                                     <tbody>
-                                    	<c:forEach var="user" items="${useronedaylist}">
-                                    		<c:forEach var="o" items="${user }">
+                                    	<c:forEach var="o" items="${applylist}">
                                         <tr>
                                         	<td class="product-subtotal">원데이 클래스</td>
                                             <td class="product-name">
-                                                <a href="OnedayDetailAction.one?num=">${o.ap_title}</a>
+                                                <a href="OnedayDetailAction.one?num=${o.AP_CINDEX}" style="margin-bottom:0">${o.AP_TITLE}</a>
                                             </td>
-                                            <td class="product-subtotal"><span class="amount">${o.ap_rdate}</span></td>
-                                            <td class="product-subtotal">${o.ap_locate}</td>
-                                            <td class="product-subtotal">50000원</td>
-                                            <td class="product-subtotal">${o.ap_prog}</td>
-                                        </tr>
-                                        </c:forEach>
-                                        </c:forEach>
-  <!--                                       <tr>
-                                        	<td class="product-subtotal">전문가 커피챗</td>
-                                            <td class="product-name">
-                                                <a href="#">수리 전문가와 함께하는 QnA</a>
+                                            <c:set var="date" value="${o.AP_CDATE }"/>
+                                            <td class="product-subtotal">
+	                                           	 <span class="amount">
+	                                           	 	<fmt:formatDate value="${date}" type="date" dateStyle="full" />
+	                                           	 </span>
                                             </td>
-                                            <td class="product-subtotal"><span class="amount">2020년 7월 1일 <br> 오후 1시</span></td>
-                                            <td class="product-subtotal">종각역 커피온리</td>
-                                            <td class="product-subtotal">10,000원</td>
-                                            <td class="product-subtotal">결제 대기</td>
-                                        </tr>
+                                            <td class="product-subtotal">${o.AP_LOCATE}</td>
+                                            
+	                                        <c:if test="${o.AP_PROG == '1' }">
+	                                            <td class="product-subtotal">결제 대기</td>
+	                                            <td class="product-subtotal class-state">
+	                                            	<button class="btn-style" onclick="location.href='#';">
+															<span>결제하기</span>
+													</button>
+	                                            	<button class="btn-style"  data-toggle="modal" data-target="#modalConfirmDelete">
+															<span>취소하기</span>
+													</button>
+													<!--Modal: modalConfirmDelete-->
+													<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+														<div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+															
+															<!--Content-->
+															<div class="modal-content text-center" style="width: 40%; margin: 0 auto;">
+																
+																<!--Header-->
+																<div class="modal-header d-flex justify-content-center" style="margin-top:15px">
+																	<p class="heading" style="margin-bottom:10px;color:#303030">신청한 클래스를 취소하시겠습니까?</p>
+																</div>
+									
+																<!--Body-->
+																<div class="modal-body">
+																	<i class="fa fa-times fa-4x animated rotateIn" style="width: auto; margin: 0 auto; color: #dc3545;"></i>
+																</div>
+									
+																<!-- Footer -->
+																<div class="modal-footer flex-center" >
+												      				<a href="userOnedayCancel.net?ap_id=${o.AP_ID}&ap_cindex=${o.AP_CINDEX}" class="btn  btn-outline-danger">예</a>
+												        			<a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal" style="color:white">아니요</a>
+												      			</div>
+												    		</div>
+														</div>
+													</div>
+													<!--/.Content-->
+												</td>
+	                                        </c:if>
                                         
-                                        <tr>
-                                        	<td class="product-subtotal">원데이 클래스</td>
-                                            <td class="product-name">
-                                                <a href="#">청소 전문가에게 배우는 미니얼 라이프</a>
-                                            </td>
-                                            <td class="product-subtotal"><span class="amount">2020년 7월 21일 <br> 오후 12시</span></td>
-                                            <td class="product-subtotal">홍대 상상마당</td>
-                                            <td class="product-subtotal">50,000원</td>
-                                            <td class="product-subtotal">결제 대기</td>
-                                        </tr>
+	                                        <c:if test="${o.AP_PROG == '2' }">
+	                                            <td class="product-subtotal">결제 완료</td>
+	                                            <td class="product-subtotal">
+	                                            	<button class="btn-style"  data-toggle="modal" data-target="#modalConfirmDelete">
+															<span>취소하기</span>
+													</button>
+													<!--Modal: modalConfirmDelete-->
+													<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+														<div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+															
+															<!--Content-->
+															<div class="modal-content text-center" style="width: 40%; margin: 0 auto;">
+																
+																<!--Header-->
+																<div class="modal-header d-flex justify-content-center" style="margin-top:15px">
+																	<p class="heading" style="margin-bottom:10px;color:#303030">신청한 클래스를 취소하시겠습니까?</p>
+																</div>
+									
+																<!--Body-->
+																<div class="modal-body">
+																	<i class="fa fa-times fa-4x animated rotateIn" style="width: auto; margin: 0 auto; color: #dc3545;"></i>
+																</div>
+									
+																<!-- Footer -->
+																<div class="modal-footer flex-center" >
+												      				<a href="userOnedayCancel.net?ap_id=${o.AP_ID}&ap_cindex=${o.AP_CINDEX}" class="btn  btn-outline-danger">예</a>
+												        			<a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal" style="color:white">아니요</a>
+												      			</div>
+												    		</div>
+														</div>
+													</div>
+													<!--/.Content-->
+												</td>
+	                                        </c:if>
                                         
-                                        <tr>
-                                        	<td class="product-subtotal">전문가 커피챗</td>
-                                            <td class="product-name">
-                                                <a href="#">수리 전문가에게 배우는 응용 수리</a>
-                                            </td>
-                                            <td class="product-subtotal"><span class="amount">2020년 7월 25일 <br> 오전 11시</span></td>
-                                            <td class="product-subtotal">KH정보교육원 종로지원 D강의장</td>
-                                            <td class="product-subtotal">20,000원</td>
-                                            <td class="product-subtotal">신청 완료</td>
-                                        </tr> -->
+	                                        <c:if test="${o.AP_PROG == '0' }">
+	                                            <td class="product-subtotal">취소</td>
+	                                            <td class="product-subtotal"></td>
+	                                        </c:if>
+                                          </tr>
+                                        </c:forEach>
+                                        
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="pagination-style text-center mt-30">
-                                <ul>
-                                    <li>
-                                        <a class="active" href="#">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ion-chevron-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                            
+                            
+				 			<div class="pagination-style text-center mt-30" id="pagination">
+								<ul class="paging_align">
+									<c:if test="${page <= 1 }">
+										<li><i class="ion-chevron-left" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page > 1}">
+										<li><a href="userOneday.net?page=${page-1}"><i
+												class="ion-chevron-left"></i></a></li>
+									</c:if>
+				
+									<c:forEach var="a" begin="${startpage}" end="${endpage}">
+										<c:if test="${a == page }">
+											<li><a class="active" href="#">${a}</a></li>
+										</c:if>
+										<c:if test="${a != page}">
+											<li><a href="userOneday.net?page=${a}">${a}</a></li>
+										</c:if>
+									</c:forEach>
+				
+									<c:if test="${page >= maxpage}">
+										<li><i class="ion-chevron-right" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page < maxpage}">
+										<li><a href="userOneday.net?page=${page+1}"> <i
+												class="ion-chevron-right"></i>
+										</a></li>
+									</c:if>
+								</ul>
+							</div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
-            
             
             <footer class="hm-4-padding">
                 <div class="container-fluid">
