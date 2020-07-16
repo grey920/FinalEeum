@@ -1,5 +1,6 @@
 package com.kh.eeum.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.eeum.domain.Apply;
+
 @Repository
 public class ApplyDAO {
 
@@ -25,4 +27,7 @@ public class ApplyDAO {
 		return sqlSession.selectOne("Applys.count", num);
 	}
 
+	public List<Map<String,Apply>> applyList(String user_id) {
+		return sqlSession.selectList("Applys.usersList", user_id);
+	}
 }

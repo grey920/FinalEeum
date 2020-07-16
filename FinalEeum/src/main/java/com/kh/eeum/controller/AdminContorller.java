@@ -2,6 +2,8 @@ package com.kh.eeum.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.eeum.domain.Expert;
+import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.User;
 import com.kh.eeum.service.AdminService;
 import com.kh.eeum.service.ExpertService;
@@ -65,9 +68,11 @@ public class AdminContorller {
 	
 	@RequestMapping(value="/expertDetail.net")
 	public ModelAndView expert_detail(@RequestParam("id") String id, ModelAndView mv) throws Exception{
-		Expert e = expertservice.expert_info(id);
+		Portfolio p = adminservice.getList(id);
+		
+		System.out.println("p:"+p.getPF_EXID());
 		mv.setViewName("user/expertDetail");
-		mv.addObject("expertinfo", e);
+		mv.addObject("deExperts", p);
 		return mv;
 	}
 }

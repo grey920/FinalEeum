@@ -3,6 +3,8 @@ package com.kh.eeum.controller;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.Cookie;
@@ -22,9 +24,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.eeum.domain.Apply;
 import com.kh.eeum.domain.Expert;
+import com.kh.eeum.domain.Oneday;
 import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.User;
+import com.kh.eeum.service.ApplyService;
 import com.kh.eeum.service.ExpertService;
 import com.kh.eeum.service.UserService;
 
@@ -38,10 +43,13 @@ public class UEController {
 	private ExpertService expertservice;
 	
 	@Autowired
+	private ApplyService applyservice;
+	
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	@Value("${savefoldername}")
-	private String saveFolder;
+	private String profileFolder;
 	
 	
 	@RequestMapping("/")
@@ -198,6 +206,13 @@ public class UEController {
 		
 		if (result == 1) {
 			session.setAttribute("user_id", user_id);
+			
+			String user_nick = userservice.getNick(user_id);
+			session.setAttribute("user_nick", user_nick);
+			
+			String user_saveprofile = userservice.getProfile(user_id);
+			session.setAttribute("user_saveprofile", user_saveprofile);
+			
 			Cookie savecookie = new Cookie("saveid", user_id);
 			
 			if( !user_remember.equals("")) {
@@ -385,7 +400,7 @@ public class UEController {
 				String fileDBName = "/" + year + "-" + month + "-" + date + "/" + refileName;
 				System.out.println("DB에 저장될 파일명 = " + fileDBName);
 				
-				uploadfile.transferTo(new File(saveFolder + fileDBName));
+				uploadfile.transferTo(new File(profileFolder + fileDBName));
 				
 				u.setUser_saveprofile(fileDBName);
 				
@@ -435,8 +450,13 @@ public class UEController {
 	}
 	
 	@RequestMapping(value="userOneday.net")
-	public String userOneday() {
-		return "UE/userpage_oneday";
+	public ModelAndView userOneday(HttpSession session, ModelAndView mv) throws Exception {
+		String user_id = (String) session.getAttribute("user_id");
+		List<Map<String,Apply>> applyList = applyservice.applyList(user_id);
+		System.out.println(applyList);
+		mv.setViewName("UE/userpage_oneday");
+		mv.addObject("useronedaylist", applyList);
+		return mv;
 	}
 	
 	@RequestMapping(value="userWishlist.net")

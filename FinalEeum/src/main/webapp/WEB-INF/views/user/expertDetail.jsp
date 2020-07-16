@@ -8,13 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>회원 기본 정보 - 전문가 사용자</title>
 <%@ include file ="../include2/head.jsp" %>
-	<style>
-  	@font-face { 
-  		font-family: 'NanumSquareRound'; 
-  		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff'); 
-  		font-weight: normal; font-style: normal; 
-  	}
-	</style>
+
 </head>
 <body>
 <%@ include file="../include2/main_header.jsp" %>
@@ -40,40 +34,75 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" >
       <div class="row">
-        <div class="col-md-6 center-block">
+        <div class="col-md-6" style="padding:15px; margin:auto;">
           <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">일반 회원 상세 보기</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-minus"></i></button>
-              </div>
+            <div class="card-header" style="background:#b6c77d">
+              <h3 class="card-title" >전문가 회원 포트폴리오</h3>
             </div>
             <div class="card-body">
-            <c:set var="e" value="${expertinfo }"/>
+            <c:set var="d" value="${ deExperts}" />
+
               <div class="form-group">
              		<table class="table table-striped">
              		<tr>
              			<td>전문가 사용자 아이디</td>
-             			<td>${e.expert_id }</td>
+             			<td>${d.PF_EXID}</td>
              		</tr>
              		<tr>
-             			<td>전문가 사용자 이름</td>
-             			<td>${e.expert_id }</td>
+             			<td>전문가 활동 지역</td>
+             			<td>${d.PF_LOC}</td>
              		</tr>
              		<tr>
-             			<td>전문가 사용자 연락처</td>
-             			<td>${e.exeprt_phone1 }-${e.expert_phone2 }-${e.expert_phone3 }</td>
+             			<td>전문가 사용자 분류</td>
+             			<td>
+             				<c:choose>
+            					<c:when test="${d.PF_GRADE == 0 }"> 디딤돌 </c:when>
+            					<c:when test="${d.PF_GRADE == 1 }"> 마루 </c:when>
+            					<c:when test="${d.PF_GRADE == 2 }"> 우주 </c:when>
+            					<c:otherwise>용마루</c:otherwise>
+            				</c:choose>
+            			</td>
              		</tr>
              		<tr>
-             			<td>전문가 사용자 이메일 주소</td>
-             			<td>${e.expert_email1 }@${e.epxert_eamil2 }</td>
+             			<td>전문가 서비스 분야</td>
+             			<td>     
+             				<c:choose>
+            					<c:when test="${d.PF_CATE == 0 }">청소</c:when>
+            					<c:when test="${d.PF_CATE == 1 }">방역</c:when>
+            					<c:otherwise>수리</c:otherwise>
+            				</c:choose> 
+            			</td>
              		</tr>
+             		<tr>
+             			<td>전문가 연락 가능 시간</td>
+             			<td>${d.PF_TIME }</td>
+             		</tr>
+             		<tr>
+             			<td>전문가 경력 상세</td>
+             			<td>${d.PF_DESC }</td>
+             		</tr>
+             		<tr>
+             			<td>전문가 자격증</td>
+             			<td>${d.PF_LI}</td>
+             		</tr>
+             		<tr>
+             			<td>전문가 사업자 번호</td>
+             			<td>${d.PF_OP }</td>
+             		</tr>
+             		<tr>
+             			<td>전문가 소개말</td>
+             			<td>${d.PF_INTRO }</td>
+             		</tr>
+             		<tr>
+             			<td>전문가 간략 소개</td>
+             			<td> ${d.PF_One}</td>
+             		</tr>
+								
              		</table>
               </div>
+           
             </div>
             <!-- /.card-body -->
           </div>
@@ -81,8 +110,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
-          <a href="#" class="btn btn-secondary">이전으로</a>
+        <div class="col-12" style="text-align:center;">
+          <a href="expertUser.bo" class="btn btn-secondary" style="background:#aabee6;border:none;">이전으로</a>
         </div>
       </div>
     </section>

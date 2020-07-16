@@ -58,11 +58,8 @@ public class OnedayDAO {
 
 
 	public int updateProg(Oneday oneday) {
-		
 		return sqlSession.update("Onedays.updateProg", oneday);
 	}
-
-
 	
 
 }

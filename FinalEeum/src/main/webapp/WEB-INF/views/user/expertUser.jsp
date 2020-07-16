@@ -55,7 +55,7 @@
 									<tbody>
 										<c:forEach var = "ex" items="${exlist}">
 											<tr>
-												<td>${ex.expert_id }</td>
+												<td><a href="expertDetail.net?id=${ex.expert_id}">${ex.expert_id }</a></td>
 												<td>${ex.expert_name}</td>
 												<td>${ex.expert_phone1 }-${ex.expert_phone2 }-${ex.expert_phone3 }</td>
 												<td>${ex.expert_email1 }@${ex.expert_email2 }</td>
