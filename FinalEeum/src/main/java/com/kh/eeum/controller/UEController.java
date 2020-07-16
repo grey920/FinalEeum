@@ -252,14 +252,14 @@ public class UEController {
 	public ModelAndView viewPortfolio(ModelAndView mv, HttpSession session) {
 		String expert_id = (String)session.getAttribute("expert_id");
 		Portfolio portfolio = expertservice.getPortfolio(expert_id);
-		mv.setViewName("UE/portfolio");
+		mv.setViewName("portfolio/portfolio");
 		mv.addObject("PFdata", portfolio);
 		return mv;
 	}
 
 	@RequestMapping("writePortfolio")
 	public String writePortfolio() {
-		return "UE/writePortfolio";
+		return "portfolio/writePortfolio";
 	}
 	
 	@RequestMapping("writeActionPofo")
