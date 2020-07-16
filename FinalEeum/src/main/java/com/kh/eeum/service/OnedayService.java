@@ -21,6 +21,5 @@ public interface OnedayService {
 	public int onedayModify(Oneday oneday);
 
 	public int updateProg(int num);
-
 	
 }

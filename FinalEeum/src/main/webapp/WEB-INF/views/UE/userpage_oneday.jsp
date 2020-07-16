@@ -26,7 +26,7 @@
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
         <%@ include file="../header.jsp" %>
         <style>
-        body{font-size:20px}
+        body{font-size:17px}
         .product-subtotal{font-size:18px !important}
         .btn-style{margin-top:10px !important;
        					 margin-right:0 !important; 
@@ -46,6 +46,7 @@
          .pt-120{padding-top:50px !important}
          .breadcrumb-content{padding-top:0;margin-top:1em}
          .breadcrumb-content ul > li{font-size:13pt}
+         .table-content table td.product-name a {text-transform: none;}
         </style>
     </head>
     <body>
@@ -97,18 +98,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    	<c:forEach var="user" items="${useronedaylist}">
+                                    		<c:forEach var="o" items="${user }">
                                         <tr>
                                         	<td class="product-subtotal">원데이 클래스</td>
                                             <td class="product-name">
-                                                <a href="#">수리 전문가와 함께 배우는 화장실 수리</a>
+                                                <a href="OnedayDetailAction.one?num=">${o.ap_title}</a>
                                             </td>
-                                            <td class="product-subtotal"><span class="amount">2020년 6월 27일 <br> 오후 1시</span></td>
-                                            <td class="product-subtotal">숙대입구역 정겨운집</td>
-                                            <td class="product-subtotal">50,000원</td>
-                                            <td class="product-subtotal">신청 완료</td>
+                                            <td class="product-subtotal"><span class="amount">${o.ap_rdate}</span></td>
+                                            <td class="product-subtotal">${o.ap_locate}</td>
+                                            <td class="product-subtotal">50000원</td>
+                                            <td class="product-subtotal">${o.ap_prog}</td>
                                         </tr>
-                                        
-                                        <tr>
+                                        </c:forEach>
+                                        </c:forEach>
+  <!--                                       <tr>
                                         	<td class="product-subtotal">전문가 커피챗</td>
                                             <td class="product-name">
                                                 <a href="#">수리 전문가와 함께하는 QnA</a>
@@ -139,7 +143,7 @@
                                             <td class="product-subtotal">KH정보교육원 종로지원 D강의장</td>
                                             <td class="product-subtotal">20,000원</td>
                                             <td class="product-subtotal">신청 완료</td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
