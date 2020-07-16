@@ -9,8 +9,7 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon"
-	href="resources/img/favicon.png">
+<link rel="shortcut icon" type="image/x-icon" href="resources/img/favicon.png">
 
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/animate.css">
@@ -26,6 +25,7 @@
 
 <!-- js끝 -->
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
+<%@ include file="../header.jsp" %>
 <style>
 input#structure1 {
 	width: 15px;
