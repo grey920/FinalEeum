@@ -25,4 +25,7 @@
 	 					class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 	 					
 	 <tx:annotation-driven transaction-manager="transactionManager"/>
+	 
+	 
+	 
 </beans>
