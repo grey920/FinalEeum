@@ -1,5 +1,8 @@
 package com.kh.eeum.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.kh.eeum.domain.Apply;
 
 public interface ApplyService {
@@ -10,4 +13,5 @@ public interface ApplyService {
 
 	int getClassCount(int num);
 
+	List<Map<String, Apply>> applyList(String user_id);
 }

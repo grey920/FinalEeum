@@ -26,4 +26,10 @@
 	<select id="count" resultType="int">
 		select count(*) from apply where AP_CINDEX = #{num}
 	</select>
+	
+	<select id="usersList" parameterType="String" resultType="map">
+		select * 
+		from apply
+		where ap_id = #{ap_id}
+	</select>
 </mapper>

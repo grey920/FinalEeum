@@ -1,6 +1,8 @@
 package com.kh.eeum.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +41,12 @@ public class ApplyServiceImpl implements ApplyService {
 	@Override
 	public int getClassCount(int num) {
 		return dao.getClassCount(num);
+	}
+	
+	@Override
+	public List<Map<String, Apply>> applyList(String user_id) {
+		List<Map<String, Apply>> list = new ArrayList<Map<String, Apply>>();
+		list = dao.applyList(user_id);
+		return list;
 	}
 }

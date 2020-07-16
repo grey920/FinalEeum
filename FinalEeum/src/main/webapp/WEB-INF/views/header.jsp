@@ -25,40 +25,6 @@
 <link rel="stylesheet" href="resources/css/responsive.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<style>
-.mypage::before {
-	background: #fff none repeat scroll 0 0;
-	border-color: #ccc;
-	border-style: solid;
-	border-width: 1px 0 0 1px;
-	content: "";
-	height: 20px;
-	left: 10px;
-	opacity: 0;
-	position: absolute;
-	top: 150%;
-	transform: rotate(45deg);
-	transition: all 0.4s ease 0s;
-	visibility: hidden;
-	width: 20px;
-	z-index: 9999;
-}
-
-.mini-page {
-	background: #fff none repeat scroll 0 0;
-	box-shadow: 0 0 3px #ccc;
-	opacity: 0;
-	padding: 20px;
-	position: absolute;
-	top: 150%;
-	visibility: hidden;
-	width: 200px;
-	z-index: 999;
-	transition: 0.4s;
-	left: -15px;
-	text-align: left;
-}
-</style>
 <body>
 		<div class="header-area transparent-bar">
 			<div class="container">
@@ -116,7 +82,7 @@
 								<li><a href="userpage.net"><img src="resources/img/header/user.png"
 																						style="margin-bottom: 30px; width: 30px; filter: saturate(80%);" /></a>
 									<ul style="width:240px">
-										<li><img src="resources/profile/${user_saveprofile }" style="width:15%; height:auto;border-radius:50%;">&nbsp;&nbsp;${user_nick}&nbsp;님</li>
+										<li><img src="resources/profile${user_saveprofile}" style="width:15%; height:auto;border-radius:50%;">&nbsp;&nbsp;${user_nick}&nbsp;님</li>
 										<li><a href="userpage.net">나의 정보</a></li>
 										<li><a href="login.net">이음 나가기</a></li>
 									</ul></li>
