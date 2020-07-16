@@ -37,8 +37,6 @@ public class OnedayController {
 	@Autowired
 	private ApplyService applyService;
 	
-	@Value("${savefoldername}")
-	private String saveFolder;
 
 	// 원데이 클래스 메인 (리스트보기)
 	@RequestMapping(value = "/OnedayList.one")
@@ -104,6 +102,7 @@ public class OnedayController {
 	@PostMapping(value="OnedayAddAction.one")
 	public String oneday_write_ok(Oneday oneday, HttpServletRequest request) throws Exception {
 		MultipartFile uploadfile = oneday.getUploadfile();
+		
 		if(!uploadfile.isEmpty()) {
 			String fileName = uploadfile.getOriginalFilename(); // 원래 파일명 <==String getOriginalFilename() : 업로드한 파일의 이름을 구한다
 			oneday.setORIGINALFILE(fileName); // 원래 파일명 저장
@@ -113,9 +112,11 @@ public class OnedayController {
 			int year = c.get(Calendar.YEAR); // 오늘 년도 구합니다.
 			int month = c.get(Calendar.MONTH ) + 1; // 오늘 월 구합니다.
 			int date = c.get(Calendar.DATE); // 오늘일  구합니다.
+			String saveFolder = request.getSession().getServletContext().getRealPath("resources") + "/OBoardupload/";
 			String homedir = saveFolder + year + "-" + month + "-" + date;
 			System.out.println("homedir = "+homedir);
 			File path1 = new File(homedir);
+			
 			if(!(path1.exists())) {
 				path1.mkdir();  // 새로운 폴더를 생성
 			}
@@ -139,7 +140,7 @@ public class OnedayController {
 			/*****   확장자  구하기  끝   ****/
 			
 			// 새로운 파일명
-			String refileName = "bbs" + year + month + date + random + "." + fileExtension;
+			String refileName = "eeum" + year + month + date + random + "." + fileExtension;
 			System.out.println("refileName = " + refileName);
 			
 			// 오라클 디비에 저장될 파일 명
@@ -301,6 +302,7 @@ public class OnedayController {
 				String fileName = uploadfile.getOriginalFilename();  // 원래 파일 명
 				oneday.setORIGINALFILE(fileName);
 				
+				String saveFolder = request.getSession().getServletContext().getRealPath("resources") + "/OBoardupload/";
 				String fileDBName = fileDBName(fileName, saveFolder);
 				
 				// transferTo(File path) : 업로드한 파일을 매개변수의 경로에 저장합니다.

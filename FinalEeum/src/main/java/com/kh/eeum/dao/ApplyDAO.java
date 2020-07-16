@@ -1,5 +1,6 @@
 package com.kh.eeum.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,8 +27,21 @@ public class ApplyDAO {
 	public int getClassCount(int num) {
 		return sqlSession.selectOne("Applys.count", num);
 	}
-
-	public List<Map<String,Apply>> applyList(String user_id) {
-		return sqlSession.selectList("Applys.usersList", user_id);
+	
+	public int applyCount(String user_id) {
+		return sqlSession.selectOne("Applys.applyCount", user_id);
 	}
+
+	public List<Apply> applyList(HashMap<String, Object> map) {
+		return sqlSession.selectList("Applys.applyList", map);
+	}
+	
+	public int cancel(Map<String, Object> map) {
+		return sqlSession.update("Applys.cancel",map);
+	}
+	
+	public void delete(String user_id) {
+		sqlSession.delete("Applys.deleteAll", user_id);
+	}
+	
 }
