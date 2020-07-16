@@ -6,8 +6,10 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/service/review_list.css">
 
-    <link rel="stylesheet" type="text/css" href="resources/css/service/star-rating-svg.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/service/demo.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/service/star-rating-svg.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/service/demo.css">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -15,21 +17,28 @@
 
 <title>Insert title here</title>
 <script>
-$(document).ready(function(){
-			 $(".svg-star-rating").starRating({
-				    starSize: 65,
-				    strokeWidth: 10,
-				    strokeColor: '#3E3E3E',
-				    initialRating: 4,
-				    starGradient: {
-				      start: '#21527A',
-				      end: '#595900'
-				      }
-				  });
+	$(function() {
 
+		$(".svg-star-rating").starRating(
+				{
+					totalStars : 5,
 
-			  });
+					emptyColor : '#D9FFD9',
+					hoverColor : 'blue',
+					activeColor : '#006600',
+					onHover : function(currentIndex, currentRating, $el) {
+						console.log('index: ', currentIndex, 'currentRating: ',
+								currentRating, ' DOM element ', $el);
+						$('.live-rating').text(currentIndex);
+					},
+					onLeave : function(currentIndex, currentRating, $el) {
+						console.log('index: ', currentIndex, 'currentRating: ',
+								currentRating, ' DOM element ', $el);
+						$('.live-rating').text(currentRating);
+					}
+				});
 
+	});
 </script>
 </head>
 <body>
@@ -45,7 +54,10 @@ $(document).ready(function(){
 			style="resize: none"></textarea>
 		<button id="write" class="btn btn-info float-right">등록</button>
 
-<div class="svg-star-rating"></div>
+		<span class="svg-star-rating jq-stars" data-rating="3.0"></span> <span
+			class="live-rating"></span>
+			
+
 
 		<table class="table table_striped" id="user_review">
 
@@ -63,8 +75,9 @@ $(document).ready(function(){
 		<div id="message"></div>
 	</div>
 
-<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
-<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
+	<script
+		src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
 
 </body>
 </html>
