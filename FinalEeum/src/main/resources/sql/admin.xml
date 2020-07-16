@@ -4,6 +4,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="eeum">
+
 	<select id="allUsers" resultType="int">
 		select sum(users.cnt)
 				from(
@@ -11,4 +12,13 @@
 				select count(EXPERT_ID) cnt from expert_table
      )users
 	</select>
+	
+	<select id="deExperts" resultType="Portfolio" parameterType="String">
+		select 
+			PF_EXID, PF_LOC, PF_GRADE, PF_CATE, PF_TIME, PF_DESC, 
+			PF_LI, PF_OP, PF_INTRO, PF_One
+		from PORTFOLIO
+		where PF_EXID=#{PF_EXID}
+	</select>
+	
 </mapper>

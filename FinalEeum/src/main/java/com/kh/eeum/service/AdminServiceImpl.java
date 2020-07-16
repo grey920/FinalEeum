@@ -1,9 +1,10 @@
 package com.kh.eeum.service;
-  
+ 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.eeum.dao.AdminDAO;
+import com.kh.eeum.domain.Portfolio;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -15,5 +16,13 @@ public class AdminServiceImpl implements AdminService{
 	public int cUsers() {
 		return asdao.cUsers();
 	}
+
+	@Override
+	public Portfolio getList(String id) {
+		return asdao.deExperts(id);
+	}
+
+
+
 
 }
