@@ -101,7 +101,7 @@ public class Oneday {
 		ONE_LINE = oNE_LINE;
 	}
 	public String getONE_RDATE() {
-		return ONE_RDATE.substring(0,10);
+		return ONE_RDATE.substring(0, 10);
 	}
 	public void setONE_RDATE(String oNE_RDATE) {
 		ONE_RDATE = oNE_RDATE;
@@ -118,8 +118,5 @@ public class Oneday {
 	public void setONE_LOCATE(String oNE_LOCATE) {
 		ONE_LOCATE = oNE_LOCATE;
 	}
-
 	
-
-
 }
