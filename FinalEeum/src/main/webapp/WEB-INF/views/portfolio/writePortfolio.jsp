@@ -24,34 +24,9 @@
 <link rel="stylesheet" href="resources/css/bundle.css">
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/responsive.css">
+<link rel="stylesheet" href="resources/css/service/portfolioForm.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
-<style>
-#noPFdata {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
 
-.checkout-area {
-	padding-top: 30px
-}
-
-.time-align, .loc-align, form {
-	display: flex;
-}
-
-#sido1 {
-	width: 50%;
-	margin: 0 15px 0 0;
-}
-
-#gugun1 {
-	width: 50%;
-	margin: 0 0 0 15px;
-}
-#upfile{background:none; border:none;}
-</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -252,19 +227,38 @@
 		</div>
 
 		<!-- portfolio start -->
-		<div class="checkout-area pt-130 hm-3-padding pb-100">
-			<div class="container-fluid">
-				<div class="row">
-					<form action="writeActionPofo">
+		<form action="writeActionPofo" enctype="multipart/form-data"
+			method="POST">
+			<div class="checkout-area pt-130 hm-3-padding pb-100">
+				<div class="container-fluid">
+					<div class="row">
+
 						<div class="col-lg-6 col-md-12 col-12">
 							<div class="checkbox-form">
 								<div class="row">
+
+									<div class="col-md-12">
+										<div class="profile_image">
+											<label for="savefile_reg"><span>프로필 등록</span><span
+												class="required">*</span></label> <input type="file"
+												id="expert_profile" name="uploadfilePRO"
+												accept="image/gif, image/jpeg, image/png, image/jpg"
+												style="visibility: hidden"><br> <label
+												for="expert_profile"> <img
+												src="resources/img/profile/profile.png" alt="profile"
+												id="profile"
+												style="width: 170px; height: 170px; border-radius: 50%; cursor: pointer">
+											</label>
+										</div>
+									</div>
+
 									<div class="col-md-12">
 										<div class="category-select">
-											<label>분야 <span class="required">*</span></label> <select>
-												<option value="cleaning">청소</option>
-												<option value="disinfection">방역</option>
-												<option value="repair">수리</option>
+											<label>분야 <span class="required">*</span></label> <select
+												name="PF_CATE">
+												<option value="0">청소</option>
+												<option value="1">방역</option>
+												<option value="2">수리</option>
 											</select>
 										</div>
 
@@ -280,7 +274,7 @@
 
 
 									<div class="col-md-6">
-										<label>예약 가능 시간 <span class="required">*</span></label> <label>시작
+										<label>예약 가능 시간 <span class="required">*</span></label><label>시작
 											시간 </label> <select name="starthour" id="starthour"></select>
 									</div>
 									<div class="col-md-6">
@@ -291,7 +285,8 @@
 									<div class="col-md-12">
 										<div class="checkout-form-list">
 											<label>경력 상세설명 <span class="required">*</span></label>
-											<textarea cols="30" rows="5" placeholder="경력에 대해 이야기 해주세요"></textarea>
+											<textarea name="PF_DESC" cols="30" rows="5"
+												placeholder="경력에 대해 이야기 해주세요"></textarea>
 										</div>
 									</div>
 
@@ -303,32 +298,51 @@
 						<div class="col-lg-6 col-md-12 col-12">
 							<!-- 오른쪽 내용 -->
 							<div class="col-md-12">
-							<div class="file_form-group">
-								<label for="savefile"><span>사업자등록증 등록</span></label> <label
-									for="upfile">
-								</label> <input type="file" id="upfile" name="uploadfile">
-								<!-- domain에 있는 private MultipartFile uploadfile;랑 input의 name이 맞나 꼭 확인! -->
-								<span id="filevalue"></span>
+								<div class="file_form-group">
+									<label for="savefile_reg"><span>사업자등록증 등록</span></label> <label
+										for="upfile1"> </label> <input type="file" id="upfile1"
+										name="uploadfile1">
+									<!-- domain에 있는 private MultipartFile uploadfile;랑 input의 name이 맞나 꼭 확인! -->
+									<span id="filevalue1"></span>
+								</div>
 							</div>
+
+							<div class="col-md-12">
+								<div class="file_form-group">
+									<label for="savefile_lic"><span>자격증 등록</span></label> <label
+										for="upfile2"> </label> <input type="file" id="upfile2"
+										name="uploadfile2">
+									<!-- domain에 있는 private MultipartFile uploadfile;랑 input의 name이 맞나 꼭 확인! -->
+									<span id="filevalue2"></span>
+								</div>
 							</div>
-							
+
 							<div class="col-md-12">
 								<div class="checkout-form-list">
 									<label>전문가 소개 한마디 <span class="required">*</span></label>
-									<textarea cols="30" rows="2"></textarea>
+									<textarea name="PF_One" cols="30" rows="2"></textarea>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="checkout-form-list">
 									<label>전문가 소개말 <span class="required">*</span></label>
-									<textarea cols="30" rows="5" placeholder="프로글 상세 페이지에 들어갑니다"></textarea>
+									<textarea name="PF_INTRO" cols="30" rows="5"
+										placeholder="전문가 상세 페이지에 들어갑니다"></textarea>
 								</div>
 							</div>
 						</div>
-					</form>
+						<div class="row btnRow">
+							<div class="col-lg-12 col-md-12 col-12">
+								<div class="buttons">
+									<button type="submit" class="btn-style">등록</button>
+									<button type="reset" class="btn-style reset">취소</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 		<!-- checkout-area end -->
 
 
@@ -498,6 +512,37 @@
 
 	<!-- all js here -->
 	<script src="resources/js/jquery-3.5.0.js"></script>
+	<script type="text/javascript">
+		/*프로필 사진 업로드 처리*/
+		$('#expert_profile').on('change', preview);
+
+		function preview(e) {
+			//선택한 그림의 File 객체를 취득
+			//File객체 리스트에서 첫번째 File객체를 가져옵니다.
+			var file = e.target.files[0];
+
+			//file.type : 파일의 형식(MIME타입 - 예) text/html
+			if (!file.type.match("image.*")) { //파일 타입이 image인지 확인합니다.
+				alert('확장자는 이미지만 가능합니다.');
+				return;
+			}
+
+			//파일을 읽기 위한 객체 생성
+			var reader = new FileReader();
+
+			//DataURL 형식으로 파일을 읽어옵니다.
+			//읽어온 결과는 reader객체의 result 속성에 저장됩니다.
+			reader.readAsDataURL(file);
+
+			//읽기에 성공했을 때 실행되는 이벤트 핸들러
+			reader.onload = function(e) {
+				//result:읽기 결과가 저장됩니다.
+				//reader.result 또는 e.target.result
+				$('#profile').attr("src", e.target.result);
+			}
+
+		}
+	</script>
 	<script src="resources/js/sojaeji1.js"></script>
 	<script src="resources/js/PF_writeform.js"></script>
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>

@@ -103,4 +103,9 @@ public class ExpertServiceImpl implements ExpertService {
 		return pfDao.getPortfolio(expert_id);
 	}
 
+	@Override
+	public int insert(Portfolio pf) {
+		return pfDao.insert(pf);
+	}
+
 }

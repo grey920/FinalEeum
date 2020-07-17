@@ -10,4 +10,9 @@
 	select * from PORTFOLIO
 	where PF_EXID = #{expert_id} 
 </select>
+<insert id="insert" parameterType="portfolio">
+	insert into PORTFOLIO
+	values
+	(#{PF_EXID},#{PF_LOC}, #{PF_GRADE}, #{PF_CATE},#{PF_TIME},#{ PF_DESC},#{PF_OR_LI},#{PF_SV_LI},#{PF_OR_OP},#{PF_SV_OP}, #{PF_INTRO}, #{PF_One},#{PF_PROFILE}, #{PF_SAVEPROFILE})
+</insert>
 </mapper>
