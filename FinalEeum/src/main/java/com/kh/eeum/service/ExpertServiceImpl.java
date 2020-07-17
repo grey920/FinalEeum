@@ -108,4 +108,10 @@ public class ExpertServiceImpl implements ExpertService {
 		return pfDao.insert(pf);
 	}
 
+	@Override
+	public int deletePF(String expertid) {
+		return pfDao.deletePF(expertid);
+		
+	}
+
 }
