@@ -24,204 +24,14 @@
 <link rel="stylesheet" href="resources/css/bundle.css">
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/responsive.css">
+<link rel="stylesheet" href="resources/css/service/portfolioForm.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
-<style>
-#noPFdata {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
+<%@ include file="../header.jsp" %>
 
-.checkout-area {
-	padding-top: 30px
-}
-
-.time-align, .loc-align, form {
-	display: flex;
-}
-
-#sido1 {
-	width: 50%;
-	margin: 0 15px 0 0;
-}
-
-#gugun1 {
-	width: 50%;
-	margin: 0 0 0 15px;
-}
-#upfile{background:none; border:none;}
-</style>
 </head>
 <body>
 	<div class="wrapper">
-		<!-- header start -->
-		<header>
-			<div class="header-area transparent-bar">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-2 col-md-2 col-sm-5 col-5">
-							<div class="language-currency">
-								<div class="language">
-									<select class="select-header orderby">
-										<option value="">ENGLISH</option>
-										<option value="">BANGLA</option>
-										<option value="">HINDI</option>
-									</select>
-								</div>
-								<div class="currency">
-									<select class="select-header orderby">
-										<option value="">USD</option>
-										<option value="">US</option>
-										<option value="">EURO</option>
-									</select>
-								</div>
-							</div>
-							<div class="sticky-logo">
-								<a href="index.html"><img src="resources/img/logo/2.png"
-									alt="" /></a>
-							</div>
-							<div class="logo-small-device">
-								<a href="index.html"><img alt=""
-									src="resources/img/logo/logo.png"></a>
-							</div>
-						</div>
-						<div class="col-lg-8 col-md-8 d-none d-md-block">
-							<div class="logo-menu-wrapper text-center">
-								<div class="logo">
-									<a href="index.html"><img src="resources/img/logo/logo.png"
-										alt="" /></a>
-								</div>
-								<div class="main-menu">
-									<nav>
-										<ul>
-											<li><a href="index.html">home</a></li>
-											<li><a href="about-us.html">about us </a></li>
-											<li><a href="shop.html">shop <i
-													class="ion-ios-arrow-down"></i></a>
-												<ul>
-													<li><a href="product-details.html">Product details</a></li>
-												</ul></li>
-											<li><a href="#">pages <i class="ion-ios-arrow-down"></i></a>
-												<ul>
-													<li><a href="about-us.html">about us</a></li>
-													<li><a href="cart.html">cart page</a></li>
-													<li><a href="checkout.html">checkout</a></li>
-													<li><a href="wishlist.html">wishlist</a></li>
-													<li><a href="login-register.html">login</a></li>
-													<li><a href="contact.html">contact</a></li>
-												</ul></li>
-											<li><a href="blog.html">blog <i
-													class="ion-ios-arrow-down"></i></a>
-												<ul>
-													<li><a href="blog-details-standerd.html">about us</a></li>
-												</ul></li>
-											<li><a href="contact.html">contact us</a></li>
-										</ul>
-									</nav>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-7 col-7">
-							<div class="header-site-icon">
-								<div class="header-search same-style">
-									<button class="sidebar-trigger-search">
-										<span class="ti-search"></span>
-									</button>
-								</div>
-								<div class="header-login same-style">
-									<a href="login-register.html"> <span class="ti-user"></span>
-									</a>
-								</div>
-								<div class="header-cart same-style">
-									<button class="sidebar-trigger">
-										<i class="ti-shopping-cart"></i> <span class="count-style">03</span>
-									</button>
-								</div>
-							</div>
-						</div>
-						<div class="mobile-menu-area col-12">
-							<div class="mobile-menu">
-								<nav id="mobile-menu-active">
-									<ul class="menu-overflow">
-										<li><a href="#">HOME</a>
-											<ul>
-												<li><a href="index.html">home version 1</a></li>
-												<li><a href="index-2.html">home version 2</a></li>
-												<li><a href="index-3.html">home version 3</a></li>
-												<li><a href="index-4.html">home version 4</a></li>
-											</ul></li>
-										<li><a href="#">pages</a>
-											<ul>
-												<li><a href="about-us.html">about us</a></li>
-												<li><a href="cart.html">cart page</a></li>
-												<li><a href="checkout.html">checkout</a></li>
-												<li><a href="wishlist.html">wishlist</a></li>
-												<li><a href="login-register.html">login</a></li>
-												<li><a href="contact.html">contact</a></li>
-											</ul></li>
-										<li><a href="#">shop</a>
-											<ul>
-												<li><a href="#">shop grid</a>
-													<ul>
-														<li><a href="shop-grid-2-col.html"> grid 2 column</a></li>
-														<li><a href="shop-grid-3-col.html"> grid 3 column</a></li>
-														<li><a href="shop.html"> grid 4 column</a></li>
-														<li><a href="shop-grid-6-col.html"> grid 6 column</a></li>
-														<li><a href="shop-grid-box.html"> grid box style</a></li>
-													</ul></li>
-												<li><a href="#">shop list</a>
-													<ul>
-														<li><a href="shop-list.html"> list 1 column</a></li>
-														<li><a href="shop-list-2-col.html"> list 2 column</a></li>
-														<li><a href="shop-list-3-col.html"> list 3 column</a></li>
-														<li><a href="shop-list-box.html"> list box style</a></li>
-													</ul></li>
-												<li><a href="shop-grid-view-5-col.html">product
-														details</a>
-													<ul>
-														<li><a href="product-details.html">tab style</a></li>
-														<li><a href="product-details-sticky.html">sticky
-																style</a></li>
-														<li><a href="product-details-gallery.html">gallery
-																style</a></li>
-														<li><a href="product-details-fixed-img.html">fixed
-																image style</a></li>
-													</ul></li>
-											</ul></li>
-										<li><a href="#">BLOG</a>
-											<ul>
-												<li><a href="blog-masonry.html">Blog Masonry</a></li>
-												<li><a href="#">Blog Standard</a>
-													<ul>
-														<li><a href="blog-left-sidebar.html">left sidebar</a></li>
-														<li><a href="blog-right-sidebar.html">right
-																sidebar</a></li>
-														<li><a href="blog-no-sidebar.html">no sidebar</a></li>
-													</ul></li>
-												<li><a href="#">Post Types</a>
-													<ul>
-														<li><a href="blog-details-standerd.html">Standard
-																post</a></li>
-														<li><a href="blog-details-audio.html">audio post</a></li>
-														<li><a href="blog-details-video.html">video post</a></li>
-														<li><a href="blog-details-gallery.html">gallery
-																post</a></li>
-														<li><a href="blog-details-link.html">link post</a></li>
-														<li><a href="blog-details-quote.html">quote post</a></li>
-													</ul></li>
-											</ul></li>
-										<li><a href="contact.html"> Contact us</a></li>
-									</ul>
-								</nav>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
-
-		<div class="header-height"></div>
+		
 		<!-- main-search start -->
 		<div class="main-search-active">
 			<div class="sidebar-search-icon">
@@ -252,19 +62,38 @@
 		</div>
 
 		<!-- portfolio start -->
-		<div class="checkout-area pt-130 hm-3-padding pb-100">
-			<div class="container-fluid">
-				<div class="row">
-					<form action="writeActionPofo">
+		<form action="writeActionPofo" enctype="multipart/form-data"
+			method="POST">
+			<div class="checkout-area pt-130 hm-3-padding pb-100">
+				<div class="container-fluid">
+					<div class="row">
+
 						<div class="col-lg-6 col-md-12 col-12">
 							<div class="checkbox-form">
 								<div class="row">
+
+									<div class="col-md-12">
+										<div class="profile_image">
+											<label for="savefile_reg"><span>프로필 등록</span><span
+												class="required">*</span></label> <input type="file"
+												id="expert_profile" name="uploadfilePRO"
+												accept="image/gif, image/jpeg, image/png, image/jpg"
+												style="visibility: hidden"><br> <label
+												for="expert_profile"> <img
+												src="resources/img/profile/profile.png" alt="profile"
+												id="profile"
+												style="width: 170px; height: 170px; border-radius: 50%; cursor: pointer">
+											</label>
+										</div>
+									</div>
+
 									<div class="col-md-12">
 										<div class="category-select">
-											<label>분야 <span class="required">*</span></label> <select>
-												<option value="cleaning">청소</option>
-												<option value="disinfection">방역</option>
-												<option value="repair">수리</option>
+											<label>분야 <span class="required">*</span></label> <select
+												name="PF_CATE">
+												<option value="0">청소</option>
+												<option value="1">방역</option>
+												<option value="2">수리</option>
 											</select>
 										</div>
 
@@ -280,7 +109,7 @@
 
 
 									<div class="col-md-6">
-										<label>예약 가능 시간 <span class="required">*</span></label> <label>시작
+										<label>예약 가능 시간 <span class="required">*</span></label><label>시작
 											시간 </label> <select name="starthour" id="starthour"></select>
 									</div>
 									<div class="col-md-6">
@@ -291,7 +120,8 @@
 									<div class="col-md-12">
 										<div class="checkout-form-list">
 											<label>경력 상세설명 <span class="required">*</span></label>
-											<textarea cols="30" rows="5" placeholder="경력에 대해 이야기 해주세요"></textarea>
+											<textarea name="PF_DESC" cols="30" rows="5"
+												placeholder="경력에 대해 이야기 해주세요"></textarea>
 										</div>
 									</div>
 
@@ -303,32 +133,51 @@
 						<div class="col-lg-6 col-md-12 col-12">
 							<!-- 오른쪽 내용 -->
 							<div class="col-md-12">
-							<div class="file_form-group">
-								<label for="savefile"><span>사업자등록증 등록</span></label> <label
-									for="upfile">
-								</label> <input type="file" id="upfile" name="uploadfile">
-								<!-- domain에 있는 private MultipartFile uploadfile;랑 input의 name이 맞나 꼭 확인! -->
-								<span id="filevalue"></span>
+								<div class="file_form-group">
+									<label for="savefile_reg"><span>사업자등록증 등록</span></label> <label
+										for="upfile1"> </label> <input type="file" id="upfile1"
+										name="uploadfile1">
+									<!-- domain에 있는 private MultipartFile uploadfile;랑 input의 name이 맞나 꼭 확인! -->
+									<span id="filevalue1"></span>
+								</div>
 							</div>
+
+							<div class="col-md-12">
+								<div class="file_form-group">
+									<label for="savefile_lic"><span>자격증 등록</span></label> <label
+										for="upfile2"> </label> <input type="file" id="upfile2"
+										name="uploadfile2">
+									<!-- domain에 있는 private MultipartFile uploadfile;랑 input의 name이 맞나 꼭 확인! -->
+									<span id="filevalue2"></span>
+								</div>
 							</div>
-							
+
 							<div class="col-md-12">
 								<div class="checkout-form-list">
 									<label>전문가 소개 한마디 <span class="required">*</span></label>
-									<textarea cols="30" rows="2"></textarea>
+									<textarea name="PF_One" cols="30" rows="2"></textarea>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="checkout-form-list">
 									<label>전문가 소개말 <span class="required">*</span></label>
-									<textarea cols="30" rows="5" placeholder="프로글 상세 페이지에 들어갑니다"></textarea>
+									<textarea name="PF_INTRO" cols="30" rows="5"
+										placeholder="전문가 상세 페이지에 들어갑니다"></textarea>
 								</div>
 							</div>
 						</div>
-					</form>
+						<div class="row btnRow">
+							<div class="col-lg-12 col-md-12 col-12">
+								<div class="buttons">
+									<button type="submit" class="btn-style">등록</button>
+									<button type="reset" class="btn-style reset">취소</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 		<!-- checkout-area end -->
 
 
@@ -498,6 +347,37 @@
 
 	<!-- all js here -->
 	<script src="resources/js/jquery-3.5.0.js"></script>
+	<script type="text/javascript">
+		/*프로필 사진 업로드 처리*/
+		$('#expert_profile').on('change', preview);
+
+		function preview(e) {
+			//선택한 그림의 File 객체를 취득
+			//File객체 리스트에서 첫번째 File객체를 가져옵니다.
+			var file = e.target.files[0];
+
+			//file.type : 파일의 형식(MIME타입 - 예) text/html
+			if (!file.type.match("image.*")) { //파일 타입이 image인지 확인합니다.
+				alert('확장자는 이미지만 가능합니다.');
+				return;
+			}
+
+			//파일을 읽기 위한 객체 생성
+			var reader = new FileReader();
+
+			//DataURL 형식으로 파일을 읽어옵니다.
+			//읽어온 결과는 reader객체의 result 속성에 저장됩니다.
+			reader.readAsDataURL(file);
+
+			//읽기에 성공했을 때 실행되는 이벤트 핸들러
+			reader.onload = function(e) {
+				//result:읽기 결과가 저장됩니다.
+				//reader.result 또는 e.target.result
+				$('#profile').attr("src", e.target.result);
+			}
+
+		}
+	</script>
 	<script src="resources/js/sojaeji1.js"></script>
 	<script src="resources/js/PF_writeform.js"></script>
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
