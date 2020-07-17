@@ -20,6 +20,8 @@ CREATE SEQUENCE APPLY_SEQ;
 select * from APPLY;
 delete from APPLY;
 
-
+update apply
+set ap_prog = '0'
+where ap_id = 'hansol11' and ap_cindex = '5'
 	
 	
