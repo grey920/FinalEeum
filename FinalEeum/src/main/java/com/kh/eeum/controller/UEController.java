@@ -49,9 +49,6 @@ public class UEController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@Value("${savefoldername}")
-	private String profileFolder;
-	
 	
 	@RequestMapping("/")
 	public String main() {
@@ -585,7 +582,7 @@ public class UEController {
 				String fileDBName = "/" + year + "-" + month + "-" + date + "/" + refileName;
 				System.out.println("DB에 저장될 파일명 = " + fileDBName);
 				
-				uploadfile.transferTo(new File(profileFolder + fileDBName));
+				uploadfile.transferTo(new File(saveFolder + fileDBName));
 				
 				u.setUser_saveprofile(fileDBName);
 				
@@ -635,13 +632,54 @@ public class UEController {
 	}
 	
 	@RequestMapping(value="userOneday.net")
-	public ModelAndView userOneday(HttpSession session, ModelAndView mv) throws Exception {
+	public ModelAndView userOneday(@RequestParam(value="page", defaultValue="1", required=false) int page,
+															HttpSession session, ModelAndView mv) throws Exception {
 		String user_id = (String) session.getAttribute("user_id");
-		List<Map<String,Apply>> applyList = applyservice.applyList(user_id);
-		System.out.println(applyList);
+		
+		int applyCount = applyservice.applyCount(user_id);
+		
+		int limit = 10;
+		int maxpage = (applyCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		
+		List<Apply> applyList = applyservice.applyList(user_id, page, limit);
+		
 		mv.setViewName("UE/userpage_oneday");
-		mv.addObject("useronedaylist", applyList);
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("applycount", applyCount);
+		mv.addObject("applylist", applyList);
+		mv.addObject("limit", limit);
+		
 		return mv;
+	}
+	
+	@RequestMapping(value="userOnedayCancel.net")
+	public void onedayCancel(String ap_id, String ap_cindex, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		int result = applyservice.cancel(ap_id, ap_cindex);
+		
+		if (result == 1) {
+			out.println("alert('신청하신 클래스가 취소되었습니다.');");		//추후에 모달로 바꾸기,,,
+			out.println("location.href='userOneday.net';");
+			
+		} else {
+			out.println("alert('클래스 취소가 실패되었습니다.');");
+			out.println("history.back();");
+		}
+		
+		out.println("</script>");
+		out.close();
 	}
 	
 	@RequestMapping(value="userWishlist.net")
@@ -651,7 +689,8 @@ public class UEController {
 	
 	@RequestMapping(value="userDelete.net", method=RequestMethod.GET)
 	public String delete(String user_id) throws Exception {
-		userservice.user_delete(user_id);
+		applyservice.deleteAll(user_id);			//원데이 클래스 신청 내역 삭제 후 
+		userservice.user_delete(user_id);			//회원 탈퇴 
 		return "redirect:/";
 	}
 }
