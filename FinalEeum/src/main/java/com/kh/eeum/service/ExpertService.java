@@ -19,4 +19,5 @@ public interface ExpertService {
 	public List<Expert> getList();
 	public Portfolio getPortfolio(String expert_id);
 	public int insert(Portfolio pf);
+	public int deletePF(String expert_id);
 }

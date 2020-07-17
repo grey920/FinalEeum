@@ -1,6 +1,7 @@
 package com.kh.eeum.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.List;
@@ -287,6 +288,22 @@ public class UEController {
 		mv.setViewName("portfolio/portfolio");
 		mv.addObject("PFdata", portfolio);
 		return mv;
+		}
+	}
+	
+	@RequestMapping("deletePF")
+	public void deletePF(HttpSession session, HttpServletResponse response) throws IOException {
+		String expert_id = (String) session.getAttribute("expert_id");
+		int result = expertservice.deletePF(expert_id);
+		
+		if(result == 1) {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter	out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('정상적으로 포트폴리오가 삭제되었습니다');");
+		out.println("location.href='expertpage.net';");
+		out.println("</script>");
+		out.close();
 		}
 	}
 

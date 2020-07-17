@@ -22,4 +22,9 @@ public class PortfolioDAO {
 		System.out.println("loc는 "+pf.getPF_LOC());
 		return sqlSession.insert("Portfolios.insert", pf);
 	}
+
+
+	public int deletePF(String expertid) {
+		return sqlSession.delete("Portfolios.delete", expertid);
+	}
 }
