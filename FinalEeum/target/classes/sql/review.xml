@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Reviews">
+
+	<select id="selectReviewList" resultType="map" >
+		select *
+		from (select rownum
+		rnum,rv_no,rv_user_id,rv_expert_id,rv_content,rv_rating1,rv_rating2,rv_rating3,rv_rating4,rv_rating5,rv_rating6,rv_date
+			from (
+				select *
+				from review where rv_expert_id = #{expert_id}
+				order by rv_date desc
+				)
+			)
+			where rnum between #{startrow} and #{endrow}
+	</select>
+	
+	<insert id="insert" parameterType="Review">
+		insert into review 
+		values(rev_seq.nextval,#{rv_user_id},#{rv_expert_id},#{rv_content},#{rv_rating1},#{rv_rating2},#{rv_rating3},#{rv_rating4},#{rv_rating5},#{rv_rating6},sysdate)
+	</insert>
+
+	<update id="update" parameterType="Review">
+	update review
+	set rv_content = #{rv_content}, rv_rating1 = #{rv_rating1}, rv_rating2 = #{rv_rating2}, rv_rating3 = #{rv_rating3}
+	, rv_rating4 = #{rv_rating4}, rv_rating5 = #{rv_rating5}, rv_rating6 = #{rv_rating6}
+	where rv_no = #{rv_no}
+	</update>
+</mapper>
