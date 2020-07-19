@@ -25,7 +25,7 @@ REFERENCES EXPERT_TABLE(EXPERT_ID);
 
 
 insert into PORTFOLIO
-values('user5678', '서울시 동대문구 전농동', 0, 0, '09:00-18:00', '웅앵웅웅앵앵우ㅐ애ㅜ앨만', null, null, '피곤해 죽겠읍니다. ', '세상에서 가장 좋은 건? 집');
+values('hansol302', '대전광역시 ,유성구', '0', '2', '11,21', '하하하', 'E3AB585D-4A3D-4FE4-9173-9850B4DE8FB6_4_5005_c.jpeg', '/2020-7-17/eeum202071762614649.jpeg', 'E81DC83B-FFBD-42E7-ACB9-0C921E8B0D14_4_5005_c.jpeg', '/2020-7-17/eeum202071732401052.jpeg', '호호호', '후후후', 'E73D72DD-92ED-4852-883C-BC7DE8DB1506_4_5005_c.jpeg', '/2020-7-17/eeum202071746916861.jpeg');
 
 alter table PORTFOLIO add(PF_PROFILE VARCHAR2(4000));
 alter table PORTFOLIO add(PF_SAVEPROFILE VARCHAR2(4000));

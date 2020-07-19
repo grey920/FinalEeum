@@ -17,7 +17,7 @@ public class LikeServiceImpl implements LikeService {
 
 	@Override
 	public int insertLike(Like like) {
-		return likedao.inertLike(like);
+		return likedao.insertLike(like);
 	}
 
 	@Override
@@ -40,6 +40,25 @@ public class LikeServiceImpl implements LikeService {
 	@Override
 	public void deleteLike(Like like) {
 		likedao.deleteLike(like);
+	}
+
+	@Override
+	public int wishlistCount(String user_id) {
+		return likedao.wishlistCount(user_id);
+	}
+
+	@Override
+	public List<Object> wishlist(String user_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int startrow = (page - 1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("user_id", user_id);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return likedao.wishlist(map);
 	}
 
 
