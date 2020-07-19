@@ -89,105 +89,74 @@
                         <div class="product-grid product-view">
                             <div class="row">
                             
+                              <c:forEach var="w" items="${wishlist}">
                                 <div class="product-width col-md-6 col-xl-3 col-lg-4">
                                     <div class="product-wrapper mb-35">
-                                        <div class="product-img" style="text-align:center;height:450px">
+                                        <div class="product-img" style="text-align:center;height:400px">
                                             <a href="#">
-                                                <img src="resources/img/profile/profile_ex3.png" style="width:auto">
+                                                <img src="resources/img/profile${w.PF_SAVEPROFILE}" style="width:auto">
                                             </a>
-                                            <div class="price-decrease">
-                                                <span>해충</span>
-                                            </div>
+	                                        <div class="price-decrease">
+	                                            <c:if test="${w.PF_CATE == '0' }">
+	                                                <span>청소</span>
+	                                            </c:if>
+	                                            
+	                                            <c:if test="${w.PF_CATE == '1' }">
+	                                                <span>방역</span>
+	                                            </c:if>
+	                                            
+	                                            <c:if test="${w.PF_CATE == '2' }">
+	                                                <span>수리</span>
+	                                            </c:if>
+	                                        </div>
                                         </div>
                                         <div class="product-content">
                                             <div class="product-title-wishlist">
                                                 <div class="product-title-3">
-                                                    <h4><a href="product-details.html">우주 임보라 </a></h4>
+                                                    <h4><a href="product-details.html">
+                                                    <c:if test="${w.PF_GRADE == '0'}">디딤돌</c:if>
+                                                    <c:if test="${w.PF_GRADE == '1'}">마루</c:if>
+                                                    <c:if test="${w.PF_GRADE == '2'}">우주</c:if>
+                                                    <c:if test="${w.PF_GRADE == '3'}">용마루</c:if>
+                                                    &nbsp;${w.EXPERT_NAME}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="product-width col-md-6 col-xl-3 col-lg-4">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img" style="text-align:center;height:450px">
-                                            <a href="#">
-                                                <img src="resources/img/profile/profile_ex4.png" style="width:auto;">
-                                            </a>
-                                            <div class="price-decrease">
-                                                <span>청소</span>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h4><a href="product-details.html">용마루 이주빈 </a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-width col-md-6 col-xl-3 col-lg-4">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img" style="text-align:center;height:450px">
-                                            <a href="#">
-                                                <img src="resources/img/profile/profile_ex1.png" style="width:auto">
-                                            </a>
-                                            <div class="price-decrease">
-                                                <span>청소</span>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h4><a href="product-details.html">디딤돌 최유정 </a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-width col-md-6 col-xl-3 col-lg-4">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img" style="text-align:center;height:450px">
-                                            <a href="#">
-                                                <img src="resources/img/profile/profile_ex2.png" style="width:auto">
-                                            </a>
-                                            <div class="price-decrease">
-                                                <span>수리</span>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h4><a href="product-details.html">마루 김도연 </a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                             </c:forEach>
+                           </div>
                             
-                            <div class="pagination-style text-center mt-30">
-                                <ul>
-                                    <li>
-                                        <a class="active" href="#">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ion-chevron-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+				 			<div class="pagination-style text-center mt-30" id="pagination">
+								<ul class="paging_align">
+									<c:if test="${page <= 1 }">
+										<li><i class="ion-chevron-left" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page > 1}">
+										<li><a href="userOneday.net?page=${page-1}"><i
+												class="ion-chevron-left"></i></a></li>
+									</c:if>
+				
+									<c:forEach var="a" begin="${startpage}" end="${endpage}">
+										<c:if test="${a == page }">
+											<li><a class="active" href="#">${a}</a></li>
+										</c:if>
+										<c:if test="${a != page}">
+											<li><a href="userOneday.net?page=${a}">${a}</a></li>
+										</c:if>
+									</c:forEach>
+				
+									<c:if test="${page >= maxpage}">
+										<li><i class="ion-chevron-right" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page < maxpage}">
+										<li><a href="userOneday.net?page=${page+1}"> <i
+												class="ion-chevron-right"></i>
+										</a></li>
+									</c:if>
+								</ul>
+							</div>
+                            
                         </div>
                     </div>
                 </div>

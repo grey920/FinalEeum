@@ -32,6 +32,7 @@ import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.User;
 import com.kh.eeum.service.ApplyService;
 import com.kh.eeum.service.ExpertService;
+import com.kh.eeum.service.LikeService;
 import com.kh.eeum.service.UserService;
 
 @Controller
@@ -45,6 +46,9 @@ public class UEController {
 	
 	@Autowired
 	private ApplyService applyservice;
+	
+	@Autowired
+	private LikeService likeservice;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -683,8 +687,35 @@ public class UEController {
 	}
 	
 	@RequestMapping(value="userWishlist.net")
-	public String userWishlist() {
-		return "UE/userpage_wishlist";
+	public ModelAndView userWishlist(@RequestParam(value="page", defaultValue="1", required=false) int page,
+															HttpSession session, ModelAndView mv) {
+		
+		String user_id = (String) session.getAttribute("user_id");
+		
+		int wishlistCount = likeservice.wishlistCount(user_id);
+		System.out.println(wishlistCount);
+		
+		int limit = 12;
+		int maxpage = (wishlistCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Object> wishlist = likeservice.wishlist(user_id, page, limit);
+		System.out.println(wishlist);
+		
+		mv.setViewName("UE/userpage_wishlist");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("wishlistCount", wishlistCount);
+		mv.addObject("wishlist", wishlist);
+		mv.addObject("limit", limit);
+		
+		return mv;
 	}
 	
 	@RequestMapping(value="userDelete.net", method=RequestMethod.GET)
