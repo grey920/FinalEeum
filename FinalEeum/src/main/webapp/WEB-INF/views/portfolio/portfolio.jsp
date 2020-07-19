@@ -28,7 +28,7 @@
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 <%@ include file="../header.jsp" %>
 <style>
-#upfile1, #upfile2{width:300px;height:auto;}
+#upfile1, #upfile2{width:auto;height:200px;}
 #sido1 {
 	width: 100%;
 	margin: 0;
@@ -143,10 +143,10 @@
 										<label>예약 가능 시간 <span class="required">*</span></label>
 									</div> 
 									<div class="col-md-6">	
-										<label> 시작 시간 </label> <input name="starthour" id="starthour" value="${starthour }시 ">
+										<label> 시작 시간 </label> <input name="starthour" id="starthour" value="${starthour }시 "disabled>
 									</div>
 									<div class="col-md-6">
-										<label>종료 시간 </label> <input name="endhour" id="endhour"  value="${endhour }시">
+										<label>종료 시간 </label> <input name="endhour" id="endhour"  value="${endhour }시" disabled>
 									</div>
 
 
@@ -162,9 +162,9 @@
 
 						</div>
 
-						<div class="col-lg-6 col-md-12 col-12">
+						<div class="col-lg-6 col-md-12 col-12" style="margin-top:200px">
 							<!-- 오른쪽 내용 -->
-							<div class="col-md-12">
+							<div class="col-md-6" style="float:left">
 								<div class="file_form-group">
 									<label for="savefile_reg"><span>사업자등록증 등록</span></label><br>
 									 <label for="upfile1"> </label> 
@@ -179,7 +179,7 @@
 								</div>
 							</div>
 
-							<div class="col-md-12">
+							<div class="col-md-6"style="float:right">
 								<div class="file_form-group">
 									<label for="savefile_lic"><span>자격증 등록</span></label><br> 
 									<label for="upfile2"> </label> 
@@ -210,7 +210,7 @@
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-12">
 								<div class="buttons">
-									 <button type="submit" class="btn-style" onclick="location.href='modifyPF'">수정</button>
+									 <button type="submit" class="btn-style" onclick="location.href='modifyPFview'">수정</button>
 									<button type="reset" class="btn-style reset" onclick="location.href='deletePF'">삭제</button> 
 								</div>
 							</div>

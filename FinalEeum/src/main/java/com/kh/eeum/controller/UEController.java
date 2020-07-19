@@ -269,12 +269,13 @@ public class UEController {
 		Portfolio portfolio = expertservice.getPortfolio(expert_id);
 		
 		if (portfolio != null) {
-		String[] LOC = portfolio.getPF_LOC().split(" ");
+		String[] LOC = portfolio.getPF_LOC().split(",");
 		String sido = LOC[0]; String gugun = LOC[1];
 		System.out.println("sido="+sido+", gugun="+gugun);
 		
 		String[] TIME = portfolio.getPF_TIME().split(",");
 		String shour = TIME[0]; String ehour = TIME[1];
+		System.out.println("shour="+shour+", ehour="+ehour);
 		
 		mv.setViewName("portfolio/portfolio");
 		mv.addObject("PFdata", portfolio);
@@ -441,7 +442,7 @@ public class UEController {
 		
 			
 			//활동지역 따로 처리하자! sido1 / gugun1
-			String loc = sido +" "+ gugun;
+			String loc = sido +","+ gugun;
 			pf.setPF_LOC(loc);
 			//에약 가능 시간도 따로 처리하자 starthour/endhour
 			String time = starthour +","+ endhour;
@@ -467,6 +468,44 @@ public class UEController {
 			out.close();
 		
 	}
+	
+	@RequestMapping("modifyPFview")
+	public ModelAndView modifyPFview(HttpSession session, HttpServletRequest request,ModelAndView mv) {
+		String exid = (String) session.getAttribute("expert_id");
+		Portfolio pf1 = expertservice.getPortfolio(exid);
+		if(pf1 == null) {
+			System.out.println("포폴 수정 상세보기 실패");
+			mv.setViewName("error/error");
+			mv.addObject("url", request.getRequestURL());
+			mv.addObject("message", "(수정)상세보기 실패입니다.");
+		}
+		System.out.println("포폴 수정 상세보기 성공");
+		
+			String[] LOC = pf1.getPF_LOC().split(",");
+			String sido = LOC[0]; String gugun = LOC[1];
+			System.out.println("sido="+sido+" gugun="+gugun);
+			
+			String[] TIME = pf1.getPF_TIME().split(",");
+			String shour = TIME[0]; String ehour = TIME[1];
+			System.out.println("shour="+shour+" ehour="+ehour);
+			
+			mv.setViewName("portfolio/portfolio");
+			mv.addObject("PFdata", pf1);
+			mv.addObject("sido", sido);
+			mv.addObject("gugun", gugun);
+			mv.addObject("starthour", shour);
+			mv.addObject("endhour", ehour);
+			
+			mv.setViewName("portfolio/modifyPortfolio");
+		return mv;
+	}
+	
+	@RequestMapping("modifyActionPofo")
+	public ModelAndView modifyActionPofo(ModelAndView mv, Portfolio pf, String check1, String check2, HttpServletRequest request) {
+		return mv;
+		
+	}
+	
 	
 	/* 로그인 */
 	@RequestMapping(value="login.net", method=RequestMethod.GET)
