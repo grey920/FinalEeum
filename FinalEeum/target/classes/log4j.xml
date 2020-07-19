@@ -19,6 +19,9 @@
 	<logger name="Applys">
 		<level value="trace" />
 	</logger>
+	<logger name="Portfolios">
+		<level value="trace" />
+	</logger>
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
 		<level value="info" />

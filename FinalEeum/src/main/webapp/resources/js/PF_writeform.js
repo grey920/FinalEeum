@@ -13,6 +13,8 @@ $(document).ready(function() {
 	}
 	$('#starthour').append(Html.join("")); // 셀렉트 박스 안에 다 넣어버리기
 	$('#endhour').append(Html.join(""));
+	
+	
 });
 
 
