@@ -635,9 +635,11 @@ public class UEController {
 		return "UE/userpage_review";
 	}
 	
+
 	@RequestMapping(value="userOneday.net")
 	public ModelAndView userOneday(@RequestParam(value="page", defaultValue="1", required=false) int page,
 															HttpSession session, ModelAndView mv) throws Exception {
+
 		String user_id = (String) session.getAttribute("user_id");
 		
 		int applyCount = applyservice.applyCount(user_id);
@@ -664,6 +666,7 @@ public class UEController {
 		
 		return mv;
 	}
+
 	
 	@RequestMapping(value="userOnedayCancel.net")
 	public void onedayCancel(String ap_id, String ap_cindex, HttpServletResponse response) throws Exception {
@@ -685,7 +688,7 @@ public class UEController {
 		out.println("</script>");
 		out.close();
 	}
-	
+
 	@RequestMapping(value="userWishlist.net")
 	public ModelAndView userWishlist(@RequestParam(value="page", defaultValue="1", required=false) int page,
 															HttpSession session, ModelAndView mv) {
