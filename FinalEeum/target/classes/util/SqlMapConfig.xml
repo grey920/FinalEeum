@@ -15,6 +15,9 @@
 		<typeAlias alias="apply" type="com.kh.eeum.domain.Apply"/>
 		<typeAlias alias="like" type="com.kh.eeum.domain.Like"/>
 		<typeAlias alias="portfolio" type="com.kh.eeum.domain.Portfolio"/>
+		<typeAlias alias="review" type="com.kh.eeum.domain.Review"/>
+		<typeAlias alias="Integer" type="java.lang.Integer"/>
+		
 	</typeAliases>
 
 	<mappers>
@@ -25,5 +28,6 @@
 		<mapper resource="sql/apply.xml"/>
 		<mapper resource="sql/like.xml"/>
 		<mapper resource="sql/portfolio.xml"/>
+		<mapper resource="sql/review.xml"/>
 	</mappers>
 </configuration>

@@ -119,6 +119,7 @@
 														id="userimg"></a>
 
 												</div>
+												
 												<b id="expert_name">${e.EXPERT_NAME }</b> <b
 													style="font-size: 10px; position: relative; top: 60px; left: 100px;">전문가</b>
 												<br> <b id="expert_intro">뭐든지 깔끔하게 만들어 드립니다.</b>

@@ -1,23 +1,32 @@
 package com.kh.eeum.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Like;
+import com.kh.eeum.domain.Review;
 import com.kh.eeum.service.ExpertService;
+import com.kh.eeum.service.ExpertServiceImpl;
 import com.kh.eeum.service.LikeService;
+import com.kh.eeum.service.ReviewService;
+
 
 @Controller
 public class ExpertController {
@@ -26,9 +35,13 @@ public class ExpertController {
 	ExpertService expertservice;
 
 	@Autowired
-	LikeService likeservice;
+	LikeService likeservice; // 찜등록
 	
-	
+	@Autowired
+	ReviewService reviewservice; // 후기
+
+	private static final Logger logger = LoggerFactory.getLogger(ExpertServiceImpl.class);
+
 	// 전문가 리스트
 	@GetMapping("/expert.list")
 	public ModelAndView service_list(HttpServletResponse response,
@@ -64,6 +77,9 @@ public class ExpertController {
 
 		// expert 형인
 		List<Expert> expertlist = expertservice.expertlist(page, limit);
+		
+		System.out.println("전문가 리스트"+expertlist);
+		
 		mv.setViewName("service/expert_list");
 		mv.addObject("page", page);
 		mv.addObject("limit", limit);
@@ -76,10 +92,12 @@ public class ExpertController {
 	}
 
 	// 전문가 상세 페이지
+	// 여기서 견적 요청이 이루어짐.
 	@GetMapping("/expert_details")
 	public ModelAndView service_details(ModelAndView mv,
 			@RequestParam(value = "expert", required = false) String expertid, HttpServletResponse response,
-			@RequestParam(value = "user_id", required = false) String user_id1, HttpSession session) throws Exception {
+			@RequestParam(value = "user_id", required = false) String user_id1, HttpSession session,
+			@RequestParam(value = "page", required = false) int page) throws Exception {
 
 		System.out.println("넘어온값 : " + expertid);
 
@@ -91,6 +109,7 @@ public class ExpertController {
 		System.out.println("찜등록 데이터+" + result);
 
 		System.out.println(user_id);
+		System.out.println("디테일 페이지" + page);
 
 		Expert expert = expertservice.expertlistOne(expertid);
 
@@ -98,6 +117,7 @@ public class ExpertController {
 		mv.addObject("expertdata", expert);
 		mv.addObject("user_id", user_id); // 지금 로그인 한 사용자의 아이디 가져옴
 		mv.addObject("like", result); // 찜등록 데이터
+		mv.addObject("page", page);
 		return mv;
 	}
 
@@ -111,6 +131,7 @@ public class ExpertController {
 
 		int result = likeservice.selectLike(expert_id, user_id);
 
+		//커멘드 값으로 가져오기
 		System.out.println("조회 완료:" + result);
 
 		int resultf;
@@ -140,8 +161,48 @@ public class ExpertController {
 
 		return resultf;
 	}
+	
+	//리스트
+	@ResponseBody
+	@PostMapping(value = "ReviewList.Ajax")
+	public List<Review> ReviewList(
+			@RequestParam(value = "page", defaultValue = "1", required = false) int page,
+			@RequestParam(value = "expert_id", required = false) String expert_id){
+		
+		List<Review> list = reviewservice.selectReviewList(expert_id,page);
+		System.out.println("리뷰 쓰기"+expert_id);
+		System.out.println("후기"+list.size());
+		
+		
+		System.out.println("후기 수"+list);
+		return list;
+	}
+	
+	
+	//댓글 등록
+	@ResponseBody
+	@PostMapping(value = "ReviewAdd.Ajax")
+	public void ReviewAdd_Ajax(Review review,
+							   HttpServletResponse response) throws Exception{
+		
+		
+		int result = reviewservice.insertReview(review);
+		response.getWriter().print(result);
+	}
+	
+	
+	//수정
+	@PostMapping(value = "ReviewUpdate.Ajax")
+	public void ReviewUpdate_Ajax(Review review,HttpServletResponse response) throws Exception{
+		
+		System.out.println("후기후기후기후기"+review.getRv_no());
+		
+		int ok = reviewservice.update(review);
+		
+		System.out.println(review.getRv_no());
+		response.getWriter().print(ok);
+	}
 
-	//
 	@GetMapping("/portfolio_list")
 	public String portfolio_list() {
 		System.out.println("포폴 들어왔?");
@@ -169,5 +230,37 @@ public class ExpertController {
 
 		return "service/QnA_list";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/Request.Ajax", method = RequestMethod.POST)
+	public String  request_ajax(@RequestParam("realFiles") List<String> realFiles , MultipartHttpServletRequest request,  @RequestParam Map<String, Object> paramMap) throws Exception {
+		
+		for(String realImage : realFiles) {           
+			logger.info("realFiles : "+realImage);
+        }
+				
+		String userId=(String)request.getSession().getAttribute("user_id");
+		String expertId=(String)request.getSession().getAttribute("expert_id");	
+		
+		/** writer_type 1:사용자 로그인,  2:전문가 로그인  */
+		int writerType=0;
+		if(userId!=null) {			
+			logger.info("사용자 로그인 아이디 : " +userId);
+			writerType=1;
+			paramMap.put("writer", userId);
+		}else if(expertId!=null) {			
+			logger.info("전문가 로그인 아이디 : " +expertId);
+			writerType=2;
+			paramMap.put("writer", expertId);
+		}
+		paramMap.put("writer_type", writerType);
+				
+		int result=expertservice.requestAjax(realFiles, request, paramMap);	
+		return result!=5? "success": "error";		
+	}
+	
+	
+	
+	
 
 }

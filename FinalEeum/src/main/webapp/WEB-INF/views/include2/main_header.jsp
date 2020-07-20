@@ -34,9 +34,9 @@
 	<nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background:#E4E8F0; height:100px; ">
 		<!-- Left navbar links -->
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="font-size:28px; color:#5C7BA4; margin-top:18px"></i></a></li>
+			<li class="nav-item"><a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="font-size:28px; color:#5C7BA4; margin-top:22px"></i></a></li>
 			<li class="nav-item d-none d-sm-inline-block">
-			<img src="resources/dist/img/eeumLogo2.png" alt="E-eum:admin" class="brand-image img-square" style="opacity: .8; height: 80px; margin-top:10px" ></li>
+			<img src="resources/img/logo/eeum_logo.png" alt="E-eum:admin" class="brand-image img-square" style="opacity: .8; height: 80px; margin: 7.5px 0;" ></li>
 		</ul>
 
 		<!-- SEARCH FORM -->

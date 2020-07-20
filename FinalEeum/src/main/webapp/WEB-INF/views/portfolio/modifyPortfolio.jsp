@@ -144,7 +144,7 @@ background : none;
 									<label for="savefile_reg"><span>사업자등록증 등록</span></label><br> 
 									<img src="resources/pf_OP_upload${PFdata.PF_SV_OP}" style="width:auto;height:200px;" id="imgOP"></label>
 									<input type="file" id="upfile1"name="uploadfile1">
-									<span id="filevalue1" style="visibility: hidden">${PFdata.PF_OR_OP}</span>
+									<span id="filevalue1" >${PFdata.PF_OR_OP}</span>
 								</div>
 							</div>
 

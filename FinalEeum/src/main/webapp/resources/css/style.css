@@ -2495,29 +2495,29 @@ button.cr-btn:hover b {
     padding-left: 10px;
     padding-right: 10px;
 }
-.h3-services .single-services.orange {
+.h3-services .single-services.firstone {
     padding: 33px 27px;
 }
-.h3-services .single-services.yellow {
+.h3-services .single-services.secondone {
     padding: 33px 18px;
 }
-.h3-services .single-services.purple {
+.h3-services .single-services.thirdone {
     padding: 33px 20px;
 }
-.h3-services .single-services.sky {
+.h3-services .single-services.lastone {
     padding: 33px 38px;
 }
-.orange {
-    background-color: #fcedda;
+.firstone {
+    background-color: #f7f6e7;
 }
-.yellow {
-    background-color: #f2fbcb;
+.secondone {
+    background-color: #ffeac9;
 }
-.purple {
-    background-color: #f7d8f9;
+.thirdone {
+    background-color: #efd3cd;
 }
-.sky {
-    background-color: #dbfafe;
+.lastone {
+    background-color: #c8dbcd;
 }
 .single-services:hover .services-icon img {
     /* animation: 500ms ease-in-out 0s normal none 1 running zoomIn; */
@@ -2821,9 +2821,11 @@ button.cr-btn:hover b {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 3px;
+    text-align:center;
 }
 .team-content > span {
     color: #292929;
+    text-align:center;
 }
 .team-content {
     padding-top: 26px;

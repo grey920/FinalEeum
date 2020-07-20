@@ -10,7 +10,8 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="resources/img/favicon.png">
+<link rel="shortcut icon" type="image/x-icon"
+	href="resources/img/favicon.png">
 
 <!-- all css here -->
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
@@ -26,11 +27,13 @@
 <link rel="stylesheet" href="resources/css/responsive.css">
 
 <link rel="stylesheet" href="resources/css/service/expert_details.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- 모달 관련 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<%@ include file="../header.jsp" %>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<%@ include file="../header.jsp"%>
 </head>
 <body>
 	<div class="wrapper">
@@ -92,11 +95,13 @@
 
 
 					<button style="font-weight: 700; font-size: 16px;"
-						data-toggle="modal" data-target="#myModal " class="heart_click2"
+						data-toggle="modal" data-target="#myModal1 " class="heart_click2"
 						id="request_btn">
 						<i id="fa-pencil-square-o" class="fa fa-pencil-square-o"></i> <b
 							style="color: black;">견적요청</b>
 					</button>
+
+					<!-- 만약 견적 요청이 끝나면 -->
 
 
 					<div class="name_tag">
@@ -120,159 +125,8 @@
 
 
 					</div>
-
-					<div id="myModal" class="modal" data-backdrop-limit="1"
-						tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content" style="height: 720px;">
-								<!-- body -->
-								<div class="modal-body"
-									style="padding: 50px; padding-top: 40px; width: 440px; height: 750px;">
-
-									<!-- 부모 모달 -->
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close"
-										style="position: relative; bottom: 320px; left: 770px;">
-										<span class="ion-android-close" aria-hidden="true"></span>
-									</button>
-									<div class="row justify-content-center mt-0">
-										<div
-											class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2"
-											style="width: 500px; padding-left: 10px;">
-											<div class="card px-0 pt-4 pb-0 mt-3 mb-3"
-												style="width: 700px; position: relative; right: 140px;">
-												<h3 id="top"></h3>
-												<div class="row"
-													style="height: 0px; position: relative; bottom: 0px;">
-													<div class="col-md-12 mx-0">
-														<form id="msform" action="" method="post"
-															enctype="multipart/form-data">
-															<!-- progressbar -->
-															<ul id="progressbar">
-																<li class="active" id="account"><strong>건물
-																		유형</strong></li>
-																<li id="personal"><strong>수리 유형</strong></li>
-																<li id="payment"><strong>첨부 사진</strong></li>
-																<li id="confirm"><strong>간단 요청</strong></li>
-															</ul>
-															<!-- fieldsets -->
-															<fieldset>
-																<div class="form-card " style="height: 350px;">
-																	<!-- 여기 라디오 버튼 : form -->
-																	<b>* 선택해주세요.</b><br> <br> <input type="radio"
-																		name="structure1" id="structure1" checked="checked"
-																		value="0"><span>아파트</span> <input type="radio"
-																		name="structure1" id="structure1" value="1"
-																		style="position: relative; left: 270px;"> <span
-																		style="position: relative; left: 275px;">단독주택</span><br>
-																	<input type="radio" name="structure1" id="structure1"
-																		value="2"> <span>빌라/연립주택</span> <input
-																		type="radio" name="structure1" id="structure1"
-																		style="position: relative; left: 197px;" value="3">
-																	<span style="position: relative; left: 202px;">빌딩/상가</span><br>
-																	<input type="radio" name="structure1" id="structure1"
-																		value="4"><span>기타</span><br> <input
-																		type="text" maxlength="50" id="request_input1"
-																		style="border: 1px solid lightgray;"> <b
-																		class="page_number">1/4</b>
-																</div>
-																<!-- 버튼 -->
-																<input type="button" name="next"
-																	class="next action-button" value="다음" id="next" />
-
-															</fieldset>
-															<fieldset style="display: none;">
-
-																<div class="form-card " style="height: 400px;">
-																	<!-- 여기 라디오 버튼 : form -->
-																	<b>* 선택해주세요.</b><br> <br> <input type="radio"
-																		name="structure1" id="structure2" checked="checked"
-																		value="10"><span>전자제품 수리</span> <input
-																		type="radio" name="structure1" id="structure2"
-																		style="position: relative; left: 232px;" value="20">
-																	<span style="position: relative; left: 239px;">가구수리</span><br>
-																	<input type="radio" name="structure2" id="structure2"
-																		value="30"> <span>열쇠/도어락 수리</span> <input
-																		type="radio" name="structure1" id="structure2"
-																		style="position: relative; left: 199px;" value="40">
-																	<span style="position: relative; left: 205px;">전기
-																		배선 수리</span><br> <input type="radio" name="structure1"
-																		id="structure2"> <span>방충망 및 방범창 수리</span> <input
-																		type="radio" name="structure2" id="structure2"
-																		style="position: relative; left: 155px;" value="50">
-																	<span style="position: relative; left: 161px;">문
-																		수리</span><br> <input type="radio" name="structure2"
-																		id="structure2"
-																		style="position: relative; left: 396px;" value="60">
-																	<span style="position: relative; left: 400px;">수도
-																		관련 수리</span> <input type="radio" name="structure2"
-																		id="structure2"
-																		style="position: relative; right: 173px;" value="70">
-																	<span style="position: relative; right: 174px;">기타</span><br>
-																	<input type="text" maxlength="50" id="request_input2"
-																		style="border: 1px solid lightgray;"> <b
-																		class="page_number">2/4</b>
-																</div>
-																<!-- 버튼 -->
-																<input type="button" name="previous"
-																	class="previous action-button-previous" value="이전" />
-																<input type="button" name="next"
-																	class="next action-button" value="다음" />
-															</fieldset>
-															<fieldset style="display: none;">
-																<div class="form-card" style="height: 400px;">
-																	<!-- 사진을 첨부해주세요.: form -->
-																	<span style="font-size: 15px; color: lightgray;">*최대
-																		10장</span>
-																	<div>
-																		<div class="imgs_wrap">
-																			<img id="img"  />
-																		</div>
-																	</div>
-																
-																<!--  -->
-																   <div class="input_wrap">
-																   <a href="javascript:" onclick="fileUploadAction();" class="my_button">파일 업로드</a>
-																   	<input type="file" id="input_imgs" multiple/>
-																   </div>
-																<!--  -->
-																	<b class="page_number">3/4</b>
-																</div>
-																<!-- 버튼 -->
-																<input type="button" name="previous"
-																	class="previous action-button-previous" value="이전" />
-																<input type="button" name="next"
-																	class="next action-button" value="다음" />
-															</fieldset>
-															<fieldset style="display: none;">
-																<div class="form-card">
-																	<b>* 공식적인 요청 외 전문가에게 무리한 요구시 요청이 거절될 수 있습니다.</b>
-																	<textarea rows="10" cols="20" maxlength="70"
-																		style="border: 1px solid lightgray;">내용을 입력하세요.</textarea>
-
-																	<b class="page_number">4/4</b>
-																</div>
-																<input type="button"
-																	class="previous action-button-previous" value="이전" />
-																<input type="button" name="finish" class="action-button"
-																	value="요청" id="finish" />
-															</fieldset>
-														</form>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-								</div>
-								<!-- modal-body -->
-							</div>
-							<!-- .modal -->
-						</div>
-						<!-- .modal-dialog -->
-
-					</div>
+						<!-- 모달 따로 뺌ㅁ -->
+					<%@include file="expert_modal.jsp"%>
 
 				</div>
 
@@ -312,165 +166,7 @@
 				</div>
 				<!-- 탭 -->
 
-				<div class="product-details-area hm-3-padding ptb-130"></div>
 
-				<footer class="hm-4-padding">
-					<div class="container-fluid">
-						<div class="footer-top pt-125 pb-25" style="padding-top: 800px;">
-							<div class="row">
-								<div class="col-lg-3 col-md-5">
-									<div class="footer-widget mb-30">
-										<div class="footer-widget-title">
-											<h3>Get in Touch</h3>
-										</div>
-										<div class="food-info-wrapper">
-											<div class="food-address">
-												<div class="food-info-icon">
-													<i class="ion-ios-home-outline"></i>
-												</div>
-												<div class="food-info-content">
-													<p>
-														2020 Willshire Glen, Out of <br>Alpharetta, GA-30009
-													</p>
-												</div>
-											</div>
-											<div class="food-address">
-												<div class="food-info-icon">
-													<i class="ion-ios-telephone-outline"></i>
-												</div>
-												<div class="food-info-content">
-													<p>(+00) 121 025 0214</p>
-												</div>
-											</div>
-											<div class="food-address">
-												<div class="food-info-icon">
-													<i class="ion-ios-email-outline"></i>
-												</div>
-												<div class="food-info-content">
-													<p>
-														<a href="#">info@example.com</a>
-													</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-2 col-md-4">
-									<div class="footer-widget mb-30 pl-10">
-										<div class="footer-widget-title">
-											<h3>Information</h3>
-										</div>
-										<div class="food-widget-content">
-											<ul class="quick-link">
-												<li><a href="#">Delivery</a></li>
-												<li><a href="#">Legal Notice</a></li>
-												<li><a href="#">Terms & Conditions</a></li>
-												<li><a href="about-us.html">About Us</a></li>
-												<li><a href="#">Secure Payment</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-2 col-md-3">
-									<div class="footer-widget mb-30 pl-100">
-										<div class="footer-widget-title">
-											<h3>accounts</h3>
-										</div>
-										<div class="food-widget-content">
-											<ul class="quick-link">
-												<li><a href="login-register.html">Sign In</a></li>
-												<li><a href="cart.html">View Cart</a></li>
-												<li><a href="wishlist.html">My Wishlist</a></li>
-												<li><a href="#">Track My Order</a></li>
-												<li><a href="#">Help</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-2 col-md-6">
-									<div class="footer-widget mb-30 pl-125">
-										<div class="footer-widget-title">
-											<h3>support</h3>
-										</div>
-										<div class="food-widget-content">
-											<ul class="quick-link">
-												<li><a href="contact.html">Hello & Contact</a></li>
-												<li><a href="#">Shipping & Tax</a></li>
-												<li><a href="#">Return Policy</a></li>
-												<li><a href="#">Affiliates</a></li>
-												<li><a href="#">Legal Notice</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-3 col-md-6">
-									<div class="footer-widget mb-30 f-right">
-										<div class="footer-widget-title">
-											<h3>twitter feed</h3>
-										</div>
-										<div class="twitter-info-wrapper">
-											<div class="single-twitter">
-												<div class="twitter-icon">
-													<i class="ion-social-twitter-outline"></i>
-												</div>
-												<div class="twitter-content">
-													<p>
-														A modern <a href="#">#Shopify theme </a> <a class="link1"
-															href="#">@devitems</a> <br> <a class="link2"
-															href="#">https://twitter.com/devitemsllc</a>
-													</p>
-												</div>
-											</div>
-											<div class="single-twitter">
-												<div class="twitter-icon">
-													<i class="ion-social-twitter-outline"></i>
-												</div>
-												<div class="twitter-content">
-													<p>
-														A modern <a href="#">#Shopify theme </a> <a class="link1"
-															href="#">@devitems</a> <br> <a class="link2"
-															href="#">https://twitter.com/devitemsllc</a>
-													</p>
-												</div>
-											</div>
-											<div class="single-twitter">
-												<div class="twitter-icon">
-													<i class="ion-social-twitter-outline"></i>
-												</div>
-												<div class="twitter-content">
-													<p>
-														A modern <a href="#">#Shopify theme </a> <a class="link1"
-															href="#">@devitems</a> <br> <a class="link2"
-															href="#">https://twitter.com/devitemsllc</a>
-													</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="footer-bottom border-top-1 ptb-15">
-							<div class="row">
-								<div class="col-md-6 col-12">
-									<div class="copyright-payment">
-										<div class="copyright">
-											<p>
-												Copyright Â© 2018 <a href="https://freethemescloud.com/">Free
-													themes Cloud</a> All RIght Reserved.
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 col-12">
-									<div class="footer-payment-method">
-										<a href="#"><img alt="" src="resources/img/icon-img/7.png"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</footer>
 			</div>
 		</div>
 
