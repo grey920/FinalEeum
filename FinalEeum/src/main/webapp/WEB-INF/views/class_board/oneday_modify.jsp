@@ -105,8 +105,10 @@
 
 												<div class="file_form-group">
 													<label for="savefile">포스터 첨부</label>
-													<label for="upfile"> <img src="resources/img/attach.png" alt="파일첨부"> </label> 
-													<input type="file" id="upfile" name="uploadfile" style="margin-bottom: 0px;"> <span id="filevalue">${onedaydata.ORIGINALFILE}</span>
+													<label for="upfile"> 
+													<img src="resources/img/attach.png" alt="파일첨부"> </label> 
+													<input type="file" id="upfile" name="uploadfile" style="margin-bottom: 0px;"> 
+													<span id="filevalue">${onedaydata.ORIGINALFILE}</span>
 													<img src="resources/img/remove.png" alt="파일삭제" width="10px" class="remove">
 												</div>
 												

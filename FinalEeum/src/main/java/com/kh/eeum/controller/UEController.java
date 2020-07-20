@@ -270,12 +270,13 @@ public class UEController {
 		Portfolio portfolio = expertservice.getPortfolio(expert_id);
 		
 		if (portfolio != null) {
-		String[] LOC = portfolio.getPF_LOC().split(" ");
+		String[] LOC = portfolio.getPF_LOC().split(",");
 		String sido = LOC[0]; String gugun = LOC[1];
 		System.out.println("sido="+sido+", gugun="+gugun);
 		
 		String[] TIME = portfolio.getPF_TIME().split(",");
 		String shour = TIME[0]; String ehour = TIME[1];
+		System.out.println("shour="+shour+", ehour="+ehour);
 		
 		mv.setViewName("portfolio/portfolio");
 		mv.addObject("PFdata", portfolio);
@@ -442,7 +443,7 @@ public class UEController {
 		
 			
 			//활동지역 따로 처리하자! sido1 / gugun1
-			String loc = sido +" "+ gugun;
+			String loc = sido +","+ gugun;
 			pf.setPF_LOC(loc);
 			//에약 가능 시간도 따로 처리하자 starthour/endhour
 			String time = starthour +","+ endhour;
@@ -468,6 +469,182 @@ public class UEController {
 			out.close();
 		
 	}
+	
+	@RequestMapping("modifyPFview")
+	public ModelAndView modifyPFview(HttpSession session, HttpServletRequest request,ModelAndView mv) {
+		String exid = (String) session.getAttribute("expert_id");
+		Portfolio pf1 = expertservice.getPortfolio(exid);
+		if(pf1 == null) {
+			System.out.println("포폴 수정 상세보기 실패");
+			mv.setViewName("error/error");
+			mv.addObject("url", request.getRequestURL());
+			mv.addObject("message", "(수정)상세보기 실패입니다.");
+		}
+		System.out.println("포폴 수정 상세보기 성공");
+		
+			String[] LOC = pf1.getPF_LOC().split(",");
+			String sido = LOC[0]; String gugun = LOC[1];
+			System.out.println("sido="+sido+" gugun="+gugun);
+			
+			String[] TIME = pf1.getPF_TIME().split(",");
+			String shour = TIME[0]; String ehour = TIME[1];
+			System.out.println("shour="+shour+" ehour="+ehour);
+			
+			mv.setViewName("portfolio/portfolio");
+			mv.addObject("PFdata", pf1);
+			mv.addObject("sido", sido);
+			mv.addObject("gugun", gugun);
+			mv.addObject("starthour", shour);
+			mv.addObject("endhour", ehour);
+			
+			mv.setViewName("portfolio/modifyPortfolio");
+		return mv;
+	}
+	
+	@RequestMapping("modifyActionPofo")
+	public ModelAndView modifyActionPofo(ModelAndView mv, Portfolio pf, String check, String check1, String check2, HttpServletRequest request,
+			@RequestParam("sido1")String sido,@RequestParam("gugun1")String gugun,
+			@RequestParam("starthour")String starthour, @RequestParam("endhour")String endhour, HttpSession session) throws IllegalStateException, IOException {
+	
+		MultipartFile uploadfilePRO = pf.getUploadfilePRO();
+		MultipartFile uploadfile1 = pf.getUploadfile1();
+		MultipartFile uploadfile2 = pf.getUploadfile2();
+		
+		if(check != null && !check.equals("")) {
+			System.out.println("기존의 프로필을 사용합니다.");
+			System.out.println("check="+check);
+			pf.setPF_PROFILE(check);
+		}else {
+			if(uploadfilePRO != null && !uploadfilePRO.isEmpty()) {
+				String fileName = uploadfilePRO.getOriginalFilename();
+				pf.setPF_PROFILE(fileName);
+				
+				String saveFolder = request.getSession().getServletContext().getRealPath("resources") + "/expert_profile/";
+				String fileDBName = fileDBName(fileName, saveFolder);
+				
+				uploadfilePRO.transferTo(new File(saveFolder + fileDBName));
+				pf.setPF_SAVEPROFILE(fileDBName);
+			}else {
+				System.out.println("uploadfile1.isEmpty() 선택 파일 없습니다.");
+//				pf.setPF_SAVEPROFILE("");
+//				pf.setPF_PROFILE("");
+			}
+		}
+		
+		//uploadfile1
+		if(check1 != null && !check1.equals("")) {
+			System.out.println("기존의 사업자등록증을 사용합니다.");
+			System.out.println("check1="+check1);
+			pf.setPF_OR_OP(check1);
+		}else {
+			if(uploadfile1 != null && !uploadfile1.isEmpty()) {
+				String fileName1 = uploadfile1.getOriginalFilename();
+				pf.setPF_OR_OP(fileName1);
+				
+				String saveFolder1 = request.getSession().getServletContext().getRealPath("resources") + "/pf_OP_upload/";
+				String fileDBName1 = fileDBName(fileName1, saveFolder1);
+				
+				uploadfile1.transferTo(new File(saveFolder1 + fileDBName1));
+				pf.setPF_SV_OP(fileDBName1);
+			}else {
+				System.out.println("uploadfile1.isEmpty() 선택 파일 없습니다.");
+				pf.setPF_SV_OP("");
+				pf.setPF_OR_OP("");
+			}
+		}
+		
+		//uploadfile2
+		if(check2 != null && !check2.equals("")) {
+			System.out.println("기존의 자격증을 사용합니다.");
+			System.out.println("check2="+check2);
+			pf.setPF_OR_LI(check2);
+		}else {
+			if(uploadfile2 != null && !uploadfile2.isEmpty()) {
+				String fileName2 = uploadfile2.getOriginalFilename();
+				pf.setPF_OR_OP(fileName2);
+				
+				String saveFolder2 = request.getSession().getServletContext().getRealPath("resources") + "/pf_LI_upload/";
+				String fileDBName2 = fileDBName(fileName2, saveFolder2);
+				
+				uploadfile2.transferTo(new File(saveFolder2 + fileDBName2));
+				pf.setPF_SV_LI(fileDBName2);
+			}else {
+				System.out.println("uploadfile2.isEmpty() 선택 파일 없습니다.");
+				pf.setPF_SV_LI("");
+				pf.setPF_OR_LI("");
+			}
+		}
+		//활동지역 따로 처리하자! sido1 / gugun1
+		String loc = sido +","+ gugun;
+		pf.setPF_LOC(loc);
+		//에약 가능 시간도 따로 처리하자 starthour/endhour
+		String time = starthour +","+ endhour;
+		pf.setPF_TIME(time);
+		
+		//아이디 매핑
+		String expert_id = (String) session.getAttribute("expert_id");
+		pf.setPF_EXID(expert_id);
+		System.out.println("expert_id 뭐야" + expert_id);
+		
+		int result = expertservice.modifyPF(pf);
+		
+		if(result == 0) {
+			System.out.println("포폴 수정 실패");
+			mv.setViewName("error/error");
+			mv.addObject("url", request.getRequestURL());
+			mv.addObject("message", "포트폴리오 수정 실패");
+		} else {
+			System.out.println("포폴 수정 성공");
+			mv.setViewName("UE/expertpage_main");
+		}
+		
+		return mv;
+		
+	}
+	
+	private String fileDBName(String fileName, String saveFolder) {
+		// 새로운 폴더 이름 : 오늘 년-월-일  
+					Calendar c = Calendar.getInstance();
+					int year = c.get(Calendar.YEAR); // 오늘 년도 구합니다.
+					int month = c.get(Calendar.MONTH ) + 1; // 오늘 월 구합니다.
+					int date = c.get(Calendar.DATE); // 오늘일  구합니다.
+					
+					String homedir = saveFolder + year + "-" + month + "-" + date;
+					System.out.println(homedir);
+					File path1 = new File(homedir);
+					if(!(path1.exists())) {
+						path1.mkdir();  // 새로운 폴더를 생성
+					}
+					
+					// 난수를 구합니다.  <== 파일명 중복 없애기 위해
+					Random r = new Random();
+					int random = r.nextInt(100000000);
+					
+					/*****   확장자  구하기  시작   ****/
+					int index = fileName.lastIndexOf(".");
+					/*
+					 문자열에서 특정 문자열의 위치 값(index)를 반환한다.
+					 indexOf가 처음 발견되는 문자열에 대한 index를 반환하는반면, 
+					 lastIndexOf는 마지막으로 발견되는 문자열의 index를 반환합니다.
+					 (파일명에 점이 여러개 있을 경우 맨 마지막에 발견되는 문자열의 위치를 리턴합니다.)
+					  */
+					System.out.println("index = " + index);
+					
+					String fileExtension = fileName.substring(index + 1);
+					System.out.println("fileExtension = "+ fileExtension);
+					/*****   확장자  구하기  끝   ****/
+					
+					// 새로운 파일명
+					String refileName = "eeum" + year + month + date + random + "." + fileExtension;
+					System.out.println("refileName = " + refileName);
+					
+					// 오라클 디비에 저장될 파일 명
+					String fileDBName = "/" + year + "-" + month + "-" + date + "/" + refileName;
+					System.out.println("fileDBName = "+ fileDBName);
+					
+		return fileDBName;
+	}
+	
 	
 	/* 로그인 */
 	@RequestMapping(value="login.net", method=RequestMethod.GET)

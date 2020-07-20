@@ -269,4 +269,9 @@ public class ExpertServiceImpl implements ExpertService {
 		
 	}
 
+	@Override
+	public int modifyPF(Portfolio pf) {
+		return pfDao.modifyPF(pf);
+	}
+
 }

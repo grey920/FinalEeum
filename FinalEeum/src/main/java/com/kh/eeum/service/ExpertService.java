@@ -27,5 +27,5 @@ public interface ExpertService {
 
 	public int insert(Portfolio pf);
 	public int deletePF(String expert_id);
-
+	public int modifyPF(Portfolio pf);
 }
