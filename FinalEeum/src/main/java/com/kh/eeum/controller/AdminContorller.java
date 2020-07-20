@@ -36,6 +36,11 @@ public class AdminContorller {
 		return mv;
 	}
 	
+	@RequestMapping(value="/about_us.net")
+	public String aboutEeum() {
+		return "about_us";
+	}
+	
 	@RequestMapping(value="/chartjs.bo")
 	public String chartjs() {
 		return "charts/chartjs";

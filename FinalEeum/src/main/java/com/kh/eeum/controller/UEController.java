@@ -449,15 +449,14 @@ public class UEController {
 		return "UE/userpage_review";
 	}
 	
-	@RequestMapping(value="userOneday.net")
-	public ModelAndView userOneday(HttpSession session, ModelAndView mv) throws Exception {
-		String user_id = (String) session.getAttribute("user_id");
-		List<Map<String,Apply>> applyList = applyservice.applyList(user_id);
-		System.out.println(applyList);
-		mv.setViewName("UE/userpage_oneday");
-		mv.addObject("useronedaylist", applyList);
-		return mv;
-	}
+	/*
+	 * @RequestMapping(value="userOneday.net") public ModelAndView
+	 * userOneday(HttpSession session, ModelAndView mv) throws Exception { String
+	 * user_id = (String) session.getAttribute("user_id"); List<Map<String,Apply>>
+	 * applyList = applyservice.applyList(user_id); System.out.println(applyList);
+	 * mv.setViewName("UE/userpage_oneday"); mv.addObject("useronedaylist",
+	 * applyList); return mv; }
+	 */
 	
 	@RequestMapping(value="userWishlist.net")
 	public String userWishlist() {
