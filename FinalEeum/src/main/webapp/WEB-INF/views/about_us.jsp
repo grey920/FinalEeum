@@ -231,7 +231,7 @@
 				<div class="col-lg-2 col-md-6 col-12">
 					<div class="team-wrapper mb-30">
 						<div class="team-img">
-							<img src="resources/img/team/turtle.png" alt="">
+							<img src="resources/img/team/giraffe.png" alt="">
 						</div>
 						<div class="team-content">
 							<h4>장한솔</h4>
