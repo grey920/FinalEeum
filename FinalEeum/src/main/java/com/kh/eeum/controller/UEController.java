@@ -1,6 +1,7 @@
 package com.kh.eeum.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.List;
@@ -31,6 +32,7 @@ import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.User;
 import com.kh.eeum.service.ApplyService;
 import com.kh.eeum.service.ExpertService;
+import com.kh.eeum.service.LikeService;
 import com.kh.eeum.service.UserService;
 
 @Controller
@@ -46,10 +48,10 @@ public class UEController {
 	private ApplyService applyservice;
 	
 	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private LikeService likeservice;
 	
-	@Value("${savefoldername}")
-	private String profileFolder;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	
 	@RequestMapping("/")
@@ -255,7 +257,6 @@ public class UEController {
 	@RequestMapping(value="expertUpdate.net")
 	public ModelAndView expertUpdate(HttpSession session, ModelAndView mv) {
 		String expert_id = (String) session.getAttribute("expert_id");
-		System.out.println("expert_id세션값 들어왔는가");
 		Expert expert = expertservice.expert_info(expert_id);
 		mv.setViewName("UE/expertpage_info");
 		mv.addObject("expertinfo", expert);
@@ -267,9 +268,44 @@ public class UEController {
 	public ModelAndView viewPortfolio(ModelAndView mv, HttpSession session) {
 		String expert_id = (String)session.getAttribute("expert_id");
 		Portfolio portfolio = expertservice.getPortfolio(expert_id);
+		
+		if (portfolio != null) {
+		String[] LOC = portfolio.getPF_LOC().split(" ");
+		String sido = LOC[0]; String gugun = LOC[1];
+		System.out.println("sido="+sido+", gugun="+gugun);
+		
+		String[] TIME = portfolio.getPF_TIME().split(",");
+		String shour = TIME[0]; String ehour = TIME[1];
+		
+		mv.setViewName("portfolio/portfolio");
+		mv.addObject("PFdata", portfolio);
+		mv.addObject("sido", sido);
+		mv.addObject("gugun", gugun);
+		mv.addObject("starthour", shour);
+		mv.addObject("endhour", ehour);
+		return mv;
+		}
+		else {
 		mv.setViewName("portfolio/portfolio");
 		mv.addObject("PFdata", portfolio);
 		return mv;
+		}
+	}
+	
+	@RequestMapping("deletePF")
+	public void deletePF(HttpSession session, HttpServletResponse response) throws IOException {
+		String expert_id = (String) session.getAttribute("expert_id");
+		int result = expertservice.deletePF(expert_id);
+		
+		if(result == 1) {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter	out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('정상적으로 포트폴리오가 삭제되었습니다');");
+		out.println("location.href='expertpage.net';");
+		out.println("</script>");
+		out.close();
+		}
 	}
 
 	@RequestMapping("writePortfolio")
@@ -278,9 +314,159 @@ public class UEController {
 	}
 	
 	@RequestMapping("writeActionPofo")
-	public String writeActionPofo() {
+	public void writeActionPofo(Portfolio pf, HttpServletResponse response, 
+								HttpServletRequest request, HttpSession session,
+								@RequestParam("sido1")String sido,@RequestParam("gugun1")String gugun,
+								@RequestParam("starthour")String starthour, @RequestParam("endhour")String endhour) throws Exception {
 		
-		return "viewPortfolio";
+		
+		MultipartFile uploadfilePRO = pf.getUploadfilePRO();
+		
+		if (!uploadfilePRO.isEmpty()) {
+			String fileName = uploadfilePRO.getOriginalFilename();
+			pf.setPF_PROFILE(fileName);
+			
+			Calendar c = Calendar.getInstance();
+			int year = c.get(Calendar.YEAR);
+			int month = c.get(Calendar.MONTH) + 1;
+			int date = c.get(Calendar.DATE);
+			String saveFolder = request.getSession().getServletContext().getRealPath("resources") + "/expert_profile/";
+			String homedir = saveFolder + year + "-" + month + "-" + date;
+			System.out.println(homedir);
+			File path = new File(homedir);
+			
+			if(!(path.exists())) {
+				path.mkdir();
+			}
+			
+			Random r = new Random();
+			int random = r.nextInt(100000000);
+			
+			int index = fileName.lastIndexOf(".");
+			System.out.println("파일이름 . 위치 = " + index);
+			
+			String fileExtension = fileName.substring(index+1);
+			System.out.println("전문가 프로필 사진 확장자 = " + fileExtension);
+			
+			String refileName = "eeum" + year + month + date + random + "." + fileExtension;
+			System.out.println("새로운 파일명 = " + refileName);
+			
+			String fileDBName = "/" + year + "-" + month + "-" + date + "/" + refileName;
+			System.out.println("DB에 저장될 파일명 = " + fileDBName);
+			
+			uploadfilePRO.transferTo(new File(saveFolder + fileDBName));
+			
+			pf.setPF_SAVEPROFILE(fileDBName);
+		} 
+		
+		
+		MultipartFile uploadfile1 = pf.getUploadfile1();
+	
+		if(!uploadfile1.isEmpty()) {
+			String fileName1 = uploadfile1.getOriginalFilename(); // 원래 파일명 <==String getOriginalFilename() : 업로드한 파일의 이름을 구한다
+			pf.setPF_OR_OP(fileName1); // 원래 파일명 저장
+			
+			// 새로운 폴더 이름 : 오늘 년-월-일  
+			Calendar c = Calendar.getInstance();
+			int year = c.get(Calendar.YEAR); // 오늘 년도 구합니다.
+			int month = c.get(Calendar.MONTH ) + 1; // 오늘 월 구합니다.
+			int date = c.get(Calendar.DATE); // 오늘일  구합니다.
+			String saveFolder1 = request.getSession().getServletContext().getRealPath("resources") + "/pf_OP_upload/";
+			String homedir1 = saveFolder1 + year + "-" + month + "-" + date;
+			System.out.println("homedir = "+homedir1);
+			File path1 = new File(homedir1);
+			if(!(path1.exists())) {
+				path1.mkdir();  // 새로운 폴더를 생성
+			}
+		
+
+			Random r = new Random();
+			int random = r.nextInt(100000000);
+			
+			int index = fileName1.lastIndexOf(".");
+			System.out.println("파일이름 . 위치 = " + index);
+			
+			String fileExtension = fileName1.substring(index+1);
+			System.out.println("프로필 사진 확장자 = " + fileExtension);
+			
+			String refileName1 = "eeum" + year + month + date + random + "." + fileExtension;
+			System.out.println("새로운 파일명 = " + refileName1);
+			
+			String fileDBName1 = "/" + year + "-" + month + "-" + date + "/" + refileName1;
+			System.out.println("DB에 저장될 파일명 = " + fileDBName1);
+			
+			uploadfile1.transferTo(new File(saveFolder1 + fileDBName1));
+			
+			pf.setPF_SV_OP(fileDBName1);
+		}
+		
+		
+		MultipartFile uploadfile2 = pf.getUploadfile2();
+		if(!uploadfile2.isEmpty()) {
+			String fileName2 = uploadfile2.getOriginalFilename(); // 원래 파일명 <==String getOriginalFilename() : 업로드한 파일의 이름을 구한다
+			pf.setPF_OR_LI(fileName2); // 원래 파일명 저장
+			
+			// 새로운 폴더 이름 : 오늘 년-월-일  
+			Calendar c = Calendar.getInstance();
+			int year = c.get(Calendar.YEAR); // 오늘 년도 구합니다.
+			int month = c.get(Calendar.MONTH ) + 1; // 오늘 월 구합니다.
+			int date = c.get(Calendar.DATE); // 오늘일  구합니다.
+			String saveFolder2 = request.getSession().getServletContext().getRealPath("resources") + "/pf_LI_upload/";
+			String homedir2 = saveFolder2 + year + "-" + month + "-" + date;
+			System.out.println("homedir2 = "+homedir2);
+			File path2 = new File(homedir2);
+			if(!(path2.exists())) {
+				path2.mkdir();  // 새로운 폴더를 생성
+			}
+		
+
+			Random r = new Random();
+			int random = r.nextInt(100000000);
+			
+			int index = fileName2.lastIndexOf(".");
+			System.out.println("파일이름 . 위치 = " + index);
+			
+			String fileExtension = fileName2.substring(index+1);
+			System.out.println("자격증 사진 확장자 = " + fileExtension);
+			
+			String refileName2 = "eeum" + year + month + date + random + "." + fileExtension;
+			System.out.println("새로운 파일명 = " + refileName2);
+			
+			String fileDBName2 = "/" + year + "-" + month + "-" + date + "/" + refileName2;
+			System.out.println("DB에 저장될 파일명 = " + fileDBName2);
+			
+			uploadfile2.transferTo(new File(saveFolder2 + fileDBName2));
+			
+			pf.setPF_SV_LI(fileDBName2);
+		}
+		
+			
+			//활동지역 따로 처리하자! sido1 / gugun1
+			String loc = sido +" "+ gugun;
+			pf.setPF_LOC(loc);
+			//에약 가능 시간도 따로 처리하자 starthour/endhour
+			String time = starthour +","+ endhour;
+			pf.setPF_TIME(time);
+			
+			//아이디 매핑
+			String expert_id = (String) session.getAttribute("expert_id");
+			pf.setPF_EXID(expert_id);
+			System.out.println("expert_id 뭐야" + expert_id);
+			int result = expertservice.insert(pf);
+			
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			if(result == 1) {
+				out.println("alert('포트폴리오가 정상적으로 등록되었습니다.');");
+				out.println("location.href='expertpage.net';");
+			}else {
+				out.println("alert('포트폴리오가 정상적으로 등록되지 않았습니다.');");
+				out.println("location.href='expertpage.net';");
+			}
+			out.println("</script>");
+			out.close();
+		
 	}
 	
 	/* 로그인 */
@@ -400,7 +586,7 @@ public class UEController {
 				String fileDBName = "/" + year + "-" + month + "-" + date + "/" + refileName;
 				System.out.println("DB에 저장될 파일명 = " + fileDBName);
 				
-				uploadfile.transferTo(new File(profileFolder + fileDBName));
+				uploadfile.transferTo(new File(saveFolder + fileDBName));
 				
 				u.setUser_saveprofile(fileDBName);
 				
@@ -449,23 +635,96 @@ public class UEController {
 		return "UE/userpage_review";
 	}
 	
-	/*
-	 * @RequestMapping(value="userOneday.net") public ModelAndView
-	 * userOneday(HttpSession session, ModelAndView mv) throws Exception { String
-	 * user_id = (String) session.getAttribute("user_id"); List<Map<String,Apply>>
-	 * applyList = applyservice.applyList(user_id); System.out.println(applyList);
-	 * mv.setViewName("UE/userpage_oneday"); mv.addObject("useronedaylist",
-	 * applyList); return mv; }
-	 */
+
+	@RequestMapping(value="userOneday.net")
+	public ModelAndView userOneday(@RequestParam(value="page", defaultValue="1", required=false) int page,
+															HttpSession session, ModelAndView mv) throws Exception {
+
+		String user_id = (String) session.getAttribute("user_id");
+		
+		int applyCount = applyservice.applyCount(user_id);
+		
+		int limit = 10;
+		int maxpage = (applyCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		
+		List<Apply> applyList = applyservice.applyList(user_id, page, limit);
+		
+		mv.setViewName("UE/userpage_oneday");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("applycount", applyCount);
+		mv.addObject("applylist", applyList);
+		mv.addObject("limit", limit);
+		
+		return mv;
+	}
+
 	
+	@RequestMapping(value="userOnedayCancel.net")
+	public void onedayCancel(String ap_id, String ap_cindex, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		int result = applyservice.cancel(ap_id, ap_cindex);
+		
+		if (result == 1) {
+			out.println("alert('신청하신 클래스가 취소되었습니다.');");		//추후에 모달로 바꾸기,,,
+			out.println("location.href='userOneday.net';");
+			
+		} else {
+			out.println("alert('클래스 취소가 실패되었습니다.');");
+			out.println("history.back();");
+		}
+		
+		out.println("</script>");
+		out.close();
+	}
+
 	@RequestMapping(value="userWishlist.net")
-	public String userWishlist() {
-		return "UE/userpage_wishlist";
+	public ModelAndView userWishlist(@RequestParam(value="page", defaultValue="1", required=false) int page,
+															HttpSession session, ModelAndView mv) {
+		
+		String user_id = (String) session.getAttribute("user_id");
+		
+		int wishlistCount = likeservice.wishlistCount(user_id);
+		System.out.println(wishlistCount);
+		
+		int limit = 12;
+		int maxpage = (wishlistCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Object> wishlist = likeservice.wishlist(user_id, page, limit);
+		System.out.println(wishlist);
+		
+		mv.setViewName("UE/userpage_wishlist");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("wishlistCount", wishlistCount);
+		mv.addObject("wishlist", wishlist);
+		mv.addObject("limit", limit);
+		
+		return mv;
 	}
 	
 	@RequestMapping(value="userDelete.net", method=RequestMethod.GET)
 	public String delete(String user_id) throws Exception {
-		userservice.user_delete(user_id);
+		applyservice.deleteAll(user_id);			//원데이 클래스 신청 내역 삭제 후 
+		userservice.user_delete(user_id);			//회원 탈퇴 
 		return "redirect:/";
 	}
 }
