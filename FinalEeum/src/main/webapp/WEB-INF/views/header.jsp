@@ -54,7 +54,7 @@
 												<li><a href="product-details.html">해충</a></li>
 											</ul></li>	
 										<li><a href="OnedayList.one">원데이 클래스</a></li>
-										<li><a href="#">FAQ</a></li>
+										<li><a href="FAQ.net">FAQ</a></li>
 									</ul>
 								</nav>
 							</div>
@@ -66,7 +66,7 @@
 							<c:if test="${empty user_id && empty expert_id}">
 							<div class="header-login same-style"
 								style="margin-left: 13px; margin-right: 13px">
-								<li><a href="userpage.net"><img src="resources/img/header/user.png"
+								<li><a href="login.net"><img src="resources/img/header/user.png"
 																						style="margin-bottom: 30px; width: 30px; filter: saturate(80%);" /></a>
 									<ul style="width:200px">
 										<li>같이 이음해요 :)</li>
@@ -123,7 +123,7 @@
 											<li><a href="cart.html">해충</a></li>
 										</ul></li>
 									<li><a href="OnedayList.one">원데이 클래스</a></li>
-									<li><a href="#">FAQ</a></li>
+									<li><a href="FAQ.net">FAQ</a></li>
 								</ul>
 							</nav>
 						</div>

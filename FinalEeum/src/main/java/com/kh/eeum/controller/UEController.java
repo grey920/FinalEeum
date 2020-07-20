@@ -724,4 +724,14 @@ public class UEController {
 		userservice.user_delete(user_id);			//회원 탈퇴 
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value="userChat.net", method=RequestMethod.GET)
+	public String chat() {
+		return "UE/userpage_base";
+	}
+	
+	@RequestMapping(value="FAQ.net")
+	public String faq() {
+		return "UE/FAQ";
+	}
 }
