@@ -27,4 +27,9 @@ public class PortfolioDAO {
 	public int deletePF(String expertid) {
 		return sqlSession.delete("Portfolios.delete", expertid);
 	}
+
+
+	public int modifyPF(Portfolio pf) {
+		return sqlSession.update("Portfolios.modify", pf);
+	}
 }

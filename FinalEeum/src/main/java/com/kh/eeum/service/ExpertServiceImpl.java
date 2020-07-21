@@ -281,6 +281,7 @@ public class ExpertServiceImpl implements ExpertService {
 	}
 
 	@Override
+
 	public Portfolio poexpertListOne(String expertid) {
 		return exdao.poselectone(expertid);
 	}
@@ -299,6 +300,11 @@ public class ExpertServiceImpl implements ExpertService {
 		return exdao.getPoList(map);
 	}
 
+
+
+	public int modifyPF(Portfolio pf) {
+		return pfDao.modifyPF(pf);
+	}
 
 
 }

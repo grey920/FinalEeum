@@ -5,7 +5,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <link href="resources/dist/img/eeumLogo2.png" rel="shortcut icon" type="image/x-icon">
+  <link href="resources/img/logo/eeum_logo.png" rel="shortcut icon" type="image/x-icon">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>이 : 음 | 관리자 페이지</title>
   <!-- Tell the browser to be responsive to screen width -->
