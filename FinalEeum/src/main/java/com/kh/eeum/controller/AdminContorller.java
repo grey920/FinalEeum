@@ -29,8 +29,11 @@ public class AdminContorller {
 	@RequestMapping(value="/admin.net")
 	public ModelAndView adminhome(ModelAndView mv) {
 		int allUsers= adminservice.cUsers();
+		int allReviews=adminservice.allReviews();
 		mv.setViewName("admin_main");
 		mv.addObject("allUsers", allUsers);
+		mv.addObject("allReviews",allReviews);
+		System.out.println("allReviews"+allReviews);
 		return mv;
 	}
 	
