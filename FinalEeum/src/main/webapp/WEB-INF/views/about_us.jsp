@@ -99,7 +99,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-3 col-md-6">
-					<div class="single-services firstone mb-30">
+					<div class="single-services firstone mb-30" style="background : #f7f6e7">
 						<div class="services-icon">
 							<img alt="" src="resources/img/icon-img/friends.png">
 						</div>
@@ -110,7 +110,7 @@
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
-					<div class="single-services secondone mb-30">
+					<div class="single-services secondone mb-30" style="background:#ffeac9">
 						<div class="services-icon">
 							<img alt="" src="resources/img/icon-img/help.png">
 						</div>
@@ -121,7 +121,7 @@
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
-					<div class="single-services thirdone mb-30">
+					<div class="single-services thirdone mb-30" style="background:#efd3cd">
 						<div class="services-icon">
 							<img alt="" src="resources/img/icon-img/search.png">
 						</div>
@@ -132,7 +132,7 @@
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
-					<div class="single-services lastone mb-30">
+					<div class="single-services lastone mb-30"style="background:#c8dbcd">
 						<div class="services-icon">
 							<img alt="" src="resources/img/icon-img/magnet.png">
 						</div>
