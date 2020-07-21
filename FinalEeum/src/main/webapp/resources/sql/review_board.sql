@@ -23,5 +23,7 @@ INCREMENT BY 1
 NOCYCLE
 NOCACHE;
 
+select * from REVIEW_BOARD;
+
 INSERT INTO REVIEW_BOARD
 VALUES(RV_SEQ.NEXTVAL, 'user1234', 'user5678', '후기 테스트', '웅앵웅앵웅앵', 3.75);
