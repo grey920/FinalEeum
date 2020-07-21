@@ -3,6 +3,7 @@ $(document).ready(
 
 			var current_fs, next_fs, previous_fs; // fieldsets
 			var opacity;
+			var expert_id = $('#EXPERT_ID').val();
 
 			$('#top').addClass('step-1');
 
@@ -166,8 +167,10 @@ $(document).ready(
 						$('#tabText4').css('color', 'black');
 					}
 				}
-
+				
+				
 				$.ajax({
+					
 					type : 'GET',
 					url : tab, // ~~.jsp 파일이 들어옴
 					error : function() { // 통신 실패시
@@ -176,6 +179,8 @@ $(document).ready(
 					success : function(data) { // 통신 성공하면 가져옴.
 
 						$("#tabcontent").html(data);
+						
+						
 					}
 
 				});
@@ -190,14 +195,14 @@ $(document).ready(
 			$(".heart_click").click(
 					function() {
 
-						var expert_id = $('#expert_id').val();
-						var user_id = $('#user_id').val();
+						var expert_id = $('#EXPERT_ID').val();
+						var user_id = $('#USER_ID').val();
 						console.log("전문가 아이디:" + expert_id + "지금 로그인한 회원 아이디:"
 								+ user_id);
 
 						var senddata = {
-							'expert_id' : expert_id,
-							'user_id' : user_id
+							'EXPERT_ID' : expert_id,
+							'USER_ID' : user_id
 						}; // 현재 로그인한 사용자 아이디, 찜등록하려는 전문가 아이디
 
 						$.ajax({

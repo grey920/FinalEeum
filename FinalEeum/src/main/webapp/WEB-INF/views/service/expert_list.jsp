@@ -77,13 +77,7 @@
 					<div class="col-md-12">
 						<div class="shop-topbar-wrapper">
 							<div class="rows">
-								<span>줄보기</span> <select class="form-control" id="viewcount">
-									<option value="12">12</option>
-									<option value="16">16</option>
-									<option value="20">20</option>
-									<option value="24">24</option>
-									<option value="28" selected>28</option>
-								</select>
+
 							</div>
 
 
@@ -106,6 +100,8 @@
 						<div class="product-grid product-view">
 							<div class="row">
 								<c:forEach var="e" items="${expertlist}">
+									<!-- 포폴 시작!!!!!!!!!!!!!!!! -->
+								
 								<div class="product-width col-md-6 col-xl-3 col-lg-4z">
 
 										<div class="product-wrapper mb-35">
@@ -139,8 +135,20 @@
 																	<span class="ion-android-close" aria-hidden="true"></span>
 																</button>
 																<div class="qwick-view-right ">
+																
 																	<div class="qwick-view-content" style="width: 550px;">
+																	<c:if test="${p.PF_GRADE ==  0}">
 																		<h3 style="font-weight: 700;">[청소]</h3>
+																	</c:if>
+																	<c:if test="${p.PF_GRADE ==  1}">
+																		<h3 style="font-weight: 700;">[방역]</h3>
+																	</c:if>
+																	<c:if test="${p.PF_GRADE ==  2}">
+																		<h3 style="font-weight: 700;">[수리]</h3>
+																	</c:if>
+																	
+																	
+																
 																		<img src="resources/img/blog/cat2.jpg" alt=""
 																			id="userimg"
 																			style="position: relative; left: 0px; right: 0px;">
@@ -216,6 +224,7 @@
 									</div>
 
 								</c:forEach>
+							
 
 							</div>
 

@@ -7,7 +7,7 @@
 	<select id="selectReviewList" resultType="map" >
 		select *
 		from (select rownum
-		rnum,rv_no,rv_user_id,rv_expert_id,rv_content,rv_rating1,rv_rating2,rv_rating3,rv_rating4,rv_rating5,rv_rating6,rv_date
+		rnum,rv_no,rv_user_id,rv_expert_id,rv_content,rv_rating1,rv_rating2,rv_rating3,rv_rating4,rv_rating5,rv_rating6,TO_CHAR(rv_date,'YYYY-MM-DD') 
 			from (
 				select *
 				from review where rv_expert_id = #{expert_id}
@@ -20,6 +20,7 @@
 	<insert id="insert" parameterType="Review">
 		insert into review 
 		values(rev_seq.nextval,#{rv_user_id},#{rv_expert_id},#{rv_content},#{rv_rating1},#{rv_rating2},#{rv_rating3},#{rv_rating4},#{rv_rating5},#{rv_rating6},sysdate)
+		
 	</insert>
 
 	<update id="update" parameterType="Review">
@@ -28,4 +29,10 @@
 	, rv_rating4 = #{rv_rating4}, rv_rating5 = #{rv_rating5}, rv_rating6 = #{rv_rating6}
 	where rv_no = #{rv_no}
 	</update>
+	
+	
+<select id="count" resultType="int">
+	select count(*)
+	from review where RV_EXPERT_ID = #{expert_id}
+</select>
 </mapper>

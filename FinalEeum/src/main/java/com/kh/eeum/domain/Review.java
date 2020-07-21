@@ -1,11 +1,19 @@
 package com.kh.eeum.domain;
 
+import java.util.Date;
+
 public class Review {
 	private int rv_no;
 	private String rv_user_id;
 	private String rv_expert_id;
 	private String rv_content;
 	private String rv_date;
+	public String getRv_date() {
+		return rv_date;
+	}
+	public void setRv_date(String rv_date) {
+		this.rv_date = rv_date.substring(0, 10);;
+	}
 	private float rv_rating1;
 	private float rv_rating2;
 	private float rv_rating3;
@@ -36,12 +44,8 @@ public class Review {
 	public void setRv_content(String rv_content) {
 		this.rv_content = rv_content;
 	}
-	public String getRv_date() {
-		return rv_date;
-	}
-	public void setRv_date(String rv_date) {
-		this.rv_date = rv_date;
-	}
+
+
 	public float getRv_rating1() {
 		return rv_rating1;
 	}

@@ -42,6 +42,15 @@
 		where rnum &gt; = #{start} and rnum &lt; =
 		#{end}
 	</select>
+	
+	<select id="PoMulList" resultType="map">
+		select * from
+		( select rownum rnum, b.* from
+		(select * from PORTFOLIO) b)
+		where rnum &gt; = #{start} and rnum &lt; =
+		#{end}
+	
+	</select>
 
 	<select id="expertdetails" resultType="expert"
 		parameterType="String">
@@ -66,5 +75,23 @@
 			(FILE_NO, REQUEST_NO, FILE_NAME, FILE_ORIGINAL, FILE_THUMB_NAME, REQUEST_FILE_DATE)	
 	VALUES (request_file_seq.NEXTVAL, #{request_no}, #{file_name}, #{file_original}, #{file_thumb_name}, SYSDATE)	
 	</insert>
+	
+	<select id="poselect" resultType="portfolio" parameterType="String">
+		select * from PORTFOLIO where PF_EXID = #{expert_id}
+	</select>
+
+	<select id="RequestCount" resultType="int">
+		  select count(*) from REQUEST where expert_id = #{expert_id}
+	</select>
+	
+	
+	<resultMap id="PortfolioResult" type="hashMap" >
+    	<result property="PF_DESC" column="PF_DESC" jdbcType="CLOB" javaType="java.lang.String" />
+    	<result property="PF_INTRO" column="PF_INTRO" jdbcType="CLOB" javaType="java.lang.String" /> 	
+	</resultMap>
+	
+	<select id="PoList" resultMap="PortfolioResult" parameterType="hashMap">
+		  select * from PORTFOLIO where PF_EXID = #{expert_id}
+	</select>
 
 </mapper>

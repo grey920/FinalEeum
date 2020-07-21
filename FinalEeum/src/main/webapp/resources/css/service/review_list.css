@@ -41,5 +41,19 @@
         }
 
         #base_container {
-            padding: 100px
+            padding: 100px;
+           
         }
+        
+button#write.btn.btn-info.float-right:hover {
+	cursor: pointer;
+}       
+
+#delete_review:hover{
+	cursor: pointer;
+}
+
+#update_review:hover {
+	cursor: pointer;
+}
+

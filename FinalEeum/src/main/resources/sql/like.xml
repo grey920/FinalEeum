@@ -5,7 +5,7 @@
 
 <mapper namespace="Likes">
 
-<insert id="inertlike" parameterType="like">
+<insert id="insertlike" parameterType="like">
 	insert into like_expert
 	values (#{user_id},#{expert_id},#{like_state})
 </insert>

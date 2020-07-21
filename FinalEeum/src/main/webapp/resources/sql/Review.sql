@@ -1,4 +1,7 @@
 drop table review;
+drop sequence rev_seq;
+
+
 CREATE TABLE review(
 	rv_no number primary key,
 	rv_user_id varchar2(30),
@@ -38,6 +41,6 @@ SELECT * FROM review;
 
 insert into review
 values (rev_seq.nextval,'duswl0918','aaa','지대다',null,null);
------------------------------------------------------
---board ���� page�� limit ���� ���� �����͸� ���ؿɴϴ�.
--- 1�ܰ�
+
+	select count(*)
+	from review where RV_EXPERT_ID = 'aaa';
