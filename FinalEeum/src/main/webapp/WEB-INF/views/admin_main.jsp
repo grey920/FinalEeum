@@ -71,7 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 						<!-- small box -->
 						<div class="small-box">
 							<div class="inner" style="background:#DBE8AE;border-top-right-radius:4px;border-top-left-radius:4px ;color:#444540;">
-								<h3></h3>
+								<h3>${allReviews}</h3>
 								<p>전체 후기 수</p>
 							</div>
 							<div class="icon">

@@ -2,8 +2,6 @@ package com.kh.eeum.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +29,11 @@ public class AdminContorller {
 	@RequestMapping(value="/admin.net")
 	public ModelAndView adminhome(ModelAndView mv) {
 		int allUsers= adminservice.cUsers();
+		int allReviews=adminservice.allReviews();
 		mv.setViewName("admin_main");
 		mv.addObject("allUsers", allUsers);
+		mv.addObject("allReviews",allReviews);
+		System.out.println("allReviews"+allReviews);
 		return mv;
 	}
 	

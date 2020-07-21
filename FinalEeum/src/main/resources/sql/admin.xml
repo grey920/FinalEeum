@@ -21,4 +21,7 @@
 		where PF_EXID=#{PF_EXID}
 	</select>
 	
+	<select id="allReviews" resultType="int">
+		SELECT COUNT(RV_INDEX) FROM REVIEW_BOARD
+	</select>
 </mapper>

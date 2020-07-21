@@ -22,6 +22,11 @@ public class AdminServiceImpl implements AdminService{
 		return asdao.deExperts(id);
 	}
 
+	@Override
+	public int allReviews() {
+		return asdao.allReviews();
+	}
+
 
 
 
