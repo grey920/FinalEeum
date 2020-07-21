@@ -11,9 +11,9 @@ import com.kh.eeum.domain.Review;
 @Service
 public interface ReviewService {
 
-	public int getListCount(int board_num);
 	List<Review> selectReviewList( String expert_id, int page);
 	public int insertReview(Review review);
 	public int update(Review review);
+	public int getReviewCount(String expert_id);
 
 }

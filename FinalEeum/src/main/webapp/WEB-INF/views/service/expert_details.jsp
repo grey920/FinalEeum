@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -14,7 +15,7 @@
 	href="resources/img/favicon.png">
 
 <!-- all css here -->
-<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+
 <link rel="stylesheet" href="resources/css/animate.css">
 <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="resources/css/chosen.min.css">
@@ -64,18 +65,18 @@
 			<div class="container-fluid">
 				<!--  -->
 				<div class="banner-img">
-
+	<c:set var="po" value="${portfolio}"/>
 					<div class="grad">
-						<img src="resources/profile/profile.jpg" alt="" id="userimg">
+						<img src="resources/expert_profile${po.PF_SAVEPROFILE}" alt="" id="userimg">
 					</div>
 					<b
 						style="font-size: 50px; position: relative; left: 680px; bottom: 190px;">${expertdata.expert_name}
 					</b>
 
 					<!-- 전문가 아이디 -->
-					<input type="hidden" value="${expertdata.expert_id}" id="expert_id">
+					<input type="hidden" value="${expertdata.expert_id}" id="EXPERT_ID" name="EXPERT_ID">
 					<!-- 사용자 아이디 -->
-					<input type="hidden" value="${user_id}" id="user_id">
+					<input type="hidden" value="${user_id}" id="USER_ID" name="USER_ID">
 
 
 					<div class="heart_click">
@@ -108,7 +109,7 @@
 						<!-- 사람 이름 -->
 						<i class="fa fa-check" style="position: relative; left: 135px;"></i>
 						<b style="font-size: 25px; position: relative; left: 150px;">총
-							'(숫자)' 건 예약</b> <i class="fa fa-smile-o"
+							'${RequestCount}' 건 예약</b> <i class="fa fa-smile-o"
 							style="position: relative; right: 78px; top: 38px; font-size: 20px;"></i>
 
 						<div class="quick-view-rating">
@@ -120,8 +121,9 @@
 						</div>
 						<i class="fa fa-calendar"
 							style="position: relative; left: 138px; font-size: 17px;"></i> <b
-							style="font-size: 24px; position: relative; left: 150px;">총
-							가능한 날짜 나옴</b>
+							style="font-size: 24px; position: relative; left: 150px;">
+							<c:set var="PF_TIME" value="${portfolio.PF_TIME}"/>
+							${fn:substring(PF_TIME,0,2)}시 &nbsp;~&nbsp; ${fn:substring(PF_TIME,3,5)}시&nbsp;까지 연락 가능</b>
 
 
 					</div>
@@ -129,20 +131,20 @@
 					<%@include file="expert_modal.jsp"%>
 
 				</div>
-
+		
 
 				<hr class="hr_1">
 				<!-- 버튼 -->
-
+				<!-- 후기 수 hidden 으로 -->
+				<input type="hidden" value="${count}" id="count">
 
 				<hr class="hr_2">
 				<span
 					style="font-size: 40px; font-weight: 700; position: relative; left: 240px; top: 60px;">서비스
 					상세설명</span>
 				<div class="details1">
-					<p style="font-size: 22px; color: black;">
-						이사입주청소<br> (싱크대상판연마코팅.욕실나노코팅.마루왁스코팅.찌든때.묵은때.물때.기름때.곰팡이. 스티커
-						제거 )<br> 신축입주청소<br> ( 화학성분 유해물질 미세먼지 제거 싱크대상판코팅.욕실나노코팅 )<br>
+					<p style="font-size: 22px; color: black; white-space: inherit">
+						${po.PF_DESC}
 					</p>
 				</div>
 				<!-- 탭메뉴 들어간다. -->

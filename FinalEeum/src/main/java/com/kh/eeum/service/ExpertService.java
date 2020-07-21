@@ -27,5 +27,13 @@ public interface ExpertService {
 
 	public int insert(Portfolio pf);
 	public int deletePF(String expert_id);
+	public Portfolio poexpertListOne(String expertid);
+	
+	public int getRequestCount(String expertid);
+	
+	//포폴 페이지 경력 및 사진
+	public List<Portfolio> poexpertListOne1(String expert_id);
+	//여러개 쭉 뽑아오기
+	public List<Portfolio> poexpertListOne1(int page, int limit);
 
 }

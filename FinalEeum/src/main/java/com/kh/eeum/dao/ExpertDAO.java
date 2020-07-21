@@ -68,4 +68,22 @@ public class ExpertDAO {
 		return sqlSession.insert("Experts.insertRequestFileData", paramMap);
 	}
 
+	public Portfolio poselectone(String expertid) {
+		return sqlSession.selectOne("Experts.poselect",expertid);
+	}
+
+	public int getRquestCount(String expertid) {
+		return sqlSession.selectOne("Experts.RequestCount", expertid);
+	}
+
+	public List<Portfolio> getPoList(Map<String, Object> map) {
+		return sqlSession.selectList("Experts.PoList",map);
+	}
+
+	public List<Portfolio> getPoMulList(HashMap<String, Integer> map) {
+		return sqlSession.selectList("Experts.PoMulList",map);
+	}
+
+
+
 }

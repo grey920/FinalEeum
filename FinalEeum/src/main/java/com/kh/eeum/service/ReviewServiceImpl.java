@@ -22,10 +22,7 @@ public class ReviewServiceImpl implements ReviewService{
 	@Autowired
 	ReviewDAO dao;
 	
-	@Override
-	public int getListCount(int board_num) {
-		return dao.getListCount(board_num);
-	}
+
 
 	@Override
 	public List<Review> selectReviewList( String expert_id, int page) {
@@ -51,6 +48,11 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public int update(Review review) {
 		return dao.update(review);
+	}
+
+	@Override
+	public int getReviewCount(String expert_id) {
+		return dao.getReviewCount(expert_id);
 	}
 
 

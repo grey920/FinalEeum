@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Like;
+import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.Review;
 import com.kh.eeum.service.ExpertService;
 import com.kh.eeum.service.ExpertServiceImpl;
@@ -77,8 +79,11 @@ public class ExpertController {
 
 		// expert 형인
 		List<Expert> expertlist = expertservice.expertlist(page, limit);
-		
+	
 		System.out.println("전문가 리스트"+expertlist);
+		
+		//포트폴리오 정보 뽑아오기
+		List<Portfolio> Portfoliolist = expertservice.poexpertListOne1(page,limit); 
 		
 		mv.setViewName("service/expert_list");
 		mv.addObject("page", page);
@@ -87,7 +92,10 @@ public class ExpertController {
 		mv.addObject("maxpage", maxpage);
 		mv.addObject("startpage", startpage);
 		mv.addObject("endpage", endpage);
+		//전문가 리스트
 		mv.addObject("expertlist", expertlist);
+		//전문가 포폴 리스트
+		mv.addObject("Portfoliolist",Portfoliolist);
 		return mv;
 	}
 
@@ -105,6 +113,12 @@ public class ExpertController {
 
 		// 찜등록 데이터 있는지 조회
 		int result = likeservice.selectLike(expertid, user_id);
+		int count = reviewservice.getReviewCount(expertid);
+		//예약 건수
+		int requestCount = expertservice.getRequestCount(expertid);
+		
+		
+	
 		System.out.println("찜등록 아이디 :" + expertid + user_id);
 		System.out.println("찜등록 데이터+" + result);
 
@@ -112,19 +126,26 @@ public class ExpertController {
 		System.out.println("디테일 페이지" + page);
 
 		Expert expert = expertservice.expertlistOne(expertid);
+		
+		//포폴 출력
+		Portfolio portfolio = expertservice.poexpertListOne(expertid);
+		
 
 		mv.setViewName("service/expert_details");
 		mv.addObject("expertdata", expert);
 		mv.addObject("user_id", user_id); // 지금 로그인 한 사용자의 아이디 가져옴
 		mv.addObject("like", result); // 찜등록 데이터
 		mv.addObject("page", page);
+		mv.addObject("portfolio", portfolio);
+		mv.addObject("count",count);
+		mv.addObject("RequestCount", requestCount);
 		return mv;
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/LikeExpert.Ajax", method = RequestMethod.POST, produces = "application/json")
-	public int likeexpert_ajax(@RequestParam(value = "expert_id", required = false) String expert_id,
-			@RequestParam(value = "user_id", required = false) String user_id, Like like, HttpServletResponse response,
+	public int likeexpert_ajax(@RequestParam(value = "EXPERT_ID", required = false) String expert_id,
+			@RequestParam(value = "USER_ID", required = false) String user_id, Like like, HttpServletResponse response,
 			ModelAndView mv) throws Exception {
 
 		System.out.println("ajax 로 들어온 전문가 아이디:" + expert_id + "유저 아이디 : " + user_id);
@@ -185,7 +206,7 @@ public class ExpertController {
 	public void ReviewAdd_Ajax(Review review,
 							   HttpServletResponse response) throws Exception{
 		
-		
+		System.out.println("===========================리뷰넣기 넘어온값"+review.getRv_expert_id());
 		int result = reviewservice.insertReview(review);
 		response.getWriter().print(result);
 	}
@@ -230,6 +251,21 @@ public class ExpertController {
 
 		return "service/QnA_list";
 	}
+	
+	//준비
+	@ResponseBody
+	@PostMapping("/Portfolio.Ajax")
+	public List<Portfolio> Portfolio_Ajax(@RequestParam(value = "expert",required = false) String expert_id,ModelAndView mv ){
+		
+		System.out.println("포포포포포폴"+expert_id);
+		
+		
+		List<Portfolio> list = expertservice.poexpertListOne1(expert_id);
+		//list 형식으로 넣기
+		return list;
+		
+	}
+	
 	
 	@ResponseBody
 	@RequestMapping(value = "/Request.Ajax", method = RequestMethod.POST)

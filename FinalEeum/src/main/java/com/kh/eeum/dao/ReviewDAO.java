@@ -1,5 +1,6 @@
 package com.kh.eeum.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,9 +21,7 @@ public class ReviewDAO {
 		return sqlSession.selectList("Reviews.selectReviewList", map);
 	}
 
-	public int getListCount(int board_num) {
-		return sqlSession.selectOne("Comments.count",board_num);
-	}
+
 
 	public int insertReview(Review review) {
 		return sqlSession.insert("Reviews.insert",review);
@@ -30,5 +29,9 @@ public class ReviewDAO {
 
 	public int update(Review review) {
 		return sqlSession.update("Reviews.update",review);
+	}
+
+	public int getReviewCount(String expert_id) {
+		return sqlSession.selectOne("Reviews.count",expert_id);
 	}
 }
