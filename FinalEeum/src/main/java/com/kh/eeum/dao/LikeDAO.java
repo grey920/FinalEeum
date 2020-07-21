@@ -15,8 +15,8 @@ public class LikeDAO {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 
-	public int inertLike(Like like) {
-		return sqlSession.insert("Likes.inertlike", like);
+	public int insertLike(Like like) {
+		return sqlSession.insert("Likes.insertlike", like);
 	}
 
 
@@ -28,6 +28,14 @@ public class LikeDAO {
 
 	public void deleteLike(Like like) {
 		sqlSession.delete("Likes.deleteLike",like);
+	}
+	
+	public int wishlistCount(String user_id) {
+		return sqlSession.selectOne("Likes.wishlistCount", user_id);
+	}
+	
+	public List<Object> wishlist(HashMap<String, Object> map) {
+		return sqlSession.selectList("Likes.wishlist", map);
 	}
 
 }

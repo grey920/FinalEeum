@@ -23,7 +23,7 @@ $("document").ready(function() {
  $("select[name^=sido]").each(function() {
   $selsido = $(this);
   $.each(eval(area0), function() {
-   $selsido.append("<option value='"+this+"'>"+this+"</option>");
+   $selsido.append("<option value='"+this+" '>"+this+"</option>");
   });
   $selsido.next().append("<option value=''>구/군 선택</option>");
  });

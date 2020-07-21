@@ -10,4 +10,33 @@
 	select * from PORTFOLIO
 	where PF_EXID = #{expert_id} 
 </select>
+<insert id="insert" parameterType="portfolio">
+	insert into PORTFOLIO
+	values
+	(#{PF_EXID},#{PF_LOC}, #{PF_GRADE}, #{PF_CATE},#{PF_TIME},#{ PF_DESC},#{PF_OR_LI},#{PF_SV_LI},#{PF_OR_OP},#{PF_SV_OP}, #{PF_INTRO}, #{PF_One},#{PF_PROFILE}, #{PF_SAVEPROFILE})
+</insert>
+
+<delete id="delete" parameterType="String">
+	delete PORTFOLIO
+	where PF_EXID = #{expert_id}
+</delete>
+
+<update id="modify" parameterType="portfolio">
+	update PORTFOLIO
+	set 
+		 PF_LOC = #{PF_LOC},
+		 PF_GRADE = #{PF_GRADE},
+		 PF_CATE = #{PF_CATE},
+		 PF_TIME = #{PF_TIME},
+		 PF_DESC = #{PF_DESC},
+		 PF_OR_LI = #{PF_OR_LI},
+		 PF_SV_LI = #{PF_SV_LI},
+		 PF_OR_OP = #{PF_OR_OP},
+		 PF_SV_OP = #{PF_SV_OP},
+		 PF_INTRO = #{PF_INTRO},
+		 PF_One =#{PF_One},
+		 PF_PROFILE = #{PF_PROFILE},
+		 PF_SAVEPROFILE = #{PF_SAVEPROFILE}
+	where PF_EXID = #{PF_EXID} 	 
+</update>
 </mapper>
