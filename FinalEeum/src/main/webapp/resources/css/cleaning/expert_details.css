@@ -260,12 +260,12 @@ input#structure2 {
 }
 
 #top.step-1:after {
-	content: "수리할 건물 유형은 무엇입니까?";
+	content: "청소할 건물 유형은 무엇입니까?";
 	font-weight: bold;
 }
 
 #top.step-2:after {
-	content: "수리할 유형을 선택해주세요.";
+	content: "청소할 유형을 선택해주세요.";
 	font-weight: bold;
 }
 

@@ -7,12 +7,12 @@ public class Review {
 	private String rv_user_id;
 	private String rv_expert_id;
 	private String rv_content;
-	private String rv_date;
+	private String rv_date; 
 	public String getRv_date() {
 		return rv_date;
 	}
 	public void setRv_date(String rv_date) {
-		this.rv_date = rv_date.substring(0, 10);;
+		this.rv_date = rv_date;
 	}
 	private float rv_rating1;
 	private float rv_rating2;
