@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
-<link href="resources/img/logo/eeum_logo.png" rel="shortcut icon" type="image/x-icon">
+<link href="resources/img/favicon.png" rel="shortcut icon" type="image/x-icon">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <style>
 .header-area{background-color:white}

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.Reservation;
+import com.kh.eeum.domain.Review;
 
 
 @Repository
@@ -106,6 +107,10 @@ public class ExpertDAO {
 
 	public List<Reservation> reserveList(HashMap<String, Object> map) {
 		return sqlSession.selectList("Experts.reserveList", map);
+	}
+
+	public int cancelReserve(Map<String, Object> map) {
+		return sqlSession.update("Experts.cancelReserve", map);
 	}
 
 

@@ -75,25 +75,25 @@
 
 
 	<insert id="insertRequestFileData"  parameterType="java.util.Map">	       
-	INSERT INTO REQUEST_FILE	
-			(FILE_NO, REQUEST_NO, FILE_NAME, FILE_ORIGINAL, FILE_THUMB_NAME, REQUEST_FILE_DATE)	
-	VALUES (request_file_seq.NEXTVAL, #{request_no}, #{file_name}, #{file_original}, #{file_thumb_name}, SYSDATE)	
+		INSERT INTO REQUEST_FILE	
+				(FILE_NO, REQUEST_NO, FILE_NAME, FILE_ORIGINAL, FILE_THUMB_NAME, REQUEST_FILE_DATE)	
+		VALUES (request_file_seq.NEXTVAL, #{request_no}, #{file_name}, #{file_original}, #{file_thumb_name}, SYSDATE)	
 	</insert>
 	
 	<select id="reserveCount" parameterType="String" resultType="int">
 		select count(*)
-		from request
-		where writer = #{user_id}
+		from reservation
+		where RS_UID = #{user_id}
 	</select>
 	
 	<select id="reserveList" parameterType="map" resultType="map">
 		select *
 		from (select rownum rnum, r.*
-				  from (	select r.expert_id, r.writer, e.expert_name, p.pf_grade, p.pf_cate, p.pf_saveprofile
-	 						from request r inner join
-	  			 					 expert_table e on r.expert_id = e.expert_id left outer join
-	  			 					 portfolio p on r.expert_id = p.pf_exid
-	  						where r.writer = #{user_id}
+				  from (	select r.*, e.expert_name, p.pf_grade, p.pf_cate, p.pf_saveprofile
+	 						from reservation r inner join
+	  			 					 expert_table e on r.rs_exid = e.expert_id left outer join
+	  			 					 portfolio p on r.rs_exid = p.pf_exid
+	  						where r.rs_uid = #{user_id}
 	  						) r
 	  			 )
 		where rnum &gt; = #{start} and rnum &lt; = #{end}
@@ -119,7 +119,13 @@
 
 	<insert id="insertReservation" parameterType="reservation">
 		insert into RESERVATION
-		(RS_EXID, RS_UID)
-		values(#{rs_exid}, #{rs_uid})
+		(RS_NO, RS_EXID, RS_UID)
+		values(RS_SEQ.NEXTVAL, #{rs_exid}, #{rs_uid})
 	</insert>
+	
+	<update id="cancelReserve" parameterType="map">
+		update reservation
+		set RS_STATE = #{rs_state}
+		where rs_exid = #{rs_exid} and rs_uid = #{rs_uid} and rs_date = #{rs_date}
+	</update>
 </mapper>
