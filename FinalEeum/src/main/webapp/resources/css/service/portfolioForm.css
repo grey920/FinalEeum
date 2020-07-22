@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+#noPFdata {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.checkout-area {
+	padding-top: 30px
+}
+
+.time-align, .loc-align, form {
+	display: flex;
+}
+
+#sido1 {
+	width: 50%;
+	margin: 0 15px 0 0;
+}
+
+#gugun1 {
+	width: 50%;
+	margin: 0 0 0 15px;
+}
+
+#upfile {
+	background: none;
+	border: none;
+}
+.btnRow{margin:0 auto}
+
+.checkout-area{padding-top:30px}
+
+.btnAlign{margin:0 auto;}
+.col-md-12, .col-md-6{margin-bottom:20px}

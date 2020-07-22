@@ -31,12 +31,12 @@
 /*************************
     General
 *************************/
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Rubik:300,400,500,700,900');
+
 body {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'NanumSquareRound', sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 14px;
+    font-size: 14pt;
 	color:#303030;
 }
 .img{
@@ -89,10 +89,10 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'NanumSquareRound', sans-serif;
     font-weight: normal;
     color: #303030;
-    margin-top: 0px;
+    margin-top: 3rem;
     font-style: normal;
     font-weight: 400;
 }
@@ -130,12 +130,12 @@ ul {
 li { list-style: none }
 
 p {
-    font-size: 14px;
+    font-size: 14pt;
     font-weight: normal;
     line-height: 26px;
     color: #807f7f;
     margin-bottom: 15px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'NanumSquareRound', sans-serif;
 }
 
 hr{
@@ -1151,12 +1151,12 @@ textarea:focus {
 }
 
 .btn-style {
-  background-color: #f3a395;
+  background-color: #72A0E0;
   border-radius: 0;
   color: #ffffff;
   display: inline-block;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 500;
   letter-spacing: 1px;
   line-height: 18px;
   padding: 13px 33px;
@@ -1165,6 +1165,8 @@ textarea:focus {
   transition: all 0.6s ease-in-out 0s;
     overflow: hidden;
     z-index: 99;
+    margin-top:30px;
+    margin-right:5px;
 }
 .cr-btn span {
   position: relative;
@@ -1195,46 +1197,21 @@ button:focus {
 }
 
 .btn-style-2 {
-  border: 1px solid #000000;
+  border: 2px solid #72A0E0;
   border-radius: 50px;
-  color: #3e3e3e;
+  color: #72A0E0;
   display: inline-block;
   font-size: 16px;
   letter-spacing: 0.5px;
   line-height: 1;
   overflow: hidden;
   padding: 16px 40px 17px;
-    position: relative;
+  position: relative;
+  background-color:white;
 }
 
 .btn-style-2:hover {
   color: #fff;
+  background-color:#72A0E0;
+  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

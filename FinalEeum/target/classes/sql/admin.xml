@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- SQL 맵퍼 파일은 xml이기 때문에 제일 먼저 xml 선언이 옵니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="eeum">
+
+	<select id="allUsers" resultType="int">
+		select sum(users.cnt)
+		from(
+		select count(USER_ID) cnt from user_table union all
+		select
+		count(EXPERT_ID) cnt from expert_table
+		)users
+	</select>
+
+	<select id="deExperts" resultType="Portfolio"
+		parameterType="String">
+		select
+		PF_EXID, PF_LOC, PF_GRADE, PF_CATE, PF_TIME,
+		PF_DESC,
+		PF_LI, PF_OP, PF_INTRO, PF_One
+		from PORTFOLIO
+		where
+		PF_EXID=#{PF_EXID}
+	</select>
+
+	<select id="allReviews" resultType="int">
+		SELECT COUNT(RV_INDEX) FROM
+		REVIEW_BOARD
+	</select>
+
+	<select id="cPosts" resultType="int">
+		SELECT RV_INDEX
+		FROM REVIEW_BOARD
+		WHERE PODATE BETWEEN SYSDATE-1 AND SYSDATE
+	</select>
+
+	<select id="cUsers" resultType="int">
+		SELECT SUM(allusers)
+		FROM(
+		SELECT COUNT(USER_ID) AS allusers FROM USER_TABLE WHERE JOINDATE BETWEEN
+		SYSDATE-1 AND SYSDATE
+		UNION ALL
+		SELECT COUNT(EXPERT_ID) AS allusers FROM EXPERT_TABLE WHERE JOINDATE BETWEEN
+		SYSDATE-1 AND SYSDATE
+		)allusers;
+	</select>
+</mapper>
