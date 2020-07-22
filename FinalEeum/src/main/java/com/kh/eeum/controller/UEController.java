@@ -832,6 +832,30 @@ public class UEController {
 		return mv;
 	}
 	
+	@RequestMapping(value="userRsCancel.net")
+	public void userReservationCancel(String rs_exid, String user_id, String rs_date, HttpServletResponse response) throws Exception {
+		System.out.println(user_id + "," + rs_exid + "," + rs_date);
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		int result = expertservice.cancelReserve(rs_exid, user_id, rs_date);
+		System.out.println(result);
+		
+		if (result == 1) {
+			out.println("alert('예약하신 서비스가 취소되었습니다.');");		//추후에 모달로 바꾸기,,,
+			out.println("location.href='userReservation.net';");
+			
+		} else {
+			out.println("alert('예약 취소 실패했습니다.');");
+			out.println("history.back();");
+		}
+		
+		out.println("</script>");
+		out.close();
+	}
+	
 	@RequestMapping(value="userReview.net")
 	public String userReview() {
 		return "UE/userpage_review";

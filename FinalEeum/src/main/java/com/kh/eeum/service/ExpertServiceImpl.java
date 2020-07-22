@@ -324,6 +324,18 @@ public class ExpertServiceImpl implements ExpertService {
 		return exdao.reserveList(map);
 	}
 
+	@Override
+	public int cancelReserve(String rs_exid, String rs_uid, String rs_date) {
+		Map <String, Object> map = new HashMap<String, Object>();
+		int rs_state = 3;
+		map.put("rs_exid", rs_exid);
+		map.put("rs_uid", rs_uid);
+		map.put("rs_date", rs_date);
+		map.put("rs_state", rs_state);
+		
+		return exdao.cancelReserve(map);
+	}
+
 
 
 }

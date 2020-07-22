@@ -47,6 +47,7 @@ public interface ExpertService {
 	//사용자 예약 리스트 내역 
 	public int reserveCount(String user_id);	
 	public List<Reservation> reserveList(String user_id, int page, int limit);
+	public int cancelReserve(String rs_exid, String rs_uid, String rs_date);
 
 
 }

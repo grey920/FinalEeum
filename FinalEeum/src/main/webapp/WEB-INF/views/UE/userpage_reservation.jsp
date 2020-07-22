@@ -101,7 +101,7 @@
                                       <c:forEach var="r" items="${rlist}">
                                         <tr>
                                             <td class="product-thumbnail">
-                                                <a href="#"><img src="resources/expert_profile${r.PF_SAVEPROFILE}" style="width:130px;height:160px"></a>
+                                                <a href="expertDetail.service?expert=${r.RS_EXID}"><img src="resources/expert_profile${r.PF_SAVEPROFILE}" style="width:130px;height:160px"></a>
                                             </td>
                                             <td class="product-price">
                                                 <a href="#"><span>[
@@ -131,11 +131,45 @@
                                                 
                                                 ${r.EXPERT_NAME}</a>
                                             </td>
-                                            <td class="product-name"><span class="amount">2020년 6월 27일 <br> 오후 11시</span></td>
-                                            <td class="product-subtotal">50,000원</td>
-                                            <td class="product-subtotal">예약 대기</td>
+                                            
+                                            <c:if test="${empty r.RS_DATE}">
+                                            <td class="product-name"><span class="amount"> - </span></td>
+                                            <td class="product-subtotal"> - </td>
+                                            </c:if>
+                                   
+                                            <c:if test="${!empty r.RS_DATE}">
+                                            <td class="product-name"><span class="amount">${r.RS_DATE} <br> ${r.RS_TIME}</span></td>
+                                            <td class="product-subtotal">${r.RS_PRICE}</td>
+                                            </c:if>
+                                            
+                                            <td class="product-subtotal">
+	                                            <c:if test="${r.RS_STATE == '0'}">
+	                                            예약 대기
+	                                            </c:if>
+	                                            <c:if test="${r.RS_STATE == '1'}">
+	                                            예약 확정
+	                                            </c:if>
+	                                            <c:if test="${r.RS_STATE == '2'}">
+	                                            서비스 완료
+	                                            </c:if>
+	                                            <c:if test="${r.RS_STATE == '3'}">
+	                                            예약 취소
+	                                            </c:if>
+                                            </td>
+                                            
                                             <td class="product-subtotal class-state">
                                             	<div class="button-box" style="text-align:center;">
+                                            	
+                                            	  <c:if test="${r.RS_STATE == '0' || r.RS_STATE == '1' }">
+													<button class="btn-style" onclick="location.href='#';"> <!-- r.RS_NO 로 넘어가게 하기  -->
+														<span>견적 확인</span>	
+													</button>
+													<button class="btn-style" onclick="location.href='userRsCancel.net';">
+														<span>예약 취소</span>
+													</button>
+                                            	  </c:if>
+                                            	  
+                                            	  <c:if test="${r.RS_STATE == '2'}">
 													<button class="btn-style" onclick="location.href='#';">
 														<span>별점주기</span>
 													</button>
@@ -145,6 +179,10 @@
 													<button class="btn-style" onclick="location.href='#';">
 														<span>신고하기</span>
 													</button>
+                                            	  </c:if>
+                                            	  
+                                            	  <c:if test="${r.RS_STATE == '3'}"></c:if>
+                                            	  
 												</div>
                                             </td>
                                         </tr>
