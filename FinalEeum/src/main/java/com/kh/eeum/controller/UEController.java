@@ -54,9 +54,9 @@ public class UEController {
 	private PasswordEncoder passwordEncoder;
 	
 	
-	@RequestMapping("/")
+	@RequestMapping("/main")
 	public String main() {
-		return "home";
+		return "../../main";
 	}
 	
 	/* 회원가입 */
