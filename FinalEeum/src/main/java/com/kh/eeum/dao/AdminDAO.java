@@ -30,4 +30,8 @@ public class AdminDAO {
 	public int cPosts() {
 		return sqlSession.selectOne("eeum.cPosts");
 	}
+	
+	public int newUsers() {
+		return sqlSession.selectOne("eeum.newUsers");
+	}
 }
