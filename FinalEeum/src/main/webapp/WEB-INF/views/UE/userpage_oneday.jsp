@@ -124,7 +124,7 @@
 	                                        <c:if test="${o.AP_PROG == '1' }">
 	                                            <td class="product-subtotal">결제 대기</td>
 	                                            <td class="product-subtotal class-state">
-	                                            	<button class="btn-style" onclick="location.href='#';">
+	                                            	<button class="btn-style" onclick="window.open('onedayPay.one?num=${o.AP_CINDEX}','width=500, height=700');">
 															<span>결제하기</span>
 													</button>
 	                                            	<button class="btn-style"  data-toggle="modal" data-target="#modalConfirmDelete">
@@ -385,7 +385,13 @@
         
 		
 		
-		
+		<script>
+		if (self.name != 'reload') {
+	         self.name = 'reload';
+	         self.location.reload(true);
+	     }
+	     else self.name = ''; 
+		</script>
 		
 		<!-- all js here -->
         <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
