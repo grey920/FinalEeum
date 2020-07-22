@@ -23,3 +23,9 @@ select * from USER_TABLE
 delete user_table where user_id = 'hansol66'
 alter table USER_TABLE modify(USER_SAVEPROFILE varchar2(4000))
 drop table user_table
+
+ALTER TABLE USER_TABLE 
+ADD JOINDATE TIMESTAMP DEFAULT SYSDATE;
+
+insert into user_table
+values('user3579', )

@@ -1,10 +1,13 @@
 package com.kh.eeum.service;
  
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.eeum.dao.AdminDAO;
 import com.kh.eeum.domain.Portfolio;
+import com.kh.eeum.domain.Review_Board;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -25,6 +28,11 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public int allReviews() {
 		return asdao.allReviews();
+	}
+
+	@Override
+	public int cPosts() {
+		return asdao.cPosts();
 	}
 
 

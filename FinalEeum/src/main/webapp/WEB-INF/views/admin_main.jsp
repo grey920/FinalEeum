@@ -105,7 +105,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 						<!-- small box -->
 						<div class="small-box">
 							<div class="inner" style="background:#E89EBA; border-top-right-radius:4px;border-top-left-radius:4px;color:white">
-								<h3></h3>
+								<h3>${cPosts }</h3>
 								<p>신규 후기 수</p>
 							</div>
 							<div class="icon">

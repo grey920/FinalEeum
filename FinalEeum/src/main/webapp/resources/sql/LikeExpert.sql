@@ -4,6 +4,7 @@ like_expert_id varchar2(40),
 like_state number
 )
 
+
 delete from like_expert
 create sequence like_sequence
 start with 1
