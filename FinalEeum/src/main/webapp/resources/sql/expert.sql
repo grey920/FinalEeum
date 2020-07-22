@@ -29,6 +29,10 @@ delete from EXPERT_TABLE;
 select * from EXPERT_TABLE
 drop table EXPERT_TABLE
 
+
+ALTER TABLE EXPERT_TABLE
+ADD JOINDATE TIMESTAMP DEFAULT SYSDATE;
+
 SELECT * FROM EXPERT_TABLE,PORTFOLIO;
 
 select * from
@@ -57,5 +61,4 @@ select count(*)
 from expert_table E,PORTFOLIO P
 where e.expert_ID =  p.PF_EXID	and P.PF_CATE = 3
 
-		select * from PORTFOLIO where PF_EXID = 'aaa'
-	
+
