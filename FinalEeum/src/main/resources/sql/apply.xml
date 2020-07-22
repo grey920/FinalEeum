@@ -6,7 +6,7 @@
 <mapper namespace="Applys">
  	<insert id="insert" parameterType="apply">
 	insert into apply
-	(AP_INDEX,AP_ID,AP_RDATE,AP_CINDEX,AP_TITLE,AP_LOCATE,AP_CDATE)
+	(AP_INDEX,AP_ID,AP_RDATE,AP_CINDEX,AP_TITLE,AP_LOCATE,AP_CDATE, AP_PRICE)
 	select
 		APPLY_SEQ.nextval as AP_INDEX, 
 		#{AP_ID },  
@@ -14,7 +14,8 @@
 		ONE_INDEX as AP_CINDEX, 
 		ONE_TITLE AS AP_TITLE, 
 		ONE_LOCATE as AP_LOCATE, 
-		ONE_RDATE AS AP_CDATE
+		ONE_RDATE AS AP_CDATE,
+		ONE_PRICE AS AP_PRICE
 	from ONEDAY
 	where ONE_INDEX = #{AP_CINDEX}
 	</insert>  
@@ -54,4 +55,10 @@
 		delete apply
 		where AP_ID = #{ap_id}
 	</delete>
+	
+	<update id="updateState" parameterType="map">
+		update apply
+		set AP_PROG = 2
+		where AP_ID = #{ap_id} and AP_CINDEX=#{ap_cindex}
+	</update>
 </mapper>

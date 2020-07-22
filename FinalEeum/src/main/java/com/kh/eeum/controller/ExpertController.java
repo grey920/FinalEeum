@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +28,7 @@ import com.kh.eeum.service.CleaningService;
 import com.kh.eeum.service.ExpertRepairService;
 import com.kh.eeum.service.ExpertService;
 import com.kh.eeum.service.ExpertServiceImpl;
+import com.kh.eeum.service.InsectService;
 import com.kh.eeum.service.LikeService;
 import com.kh.eeum.service.ReviewService;
 
@@ -51,6 +51,8 @@ public class ExpertController {
 	@Autowired
 	CleaningService cleaningService; // 청소
 	
+	@Autowired
+	InsectService insectService; // 해충
 	
 	private static final Logger logger = LoggerFactory.getLogger(ExpertServiceImpl.class);
 
@@ -154,12 +156,14 @@ public class ExpertController {
 	@RequestMapping(value = "/LikeExpert.Ajax", method = RequestMethod.POST, produces = "application/json")
 	public int likeexpert_ajax(@RequestParam(value = "EXPERT_ID", required = false) String expert_id,
 			@RequestParam(value = "USER_ID", required = false) String user_id, Like like, HttpServletResponse response,
-			ModelAndView mv) throws Exception {
+			HttpSession session) throws Exception {
 
 		System.out.println("ajax 로 들어온 전문가 아이디:" + expert_id + "유저 아이디 : " + user_id);
 
 		int result = likeservice.selectLike(expert_id, user_id);
-
+		String expert_id_login = (String) session.getAttribute("expert_id");
+		System.out.println("현재 로그인한 전문가"+expert_id_login);
+		System.out.println("전문가 페이지에 들어감"+expert_id);
 		//커멘드 값으로 가져오기
 		System.out.println("조회 완료:" + result);
 
@@ -171,8 +175,11 @@ public class ExpertController {
 			like.setExpert_id(expert_id);
 			like.setUser_id(user_id);
 			like.setLike_state(num);
-			int liketo = likeservice.insertLike(like);
+			
+				int liketo = likeservice.insertLike(like);
 
+			
+			
 			System.out.println("찜등록 완료");
 			resultf = 0;
 
@@ -270,6 +277,17 @@ public class ExpertController {
 		
 		List<Portfolio> list = expertservice.poexpertListOne1(expert_id);
 		//list 형식으로 넣기
+		return list;
+		
+	}
+	
+	@ResponseBody
+	@PostMapping("/Review.Ajax")
+	public List<Review> Review_Ajax(@RequestParam(value = "expert",required = false) String expert_id){
+		System.out.println("리리리리리리리"+expert_id);
+		
+		List<Review> list = expertservice.ReviewRatingList(expert_id);
+		
 		return list;
 		
 	}
@@ -504,7 +522,7 @@ public class ExpertController {
 					return mv;
 				}
 
-				/*****************************해충 expert_insect.service***
+				/*****************************해충 expert_insect.service*********************/
 				@GetMapping("/expert_insect.service")
 				public ModelAndView expert_insect_service(HttpServletResponse response,
 						// @RequestParam으로 page의 파라미터 값을 int page 에 담는다. 게시물이 없을 수도 있느니 defaultValue = 1
@@ -515,7 +533,7 @@ public class ExpertController {
 					int limit = 8;
 
 					// 전문가 리스트 개수 가져옴. -  수리
-					int listcount = cleaningService.getExpertListCountCleaning();
+					int listcount = insectService.getExpertListCountCleaning();
 					System.out.println("전문가 리스트 수(listcount) : " + listcount);
 
 					// 총 페이지수
@@ -538,13 +556,13 @@ public class ExpertController {
 						endpage = maxpage; // endpage 에는
 
 					// expert 형인
-					List<Expert> expertlist = cleaningService.expertlist(page, limit);
+					List<Expert> expertlist = insectService.expertlist(page, limit);
 				
 					System.out.println("전문가 리스트"+expertlist);
 					
 				
 					
-					mv.setViewName("cleaning_service/expert_cleaning");
+					mv.setViewName("insect_service/expert_insect");
 					mv.addObject("page", page);
 					mv.addObject("limit", limit);
 					mv.addObject("listcount", listcount);
@@ -589,7 +607,7 @@ public class ExpertController {
 							Portfolio portfolio = expertservice.poexpertListOne(expertid);
 							
 
-							mv.setViewName("cleaning_service/cleaning_details");
+							mv.setViewName("insect_service/insect_details");
 							mv.addObject("expertdata", expert);
 							mv.addObject("user_id", user_id); // 지금 로그인 한 사용자의 아이디 가져옴
 							mv.addObject("like", result); // 찜등록 데이터
@@ -599,5 +617,6 @@ public class ExpertController {
 							mv.addObject("RequestCount", requestCount);
 							return mv;
 						}
-******************/
+						
+						
 }

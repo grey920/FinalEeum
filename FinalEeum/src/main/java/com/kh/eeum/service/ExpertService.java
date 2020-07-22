@@ -9,6 +9,7 @@ import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.Reservation;
 
+
 public interface ExpertService {
 	public int insert(Expert ex);
 	public int isId(String expert_id, String expert_pass);
@@ -46,5 +47,6 @@ public interface ExpertService {
 	//사용자 예약 리스트 내역 
 	public int reserveCount(String user_id);	
 	public List<Reservation> reserveList(String user_id, int page, int limit);
+
 
 }

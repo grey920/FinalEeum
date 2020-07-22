@@ -61,3 +61,4 @@ select count(*)
 from expert_table E,PORTFOLIO P
 where e.expert_ID =  p.PF_EXID	and P.PF_CATE = 3
 
+

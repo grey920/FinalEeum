@@ -158,7 +158,7 @@
 
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="repair_type"  value="가구 청소 (소파,침대/매트리스, 카페트)"  id="structure1" >
-																<span>가구 청소 (소파,침대/매트리스, 카페트)</span> 
+																<span class='201'>가구 청소 (소파,침대/매트리스, 카페트)</span> 
 															</div>
 
 															<div class="col-8 col-sm-8">

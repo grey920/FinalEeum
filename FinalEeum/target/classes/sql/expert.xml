@@ -48,6 +48,13 @@
 		#{end}
 	</select>
 	
+	<select id="ReviewRating" resultType="map">
+		select sum(rv_rating1) "rv_rating1",sum(rv_rating2) "rv_rating2",sum(rv_rating3) "rv_rating3",sum(rv_rating4) "rv_rating4",sum(rv_rating5) "rv_rating5",sum(rv_rating6) "rv_rating6"
+		from review
+		where rv_expert_id = #{expert_id}
+	
+	</select>
+	
 
 	<select id="expertdetails" resultType="expert"
 		parameterType="String">

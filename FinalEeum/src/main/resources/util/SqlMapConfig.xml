@@ -18,6 +18,7 @@
 		<typeAlias alias="review" type="com.kh.eeum.domain.Review"/>
 		<typeAlias alias="repair" type="com.kh.eeum.domain.Expert" />
 		<typeAlias alias="cleaning" type="com.kh.eeum.domain.Expert" />
+		<typeAlias alias="insect" type="com.kh.eeum.domain.Expert" />
 		<typeAlias alias="Integer" type="java.lang.Integer"/>
 		<typeAlias alias="reservation" type="com.kh.eeum.domain.Reservation" />
 		
@@ -34,5 +35,6 @@
 		<mapper resource="sql/review.xml"/>
 		<mapper resource="sql/repair.xml"/>
 		<mapper resource="sql/cleaning.xml"/>
+		<mapper resource="sql/insect.xml"/>
 	</mappers>
 </configuration>
