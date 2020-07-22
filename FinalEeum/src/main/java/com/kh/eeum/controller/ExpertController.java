@@ -119,7 +119,9 @@ public class ExpertController {
 		System.out.println("넘어온값 : " + expertid);
 
 		String user_id = (String) session.getAttribute("user_id");
+		String expert_id_login = (String) session.getAttribute("expert_id");
 
+		System.out.println("로그인로그인 전문가존문가"+expert_id_login);
 		// 찜등록 데이터 있는지 조회
 		int result = likeservice.selectLike(expertid, user_id);
 		int count = reviewservice.getReviewCount(expertid);
@@ -148,20 +150,21 @@ public class ExpertController {
 		mv.addObject("portfolio", portfolio);
 		mv.addObject("count",count);
 		mv.addObject("RequestCount", requestCount);
+		mv.addObject("expert_id_login", expert_id_login);
 		return mv;
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/LikeExpert.Ajax", method = RequestMethod.POST, produces = "application/json")
 	public int likeexpert_ajax(@RequestParam(value = "EXPERT_ID", required = false) String expert_id,
-			@RequestParam(value = "USER_ID", required = false) String user_id, Like like, HttpServletResponse response,
-			HttpSession session) throws Exception {
+			@RequestParam(value = "USER_ID", required = false) String user_id, Like like, HttpServletResponse response
+			) throws Exception {
 
 		System.out.println("ajax 로 들어온 전문가 아이디:" + expert_id + "유저 아이디 : " + user_id);
 
 		int result = likeservice.selectLike(expert_id, user_id);
-		String expert_id_login = (String) session.getAttribute("expert_id");
-		System.out.println("현재 로그인한 전문가"+expert_id_login);
+
+		
 		System.out.println("전문가 페이지에 들어감"+expert_id);
 		//커멘드 값으로 가져오기
 		System.out.println("조회 완료:" + result);
@@ -174,11 +177,9 @@ public class ExpertController {
 			like.setExpert_id(expert_id);
 			like.setUser_id(user_id);
 			like.setLike_state(num);
-			
-				int liketo = likeservice.insertLike(like);
-
-			
-			
+		
+				likeservice.insertLike(like);
+				
 			System.out.println("찜등록 완료");
 			resultf = 0;
 

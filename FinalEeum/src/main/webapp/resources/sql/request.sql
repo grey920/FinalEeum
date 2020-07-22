@@ -31,4 +31,5 @@ CREATE TABLE request_file(
 
 CREATE SEQUENCE request_file_seq start with 1 increment by 1 ;
 
+select * from LIKE_EXPERT;
 

@@ -65,6 +65,12 @@
 						<c:set var="po" value="${portfolio}"/>
 					<div class="grad">
 						<img src="resources/expert_profile${po.PF_SAVEPROFILE}" alt="" id="userimg">
+						<c:if test="${expert_id_login == null}">
+						<input type="hidden" value="0" id="expert_id_login">
+						</c:if>
+						<c:if test="${expert_id_login != null}">
+						<input type="hidden" value="1" id="expert_id_login">
+						</c:if>
 					</div>
 					<b
 						style="font-size: 50px; position: relative; left: 680px; bottom: 190px;">${expertdata.expert_name}
@@ -78,7 +84,7 @@
 					<input type="hidden" value="${po.PF_CATE}" id="PF_CATE">
 
 
-					<div class="heart_click">
+					<button class="heart_click">
 						<c:if test="${like ==1 }">
 							<i id="fa-heart-o" class="fa fa-heart"
 								style="position: relative; left: 13px; top: 12px;"></i>
@@ -91,7 +97,7 @@
 							<span
 								style="position: relative; left: 20px; font-size: 17px; top: 12px; font-weight: 700;">찜하기</span>
 						</c:if>
-					</div>
+					</button>
 
 
 					<button style="font-weight: 700; font-size: 16px;"

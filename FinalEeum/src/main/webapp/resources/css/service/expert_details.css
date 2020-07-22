@@ -363,6 +363,7 @@ input#structure2 {
 	left: 670px;
 	bottom: 120px;
 	border-radius: 5%;
+		border: 0;
 }
 
 .heart_click2 {
@@ -471,7 +472,7 @@ div.col-md-12.mx-0{
 
 .container1{
 	background-color:  #4E8092; 
-	width: 4247.45px;
+	width: 109%;
 	height: 60px;
 	position: relative;
 	top: 150px;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,7 @@
 <body>
 	<span id="review_text">후기</span>
 	<div id="chart">
-	<canvas id="myChart" style="width: 30%; height: 30%; position: relative; right: 30%; opacity:99;"></canvas>
+	<canvas id="myChart" style="width: 30%; height: 30%; position: relative; right: 30%;"></canvas>
 	</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
@@ -36,6 +37,10 @@
 
 $(document).ready(function(){
 	var expert = $('#EXPERT_ID').val();
+	var expert_login_id = $("#expert_id_login").val();
+	console.log("현재 로그인했니 전문가가.."+expert_login_id);
+
+	//통계
 	$.ajax({
 		type : 'POST',
 		url : "Review.Ajax?expert="+expert,
@@ -57,6 +62,7 @@ $(document).ready(function(){
 				output =  "<input type='hidden' value='"+rv_rating1+"' id='rating1'>";
 				
 				 var ctx = document.getElementById('myChart').getContext('2d');
+				
 				    var chart = new Chart(ctx, {
 				        // The type of chart we want to create
 				        type: 'polarArea',
@@ -66,7 +72,7 @@ $(document).ready(function(){
 				            labels: ["친절함", "명확한 설명", "청결도", "전문성", "시간준수", "가격의 합리성"],
 				            datasets: [{
 				                label: "My First dataset",
-				                backgroundColor: ['#F5F6CE', '#F5ECCE', '#F6CECE', '#CEF6CE', '#CEE3F6', '#CECEF6'],
+				                backgroundColor: ['rgba(255, 0, 0, 0.5)', 'rgba(100, 255, 0, 0.5)', 'rgba(200, 50, 255, 0.5)', 'rgba(0, 100, 255, 0.5)', 'rgba(250, 185, 46, 0.5)', 'rgba(255, 249, 89, 0.5)'],
 				                borderColor: '#fff',
 				                data: [rv_rating1, rv_rating2, rv_rating3, rv_rating4, rv_rating5, rv_rating6],
 				            }]
@@ -75,6 +81,7 @@ $(document).ready(function(){
 				        // Configuration options go here
 				        options: {}
 				    });
+				    Chart.scaleService.defaults.radialLinear.ticks.backdropColor = 'rgba(0, 0, 0, 0)';
 			});
 			$("#career_table tbody").append(output);
 			
@@ -99,6 +106,7 @@ $(document).ready(function(){
 
 
 	<div id="comment">
+
 		<button class="btn btn-info float-left" style="background: #CADEE3; border: 0px"><span style="color: black; font-weight: 700; ">※이유없는 비방 및 욕설은
 			신고대상입니다.</span></button>
 
@@ -130,7 +138,7 @@ $(document).ready(function(){
 		 <b style="font-size: 15px;">가격의 합리성 : </b><span class="svg-star-rating6 jq-stars"></span>
 		 <span class="live-rating6"></span>
 		 <input type="hidden" id="rating_hidden"><br>
-		 
+		
 		
 		 
 

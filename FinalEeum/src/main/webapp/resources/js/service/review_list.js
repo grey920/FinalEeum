@@ -210,7 +210,7 @@ $(function() {
 													         "<i class='fas fa-pen' id='update_review'></i>수정<br>";
 													         
 												}else{
-													button = "<span>신고</span><br>";
+													button = "<span id='warning'>신고</span><br>";
 												}
 												output += "<tr id='rv_th'><td id='user_id'>"
 														+ "<p>"
@@ -270,6 +270,8 @@ $(function() {
 			}
 		})
 	}// function end
+
+	//신고
 
 	// 등록 버튼
 	$("#write").click(function() {
@@ -370,6 +372,11 @@ $(function() {
 		      $("#write").text("수정완료"); // 등록버튼의 라벨을 '수정완료' 로 변경합니다.
 		      $(this).parent().parent().css('background','lightgray'); // 수정할 행의배경색을 변경합니다.
 		   });
+	   
+	   
+	   $('#warning').click(function(){
+		  alert('신고'); 
+	   });
 	   
 	   
 	   //그거
