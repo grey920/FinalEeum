@@ -32,10 +32,12 @@ public class AdminContorller {
 		int allUsers= adminservice.cUsers();
 		int allReviews=adminservice.allReviews();
 		int cPosts=adminservice.cPosts();
+		int newUsers=adminservice.newUsers();
 		mv.setViewName("admin_main");
 		mv.addObject("allUsers", allUsers);
 		mv.addObject("allReviews",allReviews);
 		mv.addObject("cPosts", cPosts);
+		mv.addObject("newUsers", newUsers);
 		System.out.println("allReviews"+allReviews);
 		return mv;
 	}

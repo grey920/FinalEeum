@@ -10,6 +10,7 @@ public interface AdminService {
 	public Portfolio getList(String id);
 	public int allReviews();
 	public int cPosts();
+	public int newUsers();
 
 
 }

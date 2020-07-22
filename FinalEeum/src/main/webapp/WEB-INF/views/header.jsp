@@ -49,57 +49,71 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-2 col-md-2 col-sm-7 col-7">
-						<div class="header-site-icon">
-						
-							<c:if test="${empty user_id && empty expert_id}">
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-7 col-7">
+					<div class="header-site-icon">
+
+						<c:if test="${empty user_id && empty expert_id}">
 							<div class="header-login same-style"
 								style="margin-left: 13px; margin-right: 13px">
+
+								<li><a href="userpage.net"><img
+										src="resources/img/header/user.png"
+										style="margin-bottom: 30px; width: 30px; filter: saturate(80%);" /></a>
+									<ul style="width: 200px">
+
 								<li><a href="login.net"><img src="resources/img/header/user.png"
 																						style="margin-bottom: 30px; width: 30px; filter: saturate(80%);" /></a>
 									<ul style="width:200px">
+
 										<li>같이 이음해요 :)</li>
 										<li><a href="login.net">로그인</a></li>
 										<li><a href="userJoin.net">회원가입</a></li>
 									</ul></li>
 							</div>
-							</c:if>
-							
-							<c:if test="${!empty user_id && empty expert_id}">
+						</c:if>
+
+						<c:if test="${!empty user_id && empty expert_id}">
 							<div class="header-login same-style"
 								style="margin-left: 13px; margin-right: 13px">
-								<li><a href="userpage.net"><img src="resources/img/header/user.png"
-																						style="margin-bottom: 30px; width: 30px; filter: saturate(80%);" /></a>
-									<ul style="width:240px">
-										<li><img src="resources/profile${user_saveprofile}" style="width:15%; height:auto;border-radius:50%;">&nbsp;&nbsp;${user_nick}&nbsp;님</li>
+								<li><a href="userpage.net"><img
+										src="resources/img/header/user.png"
+										style="margin-bottom: 30px; width: 30px; filter: saturate(80%);" /></a>
+									<ul style="width: 240px">
+										<li><img src="resources/profile${user_saveprofile}"
+											style="width: 15%; height: auto; border-radius: 50%;">&nbsp;&nbsp;${user_nick}&nbsp;님</li>
 										<li><a href="userpage.net">나의 정보</a></li>
 										<li><a href="logout.net">이음 나가기</a></li>
 									</ul></li>
 							</div>
-							</c:if>
-							
-							<c:if test="${!empty expert_id && empty user_id}">
+						</c:if>
+
+						<c:if test="${!empty expert_id && empty user_id}">
 							<div class="header-login same-style"
 								style="margin-left: 13px; margin-right: 13px">
-								<li><a href="expertpage.net"><img src="resources/img/header/user.png"
-																						style="margin-bottom: 30px; width: 30px; filter: saturate(80%);" /></a>
-									<ul style="width:200px">
+								<li><a href="expertpage.net"><img
+										src="resources/img/header/user.png"
+										style="margin-bottom: 30px; width: 30px; filter: saturate(80%);" /></a>
+									<ul style="width: 200px">
 										<li>전문가&nbsp;${expert_name}</li>
 										<li><a href="expertpage.net">나의 정보</a></li>
 										<li><a href="logout.net">이음 나가기</a></li>
 									</ul>
 								</li>
 							</div>
-							</c:if>
-							
-							<div class="header-cart same-style" style="margin-left: 13px; margin-right: 13px">
-								<a href="#"><img src="resources/img/header/chat.png" style="width: 30px; filter: saturate(80%);"></a>
-							</div>
-							<div class="header-search same-style" style="margin-left: 10px; margin-right: 13px">
-								<a href="login-register.html"><img src="resources/img/header/search.png"
-																						style="width: 30px; filter: saturate(80%);"></a>
-							</div>
+						</c:if>
+
+						<div class="header-cart same-style"
+							style="margin-left: 13px; margin-right: 13px">
+							<a href="#"><img src="resources/img/header/chat.png"
+								style="width: 30px; filter: saturate(80%);"></a>
 						</div>
+
+						<div class="header-search same-style"
+							style="margin-left: 10px; margin-right: 13px">
+							<a href="login-register.html"><img
+								src="resources/img/header/search.png"
+								style="width: 30px; filter: saturate(80%);"></a>
 					</div>
 					<div class="mobile-menu-area col-12">
 						<div class="mobile-menu">
@@ -119,8 +133,26 @@
 						</div>
 					</div>
 				</div>
+				<div class="mobile-menu-area col-12">
+					<div class="mobile-menu">
+						<nav id="mobile-menu-active">
+							<ul class="menu-overflow">
+								<li><a href="#">이:음 소개</a>
+								<li><a href="service.list">서비스</a>
+									<ul>
+										<li><a href="about-us.html">수리</a></li>
+										<li><a href="cart.html">청소</a></li>
+										<li><a href="cart.html">해충</a></li>
+									</ul></li>
+								<li><a href="OnedayList.one">원데이 클래스</a></li>
+								<li><a href="#">FAQ</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</div>
+	</div>
 
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
 	<script src="resources/js/popper.js"></script>
