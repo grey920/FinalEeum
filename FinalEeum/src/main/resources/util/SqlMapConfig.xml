@@ -3,11 +3,35 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-	<typeAliases>
-		<typeAlias alias="test" 	type="com.kh.eeum.DTO"/>
-	</typeAliases>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
 	
+	<typeAliases>
+		<typeAlias alias="user" type="com.kh.eeum.domain.User" />
+		<typeAlias alias="expert" type="com.kh.eeum.domain.Expert" />
+		<typeAlias alias="oneday" type="com.kh.eeum.domain.Oneday"/>
+		<typeAlias alias="admin" type="com.kh.eeum.domain.Admin"/>
+		<typeAlias alias="apply" type="com.kh.eeum.domain.Apply"/>
+		<typeAlias alias="like" type="com.kh.eeum.domain.Like"/>
+		<typeAlias alias="portfolio" type="com.kh.eeum.domain.Portfolio"/>
+		<typeAlias alias="review" type="com.kh.eeum.domain.Review"/>
+		<typeAlias alias="repair" type="com.kh.eeum.domain.Expert" />
+		<typeAlias alias="cleaning" type="com.kh.eeum.domain.Expert" />
+		<typeAlias alias="Integer" type="java.lang.Integer"/>
+		
+	</typeAliases>
+
 	<mappers>
-		<mapper resource="sql/test.xml"	/>
+		<mapper resource="sql/user.xml" />
+		<mapper resource="sql/expert.xml" />
+		<mapper resource="sql/oneday.xml"/>	
+		<mapper resource="sql/admin.xml"/>
+		<mapper resource="sql/apply.xml"/>
+		<mapper resource="sql/like.xml"/>
+		<mapper resource="sql/portfolio.xml"/>
+		<mapper resource="sql/review.xml"/>
+		<mapper resource="sql/repair.xml"/>
+		<mapper resource="sql/cleaning.xml"/>
 	</mappers>
 </configuration>

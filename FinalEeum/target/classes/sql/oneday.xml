@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- SQL 맵퍼 파일은 xml이기 때문에 제일 먼저 xml 선언이 옵니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Onedays">
+
+	<select id="count" resultType="int">
+		select count(*) from ONEDAY
+	</select>
+
+	<select id="list" parameterType="java.util.Map" resultType="oneday">
+		select * from
+		(select rownum rnum, b.*
+		from
+		(select * from oneday 
+		order by ONE_INDEX desc) b
+		)
+		where rnum &gt; = #{start} and rnum &lt; = #{end}
+	</select>
+	
+	<update id="ReadCountUpdate" parameterType="int">
+		update oneday
+		set ONE_READCOUNT = ONE_READCOUNT +1
+		where ONE_INDEX = #{number}
+	</update>
+	
+	<select id="Detail" parameterType="int" resultType="oneday">
+		select * from ONEDAY where ONE_INDEX = #{number}
+	</select>
+	
+	<insert id="insert" parameterType="oneday">
+		<selectKey resultType="int" order="BEFORE"
+			keyProperty="ONE_INDEX">
+			select nvl(max(ONE_INDEX), 0) + 1 from oneday
+		</selectKey>
+		insert into oneday
+		(ONE_INDEX,
+		 ONE_TITLE,ONE_LINE, WRITER_ID, ONE_CONTENT, 
+		 ONE_SEAT,ONE_ACTUAL_SEAT, ONE_PRICE,SAVEFILE, ORIGINALFILE,
+		 ONE_READCOUNT,ONE_RDATE,ONE_PODATE,ONE_TYPE,ONE_LOCATE)
+		 values
+		 (#{ONE_INDEX},
+		 #{ONE_TITLE},#{ONE_LINE}, #{ WRITER_ID}, #{ONE_CONTENT},
+		 #{ONE_SEAT}, #{ONE_ACTUAL_SEAT}, #{ONE_PRICE},#{SAVEFILE}, #{ORIGINALFILE}, 
+		#{ONE_READCOUNT},#{ONE_RDATE},sysdate,#{ONE_TYPE},#{ONE_LOCATE})
+	</insert>
+	
+	
+	<delete id="delete" parameterType="oneday">
+	
+	delete 
+	from oneday
+	where ONE_INDEX = #{ONE_INDEX}
+
+	</delete>
+	
+<!-- 	<insert id="insertCLOB" parameterType="map">
+	<selectKey resultType="int" order="BEFORE"
+			keyProperty="ONE_INDEX">
+			select nvl(max(ONE_INDEX), 0) + 1 from oneday
+		</selectKey>
+	insert into oneday
+	(ONE_INDEX,
+		 ONE_TITLE,ONE_PRICE, WRITER_ID, ONE_CONTENT,
+		 ONE_SEAT,ONE_ACTUAL_SEAT, SAVEFILE, ORIGINALFILE,
+		 ONE_READCOUNT,ONE_PODATE)
+		 values
+		 (#{ONE_INDEX},
+		 #{ONE_TITLE},#{ONE_PRICE}, #{ WRITER_ID}, NVL(#{ONE_CONTENT:VARCHAR2}, empty_clob()),
+		 #{ONE_SEAT}, #{ONE_ACTUAL_SEAT}, #{SAVEFILE}, 
+		 #{ORIGINALFILE}, 
+		#{ONE_READCOUNT},sysdate)
+	</insert> -->
+	
+	<update id="modify" parameterType="oneday">
+		update oneday
+		set
+			ONE_TYPE = #{ONE_TYPE},
+			ONE_TITLE = #{ONE_TITLE},
+			ONE_LINE = #{ONE_LINE},
+			ONE_CONTENT = #{ONE_CONTENT},
+			ONE_SEAT = #{ONE_SEAT},
+			ONE_PRICE = #{ONE_PRICE},
+			ONE_RDATE = #{ONE_RDATE},
+			SAVEFILE = #{SAVEFILE},
+			ORIGINALFILE =#{ORIGINALFILE},
+			ONE_LOCATE = #{ONE_LOCATE}
+		where ONE_INDEX = #{ONE_INDEX}
+	</update>
+	
+	<update id="updateProg" parameterType="oneday">
+	update oneday
+	set 
+		ONE_ACTUAL_SEAT = #{ONE_ACTUAL_SEAT}+1
+	where ONE_INDEX = #{ONE_INDEX}	
+	</update>
+	
+</mapper>
