@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/responsive.css">
 
-<link rel="stylesheet" href="resources/css/service/expert_details.css">
+<link rel="stylesheet" href="resources/css/cleaning/expert_details.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- 모달 관련 -->
@@ -74,8 +74,7 @@
 					<input type="hidden" value="${expertdata.expert_id}" id="EXPERT_ID">
 					<!-- 사용자 아이디 -->
 					<input type="hidden" value="${user_id}" id="USER_ID">
-					<!-- 전문가 카테고리 분류 -->
-					<input type="hidden" value="${po.PF_CATE}" id="PF_CATE">
+
 
 
 					<div class="heart_click">

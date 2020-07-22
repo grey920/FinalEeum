@@ -205,7 +205,7 @@
 													<span style="font-family: NanumGothic; font-weight: bold;">[청소]</span>
 												</c:if>
 												<c:if test="${e.PF_CATE ==  2}">
-													<span style="font-family: NanumGothic; font-weight: bold;">[방역]</span>
+													<span style="font-family: NanumGothic; font-weight: bold;">[해충]</span>
 												</c:if>
 												<c:if test="${e.PF_CATE ==  3}">
 													<span style="font-family: NanumGothic; font-weight: bold;">[수리]</span>

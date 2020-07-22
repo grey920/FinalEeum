@@ -26,6 +26,7 @@ import com.kh.eeum.dao.ExpertDAO;
 import com.kh.eeum.dao.PortfolioDAO;
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
+import com.kh.eeum.domain.Review;
 
 @Service
 public class ExpertServiceImpl implements ExpertService {
@@ -301,6 +302,14 @@ public class ExpertServiceImpl implements ExpertService {
 	@Override
 	public int getExpertListCountRepair() {
 		return exdao.expert_listCountRepair();
+	}
+
+	@Override
+	public List<Review> ReviewRatingList(String expert_id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("expert_id", expert_id);
+		
+		return exdao.ReviewRatingList(map);
 	}
 
 
