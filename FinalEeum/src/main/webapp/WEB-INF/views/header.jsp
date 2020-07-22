@@ -33,7 +33,7 @@
 							<div class="main-menu">
 								<nav>
 									<ul>
-										<li><a href="about-us.html">이:음 소개</a></li>
+										<li><a href="about_us.net">이:음 소개</a></li>
 										<li><a href="service.list">서비스<i class="ion-ios-arrow-down" style="margin-left: 5px"></i></a>
 											<ul style="text-align: center;">
 												<li style="margin-bottom: 10px;"><a href="product-details.html">수리</a></li>
