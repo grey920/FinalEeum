@@ -23,19 +23,3 @@ PRIMARY KEY(ONE_INDEX)
 CREATE SEQUENCE ONEDAY_SEQ;
 
 select * from ONEDAY;
-
-
-	
-	select to_char(sysdate, 'YYYY/MM/DD HH24:MI:SS') from dual;
-
-	select * from 
-		(select rownum rnum, b.*
-		from
-		(select * from board order by BOARD_RE_REF desc,
-		BOARD_RE_SEQ asc) b
-		)
-		where rnum < =10 and rnum >= 1
-
---------------------------------------------------------------------
--- board에서 page와 limit값에 따른 데이터들 구해옵니다.
--- 1단계

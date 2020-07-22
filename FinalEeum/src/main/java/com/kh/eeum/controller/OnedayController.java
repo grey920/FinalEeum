@@ -61,7 +61,7 @@ public class OnedayController {
 		Apply apply = applyService.isId(id, apIndex);
 		int result = applyService.updateState(id,apIndex);	//1이면 상태 수정 완료
 		System.out.println("APPLY_PROG 업데이트 완료");
-		return "userpage.net";
+		return "redirect:/userpage.net";
 	}
 
 	// 원데이 클래스 메인 (리스트보기)

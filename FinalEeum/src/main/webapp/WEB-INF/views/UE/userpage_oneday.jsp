@@ -380,19 +380,8 @@
                 </div>
             </footer>
         </div>
+      
         
-        
-        
-		
-		
-		<script>
-		if (self.name != 'reload') {
-	         self.name = 'reload';
-	         self.location.reload(true);
-	     }
-	     else self.name = ''; 
-		</script>
-		
 		<!-- all js here -->
         <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="resources/js/popper.js"></script>

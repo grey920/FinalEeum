@@ -32,6 +32,7 @@
 									var msg = '${a.AP_TITLE} 결제가 완료되었습니다.';
 									location.href = "http://localhost:8088/eeum/payments/complete?id=${a.AP_ID}&apIndex=${a.AP_CINDEX}&price=${a.AP_PRICE}";
 									alert(msg);
+									opener.parent.olcation.reload();
 									self.close();
 
 								} else {

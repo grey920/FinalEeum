@@ -2,9 +2,6 @@
 
 #career_text {
 	font-size: 60px;
-	position: relative;
-	left: 290px;;
-	bottom: 40px;
 	font-weight: 700;
 }
 
@@ -28,8 +25,5 @@
 }
 #picture_text {
 	font-size: 60px;
-	position: relative;
-	left: 290px;;
-	bottom: 190px;
-		font-weight: 700;
+	font-weight: 700;
 }
