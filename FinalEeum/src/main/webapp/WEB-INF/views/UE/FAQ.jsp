@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>사용자 - 채팅 목록</title>
+        <title>FAQ</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -26,21 +26,13 @@
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
         <%@ include file="../header.jsp" %>
         <style>
-select {font-size:13pt}
-.text-center h2{font-weight:900}
-.ptb-130 {padding-top:30px !important}
-.pt-120{padding-top:50px !important}
-.breadcrumb-content{padding-top:0;margin-top:1em}
-.breadcrumb-content ul > li{font-size:13pt}
-.login-form-container {box-shadow : none; 
-									border:1px solid #36518F;
-									border-radius:10px;
-									padding:0px 20px 20px}
-.col-lg-5 {padding:10px; float:left;
-				border-right-color: black;
-   				border-right-width: 1px;
-    			border-right-style: solid;}
-.col-lg-6{padding:10px;float:right}
+		select {font-size:13pt}
+		.text-center h2{font-weight:900}
+		.pt-130 {padding-top:30px !important}
+		.pt-120{padding-top:50px !important}
+		.breadcrumb-content{padding-top:0;margin-top:1em}
+		.breadcrumb-content ul > li{font-size:13pt}
+		#showlogin{font-size:13pt}
         </style>
     </head>
     <body>
@@ -70,31 +62,60 @@ select {font-size:13pt}
 		   <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
-                        <h2>CHATTING LIST</h2>
+                        <h2>FAQ</h2>
                         <ul>
-                            <li>채팅 목록</li>
+                            <li>자주 묻는 질문</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-		<div class="login-register-area ptb-130 hm-3-padding">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-10 ml-auto mr-auto">
-						<div class="tab-content">
-							<div id="lg1" class="tab-pane active">
-								<div class="login-form-container">
-									<div class="col-lg-5">
-									</div>
-									<div class="col-lg-6">
-									</div>
-								</div>
+            <div class="checkout-area pt-130 hm-3-padding pb-100">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="coupon-accordion">
+                            
+                                <!-- ACCORDION START (1) -->
+                                <h3><span id="showlogin">원데이 클래스 입금 언제까지 해야하나요?</span></h3>
+                                <div id="checkout-login" class="coupon-content">
+                                    <div class="coupon-info">
+                                        <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
+                                    </div>
+                                </div>
+                                <!-- ACCORDION END -->	
+                            
+                                <!-- ACCORDION START (2) -->
+                                <h3><span id="showlogin">서비스 후, 추가된 결제 금액은 어떻게 결제하나요?</span></h3>
+                                <div id="checkout-login" class="coupon-content">
+                                    <div class="coupon-info">
+                                        <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
+                                    </div>
+                                </div>
+                                <!-- ACCORDION END -->	
+                            
+                                <!-- ACCORDION START (3) -->
+                                <h3><span id="showlogin">제 지역에서만 활동하는 전문가만 볼 수 있나요?</span></h3>
+                                <div id="checkout-login" class="coupon-content">
+                                    <div class="coupon-info">
+                                        <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
+                                    </div>
+                                </div>
+                                <!-- ACCORDION END -->	
+                            
+                                <!-- ACCORDION START (4) -->
+                                <h3><span id="showlogin">집에 남자가 있으면 서비스를 받을 수 없나요?</span></h3>
+                                <div id="checkout-login" class="coupon-content">
+                                    <div class="coupon-info">
+                                        <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
+                                    </div>
+                                </div>
+                                <!-- ACCORDION END -->	
+                                
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
 
 			<footer class="hm-4-padding">
@@ -253,6 +274,7 @@ select {font-size:13pt}
 				</div>
 			</footer>
 		</div>
+	</div>
 
 
 
