@@ -35,6 +35,11 @@ public class AdminServiceImpl implements AdminService{
 		return asdao.cPosts();
 	}
 
+	@Override
+	public int newUsers() {
+		return asdao.newUsers();
+	}
+
 
 
 
