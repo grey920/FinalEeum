@@ -36,7 +36,7 @@
 								<nav>
 									<ul>
 										<li><a href="about_us.net">이:음 소개</a></li>
-										<li><a href="expert.service">서비스<i class="ion-ios-arrow-down" style="margin-left: 5px"></i></a>
+										<li><a href="service.list">서비스<i class="ion-ios-arrow-down" style="margin-left: 5px"></i></a>
 											<ul style="text-align: center;">
 												<li style="margin-bottom: 10px;"><a href="expert_repair.service">수리</a></li>
 												<li style="margin-bottom: 10px;"><a href="expert_cleaning.service">청소</a></li>
