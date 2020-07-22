@@ -53,7 +53,6 @@
 				</form>
 			</div>
 		</div>
-		
 		<div class="breadcrumb-area mt-37 hm-4-padding">
 			<div class="container-fluid">
 				<div class="breadcrumb-content text-center">
@@ -111,7 +110,7 @@
 											<div class="product-img">
 
 												<div id="circle">
-												<a href="./cleaningDetail.service?page=${page}&expert=${e.EXPERT_ID}">
+												<a href="./insectDetail.service?page=${page}&expert=${e.EXPERT_ID}">
 													<img src="resources/expert_profile${e.PF_SAVEPROFILE}" alt=""
 														id="userimg"></a>
 
@@ -206,7 +205,7 @@
 													<span style="font-family: NanumGothic; font-weight: bold;">[청소]</span>
 												</c:if>
 												<c:if test="${e.PF_CATE ==  2}">
-													<span style="font-family: NanumGothic; font-weight: bold;">[방역]</span>
+													<span style="font-family: NanumGothic; font-weight: bold;">[해충]</span>
 												</c:if>
 												<c:if test="${e.PF_CATE ==  3}">
 													<span style="font-family: NanumGothic; font-weight: bold;">[수리]</span>
@@ -247,7 +246,7 @@
 									<!-- 2. 개수가 1 보다 많을때  -->
 									<c:if test="${page > 1}">
 										<li class="ion-chevron-left"><a
-											href="./expert_cleaning.service?page=${page-1}"></a></li>
+											href="./expert_insect.service?page=${page-1}"></a></li>
 									</c:if>
 
 
@@ -258,7 +257,7 @@
 										</c:if>
 										<!-- 현재 페이지와 같지 않다면 -->
 										<c:if test="${a != page}">
-											<li><a href="./expert_cleaning.service?page=${a}">${a}</a></li>
+											<li><a href="./expert_insect.service?page=${a}">${a}</a></li>
 										</c:if>
 									</c:forEach>
 
@@ -268,7 +267,7 @@
 
 									<c:if test="${page < maxpage}">
 										<li class="ion-chevron-right"><a
-											href="./expert_cleaning.service?page=${page+1}"></a></li>
+											href="./expert_insect.service?page=${page+1}"></a></li>
 									</c:if>
 								</ul>
 							</div>

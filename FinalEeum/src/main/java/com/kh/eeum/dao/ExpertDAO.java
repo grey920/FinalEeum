@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
+import com.kh.eeum.domain.Review;
 
 @Repository
 public class ExpertDAO {
@@ -84,7 +85,11 @@ public class ExpertDAO {
 		return sqlSession.selectList("Experts.PoMulList",map);
 	}
 
-	//수리수리
+
+	public List<Review> ReviewRatingList(HashMap<String, Object> map) {
+		return sqlSession.selectList("Experts.ReviewRating",map);
+	}
+
 	public int expert_listCountRepair() {
 		// TODO Auto-generated method stub
 		return 0;

@@ -32,6 +32,29 @@ $(document).ready(
 								$("#top").removeClass('step-' + i);
 							}
 						}
+						
+						//전문가 별로 모달 내용이 달라짐
+						if(pf_cate == 1){
+							
+							if(current_fs_index == 1){
+								$('step-2.step-2_1').removeClass();
+								$('#top').addClass('step-2_1');
+								$('.101').text("정리수납(의류,냉장고 속)");
+								$('.100').attr('value','정리수납(의류,냉장고 속)');
+								$('.200').attr('value','화장실 청소');
+								$('.201').text("화장실 청소");
+								$('.300').attr('value','가구 청소 (소파,침대/매트리스, 카페트)');
+								$('.301').text("가구 청소 (소파,침대/매트리스, 카페트)");								
+								$('.400').attr('value','계단/바닥 청소');
+								$('.401').text("계단/바닥 청소");
+								$('.500').attr('value','가전제품 청소(냉장고, 에어컨)');
+								$('.501').text("가전제품 청소(냉장고, 에어컨)");
+								$('.600').attr('value','보일러/수도 배관 청소');
+								$('.601').text("보일러/수도 배관 청소");
+							}
+							
+						}
+						
 						// show the next fieldset
 						next_fs.show();
 						// hide the current fieldset with style
@@ -54,6 +77,7 @@ $(document).ready(
 							},
 							duration : 600
 						});
+						
 					});
 
 			$(".previous").click(
@@ -115,6 +139,11 @@ $(document).ready(
 							duration : 600
 						});
 					});
+			
+			
+			
+
+
 
 			$('.radio-group .radio').click(function() {
 				$(this).parent().find('.radio').removeClass('selected');
@@ -190,7 +219,7 @@ $(document).ready(
 			$('#tabText1').css('text-decoration', 'underline');
 			$('#tabText1').css('color', 'black');
 			$('#tabcontent').load("portfolio_list");
-
+			var expert_id = $('#EXPERT_ID').val();
 			// 찜등록
 			$(".heart_click").click(
 					function() {
@@ -213,21 +242,23 @@ $(document).ready(
 									dataType : "json",
 									data : senddata,
 									success : function(sdata) {
-										if (sdata == 0) {
-											alert("찜 등록했습니다."); // db에는 잘 들어가고
-											// 디테일은 나중에 여기
-											// 수정 ㅎ완료
-											$("#fa-heart-o").removeClass();
-											$("#fa-heart-o").addClass(
-													'fa fa-heart');
-										} else if (sdata == 1) {
-											alert("찜 등록해제 했습니다.");
-											
-											$("#fa-heart-o").removeClass(
-													'fa fa-heart');
-											$("#fa-heart-o").addClass(
-											'fa fa-heart-o');
-										}
+										
+											if (sdata == 0) {
+												alert("찜 등록했습니다."); // db에는 잘 들어가고
+												// 디테일은 나중에 여기
+												// 수정 ㅎ완료
+												$("#fa-heart-o").removeClass();
+												$("#fa-heart-o").addClass(
+														'fa fa-heart');
+											} else if (sdata == 1) {
+												alert("찜 등록해제 했습니다.");
+												
+												$("#fa-heart-o").removeClass(
+														'fa fa-heart');
+												$("#fa-heart-o").addClass(
+												'fa fa-heart-o');
+											}
+										
 
 									},
 									error : function() {
