@@ -77,13 +77,7 @@
 					<div class="col-md-12">
 						<div class="shop-topbar-wrapper">
 							<div class="rows">
-								<span>줄보기</span> <select class="form-control" id="viewcount">
-									<option value="12">12</option>
-									<option value="16">16</option>
-									<option value="20">20</option>
-									<option value="24">24</option>
-									<option value="28" selected>28</option>
-								</select>
+
 							</div>
 
 
@@ -106,6 +100,8 @@
 						<div class="product-grid product-view">
 							<div class="row">
 								<c:forEach var="e" items="${expertlist}">
+									<!-- 포폴 시작!!!!!!!!!!!!!!!! -->
+								
 								<div class="product-width col-md-6 col-xl-3 col-lg-4z">
 
 										<div class="product-wrapper mb-35">
@@ -114,14 +110,15 @@
 											<div class="product-img">
 
 												<div id="circle">
-												<a href="./expert_details?page=${page}&expert=${e.EXPERT_ID}">
-													<img src="resources/profile${e.EXPERT_PROFILE}" alt=""
+												<a href="./expertDetail.service?page=${page}&expert=${e.EXPERT_ID}">
+													<img src="resources/expert_profile${e.PF_SAVEPROFILE}" alt=""
 														id="userimg"></a>
 
 												</div>
+												
 												<b id="expert_name">${e.EXPERT_NAME }</b> <b
 													style="font-size: 10px; position: relative; top: 60px; left: 100px;">전문가</b>
-												<br> <b id="expert_intro">뭐든지 깔끔하게 만들어 드립니다.</b>
+												<br> <b id="expert_intro">${e.PF_ONE}</b>
 												<div class="modal fade" id="myModal" tabindex="-1"
 													role="dialog" aria-hidden="true">
 
@@ -138,8 +135,14 @@
 																	<span class="ion-android-close" aria-hidden="true"></span>
 																</button>
 																<div class="qwick-view-right ">
+																
 																	<div class="qwick-view-content" style="width: 550px;">
+																	
 																		<h3 style="font-weight: 700;">[청소]</h3>
+																	
+																	
+																	
+																
 																		<img src="resources/img/blog/cat2.jpg" alt=""
 																			id="userimg"
 																			style="position: relative; left: 0px; right: 0px;">
@@ -195,9 +198,21 @@
 												</div>
 
 												<!-- 전체 리스트로 조회한 경우 전문가별 카테고리가 나옴. -->
+												
 												<div class="price-decrease">
+												
+												<c:if test="${e.PF_CATE ==  1}">
 													<span style="font-family: NanumGothic; font-weight: bold;">[청소]</span>
+												</c:if>
+												<c:if test="${e.PF_CATE ==  2}">
+													<span style="font-family: NanumGothic; font-weight: bold;">[방역]</span>
+												</c:if>
+												<c:if test="${e.PF_CATE ==  3}">
+													<span style="font-family: NanumGothic; font-weight: bold;">[수리]</span>
+												</c:if>
+												
 												</div>
+												
 												<div class="product-action-3">
 													<a class="action-plus-2" title="간략히 보기" data-toggle="modal"
 														data-target="#myModal" 
@@ -215,6 +230,7 @@
 									</div>
 
 								</c:forEach>
+							
 
 							</div>
 
@@ -230,7 +246,7 @@
 									<!-- 2. 개수가 1 보다 많을때  -->
 									<c:if test="${page > 1}">
 										<li class="ion-chevron-left"><a
-											href="./expert.list?page=${page-1}"></a></li>
+											href="./expert.service?page=${page-1}"></a></li>
 									</c:if>
 
 
@@ -241,17 +257,17 @@
 										</c:if>
 										<!-- 현재 페이지와 같지 않다면 -->
 										<c:if test="${a != page}">
-											<li><a href="./expert.list?page=${a}">${a}</a></li>
+											<li><a href="./expert.service?page=${a}">${a}</a></li>
 										</c:if>
 									</c:forEach>
 
 									<c:if test="${page >= maxpage}">
-										<li class="ion-chevron-right"></a></li>
+										<li class="ion-chevron-right"><a></a></li>
 									</c:if>
 
 									<c:if test="${page < maxpage}">
 										<li class="ion-chevron-right"><a
-											href="./expert.list?page=${page+1}"></a></li>
+											href="./expert.service?page=${page+1}"></a></li>
 									</c:if>
 								</ul>
 							</div>
@@ -338,139 +354,7 @@
 			</div>
 		</div>
 		<!-- 서브 모달  -->
-		<div id="myModal1" class="modal modal-child" data-backdrop-limit="1"
-			tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-			aria-hidden="true" data-modal-parent="#myModal">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content" style="height: 700px;">
-					<!-- body -->
-					<div class="modal-body"
-						style="padding: 50px; padding-top: 40px; width: 440px; height: 750px;">
-
-						<!-- 부모 모달 -->
-						<button type="button" class="close" data-dismiss="modal"
-							id="close1" aria-label="Close"
-							style="position: relative; bottom: 320px; left: 770px;">
-							<span class="ion-android-close" aria-hidden="true"></span>
-						</button>
-						<div class="row justify-content-center mt-0">
-							<div
-								class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2"
-								style="width: 500px; padding-left: 10px;">
-								<div class="card px-0 pt-4 pb-0 mt-3 mb-3"
-									style="width: 700px; position: relative; right: 140px;">
-									<h3 id="top"></h3>
-									<div class="row">
-										<div class="col-md-12 mx-0">
-											<form id="msform" action="" method="post"
-												enctype="multipart/form-data">
-												<!-- progressbar -->
-												<ul id="progressbar">
-													<li class="active" id="account"><strong>건물 유형</strong></li>
-													<li id="personal"><strong>수리 유형</strong></li>
-													<li id="payment"><strong>첨부 사진</strong></li>
-													<li id="confirm"><strong>간단 요청</strong></li>
-												</ul>
-												<!-- fieldsets -->
-												<fieldset>
-													<div class="form-card " style="height: 350px;">
-														<!-- 여기 라디오 버튼 : form -->
-														<b>* 선택해주세요.</b><br> <br> <input type="radio"
-															name="structure1" id="structure1" checked="checked"><span>아파트</span>
-														<input type="radio" name="structure1" id="structure1"
-															style="position: relative; left: 270px;"> <span
-															style="position: relative; left: 275px;">단독주택</span><br>
-														<input type="radio" name="structure1" id="structure1">
-														<span>빌라/연립주택</span> <input type="radio" name="structure1"
-															id="structure1" style="position: relative; left: 197px;">
-														<span style="position: relative; left: 202px;">빌딩/상가</span><br>
-														<input type="radio" name="structure1" id="structure1"><span>기타</span><br>
-														<textarea rows="4" cols="20" maxlength="50"
-															style="border: 1px solid lightgray;" id="textarea1" name="textarea1"></textarea>
-														<b class="page_number">1/4</b>
-													</div>
-													<!-- 버튼 -->
-													<input type="button" name="next" class="next action-button"
-														value="다음" id="next" />
-
-												</fieldset>
-												<fieldset style="display: none;">
-
-													<div class="form-card " style="height: 400px;">
-														<!-- 여기 라디오 버튼 : form -->
-														<b>* 선택해주세요.</b><br> <br> <input type="radio"
-															name="structure1" id="structure1" checked="checked"><span>전자제품
-															수리</span> <input type="radio" name="structure1" id="structure2"
-															style="position: relative; left: 232px;"> <span
-															style="position: relative; left: 239px;">가구수리</span><br>
-														<input type="radio" name="structure1" id="structure2">
-														<span>열쇠/도어락 수리</span> <input type="radio"
-															name="structure1" id="structure2"
-															style="position: relative; left: 199px;"> <span
-															style="position: relative; left: 205px;">전기 배선 수리</span><br>
-														<input type="radio" name="structure1" id="structure2">
-														<span>방충망 및 방범창 수리</span> <input type="radio"
-															name="structure1" id="structure2"
-															style="position: relative; left: 155px;"> <span
-															style="position: relative; left: 161px;">문 수리</span><br>
-														<input type="radio" name="structure1" id="structure2"
-															style="position: relative; left: 396px;"> <span
-															style="position: relative; left: 400px;">수도 관련 수리</span>
-														<input type="radio" name="structure1" id="structure2"
-															style="position: relative; right: 173px;"> <span
-															style="position: relative; right: 174px;">기타</span><br>
-														<textarea rows="4" cols="20" maxlength="50"
-															style="border: 1px solid lightgray;"></textarea>
-														<b class="page_number">2/4</b>
-													</div>
-													<!-- 버튼 -->
-													<input type="button" name="previous"
-														class="previous action-button-previous" value="이전" /> <input
-														type="button" name="next" class="next action-button"
-														value="다음" />
-												</fieldset>
-												<fieldset style="display: none;">
-													<div class="form-card" style="height: 400px;">
-														<!-- 사진을 첨부해주세요.: form -->
-														<span style="font-size: 15px; color: lightgray;">*최대
-															10장</span>
-														<textarea rows="8" cols="25"></textarea>
-														<input type="file" id="upfile" name="BOARD_FILE">
-														<b class="page_number">3/4</b>
-													</div>
-													<!-- 버튼 -->
-													<input type="button" name="previous"
-														class="previous action-button-previous" value="이전" /> <input
-														type="button" name="next" class="next action-button"
-														value="다음" />
-												</fieldset>
-												<fieldset style="display: none;">
-													<div class="form-card">
-														<b>* 공식적인 요청 외 전문가에게 무리한 요구시 요청이 거절될 수 있습니다.</b>
-														<textarea rows="10" cols="20" maxlength="70"
-															style="border: 1px solid lightgray;">내용을 입력하세요.</textarea>
-
-														<b class="page_number">4/4</b>
-													</div>
-													<input type="button"
-														class="previous action-button-previous" value="이전" /> <input
-														type="button" name="finish" class="action-button"
-														value="요청" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<!-- modal-body -->
-				</div>
-				<!-- .modal -->
-			</div>
-			<!-- .modal-dialog -->
-		</div>
+		<%@include file="expert_modal.jsp" %>
 
 	</div>
 

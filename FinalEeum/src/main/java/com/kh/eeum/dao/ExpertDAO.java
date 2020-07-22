@@ -3,6 +3,7 @@ package com.kh.eeum.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +59,37 @@ public class ExpertDAO {
 		return sqlSession.selectList("Experts.expertList");
 
 	}
+	
+	public Integer insertRequest(Map<String, Object> paramMap) {
+		return sqlSession.insert("Experts.insertRequest", paramMap);		
+	}
+
+	public int insertRequestFileData(Map<String, Object> paramMap) {
+		return sqlSession.insert("Experts.insertRequestFileData", paramMap);
+	}
+
+	public Portfolio poselectone(String expertid) {
+		return sqlSession.selectOne("Experts.poselect",expertid);
+	}
+
+	public int getRquestCount(String expertid) {
+		return sqlSession.selectOne("Experts.RequestCount", expertid);
+	}
+
+	public List<Portfolio> getPoList(Map<String, Object> map) {
+		return sqlSession.selectList("Experts.PoList",map);
+	}
+
+	public List<Portfolio> getPoMulList(HashMap<String, Integer> map) {
+		return sqlSession.selectList("Experts.PoMulList",map);
+	}
+
+	//수리수리
+	public int expert_listCountRepair() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 
 }

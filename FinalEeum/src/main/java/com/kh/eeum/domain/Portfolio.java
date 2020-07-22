@@ -25,9 +25,9 @@ public class Portfolio {
 	private String PF_TIME;
 	private String PF_DESC;
 	private String PF_OR_LI;
-	private String PF_SV_LI;
+	private String PF_SV_LI="/defaultPic.png";
 	private String PF_OR_OP;
-	private String PF_SV_OP;
+	private String PF_SV_OP="/defaultPic.png";
 	private String PF_INTRO;
 	private String PF_One;
 	private String PF_PROFILE= "/profile.png";

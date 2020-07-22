@@ -3,6 +3,7 @@ $(document).ready(
 
 			var current_fs, next_fs, previous_fs; // fieldsets
 			var opacity;
+			var expert_id = $('#EXPERT_ID').val();
 
 			$('#top').addClass('step-1');
 
@@ -166,8 +167,10 @@ $(document).ready(
 						$('#tabText4').css('color', 'black');
 					}
 				}
-
+				
+				
 				$.ajax({
+					
 					type : 'GET',
 					url : tab, // ~~.jsp 파일이 들어옴
 					error : function() { // 통신 실패시
@@ -176,6 +179,8 @@ $(document).ready(
 					success : function(data) { // 통신 성공하면 가져옴.
 
 						$("#tabcontent").html(data);
+						
+						
 					}
 
 				});
@@ -190,38 +195,38 @@ $(document).ready(
 			$(".heart_click").click(
 					function() {
 
-						var expert_id = $('#expert_id').val();
-						var user_id = $('#user_id').val();
+						var expert_id = $('#EXPERT_ID').val();
+						var user_id = $('#USER_ID').val();
 						console.log("전문가 아이디:" + expert_id + "지금 로그인한 회원 아이디:"
 								+ user_id);
 
 						var senddata = {
-							'expert_id' : expert_id,
-							'user_id' : user_id
+							'EXPERT_ID' : expert_id,
+							'USER_ID' : user_id
 						}; // 현재 로그인한 사용자 아이디, 찜등록하려는 전문가 아이디
 
-						$
-								.ajax({
+						$.ajax({
 									type : 'POST',
 									url : "LikeExpert.Ajax", // 찜등록 db로 들어가는
 									// 주소 ,
 									cache : false,
 									dataType : "json",
 									data : senddata,
-									success : function(data) {
-										if (data == 1) {
+									success : function(sdata) {
+										if (sdata == 0) {
 											alert("찜 등록했습니다."); // db에는 잘 들어가고
 											// 디테일은 나중에 여기
-											// 수정 ㅎ
+											// 수정 ㅎ완료
 											$("#fa-heart-o").removeClass();
 											$("#fa-heart-o").addClass(
 													'fa fa-heart');
-										} else if (data == 0) {
-											alert("찜 등록헤제 했습니다.");
-											$("#fa-heart-o").addClass(
-													'fa fa-heart');
+										} else if (sdata == 1) {
+											alert("찜 등록해제 했습니다.");
+											
 											$("#fa-heart-o").removeClass(
 													'fa fa-heart');
+											$("#fa-heart-o").addClass(
+											'fa fa-heart-o');
 										}
 
 									},
@@ -232,92 +237,7 @@ $(document).ready(
 								});
 
 					}); // 찜
-			$("#request_btn").click(function() {
-				//라디오 버튼
-				$("input[type=radio]").click(function() {
-					var structure1 = $("input[id=structure1]:checked").val();
-					console.log(structure1);
-					
-					var structure2 = $("input[id=structure2]:checked").val();
-					console.log(structure2);
-				});
-				
-				//요청하기 버튼 누르면 db 에 값 ㄱ
-				$("#finish").click(function() {
-					var url = "requestExpert.Ajax";
-					var data = {
-							"structure1" : structure1,
-							"structure2" : structure2
-							
-							
-					}
-					
-					$.ajax({
 
-						type : 'POST',
-						url : "requestExpert.Ajax", // 견적요청 db로 들어가는
-						cache : false,
-						dataType : "json",
-					}); // ajax
-
-				});// finish
-				
-				
-				//사진 처리
-				var sel_files = []; // 사진 담을 배열
-				$("#input_imgs").on("change",handleImgFileSelect);
-				
-				   function fileUploadAction() {
-			            console.log("fileUploadAction");
-			            $("#input_imgs").trigger('click');
-			        }
-				
-				function handleImgFileSelect(e){
-					
-					 // 이미지 정보들을 초기화
-		            sel_files = [];
-		            $(".imgs_wrap").empty();
-
-		            var files = e.target.files;
-		            var filesArr = Array.prototype.slice.call(files);
-
-		            var index = 0;
-		            filesArr.forEach(function(f) {
-		                if(!f.type.match("image.*")) {
-		                    alert("확장자는 이미지 확장자만 가능합니다.");
-		                    return;
-		                }
-
-		                sel_files.push(f);
-
-		                var reader = new FileReader();
-		                reader.onload = function(e) {
-		                    var html = "<a href=\"javascript:void(0);\" onclick=\"deleteImageAction("+index+")\" id=\"img_id_"+index+"\"><img src=\"" + e.target.result + "\" data-file='"+f.name+"' class='selProductFile' title='Click to remove' ></a>";
-		                    $(".imgs_wrap").append(html);
-		                    index++;
-
-		                }
-		                reader.readAsDataURL(f);
-		                
-						
-					});
-		            console.log(index);
-				}
-				
-				//삭제
-		        function deleteImageAction(index) {
-		            console.log("index : "+index);
-		            console.log("sel length : "+sel_files.length);
-
-		            sel_files.splice(index, 1);
-
-		            var img_id = "#img_id_"+index;
-		            $(img_id).remove(); 
-		        }
-
-				
-
-			});// request_btn
 			// 견적
-			
+
 		});

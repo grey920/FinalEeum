@@ -1,6 +1,9 @@
 package com.kh.eeum.service;
 
 import java.util.List;
+import java.util.Map;
+
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
@@ -18,6 +21,24 @@ public interface ExpertService {
 
 	public List<Expert> getList();
 	public Portfolio getPortfolio(String expert_id);
+
+	
+	public int requestAjax(List<String> realFiles,  MultipartHttpServletRequest request,  Map<String, Object> paramMap);
+
 	public int insert(Portfolio pf);
 	public int deletePF(String expert_id);
+
+	public Portfolio poexpertListOne(String expertid);
+	
+	public int getRequestCount(String expertid);
+	
+	//포폴 페이지 경력 및 사진
+	public List<Portfolio> poexpertListOne1(String expert_id);
+	
+
+	public int modifyPF(Portfolio pf);
+	
+	// 수리수리수리수리
+	public int getExpertListCountRepair();
+
 }

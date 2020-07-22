@@ -11,7 +11,38 @@ public class Expert {
 	private String expert_phone3;
 	private String expert_email1;
 	private String expert_email2;
+	//다른 테이블에 있는 컬럼이지만 조인해서 가져오기 때문에 domain에도 getter/setter 작성해야뎀 - yeonji
+	private String PF_CATE;
+	private String PF_One;
+	private String PF_SAVEPROFILE;
 	
+	
+	public String getPF_SAVEPROFILE() {
+		return PF_SAVEPROFILE;
+	}
+
+	public void setPF_SAVEPROFILE(String pF_SAVEPROFILE) {
+		PF_SAVEPROFILE = pF_SAVEPROFILE;
+	}
+
+	public String getPF_One() {
+		return PF_One;
+	}
+
+	public void setPF_One(String pF_One) {
+		PF_One = pF_One;
+	}
+
+	
+
+	public String getPF_CATE() {
+		return PF_CATE;
+	}
+
+	public void setPF_CATE(String pF_CATE) {
+		PF_CATE = pF_CATE;
+	}
+
 	public String getExpert_jumin1() {
 		return expert_jumin1;
 	}

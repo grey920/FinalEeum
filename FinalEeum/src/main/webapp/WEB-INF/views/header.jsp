@@ -9,22 +9,9 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon"
-	href="resources/img/favicon.png">
+<link href="resources/img/logo/eeum_logo.png" rel="shortcut icon" type="image/x-icon">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<!-- all css here -->
-<link rel="stylesheet" href="resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="resources/css/animate.css">
-<link rel="stylesheet" href="resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="resources/css/chosen.min.css">
-<link rel="stylesheet" href="resources/css/meanmenu.min.css">
-<link rel="stylesheet" href="resources/css/themify-icons.css">
-<link rel="stylesheet" href="resources/css/ionicons.min.css">
-<link rel="stylesheet" href="resources/css/bundle.css">
-<link rel="stylesheet" href="resources/css/style.css">
-<link rel="stylesheet" href="resources/css/responsive.css">
-<script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
 <body>
 		<div class="header-area transparent-bar">
 			<div class="container">
@@ -47,11 +34,11 @@
 								<nav>
 									<ul>
 										<li><a href="about-us.html">이:음 소개</a></li>
-										<li><a href="service.list">서비스<i class="ion-ios-arrow-down" style="margin-left: 5px"></i></a>
+										<li><a href="expert.service">서비스<i class="ion-ios-arrow-down" style="margin-left: 5px"></i></a>
 											<ul style="text-align: center;">
-												<li style="margin-bottom: 10px;"><a href="product-details.html">수리</a></li>
-												<li style="margin-bottom: 10px;"><a href="product-details.html">청소</a></li>
-												<li><a href="product-details.html">해충</a></li>
+												<li style="margin-bottom: 10px;"><a href="expert_repair.service">수리</a></li>
+												<li style="margin-bottom: 10px;"><a href="expert_cleaning.service">청소</a></li>
+												<li><a href="expert_insect.service">해충</a></li>
 											</ul></li>	
 										<li><a href="OnedayList.one">원데이 클래스</a></li>
 										<li><a href="FAQ.net">FAQ</a></li>

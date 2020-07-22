@@ -260,7 +260,7 @@ input#structure2 {
 }
 
 #top.step-1:after {
-	content: "청소할 건물 유형은 무엇입니까?";
+	content: "수리할 건물 유형은 무엇입니까?";
 	font-weight: bold;
 }
 
@@ -475,7 +475,4 @@ b#tabText1,b#tabText2,b#tabText3,b#tabText4,.heart_click,.heart_click2{
 	cursor: pointer;
 }
 
-/*라디오 버튼..*/
-.banner-wrapper.overflow a img, .banner-img a img{
-	width: 20%;
-}
+

@@ -20,5 +20,7 @@ public class AdminDAO {
 		return sqlSession.selectOne("eeum.deExperts", id);
 	}
 	
-	
+	public int allReviews() {
+		return sqlSession.selectOne("eeum.allReviews");
+	}
 }

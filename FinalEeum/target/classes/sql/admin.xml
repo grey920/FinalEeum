@@ -9,7 +9,7 @@
 		select sum(users.cnt)
 				from(
 					select count(USER_ID) cnt from user_table union all
-				select count(EXPERT_ID) cnt from expert_table
+					select count(EXPERT_ID) cnt from expert_table
      )users
 	</select>
 	
@@ -21,4 +21,7 @@
 		where PF_EXID=#{PF_EXID}
 	</select>
 	
+	<select id="allReviews" resultType="int">
+		SELECT COUNT(RV_INDEX) FROM REVIEW_BOARD
+	</select>
 </mapper>
