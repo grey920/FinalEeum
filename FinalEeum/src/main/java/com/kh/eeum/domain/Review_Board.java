@@ -7,7 +7,14 @@ public class Review_Board {
 	private String rv_title;
 	private String rv_con;
 	private float rv_star;
+	private String podate;
 	
+	public String getPodate() {
+		return podate;
+	}
+	public void setPodate(String podate) {
+		this.podate = podate;
+	}
 	public int getRv_index() {
 		return rv_index;
 	}

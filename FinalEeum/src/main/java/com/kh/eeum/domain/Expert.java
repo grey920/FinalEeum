@@ -11,7 +11,16 @@ public class Expert {
 	private String expert_phone3;
 	private String expert_email1;
 	private String expert_email2;
+	private String joindate;
 	
+	public String getJoindate() {
+		return joindate;
+	}
+
+	public void setJoindate(String joindate) {
+		this.joindate = joindate;
+	}
+
 	public String getExpert_jumin1() {
 		return expert_jumin1;
 	}
