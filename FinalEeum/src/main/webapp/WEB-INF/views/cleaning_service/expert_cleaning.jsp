@@ -110,7 +110,7 @@
 											<div class="product-img">
 
 												<div id="circle">
-												<a href="./expertDetail.service?page=${page}&expert=${e.EXPERT_ID}">
+												<a href="./cleaningDetail.service?page=${page}&expert=${e.EXPERT_ID}">
 													<img src="resources/expert_profile${e.PF_SAVEPROFILE}" alt=""
 														id="userimg"></a>
 
@@ -246,7 +246,7 @@
 									<!-- 2. 개수가 1 보다 많을때  -->
 									<c:if test="${page > 1}">
 										<li class="ion-chevron-left"><a
-											href="./expert.service?page=${page-1}"></a></li>
+											href="./expert_cleaning.service?page=${page-1}"></a></li>
 									</c:if>
 
 
@@ -257,7 +257,7 @@
 										</c:if>
 										<!-- 현재 페이지와 같지 않다면 -->
 										<c:if test="${a != page}">
-											<li><a href="./expert.service?page=${a}">${a}</a></li>
+											<li><a href="./expert_cleaning.service?page=${a}">${a}</a></li>
 										</c:if>
 									</c:forEach>
 
@@ -267,7 +267,7 @@
 
 									<c:if test="${page < maxpage}">
 										<li class="ion-chevron-right"><a
-											href="./expert.service?page=${page+1}"></a></li>
+											href="./expert_cleaning.service?page=${page+1}"></a></li>
 									</c:if>
 								</ul>
 							</div>

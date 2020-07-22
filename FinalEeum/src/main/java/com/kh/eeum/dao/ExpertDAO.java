@@ -84,6 +84,12 @@ public class ExpertDAO {
 		return sqlSession.selectList("Experts.PoMulList",map);
 	}
 
+	//수리수리
+	public int expert_listCountRepair() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 
 }

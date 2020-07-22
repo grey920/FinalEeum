@@ -108,16 +108,6 @@ public class ExpertServiceImpl implements ExpertService {
 		return exdao.getexpertList(map);
 	}
 	
-	@Override
-	public List<Portfolio> poexpertListOne1(int page, int limit) {
-		//전문가 포폴도 한 페이지당 몇개 뽑아 낼건지 제한 두기 위한 것
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		int startrow = (page - 1) * limit + 1;
-		int endrow = startrow + limit - 1;
-		map.put("start", startrow);
-		map.put("end", endrow);
-		return exdao.getPoMulList(map);
-	}
 
 	@Override
 	public Expert expertlistOne(String expertid) {
@@ -304,6 +294,13 @@ public class ExpertServiceImpl implements ExpertService {
 
 	public int modifyPF(Portfolio pf) {
 		return pfDao.modifyPF(pf);
+	}
+
+	
+	//수리수리수리수리
+	@Override
+	public int getExpertListCountRepair() {
+		return exdao.expert_listCountRepair();
 	}
 
 
