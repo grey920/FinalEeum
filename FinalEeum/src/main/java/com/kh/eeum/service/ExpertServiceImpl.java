@@ -26,6 +26,7 @@ import com.kh.eeum.dao.ExpertDAO;
 import com.kh.eeum.dao.PortfolioDAO;
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
+import com.kh.eeum.domain.Reservation;
 
 @Service
 public class ExpertServiceImpl implements ExpertService {
@@ -122,7 +123,7 @@ public class ExpertServiceImpl implements ExpertService {
 	
 	@Override
 	@Transactional
-	public int requestAjax(List<String> realFiles , MultipartHttpServletRequest request, Map<String, Object> paramMap) {
+	public int requestAjax(List<String> realFiles , MultipartHttpServletRequest request, Map<String, Object> paramMap, Reservation reservation) {
 		logger.info("\n\n requestAjax  요청 파라미터 값 reqMap : " + paramMap.toString());
 
 		//1.Request 테이블에 데이터 등록
@@ -134,9 +135,6 @@ public class ExpertServiceImpl implements ExpertService {
 
 		/** 파일이 존재할 경우 **/
 		if (realFiles!=null && request.getFiles("request_file").get(0).getSize() != 0) {
-
-
-			
 			fileList = request.getFiles("request_file");
 			Calendar c = Calendar.getInstance();
 			int year = c.get(Calendar.YEAR);
@@ -151,15 +149,11 @@ public class ExpertServiceImpl implements ExpertService {
 				path1.mkdir();
 			}
 			
-			
 			for(String realImage : realFiles) {           
-						
 						for (MultipartFile mf : fileList) {
-															
 								String originalFilename = mf.getOriginalFilename();
+								
 								if(realImage.equals(originalFilename)) {
-									
-									
 										Random r = new Random();
 										int random = r.nextInt(100000000);
 					
@@ -183,7 +177,6 @@ public class ExpertServiceImpl implements ExpertService {
 											paramMap.put("file_original", fileOriginal);
 											paramMap.put("file_thumb_name", fileThumbName);
 											
-											
 											System.out.println("\n\n파일이름 . 위치 = " + index);
 											System.out.println("원본 파일 명  = " + originalFilename);
 											System.out.println("이미지 확장자 = " + fileExtension);
@@ -199,15 +192,18 @@ public class ExpertServiceImpl implements ExpertService {
 											e.printStackTrace();
 											result = 5;
 										}
-								
-									
 								}
-			
-						
 						}
-	            
 	        }
-	
+			
+			String expert_id = (String) paramMap.get("expert_id");
+			System.out.println(expert_id);
+			String user_id = (String) paramMap.get("writer");
+			System.out.println(user_id);
+			reservation.setRs_exid(expert_id);
+			reservation.setRs_uid(user_id);
+			
+			exdao.insertReservation(reservation);
 		}
 		return result;
 	}
@@ -260,6 +256,11 @@ public class ExpertServiceImpl implements ExpertService {
 	}
 
 	@Override
+	public int insertReservation(Reservation reservation) {
+		return exdao.insertReservation(reservation);
+	}
+	
+	@Override
 	public int insert(Portfolio pf) {
 		return pfDao.insert(pf);
 	}
@@ -302,6 +303,26 @@ public class ExpertServiceImpl implements ExpertService {
 	public int getExpertListCountRepair() {
 		return exdao.expert_listCountRepair();
 	}
+
+	@Override
+	public int reserveCount(String user_id) {
+		return exdao.reserveCount(user_id);
+	}
+
+	@Override
+	public List<Reservation> reserveList(String user_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int startrow = (page -1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("user_id"	, user_id);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return exdao.reserveList(map);
+	}
+
 
 
 }

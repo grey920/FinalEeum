@@ -36,7 +36,7 @@
 								<nav>
 									<ul>
 										<li><a href="about_us.net">이:음 소개</a></li>
-										<li><a href="service.list">서비스<i class="ion-ios-arrow-down" style="margin-left: 5px"></i></a>
+										<li><a href="expert.service">서비스<i class="ion-ios-arrow-down" style="margin-left: 5px"></i></a>
 											<ul style="text-align: center;">
 												<li style="margin-bottom: 10px;"><a href="expert_repair.service">수리</a></li>
 												<li style="margin-bottom: 10px;"><a href="expert_cleaning.service">청소</a></li>
@@ -73,7 +73,7 @@
 									<ul style="width:240px">
 										<li><img src="resources/profile${user_saveprofile}" style="width:15%; height:auto;border-radius:50%;">&nbsp;&nbsp;${user_nick}&nbsp;님</li>
 										<li><a href="userpage.net">나의 정보</a></li>
-										<li><a href="login.net">이음 나가기</a></li>
+										<li><a href="logout.net">이음 나가기</a></li>
 									</ul></li>
 							</div>
 							</c:if>
@@ -86,8 +86,9 @@
 									<ul style="width:200px">
 										<li>전문가&nbsp;${expert_name}</li>
 										<li><a href="expertpage.net">나의 정보</a></li>
-										<li><a href="login.net">이음 나가기</a></li>
-									</ul></li>
+										<li><a href="logout.net">이음 나가기</a></li>
+									</ul>
+								</li>
 							</div>
 							</c:if>
 							
@@ -105,11 +106,11 @@
 							<nav id="mobile-menu-active">
 								<ul class="menu-overflow">
 									<li><a href="about_us.net">이:음 소개</a>
-									<li><a href="service.list">서비스</a>
+									<li><a href="expert.service">서비스</a>
 										<ul>
-											<li><a href="about-us.html">수리</a></li>
-											<li><a href="cart.html">청소</a></li>
-											<li><a href="cart.html">해충</a></li>
+											<li><a href="expert_repair.service">수리</a></li>
+											<li><a href="expert_cleaning.service">청소</a></li>
+											<li><a href="expert_insect.service">해충</a></li>
 										</ul></li>
 									<li><a href="OnedayList.one">원데이 클래스</a></li>
 									<li><a href="FAQ.net">FAQ</a></li>

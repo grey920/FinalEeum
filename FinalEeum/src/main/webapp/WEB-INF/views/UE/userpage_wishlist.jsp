@@ -94,7 +94,7 @@
                                     <div class="product-wrapper mb-35">
                                         <div class="product-img" style="text-align:center;height:400px">
                                             <a href="#">
-                                                <img src="resources/img/profile${w.PF_SAVEPROFILE}" style="width:auto">
+                                                <img src="resources/expert_profile${w.PF_SAVEPROFILE}" style="width:auto">
                                             </a>
 	                                        <div class="price-decrease">
 	                                            <c:if test="${w.PF_CATE == '0' }">

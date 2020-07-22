@@ -19,6 +19,7 @@
 		<typeAlias alias="repair" type="com.kh.eeum.domain.Expert" />
 		<typeAlias alias="cleaning" type="com.kh.eeum.domain.Expert" />
 		<typeAlias alias="Integer" type="java.lang.Integer"/>
+		<typeAlias alias="reservation" type="com.kh.eeum.domain.Reservation" />
 		
 	</typeAliases>
 

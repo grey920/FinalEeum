@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
+import com.kh.eeum.domain.Reservation;
 
 public interface ExpertService {
 	public int insert(Expert ex);
@@ -23,8 +24,9 @@ public interface ExpertService {
 	public Portfolio getPortfolio(String expert_id);
 
 	
-	public int requestAjax(List<String> realFiles,  MultipartHttpServletRequest request,  Map<String, Object> paramMap);
-
+	public int requestAjax(List<String> realFiles,  MultipartHttpServletRequest request,  Map<String, Object> paramMap, Reservation reservation);
+	public int insertReservation(Reservation reservation);
+	
 	public int insert(Portfolio pf);
 	public int deletePF(String expert_id);
 
@@ -40,5 +42,9 @@ public interface ExpertService {
 	
 	// 수리수리수리수리
 	public int getExpertListCountRepair();
+	
+	//사용자 예약 리스트 내역 
+	public int reserveCount(String user_id);	
+	public List<Reservation> reserveList(String user_id, int page, int limit);
 
 }

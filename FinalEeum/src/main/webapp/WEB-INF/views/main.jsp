@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="resources/css/style.css">
         <link rel="stylesheet" href="resources/css/responsive.css">
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
-        <%@ include file="WEB-INF/views/header.jsp" %>
+        <%@ include file="header.jsp" %>
     </head>
     <body>
         <div class="wrapper">
