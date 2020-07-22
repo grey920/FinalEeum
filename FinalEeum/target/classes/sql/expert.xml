@@ -80,6 +80,25 @@
 	VALUES (request_file_seq.NEXTVAL, #{request_no}, #{file_name}, #{file_original}, #{file_thumb_name}, SYSDATE)	
 	</insert>
 	
+	<select id="reserveCount" parameterType="String" resultType="int">
+		select count(*)
+		from request
+		where writer = #{user_id}
+	</select>
+	
+	<select id="reserveList" parameterType="map" resultType="map">
+		select *
+		from (select rownum rnum, r.*
+				  from (	select r.expert_id, r.writer, e.expert_name, p.pf_grade, p.pf_cate, p.pf_saveprofile
+	 						from request r inner join
+	  			 					 expert_table e on r.expert_id = e.expert_id left outer join
+	  			 					 portfolio p on r.expert_id = p.pf_exid
+	  						where r.writer = #{user_id}
+	  						) r
+	  			 )
+		where rnum &gt; = #{start} and rnum &lt; = #{end}
+	</select>
+	
 	<select id="poselect" resultType="portfolio" parameterType="String">
 		select * from PORTFOLIO where PF_EXID = #{expert_id}
 	</select>
@@ -98,4 +117,9 @@
 		  select * from PORTFOLIO where PF_EXID = #{expert_id}
 	</select>
 
+	<insert id="insertReservation" parameterType="reservation">
+		insert into RESERVATION
+		(RS_EXID, RS_UID)
+		values(#{rs_exid}, #{rs_uid})
+	</insert>
 </mapper>

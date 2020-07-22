@@ -29,6 +29,7 @@ import com.kh.eeum.domain.Apply;
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Oneday;
 import com.kh.eeum.domain.Portfolio;
+import com.kh.eeum.domain.Reservation;
 import com.kh.eeum.domain.User;
 import com.kh.eeum.service.ApplyService;
 import com.kh.eeum.service.ExpertService;
@@ -54,9 +55,9 @@ public class UEController {
 	private PasswordEncoder passwordEncoder;
 	
 	
-	@RequestMapping("/main")
+	@RequestMapping(value="/main")
 	public String main() {
-		return "../../main";
+		return "main";
 	}
 	
 	/* 회원가입 */
@@ -227,7 +228,7 @@ public class UEController {
 			}
 			
 			response.addCookie(savecookie);
-			return "redirect:/";
+			return "redirect:/main";
 			
 		} else {
 			String message = "비밀번호가 일치하지 않습니다.";	//result == 0
@@ -803,8 +804,32 @@ public class UEController {
 	}
 	
 	@RequestMapping(value="userReservation.net")
-	public String userReservation() {
-		return "UE/userpage_reservation";
+	public ModelAndView userReservation(@RequestParam(value="page", defaultValue="1", required=false) int page,
+																	HttpSession session, ModelAndView mv) throws Exception {
+		String user_id = (String) session.getAttribute("user_id");
+		
+		int reserveCount = expertservice.reserveCount(user_id);
+		
+		int limit = 10;
+		int maxpage = (reserveCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Reservation> reserveList =  expertservice.reserveList(user_id, page, limit);
+		
+		mv.setViewName("UE/userpage_reservation");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("reserveCount", reserveCount);
+		mv.addObject("rlist", reserveList);
+		mv.addObject("limit", limit);
+		
+		return mv;
 	}
 	
 	@RequestMapping(value="userReview.net")
@@ -913,5 +938,20 @@ public class UEController {
 	@RequestMapping(value="FAQ.net")
 	public String faq() {
 		return "UE/FAQ";
+	}
+	
+	//로그아웃
+	@RequestMapping(value="logout.net", method=RequestMethod.GET)
+	public void loginout(HttpSession session, HttpServletResponse response) throws Exception {
+		session.invalidate();
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('로그아웃이 되었습니다. 내일 또 봬요');");
+		out.println("location.href='main';");
+		out.println("</script>");
+		out.close();
+		
 	}
 }

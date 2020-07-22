@@ -11,7 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
-import com.kh.eeum.domain.Review;
+import com.kh.eeum.domain.Reservation;
+
 
 @Repository
 public class ExpertDAO {
@@ -69,6 +70,10 @@ public class ExpertDAO {
 		return sqlSession.insert("Experts.insertRequestFileData", paramMap);
 	}
 
+	public int insertReservation(Reservation reservation) {
+		return sqlSession.insert("Experts.insertReservation", reservation);
+	}
+	
 	public Portfolio poselectone(String expertid) {
 		return sqlSession.selectOne("Experts.poselect",expertid);
 	}
@@ -93,6 +98,14 @@ public class ExpertDAO {
 	public int expert_listCountRepair() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public int reserveCount(String user_id) {
+		return sqlSession.selectOne("Experts.reserveCount", user_id);
+	}
+
+	public List<Reservation> reserveList(HashMap<String, Object> map) {
+		return sqlSession.selectList("Experts.reserveList", map);
 	}
 
 

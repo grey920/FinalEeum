@@ -36,7 +36,7 @@
 										expert_table e on l.like_expert_id = e.expert_id left outer join
 										PORTFOLIO p on l.like_expert_id = p.pf_exid
 							   where l.like_user_id = #{user_id}
-							   order by l.likeno desc) w
+							   ) w
 				)
 		where rnum &gt; = #{start} and rnum &lt; = #{end}
 	</select>

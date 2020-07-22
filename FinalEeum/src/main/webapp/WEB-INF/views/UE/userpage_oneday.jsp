@@ -114,7 +114,7 @@
                                                 <a href="OnedayDetailAction.one?num=${o.AP_CINDEX}" style="margin-bottom:0">${o.AP_TITLE}</a>
                                             </td>
                                             <c:set var="date" value="${o.AP_CDATE }"/>
-                                            <td class="product-subtotal">
+                                            <td class="product-subtotal" style="width:150px">
 	                                           	 <span class="amount">
 	                                           	 	<fmt:formatDate value="${date}" type="date" dateStyle="full" />
 	                                           	 </span>
