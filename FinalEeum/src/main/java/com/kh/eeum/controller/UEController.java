@@ -54,9 +54,9 @@ public class UEController {
 	private PasswordEncoder passwordEncoder;
 	
 	
-	@RequestMapping("/")
+	@RequestMapping("/main")
 	public String main() {
-		return "home";
+		return "../../main";
 	}
 	
 	/* 회원가입 */
@@ -903,5 +903,15 @@ public class UEController {
 		applyservice.deleteAll(user_id);			//원데이 클래스 신청 내역 삭제 후 
 		userservice.user_delete(user_id);			//회원 탈퇴 
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value="userChat.net", method=RequestMethod.GET)
+	public String chat() {
+		return "UE/userpage_base";
+	}
+	
+	@RequestMapping(value="FAQ.net")
+	public String faq() {
+		return "UE/FAQ";
 	}
 }
