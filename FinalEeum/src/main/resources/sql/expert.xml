@@ -12,6 +12,7 @@
 				#{expert_id}, #{expert_pass}, #{expert_phone1}, #{expert_phone2}, #{expert_phone3}, 
 				#{expert_email1}, #{expert_email2})
 	</insert>
+	
 
 	<select id="idcheck" resultType="expert" parameterType="String">
 		select * from expert_table 
@@ -36,21 +37,17 @@
 	</select>
 
 	<select id="expertlist" resultType="map">
-		select * from
-		( select rownum rnum, b.* from
-		(select * from expert_table) b)
+	select *
+	from
+			(select rownum rnum, b.* 
+	  		from (select E.* , P.PF_CATE,P.PF_SAVEPROFILE,P.PF_One
+        	     from expert_table E,PORTFOLIO P
+        	     where e.expert_ID =  p.PF_EXID	) 	
+		b)	  
 		where rnum &gt; = #{start} and rnum &lt; =
 		#{end}
 	</select>
 	
-	<select id="PoMulList" resultType="map">
-		select * from
-		( select rownum rnum, b.* from
-		(select * from PORTFOLIO) b)
-		where rnum &gt; = #{start} and rnum &lt; =
-		#{end}
-	
-	</select>
 
 	<select id="expertdetails" resultType="expert"
 		parameterType="String">

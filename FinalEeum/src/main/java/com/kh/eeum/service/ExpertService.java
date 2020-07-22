@@ -34,10 +34,11 @@ public interface ExpertService {
 	
 	//포폴 페이지 경력 및 사진
 	public List<Portfolio> poexpertListOne1(String expert_id);
-	//여러개 쭉 뽑아오기
-	public List<Portfolio> poexpertListOne1(int page, int limit);
-
+	
 
 	public int modifyPF(Portfolio pf);
+	
+	// 수리수리수리수리
+	public int getExpertListCountRepair();
 
 }

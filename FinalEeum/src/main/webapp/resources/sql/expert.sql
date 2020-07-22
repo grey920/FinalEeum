@@ -29,5 +29,35 @@ delete from EXPERT_TABLE;
 select * from EXPERT_TABLE
 drop table EXPERT_TABLE
 
+
 ALTER TABLE EXPERT_TABLE
 ADD JOINDATE TIMESTAMP DEFAULT SYSDATE;
+
+SELECT * FROM EXPERT_TABLE,PORTFOLIO;
+
+select * from
+		( select rownum rnum, b.* from
+		
+select * from
+		( select rownum rnum, b.* from
+		
+(select *
+from expert_table) b)
+where rnum > = 1 and rnum < =8
+
+select *
+from
+	( select rownum rnum, b.* 
+	  from 	(select E.* , P.PF_CATE
+             from expert_table E,PORTFOLIO P
+             where e.expert_ID =  p.PF_EXID	) 	
+	 b)
+	  
+where rnum > = 1 and rnum < =8
+		
+		
+		
+select count(*)
+from expert_table E,PORTFOLIO P
+where e.expert_ID =  p.PF_EXID	and P.PF_CATE = 3
+
