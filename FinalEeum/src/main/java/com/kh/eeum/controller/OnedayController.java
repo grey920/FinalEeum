@@ -85,7 +85,7 @@ public class OnedayController {
 			mv.addObject("url", request.getRequestURL());
 			mv.addObject("message","상세보기 실패입니다.");
 		} else {
-			System.out.println("상세보기 성공");
+			System.out.println("상세보기 성공 ");
 			mv.setViewName("class_board/oneday_detail");
 			mv.addObject("onedaydata", oneday);
 			mv.addObject("classCount", classCount);
