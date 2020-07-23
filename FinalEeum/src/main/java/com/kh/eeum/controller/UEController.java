@@ -922,7 +922,6 @@ public class UEController {
 		String user_id = (String) session.getAttribute("user_id");
 		
 		int wishlistCount = likeservice.wishlistCount(user_id);
-		System.out.println(wishlistCount);
 		
 		int limit = 12;
 		int maxpage = (wishlistCount + limit -1) / limit;
@@ -942,6 +941,37 @@ public class UEController {
 		mv.addObject("endpage", endpage);
 		mv.addObject("wishlistCount", wishlistCount);
 		mv.addObject("wishlist", wishlist);
+		mv.addObject("limit", limit);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="userWishCheck.net", method=RequestMethod.GET)
+	public ModelAndView userWishCheck (@RequestParam(value="value") int cate, 
+																   @RequestParam(value="page", defaultValue="1", required=false) int page,
+																   HttpSession session,ModelAndView mv) throws Exception {
+		String user_id = (String) session.getAttribute("user_id");
+		
+		int wishCheckCount = likeservice.wishCheckCount(user_id, cate);
+		
+		int limit = 12;
+		int maxpage = (wishCheckCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Object> wishCheck = likeservice.wishCheck(user_id, cate, page, limit);
+		System.out.println(wishCheck);
+		
+		mv.setViewName("UE/userpage_wishlist2");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("wishCheckCount", wishCheckCount);
+		mv.addObject("wishCheck", wishCheck);
 		mv.addObject("limit", limit);
 		
 		return mv;
@@ -972,7 +1002,7 @@ public class UEController {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('로그아웃이 되었습니다. 내일 또 봬요');");
+		out.println("alert('로그아웃이 되었습니다. 내일 또 봬요 🥰');");
 		out.println("location.href='main';");
 		out.println("</script>");
 		out.close();
