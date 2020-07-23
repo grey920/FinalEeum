@@ -151,31 +151,35 @@
 														
 														<div class="row">
 															<div class="col-8 col-sm-8">
-																<input type="radio" name="repair_type"  value="해충 방역"  id="structure1" checked="checked">
-																<span>해충 방역</span> 
+																<input type="radio" name="repair_type"  value="정리수납(의류,냉장고 속)"  id="structure1" checked="checked">
+																<span>정리수납(의류,냉장고 속)</span> 
 															</div>
 		
 
 															<div class="col-4 col-sm-4">
-																<input type="radio" name="repair_type"  value="바퀴벌레 퇴치"  id="structure1" >
-																<span>바퀴벌레 퇴치</span> 
+																<input type="radio" name="repair_type"  value="가구 청소 (소파,침대/매트리스, 카페트)"  id="structure1" >
+																<span class='201'>가구 청소 (소파,침대/매트리스, 카페트)</span> 
 															</div>
 
 															<div class="col-8 col-sm-8">
-																<input type="radio" name="repair_type"  value="비둘기 퇴치"  id="structure1" >
-																<span>비둘기 퇴치</span> 
+																<input type="radio" name="repair_type"  value="가전제품 청소(냉장고, 에어컨)"  id="structure1" >
+																<span>가전제품 청소(냉장고, 에어컨)</span> 
 															</div>														
 							
 															<div class="col-4 col-sm-4">
-																<input type="radio" name="repair_type"  value="개미 박멸"  id="structure1" >
-																<span>개미 박멸</span> 
+																<input type="radio" name="repair_type"  value="화장실 청소"  id="structure1" >
+																<span>화장실 청소</span> 
 															</div>																
 
 															<div class="col-8 col-sm-8">
-																<input type="radio" name="repair_type" value="방역소독"  id="structure1">
-																<span>방역소독</span> 
+																<input type="radio" name="repair_type" value="계단/바닥 청소"  id="structure1">
+																<span>계단/바닥 청소</span> 
 															</div>											
-																										
+												
+															<div class="col-4 col-sm-4">
+																<input type="radio" name="repair_type" value="보일러/수도 배관 청소"  id="structure1">
+																<span>보일러/수도 배관 청소</span> 
+															</div>															
 															
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="repair_type" value="기타"  id="structure1" class="etc2" >

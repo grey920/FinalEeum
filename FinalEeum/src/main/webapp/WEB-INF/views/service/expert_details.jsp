@@ -77,6 +77,7 @@
 				<!-- 사람이름 -->
 				<div class="banner-img">
 						<c:set var="po" value="${portfolio}"/>
+						<div class="grad_wrapper">
 					<div class="grad">
 						<img src="resources/expert_profile${po.PF_SAVEPROFILE}" alt="" id="userimg">
 						<c:if test="${expert_id_login == null}">
@@ -86,8 +87,9 @@
 						<input type="hidden" value="1" id="expert_id_login">
 						</c:if>
 					</div>
+					</div>
 					<b
-						style="font-size: 50px; position: relative; left: 680px; bottom: 190px;">${expertdata.expert_name}
+						style="font-size: 50px; padding-left: 50%;">${expertdata.expert_name}
 					</b>
 
 					<!-- 전문가 아이디 -->
@@ -97,22 +99,22 @@
 					<!-- 전문가 카테고리 분류 -->
 					<input type="hidden" value="${po.PF_CATE}" id="PF_CATE">
 
-
+					<div>
 					<button class="heart_click">
 						<c:if test="${like ==1 }">
 							<i id="fa-heart-o" class="fa fa-heart"
-								style="position: relative; left: 13px; top: 12px;"></i>
+								style="padding-bottom: 2%"></i>
 							<span
-								style="position: relative; left: 20px; font-size: 17px; top: 12px; font-weight: 700;">찜하기</span>
+								style="color: black; font-size: 18px; font-weight: 700;">찜하기</span>
 						</c:if>
 						<c:if test="${like == 0 }">
 							<i id="fa-heart-o" class="fa fa-heart-o"
-								style="position: relative; left: 13px; top: 12px;"></i>
+								style="padding-bottom: 2%"></i>
 							<span
-								style="position: relative; left: 20px; font-size: 17px; top: 12px; font-weight: 700;">찜하기</span>
+								style="color: black; font-size: 18px; font-weight: 700;">찜하기</span>
 						</c:if>
 					</button>
-
+				
 
 					<button style="font-weight: 700; font-size: 16px;"
 						data-toggle="modal" data-target="#myModal1" class="heart_click2"
@@ -145,9 +147,19 @@
 
 					</div>
 
-					<!-- 모달 -->
+					<!-- 모달 : ㅇ-->
+							<!-- 수리 : -->
+					<c:if test="${po.PF_CATE == 3}">
 					<%@include file="expert_modal.jsp" %>
-
+					</c:if>
+					<!-- 청소 -->
+					<c:if test="${po.PF_CATE == 1}">
+					<%@include file="expert_modal_clean.jsp" %>
+					</c:if>
+					<!-- 해충 -->
+						<c:if test="${po.PF_CATE == 2}">
+				<%@include file="expert_modal_insect.jsp" %>
+					</c:if>
 
 				</div>
 

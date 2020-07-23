@@ -15,5 +15,6 @@ public interface ReviewService {
 	public int insertReview(Review review);
 	public int update(Review review);
 	public int getReviewCount(String expert_id);
+	public int reviewDelete(int num);
 
 }

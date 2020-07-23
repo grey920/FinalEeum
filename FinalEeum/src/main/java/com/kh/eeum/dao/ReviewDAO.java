@@ -34,4 +34,10 @@ public class ReviewDAO {
 	public int getReviewCount(String expert_id) {
 		return sqlSession.selectOne("Reviews.count",expert_id);
 	}
+
+
+
+	public int reviewDelete(int num) {
+		return sqlSession.delete("Reviews.delete",num);
+	}
 }
