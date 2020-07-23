@@ -1197,18 +1197,21 @@ button:focus {
 }
 
 .btn-style-2 {
-  border: 1px solid #000000;
+  border: 2px solid #72A0E0;
   border-radius: 50px;
-  color: #3e3e3e;
+  color: #72A0E0;
   display: inline-block;
   font-size: 16px;
   letter-spacing: 0.5px;
   line-height: 1;
   overflow: hidden;
   padding: 16px 40px 17px;
-    position: relative;
+  position: relative;
+  background-color:white;
 }
 
 .btn-style-2:hover {
   color: #fff;
+  background-color:#72A0E0;
+  
 }

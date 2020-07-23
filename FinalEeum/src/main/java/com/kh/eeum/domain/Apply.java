@@ -10,6 +10,7 @@ public class Apply {
 	private String AP_TITLE;
 	private String AP_LOCATE;
 	private String AP_CDATE;
+	private int AP_PRICE;
 	private int AP_PROG;
 	
 	public int getAP_INDEX() {
@@ -59,6 +60,12 @@ public class Apply {
 	}
 	public void setAP_PROG(int aP_PROG) {
 		AP_PROG = aP_PROG;
+	}
+	public int getAP_PRICE() {
+		return AP_PRICE;
+	}
+	public void setAP_PRICE(int aP_PRICE) {
+		AP_PRICE = aP_PRICE;
 	}
 	
 }

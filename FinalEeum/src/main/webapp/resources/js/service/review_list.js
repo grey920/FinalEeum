@@ -210,7 +210,7 @@ $(function() {
 													         "<i class='fas fa-pen' id='update_review'></i>수정<br>";
 													         
 												}else{
-													button = "<span id='warning'>신고</span><br>";
+													button = "<button id='warning'>신고</button><br>";
 												}
 												output += "<tr id='rv_th'><td id='user_id'>"
 														+ "<p>"
@@ -272,7 +272,11 @@ $(function() {
 	}// function end
 
 	//신고
-
+	  $("#comment").on('click','#warning', function(){
+		  alert('출ㄺ');
+	  });
+	  
+		   
 	// 등록 버튼
 	$("#write").click(function() {
 		buttonText = $("#write").text();
@@ -364,6 +368,8 @@ $(function() {
 		});
 
 	});
+	   
+	
 	
 	   $("#comment").on('click','.fas.fa-pen', function(){
 		      before = $(this).parent().prev().text(); // 선택한 내용을 가져옵니다.
@@ -373,11 +379,7 @@ $(function() {
 		      $(this).parent().parent().css('background','lightgray'); // 수정할 행의배경색을 변경합니다.
 		   });
 	   
-	   
-	   $('#warning').click(function(){
-		  alert('신고'); 
-	   });
-	   
+
 	   
 	   //그거
 			

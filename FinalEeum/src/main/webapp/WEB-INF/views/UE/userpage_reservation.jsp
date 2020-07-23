@@ -33,7 +33,7 @@
        					 font-size:18px;
          				 border-radius:20px;
          				 background-color:white;
-         				 color:#797979;
+         				 color:#72A0E0;
          				 border:2px solid #72A0E0;
          				 }
         .btn-style:hover{background-color:#72A0E0;
@@ -44,6 +44,8 @@
          .pt-120{padding-top:50px !important}
          .breadcrumb-content{padding-top:0;margin-top:1em}
          .breadcrumb-content ul > li{font-size:13pt}
+         td.product-subtotal button.btn-style {padding-left:20px;padding-right:20px}
+         tr td.class-state{padding-top:10px; padding-bottom:20px}
         </style>
     </head>
     <body>
@@ -91,22 +93,83 @@
                                             <th class="product-name">예약 날짜</th>
                                             <th class="product-quantity">가격</th>
                                             <th class="product-quantity">예약 상태</th>
-                                            <th class="product-subtotal">버튼</th>
+                                            <th class="product-subtotal"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    
+                                      <c:forEach var="r" items="${rlist}">
                                         <tr>
                                             <td class="product-thumbnail">
-                                                <a href="#"><img src="resources/img/profile/profile_ex1.png" style="width:120px;height:150px"></a>
+                                                <a href="expertDetail.service?expert=${r.RS_EXID}"><img src="resources/expert_profile${r.PF_SAVEPROFILE}" style="width:130px;height:160px"></a>
                                             </td>
                                             <td class="product-price">
-                                                <a href="#">[청소]<br>디딤돌 최유정님</a>
+                                                <a href="#"><span>[
+	                                                <c:if test="${r.PF_CATE == '0'}">
+	                                                청소
+	                                                </c:if>
+	                                                <c:if test="${r.PF_CATE == '1'}">
+	                                                방역
+	                                                </c:if>
+	                                                <c:if test="${r.PF_CATE == '2'}">
+	                                                수리
+	                                                </c:if>
+                                                ]</span><br>
+                                                
+                                                	<c:if test="${r.PF_GRADE == '0'}">
+                                                	디딤돌
+                                                	</c:if>
+                                                	<c:if test="${r.PF_GRADE == '1'}">
+                                                	마루
+                                                	</c:if>
+                                                	<c:if test="${r.PF_GRADE == '2'}">
+                                                	우주
+                                                	</c:if>
+                                                	<c:if test="${r.PF_GRADE == '3'}">
+                                                	용마루
+                                                	</c:if>
+                                                
+                                                ${r.EXPERT_NAME}</a>
                                             </td>
-                                            <td class="product-name"><span class="amount">2020년 6월 27일 <br> 오후 11시</span></td>
-                                            <td class="product-subtotal">50,000원</td>
-                                            <td class="product-subtotal">예약 대기</td>
+                                            
+                                            <c:if test="${empty r.RS_DATE}">
+                                            <td class="product-name"><span class="amount"> - </span></td>
+                                            <td class="product-subtotal"> - </td>
+                                            </c:if>
+                                   
+                                            <c:if test="${!empty r.RS_DATE}">
+                                            <td class="product-name"><span class="amount">${r.RS_DATE} <br> ${r.RS_TIME}</span></td>
+                                            <td class="product-subtotal">${r.RS_PRICE}</td>
+                                            </c:if>
+                                            
                                             <td class="product-subtotal">
+	                                            <c:if test="${r.RS_STATE == '0'}">
+	                                            예약 대기
+	                                            </c:if>
+	                                            <c:if test="${r.RS_STATE == '1'}">
+	                                            예약 확정
+	                                            </c:if>
+	                                            <c:if test="${r.RS_STATE == '2'}">
+	                                            서비스 완료
+	                                            </c:if>
+	                                            <c:if test="${r.RS_STATE == '3'}">
+	                                            예약 취소
+	                                            </c:if>
+                                            </td>
+                                            
+                                            <td class="product-subtotal class-state">
                                             	<div class="button-box" style="text-align:center;">
+                                            	
+                                            	  <c:if test="${r.RS_STATE == '0' || r.RS_STATE == '1' }">
+													<button class="btn-style" onclick="location.href='#';"> <!-- r.RS_NO 로 넘어가게 하기  -->
+														<span>견적 확인</span>	
+													</button>
+													<button class="btn-style" onclick="location.href='userRsCancel.net';">
+														<span>예약 취소</span>
+													</button>
+                                            	  </c:if>
+                                            	  
+                                            	  <c:if test="${r.RS_STATE == '2'}">
 													<button class="btn-style" onclick="location.href='#';">
 														<span>별점주기</span>
 													</button>
@@ -116,102 +179,49 @@
 													<button class="btn-style" onclick="location.href='#';">
 														<span>신고하기</span>
 													</button>
+                                            	  </c:if>
+                                            	  
+                                            	  <c:if test="${r.RS_STATE == '3'}"></c:if>
+                                            	  
 												</div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img src="resources/img/profile/profile_ex2.png" style="width:120px;height:150px"></a>
-                                            </td>
-                                            <td class="product-price">
-                                                <a href="#">[수리]<br>마루 김도연님</a>
-                                            </td>
-                                            <td class="product-name"><span class="amount">2020년 7월 21일 <br> 오전 8시</span></td>
-                                            <td class="product-subtotal">100,000원</td>
-                                            <td class="product-subtotal">예약 확정</td>
-                                            <td class="product-subtotal">
-                                            	<div class="button-box" style="text-align:center;">
-													<button class="btn-style" onclick="location.href='#';">
-														<span>별점주기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>후기쓰기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>신고하기</span>
-													</button>
-												</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img src="resources/img/profile/profile_ex3.png" style="width:120px;height:150px"></a>
-                                            </td>
-                                            <td class="product-price">
-                                                <a href="#">[해충]<br>우주 임보라님</a>
-                                            </td>
-                                            <td class="product-name"><span class="amount">2020년 7월 8일 <br> 오후 1시</span></td>
-                                            <td class="product-subtotal">150,000원</td>
-                                            <td class="product-subtotal">서비스 완료</td>
-                                            <td class="product-subtotal">
-                                            	<div class="button-box" style="text-align:center;">
-													<button class="btn-style" onclick="location.href='#';">
-														<span>별점주기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>후기쓰기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>신고하기</span>
-													</button>
-												</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img src="resources/img/profile/profile_ex4.png" style="width:120px;height:150px"></a>
-                                            </td>
-                                            <td class="product-price">
-                                                <a href="#">[청소]<br>용마루 이주빈님</a>
-                                            </td>
-                                            <td class="product-name"><span class="amount">2020년 8월 1일 <br> 오후 7시</span></td>
-                                            <td class="product-subtotal">70,000원</td>
-                                            <td class="product-subtotal">예약 대기</td>
-                                            <td class="product-subtotal">
-                                            	<div class="button-box" style="text-align:center;">
-													<button class="btn-style" onclick="location.href='#';">
-														<span>별점주기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>후기쓰기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>신고하기</span>
-													</button>
-												</div>
-                                            </td>
-                                        </tr>
+                                      </c:forEach>
+                                      
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="pagination-style text-center mt-30">
-                                <ul>
-                                    <li>
-                                        <a class="active" href="#">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ion-chevron-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                            
+				 			<div class="pagination-style text-center mt-30" id="pagination">
+								<ul class="paging_align">
+									<c:if test="${page <= 1 }">
+										<li><i class="ion-chevron-left" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page > 1}">
+										<li><a href="userOneday.net?page=${page-1}"><i
+												class="ion-chevron-left"></i></a></li>
+									</c:if>
+				
+									<c:forEach var="a" begin="${startpage}" end="${endpage}">
+										<c:if test="${a == page }">
+											<li><a class="active" href="#">${a}</a></li>
+										</c:if>
+										<c:if test="${a != page}">
+											<li><a href="userOneday.net?page=${a}">${a}</a></li>
+										</c:if>
+									</c:forEach>
+				
+									<c:if test="${page >= maxpage}">
+										<li><i class="ion-chevron-right" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page < maxpage}">
+										<li><a href="userOneday.net?page=${page+1}"> <i
+												class="ion-chevron-right"></i>
+										</a></li>
+									</c:if>
+								</ul>
+							</div>
+                            
                         </div>
                     </div>
                 </div>

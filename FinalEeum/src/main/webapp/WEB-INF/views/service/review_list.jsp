@@ -29,8 +29,9 @@
 <body>
 	<span id="review_text">후기</span>
 	<div id="chart">
-	<canvas id="myChart" style="width: 30%; height: 30%; position: relative; right: 30%;"></canvas>
+	<canvas id="myChart" style="width: 30%; height: 30%; position: relative; "> </canvas>
 	</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
 	<script type="text/javascript">

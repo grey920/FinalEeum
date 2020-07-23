@@ -111,12 +111,12 @@ button{height:50px}
                                                             <a href="#">아이디 / 비밀번호 찾기</a>
                                                         </div>
                                                         <div style="text-align:center; margin:0 auto">
-                                                        <button type="submit" class="btn-style cr-btn" style="border-radius:50px"><span>&nbsp;사용자 LOGIN&nbsp;</span></button>
+                                                        <button type="submit" class="btn-style" style="border-radius:50px"><span>&nbsp;사용자 LOGIN&nbsp;</span></button>
                                                         </div>
                                                     </div>
                                                 </form>
                                                 <div style="text-align:center; margin:0 auto">
-                                                   <button class="btn-style cr-btn" onclick="location.href='userJoin.net';" style="background-color:#C1C8D9;color:#303030;border-radius:50px">
+                                                   <button class="btn-style" onclick="location.href='userJoin.net';" style="background-color:#C1C8D9;color:#303030;border-radius:50px">
                                                    <span>사용자 회원가입</span></button>
                                                 </div>
                                             </div>
@@ -145,12 +145,12 @@ button{height:50px}
                                                             <a href="#">아이디 / 비밀번호 찾기</a>
                                                         </div>
                                                         <div style="text-align:center; margin:0 auto">
-                                                        <button type="submit" class="btn-style cr-btn" style="border-radius:50px"><span>&nbsp;전문가 LOGIN&nbsp;</span></button>
+                                                        <button type="submit" class="btn-style" style="border-radius:50px"><span>&nbsp;전문가 LOGIN&nbsp;</span></button>
                                                         </div>
                                                     </div>
                                                 </form>
                                                 <div style="text-align:center; margin:0 auto">
-                                                   <button class="btn-style cr-btn" onclick="location.href='expertJoin.net';" style="background-color:#C1C8D9;color:#303030;border-radius:50px">
+                                                   <button class="btn-style" onclick="location.href='expertJoin.net';" style="background-color:#C1C8D9;color:#303030;border-radius:50px">
                                                    <span>전문가 회원가입</span></button>
                                                 </div>
                                             </div>

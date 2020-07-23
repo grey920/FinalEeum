@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Like;
 import com.kh.eeum.domain.Portfolio;
+import com.kh.eeum.domain.Reservation;
 import com.kh.eeum.domain.Review;
 import com.kh.eeum.service.CleaningService;
 import com.kh.eeum.service.ExpertRepairService;
@@ -297,30 +298,35 @@ public class ExpertController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/Request.Ajax", method = RequestMethod.POST)
-	public String  request_ajax(@RequestParam("realFiles") List<String> realFiles , MultipartHttpServletRequest request,  @RequestParam Map<String, Object> paramMap) throws Exception {
+	public String  request_ajax(@RequestParam("realFiles") List<String> realFiles , 
+												MultipartHttpServletRequest request,  Reservation reservation,
+												@RequestParam Map<String, Object> paramMap) throws Exception {
 		
 		for(String realImage : realFiles) {           
 			logger.info("realFiles : "+realImage);
         }
 				
-		String userId=(String)request.getSession().getAttribute("user_id");
-		String expertId=(String)request.getSession().getAttribute("expert_id");	
+		String user_id=(String)request.getSession().getAttribute("user_id");
+		String expertId= "0";	
+		
 		
 		/** writer_type 1:사용자 로그인,  2:전문가 로그인  */
 		int writerType=0;
-		if(userId!=null) {			
-			logger.info("사용자 로그인 아이디 : " +userId);
+		
+		if(user_id!=null) {			
+			logger.info("사용자 로그인 아이디 : " + user_id);
 			writerType=1;
-			paramMap.put("writer", userId);
-		}else if(expertId!=null) {			
-			logger.info("전문가 로그인 아이디 : " +expertId);
+			paramMap.put("writer", user_id);
+			
+		}else if(expertId !=null) {			
+			logger.info("전문가 로그인 아이디 : " + expertId);
 			writerType=2;
 			paramMap.put("writer", expertId);
 		}
 		paramMap.put("writer_type", writerType);
 				
-		int result=expertservice.requestAjax(realFiles, request, paramMap);	
-		return result!=5? "success": "error";		
+		int result=expertservice.requestAjax(realFiles, request, paramMap, reservation);	
+		return result != 5 ? "success": "error";		
 	}
 	
 

@@ -20,8 +20,17 @@ public class User {
 	private String user_email1;
 	private String user_email2;
 	private MultipartFile uploadfile;
+	private String joindate;
 	
 	
+	public String getJoindate() {
+		return joindate;
+	}
+
+	public void setJoindate(String joindate) {
+		this.joindate = joindate;
+	}
+
 	public String getUser_profile() {
 		return user_profile;
 	}

@@ -92,32 +92,36 @@
                               <c:forEach var="w" items="${wishlist}">
                                 <div class="product-width col-md-6 col-xl-3 col-lg-4">
                                     <div class="product-wrapper mb-35">
-                                        <div class="product-img" style="text-align:center;height:400px">
+                                        <div class="product-img" style="text-align:center;width:250px">
                                             <a href="#">
-                                                <img src="resources/img/profile${w.PF_SAVEPROFILE}" style="width:auto">
+                                                <img src="resources/expert_profile${w.PF_SAVEPROFILE}" style="height:auto">
                                             </a>
 	                                        <div class="price-decrease">
-	                                            <c:if test="${w.PF_CATE == '0' }">
+	                                         <c:choose>
+	                                            <c:when test="${w.PF_CATE == '0' }">
 	                                                <span>청소</span>
-	                                            </c:if>
+	                                            </c:when>
 	                                            
-	                                            <c:if test="${w.PF_CATE == '1' }">
+	                                            <c:when test="${w.PF_CATE == '1' }">
 	                                                <span>방역</span>
-	                                            </c:if>
+	                                            </c:when>
 	                                            
-	                                            <c:if test="${w.PF_CATE == '2' }">
+	                                            <c:when test="${w.PF_CATE == '2' }">
 	                                                <span>수리</span>
-	                                            </c:if>
+	                                            </c:when>
+	                                         </c:choose>
 	                                        </div>
                                         </div>
                                         <div class="product-content">
                                             <div class="product-title-wishlist">
                                                 <div class="product-title-3">
                                                     <h4><a href="product-details.html">
-                                                    <c:if test="${w.PF_GRADE == '0'}">디딤돌</c:if>
-                                                    <c:if test="${w.PF_GRADE == '1'}">마루</c:if>
-                                                    <c:if test="${w.PF_GRADE == '2'}">우주</c:if>
-                                                    <c:if test="${w.PF_GRADE == '3'}">용마루</c:if>
+                                                    <c:choose>
+	                                                    <c:when test="${w.PF_GRADE == '0'}">디딤돌</c:when>
+	                                                    <c:when test="${w.PF_GRADE == '1'}">마루</c:when>
+	                                                    <c:when test="${w.PF_GRADE == '2'}">우주</c:when>
+	                                                    <c:when test="${w.PF_GRADE == '3'}">용마루</c:when>
+                                                    </c:choose>
                                                     &nbsp;${w.EXPERT_NAME}</a></h4>
                                                 </div>
                                             </div>

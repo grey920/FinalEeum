@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
+import com.kh.eeum.domain.Review_Board;
 import com.kh.eeum.domain.User;
 import com.kh.eeum.service.AdminService;
 import com.kh.eeum.service.ExpertService;
@@ -30,9 +31,13 @@ public class AdminContorller {
 	public ModelAndView adminhome(ModelAndView mv) {
 		int allUsers= adminservice.cUsers();
 		int allReviews=adminservice.allReviews();
+		int cPosts=adminservice.cPosts();
+		int newUsers=adminservice.newUsers();
 		mv.setViewName("admin_main");
 		mv.addObject("allUsers", allUsers);
 		mv.addObject("allReviews",allReviews);
+		mv.addObject("cPosts", cPosts);
+		mv.addObject("newUsers", newUsers);
 		System.out.println("allReviews"+allReviews);
 		return mv;
 	}
