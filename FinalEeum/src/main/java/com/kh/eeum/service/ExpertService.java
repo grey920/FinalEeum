@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.Reservation;
+import com.kh.eeum.domain.Review;
 
 
 public interface ExpertService {
@@ -41,13 +42,14 @@ public interface ExpertService {
 
 	public int modifyPF(Portfolio pf);
 	
-	// 수리수리수리수리
+	// 수리수리수리수리	
 	public int getExpertListCountRepair();
 	
 	//사용자 예약 리스트 내역 
 	public int reserveCount(String user_id);	
 	public List<Reservation> reserveList(String user_id, int page, int limit);
 	public int cancelReserve(String rs_exid, String rs_uid, String rs_date);
+	public List<Review> ReviewRatingList(String expert_id);
 
 
 }

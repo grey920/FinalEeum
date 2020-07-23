@@ -27,6 +27,7 @@ import com.kh.eeum.dao.PortfolioDAO;
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.Reservation;
+import com.kh.eeum.domain.Review;
 
 
 @Service
@@ -335,6 +336,15 @@ public class ExpertServiceImpl implements ExpertService {
 		
 		return exdao.cancelReserve(map);
 	}
+
+	@Override
+	public List<Review> ReviewRatingList(String expert_id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("expert_id", expert_id);
+		
+		return exdao.ReviewRatingList(map);
+	}
+
 
 
 

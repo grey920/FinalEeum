@@ -33,7 +33,8 @@
 
 	<select id="expertcount" resultType="int">
 		select count(*) from
-		expert_table
+		expert_table e, PORTFOLIO p
+		where e.expert_id = p.pf_exid
 	</select>
 
 	<select id="expertlist" resultType="map">
