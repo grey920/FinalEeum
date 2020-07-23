@@ -6,32 +6,34 @@
 <mapper namespace="eeum">
 
 	<select id="allUsers" resultType="int">
-		select sum(users.cnt)
-		from(
-		select count(USER_ID) cnt from user_table union all
-		select
-		count(EXPERT_ID) cnt from expert_table
-		)users
+		WITH USERS AS
+		(
+		SELECT USER_ID FROM USER_TABLE
+		UNION ALL
+		SELECT EXPERT_ID FROM EXPERT_TABLE
+		)
+		SELECT COUNT(NVL(USER_ID,0)) FROM USERS
 	</select>
 
 	<select id="deExperts" resultType="Portfolio"
 		parameterType="String">
-		select
+		SELECT
 		PF_EXID, PF_LOC, PF_GRADE, PF_CATE, PF_TIME,
 		PF_DESC,
 		PF_LI, PF_OP, PF_INTRO, PF_One
-		from PORTFOLIO
-		where
+		FROM PORTFOLIO
+		WHERE
 		PF_EXID=#{PF_EXID}
 	</select>
 
 	<select id="allReviews" resultType="int">
-		SELECT COUNT(RV_INDEX) FROM
+		SELECT COUNT(NVL(RV_INDEX,0))
+		FROM
 		REVIEW_BOARD
 	</select>
 
 	<select id="cPosts" resultType="int">
-		SELECT RV_INDEX
+		SELECT COUNT(NVL(RV_INDEX, 0))
 		FROM REVIEW_BOARD
 		WHERE PODATE BETWEEN SYSDATE-1 AND SYSDATE
 	</select>
@@ -39,12 +41,14 @@
 	<select id="newUsers" resultType="int">
 		WITH USERS AS
 		(
-		SELECT USER_ID, JOINDATE FROM USER_TABLE WHERE JOINDATE BETWEEN SYSDATE-1
+		SELECT USER_ID,
+		JOINDATE FROM USER_TABLE WHERE JOINDATE BETWEEN SYSDATE-1
 		AND SYSDATE
 		UNION ALL
-		SELECT EXPERT_ID, JOINDATE FROM EXPERT_TABLE WHERE JOINDATE BETWEEN
+		SELECT EXPERT_ID, JOINDATE FROM EXPERT_TABLE WHERE JOINDATE
+		BETWEEN
 		SYSDATE-1 AND SYSDATE
 		)
-		SELECT COUNT(*) FROM USERS
+		SELECT COUNT(NVL(USER_ID, 0)) FROM USERS
 	</select>
 </mapper>
