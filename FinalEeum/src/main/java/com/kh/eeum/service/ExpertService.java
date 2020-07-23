@@ -39,7 +39,7 @@ public interface ExpertService {
 
 	public int modifyPF(Portfolio pf);
 	
-	// 수리수리수리수리
+	// 수리수리수리수리	
 	public int getExpertListCountRepair();
 	public List<Review> ReviewRatingList(String expert_id);
 

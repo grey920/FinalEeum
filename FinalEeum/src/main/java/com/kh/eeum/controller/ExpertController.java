@@ -65,6 +65,8 @@ public class ExpertController {
 		// 한 페이지에 보여줄 개수
 		int limit = 8;
 
+		System.out.println("전문가리스트 페이지이잉"+page);
+		
 		// 전문가 리스트 개수 가져옴.
 		int listcount = expertservice.getExpertListCount();
 		System.out.println("전문가 리스트 수(listcount) : " + listcount);
@@ -114,7 +116,7 @@ public class ExpertController {
 	public ModelAndView service_details(ModelAndView mv,
 			@RequestParam(value = "expert", required = false) String expertid, HttpServletResponse response,
 			@RequestParam(value = "user_id", required = false) String user_id1, HttpSession session,
-			@RequestParam(value = "page", required = false) int page) throws Exception {
+			@RequestParam(value = "page", required = false) Integer page) throws Exception {
 
 		System.out.println("넘어온값 : " + expertid);
 
@@ -202,7 +204,7 @@ public class ExpertController {
 	@ResponseBody
 	@PostMapping(value = "ReviewList.Ajax")
 	public List<Review> ReviewList(
-			@RequestParam(value = "page", defaultValue = "1", required = false) int page,
+			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "expert_id", required = false) String expert_id){
 		
 		List<Review> list = reviewservice.selectReviewList(expert_id,page);
@@ -327,7 +329,7 @@ public class ExpertController {
 	public ModelAndView expert_repair_service(HttpServletResponse response,
 			// @RequestParam으로 page의 파라미터 값을 int page 에 담는다. 게시물이 없을 수도 있느니 defaultValue = 1
 			// 로 예외처리를 해준다.
-			ModelAndView mv, @RequestParam(value = "page", defaultValue = "1", required = false) int page)
+			ModelAndView mv, @RequestParam(value = "page", required = false, defaultValue = "1") Integer page)
 			throws Exception {
 		// 한 페이지에 보여줄 개수
 		int limit = 8;
@@ -382,7 +384,7 @@ public class ExpertController {
 		public ModelAndView service_details1(ModelAndView mv,
 				@RequestParam(value = "expert", required = false) String expertid, HttpServletResponse response,
 				@RequestParam(value = "user_id", required = false) String user_id1, HttpSession session,
-				@RequestParam(value = "page", required = false) int page) throws Exception {
+				@RequestParam(value = "page", required = false) Integer page) throws Exception {
 
 			System.out.println("넘어온값 : " + expertid);
 
@@ -424,9 +426,9 @@ public class ExpertController {
 		//청소 리스트
 		@GetMapping("/expert_cleaning.service")
 		public ModelAndView expert_cleaning_service(HttpServletResponse response,
-				// @RequestParam으로 page의 파라미터 값을 int page 에 담는다. 게시물이 없을 수도 있느니 defaultValue = 1
+				// @RequestParam으로 page의 파라미터 값을 int page 에 담는다. 게시물이 없을 수도 있느 defaultValue = 1
 				// 로 예외처리를 해준다.
-				ModelAndView mv, @RequestParam(value = "page", defaultValue = "1", required = false) int page)
+				ModelAndView mv, @RequestParam(value = "page", defaultValue = "1", required = false) Integer page)
 				throws Exception {
 			// 한 페이지에 보여줄 개수
 			int limit = 8;
@@ -480,7 +482,7 @@ public class ExpertController {
 				public ModelAndView service_details2(ModelAndView mv,
 						@RequestParam(value = "expert", required = false) String expertid, HttpServletResponse response,
 						@RequestParam(value = "user_id", required = false) String user_id1, HttpSession session,
-						@RequestParam(value = "page", required = false) int page) throws Exception {
+						@RequestParam(value = "page", required = false) Integer page) throws Exception {
 
 					System.out.println("넘어온값 : " + expertid);
 
@@ -522,7 +524,7 @@ public class ExpertController {
 				public ModelAndView expert_insect_service(HttpServletResponse response,
 						// @RequestParam으로 page의 파라미터 값을 int page 에 담는다. 게시물이 없을 수도 있느니 defaultValue = 1
 						// 로 예외처리를 해준다.
-						ModelAndView mv, @RequestParam(value = "page", defaultValue = "1", required = false) int page)
+						ModelAndView mv, @RequestParam(value = "page",  required = false,defaultValue="1") Integer page)
 						throws Exception {
 					// 한 페이지에 보여줄 개수
 					int limit = 8;
@@ -576,7 +578,7 @@ public class ExpertController {
 						public ModelAndView service_details3(ModelAndView mv,
 								@RequestParam(value = "expert", required = false) String expertid, HttpServletResponse response,
 								@RequestParam(value = "user_id", required = false) String user_id1, HttpSession session,
-								@RequestParam(value = "page", required = false) int page) throws Exception {
+								@RequestParam(value = "page", required = false) Integer page) throws Exception {
 
 							System.out.println("넘어온값 : " + expertid);
 
