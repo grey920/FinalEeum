@@ -61,6 +61,31 @@ public class LikeServiceImpl implements LikeService {
 		return likedao.wishlist(map);
 	}
 
+	@Override
+	public int wishCheckCount(String user_id, int cate) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("user_id", user_id);
+		map.put("cate", cate);
+		
+		return likedao.wishCheckCount(map);
+	}
+
+	@Override
+	public List<Object> wishCheck(String user_id, int cate, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int startrow = (page - 1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("user_id", user_id);
+		map.put("cate", cate);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return likedao.wishCheck(map);
+	}
+
 
 
 }

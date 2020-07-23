@@ -43,5 +43,9 @@ public class ApplyDAO {
 	public void delete(String user_id) {
 		sqlSession.delete("Applys.deleteAll", user_id);
 	}
+
+	public int updateState(Map<String, Object> map) {
+		return sqlSession.update("Applys.updateState", map);
+	}
 	
 }

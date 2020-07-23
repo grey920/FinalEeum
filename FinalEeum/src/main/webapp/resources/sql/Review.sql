@@ -25,7 +25,10 @@ DELETE BOARD
 DELETE review
 DROP TABLE review
 
-SELECT * FROM review;
+SELECT sum(RV_RATING1),sum(RV_RATING2),sum(RV_RATING3),sum(RV_RATING4),sum(RV_RATING5),  FROM review
+where rv_expert_id = 'aaa';
+ 
+select * from review;
 
 		select *
 		from (select rownum
@@ -44,3 +47,8 @@ values (rev_seq.nextval,'duswl0918','aaa','지대다',null,null);
 
 	select count(*)
 	from review where RV_EXPERT_ID = 'aaa';
+	
+		
+		select sum(rv_rating1),sum(rv_rating2),sum(rv_rating3),sum(rv_rating4),sum(rv_rating5),sum(rv_rating6)
+		from review
+		where rv_expert_id = 'aaa';

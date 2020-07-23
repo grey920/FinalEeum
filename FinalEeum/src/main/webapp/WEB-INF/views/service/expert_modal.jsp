@@ -106,7 +106,7 @@
 														
 														<div class="row">
 															<div class="col-8 col-sm-8">
-																<input type="radio" name="building_type" value="아파트" id="structure1" checked="checked">
+																<input type="radio" name="building_type" value="아파트" id="structure1"  checked="checked">
 																<span>아파트</span>
 															</div>
 															
@@ -148,46 +148,47 @@
 													<div class="form-card " style="height: 450px;">
 														<!-- 여기 라디오 버튼 : form -->
 														<b>* 선택해주세요.</b><br> <br> 
-														
+													
+
 														<div class="row">
 															<div class="col-8 col-sm-8">
-																<input type="radio" name="repair_type"  value="전자제품 수리"  id="structure1" checked="checked">
-																<span>전자제품 수리</span> 
+																<input type="radio" name="repair_type"  value="전자제품 수리"  id="structure1" class="100" checked="checked">
+																<span class="101">전자제품 수리</span> 
 															</div>
 		
 
 															<div class="col-4 col-sm-4">
-																<input type="radio" name="repair_type"  value="가구수리"  id="structure1" >
-																<span>가구수리</span> 
+																<input type="radio" name="repair_type"  value="가구수리"  id="structure1"  class="200">
+																<span class="201">가구수리</span> 
 															</div>
 
 															<div class="col-8 col-sm-8">
-																<input type="radio" name="repair_type"  value="열쇠/도어락 수리"  id="structure1" >
-																<span>열쇠/도어락 수리</span> 
+																<input type="radio" name="repair_type"  value="열쇠/도어락 수리"  id ="structure1" class="300" >
+																<span class="301">열쇠/도어락 수리</span> 
 															</div>														
 							
 															<div class="col-4 col-sm-4">
-																<input type="radio" name="repair_type"  value="전기 배선 수리"  id="structure1" >
-																<span>전기 배선 수리</span> 
+																<input type="radio" name="repair_type"  value="전기 배선 수리"  id="structure1" class="400">
+																<span class="401">전기 배선 수리</span> 
 															</div>																
 
 															<div class="col-8 col-sm-8">
-																<input type="radio" name="repair_type" value="방충망 및 방범창 수리"  id="structure1">
-																<span>방충망 및 방범창 수리</span> 
+																<input type="radio" name="repair_type" value="방충망 및 방범창 수리"  id="structure1" class="500">
+																<span class="501">방충망 및 방범창 수리</span> 
 															</div>											
 												
 															<div class="col-4 col-sm-4">
-																<input type="radio" name="repair_type" value="문 수리"  id="structure1">
-																<span>문 수리</span> 
+																<input type="radio" name="repair_type" value="문 수리"  id="structure1" class="600">
+																<span class="601">문 수리</span> 
 															</div>															
 
 															<div class="col-8 col-sm-8">
-																<input type="radio" name="repair_type" value="수도 관련 수리"  id="structure1">
+																<input type="radio" name="repair_type" value="수도 관련 수리"  id="structure1" class="700">
 																<span>수도 관련 수리</span> 
 															</div>
 															
 															<div class="col-4 col-sm-4">
-																<input type="radio" name="repair_type" value="기타"  id="structure1" class="etc2" >
+																<input type="radio" name="repair_type" value="기타"  id="structure1" class="etc2">
 																<span>기타</span> 
 															</div>																																																	
 														</div>
@@ -288,7 +289,6 @@ $(document).ready(function() {
      });
      
  }); 
-
 function fileUploadAction() {
 	$("#request_file").trigger('click');
 }
@@ -354,6 +354,11 @@ function deleteImageAction(index) {
 }
 
 
+var pf_cate = $("#PF_CATE").val();
+//모달로 들어온 값이 있는지 확인한다. 수리면 수리 청소면 청소 해충이면 해충이 나오게 만듦
+console.log("전문가 카테고리 분류:"+pf_cate);
+
+
 
 function cleanInputs(fileEle, oriName){
 	var fileData=$("#request_file").val();
@@ -409,6 +414,9 @@ function submitAction() {
 
 		}
 	});
+	
+	var str = $("#EXPERT_ID").val();
+	console.log("전문가전문가"+str);
 
 }
 </script>

@@ -110,7 +110,7 @@
 											<div class="product-img">
 
 												<div id="circle">
-												<a href="./expertDetail.service?page=${page}&expert=${e.EXPERT_ID}">
+												<a href="./expertDetail.service?expert=${e.EXPERT_ID}">
 													<img src="resources/expert_profile${e.PF_SAVEPROFILE}" alt=""
 														id="userimg"></a>
 
@@ -205,7 +205,7 @@
 													<span style="font-family: NanumGothic; font-weight: bold;">[청소]</span>
 												</c:if>
 												<c:if test="${e.PF_CATE ==  2}">
-													<span style="font-family: NanumGothic; font-weight: bold;">[방역]</span>
+													<span style="font-family: NanumGothic; font-weight: bold;">[해충]</span>
 												</c:if>
 												<c:if test="${e.PF_CATE ==  3}">
 													<span style="font-family: NanumGothic; font-weight: bold;">[수리]</span>
@@ -236,6 +236,8 @@
 
 							<!-- 페이징 -->
 							<div class="pagination-style text-center mt-30">
+							<!-- 페이지 -->
+							<input type="hidden" id="page" value="${page}" name="page">
 
 								<ul>
 									<!-- 1. 개수가  1보다 많거나 적을때-->

@@ -23,7 +23,7 @@ public class ApplyServiceImpl implements ApplyService {
 	}
 
 	@Override
-	public boolean isId(String id, int num) {
+	public Apply isId(String id, int num) {
 		Map<String ,Object> map = new HashMap<String, Object>();
 		map.put("AP_ID", id);
 		map.put("AP_CINDEX", num);
@@ -31,12 +31,7 @@ public class ApplyServiceImpl implements ApplyService {
 		Apply apply = adao.isId(map);
 		System.out.println("apply="+apply);
 		
-		if(apply != null)
-			return false; //null이 아니다 -> 이미 가신청한 상태이다. -> 신청막기
-			else{
-				return true;
-			}
-					
+		return apply;			
 	}
 
 	@Override
@@ -77,6 +72,14 @@ public class ApplyServiceImpl implements ApplyService {
 	@Override
 	public void deleteAll(String user_id) {
 		adao.delete(user_id);
+	}
+
+	@Override
+	public int updateState(String id, int apIndex) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("ap_id", id);
+		map.put("ap_cindex", apIndex);
+		return adao.updateState(map);
 	}
 	
 }

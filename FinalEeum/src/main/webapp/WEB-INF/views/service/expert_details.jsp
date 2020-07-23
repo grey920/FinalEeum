@@ -32,6 +32,20 @@
 <!-- 모달 관련 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <%@ include file="../header.jsp" %>
+<style>
+.detailDESC{
+    padding-top: 50px;
+   	margin-left:12%;
+   	margin-top:200px;
+}
+.details1{width: 87%;}
+.container1{line-height:60px;margin-top:100px;}
+.tab{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -65,6 +79,12 @@
 						<c:set var="po" value="${portfolio}"/>
 					<div class="grad">
 						<img src="resources/expert_profile${po.PF_SAVEPROFILE}" alt="" id="userimg">
+						<c:if test="${expert_id_login == null}">
+						<input type="hidden" value="0" id="expert_id_login">
+						</c:if>
+						<c:if test="${expert_id_login != null}">
+						<input type="hidden" value="1" id="expert_id_login">
+						</c:if>
 					</div>
 					<b
 						style="font-size: 50px; position: relative; left: 680px; bottom: 190px;">${expertdata.expert_name}
@@ -74,10 +94,11 @@
 					<input type="hidden" value="${expertdata.expert_id}" id="EXPERT_ID">
 					<!-- 사용자 아이디 -->
 					<input type="hidden" value="${user_id}" id="USER_ID">
+					<!-- 전문가 카테고리 분류 -->
+					<input type="hidden" value="${po.PF_CATE}" id="PF_CATE">
 
 
-
-					<div class="heart_click">
+					<button class="heart_click">
 						<c:if test="${like ==1 }">
 							<i id="fa-heart-o" class="fa fa-heart"
 								style="position: relative; left: 13px; top: 12px;"></i>
@@ -90,7 +111,7 @@
 							<span
 								style="position: relative; left: 20px; font-size: 17px; top: 12px; font-weight: 700;">찜하기</span>
 						</c:if>
-					</div>
+					</button>
 
 
 					<button style="font-weight: 700; font-size: 16px;"
@@ -137,31 +158,28 @@
 				<input type="hidden" value="${count}" id="count">
 
 				<hr class="hr_2">
-				<span
-					style="font-size: 40px; font-weight: 700; position: relative; left: 240px; top: 60px;">서비스
-					상세설명</span>
-				<div class="details1">
-					<p style="font-size: 22px; color: black; white-space: inherit">
-						${po.PF_DESC}
-					</p>
+				<div class="detailDESC">
+					<span style="font-size: 40px; font-weight: 700;">서비스
+						상세설명</span>
+					<div class="details1">
+						<p style="font-size: 22px; color: black; white-space: inherit">
+							${po.PF_DESC}
+						</p>
+					</div>
 				</div>
 				<!-- 탭메뉴 들어간다. -->
 				<div class="container1">
 					<ul class="tab">
-						<li data-tab="tab1" class='tabmenu tab1' id="default"
-							style="position: relative; left: 390px; top: 14px;"><b
-							style="font-size: 20px; color: white;" id="tabText1">포트폴리오</b></li>
-						<li data-tab="tab2" class='tabmenu tab2'
-							style="position: relative; left: 640px; bottom: 15px;"><b
-							style="font-size: 20px; color: white;" id="tabText2">후기</b></li>
-						<li data-tab="tab3" class='tabmenu tab3'
-							style="position: relative; left: 850px; bottom: 45px;"><b
-							style="font-size: 20px; color: white;" id="tabText3">가격</b></li>
-						<li data-tab="tab4" class='tabmenu tab4'
-							style="position: relative; left: 1100px; bottom: 75px;"><b
-							style="font-size: 20px; color: white;" id="tabText4">Q&A</b></li>
+						<li data-tab="tab1" class='tabmenu tab1' id="default">
+						<b style="font-size: 20px; color: white;" id="tabText1">포트폴리오</b></li>
+						<li data-tab="tab2" class='tabmenu tab2'>
+						<b style="font-size: 20px; color: white;" id="tabText2">후기</b></li>
+						<li data-tab="tab3" class='tabmenu tab3'>
+						<b style="font-size: 20px; color: white;" id="tabText3">가격</b></li>
+						<li data-tab="tab4" class='tabmenu tab4'>
+						<b style="font-size: 20px; color: white;" id="tabText4">Q&A</b></li>
 					</ul>
-					<div id="tabcontent"></div>
+					<div id="tabcontent" style="margin-top:50px;"></div>
 					<!-- 내용 들어갈 공간 -->
 				</div>
 				<!-- 탭 -->

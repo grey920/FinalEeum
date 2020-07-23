@@ -82,7 +82,7 @@
 												for="expert_profile"> <img
 												src="resources/img/profile/profile.png" alt="profile"
 												id="profile"
-												style="width: 170px; height: 170px; border-radius: 50%; cursor: pointer">
+												style="width: 150px; height: auto;cursor: pointer">
 											</label>
 										</div>
 									</div>

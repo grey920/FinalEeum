@@ -53,6 +53,7 @@
 				</form>
 			</div>
 		</div>
+		
 		<div class="breadcrumb-area mt-37 hm-4-padding">
 			<div class="container-fluid">
 				<div class="breadcrumb-content text-center">
@@ -110,7 +111,8 @@
 											<div class="product-img">
 
 												<div id="circle">
-												<a href="./cleaningDetail.service?page=${page}&expert=${e.EXPERT_ID}">
+												<input type="hidden" id="page" value="${page}" name="page">
+												<a href="./cleaningDetail.service?expert=${e.EXPERT_ID}">
 													<img src="resources/expert_profile${e.PF_SAVEPROFILE}" alt=""
 														id="userimg"></a>
 

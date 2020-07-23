@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,11 +22,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Like;
 import com.kh.eeum.domain.Portfolio;
+import com.kh.eeum.domain.Reservation;
 import com.kh.eeum.domain.Review;
 import com.kh.eeum.service.CleaningService;
 import com.kh.eeum.service.ExpertRepairService;
 import com.kh.eeum.service.ExpertService;
 import com.kh.eeum.service.ExpertServiceImpl;
+import com.kh.eeum.service.InsectService;
 import com.kh.eeum.service.LikeService;
 import com.kh.eeum.service.ReviewService;
 
@@ -50,6 +51,8 @@ public class ExpertController {
 	@Autowired
 	CleaningService cleaningService; // 청소
 	
+	@Autowired
+	InsectService insectService; // 해충
 	
 	private static final Logger logger = LoggerFactory.getLogger(ExpertServiceImpl.class);
 
@@ -63,6 +66,8 @@ public class ExpertController {
 		// 한 페이지에 보여줄 개수
 		int limit = 8;
 
+		System.out.println("전문가리스트 페이지이잉"+page);
+		
 		// 전문가 리스트 개수 가져옴.
 		int listcount = expertservice.getExpertListCount();
 		System.out.println("전문가 리스트 수(listcount) : " + listcount);
@@ -112,12 +117,14 @@ public class ExpertController {
 	public ModelAndView service_details(ModelAndView mv,
 			@RequestParam(value = "expert", required = false) String expertid, HttpServletResponse response,
 			@RequestParam(value = "user_id", required = false) String user_id1, HttpSession session,
-			@RequestParam(value = "page", required = false) int page) throws Exception {
+			@RequestParam(value = "page", required = false) Integer page) throws Exception {
 
 		System.out.println("넘어온값 : " + expertid);
 
 		String user_id = (String) session.getAttribute("user_id");
+		String expert_id_login = (String) session.getAttribute("expert_id");
 
+		System.out.println("로그인로그인 전문가존문가"+expert_id_login);
 		// 찜등록 데이터 있는지 조회
 		int result = likeservice.selectLike(expertid, user_id);
 		int count = reviewservice.getReviewCount(expertid);
@@ -146,19 +153,22 @@ public class ExpertController {
 		mv.addObject("portfolio", portfolio);
 		mv.addObject("count",count);
 		mv.addObject("RequestCount", requestCount);
+		mv.addObject("expert_id_login", expert_id_login);
 		return mv;
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/LikeExpert.Ajax", method = RequestMethod.POST, produces = "application/json")
 	public int likeexpert_ajax(@RequestParam(value = "EXPERT_ID", required = false) String expert_id,
-			@RequestParam(value = "USER_ID", required = false) String user_id, Like like, HttpServletResponse response,
-			ModelAndView mv) throws Exception {
+			@RequestParam(value = "USER_ID", required = false) String user_id, Like like, HttpServletResponse response
+			) throws Exception {
 
 		System.out.println("ajax 로 들어온 전문가 아이디:" + expert_id + "유저 아이디 : " + user_id);
 
 		int result = likeservice.selectLike(expert_id, user_id);
 
+		
+		System.out.println("전문가 페이지에 들어감"+expert_id);
 		//커멘드 값으로 가져오기
 		System.out.println("조회 완료:" + result);
 
@@ -170,8 +180,9 @@ public class ExpertController {
 			like.setExpert_id(expert_id);
 			like.setUser_id(user_id);
 			like.setLike_state(num);
-			int liketo = likeservice.insertLike(like);
-
+		
+				likeservice.insertLike(like);
+				
 			System.out.println("찜등록 완료");
 			resultf = 0;
 
@@ -194,7 +205,7 @@ public class ExpertController {
 	@ResponseBody
 	@PostMapping(value = "ReviewList.Ajax")
 	public List<Review> ReviewList(
-			@RequestParam(value = "page", defaultValue = "1", required = false) int page,
+			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "expert_id", required = false) String expert_id){
 		
 		List<Review> list = reviewservice.selectReviewList(expert_id,page);
@@ -273,33 +284,49 @@ public class ExpertController {
 		
 	}
 	
+	@ResponseBody
+	@PostMapping("/Review.Ajax")
+	public List<Review> Review_Ajax(@RequestParam(value = "expert",required = false) String expert_id){
+		System.out.println("리리리리리리리"+expert_id);
+		
+		List<Review> list = expertservice.ReviewRatingList(expert_id);
+		
+		return list;
+		
+	}
+	
 	
 	@ResponseBody
 	@RequestMapping(value = "/Request.Ajax", method = RequestMethod.POST)
-	public String  request_ajax(@RequestParam("realFiles") List<String> realFiles , MultipartHttpServletRequest request,  @RequestParam Map<String, Object> paramMap) throws Exception {
+	public String  request_ajax(@RequestParam("realFiles") List<String> realFiles , 
+												MultipartHttpServletRequest request,  Reservation reservation,
+												@RequestParam Map<String, Object> paramMap) throws Exception {
 		
 		for(String realImage : realFiles) {           
 			logger.info("realFiles : "+realImage);
         }
 				
-		String userId=(String)request.getSession().getAttribute("user_id");
-		String expertId=(String)request.getSession().getAttribute("expert_id");	
+		String user_id=(String)request.getSession().getAttribute("user_id");
+		String expertId= "0";	
+		
 		
 		/** writer_type 1:사용자 로그인,  2:전문가 로그인  */
 		int writerType=0;
-		if(userId!=null) {			
-			logger.info("사용자 로그인 아이디 : " +userId);
+		
+		if(user_id!=null) {			
+			logger.info("사용자 로그인 아이디 : " + user_id);
 			writerType=1;
-			paramMap.put("writer", userId);
-		}else if(expertId!=null) {			
-			logger.info("전문가 로그인 아이디 : " +expertId);
+			paramMap.put("writer", user_id);
+			
+		}else if(expertId !=null) {			
+			logger.info("전문가 로그인 아이디 : " + expertId);
 			writerType=2;
 			paramMap.put("writer", expertId);
 		}
 		paramMap.put("writer_type", writerType);
 				
-		int result=expertservice.requestAjax(realFiles, request, paramMap);	
-		return result!=5? "success": "error";		
+		int result=expertservice.requestAjax(realFiles, request, paramMap, reservation);	
+		return result != 5 ? "success": "error";		
 	}
 	
 
@@ -308,7 +335,7 @@ public class ExpertController {
 	public ModelAndView expert_repair_service(HttpServletResponse response,
 			// @RequestParam으로 page의 파라미터 값을 int page 에 담는다. 게시물이 없을 수도 있느니 defaultValue = 1
 			// 로 예외처리를 해준다.
-			ModelAndView mv, @RequestParam(value = "page", defaultValue = "1", required = false) int page)
+			ModelAndView mv, @RequestParam(value = "page", required = false, defaultValue = "1") Integer page)
 			throws Exception {
 		// 한 페이지에 보여줄 개수
 		int limit = 8;
@@ -363,7 +390,7 @@ public class ExpertController {
 		public ModelAndView service_details1(ModelAndView mv,
 				@RequestParam(value = "expert", required = false) String expertid, HttpServletResponse response,
 				@RequestParam(value = "user_id", required = false) String user_id1, HttpSession session,
-				@RequestParam(value = "page", required = false) int page) throws Exception {
+				@RequestParam(value = "page", required = false) Integer page) throws Exception {
 
 			System.out.println("넘어온값 : " + expertid);
 
@@ -405,9 +432,9 @@ public class ExpertController {
 		//청소 리스트
 		@GetMapping("/expert_cleaning.service")
 		public ModelAndView expert_cleaning_service(HttpServletResponse response,
-				// @RequestParam으로 page의 파라미터 값을 int page 에 담는다. 게시물이 없을 수도 있느니 defaultValue = 1
+				// @RequestParam으로 page의 파라미터 값을 int page 에 담는다. 게시물이 없을 수도 있느 defaultValue = 1
 				// 로 예외처리를 해준다.
-				ModelAndView mv, @RequestParam(value = "page", defaultValue = "1", required = false) int page)
+				ModelAndView mv, @RequestParam(value = "page", defaultValue = "1", required = false) Integer page)
 				throws Exception {
 			// 한 페이지에 보여줄 개수
 			int limit = 8;
@@ -461,7 +488,7 @@ public class ExpertController {
 				public ModelAndView service_details2(ModelAndView mv,
 						@RequestParam(value = "expert", required = false) String expertid, HttpServletResponse response,
 						@RequestParam(value = "user_id", required = false) String user_id1, HttpSession session,
-						@RequestParam(value = "page", required = false) int page) throws Exception {
+						@RequestParam(value = "page", required = false) Integer page) throws Exception {
 
 					System.out.println("넘어온값 : " + expertid);
 
@@ -498,18 +525,18 @@ public class ExpertController {
 					return mv;
 				}
 
-				/*****************************해충 expert_insect.service***
+				/*****************************해충 expert_insect.service*********************/
 				@GetMapping("/expert_insect.service")
 				public ModelAndView expert_insect_service(HttpServletResponse response,
 						// @RequestParam으로 page의 파라미터 값을 int page 에 담는다. 게시물이 없을 수도 있느니 defaultValue = 1
 						// 로 예외처리를 해준다.
-						ModelAndView mv, @RequestParam(value = "page", defaultValue = "1", required = false) int page)
+						ModelAndView mv, @RequestParam(value = "page",  required = false,defaultValue="1") Integer page)
 						throws Exception {
 					// 한 페이지에 보여줄 개수
 					int limit = 8;
 
 					// 전문가 리스트 개수 가져옴. -  수리
-					int listcount = cleaningService.getExpertListCountCleaning();
+					int listcount = insectService.getExpertListCountCleaning();
 					System.out.println("전문가 리스트 수(listcount) : " + listcount);
 
 					// 총 페이지수
@@ -532,13 +559,13 @@ public class ExpertController {
 						endpage = maxpage; // endpage 에는
 
 					// expert 형인
-					List<Expert> expertlist = cleaningService.expertlist(page, limit);
+					List<Expert> expertlist = insectService.expertlist(page, limit);
 				
 					System.out.println("전문가 리스트"+expertlist);
 					
 				
 					
-					mv.setViewName("cleaning_service/expert_cleaning");
+					mv.setViewName("insect_service/expert_insect");
 					mv.addObject("page", page);
 					mv.addObject("limit", limit);
 					mv.addObject("listcount", listcount);
@@ -557,7 +584,7 @@ public class ExpertController {
 						public ModelAndView service_details3(ModelAndView mv,
 								@RequestParam(value = "expert", required = false) String expertid, HttpServletResponse response,
 								@RequestParam(value = "user_id", required = false) String user_id1, HttpSession session,
-								@RequestParam(value = "page", required = false) int page) throws Exception {
+								@RequestParam(value = "page", required = false) Integer page) throws Exception {
 
 							System.out.println("넘어온값 : " + expertid);
 
@@ -583,7 +610,7 @@ public class ExpertController {
 							Portfolio portfolio = expertservice.poexpertListOne(expertid);
 							
 
-							mv.setViewName("cleaning_service/cleaning_details");
+							mv.setViewName("insect_service/insect_details");
 							mv.addObject("expertdata", expert);
 							mv.addObject("user_id", user_id); // 지금 로그인 한 사용자의 아이디 가져옴
 							mv.addObject("like", result); // 찜등록 데이터
@@ -593,5 +620,6 @@ public class ExpertController {
 							mv.addObject("RequestCount", requestCount);
 							return mv;
 						}
-******************/
+						
+						
 }

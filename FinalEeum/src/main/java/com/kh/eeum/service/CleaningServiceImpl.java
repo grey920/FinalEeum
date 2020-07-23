@@ -24,6 +24,7 @@ public class CleaningServiceImpl implements CleaningService {
 		int endrow = startrow + limit - 1;
 		map.put("start", startrow);
 		map.put("end", endrow);
+		System.out.println("리스트");
 		return cleaningdao.getexpertList(map);
 	}
 

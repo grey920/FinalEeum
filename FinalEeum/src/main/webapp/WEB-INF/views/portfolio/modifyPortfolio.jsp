@@ -88,7 +88,7 @@ background : none;
 												<label for="expert_profile"> 
 												<img src="resources/expert_profile${PFdata.PF_SAVEPROFILE}"
 													alt="profile" id="profile"
-													style="width: 170px; height: 170px; border-radius: 50%; cursor: pointer"><br>
+													style="width: 150px; height: auto; cursor: pointer"><br>
 												<span id="filevalue" style="visibility: hidden">${PFdata.PF_PROFILE}</span>
 												</label>
 										</div>
