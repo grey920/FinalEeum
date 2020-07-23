@@ -148,7 +148,8 @@
 													<div class="form-card " style="height: 450px;">
 														<!-- 여기 라디오 버튼 : form -->
 														<b>* 선택해주세요.</b><br> <br> 
-														
+													
+
 														<div class="row">
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="repair_type"  value="전자제품 수리"  id="structure1" class="100" checked="checked">
@@ -288,7 +289,6 @@ $(document).ready(function() {
      });
      
  }); 
-
 function fileUploadAction() {
 	$("#request_file").trigger('click');
 }
@@ -414,6 +414,9 @@ function submitAction() {
 
 		}
 	});
+	
+	var str = $("#EXPERT_ID").val();
+	console.log("전문가전문가"+str);
 
 }
 </script>

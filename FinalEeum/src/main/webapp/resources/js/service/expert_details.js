@@ -4,6 +4,17 @@ $(document).ready(
 			var current_fs, next_fs, previous_fs; // fieldsets
 			var opacity;
 			var expert_id = $('#EXPERT_ID').val();
+			//전문가 찜 불가
+			var expert_id_login =  $('#expert_id_login').val();
+			if(expert_id_login == 1){
+				$('.heart_click').attr('disabled',true);
+				$('.heart_click').css('cursor','auto');
+				$('.heart_click').css('background-color','#CADEE3');
+				$('.heart_click2').attr('disabled',true);
+				$('.heart_click2').css('cursor','auto');
+				$('.heart_click2').css('background-color','#CADEE3');
+				
+			}
 
 			$('#top').addClass('step-1');
 

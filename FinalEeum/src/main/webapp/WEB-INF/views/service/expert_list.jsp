@@ -110,7 +110,7 @@
 											<div class="product-img">
 
 												<div id="circle">
-												<a href="./expertDetail.service?page=${page}&expert=${e.EXPERT_ID}">
+												<a href="./expertDetail.service?expert=${e.EXPERT_ID}">
 													<img src="resources/expert_profile${e.PF_SAVEPROFILE}" alt=""
 														id="userimg"></a>
 
@@ -236,6 +236,8 @@
 
 							<!-- 페이징 -->
 							<div class="pagination-style text-center mt-30">
+							<!-- 페이지 -->
+							<input type="hidden" id="page" value="${page}" name="page">
 
 								<ul>
 									<!-- 1. 개수가  1보다 많거나 적을때-->

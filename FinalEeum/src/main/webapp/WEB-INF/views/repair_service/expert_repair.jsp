@@ -110,7 +110,8 @@
 											<div class="product-img">
 
 												<div id="circle">
-												<a href="./repairDetail.service?page=${page}&expert=${e.EXPERT_ID}">
+												<input type="hidden" id="page" value="${page}" name="page">
+												<a href="./repairDetail.service?expert=${e.EXPERT_ID}">
 													<img src="resources/expert_profile${e.PF_SAVEPROFILE}" alt=""
 														id="userimg"></a>
 
