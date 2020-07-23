@@ -33,7 +33,8 @@ $(function() {
 			});
 			console.log(output);
 			$("#career_table tbody").append(output);
-			
+		
+
 			
 		}
 		

@@ -55,6 +55,11 @@ public class ReviewServiceImpl implements ReviewService{
 		return dao.getReviewCount(expert_id);
 	}
 
+	@Override
+	public int reviewDelete(int num) {
+		return dao.reviewDelete(num);
+	}
+
 
 
 

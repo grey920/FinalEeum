@@ -128,7 +128,7 @@ table {
 		});
 	</script> -->
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
-	<script src="resources/js/service/QnA_list.js"></script>
+
 	<script src="resources/js/popper.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/isotope.pkgd.min.js"></script>

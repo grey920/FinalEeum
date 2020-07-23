@@ -35,4 +35,9 @@
 	select count(*)
 	from review where RV_EXPERT_ID = #{expert_id}
 </select>
+
+<delete id="delete" parameterType="int">
+	delete review where rv_no = #{num}
+</delete>
+
 </mapper>

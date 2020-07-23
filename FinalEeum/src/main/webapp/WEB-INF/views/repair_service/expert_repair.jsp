@@ -106,14 +106,14 @@
 
 										<div class="product-wrapper mb-35">
 											<!-- 전문가 리스트 뽑아오기 시작 -->
-
+										<a href="./repairDetail.service?expert=${e.EXPERT_ID}">
 											<div class="product-img">
 
 												<div id="circle">
 												<input type="hidden" id="page" value="${page}" name="page">
-												<a href="./repairDetail.service?expert=${e.EXPERT_ID}">
+												
 													<img src="resources/expert_profile${e.PF_SAVEPROFILE}" alt=""
-														id="userimg"></a>
+														id="userimg">
 
 												</div>
 												
@@ -213,18 +213,8 @@
 												</c:if>
 												
 												</div>
-												
-												<div class="product-action-3">
-													<a class="action-plus-2" title="간략히 보기" data-toggle="modal"
-														data-target="#myModal" 
-														style="text-decoration: none;"> <i class="ti-plus"
-														style="position: relative; width: 20px; height: 20px; left: 20px; bottom: 8px;"></i>
-														<span style="color: white;">간략히 보기</span>
-													</a>
-												</div>
-
 											</div>
-
+										</a>
 										</div>
 
 										<hr id="hr_3">
@@ -289,73 +279,6 @@
 		</div>
 
 
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-			aria-hidden="true">
-
-			<div class="modal-dialog" role="document">
-				<div class="modal-content "
-					style="font-weight: bold; width: 870px; height: 840px;">
-					<div class="modal-body" style="padding: 50px; padding-top: 40px;">
-
-						<!-- 부모 모달 -->
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close"
-							style="position: relative; bottom: 410px; left: 770px;">
-							<span class="ion-android-close" aria-hidden="true"></span>
-						</button>
-						<div class="qwick-view-right ">
-							<div class="qwick-view-content" style="width: 550px;">
-								<h3 style="font-weight: 700;">[청소]</h3>
-								<!-- 사진 테두리 -->
-								<img src="resources/img/blog/cat2.jpg" alt="" id="userimg"
-									style="position: relative; left: 0px; right: 0px;">
-
-								<div class="price" style="margin: 0px;">
-									<h1
-										style="font-size: 60px; position: relative; right: 10px; left: 210px; bottom: 160px; font-family: NanumGothic; font-weight: 700;">안연지</h1>
-									<br>
-								</div>
-								<div class="rating-number"
-									style="position: relative; bottom: 160px; left: 220px; right: 0px;">
-									<div class="quick-view-rating">
-										<i class="ion-ios-star red-star"></i> <i
-											class="ion-ios-star red-star"></i> <i
-											class="ion-ios-star red-star"></i> <i
-											class="ion-ios-star red-star"></i> <i
-											class="ion-ios-star red-star"></i> <span>4.0</span>
-									</div>
-								</div>
-								<span
-									style="font-size: 45px; position: relative; right: 50px; bottom: 100px; font-family: NanumGothic; font-weight: 700; color: black;">서비스
-									상세설명</span><br> <br>
-								<table
-									style="border: 1px solid lightgray; position: relative; width: 650px; height: 320px; bottom: 100px;">
-									<tr>
-										<th style="font-size: 20px; font-weight: 300;">이사입주청소<br>
-											(싱크대상판연마코팅.욕실나노코팅.마루왁스코팅.찌든때.묵은때.물때.기름때.곰팡이. 스티커 제거 )<br>
-											신축입주청소<br> ( 화학성분 유해물질 미세먼지 제거 싱크대상판코팅.욕실나노코팅 )<br>
-										</th>
-									</tr>
-
-								</table>
-
-
-								<div class="quickview-btn-wishlist">
-									<button class="btn-hover cr-btn btn" data-toggle="modal"
-										data-target="#myModal1"
-										style="position: relative; bottom: 40px; padding: 0px; width: 130px;">
-										<span style="color: white; position: relative;">견적요청</span>
-									</button>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- 서브 모달  -->
-		<%@include file="expert_modal.jsp" %>
 
 	</div>
 

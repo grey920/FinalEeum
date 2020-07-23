@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/responsive.css">
 
-<link rel="stylesheet" href="resources/css/cleaning/expert_details.css">
+<link rel="stylesheet" href="resources/css/service/expert_details.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- 모달 관련 -->
