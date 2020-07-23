@@ -371,14 +371,35 @@ $(function() {
 	   
 	
 	
+		//수정
 	   $("#comment").on('click','.fas.fa-pen', function(){
 		      before = $(this).parent().prev().text(); // 선택한 내용을 가져옵니다.
 		      $("#content").focus().val(before); // textarea에 수정전 내용을 보여줍니다.
-		      num = $('#num').val();
+		      num = $('#RV_NO').val();
 		      $("#write").text("수정완료"); // 등록버튼의 라벨을 '수정완료' 로 변경합니다.
 		      $(this).parent().parent().css('background','lightgray'); // 수정할 행의배경색을 변경합니다.
 		   });
 	   
+	   //삭제
+	   $("#comment").on('click','.fas.fa-cut', function(){
+		   num = $('#RV_NO').val();
+		      console.log("리뷰 번호"+num);
+		      $.ajax({
+		         type : "post",
+		         url : "ReviewDelete.Ajax",
+		         data : {
+		            "num" : num
+		         },
+		         success : function(result){
+		            if(result==1){
+		               $("#comment tbody").empty();
+		               $("#count").text(--count); // 삭제되면 전체 댓글 갯수 한개 줄어듭니다.
+		               maxPage=getMaxPage();
+		               getList(1);
+		            }
+		         }
+		      })
+		   })
 
 	   
 	   //그거

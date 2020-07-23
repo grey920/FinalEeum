@@ -184,12 +184,12 @@
 
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="repair_type" value="수도 관련 수리"  id="structure1" class="700">
-																<span>수도 관련 수리</span> 
+																<span class="701">수도 관련 수리</span> 
 															</div>
 															
 															<div class="col-4 col-sm-4">
-																<input type="radio" name="repair_type" value="기타"  id="structure1" class="etc2">
-																<span>기타</span> 
+																<input type="radio" name="repair_type" value="기타"  id="structure1" class="etc2" class="800">
+																<span class="800">기타</span> 
 															</div>																																																	
 														</div>
 														
