@@ -50,7 +50,9 @@
 	</select>
 	
 	<select id="ReviewRating" resultType="map">
-		select sum(rv_rating1) "rv_rating1",sum(rv_rating2) "rv_rating2",sum(rv_rating3) "rv_rating3",sum(rv_rating4) "rv_rating4",sum(rv_rating5) "rv_rating5",sum(rv_rating6) "rv_rating6"
+		select TRIM(TO_CHAR(avg(rv_rating1), '99999999.99')) "rv_rating1",TRIM(TO_CHAR(avg(rv_rating2), '99999999.99')) "rv_rating2"
+		,TRIM(TO_CHAR(avg(rv_rating3), '99999999.99')) "rv_rating3",TRIM(TO_CHAR(avg(rv_rating4), '99999999.99')) "rv_rating4"
+		,TRIM(TO_CHAR(avg(rv_rating5), '99999999.99')) "rv_rating5",TRIM(TO_CHAR(avg(rv_rating6), '99999999.99')) "rv_rating6"
 		from review
 		where rv_expert_id = #{expert_id}
 	

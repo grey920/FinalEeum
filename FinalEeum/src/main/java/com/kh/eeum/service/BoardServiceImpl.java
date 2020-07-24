@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kh.eeum.dao.BoardDAO;
-import com.kh.eeum.domain.Board;
+import com.kh.eeum.dao.QnADAO;
+import com.kh.eeum.domain.QnA;
 import com.kh.eeum.domain.Oneday;
 
 
@@ -15,7 +15,7 @@ import com.kh.eeum.domain.Oneday;
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
-	private BoardDAO dao;
+	private QnADAO dao;
 	
 	@Override
 	public int getListCount() {
@@ -23,7 +23,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<Board> getBoardList(int page, int limit) {
+	public List<QnA> getBoardList(int page, int limit) {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		int startrow = (page-1) *limit +1;
 		int endrow = startrow + limit -1;
@@ -33,9 +33,15 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void insertClass(Board board) {
+	public void insertClass(QnA board) {
 	 dao.insertClass(board);
 		
 	}
+
+	@Override
+	public QnA getDetail(int num) {
+		return dao.getDetail(num);
+	}
+
 
 }

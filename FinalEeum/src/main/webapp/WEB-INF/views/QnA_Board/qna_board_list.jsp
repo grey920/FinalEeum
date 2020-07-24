@@ -74,22 +74,12 @@
 		<div class="breadcrumb-area mt-37 hm-4-padding">
 			<div class="container-fluid">
 				<div class="breadcrumb-content text-center">
-					<h2>원데이 클래스</h2>
-					<ul>
-						<li><a href="#">home</a></li>
-						<li>One day Class</li>
-					</ul>
+					<h2>문의 게시판</h2>
+
 				</div>
 			</div>
 		</div>
 
-		<div class="banner-area hm-4-padding">
-			<div class="container-fluid">
-				<div class="banner-img">
-					<a href="#"><img src="resources/img/banner/16.png" alt=""></a>
-				</div>
-			</div>
-		</div>
 		
 <div class="container">
 	<%--게시글이 있는 경우  --%>
@@ -98,7 +88,7 @@
 	 <table class="table table-striped">
 	 	<thead>
 	 		<tr>
-	 			<th colspan="3">신고 게시판 - list</th>
+	 			<th colspan="3">신고 게시판</th>
 	 			<th colspan="2"><font size=3>글 개수 : ${listcount}</font></th>
 	 		</tr>
 	 		<tr>
@@ -129,6 +119,8 @@
 	 	 			 <a href="./BoardDetailAction.bo?num=${b.QNA_INDEX}">
 	 	 			 	${b.QNA_TITLE}
 	 	 			 </a>
+	 	 			 
+	 	 			 
 	 	 		</div>
 	 	 		</td>
 	 	 		<td><div>${b.QNA_WRITER}</div></td>

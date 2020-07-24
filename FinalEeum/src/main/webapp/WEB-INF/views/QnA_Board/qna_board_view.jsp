@@ -154,142 +154,100 @@
 							</div>
 						</div>
 					</div>
+					<!-- 여기 -->
+					<input type="hidden" id="loginid" value="${user_id}" name="loginid">
+	<div class="container">
+	  <table class="table table-striped">
+	  	<tr><th colspan="2"> 신고 게시판 </th></tr>
+	  	<tr>
+	  		<td><div>글쓴이</div></td>
+	  		<td><div>${boarddata.QNA_WRITER}</div></td>
+	  	</tr>
+	  	<tr>
+	  		<td><div>제목</div></td>
+	  		<td><div>${boarddata.QNA_TITLE}</div></td>
+	  	</tr>
+	  	<tr>
+	  		<td><div>내용</div></td>
+	  		<td>${boarddata.QNE_CONTENT}</td>
+	  	</tr>
+
+
+	  	 <tr>	 
+	  	 	<td colspan="2" class="center">
+	  	 		
+	  	 	<c:if test="${boarddata.QNA_WRITER == user_id || user_id == 'admin' }">
+		  	 	<a href="BoardModifyView.bo?num=${boarddata.QNA_INDEX }">
+		  	 		<button class="btn btn-info">수정</button>
+		  	 	</a>
+
+	  	 	</c:if>
+	  	 	<a href="BoardList.bo">
+	  	 		<button class="btn btn-primary">목록</button>
+	  	 	</a>
+	  	 	</td>
+	  	 </tr>
+	  </table>
+	  	<%--게시판 수정 end --%>
+	  	
+	  	<%-- modal 시작  --%>
+	  	<div class="modal" id="myModal">
+	  	  <div class="modal-dialog">
+	  	    <div class="modal-content">
+	  	    <!-- Modal body -->
+	  	     <div class="modal-body">
+	  	       <form name="deleteForm" action="BoardDeleteAction.bo" method="post">
+	  	       	<%--http://localhost:8088/SEMI_PROJECT/BoardDetailAction.bo?num=22
+	  	       		주소를 보면 num을 파라미터로 넘기고 있습니다.
+	  	       		이 값을 가져와서 ${param.num}를 사용
+	  	       		또는 ${boarddata.BOARD_NUM}
+	  	       	 --%>
+	  	       	 <input type="hidden" name="num" value="${param.num}" id="board_num">
+	  	       	 <div class="form-group">
+	  	       	 	<label for="pwd">비밀번호</label>
+	  	       	 	<input type="password"
+	  	       	 			class="form-control" placeholder="Enter password"
+	  	       	 			name="BOARD_PASS" id="board_pass">
+	  	       	 </div>
+	  	       	 <button type="submit" class="btn btn-primary">전송</button>
+	  	       	 <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+	  	       </form>
+	  	     </div>
+	  	    </div>
+	  	  </div>
+	  	</div>
+	  	
+	  	<!-- 댓글 -->
+	  	<!-- 관리자면 댓글을 보여라.. -->
+	  	
+	  	 <div id="comment">
+	  	 <c:if test="${user_id == 'admin'}">
+
+         <button id="write" class="btn btn-info float-right">등록</button>
+         <textarea rows=3 class="form-control" id="content" maxLength="300"
+            style="resize: none"></textarea>
+         <table class="table table_striped">
+            <thead>
+               <tr>
+                  <td>아이디</td>
+                  <td>내용</td>
+                  <td>날짜</td>
+               </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+         </table>
+         </c:if>
+         <div id="message"></div>
+      </div>
+   </div>
 				</div>
+				
+</div>
 
+	
 
-				<!-- 여기부터 반복문 시작 -->
-				<div class="grid-list-product-wrapper">
-					<div class="product-grid product-view">
-						<div class="row" id="pagingOne">
-
-							<c:set var="num" value="${listcount-(page-1)*limit}" />
-							<c:forEach var="o" items="${onedaylist}">
-								<div class="product-width col-md-6 col-xl-4 col-lg-4">
-									<div class="product-wrapper mb-35">
-										<div style="display: none">
-											<jsp:useBean id="now" class="java.util.Date" />
-											<fmt:formatDate value="${now}" pattern="yyyyMMdd" />
-											<fmt:parseDate value="${o.ONE_RDATE}" var="rdate"
-												pattern="yyyy-MM-dd" />
-											<fmt:formatDate value="${rdate}" pattern="yyyyMMdd" />
-										</div>
-										<c:if test="${rdate >= now}">
-											<div class="product-img">
-												<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}"> <img
-													alt="oneday_main_poster" id="poster"
-													src="resources/OBoardupload${o.SAVEFILE}" width="310px"
-													height="375px">
-												</a>
-												<%-- <div style="display:none">
-											<jsp:useBean id="now" class="java.util.Date"/>
-											<fmt:formatDate value="${now}" pattern="yyyyMMdd" />
-											<fmt:parseDate value="${o.ONE_RDATE}" var="rdate" pattern="yyyy-MM-dd" />
-											<fmt:formatDate value="${rdate}" pattern="yyyyMMdd" />
-											</div> --%>
-
-												<div class="price-decrease">
-													<span>모집중</span>
-												</div>
-											</div>
-										</c:if>
-
-										<c:if test="${rdate < now}">
-											<div class="product-img end">
-												<div class="posterWrapper">
-													<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}">
-														<img alt="oneday_main_poster" id="poster"
-														src="resources/OBoardupload${o.SAVEFILE}" width="310px"
-														height="375px" style="opacity:0.3">
-													</a>
-												</div>
-												<div class="price-decrease">
-													<span class="ERdate" style="background: black">종료</span>
-												</div>
-											</div>
-										</c:if>
-										<%-- <div class="product-action-3">
-												<a class="action-plus-2" title="Quick View"
-													href="./OnedayDetailAction.one?num=${o.ONE_INDEX}"> <span>상세정보
-														보러가기</span>
-												</a>
-											</div> --%>
-
-										<div class="product-content" style="padding-bottom: 30px; margin-bottom: 10px; padding-top: 10px; border :2px solid black;">
-											<div class="product-title-wishlist">
-												<div class="product-title-3">
-													<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}">
-														${o.ONE_TITLE}</a>
-												</div>
-
-											</div>
-											<div class="product-peice-addtocart">
-												<div>
-													<span>장소 : ${o.ONE_LOCATE}</span>
-												</div>
-												<span> 일시 :${o.ONE_RDATE} ${o.ONE_PRICE}원</span>
-												<div class="description-oneday">${o.ONE_LINE}</div>
-											</div>
-										</div>
-										<div class="product-list-details">
-											<h2>
-												<a href="product-details.html">Awesome Cloth Jewelry</a>
-											</h2>
-											<div class="product-price">
-												<span class="old">$22.00 </span> <span>$19.00</span>
-											</div>
-											<p>Lorem ipsum dolor sit amet, consectetur adipic it, sed
-												do eiusmod tempor incididunt ut labore et dolore magna
-												aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-												ullamco laboris nisi ut aliquip ex ea commodo consequat.
-												Duis aute irure dolor in reprehenderit in voluptate velit
-												esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-												occaecat cupidatat</p>
-											<div class="shop-list-cart">
-												<a href="cart.html"><i class="ti-shopping-cart"></i> Add
-													to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</c:forEach>
-
-
-
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- 부트스트랩 제공 페이징-->
-			<div class="pagination-style text-center mt-30" id="pagination">
-				<ul class="paging_align">
-					<c:if test="${page <= 1 }">
-						<li><i class="ion-chevron-left" style="display: none;"></i></li>
-					</c:if>
-					<c:if test="${page > 1}">
-						<li><a href="./OnedayList.one?page=${page-1}"><i
-								class="ion-chevron-left"></i></a></li>
-					</c:if>
-
-					<c:forEach var="a" begin="${startpage}" end="${endpage}">
-						<c:if test="${a == page }">
-							<li><a class="active" href="#">${a}</a></li>
-						</c:if>
-						<c:if test="${a != page}">
-							<li><a href="./OnedayList.one?page=${a}">${a}</a></li>
-						</c:if>
-					</c:forEach>
-
-					<c:if test="${page >= maxpage}">
-						<li><i class="ion-chevron-right" style="display: none;"></i></li>
-					</c:if>
-					<c:if test="${page < maxpage}">
-						<li><a href="./OnedayList.one?page=${page+1}"> <i
-								class="ion-chevron-right"></i>
-						</a></li>
-					</c:if>
-				</ul>
-			</div>
 
 			<footer class="hm-4-padding">
 				<div class="container-fluid">
@@ -565,5 +523,6 @@
 		<script src="resources/js/owl.carousel.min.js"></script>
 		<script src="resources/js/plugins.js"></script>
 		<script src="resources/js/main.js"></script>
+		<script src="resources/js/qna_board/view3.js"></script>
 </body>
 </html>

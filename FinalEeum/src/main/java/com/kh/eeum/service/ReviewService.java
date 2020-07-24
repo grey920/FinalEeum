@@ -16,5 +16,6 @@ public interface ReviewService {
 	public int update(Review review);
 	public int getReviewCount(String expert_id);
 	public int reviewDelete(int num);
+	float selectReviewList(String expertid);
 
 }

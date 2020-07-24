@@ -13,6 +13,7 @@ CREATE TABLE review(
 	rv_rating4 number(2,1) not null,
 	rv_rating5 number(2,1) not null,
 	rv_rating6 number(2,1) not null,
+	rv_sum number null,
 	rv_date date
 );
 
@@ -50,6 +51,6 @@ values (rev_seq.nextval,'duswl0918','aaa','지대다',null,null);
 	from review where RV_EXPERT_ID = 'aaa';
 	
 		
-		select sum(rv_rating1),sum(rv_rating2),sum(rv_rating3),sum(rv_rating4),sum(rv_rating5),sum(rv_rating6)
+	select  NVL(TRIM(TO_CHAR(avg(rv_sum), '99999999.99')),0)  as rv_sum
 		from review
-		where rv_expert_id = 'aaa';
+		where rv_expert_id = 'aaa'

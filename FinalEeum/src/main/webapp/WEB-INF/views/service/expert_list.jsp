@@ -56,21 +56,12 @@
 		<div class="breadcrumb-area mt-37 hm-4-padding">
 			<div class="container-fluid">
 				<div class="breadcrumb-content text-center">
-					<h2>Shop Page</h2>
-					<ul>
-						<li><a href="#">home</a></li>
-						<li>Shop page</li>
-					</ul>
+					<h2>이음 전문가 리스트</h2>
+	
 				</div>
 			</div>
 		</div>
-		<div class="banner-area hm-4-padding">
-			<div class="container-fluid">
-				<div class="banner-img">
-					<a href="#"><img src="resources/img/banner/16.jpg" alt=""></a>
-				</div>
-			</div>
-		</div>
+
 		<div class="shop-wrapper hm-3-padding pt-120 pb-100">
 			<div class="container-fluid">
 				<div class="row">

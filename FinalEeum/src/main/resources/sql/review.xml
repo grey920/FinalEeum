@@ -7,7 +7,9 @@
 	<select id="selectReviewList" resultType="map" >
 		select *
 		from (select rownum
-		rnum,rv_no,rv_user_id,rv_expert_id,rv_content,rv_rating1,rv_rating2,rv_rating3,rv_rating4,rv_rating5,rv_rating6,TO_CHAR(rv_date,'YYYY-MM-DD') 
+		rnum,rv_no,rv_user_id,rv_expert_id,rv_content,TO_CHAR(rv_rating1, 'FM999999999.0') AS RV_RATING1,TO_CHAR(rv_rating2, 'FM999999999.0') AS RV_RATING2,
+		TO_CHAR(rv_rating3, 'FM999999999.0') AS RV_RATING3,TO_CHAR(rv_rating4, 'FM999999999.0') AS RV_RATING4,
+		TO_CHAR(rv_rating5, 'FM999999999.0') AS RV_RATING5,TO_CHAR(rv_rating6, 'FM999999999.0') AS RV_RATING6,TRIM(TO_CHAR(rv_sum, '99999999.99')) as rv_sum,TO_CHAR(rv_date,'YYYY-MM-DD') as RV_DATE
 			from (
 				select *
 				from review where rv_expert_id = #{expert_id}
@@ -19,14 +21,14 @@
 	
 	<insert id="insert" parameterType="Review">
 		insert into review 
-		values(rev_seq.nextval,#{rv_user_id},#{rv_expert_id},#{rv_content},#{rv_rating1},#{rv_rating2},#{rv_rating3},#{rv_rating4},#{rv_rating5},#{rv_rating6},sysdate)
+		values(rev_seq.nextval,#{rv_user_id},#{rv_expert_id},#{rv_content},#{rv_rating1},#{rv_rating2},#{rv_rating3},#{rv_rating4},#{rv_rating5},#{rv_rating6},#{rv_sum},sysdate)
 		
 	</insert>
 
 	<update id="update" parameterType="Review">
 	update review
 	set rv_content = #{rv_content}, rv_rating1 = #{rv_rating1}, rv_rating2 = #{rv_rating2}, rv_rating3 = #{rv_rating3}
-	, rv_rating4 = #{rv_rating4}, rv_rating5 = #{rv_rating5}, rv_rating6 = #{rv_rating6}, rv_date = sysdate
+	, rv_rating4 = #{rv_rating4}, rv_rating5 = #{rv_rating5}, rv_rating6 = #{rv_rating6},rv_sum = #{rating_sum}rv_date = sysdate
 	where rv_no = #{rv_no}
 	</update>
 	
@@ -39,5 +41,11 @@
 <delete id="delete" parameterType="int">
 	delete review where rv_no = #{num}
 </delete>
+
+<select id="selectRating" parameterType="String" resultType="float">
+		select  NVL(TRIM(TO_CHAR(avg(rv_sum), '99999999.99')),0)  as rv_sum
+		from review
+		where rv_expert_id = #{expert_id}
+</select>
 
 </mapper>

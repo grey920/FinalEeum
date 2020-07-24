@@ -20,6 +20,13 @@ public class Review {
 	private float rv_rating4;
 	private float rv_rating5;
 	private float rv_rating6;
+	private float rv_sum;
+	public float getRv_sum() {
+		return rv_sum;
+	}
+	public void setRv_sum(float rv_sum) {
+		this.rv_sum = rv_sum;
+	}
 	public int getRv_no() {
 		return rv_no;
 	}

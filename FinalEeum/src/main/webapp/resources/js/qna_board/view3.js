@@ -88,11 +88,11 @@ $(function() {
    $("#content").on('keyup', function() {
       length = $(this).val().length;
       console.log("text")
-      if (length > 50) {
-         length = 50;
+      if (length > 300) {
+         length = 300;
          content = content.substring(0, length);
       }
-      $(".float-left").text(length + "/50")
+
    })
 
    // 등록 또는 수정 완료 버튼을 클릭한 경우
@@ -101,8 +101,7 @@ $(function() {
    $("#write").click(function() {
       buttonText = $("#write").text(); // 버튼의 라벨로 add 할지 update 할지 결정
       content = $("#content").val();
-      $(".float-left").text('총 50자까지 가능합니다.');
-
+     
       if (buttonText == "등록") { // 댓글을 추가하는 경우
          url = "CommentAdd.bo";
          data = {

@@ -371,6 +371,8 @@ $(function() {
 		      $(this).parent().parent().css('background','lightgray'); // 수정할 행의배경색을 변경합니다.
 		   });
 	   
+	   //평점
+	   
 	
 		   
 		

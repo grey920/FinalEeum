@@ -40,4 +40,12 @@ public class ReviewDAO {
 	public int reviewDelete(int num) {
 		return sqlSession.delete("Reviews.delete",num);
 	}
+
+
+
+	public float selectReviewList1(String expertid) {
+		
+		return sqlSession.selectOne("Reviews.selectRating", expertid);
+	}
+
 }

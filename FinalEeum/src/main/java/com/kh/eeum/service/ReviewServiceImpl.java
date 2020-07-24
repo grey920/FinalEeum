@@ -42,6 +42,7 @@ public class ReviewServiceImpl implements ReviewService{
 
 	@Override
 	public int insertReview(Review review) {
+		
 		return dao.insertReview(review);
 	}
 
@@ -58,6 +59,16 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public int reviewDelete(int num) {
 		return dao.reviewDelete(num);
+	}
+
+	@Override
+	public float selectReviewList(String expertid) {
+	
+		float rating = dao.selectReviewList1(expertid);
+		if(rating == 0) {
+			return 0;
+		}
+		return rating;
 	}
 
 

@@ -2,14 +2,17 @@ package com.kh.eeum.domain;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class Board {
+public class QnA {
 	
 
 	private int 	QNA_INDEX;		//�۹�ȣ
 	private String	QNA_TITLE;		//�� �ۼ���
 	private String	QNA_WRITER;		//�� ��й�ȣ
+	private String  QNA_REPORT;
 	private String	QNE_CONTENT;	//�� ����
 	private String	QNA_DATE;
+	private String 	QNA_TYPE;
+	private int QNA_TIMES;
 	public int getQNA_INDEX() {
 		return QNA_INDEX;
 	}
@@ -28,6 +31,12 @@ public class Board {
 	public void setQNA_WRITER(String qNA_WRITER) {
 		QNA_WRITER = qNA_WRITER;
 	}
+	public String getQNA_REPORT() {
+		return QNA_REPORT;
+	}
+	public void setQNA_REPORT(String qNA_REPORT) {
+		QNA_REPORT = qNA_REPORT;
+	}
 	public String getQNE_CONTENT() {
 		return QNE_CONTENT;
 	}
@@ -40,32 +49,17 @@ public class Board {
 	public void setQNA_DATE(String qNA_DATE) {
 		QNA_DATE = qNA_DATE;
 	}
-	public String getQNA_SAVEFILE() {
-		return QNA_SAVEFILE;
-	}
-	public void setQNA_SAVEFILE(String qNA_SAVEFILE) {
-		QNA_SAVEFILE = qNA_SAVEFILE;
-	}
-	public String getQNA_ORIGINALFILE() {
-		return QNA_ORIGINALFILE;
-	}
-	public void setQNA_ORIGINALFILE(String qNA_ORIGINALFILE) {
-		QNA_ORIGINALFILE = qNA_ORIGINALFILE;
-	}
 	public String getQNA_TYPE() {
 		return QNA_TYPE;
 	}
 	public void setQNA_TYPE(String qNA_TYPE) {
 		QNA_TYPE = qNA_TYPE;
 	}
-	private String	QNA_SAVEFILE;	//�� ����
-	private String	QNA_ORIGINALFILE;		//÷�ε� ������ �̸�
-	private String 	QNA_TYPE;
-	private MultipartFile uploadfile;
-	public MultipartFile getUploadfile() {
-		return uploadfile;
+	public int getQNA_TIMES() {
+		return QNA_TIMES;
 	}
-	public void setUploadfile(MultipartFile uploadfile) {
-		this.uploadfile = uploadfile;
+	public void setQNA_TIMES(int qNA_TIMES) {
+		QNA_TIMES = qNA_TIMES;
 	}
+
 }

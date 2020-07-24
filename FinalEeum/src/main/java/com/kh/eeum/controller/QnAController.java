@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,13 +15,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.eeum.domain.Board;
+import com.kh.eeum.domain.QnA;
+import com.kh.eeum.domain.Comment;
 import com.kh.eeum.domain.Oneday;
 import com.kh.eeum.service.BoardService;
 import com.kh.eeum.service.CommentService;
+
 
 
 
@@ -55,7 +60,7 @@ public class QnAController {
 		if(endpage > maxpage)
 			endpage = maxpage;
 		
-		List<Board> boardlist = boardService.getBoardList(page,limit);
+		List<QnA> boardlist = boardService.getBoardList(page,limit);
 		
 		mv.setViewName("QnA_Board/qna_board_list");
 		mv.addObject("page",page); 
@@ -70,70 +75,72 @@ public class QnAController {
 	
 	//글쓰기 페이지 이동
 	@GetMapping(value = "/BoardWrite.bo")
-	public String board_write(Board board) {
-		return "QnA_Board/oneday_write";
+	public String board_write(QnA board) {
+		return "QnA_Board/qna_write";
 	}
 	
 	//글쓰기 작성
 	@PostMapping(value="/BoardAddAction.bo")
-	public String bbs_write_ok(Board board, HttpServletRequest request) throws Exception {
-		MultipartFile uploadfile = board.getUploadfile();
+	public String bbs_write_ok(QnA board, HttpServletRequest request) throws Exception {
 		
-		if(!uploadfile.isEmpty()) {
-			String fileName = uploadfile.getOriginalFilename(); // 원래 파일명 <==String getOriginalFilename() : 업로드한 파일의 이름을 구한다
-			board.setQNA_ORIGINALFILE(fileName); // 원래 파일명 저장
-			
-			// 새로운 폴더 이름 : 오늘 년-월-일  
-			Calendar c = Calendar.getInstance();
-			int year = c.get(Calendar.YEAR); // 오늘 년도 구합니다.
-			int month = c.get(Calendar.MONTH ) + 1; // 오늘 월 구합니다.
-			int date = c.get(Calendar.DATE); // 오늘일  구합니다.
-			String saveFolder = request.getSession().getServletContext().getRealPath("resources") + "/QnAupload/";
-			String homedir = saveFolder + year + "-" + month + "-" + date;
-			System.out.println("homedir = "+homedir);
-			File path1 = new File(homedir);
-			
-			if(!(path1.exists())) {
-				path1.mkdir();  // 새로운 폴더를 생성
-			}
-			
-			// 난수를 구합니다.  <== 파일명 중복 없애기 위해
-			Random r = new Random();
-			int random = r.nextInt(100000000);
-			
-			/*****   확장자  구하기  시작   ****/
-			int index = fileName.lastIndexOf(".");
-			/*
-			 문자열에서 특정 문자열의 위치 값(index)를 반환한다.
-			 indexOf가 처음 발견되는 문자열에 대한 index를 반환하는반면, 
-			 lastIndexOf는 마지막으로 발견되는 문자열의 index를 반환합니다.
-			 (파일명에 점이 여러개 있을 경우 맨 마지막에 발견되는 문자열의 위치를 리턴합니다.)
-			  */
-			System.out.println("index = " + index);
-			
-			String fileExtension = fileName.substring(index + 1);
-			System.out.println("fileExtension = "+ fileExtension);
-			/*****   확장자  구하기  끝   ****/
-			
-			// 새로운 파일명
-			String refileName = "eeum" + year + month + date + random + "." + fileExtension;
-			System.out.println("refileName = " + refileName);
-			
-			// 오라클 디비에 저장될 파일 명
-			String fileDBName = "/" + year + "-" + month + "-" + date + "/" + refileName;
-			System.out.println("fileDBName = "+ fileDBName);
-			
-			//️transferTo(File path) : 업로드한 파일을 매개변수의 경로에 저장합니다.
-			uploadfile.transferTo(new File(saveFolder + fileDBName));
-			
-			//바뀐 파일명으로 저장 (최종 파일명)
-			board.setQNA_SAVEFILE(fileDBName);
-		}
+	
 		boardService.insertClass(board);
-		//onedayService.insertOneday(oneday);
+
 		return "redirect:/QnA.net";
 	}
 	
+	@GetMapping(value = "/BoardDetailAction.bo")
+	public ModelAndView Detail(int num,ModelAndView mv,
+			HttpServletRequest request,HttpSession session) {
+		QnA board = boardService.getDetail(num);
+		if(board == null) {
+			mv.setViewName("error/error");
+			mv.addObject("url" , request.getRequestURL());
+		}else {
+			System.out.println("�󼼺��� ����");
+			int count = commentService.getListCount(num); // ����� � �ִ����� �ѷ��ֱ� ����  getListCount�� �߰� 
+			String user_id =  (String) session.getAttribute("user_id");
+			mv.setViewName("QnA_Board/qna_board_view");
+			mv.addObject("count", count);
+			mv.addObject("user_id",user_id);
+			mv.addObject("boarddata",board);
+		}
+		return mv;
+	}
+	
+	//댓글
+	@ResponseBody
+	@PostMapping(value = "CommentList.bo")
+	public List<Comment> CommentList(@RequestParam("board_num") int num,
+			@RequestParam(value = "page", defaultValue = "1",required = false) int page){
+		System.out.println("댓글 숫자ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ"+num);
+		List<Comment> list = commentService.getCommentList(num, page);
+		return list;
+	}
+	
+	@PostMapping(value = "CommentAdd.bo")
+	public void CommentAdd(Comment co,HttpServletResponse response,@RequestParam(value = "board_num") int num) throws Exception{
+		
+		co.setNum(num);
+		System.out.println("댓글 값========================================"+co.getNum());
+		int ok = commentService.commentsInsert(co);
+		response.getWriter().print(ok);
+	}
+	
+	@PostMapping(value = "CommentDelete.bo")
+	public void CommentDelete(int num,HttpServletResponse response) throws Exception{
+		//int num �ڸ��� ���� Integer.parseInt(request.getParameter("num")); �� ���ش�.
+		int result = commentService.commentsDelete(num);
+		
+		
+		response.getWriter().print(result);
+	}
+	
+	@PostMapping(value = "CommentUpdate.bo")
+	public void CommentUpdate(Comment co,HttpServletResponse response) throws Exception{
+		int ok = commentService.commentsUpdate(co);
+		response.getWriter().print(ok);
+	}
 	
 
 }
