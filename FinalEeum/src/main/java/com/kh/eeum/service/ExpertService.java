@@ -54,7 +54,7 @@ public interface ExpertService {
 	//전문가 아이디 / 비번 찾기
 	public String findId(String expert_name, String expert_jumin1, String expert_jumin2);
 	public int findPwd(String expert_id, String expert_name, String expert_jumin1, String expert_jumin2);
-	public int updatePwd(String expert_id, String expert_name, String expert_jumin1, String newPwd);
+	public int updatePwd(String expert_id, String expert_name, String expert_jumin1, String expert_pass);
 	
 
 

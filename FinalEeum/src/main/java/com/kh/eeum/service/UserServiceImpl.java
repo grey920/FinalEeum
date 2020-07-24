@@ -161,12 +161,12 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public int updatePwd(String user_id, String user_name, String user_jumin1, String newPwd) {
+	public int updatePwd(String user_id, String user_name, String user_jumin1, String user_pass) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("user_id", user_id);
 		map.put("user_name", user_name);
 		map.put("user_jumin1", user_jumin1);
-		map.put("user_pass", newPwd);
+		map.put("user_pass", user_pass);
 		
 		return udao.updatePwd(map);
 	}

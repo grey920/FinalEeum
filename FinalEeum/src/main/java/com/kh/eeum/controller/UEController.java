@@ -711,7 +711,7 @@ public class UEController {
 		}
 	}
 	
-	/* 아이디 / 비밀번호 찾기 */
+	/* 사용자 아이디 / 비밀번호 찾기 */
 	@RequestMapping(value="userFind.net")
 	public String userFind() {
 		return "UE/user_find";
@@ -769,7 +769,9 @@ public class UEController {
 			    }
 			}
 			
-			result2 = userservice.updatePwd(user_id, user_name, user_jumin1, newPwd);
+			String user_pass = passwordEncoder.encode(newPwd);
+			
+			result2 = userservice.updatePwd(user_id, user_name, user_jumin1, user_pass);
 			
 			if (result2 == 1) {
 				mv.setViewName("UE/user_showPwd");
@@ -851,7 +853,8 @@ public class UEController {
 			    }
 			}
 			
-			result2 = expertservice.updatePwd(expert_id, expert_name, expert_jumin1, newPwd);
+			String expert_pass = passwordEncoder.encode(newPwd);
+			result2 = expertservice.updatePwd(expert_id, expert_name, expert_jumin1, expert_pass);
 			
 			if (result2 == 1) {
 				mv.setViewName("UE/expert_showPwd");

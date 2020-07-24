@@ -425,8 +425,7 @@
 		<script src="resources/js/jquery-3.5.0.js"></script>
 		<script>
 			function message (url) {
-				var send = window.open(url, "send", "width=100, heigth=100");
-				send.resizeTo(700,800);
+				var send = window.open(url, "send", "width=100, heigth=100, location=no");
 			};
 		</script>
         <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
