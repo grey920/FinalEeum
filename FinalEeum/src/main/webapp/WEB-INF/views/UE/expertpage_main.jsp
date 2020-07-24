@@ -84,6 +84,40 @@
                                         </div>
                                     </div>
                                 </div>
+                                                                
+                                <div class="product-width col-md-6 col-lg-4">
+                                    <div class="product-wrapper mb-35" style="width:200px">
+                                        <div class="product-img">
+                                            <a href="userWishlist.net">
+                                                <img src="resources/img/mypage/wishlist.png" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-title-wishlist">
+                                                <div class="product-title-3">
+                                                    <h3><a href="userWishlist.net">견적확인 <br><p></p> 예약내역</a></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                                                
+                                <div class="product-width col-md-6 col-lg-4">
+                                    <div class="product-wrapper mb-35" style="width:200px">
+                                        <div class="product-img">
+                                            <a href="messageReceive.net">
+                                                <img src="resources/img/mypage/conversation.png" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-title-wishlist">
+                                                <div class="product-title-3">
+                                                    <h3><a href="messageReceive.net">메시지 목록</a></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 
                                 <div class="product-width col-md-6 col-lg-4">
                                     <div class="product-wrapper mb-35" style="width:200px">
@@ -105,31 +139,14 @@
                                 <div class="product-width col-md-6 col-lg-4">
                                     <div class="product-wrapper mb-35" style="width:200px">
                                         <div class="product-img">
-                                            <a href="messageReceive.net">
-                                                <img src="resources/img/mypage/conversation.png" alt="">
+                                            <a href="#">
+                                                <img src="resources/img/mypage/price.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-content">
                                             <div class="product-title-wishlist">
                                                 <div class="product-title-3">
-                                                    <h3><a href="messageReceive.net">메시지 목록</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-width col-md-6 col-lg-4">
-                                    <div class="product-wrapper mb-35" style="width:200px">
-                                        <div class="product-img">
-                                            <a href="userWishlist.net">
-                                                <img src="resources/img/mypage/wishlist.png" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h3><a href="userWishlist.net">견적확인 <br><p></p> 예약내역</a></h3>
+                                                    <h3><a href="#">서비스 가격 설정</a></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -146,7 +163,7 @@
                                         <div class="product-content">
                                             <div class="product-title-wishlist">
                                                 <div class="product-title-3">
-                                                    <h3 class="center"><a href="userOneday.net">계좌<br><p></p>정산 관리</a></h3>
+                                                    <h3 class="center"><a href="userOneday.net">계좌 ・ 정산 관리</a></h3>
                                                 </div>
                                             </div>
                                         </div>

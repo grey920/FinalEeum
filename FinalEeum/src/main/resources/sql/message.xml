@@ -46,7 +46,7 @@
 
 	<update id="msgRead" parameterType="map">
 		update message
-		set MSG_STATE = #{msg_state}
+		set MSG_STATE = MSG_STATE + #{msg_state}
 		where MSG_NO = #{msg_no}
 	</update>
 </mapper>
