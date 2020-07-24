@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.eeum.domain.Portfolio;
-import com.kh.eeum.domain.Reportex;
-import com.kh.eeum.domain.Repu;
-import com.kh.eeum.domain.User;
+import com.kh.eeum.domain.QnA;
 
 @Repository
 public class AdminDAO {
@@ -37,20 +35,8 @@ public class AdminDAO {
 		return sqlSession.selectOne("eeum.newUsers");
 	}
 	
-	public List<Reportex> reportEx() {
-		return sqlSession.selectList("eeum.reportex");
+	public List<QnA> getQnaList(){
+		return sqlSession.selectList("eeum.qna");
 	}
-	
-	public List<Repu> reportUs(){
-		return sqlSession.selectList("eeum.repu");
-	}
-	
-	/*public int crepex() {
-		return sqlSession.selectOne("eeum.crepex");
-	}
-	
-	public int crepu() {
-		return sqlSession.selectOne("eeum.crepu");
-	}*/
 	
 }

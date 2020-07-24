@@ -72,25 +72,10 @@ body {
 						</ul></li>
 
 					<!-- 신고회원 관리 -->
-					<li class="nav-item has-treeview"><a href="#" class="nav-link"
+					<li class="nav-item has-treeview"><a href="qnaUser.list" class="nav-link"
 						style="color: white"> <i class="nav-icon fas fa-edit"
 							style="color: white"></i>
-							<p>
-								회원 관리 <i class="fas fa-angle-left right" style="color: white"></i>
-							</p>
-					</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item"><a href="reportUser.net"
-								class="nav-link" style="color: white"> <i
-									class="far fa-circle nav-icon" style="color: white"></i>
-									<p>신고 회원 관리</p>
-							</a></li>
-							<li class="nav-item"><a href="reportExpert.net"
-								class="nav-link" style="color: white"> <i
-									class="far fa-circle nav-icon" style="color: white"></i>
-									<p>신고 전문가 관리</p>
-							</a></li>
-						</ul></li>
+							<p>신고 회원 관리</p></a></li>
 
 					<!-- 회원 정보 보기 -->
 					<li class="nav-item has-treeview"><a href="#" class="nav-link"

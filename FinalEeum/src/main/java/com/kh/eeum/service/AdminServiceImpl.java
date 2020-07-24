@@ -7,10 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.eeum.dao.AdminDAO;
 import com.kh.eeum.domain.Portfolio;
-import com.kh.eeum.domain.Reportex;
-import com.kh.eeum.domain.Repu;
-import com.kh.eeum.domain.Review_Board;
-import com.kh.eeum.domain.User;
+import com.kh.eeum.domain.QnA;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -44,26 +41,8 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public List<Reportex> reportEx() {
-		return asdao.reportEx();
+	public List<QnA> qnaUsers() {
+		return asdao.getQnaList();
 	}
-
-	@Override
-	public List<Repu> reportUs() {
-		return asdao.reportUs();
-	}
-
-	/*@Override
-	public int crepex() {
-		return asdao.crepex();
-	}
-
-	@Override
-	public int crepu() {
-		return asdao.crepu();
-	}*/
-
-
-
 
 }

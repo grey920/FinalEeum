@@ -80,6 +80,9 @@
 									</ul></li>
 							</div>
 							</c:if>
+<%-- 							<c:chosse>
+								<c:when test="${!empty user_id && empty expert_id}"> --%>
+								
 							
 							<c:if test="${!empty user_id && empty expert_id}">
 							<div class="header-login same-style"
@@ -90,7 +93,7 @@
 										<li><img src="resources/profile${user_saveprofile}" style="width:15%; height:auto;border-radius:50%;">&nbsp;&nbsp;${user_nick}&nbsp;님</li>
 										<li><a href="userpage.net">나의 정보</a></li>
 										<c:if test="${user_id eq 'admin1234'}">
-										<li><a href="admin.net">관리자 페이지로 이동</a></li>
+										<li><a href="admin.net">관리자 페이지</a></li>
 										</c:if>
 										<li><a href="logout.net">이음 나가기</a></li>
 									</ul></li>

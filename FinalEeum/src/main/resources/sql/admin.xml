@@ -51,14 +51,9 @@
 		SELECT COUNT(NVL(USER_ID, 0)) FROM USERS
 	</select>
 	
-	<select id="reportex" resultType="Reportex">
-		SELECT REPEX_EXID, REPEX_CATE, REPEX_STATE
-		FROM REPORTEX 
-	</select>
-	
-	<select id="repu" resultType="Repu">
-		SELECT REPU_UID, REPU_CATE, REPU_STATE
-		FROM REPU
+	<select id="qna" resultType="QnA">
+		SELECT QNA_INDEX, QNA_WRITER, QNA_REPORT, QNA_TYPE, QNA_TIMES
+		FROM QNABOARD
 	</select>
 	
 	<!-- <select id="crepex" resultType="int">

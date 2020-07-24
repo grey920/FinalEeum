@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>이음 관리자</title>
+<link href="resources/img/favicon.png" rel="shortcut icon" type="image/x-icon">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="stylesheet" type="text/css" href="resources/plugins/adminfonts.css">
 <!-- <link rel="stylesheet" type="text/css" href="resources/dist/preloader/style.css"> -->
 <script src="resources/js/jquery-3.5.0.js"></script>
@@ -26,18 +28,6 @@
 			<li class="nav-item d-none d-sm-inline-block">
 			<a href="main.bo"><img src="resources/img/logo/eeum_logo.png" alt="E-eum:admin" class="brand-image img-square" style="opacity: .8; height: 80px; margin: 7.5px 0;" ></a></li>
 		</ul>
-
-		<!-- SEARCH FORM -->
-		<form class="form-inline ml-3">
-			<div class="input-group input-group-sm">
-				<input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" style="height:55px; width:300px; font-size:22px">
-				<div class="input-group-append">
-					<button class="btn btn-navbar" type="submit">
-						<i class="fas fa-search" style="font-size:24px;"></i>
-					</button>
-				</div>
-			</div>
-		</form>
 	</nav>
 	<!-- /.navbar -->
 </body>
