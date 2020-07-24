@@ -246,8 +246,12 @@
 			<scope>test</scope>
 		</dependency>
 		
-		
-		
+		<!-- chat -->
+		 <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${org.springframework-version}</version>
+		 </dependency>
 		
 		
 		
