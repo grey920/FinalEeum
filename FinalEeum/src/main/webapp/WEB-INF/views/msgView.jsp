@@ -40,7 +40,7 @@ p{font-weight:800}
 <script src="resources/js/jquery-3.5.0.js"></script>
 <script>
 	function message (url) {
-		var send = window.open(url, "", "width=100, heigth=100, location=no, location=no");
+		var send = window.open(url, "", "width=100, heigth=100, location=no");
 		send.resizeTo(700,800);
 		self.close();
 	};

@@ -21,8 +21,6 @@ public class ReviewDAO {
 		return sqlSession.selectList("Reviews.selectReviewList", map);
 	}
 
-
-
 	public int insertReview(Review review) {
 		return sqlSession.insert("Reviews.insert",review);
 	}
@@ -35,9 +33,15 @@ public class ReviewDAO {
 		return sqlSession.selectOne("Reviews.count",expert_id);
 	}
 
-
-
 	public int reviewDelete(int num) {
 		return sqlSession.delete("Reviews.delete",num);
+	}
+
+	public int reviewCount(String user_id) {
+		return sqlSession.selectOne("Reviews.reviewCount", user_id);
+	}
+
+	public List<Review> reviewList(HashMap<String, Object> map) {
+		return sqlSession.selectList("Reviews.reviewList", map);
 	}
 }

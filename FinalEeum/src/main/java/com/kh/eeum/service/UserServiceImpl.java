@@ -1,6 +1,7 @@
 package com.kh.eeum.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -123,7 +124,51 @@ public class UserServiceImpl implements UserService{
 		return udao.getProfile(user_id);
 	}
 
+	@Override
+	public String findId(String user_name, String user_jumin1, String user_jumin2) {
+		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+		list = udao.findId(user_name, user_jumin1);
+		
+		String result_id = null;
+		
+		for(int i = 0; i <list.size(); i++) {
+			String result_jumin = list.get(i).get("USER_JUMIN2");
+			
+			if(passwordEncoder.matches(user_jumin2, result_jumin)) {
+				result_id = list.get(i).get("USER_ID");
+				break;
+			}
+		}
+		
+		return result_id;
+	}
 
-	
-	
+	@Override
+	public int findPwd(String user_id, String user_name, String user_jumin1, String user_jumin2) {
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map = udao.findPwd(user_id, user_name, user_jumin1);
+		
+		int result = 0;
+		
+		String result_jumin2 = map.get("USER_JUMIN2");
+			
+		if(passwordEncoder.matches(user_jumin2, result_jumin2)) {
+			result = 1;
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int updatePwd(String user_id, String user_name, String user_jumin1, String newPwd) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("user_id", user_id);
+		map.put("user_name", user_name);
+		map.put("user_jumin1", user_jumin1);
+		map.put("user_pass", newPwd);
+		
+		return udao.updatePwd(map);
+	}
+
 }

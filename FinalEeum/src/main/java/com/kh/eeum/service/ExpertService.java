@@ -50,6 +50,12 @@ public interface ExpertService {
 	public List<Reservation> reserveList(String user_id, int page, int limit);
 	public int cancelReserve(String rs_exid, String rs_uid, String rs_date);
 	public List<Review> ReviewRatingList(String expert_id);
+	
+	//전문가 아이디 / 비번 찾기
+	public String findId(String expert_name, String expert_jumin1, String expert_jumin2);
+	public int findPwd(String expert_id, String expert_name, String expert_jumin1, String expert_jumin2);
+	public int updatePwd(String expert_id, String expert_name, String expert_jumin1, String newPwd);
+	
 
 
 }
