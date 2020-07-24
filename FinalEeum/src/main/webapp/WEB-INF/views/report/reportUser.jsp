@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="resources/dist/img/eeumLogo2.png" rel="shortcut icon" type="image/x-icon">
+<link rel="shortcut icon" type="image/x-icon" href="resources/img/favicon.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>신고 회원 관리</title>
 </head>
@@ -30,6 +30,7 @@
 				</div>
 			</div>
 			<!-- /.container-fluid -->
+			
 		</section>
 
 		<!-- Main content -->
@@ -47,21 +48,29 @@
 									<thead>
 										<tr>
 											<th>회원 아이디</th>
-											<th>이름</th>
-											<th>회원 상태</th>
+											<th>신고 사유</th>
 											<th>신고 누적 횟수</th>
+											<th>회원 상태</th>
 											<th>처리 조치</th>
 										</tr>
 									</thead>
 									<tbody>
-											
+										<c:forEach var="rpu" items="${ulist }">
+										<tr>
+											<td><a href="repuDetail.net?id=${rpu.REPU_UID }">${rpu.REPU_UID }</a></td>
+											<td>${rpu.REPU_CATE }</td>
+											<td>${rpu.REPU_TIMES}</td>
+											<td>${rpu.REPU_TIMES }</td>
+											<td>${rpu.REPU_STATE }</td>
+										</tr>
+										</c:forEach>
 									</tbody>
 									<tfoot>
 										<tr>
 											<th>회원 아이디</th>
-											<th>이름</th>
-											<th>회원 상태</th>
+											<th>신고 사유</th>
 											<th>신고 누적 횟수</th>
+											<th>회원 상태</th>
 											<th>처리 조치</th>
 										</tr>
 									</tfoot>
@@ -72,12 +81,15 @@
 						<!-- /.card -->
 					</div>
 					<!-- /.col -->
+					
 				</div>
 				<!-- /.row -->
 			</div>
 			<!-- /.container-fluid -->
 		</section>
 		<!-- /.content -->
+		
+		
 	</div>
 	<!-- /.content-wrapper -->
 	
