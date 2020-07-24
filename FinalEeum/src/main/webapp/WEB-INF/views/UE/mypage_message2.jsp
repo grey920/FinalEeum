@@ -56,6 +56,19 @@ table thead tr th{font-size:21px !important}
 #check{background-color:#72A0E0;}
 #check a {color:white}
 #uncheck a{color:#72A0E0}
+.btn-style{margin-top:0 !important;
+       			margin-right:0 !important; 
+       			font-size:18px;
+         		border-radius:20px;
+         		background-color:white;
+         		color:#72A0E0;
+         		border:2px solid #72A0E0;
+         		padding:13px 20px;
+         		}
+.btn-style:hover{background-color:#72A0E0;
+         				    color:white;
+         					border:2px solid #72A0E0;
+         					}
 </style>
 
     </head>
@@ -118,6 +131,7 @@ table thead tr th{font-size:21px !important}
                                             <th class="product-quantity">받은 사람</th>
                                             <th class="product-name">내용</th>
                                             <th class="product-quantity">상태</th>
+                                            <th class="product-quantity"></th>
                                         </tr>
                                     </thead>
                                     
@@ -134,14 +148,10 @@ table thead tr th{font-size:21px !important}
 	                                            <span class="amount">
 		                                            <c:choose>
 		                                            	<c:when test="${fn:length(s.MSG_CONTENT) >14}">
-		                                            		<a onclick="javascript:message('msgJustView.net?msg_sid=${s.MSG_SID}&msg_rid=${s.MSG_RID}&msg_content=${s.MSG_CONTENT}')">
 		                                            			<c:out value="${fn:substring(s.MSG_CONTENT,0,13)}"/>...
-		                                            		</a>
 		                                            	</c:when>
 		                                            	<c:otherwise>
-		                                            		<a onclick="javascript:message('msgJustView.net?msg_sid=${s.MSG_SID}&msg_rid=${s.MSG_RID}&msg_content=${s.MSG_CONTENT}')">
 				                                           		<c:out value="${s.MSG_CONTENT}"/>
-		                                            		</a>
 		                                            	</c:otherwise>
 		                                            </c:choose>
                                             	</span>
@@ -151,9 +161,16 @@ table thead tr th{font-size:21px !important}
 	                                            <td class="product-subtotal">읽지 않음</td>
 	                                        </c:if>
                                         
-	                                        <c:if test="${s.MSG_STATE == '1' }">
+	                                        <c:if test="${s.MSG_STATE >= 1 }">
 	                                            <td class="product-subtotal">읽음</td>
 	                                        </c:if>
+	                                        
+	                                        <td class="product-subtotal">
+												<button class="btn-style" id="message" onclick="javascript:message('msgJustView.net?msg_no=${s.MSG_NO}&msg_sid=${s.MSG_SID}&msg_rid=${s.MSG_RID}&msg_content=${s.MSG_CONTENT}')">
+													<span>상세보기</span>	
+												</button>
+											</td>
+	                                        
                                           </tr>
                                         </c:forEach>
                                         
@@ -365,7 +382,7 @@ table thead tr th{font-size:21px !important}
 		<script src="resources/js/jquery-3.5.0.js"></script>
 		<script>
 			function message (url) {
-				var send = window.open(url, "send", "width=100, heigth=100");
+				var send = window.open(url, "", "width=100, heigth=100, location=no");
 				send.resizeTo(700,800);
 			};
 		</script>

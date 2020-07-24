@@ -132,6 +132,7 @@ table thead tr th{font-size:21px !important}
                                             <th class="product-quantity">보낸 사람</th>
                                             <th class="product-name">내용</th>
                                             <th class="product-quantity">상태</th>
+                                            <th class="product-quantity"></th>
                                         </tr>
                                     </thead>
                                     
@@ -149,32 +150,28 @@ table thead tr th{font-size:21px !important}
 	                                            <span class="amount">
 		                                            <c:choose>
 		                                            	<c:when test="${fn:length(r.MSG_CONTENT) >14}">
-		                                            		<a onclick="javascript:message('msgView.net?msg_no=${r.MSG_NO}&msg_sid=${r.MSG_SID}&msg_rid=${r.MSG_RID}&msg_content=${r.MSG_CONTENT}')">
 		                                            			<c:out value="${fn:substring(r.MSG_CONTENT,0,13)}"/>...
-		                                            		</a>
 		                                            	</c:when>
 		                                            	<c:otherwise>
-		                                            		<a onclick="javascript:message('msgView.net?msg_no=${r.MSG_NO}&msg_sid=${r.MSG_SID}&msg_rid=${r.MSG_RID}&msg_content=${r.MSG_CONTENT}')">
 				                                           		<c:out value="${r.MSG_CONTENT}"/>
 		                                            		</a>
 		                                            	</c:otherwise>
 		                                            </c:choose>
                                             	</span>
                                             </td>
+                                            
+                                            <c:if test="${r.MSG_STATE == '0' }">
+	                                            <td class="product-subtotal">읽지 않음</td>
+	                                        </c:if>
+                                        
+	                                        <c:if test="${r.MSG_STATE >= 1 }">
+	                                            <td class="product-subtotal">읽음</td>
+	                                        </c:if>
+	                                        
 	                                        <td class="product-subtotal">
-		                                        <c:choose>
-		                                            <c:when test="${!empty user_id && empty expert_id}">
-														<button class="btn-style" id="message" onclick="javascript:message('msgWrite.net?msg_rid=${r.MSG_SID}&msg_sid=${user_id}')">
-															<span>상세보기</span>	
-														</button>
-													</c:when>
-													
-													<c:when test="${empty user_id && !empty expert_id }">
-														<button class="btn-style" id="message" onclick="javascript:message('msgWrite.net?msg_rid=${r.MSG_SID}&msg_sid=${expert_id}')">
-															<span>상세보기</span>	
-														</button>
-													</c:when>
-												</c:choose>
+												<button class="btn-style" id="message" onclick="javascript:message('msgView.net?msg_no=${r.MSG_NO}&msg_sid=${r.MSG_SID}&msg_rid=${r.MSG_RID}&msg_content=${r.MSG_CONTENT}')">
+													<span>상세보기</span>	
+												</button>
 											</td>
                                           </tr>
                                         </c:forEach>
@@ -387,7 +384,7 @@ table thead tr th{font-size:21px !important}
 		<script src="resources/js/jquery-3.5.0.js"></script>
 		<script>
 			function message (url) {
-				var send = window.open(url, "send", "width=100, heigth=100");
+				var send = window.open(url, "", "width=100, heigth=100, location=no");
 				send.resizeTo(700,800);
 			};
 		</script>

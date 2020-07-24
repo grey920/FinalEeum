@@ -38,7 +38,9 @@ public class MessageController {
 	public String msgView (HttpServletRequest request) {
 		int msg_no = Integer.parseInt(request.getParameter("msg_no"));
 		System.out.println(msg_no);
+		
 		int result = messageservice.msgRead(msg_no);
+		System.out.println(result);
 		
 		if (result == 1) {
 			return "msgView";
