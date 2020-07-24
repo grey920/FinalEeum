@@ -7,6 +7,7 @@ public class Comment {
 	private String reg_date;
 	private int QNA_INDEX1;
 
+	
 	public int getQNA_INDEX1() {
 		return QNA_INDEX1;
 	}

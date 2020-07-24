@@ -16,6 +16,7 @@ public class ReviewDAO {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 
+	
 	public List<Review> selectReviewList(Map<String, Object> map) {
 		System.out.println("리뷰dao"+map.get("expert_id"));
 		return sqlSession.selectList("Reviews.selectReviewList", map);

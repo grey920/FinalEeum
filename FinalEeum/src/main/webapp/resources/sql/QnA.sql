@@ -10,6 +10,7 @@ QNA_TYPE VARCHAR2(40) NOT NULL,                              --신고 대분류
 QNA_TIMES NUMBER DEFAULT 0                                       --신고 누적 횟수, 기본 값 0
 );
 
+
 CREATE SEQUENCE qnaboard_seq
 START WITH 1
 INCREMENT BY 1

@@ -18,6 +18,7 @@ $(document).ready(
 				$('.heart_click2').css('background-color', '#CADEE3');
 
 			}
+			
 
 			$('#top').addClass('step-1');
 

@@ -1,4 +1,5 @@
 $(function() {
+	
 // 친절함
 	$(".svg-star-rating1").starRating(
 			{

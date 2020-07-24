@@ -41,7 +41,7 @@ public class QnAController {
 	public ModelAndView boardList(
 			
 			@RequestParam(value = "page",defaultValue = "1",required = false) int page,
-			ModelAndView mv) {
+			ModelAndView mv,HttpSession session) {
 		int limit = 10;	
 		
 		int listcount = boardService.getListCount(); 
@@ -60,7 +60,9 @@ public class QnAController {
 		if(endpage > maxpage)
 			endpage = maxpage;
 		
+		
 		List<QnA> boardlist = boardService.getBoardList(page,limit);
+		String user_id = (String) session.getAttribute("user_id");
 		
 		mv.setViewName("QnA_Board/qna_board_list");
 		mv.addObject("page",page); 
@@ -70,6 +72,7 @@ public class QnAController {
 		mv.addObject("listcount", listcount);
 		mv.addObject("boardlist", boardlist);
 		mv.addObject("limit", limit);
+		mv.addObject("user_id",user_id);
 		return mv;
 	}
 	

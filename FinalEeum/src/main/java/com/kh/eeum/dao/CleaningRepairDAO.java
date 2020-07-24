@@ -23,4 +23,5 @@ public class CleaningRepairDAO {
 		return sqlSession.selectOne("Cleanings.cleaningcount");
 	}
 
+	
 }

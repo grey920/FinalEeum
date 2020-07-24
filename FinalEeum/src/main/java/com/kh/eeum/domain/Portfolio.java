@@ -18,6 +18,7 @@ public class Portfolio {
 //	PF_PROFILE VARCHAR2(4000) NOT NULL,
 //	PF_SAVEPROFILE VARCHAR2(4000) NOT NULL
 //	
+	
 	private String PF_EXID;
 	private String PF_LOC;
 	private int PF_GRADE;

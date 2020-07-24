@@ -16,6 +16,7 @@ public class QnADAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	
 	public int getListCount() {
 		return sqlSession.selectOne("QnAs.count");
 	}

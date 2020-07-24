@@ -12,6 +12,7 @@ import com.kh.eeum.domain.Expert;
 @Repository
 public class ExpertInsectDAO {
 
+	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
