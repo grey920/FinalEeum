@@ -51,22 +51,20 @@
 		SELECT COUNT(NVL(USER_ID, 0)) FROM USERS
 	</select>
 	
-	<select id="qna" resultType="QnA">
+	<!-- 관리자 사이트에서 신고 회원 -->
+	<select id="qna" resultMap="qnaMap">
 		SELECT QNA_INDEX, QNA_WRITER, QNA_REPORT, QNA_TYPE, QNA_TIMES
 		FROM QNABOARD
 	</select>
-	
-	<!-- <select id="crepex" resultType="int">
-		SELECT REPEX_EXID, COUNT(REPEX_EXID) 
-		FROM REPORTEX 
-		GROUP BY REPEX_EXID
-	</select> 
-	
-	
-	<select id="crepu" resultType="int">
-		SELECT REPU_UID, COUNT(REPU_UID) 
-		FROM REPU
-		GROUP BY REPU_UID
-	</select>-->
+	<resultMap id="qnaMap" type="com.kh.eeum.domain.Repu">
+		<result property="QNA_REPORT" column="QNA_REPORT" />
+		<collection property="qnalist" ofType="com.kh.eeum.domain.QnA">
+			<result property="QNA_INDEX" column="QNA_INDEX" />
+			<result property="QNA_WRITER" column="QNA_WRITER" />
+			<result property="QNA_REPORT" column="QNA_REPORT" />	
+			<result property="QNA_TYPE" column="QNA_TYPE"/>
+			<result property="QNA_TIMES" column="QNA_TIMES"/>
+		</collection>
+	</resultMap>
 	
 </mapper>

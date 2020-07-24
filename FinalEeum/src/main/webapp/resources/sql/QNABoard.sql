@@ -23,4 +23,4 @@ NOCYCLE;
 delete from QNABOARD;
 
 INSERT INTO QNABOARD
-VALUES(qnaboard_seq.nextval, '신고합니다', 'user1234', 'user5678', '아 그냥 꼴보기 싫어여~~~',sysdate,'기타', 0); 
+VALUES(qnaboard_seq.nextval, '신고합니다', 'admin1234', 'user5678', '아 그냥 꼴보기 싫어여~~~',sysdate,'기타', 0); 
