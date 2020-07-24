@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="resources/css/bundle.css">
         <link rel="stylesheet" href="resources/css/style.css">
         <link rel="stylesheet" href="resources/css/responsive.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 		<%@ include file="../header.jsp" %>
         <style>
@@ -79,65 +80,10 @@
 
             <div class="shop-wrapper hm-3-padding pt-120 pb-100">
                 <div class="container">
+                
                     <div class="row">
                         <div class="col-md-12">
                             <div class="shop-topbar-wrapper">
-                                <div class="shop-filter">
-                                    <button class="product-filter-toggle">filter</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="product-filter-wrapper">
-                                <div class="row">
-                                    <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-                                        <h5>Sort by</h5>
-                                        <ul class="sort-by">
-                                            <li><a href="#">Default</a></li>
-                                            <li><a href="#">Popularity</a></li>
-                                            <li><a href="#">Average rating</a></li>
-                                            <li><a href="#">Newness</a></li>
-                                            <li><a href="#">Price: Low to High</a></li>
-                                            <li><a href="#">Price: High to Low</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-                                        <h5>color filters</h5>
-                                        <ul class="color-filter">
-                                            <li><a href="#"><i style="background-color: #000000;"></i>Black</a></li>
-                                            <li><a href="#"><i style="background-color: #663300;"></i>Brown</a></li>
-                                            <li><a href="#"><i style="background-color: #FF6801;"></i>Orange</a></li>
-                                            <li><a href="#"><i style="background-color: #ff0000;"></i>red</a></li>
-                                            <li><a href="#"><i style="background-color: #FFEE00;"></i>Yellow</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-                                        <h5>product tags</h5>
-                                        <div class="product-tags">
-                                            <a href="#">New ,</a>
-                                            <a href="#">brand ,</a>
-                                            <a href="#">black ,</a>
-                                            <a href="#">white ,</a>
-                                            <a href="#">chire ,</a>
-                                            <a href="#">table ,</a>
-                                            <a href="#">Lorem ,</a>
-                                            <a href="#">ipsum ,</a>
-                                            <a href="#">dolor ,</a>
-                                            <a href="#">sit ,</a>
-                                            <a href="#">amet ,</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-                                        <h5>Filter by price</h5>
-                                        <div id="price-range"></div>
-                                        <div class="price-values">
-                                            <span>Price:</span>
-                                            <input type="text" class="price-amount">
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -204,24 +150,36 @@
                             </div>
                             
                             
-                            <div class="pagination-style text-center mt-30">
-                                <ul>
-                                    <li>
-                                        <a class="active" href="#">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ion-chevron-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+				 			<div class="pagination-style text-center mt-30" id="pagination">
+								<ul class="paging_align">
+									<c:if test="${page <= 1 }">
+										<li><i class="ion-chevron-left" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page > 1}">
+										<li><a href="userOneday.net?page=${page-1}"><i
+												class="ion-chevron-left"></i></a></li>
+									</c:if>
+				
+									<c:forEach var="a" begin="${startpage}" end="${endpage}">
+										<c:if test="${a == page }">
+											<li><a class="active" href="#">${a}</a></li>
+										</c:if>
+										<c:if test="${a != page}">
+											<li><a href="userOneday.net?page=${a}">${a}</a></li>
+										</c:if>
+									</c:forEach>
+				
+									<c:if test="${page >= maxpage}">
+										<li><i class="ion-chevron-right" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page < maxpage}">
+										<li><a href="userOneday.net?page=${page+1}"> <i
+												class="ion-chevron-right"></i>
+										</a></li>
+									</c:if>
+								</ul>
+							</div>
+							
                         </div>
                     </div>
                 </div>

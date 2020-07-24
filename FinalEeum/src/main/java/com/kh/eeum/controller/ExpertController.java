@@ -1,5 +1,6 @@
 package com.kh.eeum.controller;
 
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
@@ -55,6 +56,17 @@ public class ExpertController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ExpertServiceImpl.class);
 
+	@RequestMapping(value="no_id.service")
+	public void noid(HttpServletResponse response) throws Exception {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();		
+		out.println("<script>");
+		out.println("alert('비회원은 이음 사이트를 이용하실 수 없습니다.😢\\n로그인 또는 회원가입 후 이용해주세요.');");
+		out.println("history.back()");
+		out.println("</script>");
+		out.close();
+	}
+	
 	// 전문가 리스트
 	@GetMapping("/expert.service")
 	public ModelAndView service_list(HttpServletResponse response,
@@ -213,7 +225,7 @@ public class ExpertController {
 	@PostMapping(value = "ReviewAdd.Ajax")
 	public void ReviewAdd_Ajax(Review review, HttpServletResponse response) throws Exception {
 
-		System.out.println("===========================리뷰넣기 넘어온값" + review.getRv_expert_id());
+		System.out.println("===========================리뷰넣기 넘어온값 insert");
 		int result = reviewservice.insertReview(review);
 		response.getWriter().print(result);
 	}
@@ -222,7 +234,7 @@ public class ExpertController {
 	@PostMapping(value = "ReviewUpdate.Ajax")
 	public void ReviewUpdate_Ajax(Review review, HttpServletResponse response) throws Exception {
 
-		System.out.println("후기후기후기후기" + review.getRv_no());
+		System.out.println("===========================리뷰넣기 넘어온값update");
 
 		int ok = reviewservice.update(review);
 
