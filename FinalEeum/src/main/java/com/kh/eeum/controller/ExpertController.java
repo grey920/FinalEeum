@@ -213,7 +213,7 @@ public class ExpertController {
 	@PostMapping(value = "ReviewAdd.Ajax")
 	public void ReviewAdd_Ajax(Review review, HttpServletResponse response) throws Exception {
 
-		System.out.println("===========================리뷰넣기 넘어온값" + review.getRv_expert_id());
+		System.out.println("===========================리뷰넣기 넘어온값 insert");
 		int result = reviewservice.insertReview(review);
 		response.getWriter().print(result);
 	}
@@ -222,7 +222,7 @@ public class ExpertController {
 	@PostMapping(value = "ReviewUpdate.Ajax")
 	public void ReviewUpdate_Ajax(Review review, HttpServletResponse response) throws Exception {
 
-		System.out.println("후기후기후기후기" + review.getRv_no());
+		System.out.println("===========================리뷰넣기 넘어온값update");
 
 		int ok = reviewservice.update(review);
 

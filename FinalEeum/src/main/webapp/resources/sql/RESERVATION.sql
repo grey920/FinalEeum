@@ -16,6 +16,13 @@ INCREMENT BY 1
 NOCYCLE
 NOCACHE
 
+delete REVIEW;
+delete sequence 
+
 select * from reservation
 delete reservation
 DROP TABLE RESERVATION
+
+
+
+select * from REVIEW;
