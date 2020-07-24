@@ -171,9 +171,7 @@
 		<textarea rows=6 class="form-control" id="content" maxLength="400"
 			cols="50" style="resize: none" wrap="hard"></textarea>
 		<button id="write" class="btn btn-info float-right"
-			style="background: #CADEE3; border: 0px; ">
-			<span style="color: black; font-weight: 700;" >등록</span>
-		</button>
+			style="background: #CADEE3; border: 0px; ">등록</button>
 
 		<!-- 친절함  -->
 		<div class="tag1_wrapper">

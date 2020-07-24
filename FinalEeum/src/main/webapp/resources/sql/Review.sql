@@ -24,6 +24,7 @@ insert into comments values(1,'admin','���ƿ�','20200611',3);
 DELETE BOARD
 DELETE review
 DROP TABLE review
+drop sequence rev_seq;
 
 SELECT sum(RV_RATING1),sum(RV_RATING2),sum(RV_RATING3),sum(RV_RATING4),sum(RV_RATING5),  FROM review
 where rv_expert_id = 'aaa';

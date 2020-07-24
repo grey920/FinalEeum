@@ -209,8 +209,6 @@ $(function() {
 													button = "<i class='fas fa-cut' id='delete_review' style='color=#4E8092;'></i>삭제"+
 													         "<i class='fas fa-pen' id='update_review'></i>수정<br>";
 													         
-												}else{
-													button = "<button id='warning'>신고</button><br>";
 												}
 												output += "<tr id='rv_th'><td id='user_id'>"
 														+ "<p>"
@@ -279,7 +277,8 @@ $(function() {
 		   
 	// 등록 버튼
 	$("#write").click(function() {
-		buttonText = $("#write").text();
+		buttonText =  $.trim($("#write").text()); // 공백 없이. 확실하게 하려면 $.trim() 으로 가져오기 
+		console.log(buttonText);
 		content = $("#content").val();
 		
 		var expert_id = $('#EXPERT_ID').val();
@@ -297,8 +296,6 @@ $(function() {
 		if (buttonText == "등록") {
 			url = "ReviewAdd.Ajax";
 
-
-
 			console.log(rating);
 			console.log(user_id);
 			data = {
@@ -312,10 +309,12 @@ $(function() {
 				"rv_rating5" : rating[4],
 				"rv_rating6" : rating[5],
 			};
-			$("#write").text("등록");
 		
 			
 		}else{
+			buttonText = $("#write").text();
+			console.log(buttonText);
+			
 			url = "ReviewUpdate.Ajax";
 		
 			console.log("후기기기기긱"+content);

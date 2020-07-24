@@ -475,6 +475,9 @@ div.col-md-12.mx-0{
 b#tabText1,b#tabText2,b#tabText3,b#tabText4,.heart_click,.heart_click2{
 	cursor: pointer;
 }
-
+.grad_wrapper{
+	
+	padding-left: 35%;
+}
 
 

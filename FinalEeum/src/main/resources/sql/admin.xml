@@ -15,12 +15,11 @@
 		SELECT COUNT(NVL(USER_ID,0)) FROM USERS
 	</select>
 
-	<select id="deExperts" resultType="Portfolio"
-		parameterType="String">
+	<select id="deExperts" resultType="Portfolio" parameterType="String">
 		SELECT
 		PF_EXID, PF_LOC, PF_GRADE, PF_CATE, PF_TIME,
 		PF_DESC,
-		PF_LI, PF_OP, PF_INTRO, PF_One
+		PF_SV_LI, PF_SV_OP, PF_INTRO, PF_One
 		FROM PORTFOLIO
 		WHERE
 		PF_EXID=#{PF_EXID}
@@ -51,4 +50,23 @@
 		)
 		SELECT COUNT(NVL(USER_ID, 0)) FROM USERS
 	</select>
+	
+	<select id="qna" resultType="QnA">
+		SELECT QNA_INDEX, QNA_WRITER, QNA_REPORT, QNA_TYPE, QNA_TIMES
+		FROM QNABOARD
+	</select>
+	
+	<!-- <select id="crepex" resultType="int">
+		SELECT REPEX_EXID, COUNT(REPEX_EXID) 
+		FROM REPORTEX 
+		GROUP BY REPEX_EXID
+	</select> 
+	
+	
+	<select id="crepu" resultType="int">
+		SELECT REPU_UID, COUNT(REPU_UID) 
+		FROM REPU
+		GROUP BY REPU_UID
+	</select>-->
+	
 </mapper>

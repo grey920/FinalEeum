@@ -3,7 +3,7 @@ package com.kh.eeum.service;
 import java.util.List;
 
 import com.kh.eeum.domain.Portfolio;
-import com.kh.eeum.domain.Review_Board;
+import com.kh.eeum.domain.QnA;
 
 public interface AdminService {
 	public int cUsers();
@@ -11,6 +11,5 @@ public interface AdminService {
 	public int allReviews();
 	public int cPosts();
 	public int newUsers();
-
-
+	public List<QnA> qnaUsers();
 }

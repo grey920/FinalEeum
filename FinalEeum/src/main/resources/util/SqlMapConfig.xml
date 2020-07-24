@@ -21,8 +21,8 @@
 		<typeAlias alias="insect" type="com.kh.eeum.domain.Expert" />
 		<typeAlias alias="Integer" type="java.lang.Integer"/>
 		<typeAlias alias="reservation" type="com.kh.eeum.domain.Reservation" />
+		<typeAlias alias="QnA" type="com.kh.eeum.domain.QnA"/>
 		<typeAlias alias="message" type="com.kh.eeum.domain.Message" />
-		
 	</typeAliases>
 
 	<mappers>
@@ -37,6 +37,7 @@
 		<mapper resource="sql/repair.xml"/>
 		<mapper resource="sql/cleaning.xml"/>
 		<mapper resource="sql/insect.xml"/>
+		<mapper resource="sql/qna.xml"/>
 		<mapper resource="sql/message.xml"/>
 	</mappers>
 </configuration>
