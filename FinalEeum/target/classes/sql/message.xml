@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Messages">
+
+	<insert id="send" parameterType="message">
+		insert into message
+		(MSG_NO, MSG_SID, MSG_RID, MSG_CONTENT, MSG_TIME)
+		values(MSG_SEQ.nextval, #{msg_sid}, #{msg_rid}, #{msg_content}, (sysdate + (INTERVAL '9' HOUR)))
+	</insert>
+	
+	<select id="sendCount" parameterType="String" resultType="int">
+		select count(*)
+		from message
+		where MSG_SID = #{id}
+	</select>
+	
+	<select id="sendMsg" parameterType="map" resultType="map">
+		select *
+		from (select rownum rnum, m.*
+				  from (select *
+				  			from message
+				  			where MSG_SID = #{msg_sid}
+				  			order by MSG_TIME desc) m
+				  )
+		where rnum &gt; = #{start} and rnum &lt; = #{end}	
+	</select>
+	
+	<select id="receiveCount" parameterType="String" resultType="int">
+		select count(*)
+		from message
+		where MSG_RID = #{id}
+	</select>
+	
+	<select id="receiveMsg" parameterType="map" resultType="map">
+		select *
+		from (select rownum rnum, m.*
+				  from (select *
+				  			from message
+				  			where MSG_RID = #{msg_rid}
+				  			order by MSG_TIME desc) m
+				  )
+		where rnum &gt; = #{start} and rnum &lt; = #{end}	
+	</select>
+
+	<update id="msgRead" parameterType="map">
+		update message
+		set MSG_STATE = #{msg_state}
+		where MSG_NO = #{msg_no}
+	</update>
+</mapper>

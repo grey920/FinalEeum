@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.mail.Session;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -833,15 +834,15 @@ public class UEController {
 	}
 	
 	@RequestMapping(value="userRsCancel.net")
-	public void userReservationCancel(String rs_exid, String user_id, String rs_date, HttpServletResponse response) throws Exception {
-		System.out.println(user_id + "," + rs_exid + "," + rs_date);
+	public void userReservationCancel(String rs_exid, String rs_no, 
+															HttpSession session, HttpServletResponse response) throws Exception {
+		String user_id = (String) session.getAttribute("user_id");
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		
-		int result = expertservice.cancelReserve(rs_exid, user_id, rs_date);
-		System.out.println(result);
+		int result = expertservice.cancelReserve(rs_exid, user_id, rs_no);
 		
 		if (result == 1) {
 			out.println("alert('예약하신 서비스가 취소되었습니다.');");		//추후에 모달로 바꾸기,,,
@@ -984,9 +985,9 @@ public class UEController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="userChat.net", method=RequestMethod.GET)
-	public String chat() {
-		return "UE/userpage_base";
+	@RequestMapping(value="userMessage.net", method=RequestMethod.GET)
+	public String message() {
+		return "UE/userpage_message";
 	}
 	
 	@RequestMapping(value="FAQ.net")

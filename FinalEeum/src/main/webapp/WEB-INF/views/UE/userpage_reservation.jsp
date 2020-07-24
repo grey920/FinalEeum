@@ -23,11 +23,12 @@
         <link rel="stylesheet" href="resources/css/bundle.css">
         <link rel="stylesheet" href="resources/css/style.css">
         <link rel="stylesheet" href="resources/css/responsive.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 		<%@ include file="../header.jsp" %>
         <style>
         body{font-size:20px}
-        .product-subtotal{font-size:20px !important}
+        .product-subtotal{font-size:18px !important}
         .btn-style{margin-top:10px !important;
        					 margin-right:0 !important; 
        					 font-size:18px;
@@ -40,12 +41,19 @@
          					       color:white;
          					       border:2px solid #72A0E0;
          						  }
+        .nodata{padding:100px 0 100px 0;
+        			  display: flex;
+					  justify-content: center;
+					  align-items: center;
+					  flex-direction: column;}
          .table-content table td {border-bottom:2px solid #e8e6e6; padding:30px 10px 30px}
          .pt-120{padding-top:50px !important}
          .breadcrumb-content{padding-top:0;margin-top:1em}
          .breadcrumb-content ul > li{font-size:13pt}
+         tr td.class-state{padding-top:10px; padding-bottom:20px}
          td.product-subtotal button.btn-style {padding-left:20px;padding-right:20px}
          tr td.class-state{padding-top:10px; padding-bottom:20px}
+         .modal-footer a {font-size:13pt}
         </style>
     </head>
     <body>
@@ -83,6 +91,8 @@
             <div class="product-cart-area hm-3-padding pt-120 pb-130">
                 <div class="container-fluid">
                     <div class="row">
+                       
+                       <c:if test="${reserveCount > 0 }">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-content table-responsive">
                                 <table style="text-align:center">
@@ -93,7 +103,7 @@
                                             <th class="product-name">예약 날짜</th>
                                             <th class="product-quantity">가격</th>
                                             <th class="product-quantity">예약 상태</th>
-                                            <th class="product-subtotal"></th>
+                                            <th class="product-quantity"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -102,9 +112,11 @@
                                         <tr>
                                             <td class="product-thumbnail">
                                                 <a href="expertDetail.service?expert=${r.RS_EXID}"><img src="resources/expert_profile${r.PF_SAVEPROFILE}" style="width:130px;height:160px"></a>
+                                                <input type="hidden" name="rs_exid" value="${r.RS_EXID}"/>
+                                                <input type="hidden" name="rs_no" value="${r.RS_NO}"/>
                                             </td>
                                             <td class="product-price">
-                                                <a href="#"><span>[
+                                                <span>[
 	                                                <c:if test="${r.PF_CATE == '0'}">
 	                                                청소
 	                                                </c:if>
@@ -161,12 +173,39 @@
                                             	<div class="button-box" style="text-align:center;">
                                             	
                                             	  <c:if test="${r.RS_STATE == '0' || r.RS_STATE == '1' }">
-													<button class="btn-style" onclick="location.href='#';"> <!-- r.RS_NO 로 넘어가게 하기  -->
-														<span>견적 확인</span>	
+													<button class="btn-style" id="message" onclick="javascript:message('msgWrite.net?msg_sid=${user_id}&msg_rid=${r.RS_EXID}')">
+														<span>견적확인</span>	
 													</button>
-													<button class="btn-style" onclick="location.href='userRsCancel.net';">
-														<span>예약 취소</span>
+													<button class="btn-style" data-toggle="modal" data-target="#modalConfirmDelete">
+														<span>예약취소</span>
 													</button>
+													
+													<!--Modal: modalConfirmDelete-->
+													<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+														<div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+															
+															<!--Content-->
+															<div class="modal-content text-center" style="width: 50%; margin: 0 auto;">
+																
+																<!--Header-->
+																<div class="modal-header d-flex justify-content-center" style="margin-top:15px">
+																	<p class="heading" style="margin-bottom:10px;color:#303030">서비스 예약을 취소하시겠습니까?</p>
+																</div>
+									
+																<!--Body-->
+																<div class="modal-body">
+																	<i class="fa fa-times fa-4x animated rotateIn" style="width: auto; margin: 0 auto; color: #dc3545;"></i>
+																</div>
+									
+																<!-- Footer -->
+																<div class="modal-footer flex-center" >
+												      				<a href="userRsCancel.net?rs_exid=${r.RS_EXID}&rs_no=${r.RS_NO}" class="btn  btn-outline-danger">예</a>
+												        			<a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal" style="color:white">아니요</a>
+												      			</div>
+												    		</div>
+														</div>
+													</div>
+													<!--/.Content-->
                                             	  </c:if>
                                             	  
                                             	  <c:if test="${r.RS_STATE == '2'}">
@@ -223,6 +262,15 @@
 							</div>
                             
                         </div>
+                       </c:if>
+                       
+                       <c:if test="${reserveCount == 0 }">
+			               <div class="col-lg-12 col-md-12 col-12 nodata">	
+				            	<p>아직 예약하신 내역이 없습니다😥</p>
+				            	<p>이음을 통해 더 멋진 집으로 바꿔보세요</p>
+				            	<button class="btn-style" onclick="location.href='expert.service';">서비스 예약하기</button>
+				            </div>
+                       </c:if>
                     </div>
                 </div>
             </div>
@@ -376,6 +424,13 @@
 		
 		
 		<!-- all js here -->
+		<script src="resources/js/jquery-3.5.0.js"></script>
+		<script>
+			function message (url) {
+				var send = window.open(url, "send", "width=100, heigth=100");
+				send.resizeTo(700,800);
+			};
+		</script>
         <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="resources/js/popper.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
