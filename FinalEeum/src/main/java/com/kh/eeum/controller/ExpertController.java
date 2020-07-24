@@ -99,6 +99,7 @@ public class ExpertController {
 
 		System.out.println("전문가 리스트" + expertlist);
 
+		
 		mv.setViewName("service/expert_list");
 		mv.addObject("page", page);
 		mv.addObject("limit", limit);
