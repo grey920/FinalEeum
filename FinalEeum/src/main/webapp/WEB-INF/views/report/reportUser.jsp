@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="resources/dist/img/eeumLogo2.png" rel="shortcut icon" type="image/x-icon">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="resources/img/favicon.png" rel="shortcut icon" type="image/x-icon">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>신고 회원 관리</title>
 </head>
 <%@ include file="../include2/head.jsp" %>
@@ -30,6 +30,7 @@
 				</div>
 			</div>
 			<!-- /.container-fluid -->
+			
 		</section>
 
 		<!-- Main content -->
@@ -46,21 +47,32 @@
 								<table id="expertTable" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th>회원 아이디</th>
-											<th>이름</th>
-											<th>회원 상태</th>
+											<th>인덱스</th>
+											<th>신고글 작성자 아이디</th>
+											<th>신고한 회원 아이디</th>
+											<th>신고 글 유형</th>
 											<th>신고 누적 횟수</th>
 											<th>처리 조치</th>
 										</tr>
 									</thead>
 									<tbody>
-											
+										<c:forEach var="r" items="${qnalist}">
+										<tr>
+											<td>${r.QNA_INDEX }</td>
+											<td>${r.QNA_WRITER }</td>
+											<td>${r.QNA_REPORT }</td>
+											<td>${r.QNA_TYPE }</td>
+											<td>${r.QNA_TIMES }</td>
+											<td></td>
+										</tr>
+										</c:forEach>
 									</tbody>
 									<tfoot>
 										<tr>
-											<th>회원 아이디</th>
-											<th>이름</th>
-											<th>회원 상태</th>
+											<th>인덱스</th>
+											<th>신고글 작성자 아이디</th>
+											<th>신고한 회원 아이디</th>
+											<th>신고 글 유형</th>
 											<th>신고 누적 횟수</th>
 											<th>처리 조치</th>
 										</tr>
@@ -72,12 +84,15 @@
 						<!-- /.card -->
 					</div>
 					<!-- /.col -->
+					
 				</div>
 				<!-- /.row -->
 			</div>
 			<!-- /.container-fluid -->
 		</section>
 		<!-- /.content -->
+		
+		
 	</div>
 	<!-- /.content-wrapper -->
 	
