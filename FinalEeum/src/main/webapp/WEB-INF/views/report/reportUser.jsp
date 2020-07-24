@@ -11,6 +11,11 @@
 <%@ include file="../include2/head.jsp" %>
 <%@ include file ="../include2/main_header.jsp" %>
 <%@ include file="../include2/left_column.jsp" %>
+<style>
+table>tbody>tr>td>ul>li{float: left; list-style: none; margin-right : 4%;}
+table>tbody>tr>td>ul{height:30px;}
+
+</style>
 <body>
 	<!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper" style="background:#fffffa">
@@ -47,34 +52,34 @@
 								<table id="expertTable" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th>인덱스</th>
-											<th>신고글 작성자 아이디</th>
-											<th>신고한 회원 아이디</th>
-											<th>신고 글 유형</th>
-											<th>신고 누적 횟수</th>
-											<th>처리 조치</th>
+											<th>신고당한 회원 아이디</th>
+											<th>신고자</th>
+											<th>조치</th>
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach var="r" items="${qnalist}">
 										<tr>
-											<td>${r.QNA_INDEX }</td>
-											<td>${r.QNA_WRITER }</td>
 											<td>${r.QNA_REPORT }</td>
-											<td>${r.QNA_TYPE }</td>
-											<td>${r.QNA_TIMES }</td>
+											
+											<td>
+											<c:forEach var="q" items="${r.qnalist }">
+											<ul>
+											<li>${q.QNA_WRITER }</li>			
+											<li>${q.QNA_TYPE }</li>
+											<li>${q.QNA_TIMES }</li>
+											</ul>
+											</c:forEach>
+											</td>
 											<td></td>
 										</tr>
 										</c:forEach>
 									</tbody>
 									<tfoot>
 										<tr>
-											<th>인덱스</th>
-											<th>신고글 작성자 아이디</th>
-											<th>신고한 회원 아이디</th>
-											<th>신고 글 유형</th>
-											<th>신고 누적 횟수</th>
-											<th>처리 조치</th>
+											<th>신고당한 회원 아이디</th>
+											<th>신고자</th>
+											<th>조치</th>
 										</tr>
 									</tfoot>
 								</table>
