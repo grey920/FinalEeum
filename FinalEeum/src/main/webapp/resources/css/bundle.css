@@ -219,7 +219,8 @@ a.button-small::after {
     -moz-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
 }
-a.button-border span,
+
+/* a.button-border span,
 a.button-border-white span,
 input,
 select,
@@ -229,7 +230,7 @@ textarea {
     -ms-transition: all 0.5s ease-out 0s;
     -o-transition: all 0.5s ease-out 0s;
     transition: all 0.5s ease-out 0s;
-}
+} */
 
 /*************************
     Section title 1

@@ -38,7 +38,18 @@
 	width: 100%;
 	margin: 0;
 }
-
+.btn-style{margin-top:10px !important;
+       			margin-right:0 !important; 
+       			font-size:18px;
+         		border-radius:20px;
+         		background-color:white;
+         		color:#72A0E0;
+         		border:2px solid #72A0E0;
+         		}
+.btn-style:hover{background-color:#72A0E0;
+         				color:white;
+         				border:2px solid #72A0E0;
+         				}
 </style>
 </head>
 <body>
@@ -101,7 +112,7 @@
 												<img
 													src="resources/expert_profile${p.PF_SAVEPROFILE}" alt="profile"
 													id="profile"
-													style="width: 170px; height: 170px; border-radius: 50%; cursor: pointer">
+													style="width: 150px; height: auto; cursor: pointer">
 										</div>
 									</div>
 

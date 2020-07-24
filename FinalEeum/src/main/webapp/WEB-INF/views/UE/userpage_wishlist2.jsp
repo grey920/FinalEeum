@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+	pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>전문가 - 마이페이지</title>
+        <title>사용자 - 찜한 전문가 리스트</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -25,18 +26,37 @@
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
         <%@ include file="../header.jsp" %>
         <style>
-        .product-title-3{margin:0 auto;}
-        .product-content{padding-bottom:100px}
-        .text-center h2{font-weight:900}
-        h3{font-weight:700;margin-top:0}
+        .product-content{padding:0;margin-bottom:2em}
+        .product-title-3{margin:0 auto}
+        .product-title-3 > h4{font-size:20pt;margin-top:20px;}
+        .breadcrumb-content ul > li{font-size:13pt}
         .pt-120{padding-top:50px !important}
-        .breadcrumb-content{padding-top:0;margin-top:1em}
-         .center{text-align:center}
+		.breadcrumb-content{padding-top:0;margin-top:1em}
+        .price-decrease > span {font-size : 25px;
+        										padding:5px 10px;
+        										border-radius:10px;}
+        button.product-filter-toggle {font-size:18pt;margin:10px}
+        .nodata{display: flex;
+					  justify-content: center;
+					  align-items: center;
+					  flex-direction: column;}
+		.btn-style{margin-top:10px !important;
+       					 margin-right:0 !important; 
+       					 font-size:18px;
+         				 border-radius:20px;
+         				 background-color:white;
+         				 color:#72A0E0;
+         				 border:2px solid #72A0E0;
+         				 }
+        .btn-style:hover{background-color:#72A0E0;
+         					       color:white;
+         					       border:2px solid #72A0E0;
+         						  }
         </style>
     </head>
     <body>
         <div class="wrapper">
-
+            <!-- header start -->
             <div class="header-height"></div>
             
             <!-- main-search start -->
@@ -58,109 +78,120 @@
             <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
-                        <h2>EXPERT MY PAGE</h2>
+                        <h2>WISHLIST</h2>
+                        <ul>
+                            <li>찜한 전문가 목록</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-
+            
             <div class="shop-wrapper hm-3-padding pt-120 pb-100">
                 <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="shop-topbar-wrapper">
+                                <div class="shop-filter" style="margin:0 auto">
+                                    <button class="product-filter-toggle">전체</button>
+                                    <button class="product-filter-toggle" value="0" onclick="location.href='userWishCheck.net?value=0';">청소</button>
+                                    <button class="product-filter-toggle" value="1" onclick="location.href='userWishCheck.net?value=1';">방역</button>
+                                    <button class="product-filter-toggle" value="2" onclick="location.href='userWishCheck.net?value=2';">수리</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <c:if test="${wishCheckCount > 0 }">
                     <div class="grid-list-product-wrapper">
                         <div class="product-grid product-view">
                             <div class="row">
-                                <div class="product-width col-md-6 col-lg-4">
-                                    <div class="product-wrapper mb-35" style="width:200px">
-                                        <div class="product-img">
-                                            <a href="expertUpdate.net">
-                                                <img src="resources/img/mypage/write.png" alt="">
+                            
+                              <c:forEach var="w" items="${wishCheck}">
+                                <div class="product-width col-md-6 col-xl-3 col-lg-4">
+                                    <div class="product-wrapper mb-35">
+                                        <div class="product-img" style="text-align:center;width:250px">
+                                            <a href="#">
+                                                <img src="resources/expert_profile${w.PF_SAVEPROFILE}" style="height:auto">
                                             </a>
+	                                        <div class="price-decrease">
+	                                         <c:choose>
+	                                            <c:when test="${w.PF_CATE == '0' }">
+	                                                <span>청소</span>
+	                                            </c:when>
+	                                            
+	                                            <c:when test="${w.PF_CATE == '1' }">
+	                                                <span>방역</span>
+	                                            </c:when>
+	                                            
+	                                            <c:when test="${w.PF_CATE == '2' }">
+	                                                <span>수리</span>
+	                                            </c:when>
+	                                         </c:choose>
+	                                        </div>
                                         </div>
                                         <div class="product-content">
                                             <div class="product-title-wishlist">
                                                 <div class="product-title-3">
-                                                    <h3><a href="expertUpdate.net">사용자 정보 수정</a></h3>
+                                                    <h4><a href="product-details.html">
+                                                    <c:choose>
+	                                                    <c:when test="${w.PF_GRADE == '0'}">디딤돌</c:when>
+	                                                    <c:when test="${w.PF_GRADE == '1'}">마루</c:when>
+	                                                    <c:when test="${w.PF_GRADE == '2'}">우주</c:when>
+	                                                    <c:when test="${w.PF_GRADE == '3'}">용마루</c:when>
+                                                    </c:choose>
+                                                    &nbsp;${w.EXPERT_NAME}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="product-width col-md-6 col-lg-4">
-                                    <div class="product-wrapper mb-35" style="width:200px">
-                                        <div class="product-img">
-                                            <a href="viewPortfolio">
-                                                <img src="resources/img/mypage/portfolio.png" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h3><a href="viewPortfolio">포트폴리오</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-width col-md-6 col-lg-4">
-                                    <div class="product-wrapper mb-35" style="width:200px">
-                                        <div class="product-img">
-                                            <a href="messageReceive.net">
-                                                <img src="resources/img/mypage/conversation.png" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h3><a href="messageReceive.net">메시지 목록</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-width col-md-6 col-lg-4">
-                                    <div class="product-wrapper mb-35" style="width:200px">
-                                        <div class="product-img">
-                                            <a href="userWishlist.net">
-                                                <img src="resources/img/mypage/wishlist.png" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h3><a href="userWishlist.net">견적확인 <br><p></p> 예약내역</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                 <div class="product-width col-md-6 col-lg-4">
-                                    <div class="product-wrapper mb-35" style="width:200px">
-                                        <div class="product-img">
-                                            <a href="userOneday.net">
-                                                <img src="resources/img/mypage/payment.png" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title-wishlist">
-                                                <div class="product-title-3">
-                                                    <h3 class="center"><a href="userOneday.net">계좌<br><p></p>정산 관리</a></h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
+                             </c:forEach>
+                           </div>
+                            
+				 			<div class="pagination-style text-center mt-30" id="pagination">
+								<ul class="paging_align">
+									<c:if test="${page <= 1 }">
+										<li><i class="ion-chevron-left" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page > 1}">
+										<li><a href="userOneday.net?page=${page-1}"><i
+												class="ion-chevron-left"></i></a></li>
+									</c:if>
+				
+									<c:forEach var="a" begin="${startpage}" end="${endpage}">
+										<c:if test="${a == page }">
+											<li><a class="active" href="#">${a}</a></li>
+										</c:if>
+										<c:if test="${a != page}">
+											<li><a href="userOneday.net?page=${a}">${a}</a></li>
+										</c:if>
+									</c:forEach>
+				
+									<c:if test="${page >= maxpage}">
+										<li><i class="ion-chevron-right" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page < maxpage}">
+										<li><a href="userOneday.net?page=${page+1}"> <i
+												class="ion-chevron-right"></i>
+										</a></li>
+									</c:if>
+								</ul>
+							</div>
+                            
                         </div>
                     </div>
+		           </c:if>
                 </div>
             </div>
-            </div>
-
-
-<!-- 푸터 -->
+            
+            <c:if test="${wishCheckCount == 0 }">
+            	<div class="col-lg-12 col-md-12 col-12 nodata">	
+	            	<p> 아직 찜한 전문가가 없어요😥</p>
+	            	<p>서비스를 받고 싶은 전문가를 찜해주세요</p>
+	            	<button class="btn-style" onclick="location.href='expert.service';">전문가 보러 가기</button>
+	            </div>
+            </c:if>
+            
             <footer class="hm-4-padding">
                 <div class="container-fluid">
                     <div class="footer-top pt-125 pb-25">
@@ -168,7 +199,7 @@
                             <div class="col-lg-3 col-md-5">
                                 <div class="footer-widget mb-30">
                                     <div class="footer-widget-title">
-                                        <h4>Get in Touch</h4>
+                                        <h3>Get in Touch</h3>
                                     </div>
                                     <div class="food-info-wrapper">
                                         <div class="food-address">
@@ -201,7 +232,7 @@
                             <div class="col-lg-2 col-md-4">
                                 <div class="footer-widget mb-30 pl-10">
                                     <div class="footer-widget-title">
-                                        <h4>Information</h4>
+                                        <h3>Information</h3>
                                     </div>
                                     <div class="food-widget-content">
                                         <ul class="quick-link">
@@ -217,7 +248,7 @@
                             <div class="col-lg-2 col-md-3">
                                 <div class="footer-widget mb-30 pl-100">
                                     <div class="footer-widget-title">
-                                        <h4>accounts</h4>
+                                        <h3>accounts</h3>
                                     </div>
                                     <div class="food-widget-content">
                                         <ul class="quick-link">
@@ -233,7 +264,7 @@
                             <div class="col-lg-2 col-md-6">
                                 <div class="footer-widget mb-30 pl-125">
                                     <div class="footer-widget-title">
-                                        <h4>support</h4>
+                                        <h3>support</h3>
                                     </div>
                                     <div class="food-widget-content">
                                         <ul class="quick-link">
@@ -249,7 +280,7 @@
                             <div class="col-lg-3 col-md-6">
                                 <div class="footer-widget mb-30 f-right">
                                     <div class="footer-widget-title">
-                                        <h4>twitter feed</h4>
+                                        <h3>twitter feed</h3>
                                     </div>
                                     <div class="twitter-info-wrapper">
                                         <div class="single-twitter">
@@ -307,12 +338,7 @@
 		
 		
 		
-		
-		
-		
-		
 		<!-- all js here -->
-		<script src="resources/js/jquery-3.5.0.js"></script>
         <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="resources/js/popper.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
@@ -326,4 +352,3 @@
         <script src="resources/js/main.js"></script>
     </body>
 </html>
-

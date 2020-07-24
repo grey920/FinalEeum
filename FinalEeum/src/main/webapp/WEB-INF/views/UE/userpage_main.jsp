@@ -121,14 +121,14 @@
                                 <div class="product-width col-md-6 col-lg-4">
                                     <div class="product-wrapper mb-35" style="width:200px">
                                         <div class="product-img">
-                                            <a href="#">
+                                            <a href="messageReceive.net">
                                                 <img src="resources/img/mypage/conversation.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-content">
                                             <div class="product-title-wishlist">
                                                 <div class="product-title-3">
-                                                    <h3><a href="product-details.html">상담 내역</a></h3>
+                                                    <h3><a href="messageReceive.net">메시지 목록</a></h3>
                                                 </div>
                                             </div>
                                         </div>

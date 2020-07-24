@@ -36,12 +36,28 @@
 								<nav>
 									<ul>
 										<li><a href="about_us.net">이:음 소개</a></li>
-										<li><a href="expert.service">서비스<i class="ion-ios-arrow-down" style="margin-left: 5px"></i></a>
-											<ul style="text-align: center;">
-												<li style="margin-bottom: 10px;"><a href="expert_repair.service">수리</a></li>
-												<li style="margin-bottom: 10px;"><a href="expert_cleaning.service">청소</a></li>
-												<li><a href="expert_insect.service">해충</a></li>
-											</ul></li>	
+										
+										<c:choose>
+											<c:when test="${empty user_id && empty expert_id}">
+												<li><a href="no_id.service">서비스<i class="ion-ios-arrow-down" style="margin-left: 5px"></i></a>
+													<ul style="text-align: center;">
+														<li style="margin-bottom: 10px;"><a href="no_id.service">수리</a></li>
+														<li style="margin-bottom: 10px;"><a href="no_id.service">청소</a></li>
+														<li><a href="no_id.service">해충</a></li>
+													</ul>
+												</li>
+											</c:when>
+											<c:otherwise>
+											<li><a href="expert.service">서비스<i class="ion-ios-arrow-down" style="margin-left: 5px"></i></a>
+												<ul style="text-align: center;">
+													<li style="margin-bottom: 10px;"><a href="expert_repair.service">수리</a></li>
+													<li style="margin-bottom: 10px;"><a href="expert_cleaning.service">청소</a></li>
+													<li><a href="expert_insect.service">해충</a></li>
+												</ul>
+											</li>
+											</c:otherwise>
+										</c:choose>
+
 										<li><a href="OnedayList.one">원데이 클래스</a></li>
 										<li><a href="FAQ.net">FAQ</a></li>
 										<li><a href="QnA.net">문의</a></li>
@@ -96,10 +112,12 @@
 							<div class="header-cart same-style" style="margin-left: 13px; margin-right: 13px">
 								<a href="#"><img src="resources/img/header/chat.png" style="width: 30px; filter: saturate(80%);"></a>
 							</div>
+							<!-- 검색 
 							<div class="header-search same-style" style="margin-left: 10px; margin-right: 13px">
 								<a href="login-register.html"><img src="resources/img/header/search.png"
 																						style="width: 30px; filter: saturate(80%);"></a>
 							</div>
+							 -->
 						</div>
 					</div>
 					<div class="mobile-menu-area col-12">
@@ -107,12 +125,26 @@
 							<nav id="mobile-menu-active">
 								<ul class="menu-overflow">
 									<li><a href="about_us.net">이:음 소개</a>
+							<c:choose>
+									<c:when test="${empty user_id && empty expert_id}">
+										<li><a href="no_id.service">서비스</a>
+											<ul>
+												<li><a href="no_id.service">수리</a></li>
+												<li><a href="no_id.service">청소</a></li>
+												<li><a href="no_id.service">해충</a></li>
+											</ul>
+										</li>
+									</c:when>
+									<c:otherwise>
 									<li><a href="expert.service">서비스</a>
 										<ul>
 											<li><a href="expert_repair.service">수리</a></li>
 											<li><a href="expert_cleaning.service">청소</a></li>
 											<li><a href="expert_insect.service">해충</a></li>
-										</ul></li>
+										</ul>
+									</li>
+									</c:otherwise>
+							</c:choose>
 									<li><a href="OnedayList.one">원데이 클래스</a></li>
 									<li><a href="FAQ.net">FAQ</a></li>
 								</ul>
