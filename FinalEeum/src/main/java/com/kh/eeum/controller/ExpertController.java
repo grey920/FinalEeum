@@ -82,6 +82,7 @@ public class ExpertController {
 		System.out.println("총 페이지수(maxpage): " + maxpage);
 
 		// 현재 페이지에 보여줄 시작 페이지수
+		
 		int startpage = ((page - 1) / 8) * 8 + 1;
 		// ((1-1) / 8 ) * 8 + 1 = 1;
 		System.out.println("현재 페이지에서 보여줄 시작페이지 수(startpage) : " + startpage);

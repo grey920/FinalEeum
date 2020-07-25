@@ -169,6 +169,10 @@
 	  		<td><div>${boarddata.QNA_TITLE}</div></td>
 	  	</tr>
 	  	<tr>
+	  		<td><div>신고 대상 유저 아이디</div></td>
+	  		<td><div>${boarddata.QNA_REPORT}</div></td>
+	  	</tr>
+	  	<tr>
 	  		<td><div>내용</div></td>
 	  		<td>${boarddata.QNE_CONTENT}</td>
 	  	</tr>

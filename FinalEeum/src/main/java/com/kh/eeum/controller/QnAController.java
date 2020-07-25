@@ -62,7 +62,7 @@ public class QnAController {
 		
 		
 		List<QnA> boardlist = boardService.getBoardList(page,limit);
-		//String user_id = (String) session.getAttribute("user_id");
+		String user_id = (String) session.getAttribute("user_id");
 		
 		mv.setViewName("QnA_Board/qna_board_list");
 		mv.addObject("page",page); 
@@ -72,7 +72,7 @@ public class QnAController {
 		mv.addObject("listcount", listcount);
 		mv.addObject("boardlist", boardlist);
 		mv.addObject("limit", limit);
-	//	mv.addObject("user_id",user_id);
+		mv.addObject("user_id",user_id);
 		return mv;
 	}
 	
