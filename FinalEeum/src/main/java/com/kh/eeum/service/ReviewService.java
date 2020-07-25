@@ -9,6 +9,7 @@ import com.kh.eeum.domain.Review;
 @Service
 public interface ReviewService {
 
+	
 	List<Review> selectReviewList( String expert_id, int page);
 	public int insertReview(Review review);
 	public int update(Review review);

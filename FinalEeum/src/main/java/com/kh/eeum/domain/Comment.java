@@ -18,6 +18,7 @@ public class Comment {
 	//2019-12-24 16:08:35
 	public int getNum() {
 		return num;
+		
 	}
 	public void setNum(int num) {
 		this.num = num;

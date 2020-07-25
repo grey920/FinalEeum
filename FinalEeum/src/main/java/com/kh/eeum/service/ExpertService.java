@@ -11,6 +11,7 @@ import com.kh.eeum.domain.Reservation;
 import com.kh.eeum.domain.Review;
 
 
+
 public interface ExpertService {
 	public int insert(Expert ex);
 	public int isId(String expert_id, String expert_pass);

@@ -5,6 +5,7 @@
 
 <mapper namespace="Experts">
 
+
 	<insert id="insert" parameterType="expert">
 		insert into expert_table
 		(expert_jumin1, expert_jumin2, expert_name, expert_id, expert_pass, expert_phone1, expert_phone2, expert_phone3,

@@ -4,6 +4,7 @@
 
 
 
+
 <mapper namespace="Repairs">
 
 	<select id="repaircount" resultType="int">

@@ -6,6 +6,7 @@ $(function() {
 
 				
 				
+				
 				emptyColor : 'lightgray',
 				hoverColor : 'salmon',
 				initialRating: 0.5,

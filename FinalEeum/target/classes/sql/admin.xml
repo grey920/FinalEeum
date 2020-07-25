@@ -53,17 +53,18 @@
 	
 	<!-- 관리자 사이트에서 신고 회원 -->
 	<select id="qna" resultMap="qnaMap">
-		SELECT QNA_INDEX, QNA_WRITER, QNA_REPORT, QNA_TYPE, QNA_TIMES
-		FROM QNABOARD
+		SELECT REPORT_INDEX, REPORT_WRITER, REPORT_REPORT, REPORT_TYPE, REPORT_TIMES
+		FROM REPORTBOARD
 	</select>
+	
 	<resultMap id="qnaMap" type="com.kh.eeum.domain.Repu">
 		<result property="QNA_REPORT" column="QNA_REPORT" />
-		<collection property="qnalist" ofType="com.kh.eeum.domain.QnA">
-			<result property="QNA_INDEX" column="QNA_INDEX" />
-			<result property="QNA_WRITER" column="QNA_WRITER" />
-			<result property="QNA_REPORT" column="QNA_REPORT" />	
-			<result property="QNA_TYPE" column="QNA_TYPE"/>
-			<result property="QNA_TIMES" column="QNA_TIMES"/>
+		<collection property="reportlist" ofType="com.kh.eeum.domain.Report">
+			<result property="REPORT_INDEX" column="REPORT_INDEX" />
+			<result property="REPORT_WRITER" column="REPORT_WRITER" />
+			<result property="REPORT_REPORT" column="REPORT_REPORT" />	
+			<result property="REPORT_TYPE" column="REPORT_TYPE"/>
+			<result property="REPORT_TIMES" column="REPORT_TIMES"/>
 		</collection>
 	</resultMap>
 	

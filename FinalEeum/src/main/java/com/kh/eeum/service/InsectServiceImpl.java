@@ -13,6 +13,7 @@ import com.kh.eeum.domain.Expert;
 @Service
 public class InsectServiceImpl implements InsectService{
 
+	
 	@Autowired
 	private ExpertInsectDAO insectdao;
 	
