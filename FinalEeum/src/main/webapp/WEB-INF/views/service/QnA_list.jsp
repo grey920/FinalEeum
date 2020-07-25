@@ -14,6 +14,7 @@ table {
 }
 
 
+
 .hide {
 	display: none;
 }

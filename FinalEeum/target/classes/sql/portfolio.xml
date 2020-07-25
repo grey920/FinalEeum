@@ -6,6 +6,7 @@
 <mapper namespace="Portfolios">
 
 
+
 <select id="getPfInfo" resultType="portfolio">
 	select * from PORTFOLIO
 	where PF_EXID = #{expert_id} 

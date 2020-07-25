@@ -27,6 +27,7 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public List<Review> selectReviewList( String expert_id, int page) {
 		
+		
 		System.out.println("리뷰 서비스"+expert_id);
 		
 		int startrow = (page - 1) * 10 + 1;

@@ -3,6 +3,7 @@ package com.kh.eeum.domain;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Portfolio {
+	
 //	PF_EXID VARCHAR2(40) NOT NULL,
 //	PF_LOC VARCHAR2(300),	-- 전문가 활동 지역
 //	PF_GRADE NUMBER NOT NULL,-- 회원 분류 : 0-디딤돌, 1-마루, 2-우주, 3-용마루

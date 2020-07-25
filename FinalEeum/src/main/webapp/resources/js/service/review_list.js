@@ -5,6 +5,7 @@ $(function() {
 			{
 				totalStars : 5,
 
+				
 				emptyColor : 'lightgray',
 				hoverColor : 'salmon',
 				initialRating: 0.5,

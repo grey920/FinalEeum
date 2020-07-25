@@ -130,6 +130,6 @@
 	<update id="cancelReserve" parameterType="map">
 		update reservation
 		set RS_STATE = #{rs_state}
-		where rs_exid = #{rs_exid} and rs_uid = #{rs_uid} and rs_date = #{rs_date}
+		where rs_exid = #{rs_exid} and rs_uid = #{rs_uid} and rs_no = #{rs_no}
 	</update>
 </mapper>

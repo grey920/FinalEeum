@@ -17,6 +17,7 @@ public class InsectServiceImpl implements InsectService{
 	private ExpertInsectDAO insectdao;
 	
 
+	
 	@Override
 	public List<Expert> expertlist(int page, int limit) {
 		// map 형식으로 담는다.

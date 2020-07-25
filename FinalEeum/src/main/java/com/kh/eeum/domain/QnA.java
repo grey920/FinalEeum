@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class QnA {
 	
 	
+	
 
 	private int 	QNA_INDEX;		//�۹�ȣ
 	private String	QNA_TITLE;		//�� �ۼ���

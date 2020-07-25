@@ -36,6 +36,23 @@
         										padding:5px 10px;
         										border-radius:10px;}
         button.product-filter-toggle {font-size:18pt;margin:10px}
+        .nodata{padding:100px 0 100px 0;
+        			  display: flex;
+					  justify-content: center;
+					  align-items: center;
+					  flex-direction: column;}
+        .btn-style{margin-top:10px !important;
+       					 margin-right:0 !important; 
+       					 font-size:18px;
+         				 border-radius:20px;
+         				 background-color:white;
+         				 color:#72A0E0;
+         				 border:2px solid #72A0E0;
+         				 }
+        .btn-style:hover{background-color:#72A0E0;
+         					       color:white;
+         					       border:2px solid #72A0E0;
+         						  }
         </style>
     </head>
     <body>
@@ -69,17 +86,18 @@
                     </div>
                 </div>
             </div>
-
+            
+           <c:if test="${wishlistCount > 0 }">
             <div class="shop-wrapper hm-3-padding pt-120 pb-100">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="shop-topbar-wrapper">
                                 <div class="shop-filter" style="margin:0 auto">
-                                    <button class="product-filter-toggle">전체</button>
-                                    <button class="product-filter-toggle">수리</button>
-                                    <button class="product-filter-toggle">청소</button>
-                                    <button class="product-filter-toggle">해충</button>
+                                    <button class="product-filter-toggle" onclick="location.href='userWishlist.net';">전체</button>
+                                    <button class="product-filter-toggle" onclick="location.href='userWishCheck.net?value=0';">청소</button>
+                                    <button class="product-filter-toggle" onclick="location.href='userWishCheck.net?value=1';">방역</button>
+                                    <button class="product-filter-toggle" onclick="location.href='userWishCheck.net?value=2';">수리</button>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +183,15 @@
                     </div>
                 </div>
             </div>
+           </c:if>
             
+            <c:if test="${wishlistCount == 0 }">
+            	<div class="col-lg-12 col-md-12 col-12 nodata">	
+	            	<p> 아직 찜한 전문가가 없어요😥</p>
+	            	<p>서비스를 받고 싶은 전문가를 찜해주세요</p>
+	            	<button class="btn-style" onclick="location.href='expert.service';">전문가 보러 가기</button>
+	            </div>
+            </c:if>
             
             <footer class="hm-4-padding">
                 <div class="container-fluid">

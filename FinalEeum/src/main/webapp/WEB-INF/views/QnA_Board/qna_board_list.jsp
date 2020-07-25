@@ -117,6 +117,7 @@
 	 	 				BOARD_RE_LEV, BOARD_NUM,
 	 	 				BOARD_SUBJECT, BOARD_NAME, OARD_DATE
 						BOARD_READCOUNT : property 이름
+	 	 			 
 	 	 			 --%>
 
 	 	 			 

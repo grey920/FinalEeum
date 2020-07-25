@@ -4,6 +4,7 @@
  * Self-contained jQuery plugin for displaying star ratings.
  * @license
  * 
+ * 
  */
 (function ($) {
     $.fn.jstars = function (options) {

@@ -4,6 +4,7 @@
 
 
 
+
 <mapper namespace="Insects">
 
 	<select id="insectcount" resultType="int">

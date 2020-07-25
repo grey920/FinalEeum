@@ -73,6 +73,7 @@ public class QnAController {
 		mv.addObject("boardlist", boardlist);
 		mv.addObject("limit", limit);
 		mv.addObject("user_id",user_id);
+		
 		return mv;
 	}
 	

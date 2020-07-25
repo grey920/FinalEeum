@@ -39,4 +39,12 @@ public class LikeDAO {
 		return sqlSession.selectList("Likes.wishlist", map);
 	}
 
+	public int wishCheckCount(HashMap<String, Object> map) {
+		return sqlSession.selectOne("Likes.wishCheckCount", map);
+	}
+
+	public List<Object> wishCheck(HashMap<String, Object> map) {
+		return sqlSession.selectList("Likes.wishCheck", map);
+	}
+
 }

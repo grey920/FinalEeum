@@ -4,6 +4,7 @@
 
 
 
+
 <mapper namespace="Cleanings">
 
 	<select id="cleaningcount" resultType="int">

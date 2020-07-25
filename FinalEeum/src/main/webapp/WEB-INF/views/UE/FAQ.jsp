@@ -112,6 +112,15 @@
                                 </div>
                                 <!-- ACCORDION END -->	
                                 
+                                <!-- ACCORDION START (5) -->
+                                <h3><span id="showlogin">전문가 이름 앞에 붙은 단어는 무슨 뜻인가요?</span></h3>
+                                <div id="checkout-login" class="coupon-content">
+                                    <div class="coupon-info">
+                                        <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
+                                    </div>
+                                </div>
+                                <!-- ACCORDION END -->	
+                                
 							</div>
 						</div>
 					</div>

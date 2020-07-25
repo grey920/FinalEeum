@@ -17,6 +17,7 @@ public class ExpertRepairServiceImpl implements ExpertRepairService {
 	private ExpertRepairDAO repairdao;
 	
 	
+	
 	@Override
 	public int getExpertListCountRepair() {
 		return repairdao.expert_RepairCount();

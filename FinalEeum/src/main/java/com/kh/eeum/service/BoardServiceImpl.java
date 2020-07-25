@@ -14,6 +14,7 @@ import com.kh.eeum.domain.Oneday;
 @Service
 public class BoardServiceImpl implements BoardService {
 
+	
 	@Autowired
 	private QnADAO dao;
 	

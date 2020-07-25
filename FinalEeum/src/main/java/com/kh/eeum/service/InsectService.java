@@ -8,6 +8,7 @@ public interface InsectService {
 
 	List<Expert> expertlist(int page, int limit);
 
+	
 	int getExpertListCountCleaning();
 
 }

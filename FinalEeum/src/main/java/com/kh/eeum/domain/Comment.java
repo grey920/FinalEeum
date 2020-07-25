@@ -8,6 +8,7 @@ public class Comment {
 	private int QNA_INDEX1;
 
 	
+	
 	public int getQNA_INDEX1() {
 		return QNA_INDEX1;
 	}

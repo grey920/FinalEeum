@@ -38,6 +38,7 @@
 	cursor: pointer;
 }
 
+
 .paging_align {
 	display: flex;
 	justify-content: center;

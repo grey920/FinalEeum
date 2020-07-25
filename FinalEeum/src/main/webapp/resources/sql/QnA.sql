@@ -11,6 +11,7 @@ QNA_TIMES NUMBER DEFAULT 0                                       --신고 누적
 );
 
 
+
 CREATE SEQUENCE qnaboard_seq
 START WITH 1
 INCREMENT BY 1

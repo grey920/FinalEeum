@@ -12,6 +12,7 @@
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon"
 	href="resources/img/favicon.png">
+	
 
 
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">

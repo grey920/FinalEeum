@@ -33,6 +33,7 @@ import com.kh.eeum.domain.Review;
 @Service
 public class ExpertServiceImpl implements ExpertService {
 
+	
 	@Autowired
 	private ExpertDAO exdao;
 	
@@ -326,12 +327,12 @@ public class ExpertServiceImpl implements ExpertService {
 	}
 
 	@Override
-	public int cancelReserve(String rs_exid, String rs_uid, String rs_date) {
+	public int cancelReserve(String rs_exid, String user_id, String rs_no) {
 		Map <String, Object> map = new HashMap<String, Object>();
 		int rs_state = 3;
 		map.put("rs_exid", rs_exid);
-		map.put("rs_uid", rs_uid);
-		map.put("rs_date", rs_date);
+		map.put("rs_uid", user_id);
+		map.put("rs_no", rs_no);
 		map.put("rs_state", rs_state);
 		
 		return exdao.cancelReserve(map);

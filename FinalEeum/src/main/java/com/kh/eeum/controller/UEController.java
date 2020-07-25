@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.mail.Session;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -833,15 +834,15 @@ public class UEController {
 	}
 	
 	@RequestMapping(value="userRsCancel.net")
-	public void userReservationCancel(String rs_exid, String user_id, String rs_date, HttpServletResponse response) throws Exception {
-		System.out.println(user_id + "," + rs_exid + "," + rs_date);
+	public void userReservationCancel(String rs_exid, String rs_no, 
+															HttpSession session, HttpServletResponse response) throws Exception {
+		String user_id = (String) session.getAttribute("user_id");
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		
-		int result = expertservice.cancelReserve(rs_exid, user_id, rs_date);
-		System.out.println(result);
+		int result = expertservice.cancelReserve(rs_exid, user_id, rs_no);
 		
 		if (result == 1) {
 			out.println("alert('예약하신 서비스가 취소되었습니다.');");		//추후에 모달로 바꾸기,,,
@@ -922,7 +923,6 @@ public class UEController {
 		String user_id = (String) session.getAttribute("user_id");
 		
 		int wishlistCount = likeservice.wishlistCount(user_id);
-		System.out.println(wishlistCount);
 		
 		int limit = 12;
 		int maxpage = (wishlistCount + limit -1) / limit;
@@ -947,6 +947,37 @@ public class UEController {
 		return mv;
 	}
 	
+	@RequestMapping(value="userWishCheck.net", method=RequestMethod.GET)
+	public ModelAndView userWishCheck (@RequestParam(value="value") int cate, 
+																   @RequestParam(value="page", defaultValue="1", required=false) int page,
+																   HttpSession session,ModelAndView mv) throws Exception {
+		String user_id = (String) session.getAttribute("user_id");
+		
+		int wishCheckCount = likeservice.wishCheckCount(user_id, cate);
+		
+		int limit = 12;
+		int maxpage = (wishCheckCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Object> wishCheck = likeservice.wishCheck(user_id, cate, page, limit);
+		System.out.println(wishCheck);
+		
+		mv.setViewName("UE/userpage_wishlist2");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("wishCheckCount", wishCheckCount);
+		mv.addObject("wishCheck", wishCheck);
+		mv.addObject("limit", limit);
+		
+		return mv;
+	}
+	
 	@RequestMapping(value="userDelete.net", method=RequestMethod.GET)
 	public String delete(String user_id) throws Exception {
 		applyservice.deleteAll(user_id);			//원데이 클래스 신청 내역 삭제 후 
@@ -954,9 +985,9 @@ public class UEController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="userChat.net", method=RequestMethod.GET)
-	public String chat() {
-		return "UE/userpage_base";
+	@RequestMapping(value="userMessage.net", method=RequestMethod.GET)
+	public String message() {
+		return "UE/userpage_message";
 	}
 	
 	@RequestMapping(value="FAQ.net")
@@ -972,7 +1003,7 @@ public class UEController {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('로그아웃이 되었습니다. 내일 또 봬요');");
+		out.println("alert('로그아웃이 되었습니다. 내일 또 봬요 🥰');");
 		out.println("location.href='main';");
 		out.println("</script>");
 		out.close();
