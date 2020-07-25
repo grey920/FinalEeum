@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  <!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>사용자 - 별점 / 후기 내역</title>
+        <title>사용자 - 후기 내역</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -81,6 +82,15 @@
             <div class="shop-wrapper hm-3-padding pt-120 pb-100">
                 <div class="container">
                 
+                  <c:if test="${reviewCount == 0 }">
+                  	<div class="col-lg-12 col-md-12 col-12 nodata">	
+				        <p>아직 작성한 후기가 없습니다😥</p>
+				        <p>받은 서비스에 대해 평가해주세요</p>
+				    	<button class="btn-style" onclick="location.href='userReservation.net';">후기 작성하러 가기</button>
+				    </div>
+                  </c:if>
+                
+                  <c:if test="${reviewCount > 0 }">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="shop-topbar-wrapper">
@@ -92,17 +102,56 @@
                         <div class="product-list product-view">
                             <div class="row">
                             
+                              <c:forEach var="re" items="${relist}">
                                 <div class="product-width col-md-6 col-xl-3 col-lg-4">
                                     <div class="product-wrapper mb-35">
                                         <div class="product-img">
-                                            <a href="#">
-                                                <img src="resources/img/profile/profile_ex1.png" style="">
+                                            <a href="expertDetail.service?expert=${re.EXPERT_ID}">
+                                                <img src="resources/expert_profile${re.PF_SAVEPROFILE}" style="">
                                             </a>
                                         </div>
                                         <div class="product-list-details">
-                                            <h2><a href="product-details.html">[청소] 디딤돌 최유정님</a></h2>
+                                            <h2><a href="expertDetail.service?expert=${re.EXPERT_ID}">
+                                            [
+                                            <c:choose>
+                                            	<c:when test="${re.PF_CATE == '0'}">
+                                            		청소
+                                            	</c:when>
+                                            	<c:when test="${re.PF_CATE == '1'}">
+                                            		방역
+                                            	</c:when>
+                                            	<c:otherwise>
+                                            		수리
+                                            	</c:otherwise>
+                                            </c:choose>
+                                            ]
+                                            &nbsp;
+                                            <c:choose>
+                                            	<c:when test="${re.PF_GRADE == '0'}">
+                                            		디딤돌 
+                                            	</c:when>
+                                            	<c:when test="${re.PF_GRADE == '1'}">
+                                            		마루 
+                                            	</c:when>
+                                            	<c:when test="${re.PF_GRADE == '2'}">
+                                            		우주 
+                                            	</c:when>
+                                            	<c:when test="${re.PF_GRADE == '3'}">
+                                            		용마루 
+                                            	</c:when>
+                                            </c:choose>
+                                            &nbsp;
+                                            ${re.EXPERT_NAME}
+                                            </a></h2>
+                                            
                                             <div class="product-price">
-                                                <span>2020년 6월 20일 | 오후 4시</span>
+                                                <span>
+                                                <c:set var="date" value="${re.RS_DATE}"/>
+                                                	<fmt:formatDate value="${date}" type="date" dateStyle="long"/>
+                                                 | 
+                                                 <c:set var="time" value="${re.RS_TIME}"/>
+                                                 	<fmt:formatDate value="${time}" type="time" timeStyle="short"/>
+                                                 </span>
                                             </div>
                                             <hr>
                                             <div class="product-rating">
@@ -112,43 +161,14 @@
                                                 <i class="ion-ios-star"></i>
                                                 <i class="ion-ios-star"></i>
                                             </div>
-                                            <p style="font-size:15pt;">정말 최고였습니다</p>
-                                            <p>하루에 세 번 Um 아니 열 번쯤 (We got that We got that) 문득 니 생각이 나 멈칫 난 내게 놀라 No no no 감정의 롤러코스터 그 안에 갇혀 어지러 아찔해 (Hmm Now) 그동안 셀 수 없이 모른 척했던 서툰 니 표현이 신경 쓰여 ...</p>
+                                            <p>${fn:length re.rv_content > 14}...</p>
                                             <div class="shop-list-cart">
-                                                <a href="cart.html"><i class="ti-shopping-cart"></i>상세 보기</a>
+                                                <a href="#"><i class="ti-shopping-cart"></i>상세 보기</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="product-width col-md-6 col-xl-3 col-lg-4">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="resources/img/profile/profile_ex2.png" alt="">
-                                            </a>
-                                        </div>
-                                         <div class="product-list-details">
-                                            <h2><a href="product-details.html">[수리] 용마루 김도연님</a></h2>
-                                            <div class="product-price">
-                                                <span>2020년 7월 1일 | 오전 11시</span>
-                                            </div>
-                                            <hr>
-                                            <div class="product-rating">
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                            </div>
-                                            <div class="shop-list-cart" style="margin-top:15px"> <!-- 후기없을 때만 적용되게 해야함 -->
-                                                <a href="cart.html"><i class="ti-shopping-cart"></i>상세 보기</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
+                             </c:forEach>
                             
 				 			<div class="pagination-style text-center mt-30" id="pagination">
 								<ul class="paging_align">
@@ -183,6 +203,7 @@
                         </div>
                     </div>
                 </div>
+              </c:if>
             </div>
             
             

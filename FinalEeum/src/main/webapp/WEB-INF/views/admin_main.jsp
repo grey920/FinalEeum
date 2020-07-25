@@ -8,13 +8,11 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
-<link href="resources/dist/img/eeumLogo2.png" rel="shortcut icon"
-	type="image/x-icon">
+<link rel="shortcut icon" type="image/x-icon" href="resources/img/favicon.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <%@include file="include2/main_header.jsp"%>
 <%@include file="include2/left_column.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="resources/dist/preloader/style.css">
+
 <style>
 #curve_chart {
 	width: 100%;
@@ -27,7 +25,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <hr/><hr/><hr/><hr/>
 </div> -->
 	<!-- pageload end -->
-	<div class="wrapper">
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper" style="background: #fffffa">
 			<!-- Content Header (Page header) -->
@@ -62,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<p>전체 회원 수</p>
 								</div>
 								<div class="icon">
-									<i class="ion ion-person"></i>
+									<i class="fas fa-users"></i>
 								</div>
 								<a class="small-box-footer"
 									style="background: #5d93a1; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px;">More
@@ -102,7 +99,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<p>신규 가입 회원 수</p>
 								</div>
 								<div class="icon">
-									<i class="ion ion-person-add"></i>
+									<i class="fas fa-user-plus"></i>
 								</div>
 								<a class="small-box-footer"
 									style="background: #e6d275; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; color: #4a3f0d">More
@@ -174,13 +171,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<!-- Main Footer -->
 		<%@include file="include2/main_footer.jsp"%>
 
-		<!-- Control Sidebar -->
+		<!-- Control Sidebar -
 		<aside class="control-sidebar control-sidebar-dark">
-			<!-- Control sidebar content goes here -->
-		</aside>
+		Control sidebar content goes here 
+		</aside>->
 		<!-- /.control-sidebar -->
 		<!-- ./wrapper -->
-	</div>
+
 	<%@include file="include2/head.jsp"%>
 	<!-- REQUIRED SCRIPTS -->
 	<%@include file="include2/plugin_js.jsp"%>

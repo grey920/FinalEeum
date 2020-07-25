@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>로그인</title>
+<title>사용자 아이디 / 비밀번호 찾기</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
@@ -27,23 +27,26 @@
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 <%@ include file="../header.jsp" %>
 <style>
+p{font-weight:800}
 .login-form-container {
-    padding: 80px 60px 80px 60px;
+    padding: 50px 60px;
 }
 .login-form-container input {
     padding: 0 15px;
-    margin-bottom:30px;
+    margin-bottom:20px;
 }
 .text-center h2{font-weight:900}
 .ptb-130 {padding-top:30px}
 input{border-radius:30px;}
 button{height:50px}
 .login-toggle-btn{font-size:15pt}
-.breadcrumb-content {padding-top:0;}
+.breadcrumb-content {padding-top:0;margin-top:1em}
+.login-register-tab-list h4 {font-size:23px !important}
 .btn-style.btn-login{background-color:#C1C8D9;
-				 color:#303030;
-				 border:2px solid #C1C8D9;
-				 border-radius:50px}
+				 				color:#303030;
+				 				border:2px solid #C1C8D9 !important;
+				 				border-radius:50px;
+				 				}
 .btn-style.btn-login:hover{color:#303030;
 						   background-color:white;
 						   animation:none}
@@ -53,7 +56,7 @@ button{height:50px}
          		border-radius:20px;
          		background-color:white;
          		color:#72A0E0;
-         		border:2px solid #72A0E0;
+         		border:2px solid #72A0E0 !important;
          		}
 .btn-style:hover{background-color:#72A0E0;
          					color:white;
@@ -69,7 +72,7 @@ button{height:50px}
 		   <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
-                        <h2>LOGIN</h2>
+                        <h2>USER FIND ID / PWD</h2>
                     </div>
                 </div>
             </div>
@@ -82,78 +85,63 @@ button{height:50px}
                             <div class="login-register-wrapper">
                                 <div class="login-register-tab-list nav">
                                     <a class="active" data-toggle="tab" href="#lg1">
-                                        <h4> 사용자 </h4>
+                                        <h4> 아이디 찾기 </h4>
                                     </a>
                                     <a data-toggle="tab" href="#lg2">
-                                        <h4> 전문가 </h4>
+                                        <h4> 비밀번호 찾기 </h4>
                                     </a>
                                 </div>
                                 <div class="tab-content">
                                     <div id="lg1" class="tab-pane active">
                                         <div class="login-form-container">
                                             <div class="login-form">
-                                                <form name="userLoginform" action="user_loginProcess.net" method="post">
-                                                
-                                                    <input type="text" id="user_id" name="user_id" placeholder="사용자 ID" required
-                                                    		<c:if test="${ !empty saveid }">
-                                                    			value="${saveid}"
-                                                    		</c:if>
-                                                    > 
-                                                    <input type="password" id="user_pass" name="user_pass" placeholder="사용자 비밀번호" required>
-                                                    
+                                                <form name="userFindId" action="userIdProcess.net" method="post">
+                                                	<p>사용자 이름 *</p>
+                                                    <input type="text" id="user_name" name="user_name" placeholder="사용자 이름">
+                                                    <p>사용자 주민등록번호 *</p>
+                                                    <input type="password" id="user_jumin1" name="user_jumin1" style="width:48%">
+                                                    -
+                                                    <input type="password" id="user_jumin2" name="user_jumin2" style="width:48%">
                                                     <div class="button-box">
-                                                        <div class="login-toggle-btn">
-                                                            <input type="checkbox" name="user_remember"
-                                                            	<c:if test="${ !empty saveid }">
-                                                            	checked
-                                                            	</c:if>
-                                                            >
-                                                            <label>ID 기억하기</label>
-                                                            <a href="userFind.net">아이디 / 비밀번호 찾기</a>
-                                                        </div>
-                                                        <div style="text-align:center; margin:0 auto">
-                                                        <button type="submit" class="btn-style" style="border-radius:50px"><span>&nbsp;사용자 LOGIN&nbsp;</span></button>
+                                                        <div style="text-align:center; margin:0 auto; margin-top:15px">
+                                                        <button type="submit" class="btn-style" style="border-radius:50px"><span>아이디 찾기</span></button>
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <div style="text-align:center; margin:0 auto">
-                                                   <button class="btn-style btn-login" onclick="location.href='userJoin.net';">
-                                                   <span>사용자 회원가입</span></button>
+                                                
+                                                <div style="text-align:center; margin:0 auto; margin-top:10px">
+                                                   <button class="btn-style btn-login" onclick="location.href='login.net';" style="padding:13px 50px">
+                                                   <span>로그인</span></button>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <div id="lg2" class="tab-pane">
                                         <div class="login-form-container">
                                             <div class="login-form">
-                                                <form name="expertLoginform" action="expert_loginProcess.net" method="post">
-                                                
-                                                    <input type="text" id="expert_id" name="expert_id" placeholder="전문가 ID" required
-                                                    		<c:if test="${ !empty saveid }">
-                                                    			value="${saveid}"
-                                                    		</c:if>
-                                                    >
-                                                    <input type="password" id="expert_pass" name="expert_pass" placeholder="전문가 비밀번호" required>
-                                                    
+                                                <form name="userFindPwd" action="userPwdProcess.net" method="post">
+                                                	<p>사용자 아이디 *</p>
+                                                    <input type="text" id="user_id" name="user_id" placeholder="사용자 아이디">
+                                                	<p>사용자 이름 *</p>
+                                                    <input type="text" id="user_name" name="user_name" placeholder="사용자 이름">
+                                                    <p>사용자 주민등록번호 *</p>
+                                                    <input type="password" id="user_jumin1" name="user_jumin1" style="width:48%">
+                                                    -
+                                                    <input type="password" id="user_jumin2" name="user_jumin2" style="width:48%">
                                                     <div class="button-box">
-                                                        <div class="login-toggle-btn">
-                                                            <input type="checkbox" id="expert_remember"
-                                                               <c:if test="${ !empty saveid }">
-                                                            	checked
-                                                            	</c:if>
-                                                            >
-                                                            <label>ID 기억하기</label>
-                                                            <a href="expertFind.net">아이디 / 비밀번호 찾기</a>
-                                                        </div>
-                                                        <div style="text-align:center; margin:0 auto">
-                                                        <button type="submit" class="btn-style" style="border-radius:50px"><span>&nbsp;전문가 LOGIN&nbsp;</span></button>
+                                                        <div style="text-align:center; margin:0 auto; margin-top:15px">
+                                                        <button type="submit" class="btn-style" style="border-radius:50px"><span>비밀번호 찾기</span></button>
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <div style="text-align:center; margin:0 auto">
-                                                   <button class="btn-style btn-login" onclick="location.href='expertJoin.net';">
-                                                   <span>전문가 회원가입</span></button>
+                                                
+                                                <div style="text-align:center; margin:0 auto; margin-top:10px">
+                                                   <button class="btn-style btn-login" onclick="location.href='login.net';" style="padding:13px 60px">
+                                                   <span>로그인</span></button>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

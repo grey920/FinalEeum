@@ -105,7 +105,7 @@ margin-bottom:30px;
 													size="50" class="oneday_write_form"  >
 
 													<span>내용</span>
-												<textarea name="QNE_CONTENT" id="summernote"></textarea>
+												<textarea name="QNA_CONTENT" id="summernote"></textarea>
 
 
 												<div class="button-box">
@@ -300,7 +300,7 @@ margin-bottom:30px;
 		});// document.ready
 
 		function goWrite(frm) {
-			var content = frm.QNE_CONTENT.value;
+			var content = frm.QNA_CONTENT.value;
 
 			if (content.trim() == '') {
 				alert("내용을 입력해주세요");

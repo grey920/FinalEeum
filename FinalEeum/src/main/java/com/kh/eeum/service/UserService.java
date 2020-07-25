@@ -1,5 +1,6 @@
 package com.kh.eeum.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.kh.eeum.domain.User;
@@ -16,4 +17,7 @@ public interface UserService {
 	public List<User> getList();
 	public String getNick(String user_id);
 	public String getProfile(String user_id);
+	public String findId(String user_name, String user_jumin1, String user_jumin2);
+	public int findPwd(String user_id, String user_name, String user_jumin1, String user_jumin2);
+	public int updatePwd(String user_id, String user_name, String user_jumin1, String newPwd);
 }

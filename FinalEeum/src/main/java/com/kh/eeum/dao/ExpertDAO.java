@@ -115,6 +115,24 @@ public class ExpertDAO {
 		return sqlSession.update("Experts.cancelReserve", map);
 	}
 
+	public List<Map<String, String>> findId(String expert_name, String expert_jumin1) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("expert_name", expert_name);
+		map.put("expert_jumin1", expert_jumin1);
+		return sqlSession.selectList("Experts.findId", map);
+	}
+	
+	public Map<String, String> findPwd(String expert_id, String expert_name, String expert_jumin1) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("expert_id", expert_id);
+		map.put("expert_name", expert_name);
+		map.put("expert_jumin1", expert_jumin1);
+		return sqlSession.selectOne("Experts.findPwd", map);
+	}
+
+	public int updatePwd(Map<String, String> map) {
+		return sqlSession.update("Experts.updatePwd", map);
+	}
 
 
 }

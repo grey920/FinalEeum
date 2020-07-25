@@ -15,12 +15,11 @@
 		SELECT COUNT(NVL(USER_ID,0)) FROM USERS
 	</select>
 
-	<select id="deExperts" resultType="Portfolio"
-		parameterType="String">
+	<select id="deExperts" resultType="Portfolio" parameterType="String">
 		SELECT
 		PF_EXID, PF_LOC, PF_GRADE, PF_CATE, PF_TIME,
 		PF_DESC,
-		PF_LI, PF_OP, PF_INTRO, PF_One
+		PF_SV_LI, PF_SV_OP, PF_INTRO, PF_One
 		FROM PORTFOLIO
 		WHERE
 		PF_EXID=#{PF_EXID}
@@ -51,4 +50,21 @@
 		)
 		SELECT COUNT(NVL(USER_ID, 0)) FROM USERS
 	</select>
+	
+	<!-- 관리자 사이트에서 신고 회원 -->
+	<select id="qna" resultMap="qnaMap">
+		SELECT QNA_INDEX, QNA_WRITER, QNA_REPORT, QNA_TYPE, QNA_TIMES
+		FROM QNABOARD
+	</select>
+	<resultMap id="qnaMap" type="com.kh.eeum.domain.Repu">
+		<result property="QNA_REPORT" column="QNA_REPORT" />
+		<collection property="qnalist" ofType="com.kh.eeum.domain.QnA">
+			<result property="QNA_INDEX" column="QNA_INDEX" />
+			<result property="QNA_WRITER" column="QNA_WRITER" />
+			<result property="QNA_REPORT" column="QNA_REPORT" />	
+			<result property="QNA_TYPE" column="QNA_TYPE"/>
+			<result property="QNA_TIMES" column="QNA_TIMES"/>
+		</collection>
+	</resultMap>
+	
 </mapper>

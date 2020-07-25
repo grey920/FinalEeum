@@ -1,20 +1,31 @@
 package com.kh.eeum.domain;
 
-import org.springframework.web.multipart.MultipartFile;
+import java.util.List;
+
 
 public class QnA {
-	
-	
-	
-
-	private int 	QNA_INDEX;		//�۹�ȣ
-	private String	QNA_TITLE;		//�� �ۼ���
-	private String	QNA_WRITER;		//�� ��й�ȣ
-	private String  QNA_REPORT;
-	private String	QNE_CONTENT;	//�� ����
-	private String	QNA_DATE;
-	private String 	QNA_TYPE;
+	private int QNA_INDEX;
+	private String QNA_TITLE;
+	private String QNA_WRITER;
+	private String QNA_CONTENT;
+	private String QNA_DATE;
+	private String QNA_TYPE;
 	private int QNA_TIMES;
+	private String QNA_REPORT;
+	private List<QnA> qnalist;
+	
+	public List<QnA> getQnalist() {
+		return qnalist;
+	}
+	public void setQnalist(List<QnA> qnalist) {
+		this.qnalist = qnalist;
+	}
+	public String getQNA_REPORT() {
+		return QNA_REPORT;
+	}
+	public void setQNA_REPORT(String qNA_REPORT) {
+		QNA_REPORT = qNA_REPORT;
+	}
 	public int getQNA_INDEX() {
 		return QNA_INDEX;
 	}
@@ -33,17 +44,13 @@ public class QnA {
 	public void setQNA_WRITER(String qNA_WRITER) {
 		QNA_WRITER = qNA_WRITER;
 	}
-	public String getQNA_REPORT() {
-		return QNA_REPORT;
+
+	
+	public String getQNA_CONTENT() {
+		return QNA_CONTENT;
 	}
-	public void setQNA_REPORT(String qNA_REPORT) {
-		QNA_REPORT = qNA_REPORT;
-	}
-	public String getQNE_CONTENT() {
-		return QNE_CONTENT;
-	}
-	public void setQNE_CONTENT(String qNE_CONTENT) {
-		QNE_CONTENT = qNE_CONTENT;
+	public void setQNA_CONTENT(String qNA_CONTENT) {
+		QNA_CONTENT = qNA_CONTENT;
 	}
 	public String getQNA_DATE() {
 		return QNA_DATE;

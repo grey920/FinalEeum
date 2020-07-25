@@ -175,7 +175,7 @@
 	  	</tr>
 	  	<tr>
 	  		<td><div>내용</div></td>
-	  		<td>${boarddata.QNE_CONTENT}</td>
+	  		<td>${boarddata.QNA_CONTENT}</td>
 	  	</tr>
 
 
