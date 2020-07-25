@@ -69,6 +69,7 @@ public class ExpertController {
 		// 한 페이지에 보여줄 개수
 		int limit = 8;
 
+		
 		System.out.println("전문가리스트 페이지이잉" + page);
 
 		// 전문가 리스트 개수 가져옴.
