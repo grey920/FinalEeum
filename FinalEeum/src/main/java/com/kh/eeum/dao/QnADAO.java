@@ -13,6 +13,7 @@ import com.kh.eeum.domain.Oneday;
 @Repository
 public class QnADAO {
 
+	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	

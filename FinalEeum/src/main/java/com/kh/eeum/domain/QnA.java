@@ -3,6 +3,7 @@ package com.kh.eeum.domain;
 import java.util.List;
 
 
+
 public class QnA {
 	private int QNA_INDEX;
 	private String QNA_TITLE;

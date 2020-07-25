@@ -83,6 +83,7 @@ public class QnAController {
 		return "QnA_Board/qna_write";
 	}
 	
+	
 	//글쓰기 작성
 	@PostMapping(value="/BoardAddAction.bo")
 	public String bbs_write_ok(QnA board, HttpServletRequest request) throws Exception {

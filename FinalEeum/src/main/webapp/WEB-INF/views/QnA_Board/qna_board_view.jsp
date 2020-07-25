@@ -177,6 +177,7 @@
 	  		<td><div>내용</div></td>
 	  		<td>${boarddata.QNA_CONTENT}</td>
 	  	</tr>
+	  	
 
 
 	  	 <tr>	 
