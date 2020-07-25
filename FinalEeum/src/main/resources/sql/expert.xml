@@ -14,7 +14,6 @@
 				#{expert_email1}, #{expert_email2})
 	</insert>
 	
-
 	<select id="idcheck" resultType="expert" parameterType="String">
 		select * from expert_table 
 		where expert_id = #{expert_id}
@@ -39,15 +38,13 @@
 	</select>
 
 	<select id="expertlist" resultType="map">
-	select *
-	from
-			(select rownum rnum, b.* 
-	  		from (select E.* , P.PF_CATE,P.PF_SAVEPROFILE,P.PF_One
-        	     from expert_table E,PORTFOLIO P
-        	     where e.expert_ID =  p.PF_EXID	) 	
-		b)	  
-		where rnum &gt; = #{start} and rnum &lt; =
-		#{end}
+		select *
+		from (select rownum rnum, b.* 
+		  		  from (select E.* , P.PF_CATE,P.PF_SAVEPROFILE,P.PF_One
+	        	     		from expert_table E,PORTFOLIO P
+	        	     		where e.expert_ID =  p.PF_EXID) b
+	        	  )	  
+		where rnum &gt; = #{start} and rnum &lt; = #{end}
 	</select>
 	
 	<select id="ReviewRating" resultType="map">
@@ -56,31 +53,28 @@
 		,TRIM(TO_CHAR(avg(rv_rating5), '99999999.99')) "rv_rating5",TRIM(TO_CHAR(avg(rv_rating6), '99999999.99')) "rv_rating6"
 		from review
 		where rv_expert_id = #{expert_id}
-	
 	</select>
 	
 
-	<select id="expertdetails" resultType="expert"
-		parameterType="String">
+	<select id="expertdetails" resultType="expert" parameterType="String">
 		select * from expert_table
 		where expert_id = #{expertid}
 	</select>
 	
 	<insert id="insertRequest"  parameterType="java.util.Map">	       
-
 		<selectKey keyProperty="request_no" resultType="java.lang.Integer" order="AFTER">
 	        SELECT request_seq.CURRVAL FROM DUAL
 	    </selectKey>
-
-	INSERT INTO REQUEST			
-		(REQUEST_NO, EXPERT_ID, WRITER, WRITER_TYPE, BUILDING_TYPE, BUILDING_TEXT, REPAIR_TYPE, REPAIR_TEXT, SIMPLE_REQ_TEXT, REQUEST_DATE)	
-	VALUES(request_seq.NEXTVAL, #{expert_id}, #{writer}, #{writer_type}, #{building_type}, #{building_text}, #{repair_type}, #{repair_text}, #{simple_req_text}, SYSDATE)
+	
+		INSERT INTO REQUEST			
+			(REQUEST_NO, EXPERT_ID, WRITER, WRITER_TYPE, BUILDING_TYPE, BUILDING_TEXT, REPAIR_TYPE, REPAIR_TEXT, SIMPLE_REQ_TEXT, REQUEST_DATE)	
+		VALUES(request_seq.NEXTVAL, #{expert_id}, #{writer}, #{writer_type}, #{building_type}, #{building_text}, #{repair_type}, #{repair_text}, #{simple_req_text}, SYSDATE)
 	</insert>
 
 
 	<insert id="insertRequestFileData"  parameterType="java.util.Map">	       
 		INSERT INTO REQUEST_FILE	
-				(FILE_NO, REQUEST_NO, FILE_NAME, FILE_ORIGINAL, FILE_THUMB_NAME, REQUEST_FILE_DATE)	
+		(FILE_NO, REQUEST_NO, FILE_NAME, FILE_ORIGINAL, FILE_THUMB_NAME, REQUEST_FILE_DATE)	
 		VALUES (request_file_seq.NEXTVAL, #{request_no}, #{file_name}, #{file_original}, #{file_thumb_name}, SYSDATE)	
 	</insert>
 	
@@ -111,7 +105,6 @@
 		  select count(*) from REQUEST where expert_id = #{expert_id}
 	</select>
 	
-	
 	<resultMap id="PortfolioResult" type="hashMap" >
     	<result property="PF_DESC" column="PF_DESC" jdbcType="CLOB" javaType="java.lang.String" />
     	<result property="PF_INTRO" column="PF_INTRO" jdbcType="CLOB" javaType="java.lang.String" /> 	
@@ -132,4 +125,23 @@
 		set RS_STATE = #{rs_state}
 		where rs_exid = #{rs_exid} and rs_uid = #{rs_uid} and rs_no = #{rs_no}
 	</update>
+	
+	<select id="findId" parameterType="map" resultType="map">
+		select *
+		from expert_table
+		where expert_name = #{expert_name} and expert_jumin1 = #{expert_jumin1}
+	</select>
+	
+	<select id="findPwd" parameterType="map" resultType="map">
+		select *
+		from expert_table
+		where expert_id = #{expert_id} and expert_name = #{expert_name} and expert_jumin1 = #{expert_jumin1}
+	</select>
+	
+	<update id="updatePwd" parameterType="map">
+		update expert_table
+		set expert_pass = #{expert_pass}
+		where expert_id = #{expert_id} and expert_name = #{expert_name} and expert_jumin1 = #{expert_jumin1}
+	</update>
+	
 </mapper>

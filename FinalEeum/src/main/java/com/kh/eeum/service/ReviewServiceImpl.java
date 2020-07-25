@@ -1,20 +1,14 @@
 package com.kh.eeum.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.kh.eeum.dao.ExpertDAO;
 import com.kh.eeum.dao.ReviewDAO;
-import com.kh.eeum.dao.UserDAO;
-import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Review;
-import com.kh.eeum.domain.User;
 
 @Service
 public class ReviewServiceImpl implements ReviewService{
@@ -63,6 +57,7 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
+
 	public float selectReviewList(String expertid) {
 	
 		float rating = dao.selectReviewList1(expertid);
@@ -70,6 +65,24 @@ public class ReviewServiceImpl implements ReviewService{
 			return 0;
 		}
 		return rating;
+
+	public int reviewCount(String user_id) {
+		return dao.reviewCount(user_id);
+	}
+
+	@Override
+	public List<Review> reviewList(String user_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int startrow = (page -1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("rv_user_id", user_id);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return dao.reviewList(map);
+
 	}
 
 

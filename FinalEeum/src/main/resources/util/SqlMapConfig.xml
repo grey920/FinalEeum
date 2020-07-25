@@ -23,6 +23,7 @@
 		<typeAlias alias="Integer" type="java.lang.Integer"/>
 		<typeAlias alias="reservation" type="com.kh.eeum.domain.Reservation" />
 		<typeAlias alias="QnA" type="com.kh.eeum.domain.QnA"/>
+
 		<typeAlias alias="C" type="com.kh.eeum.domain.Comment"/>
 		<typeAlias alias="message" type="com.kh.eeum.domain.Message" />
 
@@ -43,6 +44,7 @@
 
 		<mapper resource="sql/qna.xml"/>
 		<mapper resource="sql/comment.xml"/>
+
 		<mapper resource="sql/message.xml"/>
 
 	</mappers>

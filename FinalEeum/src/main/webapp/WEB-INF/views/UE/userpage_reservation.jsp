@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  <!doctype html>
 <html>
     <head>
@@ -209,9 +210,6 @@
                                             	  </c:if>
                                             	  
                                             	  <c:if test="${r.RS_STATE == '2'}">
-													<button class="btn-style" onclick="location.href='#';">
-														<span>별점주기</span>
-													</button>
 													<button class="btn-style" onclick="location.href='#';">
 														<span>후기쓰기</span>
 													</button>

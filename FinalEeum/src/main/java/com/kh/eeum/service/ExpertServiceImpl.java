@@ -346,7 +346,51 @@ public class ExpertServiceImpl implements ExpertService {
 		return exdao.ReviewRatingList(map);
 	}
 
+	@Override
+	public String findId(String expert_name, String expert_jumin1, String expert_jumin2) {
+		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+		list = exdao.findId(expert_name, expert_jumin1);
+		
+		String result_id = null;
+		
+		for(int i = 0; i <list.size(); i++) {
+			String result_jumin = list.get(i).get("EXPERT_JUMIN2");
+			
+			if(passwordEncoder.matches(expert_jumin2, result_jumin)) {
+				result_id = list.get(i).get("EXPERT_ID");
+				break;
+			}
+		}
+		
+		return result_id;
+	}
 
+	@Override
+	public int findPwd(String expert_id, String expert_name, String expert_jumin1, String expert_jumin2) {
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map = exdao.findPwd(expert_id, expert_name, expert_jumin1);
+		
+		int result = 0;
+		
+		String result_jumin2 = map.get("EXPERT_JUMIN2");
+			
+		if(passwordEncoder.matches(expert_jumin2, result_jumin2)) {
+			result = 1;
+		}
+		
+		return result;
+	}
 
+	@Override
+	public int updatePwd(String expert_id, String expert_name, String expert_jumin1, String newPwd) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("expert_id", expert_id);
+		map.put("expert_name", expert_name);
+		map.put("expert_jumin1", expert_jumin1);
+		map.put("expert_pass", newPwd);
+		
+		return exdao.updatePwd(map);
+	}
 
 }

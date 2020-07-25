@@ -5,6 +5,7 @@
 
 
 
+
 <mapper namespace="QnAs" >
 	<select id="count" resultType="int">
 		select count(*) from QNABOARD
@@ -36,5 +37,38 @@
 		select * from QNABOARD where QNA_INDEX = #{num}
 	</select>
 	
+
+
+<mapper namespace="QnAs" >
+   <select id="count" resultType="int">
+      select count(*) from QNABOARD
+   </select>
+   
+   
+   <select id="list" parameterType="java.util.Map" resultType="qna">
+      select * from
+      (select rownum rnum, b.*
+      from
+      (select * from QNABOARD 
+      order by QNA_INDEX desc) b
+      )
+      where rnum &gt; = #{start} and rnum &lt; = #{end}      
+   </select>
+   
+   <insert id="insert" parameterType="qna">
+      insert into QNABOARD
+      (QNA_INDEX ,
+       QNA_TITLE,QNA_WRITER, QNE_CONTENT,QNA_DATE, QNA_SAVEFILE,QNA_ORIGINALFILE,QNA_TYPE)
+       values
+       (qnaboard_seq.NEXTVAL,
+       #{QNA_TITLE},#{QNA_WRITER}, #{QNE_CONTENT},sysdate,
+       #{QNA_SAVEFILE}, #{QNA_ORIGINALFILE},#{QNA_TYPE})
+   </insert>
+   
+      
+   <select id="Detail" resultType="qna">
+      select * from QNABOARD where QNA_INDEX = #{num}
+   </select>
+  
 
 </mapper>

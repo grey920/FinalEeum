@@ -3,19 +3,19 @@ package com.kh.eeum.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import javax.mail.Session;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -28,13 +28,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.eeum.domain.Apply;
 import com.kh.eeum.domain.Expert;
-import com.kh.eeum.domain.Oneday;
 import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.Reservation;
+import com.kh.eeum.domain.Review;
 import com.kh.eeum.domain.User;
 import com.kh.eeum.service.ApplyService;
 import com.kh.eeum.service.ExpertService;
 import com.kh.eeum.service.LikeService;
+import com.kh.eeum.service.ReviewService;
 import com.kh.eeum.service.UserService;
 
 @Controller
@@ -51,6 +52,9 @@ public class UEController {
 	
 	@Autowired
 	private LikeService likeservice;
+	
+	@Autowired
+	private ReviewService reviewservice;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -707,6 +711,169 @@ public class UEController {
 		}
 	}
 	
+	/* 아이디 / 비밀번호 찾기 */
+	@RequestMapping(value="userFind.net")
+	public String userFind() {
+		return "UE/user_find";
+	}
+	
+	@RequestMapping(value="userIdProcess.net", method=RequestMethod.POST)
+	public ModelAndView userIdProcess(String user_name, String user_jumin1, String user_jumin2, 
+																ModelAndView mv, HttpServletResponse response) throws Exception {
+		String user_id = userservice.findId(user_name, user_jumin1, user_jumin2);
+		
+		
+		if (user_id != null) {
+			mv.setViewName("UE/user_showId");
+			mv.addObject("user_id", user_id);
+			return mv;
+			
+		} else {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('올바르지 않은 정보를 입력하셨습니다.\\n 다시 한 번 확인해주세요.');");
+			out.println("location.href='userFind.net';");
+			out.println("</script>");
+			out.close();
+			return null;
+		}
+	}
+	
+	@RequestMapping(value="userPwdProcess.net", method=RequestMethod.POST)
+	public ModelAndView userPwdProcess(String user_id, String user_name, String user_jumin1, String user_jumin2, 
+																	ModelAndView mv, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		int result1 = userservice.findPwd(user_id, user_name, user_jumin1,user_jumin2);
+		int result2 = 0;
+		
+		if (result1 == 1) {
+			Random random = new Random();
+			String newPwd = null;
+			
+			for (int i = 0; i < 10; i++) {
+			    int index = random.nextInt(3);
+			    switch (index) {
+				    case 0:
+				    	newPwd = newPwd + ((char) ((int) (random.nextInt(26)) + 97));
+				        break;
+				    case 1:
+				    	newPwd = newPwd + (random.nextInt(10));
+				        break;
+				    case 2:
+				    	newPwd = newPwd + ((char) ((int) (random.nextInt(6)) + 33));
+				        break;
+			    }
+			}
+			
+			result2 = userservice.updatePwd(user_id, user_name, user_jumin1, newPwd);
+			
+			if (result2 == 1) {
+				mv.setViewName("UE/user_showPwd");
+				mv.addObject("user_pass", newPwd);
+				return mv;
+			} else {
+				out.println("alert('임시 비밀번호 발급에 실패했습니다.\\n 다시 한 번 시도해주세요.');");
+				out.println("location.href='userFind.net';");
+				out.println("</script>");
+				out.close();
+				return null;
+			}
+			
+		} else {
+			out.println("alert('올바르지 않은 정보를 입력하셨습니다.\\n 다시 한 번 확인해주세요.');");
+			out.println("location.href='userFind.net';");
+			out.println("</script>");
+			out.close();
+			return null;
+		}
+	}
+	
+	/* 전문가 아이디 / 비밀번호 찾기 */
+	@RequestMapping(value="expertFind.net")
+	public String expertFind() {
+		return "UE/expert_find";
+	}
+	
+	@RequestMapping(value="expertIdProcess.net", method=RequestMethod.POST)
+	public ModelAndView expertIdProcess(String expert_name, String expert_jumin1, String expert_jumin2, 
+																	ModelAndView mv, HttpServletResponse response) throws Exception {
+		String expert_id = expertservice.findId(expert_name, expert_jumin1, expert_jumin2);
+		
+		
+		if (expert_id != null) {
+			mv.setViewName("UE/expert_showId");
+			mv.addObject("expert_id", expert_id);
+			return mv;
+			
+		} else {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('올바르지 않은 정보를 입력하셨습니다.\\n 다시 한 번 확인해주세요.');");
+			out.println("location.href='expertFind.net';");
+			out.println("</script>");
+			out.close();
+			return null;
+		}
+	}
+	
+	
+	@RequestMapping(value="expertPwdProcess.net", method=RequestMethod.POST)
+	public ModelAndView expertPwdProcess(String expert_id, String expert_name, String expert_jumin1, String expert_jumin2, 
+																		ModelAndView mv, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		int result1 = expertservice.findPwd(expert_id, expert_name, expert_jumin1, expert_jumin2);
+		int result2 = 0;
+		
+		if (result1 == 1) {
+			Random random = new Random();
+			String newPwd = null;
+			
+			for (int i = 0; i < 10; i++) {
+			    int index = random.nextInt(3);
+			    switch (index) {
+				    case 0:
+				    	newPwd = newPwd + ((char) ((int) (random.nextInt(26)) + 97));
+				        break;
+				    case 1:
+				    	newPwd = newPwd + (random.nextInt(10));
+				        break;
+				    case 2:
+				    	newPwd = newPwd + ((char) ((int) (random.nextInt(6)) + 33));
+				        break;
+			    }
+			}
+			
+			result2 = expertservice.updatePwd(expert_id, expert_name, expert_jumin1, newPwd);
+			
+			if (result2 == 1) {
+				mv.setViewName("UE/expert_showPwd");
+				mv.addObject("expert_pass", newPwd);
+				return mv;
+			} else {
+				out.println("alert('임시 비밀번호 발급에 실패했습니다.\\n 다시 한 번 시도해주세요.');");
+				out.println("location.href='expertFind.net';");
+				out.println("</script>");
+				out.close();
+				return null;
+			}
+			
+		} else {
+			out.println("alert('올바르지 않은 정보를 입력하셨습니다.\\n 다시 한 번 확인해주세요.');");
+			out.println("location.href='expertFind.net';");
+			out.println("</script>");
+			out.close();
+			return null;
+		}
+	}
+	
 	/* 사용자 마이페이지 */
 	@RequestMapping(value="userpage.net")
 	public String userpage() {
@@ -845,7 +1012,7 @@ public class UEController {
 		int result = expertservice.cancelReserve(rs_exid, user_id, rs_no);
 		
 		if (result == 1) {
-			out.println("alert('예약하신 서비스가 취소되었습니다.');");		//추후에 모달로 바꾸기,,,
+			out.println("alert('예약하신 서비스가 취소되었습니다.');");	
 			out.println("location.href='userReservation.net';");
 			
 		} else {
@@ -858,8 +1025,32 @@ public class UEController {
 	}
 	
 	@RequestMapping(value="userReview.net")
-	public String userReview() {
-		return "UE/userpage_review";
+	public ModelAndView userReview(@RequestParam(value="page", defaultValue="1", required=false) int page,
+															HttpSession session, ModelAndView mv) throws Exception {
+		String user_id = (String) session.getAttribute("user_id");
+		
+		int reviewCount = reviewservice.reviewCount(user_id);
+		
+		int limit = 10;
+		int maxpage = (reviewCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Review> reviewList = reviewservice.reviewList(user_id, page, limit);
+		
+		mv.setViewName("UE/userpage_review");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("reviewCount", reviewCount);
+		mv.addObject("relist", reviewList);
+		mv.addObject("limit", limit);
+		
+		return mv;
 	}
 	
 

@@ -46,7 +46,7 @@ p{font-weight:800}
 		받는 사람 &nbsp;
 		<input type="text" id="msg_rid" name="msg_rid" value="<%=request.getParameter("msg_rid") %>" style="width:30%" readOnly><br>
 		<p>상담 내용</p>
-		<input type="text" id="msg_content" name="msg_content" placeholder="예약 내용을 적어주세요"><br>
+		<input type="text" id="msg_content" name="msg_content" placeholder="상담할 내용을 적어주세요"><br>
 		<div class="button-box" style="text-align:center;margin:0 auto">
 			<button type="submit" class="btn-style">
 				<span>보내기</span>

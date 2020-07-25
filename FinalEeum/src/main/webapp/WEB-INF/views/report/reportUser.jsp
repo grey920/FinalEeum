@@ -4,13 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="resources/dist/img/eeumLogo2.png" rel="shortcut icon" type="image/x-icon">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="resources/img/favicon.png" rel="shortcut icon" type="image/x-icon">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>신고 회원 관리</title>
 </head>
 <%@ include file="../include2/head.jsp" %>
 <%@ include file ="../include2/main_header.jsp" %>
 <%@ include file="../include2/left_column.jsp" %>
+<style>
+table>tbody>tr>td>ul>li{float: left; list-style: none; margin-right : 4%;}
+table>tbody>tr>td>ul{height:30px;}
+
+</style>
 <body>
 	<!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper" style="background:#fffffa">
@@ -30,6 +35,7 @@
 				</div>
 			</div>
 			<!-- /.container-fluid -->
+			
 		</section>
 
 		<!-- Main content -->
@@ -46,23 +52,34 @@
 								<table id="expertTable" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th>회원 아이디</th>
-											<th>이름</th>
-											<th>회원 상태</th>
-											<th>신고 누적 횟수</th>
-											<th>처리 조치</th>
+											<th>신고당한 회원 아이디</th>
+											<th>신고자</th>
+											<th>조치</th>
 										</tr>
 									</thead>
 									<tbody>
+										<c:forEach var="r" items="${qnalist}">
+										<tr>
+											<td>${r.QNA_REPORT }</td>
 											
+											<td>
+											<c:forEach var="q" items="${r.qnalist }">
+											<ul>
+											<li>${q.QNA_WRITER }</li>			
+											<li>${q.QNA_TYPE }</li>
+											<li>${q.QNA_TIMES }</li>
+											</ul>
+											</c:forEach>
+											</td>
+											<td></td>
+										</tr>
+										</c:forEach>
 									</tbody>
 									<tfoot>
 										<tr>
-											<th>회원 아이디</th>
-											<th>이름</th>
-											<th>회원 상태</th>
-											<th>신고 누적 횟수</th>
-											<th>처리 조치</th>
+											<th>신고당한 회원 아이디</th>
+											<th>신고자</th>
+											<th>조치</th>
 										</tr>
 									</tfoot>
 								</table>
@@ -72,12 +89,15 @@
 						<!-- /.card -->
 					</div>
 					<!-- /.col -->
+					
 				</div>
 				<!-- /.row -->
 			</div>
 			<!-- /.container-fluid -->
 		</section>
 		<!-- /.content -->
+		
+		
 	</div>
 	<!-- /.content-wrapper -->
 	

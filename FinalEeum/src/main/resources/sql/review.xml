@@ -33,8 +33,17 @@
 	, rv_rating4 = #{rv_rating4}, rv_rating5 = #{rv_rating5}, rv_rating6 = #{rv_rating6},rv_sum = #{rating_sum}rv_date = sysdate
 	where rv_no = #{rv_no}
 	</update>
+		
+	<select id="count" resultType="int">
+		select count(*)
+		from review where RV_EXPERT_ID = #{expert_id}
+	</select>
 	
+	<delete id="delete" parameterType="int">
+		delete review where rv_no = #{num}
+	</delete>
 	
+
 <select id="count" resultType="int">
 	select count(*)
 	from review where RV_EXPERT_ID = #{expert_id}
@@ -49,5 +58,16 @@
 		from review
 		where rv_expert_id = #{expert_id}
 </select>
+
+
+	<select id="reviewCount" parameterType="String" resultType="int">
+		select count(*)
+		from review
+		where rv_user_id = #{rv_user_id}
+	</select>
+	
+	<select id="reviewList"  parameterType="map" resultType="map">
+	
+	</select>
 
 </mapper>
