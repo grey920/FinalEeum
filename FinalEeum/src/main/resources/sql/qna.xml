@@ -8,6 +8,7 @@
 		select count(*) from QNABOARD
 	</select>
 	
+	
 	<select id="list" parameterType="java.util.Map" resultType="qna">
 		select * from
 		(select rownum rnum, b.*

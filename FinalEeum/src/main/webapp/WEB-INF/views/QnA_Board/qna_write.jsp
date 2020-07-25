@@ -303,6 +303,7 @@ margin-bottom:30px;
 			var content = frm.QNA_CONTENT.value;
 
 			
+			
 			if (content.trim() == '') {
 				alert("내용을 입력해주세요");
 				return false;

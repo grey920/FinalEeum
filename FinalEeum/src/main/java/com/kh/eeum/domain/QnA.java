@@ -49,6 +49,7 @@ public class QnA {
 	}
 	public void setQNA_TYPE(String qNA_TYPE) {
 		QNA_TYPE = qNA_TYPE;
+		
 	}
 	public int getQNA_TIMES() {
 		return QNA_TIMES;

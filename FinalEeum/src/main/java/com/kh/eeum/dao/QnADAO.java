@@ -19,6 +19,7 @@ public class QnADAO {
 	
 	
 	
+	
 	public int getListCount() {
 		return sqlSession.selectOne("QnAs.count");
 	}
