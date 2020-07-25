@@ -9,6 +9,7 @@
 * http://www.opensource.org/licenses/mit-license.php
 */
 
+
 (function ($) {
 
     $.fn.barfiller = function (options) {

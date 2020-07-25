@@ -13,6 +13,8 @@
 <link rel="shortcut icon" type="image/x-icon"
 	href="resources/img/favicon.png">
 
+
+
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/animate.css">
 <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
@@ -57,18 +59,7 @@
 		<div class="breadcrumb-area mt-37 hm-4-padding">
 			<div class="container-fluid">
 				<div class="breadcrumb-content text-center">
-					<h2>Shop Page</h2>
-					<ul>
-						<li><a href="#">home</a></li>
-						<li>Shop page</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="banner-area hm-4-padding">
-			<div class="container-fluid">
-				<div class="banner-img">
-					<a href="#"><img src="resources/img/banner/16.jpg" alt=""></a>
+					<h2>청소 전문가 리스트</h2>
 				</div>
 			</div>
 		</div>

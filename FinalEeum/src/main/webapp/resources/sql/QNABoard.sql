@@ -11,6 +11,7 @@ QNA_DATE TIMESTAMP NOT NULL,                                 --신고글 작성 
 QNA_TYPE VARCHAR2(40) NOT NULL,                              --신고 대분류
 QNA_TIMES NUMBER DEFAULT 0                                       --신고 누적 횟수, 기본 값 0
 );
+select * from qnaboard;
 
 
 DROP SEQUENCE qnaboard_seq;

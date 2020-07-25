@@ -5,6 +5,7 @@ var hexagon = {
     ssin: function(degree) {
         return Math.sin(degree * Math.PI / 180);
     },
+    
     init: function(id, side_length, names, color) {
         this.side_length = side_length;
         this.hexagon = document.getElementById(id);

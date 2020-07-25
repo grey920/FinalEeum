@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  SQL 맵퍼 파일은 xml이기 때문에 제일 먼저 xml 선언이 옵니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+
+<mapper namespace="Comments">
+
+<select id="count" resultType="int" parameterType="int">
+	select count(*)
+	from comments1 where QNA_INDEX1 = #{num}
+</select>
+
+<select id="getList" resultType="C" parameterType="map">
+	select * 
+	from ( select rownum rnum, num, id, content, reg_date
+			from(
+				select num, id, content,reg_date
+				from comments1 where QNA_INDEX1 = #{num}
+				order by reg_date desc
+			)
+	)
+	where rnum between #{start} and #{end}
+	
+</select>
+
+<insert id="insert" parameterType="C">
+	insert into comments1
+	values(com1_seq.nextval,#{id},#{content},sysdate,#{num})
+</insert>
+
+<delete id="delete" parameterType="int">
+	delete comments1 where num = #{num}
+</delete>
+
+<update id="update" parameterType="C">
+	update comments1
+	set content = #{content}
+	where num = #{num}
+</update>
+</mapper>

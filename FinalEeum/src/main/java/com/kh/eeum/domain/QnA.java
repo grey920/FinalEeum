@@ -2,6 +2,8 @@ package com.kh.eeum.domain;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class QnA {
 	private int QNA_INDEX;
 	private String QNA_TITLE;
@@ -12,19 +14,6 @@ public class QnA {
 	private int QNA_TIMES;
 	private String QNA_REPORT;
 	private List<QnA> qnalist;
-	
-	public List<QnA> getQnalist() {
-		return qnalist;
-	}
-	public void setQnalist(List<QnA> qnalist) {
-		this.qnalist = qnalist;
-	}
-	public String getQNA_REPORT() {
-		return QNA_REPORT;
-	}
-	public void setQNA_REPORT(String qNA_REPORT) {
-		QNA_REPORT = qNA_REPORT;
-	}
 	public int getQNA_INDEX() {
 		return QNA_INDEX;
 	}
@@ -60,6 +49,8 @@ public class QnA {
 	}
 	public void setQNA_TYPE(String qNA_TYPE) {
 		QNA_TYPE = qNA_TYPE;
+		
+		
 	}
 	public int getQNA_TIMES() {
 		return QNA_TIMES;
@@ -67,5 +58,18 @@ public class QnA {
 	public void setQNA_TIMES(int qNA_TIMES) {
 		QNA_TIMES = qNA_TIMES;
 	}
+	public String getQNA_REPORT() {
+		return QNA_REPORT;
+	}
+	public void setQNA_REPORT(String qNA_REPORT) {
+		QNA_REPORT = qNA_REPORT;
+	}
+	public List<QnA> getQnalist() {
+		return qnalist;
+	}
+	public void setQnalist(List<QnA> qnalist) {
+		this.qnalist = qnalist;
+	}
+	
 
 }

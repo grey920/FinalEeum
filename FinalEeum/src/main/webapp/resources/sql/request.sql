@@ -16,6 +16,7 @@ CREATE SEQUENCE request_seq start with 1 increment by 1 ;
 
 
 
+
 CREATE TABLE request_file(
 	FILE_NO number  PRIMARY KEY NOT NULL,	
 	REQUEST_NO number ,

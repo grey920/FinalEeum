@@ -1,6 +1,11 @@
 $(document).ready(
 		function() {
 
+		
+			
+			
+	        
+	        
 			var current_fs, next_fs, previous_fs; // fieldsets
 			var opacity;
 			var expert_id = $('#EXPERT_ID').val();
@@ -15,6 +20,7 @@ $(document).ready(
 				$('.heart_click2').css('background-color', '#CADEE3');
 
 			}
+			
 
 			$('#top').addClass('step-1');
 
@@ -203,6 +209,7 @@ $(document).ready(
 					},
 					success : function(data) { // 통신 성공하면 가져옴.
 						$("#tabcontent").html(data);
+						console.log("1."+$("#EXPERT_ID").val());
 					}
 
 				});
@@ -263,5 +270,7 @@ $(document).ready(
 					}); // 찜
 
 			// 견적
+			//별점
+			
 
 		});

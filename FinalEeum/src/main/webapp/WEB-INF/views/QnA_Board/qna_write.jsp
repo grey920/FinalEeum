@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>원데이 클래스</title>
@@ -98,17 +100,14 @@ margin-bottom:30px;
 												
 												 <span>제목</span> <input type="text" name="QNA_TITLE" id="QNA_TITLE"
 													value="신고합니다." size="50" class="oneday_write_form" readonly="readonly" >
+													
+													<span>신고할 사용자 아이디</span> <input type="text" name="QNA_REPORT" id="QNA_REPORT"
+													size="50" class="oneday_write_form"  >
 
 													<span>내용</span>
-												<textarea name="QNE_CONTENT" id="summernote"></textarea>
+												<textarea name="QNA_CONTENT" id="summernote"></textarea>
 
-												<div class="file_form-group">
-													<label for="savefile"><span>사진</span></label> <label for="upfile">
-														<img src="resources/img/attach.png" alt="파일첨부">
-													</label> <input type="file" id="upfile" name="uploadfile">
-													<!-- domain에 있는 private MultipartFile uploadfile;랑 input의 name이 맞나 꼭 확인! -->
-													<span id="filevalue"></span>
-												</div>
+
 												<div class="button-box">
 													<button type="submit" class="btn-style cr-btn"
 														>
@@ -301,8 +300,11 @@ margin-bottom:30px;
 		});// document.ready
 
 		function goWrite(frm) {
-			var content = frm.QNE_CONTENT.value;
+			var content = frm.QNA_CONTENT.value;
 
+			
+			
+			
 			if (content.trim() == '') {
 				alert("내용을 입력해주세요");
 				return false;
@@ -312,6 +314,7 @@ margin-bottom:30px;
 	</script>
 
 	<!-- all js here -->
+	
 
 
 	<!-- 	<script src="resources/js/jquery-3.5.0.js"></script> -->

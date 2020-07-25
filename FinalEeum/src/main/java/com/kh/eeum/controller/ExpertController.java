@@ -56,6 +56,11 @@ public class ExpertController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ExpertServiceImpl.class);
 
+
+	
+	
+	
+
 	@RequestMapping(value="no_id.service")
 	public void noid(HttpServletResponse response) throws Exception {
 		response.setContentType("text/html; charset=UTF-8");
@@ -77,6 +82,7 @@ public class ExpertController {
 		// 한 페이지에 보여줄 개수
 		int limit = 8;
 
+		
 		System.out.println("전문가리스트 페이지이잉" + page);
 
 		// 전문가 리스트 개수 가져옴.
@@ -89,7 +95,9 @@ public class ExpertController {
 		// ( 9 + 8 - 1 ) / 8 = 2;
 		System.out.println("총 페이지수(maxpage): " + maxpage);
 
+		
 		// 현재 페이지에 보여줄 시작 페이지수
+		
 		int startpage = ((page - 1) / 8) * 8 + 1;
 		// ((1-1) / 8 ) * 8 + 1 = 1;
 		System.out.println("현재 페이지에서 보여줄 시작페이지 수(startpage) : " + startpage);
@@ -107,6 +115,7 @@ public class ExpertController {
 
 		System.out.println("전문가 리스트" + expertlist);
 
+		
 		mv.setViewName("service/expert_list");
 		mv.addObject("page", page);
 		mv.addObject("limit", limit);
@@ -148,6 +157,11 @@ public class ExpertController {
 
 		Expert expert = expertservice.expertlistOne(expertid);
 
+		//조인 해서 가져오기.
+		
+		float review_rating = reviewservice.selectReviewList(expertid);
+		
+		
 		// 포폴 출력
 		Portfolio portfolio = expertservice.poexpertListOne(expertid);
 
@@ -160,6 +174,7 @@ public class ExpertController {
 		mv.addObject("count", count);
 		mv.addObject("RequestCount", requestCount);
 		mv.addObject("expert_id_login", expert_id_login);
+		mv.addObject("review_rating",review_rating);
 		return mv;
 	}
 
@@ -213,10 +228,6 @@ public class ExpertController {
 			@RequestParam(value = "expert_id", required = false) String expert_id) {
 
 		List<Review> list = reviewservice.selectReviewList(expert_id, page);
-		System.out.println("리뷰 쓰기" + expert_id);
-		System.out.println("후기" + list.size());
-
-		System.out.println("후기 수" + list);
 		return list;
 	}
 
@@ -224,8 +235,16 @@ public class ExpertController {
 	@ResponseBody
 	@PostMapping(value = "ReviewAdd.Ajax")
 	public void ReviewAdd_Ajax(Review review, HttpServletResponse response) throws Exception {
-
-		System.out.println("===========================리뷰넣기 넘어온값 insert");
+		
+		//평점 더하기
+		
+		float rating_sum = (review.getRv_rating1() +  review.getRv_rating2() +  review.getRv_rating3()+
+				 review.getRv_rating4() +  review.getRv_rating5() +  review.getRv_rating6()) /6;
+		System.out.println("=========================="+rating_sum);
+		
+		review.setRv_sum(rating_sum);
+		
+		
 		int result = reviewservice.insertReview(review);
 		response.getWriter().print(result);
 	}
@@ -389,11 +408,14 @@ public class ExpertController {
 
 		String user_id = (String) session.getAttribute("user_id");
 
-		// 찜등록 데이터 있는지 조회
+		// 찜등록 데이터 있는지 조회`
 		int result = likeservice.selectLike(expertid, user_id);
 		int count = reviewservice.getReviewCount(expertid);
 		// 예약 건수
 		int requestCount = expertservice.getRequestCount(expertid);
+		
+
+		
 
 		System.out.println("찜등록 아이디 :" + expertid + user_id);
 		System.out.println("찜등록 데이터+" + result);
@@ -405,6 +427,9 @@ public class ExpertController {
 
 		// 포폴 출력
 		Portfolio portfolio = expertservice.poexpertListOne(expertid);
+		
+
+		float review_rating = reviewservice.selectReviewList(expertid);
 
 		mv.setViewName("repair_service/repair_details");
 		mv.addObject("expertdata", expert);
@@ -414,6 +439,7 @@ public class ExpertController {
 		mv.addObject("portfolio", portfolio);
 		mv.addObject("count", count);
 		mv.addObject("RequestCount", requestCount);
+		mv.addObject("review_rating",review_rating);
 		return mv;
 	}
 
@@ -494,6 +520,9 @@ public class ExpertController {
 		System.out.println("디테일 페이지" + page);
 
 		Expert expert = expertservice.expertlistOne(expertid);
+		
+
+		float review_rating = reviewservice.selectReviewList(expertid);
 
 		// 포폴 출력
 		Portfolio portfolio = expertservice.poexpertListOne(expertid);
@@ -506,6 +535,7 @@ public class ExpertController {
 		mv.addObject("portfolio", portfolio);
 		mv.addObject("count", count);
 		mv.addObject("RequestCount", requestCount);
+		mv.addObject("review_rating",review_rating);
 		return mv;
 	}
 
@@ -585,6 +615,9 @@ public class ExpertController {
 		System.out.println("디테일 페이지" + page);
 
 		Expert expert = expertservice.expertlistOne(expertid);
+		
+
+		float review_rating = reviewservice.selectReviewList(expertid);
 
 		// 포폴 출력
 		Portfolio portfolio = expertservice.poexpertListOne(expertid);
@@ -597,6 +630,7 @@ public class ExpertController {
 		mv.addObject("portfolio", portfolio);
 		mv.addObject("count", count);
 		mv.addObject("RequestCount", requestCount);
+		mv.addObject("review_rating",review_rating);
 		return mv;
 	}
 

@@ -10,6 +10,9 @@ $(function() {
       $("#message").text("등록된 댓글이 없습니다.")
    }
 
+   
+   
+   
    // 최대 몇 페이지를 가질 수 있는지 계산합니다.
    function getMaxPage() {
       // 글의 총 갯수 - 등록 또는 삭제시 댓글의 총ㄱ ㅐㅅ수 변화가 있기 때문에 갯수를 구합니다.
@@ -88,11 +91,11 @@ $(function() {
    $("#content").on('keyup', function() {
       length = $(this).val().length;
       console.log("text")
-      if (length > 50) {
-         length = 50;
+      if (length > 300) {
+         length = 300;
          content = content.substring(0, length);
       }
-      $(".float-left").text(length + "/50")
+
    })
 
    // 등록 또는 수정 완료 버튼을 클릭한 경우
@@ -101,8 +104,7 @@ $(function() {
    $("#write").click(function() {
       buttonText = $("#write").text(); // 버튼의 라벨로 add 할지 update 할지 결정
       content = $("#content").val();
-      $(".float-left").text('총 50자까지 가능합니다.');
-
+     
       if (buttonText == "등록") { // 댓글을 추가하는 경우
          url = "CommentAdd.bo";
          data = {

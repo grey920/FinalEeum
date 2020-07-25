@@ -1,9 +1,12 @@
 $(function() {
+	
 // 친절함
 	$(".svg-star-rating1").starRating(
 			{
 				totalStars : 5,
 
+				
+				
 				emptyColor : 'lightgray',
 				hoverColor : 'salmon',
 				initialRating: 0.5,
@@ -402,6 +405,110 @@ $(function() {
 
 	   
 	   //그거
+		   var expert = $('#EXPERT_ID').val();
+		var expert_login_id = $("#expert_id_login").val();
+		console.log("현재 로그인했니 전문가가.." + expert_login_id);
+
+		//통계
+		$.ajax({
+					type : 'POST',
+					url : "Review.Ajax?expert=" + expert,
+					data : {
+						"expert_id" : expert
+					},
+					dataType : "json",
+					success : function(rdata) {
+						console.log(rdata.length);
+						console.log(rdata);
+						$(rdata).each(
+										function() {
+											var rv_rating1 = (this.rv_rating1);
+											var rv_rating2 = (this.rv_rating2);
+											var rv_rating3 = (this.rv_rating3);
+											var rv_rating4 = (this.rv_rating4);
+											var rv_rating5 = (this.rv_rating5);
+											var rv_rating6 = (this.rv_rating6);
+											console
+													.log("평점:"
+															+ rv_rating1);
+
+											output = "<input type='hidden' value='"+rv_rating1+"' id='rating1'>";
+
+											var ctx = document
+													.getElementById(
+															'myChart')
+													.getContext(
+															'2d');
+
+											var chart = new Chart(
+													ctx,
+													{
+														// The type of chart we want to create
+														type : 'polarArea',
+
+														// The data for our dataset
+														data : {
+															labels : [
+																	"친절함",
+																	"명확한 설명",
+																	"청결도",
+																	"전문성",
+																	"시간준수",
+																	"가격의 합리성" ],
+															datasets : [ {
+																label : "My First dataset",
+																backgroundColor : [
+																		'rgba(255, 0, 0, 0.5)',
+																		'rgba(100, 255, 0, 0.5)',
+																		'rgba(200, 50, 255, 0.5)',
+																		'rgba(0, 100, 255, 0.5)',
+																		'rgba(250, 185, 46, 0.5)',
+																		'rgba(255, 249, 89, 0.5)' ],
+																borderColor : '#fff',
+																data : [
+																		rv_rating1,
+																		rv_rating2,
+																		rv_rating3,
+																		rv_rating4,
+																		rv_rating5,
+																		rv_rating6 ],
+															} ]
+														},
+
+														// Configuration options go here
+														options : {}
+													});
+											Chart.scaleService.defaults.radialLinear.ticks.backdropColor = 'rgba(0, 0, 0, 0)';
+										});
+						$("#career_table tbody").append(
+								output);
+
+					}
+				});
+	var expert_id_login1 = $('#expert_id_login').val();
+	console.log("sdsddsd"+expert);
+	$.ajax({
+		type : 'POST',
+		url : "ExpertLogin.Ajax?expert="+expert,
+		data : {"expert_id" : expert},
+		dataType : "json",
+		success : function(rdata) {
+			console.log("딱들어와");
+			if(rdata == 1){
+				alert('불가');
+				$("#write").attr("disabled",true);
+				$("#content").text("전문가는 후기를 남길 수 없습니다.");
+				$("#content").attr("readonly",true);
+			}else{
+				
+				
+			}
+			
+			
+		}
+		
+	});
+		
 			
 	
 		   

@@ -4,7 +4,8 @@ $(document).ready(
 
 			var current_fs, next_fs, previous_fs; // fieldsets
 			var opacity;
-
+		
+			
 			$('#top').addClass('step-1');
 
 			$(".next").click(

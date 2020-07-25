@@ -12,6 +12,8 @@
             text-decoration: none;
             border-radius: 5px;
         }
+        
+
 .my_button:hover{color: #fff;}
 .imgs_wrap {
        border: none;

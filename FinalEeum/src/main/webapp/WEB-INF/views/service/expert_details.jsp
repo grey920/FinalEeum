@@ -13,6 +13,8 @@
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="resources/img/favicon.png">
 
+
+
 <!-- all css here -->
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/animate.css">
@@ -31,21 +33,13 @@
 
 <!-- 모달 관련 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script type="text/javascript" src="resources/js/service/jstars.js"></script>
+
 <%@ include file="../header.jsp" %>
 <style>
-.detailDESC{
-    padding-top: 50px;
-   	margin-left:12%;
-   	margin-top:200px;
-}
-.details1{width: 87%;}
-.container1{line-height:60px;margin-top:100px;}
-.tab{
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-}
+
 </style>
+
 </head>
 <body>
 	<div class="wrapper">
@@ -77,6 +71,7 @@
 				<!-- 사람이름 -->
 				<div class="banner-img">
 						<c:set var="po" value="${portfolio}"/>
+						<c:set var="rating" value="${review_rating}"/>
 						<div class="grad_wrapper">
 					<div class="grad">
 						<img src="resources/expert_profile${po.PF_SAVEPROFILE}" alt="" id="userimg">
@@ -132,11 +127,14 @@
 							style="position: relative; right: 78px; top: 38px; font-size: 20px;"></i>
 
 						<div class="quick-view-rating">
-							<i class="ion-ios-star red-star"></i> <i
-								class="ion-ios-star red-star"></i> <i
-								class="ion-ios-star red-star"></i> <i
-								class="ion-ios-star red-star"></i> <i
-								class="ion-ios-star red-star"></i> <span>4.0</span>
+						
+							 <div class="jstars" data-value="${review_rating}"></div>
+							 <c:if test="${review_rating == 0.0}">
+							 (아직 평점이 없습니다.)
+						 	</c:if>
+						 	<c:if test="${review_rating != 0.0}">
+						 	(${review_rating})
+						 	</c:if>
 						</div>
 						<i class="fa fa-calendar"
 							style="position: relative; left: 138px; font-size: 17px;"></i> <b
@@ -204,7 +202,7 @@
 	</div>
 
 
-
+</div>
 
 
 
@@ -224,7 +222,8 @@
 	<script src="resources/js/owl.carousel.min.js"></script>
 	<script src="resources/js/plugins.js"></script>
 	<script src="resources/js/main.js"></script>
-	<script src="resources/js/service/expert_details.js"></script>
+	
 
+<script src="resources/js/service/expert_details.js"></script>
 </body>
 </html>

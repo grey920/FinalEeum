@@ -91,9 +91,9 @@
 										<div class="category-select">
 											<label>분야 <span class="required">*</span></label> <select
 												name="PF_CATE">
-												<option value="0">청소</option>
-												<option value="1">방역</option>
-												<option value="2">수리</option>
+												<option value="1">청소</option>
+												<option value="2">방역</option>
+												<option value="3">수리</option>
 											</select>
 										</div>
 

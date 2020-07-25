@@ -13,6 +13,8 @@ table {
 	width: 100%;
 }
 
+
+
 .hide {
 	display: none;
 }

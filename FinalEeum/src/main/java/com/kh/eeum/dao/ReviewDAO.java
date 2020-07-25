@@ -13,9 +13,13 @@ import com.kh.eeum.domain.Review;
 @Repository
 public class ReviewDAO {
 	
+	
+	
+	
 	@Autowired
 	SqlSessionTemplate sqlSession;
 
+	
 	public List<Review> selectReviewList(Map<String, Object> map) {
 		System.out.println("리뷰dao"+map.get("expert_id"));
 		return sqlSession.selectList("Reviews.selectReviewList", map);
@@ -35,6 +39,12 @@ public class ReviewDAO {
 
 	public int reviewDelete(int num) {
 		return sqlSession.delete("Reviews.delete",num);
+	}
+
+
+	public float selectReviewList1(String expertid) {
+		
+		return sqlSession.selectOne("Reviews.selectRating", expertid);
 	}
 
 	public int reviewCount(String user_id) {

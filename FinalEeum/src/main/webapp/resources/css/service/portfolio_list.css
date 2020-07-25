@@ -3,7 +3,11 @@
 #career_text {
 	font-size: 60px;
 	font-weight: 700;
+	padding-left: 10%;
 }
+
+
+
 
 #career_table {
 	position: relative;
@@ -19,11 +23,8 @@
 	font-weight: 300;
 }
 
-#hr_1{
-	position: relative;
-	bottom: 150px;
-}
 #picture_text {
 	font-size: 60px;
 	font-weight: 700;
+	padding-left: 10%;
 }

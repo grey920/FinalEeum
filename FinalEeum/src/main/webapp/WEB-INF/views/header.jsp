@@ -61,7 +61,7 @@
 
 										<li><a href="OnedayList.one">원데이 클래스</a></li>
 										<li><a href="FAQ.net">FAQ</a></li>
-										<li><a href="QnA.net">문의</a></li>
+										
 									</ul>
 								</nav>
 							</div>

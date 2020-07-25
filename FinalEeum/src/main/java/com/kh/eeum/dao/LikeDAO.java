@@ -12,6 +12,7 @@ import com.kh.eeum.domain.Like;
 @Repository
 public class LikeDAO {
 
+	
 	@Autowired
 	SqlSessionTemplate sqlSession;
 

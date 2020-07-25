@@ -12,6 +12,8 @@ import com.kh.eeum.domain.Expert;
 @Repository
 public class CleaningRepairDAO {
 
+	
+	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
@@ -23,4 +25,5 @@ public class CleaningRepairDAO {
 		return sqlSession.selectOne("Cleanings.cleaningcount");
 	}
 
+	
 }

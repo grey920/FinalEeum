@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  SQL 맵퍼 파일은 xml이기 때문에 제일 먼저 xml 선언이 옵니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Reports" >
+	<select id="count" resultType="int">
+		select count(*) from REPORTBOARD
+	</select>
+	
+	
+	
+	
+	
+	<select id="list" parameterType="java.util.Map" resultType="report">
+			select * from
+		(select rownum rnum, b.*
+		from
+		(select * from REPORTBOARD 
+		order by REPORT_INDEX desc) b
+		)
+		where rnum &gt; = #{start} and rnum &lt; = #{end}	
+	</select>
+	
+	<insert id="insert" parameterType="report">
+		insert into REPORTBOARD
+		(REPORT_INDEX ,
+		 REPORT_TITLE,REPORT_WRITER, REPORT_REPORT,REPORT_CONTENT,REPORT_DATE,REPORT_TYPE)
+		 values
+		 (reportboard_seq.NEXTVAL,
+		 #{REPORT_TITLE},#{REPORT_WRITER}, #{REPORT_REPORT}, #{REPORT_CONTENT},sysdate,
+		 #{REPORT_TYPE})
+	</insert>
+	
+		
+	<select id="Detail" resultType="report">
+		select * from REPORTBOARD where REPORT_INDEX = #{num}
+	</select>
+	
+
+	
+
+</mapper>
