@@ -203,6 +203,7 @@
 									<div class="food-info-wrapper">
 										<div class="food-address">
 				
+				
 											<div class="food-info-icon">
 												<i class="ion-ios-home-outline"></i>
 											</div>

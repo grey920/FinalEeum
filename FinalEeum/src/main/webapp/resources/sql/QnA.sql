@@ -12,6 +12,7 @@ QNA_TIMES NUMBER DEFAULT 0                                       --신고 누적
 
 
 
+
 select * from QNABOARD
 
 CREATE SEQUENCE qnaboard_seq

@@ -21,6 +21,7 @@
 			where rnum between #{startrow} and #{endrow}
 	</select>
 	
+	
 <insert id="insert" parameterType="Review">
 		insert into review 
 		values(rev_seq.nextval,#{rv_user_id},#{rv_expert_id},#{rv_content},#{rv_rating1},#{rv_rating2},#{rv_rating3},#{rv_rating4},#{rv_rating5},#{rv_rating6},#{rv_sum},sysdate)
