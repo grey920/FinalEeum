@@ -13,12 +13,13 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <style>
 .header-area{background-color:white}
+.header-site-icon{padding-right:50px !important}
 </style>
 <body>
 		<div class="header-area transparent-bar">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-2 col-md-2 col-sm-5 col-5">
+					<div class="col-lg-2 col-md-2 col-sm-5 col-5" style="padding-left:50px;padding-right:0">
 						<div class="sticky-logo">
 							<!-- 스크롤내렸을 때,메뉴바 로고  -->
 							<a href="main"><img src="resources/img/logo/eeum_logo.png" style="width: 140px" /></a>
@@ -30,7 +31,7 @@
 						</div>
 					</div>
 					<div class="col-lg-8 col-md-8 d-none d-md-block"
-							style="margin-top: 29px; padding-left: 0px; padding-right: 100px">
+							style="margin-top: 29px; padding-left: 0px; padding-right: 10px">
 						<div class="logo-menu-wrapper text-center">
 							<div class="main-menu">
 								<nav>
@@ -66,18 +67,19 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-2 col-md-2 col-sm-7 col-7">
+					<div class="col-lg-2 col-md-2 col-sm-7 col-7" style="padding-right:20px">
 						<div class="header-site-icon">
 						
 							<c:if test="${empty user_id && empty expert_id}">
 							<div class="header-login same-style"
 								style="margin-left: 13px; margin-right: 13px">
 								<li><a href="login.net"><img src="resources/img/header/user.png"
-																						style="margin-bottom: 30px; width: 30px; filter: saturate(80%);" /></a>
-									<ul style="width:200px">
+																						style="margin-bottom: 30px; width: 30px; filter: saturate(80%);margin-right:50px" /></a>
+									<ul style="width:230px">
 										<li>같이 이음해요 :)</li>
 										<li><a href="login.net">로그인</a></li>
-										<li><a href="userJoin.net">회원가입</a></li>
+										<li><a href="userJoin.net">사용자 회원가입</a></li>
+										<li><a href="expertJoin.net">전문가 회원가입</a></li>
 									</ul></li>
 							</div>
 							</c:if>
@@ -88,7 +90,7 @@
 							<c:if test="${!empty user_id && empty expert_id}">
 							<div class="header-login same-style"
 								style="margin-left: 13px; margin-right: 13px">
-								<li><a href="userpage.net"><img src="resources/img/header/user.png"
+								<li><a href="admin.net"><img src="resources/img/header/user.png"
 																						style="margin-bottom: 30px; width: 30px; filter: saturate(80%);" /></a>
 									<ul style="width:240px">
 										<li><img src="resources/profile${user_saveprofile}" style="width:15%; height:auto;border-radius:50%;">&nbsp;&nbsp;${user_nick}&nbsp;님</li>
@@ -98,6 +100,9 @@
 										</c:if>
 										<li><a href="logout.net">이음 나가기</a></li>
 									</ul></li>
+							</div>
+							<div class="header-cart same-style" style="margin-left: 13px; margin-right: 13px">
+								<a href="messageReceive.net"><img src="resources/img/header/chat.png" style="width: 30px; filter: saturate(80%);"></a>
 							</div>
 							</c:if>
 							
@@ -115,17 +120,16 @@
 									</ul>
 								</li>
 							</div>
+							<div class="header-cart same-style" style="margin-left: 13px; margin-right: 13px">
+								<a href="messageReceive.net"><img src="resources/img/header/chat.png" style="width: 30px; filter: saturate(80%);"></a>
+							</div>
 							</c:if>
 							
-							<div class="header-cart same-style" style="margin-left: 13px; margin-right: 13px">
-								<a href="#"><img src="resources/img/header/chat.png" style="width: 30px; filter: saturate(80%);"></a>
-							</div>
 							<!-- 검색 
 							<div class="header-search same-style" style="margin-left: 10px; margin-right: 13px">
 								<a href="login-register.html"><img src="resources/img/header/search.png"
 																						style="width: 30px; filter: saturate(80%);"></a>
-							</div>
-							 -->
+							</div>-->
 						</div>
 					</div>
 					<div class="mobile-menu-area col-12">
@@ -133,6 +137,7 @@
 							<nav id="mobile-menu-active">
 								<ul class="menu-overflow">
 									<li><a href="about_us.net">이:음 소개</a>
+									
 							<c:choose>
 									<c:when test="${empty user_id && empty expert_id}">
 										<li><a href="no_id.service">서비스</a>
@@ -153,8 +158,10 @@
 									</li>
 									</c:otherwise>
 							</c:choose>
+							
 									<li><a href="OnedayList.one">원데이 클래스</a></li>
 									<li><a href="FAQ.net">FAQ</a></li>
+									<li><a href="QnA.net">문의</a></li>
 								</ul>
 							</nav>
 						</div>

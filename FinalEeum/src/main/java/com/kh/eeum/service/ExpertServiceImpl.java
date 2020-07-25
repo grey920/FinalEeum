@@ -382,12 +382,12 @@ public class ExpertServiceImpl implements ExpertService {
 	}
 
 	@Override
-	public int updatePwd(String expert_id, String expert_name, String expert_jumin1, String newPwd) {
+	public int updatePwd(String expert_id, String expert_name, String expert_jumin1, String expert_pass) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("expert_id", expert_id);
 		map.put("expert_name", expert_name);
 		map.put("expert_jumin1", expert_jumin1);
-		map.put("expert_pass", newPwd);
+		map.put("expert_pass", expert_pass);
 		
 		return exdao.updatePwd(map);
 	}
