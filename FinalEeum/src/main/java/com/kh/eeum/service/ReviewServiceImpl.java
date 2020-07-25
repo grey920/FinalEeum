@@ -64,6 +64,7 @@ public class ReviewServiceImpl implements ReviewService{
 			return 0;
 		}
 		return rating;
+
 	}
 
 	public int reviewCount(String user_id) {

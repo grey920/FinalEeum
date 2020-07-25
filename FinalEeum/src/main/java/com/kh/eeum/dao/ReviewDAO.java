@@ -40,7 +40,6 @@ public class ReviewDAO {
 	}
 
 
-
 	public float selectReviewList1(String expertid) {
 		
 		return sqlSession.selectOne("Reviews.selectRating", expertid);

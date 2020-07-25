@@ -193,6 +193,7 @@
 	  	 		<button class="btn btn-primary">목록</button>
 	  	 	</a>
 	  	 	</td>
+	  	 	
 	  	 </tr>
 	  </table>
 	  	<%--게시판 수정 end --%>

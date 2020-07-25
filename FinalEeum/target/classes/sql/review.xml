@@ -57,5 +57,5 @@
 		where rv_user_id = #{rv_user_id}
 	</select>
 
-
+	
 </mapper>

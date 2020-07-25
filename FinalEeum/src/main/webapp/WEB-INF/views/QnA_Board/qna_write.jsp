@@ -312,6 +312,7 @@ margin-bottom:30px;
 	</script>
 
 	<!-- all js here -->
+	
 
 
 	<!-- 	<script src="resources/js/jquery-3.5.0.js"></script> -->

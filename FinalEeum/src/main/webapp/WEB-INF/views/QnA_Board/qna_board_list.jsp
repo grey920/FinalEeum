@@ -199,7 +199,7 @@
 									<div class="footer-widget-title">
 										<h3>Get in Touch</h3>
 									</div>
-									
+									`
 									<div class="food-info-wrapper">
 										<div class="food-address">
 											<div class="food-info-icon">
@@ -212,6 +212,7 @@
 											</div>
 										</div>
 										<div class="food-address">
+				
 											<div class="food-info-icon">
 												<i class="ion-ios-telephone-outline"></i>
 											</div>

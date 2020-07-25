@@ -43,11 +43,8 @@
 		<mapper resource="sql/cleaning.xml"/>
 		<mapper resource="sql/insect.xml"/>
 
-
 		<mapper resource="sql/qna.xml"/>
 		<mapper resource="sql/comment.xml"/>
-
-		<mapper resource="sql/qna.xml"/>
 
 		<mapper resource="sql/message.xml"/>
 
