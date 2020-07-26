@@ -54,3 +54,7 @@ values (rev_seq.nextval,'duswl0918','aaa','지대다',null,null);
 	select  NVL(TRIM(TO_CHAR(avg(rv_sum), '99999999.99')),0)  as rv_sum
 		from review
 		where rv_expert_id = 'aaa'
+		
+		update RESERVATION
+		set rs_state = 1
+		where rs_uid = 'admin'

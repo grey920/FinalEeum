@@ -1,6 +1,7 @@
 package com.kh.eeum.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public interface ReviewService {
 
 	//사용자 후기 리스트 내역
 	public int reviewCount(String user_id);
-	public List<Review> reviewList(String user_id, int page, int limit);
+	public List<Map<String, Object>> reviewList(String user_id, int page, int limit);
 
 }
 

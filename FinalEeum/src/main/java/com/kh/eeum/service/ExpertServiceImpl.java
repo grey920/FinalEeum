@@ -314,7 +314,7 @@ public class ExpertServiceImpl implements ExpertService {
 	}
 
 	@Override
-	public List<Reservation> reserveList(String user_id, int page, int limit) {
+	public List<Reservation> ureserveList(String user_id, int page, int limit) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
 		int startrow = (page -1) * limit + 1;
@@ -324,13 +324,13 @@ public class ExpertServiceImpl implements ExpertService {
 		map.put("start", startrow);
 		map.put("end", endrow);
 		
-		return exdao.reserveList(map);
+		return exdao.ureserveList(map);
 	}
 
 	@Override
 	public int cancelReserve(String rs_exid, String user_id, String rs_no) {
 		Map <String, Object> map = new HashMap<String, Object>();
-		int rs_state = 3;
+		int rs_state = 4;
 		map.put("rs_exid", rs_exid);
 		map.put("rs_uid", user_id);
 		map.put("rs_no", rs_no);
@@ -392,6 +392,106 @@ public class ExpertServiceImpl implements ExpertService {
 		map.put("expert_pass", expert_pass);
 		
 		return exdao.updatePwd(map);
+	}
+
+	@Override
+	public int estimateCount(String expert_id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state = 0;
+		
+		map.put("expert_id", expert_id);
+		map.put("state", state);
+		
+		return exdao.exreserveCount(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> estimateList(String expert_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state = 0;
+		int startrow = (page -1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("expert_id", expert_id);
+		map.put("state", state);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return exdao.exreserveList(map);
+	}
+
+	@Override
+	public int exreserveCount(String expert_id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state1 = 1;
+		int state2 = 2;
+		
+		map.put("expert_id", expert_id);
+		map.put("state1", state1);
+		map.put("state2", state2);
+		
+		return exdao.reservingCount(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> exreserveList(String expert_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state1 = 1;
+		int state2 = 2;
+		int startrow = (page -1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("expert_id", expert_id);
+		map.put("state1", state1);
+		map.put("state2", state2);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return exdao.reservingList(map);
+	}
+
+	@Override
+	public int completeCount(String expert_id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state = 3;
+		
+		map.put("expert_id", expert_id);
+		map.put("state", state);
+		
+		return exdao.exreserveCount(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> completeList(String expert_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state = 3;
+		int startrow = (page -1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("expert_id", expert_id);
+		map.put("state", state);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return exdao.exreserveList(map);
+	}
+
+	@Override
+	public int reserveCancel(String rs_no) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int rs_state = 4;
+	
+		map.put("rs_state", rs_state);
+		map.put("rs_no", rs_no);
+		
+		return exdao.reserveCancel(map);
 	}
 
 }

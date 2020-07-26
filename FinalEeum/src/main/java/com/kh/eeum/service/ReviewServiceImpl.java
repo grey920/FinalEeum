@@ -73,7 +73,7 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public List<Review> reviewList(String user_id, int page, int limit) {
+	public List<Map<String, Object>> reviewList (String user_id, int page, int limit) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
 		int startrow = (page -1) * limit + 1;

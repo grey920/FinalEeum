@@ -134,7 +134,6 @@ table thead tr th{font-size:21px !important}
 		                                            	</c:when>
 		                                            	<c:otherwise>
 				                                           		<c:out value="${r.MSG_CONTENT}"/>
-		                                            		</a>
 		                                            	</c:otherwise>
 		                                            </c:choose>
                                             	</span>

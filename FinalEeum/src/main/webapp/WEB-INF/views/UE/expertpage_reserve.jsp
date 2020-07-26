@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>사용자 - 예약내역</title>
+        <title>전문가 - 예약 확정 내역</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -42,12 +42,13 @@
          					       color:white;
          					       border:2px solid #72A0E0;
          						  }
-        .nodata{padding:100px 0 100px 0;
-        			  display: flex;
-					  justify-content: center;
-					  align-items: center;
-					  flex-direction: column;}
+        .nodata{display: flex;
+					justify-content: center;
+					align-items: center;
+					flex-direction: column;}
          .table-content table td {border-bottom:2px solid #e8e6e6; padding:30px 10px 30px}
+          .list tbody {font-size:17px}
+          table thead tr th{font-size:21px !important}
          .pt-120{padding-top:50px !important}
          .breadcrumb-content{padding-top:0;margin-top:1em}
          .breadcrumb-content ul > li{font-size:13pt}
@@ -55,6 +56,16 @@
          td.product-subtotal button.btn-style {padding-left:20px;padding-right:20px}
          tr td.class-state{padding-top:10px; padding-bottom:20px}
          .modal-footer a {font-size:13pt}
+         #msgbox{border-collapse: collapse;
+				border : 2px solid #72A0E0;
+				font-size:15pt;
+				margin: 30px 0 30px 0}
+		#msgbox tr th {padding:10px 50px 10px 50px;}
+		.check.middle{background-color:#72A0E0;
+								padding:10px 60px !important}
+		.check a {color:white}
+		.uncheck a{color:#72A0E0}
+		.uncheck.middle{padding:10px 60px !important}
         </style>
     </head>
     <body>
@@ -62,16 +73,42 @@
             <!-- header start -->
             <div class="header-height"></div>
             
+            <!-- main-search start -->
+            <div class="main-search-active">
+                <div class="sidebar-search-icon">
+                    <button class="search-close"><span class="ti-close"></span></button>
+                </div>
+                <div class="sidebar-search-input">
+                    <form>
+                        <div class="form-search">
+                            <input id="search" class="input-text" value="" placeholder="Search Entire Store" type="search">
+                            <button>
+                                <i class="ti-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
                         <h2>RESERVATION LIST</h2>
                         <ul>
-                            <li>예약한 서비스 목록</li>
+                            <li>견적 확인 ・ 예약 내역</li>
                         </ul>
                     </div>
                 </div>
             </div>
+
+			<div class="col-lg-12 col-md-12 col-12 nodata">	
+	            <table id="msgbox">
+	            	<tr>
+	            		<th class="uncheck"><a href="expertEstimate.net">미확정 예약</a></th>
+	            		<th class="check middle"><a href="expertReserve.net">확정 예약</a></th>
+	            		<th class="uncheck"><a href="expertComplete.net">완료된 예약</a></th>
+	            	</tr>
+	            </table>
+	        </div>
 
             <div class="product-cart-area hm-3-padding pt-120 pb-130">
                 <div class="container-fluid">
@@ -80,94 +117,53 @@
                        <c:if test="${reserveCount > 0 }">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-content table-responsive">
-                                <table style="text-align:center">
+                                <table class="list" style="text-align:center">
                                     <thead>
                                         <tr>
-                                            <th class="product-name">전문가 프로필</th>
-                                            <th class="product-price">전문가 성함</th>
-                                            <th class="product-name">예약 날짜</th>
-                                            <th class="product-quantity">가격</th>
+                                            <th class="product-name">예약 일자</th>
+                                            <th class="product-name">예약자 성함</th>
+                                            <th class="product-quantity">예약자 연락처</th>
+                                            <th class="product-quantity">예약자 주소</th>
+                                            <th class="product-name">예약 가격</th>
                                             <th class="product-quantity">예약 상태</th>
-                                            <th class="product-quantity"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     
                                       <c:forEach var="r" items="${rlist}">
                                         <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="expertDetail.service?expert=${r.PF_EXID}"><img src="resources/expert_profile${r.PF_SAVEPROFILE}" style="width:130px;height:160px"></a>
-                                                <input type="hidden" name="rs_exid" value="${r.RS_EXID}"/>
-                                                <input type="hidden" name="rs_no" value="${r.RS_NO}"/>
+                                            <td class="product-subtotal">
+                                                2020. 7. 26<%-- ${r.RS_DATE} --%>
+                                                <br>
+                                                오전 6:07<%-- ${r.RS_TIME} --%>
                                             </td>
-                                            <td class="product-price">
-                                                <span>[
-	                                                <c:if test="${r.PF_CATE == '0'}">
-	                                                청소
-	                                                </c:if>
-	                                                <c:if test="${r.PF_CATE == '1'}">
-	                                                방역
-	                                                </c:if>
-	                                                <c:if test="${r.PF_CATE == '2'}">
-	                                                수리
-	                                                </c:if>
-                                                ]</span><br>
-                                                
-                                                	<c:if test="${r.PF_GRADE == '0'}">
-                                                	디딤돌
-                                                	</c:if>
-                                                	<c:if test="${r.PF_GRADE == '1'}">
-                                                	마루
-                                                	</c:if>
-                                                	<c:if test="${r.PF_GRADE == '2'}">
-                                                	우주
-                                                	</c:if>
-                                                	<c:if test="${r.PF_GRADE == '3'}">
-                                                	용마루
-                                                	</c:if>
-                                                
-                                                ${r.EXPERT_NAME}</a>
+                                            <td class="product-subtotal">
+                                                ${r.USER_NAME}
                                             </td>
                                             
-                                            <c:if test="${empty r.RS_DATE}">
-                                            <td class="product-name"><span class="amount"> - </span></td>
-                                            <td class="product-subtotal"> - </td>
-                                            </c:if>
-                                   
-                                            <c:if test="${!empty r.RS_DATE}">
-                                            <td class="product-name"><span class="amount">${r.RS_DATE} <br> ${r.RS_TIME}</span></td>
-                                            <td class="product-subtotal">${r.RS_PRICE}</td>
-                                            </c:if>
+                                            <td class="product-price">
+                                            	${r.USER_PHONE1} - ${r.USER_PHONE2} - ${r.USER_PHONE3}
+                                            </td>
+                                            
+                                            <td class="product-name">
+                                            	${r.USER_ADDR2}<br>
+                                            	${r.USER_ADDR3}
+                                            </td>
                                             
                                             <td class="product-subtotal">
-	                                            <c:if test="${r.RS_STATE == '0'}">
-	                                            예약 대기
-	                                            </c:if>
-	                                            <c:if test="${r.RS_STATE == '1' || r.RS_STATE == '2'}">
-	                                            예약 확정
-	                                            </c:if>
-	                                            <c:if test="${r.RS_STATE == '3'}">
-	                                            서비스 완료
-	                                            </c:if>
-	                                            <c:if test="${r.RS_STATE == '4'}">
-	                                            예약 취소
-	                                            </c:if>
+                                            	${r.RS_MONEY}원
                                             </td>
                                             
                                             <td class="product-subtotal class-state">
                                             	<div class="button-box" style="text-align:center;">
-                                            	
-                                            	  <c:if test="${r.RS_STATE == '0' || r.RS_STATE == '1' || r.RS_STATE == '2'}">
-													<button class="btn-style" id="message" onclick="javascript:message('msgWrite.net?msg_sid=${user_id}&msg_rid=${r.RS_EXID}')">
-														<span>견적확인</span>	
+                                            		<button class="btn-style">
+                                            			<span>&nbsp;견적보기&nbsp;</span>
+                                            		</button>
+													<button class="btn-style" >
+														<span>서비스완료</span>	
 													</button>
-													<c:if test="${r.RS_STATE == '1'}">
-														<button class="btn-style" onclick="">
-															<span>결제하기</span>
-														</button>
-													</c:if>
 													<button class="btn-style" data-toggle="modal" data-target="#modalConfirmDelete">
-														<span>예약취소</span>
+														<span>&nbsp;예약취소&nbsp;</span>
 													</button>
 													
 													<!--Modal: modalConfirmDelete-->
@@ -179,7 +175,7 @@
 																
 																<!--Header-->
 																<div class="modal-header d-flex justify-content-center" style="margin-top:15px">
-																	<p class="heading" style="margin-bottom:10px;color:#303030">서비스 예약을 취소하시겠습니까?</p>
+																	<p class="heading" style="margin-bottom:10px;color:#303030">예약을 취소하시겠습니까?</p>
 																</div>
 									
 																<!--Body-->
@@ -189,25 +185,13 @@
 									
 																<!-- Footer -->
 																<div class="modal-footer flex-center" >
-												      				<a href="ureserveCancel.net?rs_no=${r.RS_NO}" class="btn  btn-outline-danger">예</a>
+												      				<a href="exreserveCancel.net?rs_no=${r.RS_NO}" class="btn  btn-outline-danger">예</a>
 												        			<a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal" style="color:white">아니요</a>
 												      			</div>
 												    		</div>
 														</div>
 													</div>
 													<!--/.Content-->
-                                            	  </c:if>
-                                            	  
-                                            	  <c:if test="${r.RS_STATE == '3'}">
-													<button class="btn-style" onclick="location.href='#';">
-														<span>후기쓰기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>신고하기</span>
-													</button>
-                                            	  </c:if>
-                                            	  
-                                            	  <c:if test="${r.RS_STATE == '4'}"></c:if>
                                             	  
 												</div>
                                             </td>
@@ -249,13 +233,12 @@
 							</div>
                             
                         </div>
-                       </c:if>
+                     </c:if>
                        
                        <c:if test="${reserveCount == 0 }">
 			               <div class="col-lg-12 col-md-12 col-12 nodata">	
-				            	<p>아직 예약하신 내역이 없습니다😥</p>
-				            	<p>이음을 통해 더 멋진 집으로 바꿔보세요</p>
-				            	<button class="btn-style" onclick="location.href='expert.service';">서비스 예약하기</button>
+				            	<p>확정된 예약 내역이 아직 없습니다.</p>
+				            	<button class="btn-style" onclick="location.href='expertEstimate.net';">예약 확정하러 가기</button>
 				            </div>
                        </c:if>
                     </div>
@@ -415,6 +398,13 @@
 		<script>
 			function message (url) {
 				var send = window.open(url, "send", "width=100, heigth=100, location=no");
+			};
+		</script>
+		<script src="resources/js/jquery-3.5.0.js"></script>
+		<script>
+			function message (url) {
+				var send = window.open(url, "", "width=100, heigth=100, location=no");
+				send.resizeTo(700,800);
 			};
 		</script>
         <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
