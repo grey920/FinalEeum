@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.eeum.domain.Portfolio;
-import com.kh.eeum.domain.QnA;
+import com.kh.eeum.domain.Report;
 
 @Repository
 public class AdminDAO {
@@ -35,7 +35,7 @@ public class AdminDAO {
 		return sqlSession.selectOne("eeum.newUsers");
 	}
 	
-	public List<QnA> getQnaList(){
+	public List<Report> getQnaList(){
 		return sqlSession.selectList("eeum.qna");
 	}
 	

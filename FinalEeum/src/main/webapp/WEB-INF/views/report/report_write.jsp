@@ -90,11 +90,12 @@ margin-bottom:30px;
 
 												<span>분류</span> <select name="REPORT_TYPE" id="REPORT_TYPE" style="margin-bottom: 30px">
 													<option value="">분류 선택</option>
-													<option value="성적인 내용">성적인 내용</option>
-													<option value="폭력적 또는 혐오스러운 내용">폭력적 또는 혐오스러운 내용</option>
-													<option value="증오 또는 악의 적인 내용">증오 또는 악의 적인 내용</option>
-													<option value="유해하거나 위험한 행위">유해하거나 위험한 행위</option>
-													<option value="스팸 또는 오해의 소지가 있는 내용">스팸 또는 오해의 소지가 있는 내용</option>
+													<option value="1">성적인 내용</option>
+													<option value="2">폭력적 또는 혐오스러운 내용</option>
+													<option value="3">증오 또는 악의 적인 내용</option>
+													<option value="4">유해하거나 위험한 행위</option>
+													<option value="5">스팸 또는 오해의 소지가 있는 내용</option>
+													<option value="0">기타</option>
 													
 												</select>
 												

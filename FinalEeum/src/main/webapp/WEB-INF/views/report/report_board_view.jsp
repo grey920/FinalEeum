@@ -181,7 +181,7 @@
 		  	 	</a>
 
 	  	 	</c:if>
-	  	 	<a href="BoardList.bo">
+	  	 	<a href="Report.net">
 	  	 		<button class="btn btn-primary">목록</button>
 	  	 	</a>
 	  	 	</td>
@@ -523,6 +523,6 @@
 		<script src="resources/js/owl.carousel.min.js"></script>
 		<script src="resources/js/plugins.js"></script>
 		<script src="resources/js/main.js"></script>
-		<script src="resources/js/qna_board/view3.js"></script>
+		<script src="resources/js/report_board/view3.js"></script>
 </body>
 </html>

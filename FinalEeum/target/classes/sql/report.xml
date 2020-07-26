@@ -7,11 +7,7 @@
 	<select id="count" resultType="int">
 		select count(*) from REPORTBOARD
 	</select>
-	
-	
-	
-	
-	
+
 	<select id="list" parameterType="java.util.Map" resultType="report">
 			select * from
 		(select rownum rnum, b.*
@@ -27,7 +23,7 @@
 		(REPORT_INDEX ,
 		 REPORT_TITLE,REPORT_WRITER, REPORT_REPORT,REPORT_CONTENT,REPORT_DATE,REPORT_TYPE)
 		 values
-		 (reportboard_seq.NEXTVAL,
+		 (report_seq.NEXTVAL,
 		 #{REPORT_TITLE},#{REPORT_WRITER}, #{REPORT_REPORT}, #{REPORT_CONTENT},sysdate,
 		 #{REPORT_TYPE})
 	</insert>
@@ -37,6 +33,21 @@
 		select * from REPORTBOARD where REPORT_INDEX = #{num}
 	</select>
 	
+	
+		<select id="BoardWriter" parameterType="map" resultType="report">
+		select * from REPORTBOARD where REPORT_INDEX = #{num} and REPORT_WRITER=#{writer}
+	</select>
+	
+	<!-- 수정 -->
+	<update id="modify" parameterType="report">
+		update REPORTBOARD
+		set
+			REPORT_TITLE=#{REPORT_TITLE} ,
+			REPORT_REPORT=#{REPORT_REPORT},
+			REPORT_CONTENT=#{REPORT_CONTENT},
+			REPORT_TYPE=#{REPORT_TYPE}
+		where REPORT_INDEX =#{REPORT_INDEX}	+1
+	</update>
 
 	
 
