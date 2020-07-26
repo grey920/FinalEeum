@@ -48,6 +48,7 @@ public interface ExpertService {
 	public int getExpertListCountRepair();
 	
 	//사용자 예약 리스트 내역 
+	public Reservation reserveCheck(String user_id, int num);
 	public int reserveCount(String user_id);	
 	public List<Reservation> ureserveList(String user_id, int page, int limit);
 	public int cancelReserve(String rs_exid, String rs_uid, String rs_date);
@@ -72,6 +73,9 @@ public interface ExpertService {
 	
 	//서비스 예약 취소
 	public int reserveCancel(String rs_no);
+	
+	// 서비스 결제 후 상태 업데이트
+	public int updateState(String id, int rsIndex);
 	
 	
 
