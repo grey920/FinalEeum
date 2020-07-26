@@ -108,8 +108,8 @@ public class ExpertDAO {
 		return sqlSession.selectOne("Experts.reserveCount", user_id);
 	}
 
-	public List<Reservation> reserveList(HashMap<String, Object> map) {
-		return sqlSession.selectList("Experts.reserveList", map);
+	public List<Reservation> ureserveList(HashMap<String, Object> map) {
+		return sqlSession.selectList("Experts.ureserveList", map);
 	}
 
 	public int cancelReserve(Map<String, Object> map) {
@@ -135,5 +135,24 @@ public class ExpertDAO {
 		return sqlSession.update("Experts.updatePwd", map);
 	}
 
+	public int exreserveCount(HashMap<String, Object> map) {
+		return sqlSession.selectOne("Experts.exreserveCount", map);
+	}
+
+	public List<Map<String, Object>> exreserveList(HashMap<String, Object> map) {
+		return sqlSession.selectList("Experts.exreserveList", map);
+	}
+
+	public int reservingCount(HashMap<String, Object> map) {
+		return sqlSession.selectOne("Experts.reservingCount", map);
+	}
+
+	public List<Map<String, Object>> reservingList(HashMap<String, Object> map) {
+		return sqlSession.selectList("Experts.reservingList", map);
+	}
+
+	public int reserveCancel(HashMap<String, Object> map) {
+		return sqlSession.update("Experts.reserveCancel", map);
+	}
 
 }

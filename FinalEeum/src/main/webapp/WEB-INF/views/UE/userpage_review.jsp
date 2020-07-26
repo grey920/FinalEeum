@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  <!doctype html>
 <html>
     <head>
@@ -32,48 +33,52 @@
 		.border-top-2 {border-top:0}
 		.product-img img{transition:none}
 		.product-img{width:250px !important}
-		.product-list-details h2{font-size:33px}
+		.product-list-details {padding-right:100px}
+		.product-list-details a{font-size:28px}
 		.shop-list-cart > a {font-size: 18px;
 										border:2px solid #72A0E0;
 										border-radius:20px}
-		hr{margin:15px 0}
-		.shop-topbar-wrapper {border-bottom: 1px solid #868e96;}
-		.product-list-details > p {margin: 18px 0 15px;}
-		h2{margin-top:30px}
+		hr{margin:15px 0;}
+		.shop-topbar-wrapper {border-bottom: 1px solid #868e96; border-width:80%}
+		h2{margin-top:5px}
 		.product-list-details > h2 {margin-bottom: 10px;}
          .pt-120{padding-top:50px !important}
          .breadcrumb-content{padding-top:0;margin-top:1em}
          .breadcrumb-content ul > li{font-size:13pt}
+         .product-rating{margin-bottom:15px}
+         .shop-list-cart{margin-top:8px}
+         .product-rating img {width:140px}
+                 .nodata{padding:100px 0 100px 0;
+        			  display: flex;
+					  justify-content: center;
+					  align-items: center;
+					  flex-direction: column;}
+        .btn-style{margin-top:10px !important;
+       					 margin-right:0 !important; 
+       					 font-size:18px;
+         				 border-radius:20px;
+         				 background-color:white;
+         				 color:#72A0E0;
+         				 border:2px solid #72A0E0;
+         				 }
+        .btn-style:hover{background-color:#72A0E0;
+         					       color:white;
+         					       border:2px solid #72A0E0;
+         						  }
         </style>
     </head>
     <body>
-        <div class="wrapper">
+      <div class="wrapper">
             <!-- header start -->
 		 	<%@ include file="../header.jsp" %>
             <div class="header-height"></div>
             
-            <!-- main-search start -->
-            <div class="main-search-active">
-                <div class="sidebar-search-icon">
-                    <button class="search-close"><span class="ti-close"></span></button>
-                </div>
-                <div class="sidebar-search-input">
-                    <form>
-                        <div class="form-search">
-                            <input id="search" class="input-text" value="" placeholder="Search Entire Store" type="search">
-                            <button>
-                                <i class="ti-search"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
             <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center border-top-2">
                         <h2>REVIEW LIST</h2>
                         <ul>
-                            <li>작성한 서비스 후기 목록</li>
+                            <li>작성한 후기 목록</li>
                         </ul>
                     </div>
                 </div>
@@ -81,51 +86,40 @@
 
             <div class="shop-wrapper hm-3-padding pt-120 pb-100">
                 <div class="container">
-                
-                  <c:if test="${reviewCount == 0 }">
-                  	<div class="col-lg-12 col-md-12 col-12 nodata">	
-				        <p>아직 작성한 후기가 없습니다😥</p>
-				        <p>받은 서비스에 대해 평가해주세요</p>
-				    	<button class="btn-style" onclick="location.href='userReservation.net';">후기 작성하러 가기</button>
-				    </div>
-                  </c:if>
+                  <div class="row">
                 
                   <c:if test="${reviewCount > 0 }">
-                    <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="padding:0 45px">
                             <div class="shop-topbar-wrapper">
                             </div>
                         </div>
-                    </div>
                     
                     <div class="grid-list-product-wrapper">
                         <div class="product-list product-view">
-                            <div class="row">
                             
                               <c:forEach var="re" items="${relist}">
                                 <div class="product-width col-md-6 col-xl-3 col-lg-4">
                                     <div class="product-wrapper mb-35">
                                         <div class="product-img">
                                             <a href="expertDetail.service?expert=${re.EXPERT_ID}">
-                                                <img src="resources/expert_profile${re.PF_SAVEPROFILE}" style="">
+                                                <img src="resources/expert_profile${re.PF_SAVEPROFILE}" style="width:170px; float:right">
                                             </a>
                                         </div>
                                         <div class="product-list-details">
-                                            <h2><a href="expertDetail.service?expert=${re.EXPERT_ID}">
+                                            <a href="expertDetail.service?expert=${re.EXPERT_ID}">
                                             [
                                             <c:choose>
                                             	<c:when test="${re.PF_CATE == '0'}">
-                                            		청소
+                                            	청소
                                             	</c:when>
                                             	<c:when test="${re.PF_CATE == '1'}">
-                                            		방역
+                                            	방역
                                             	</c:when>
                                             	<c:otherwise>
-                                            		수리
+                                            	수리
                                             	</c:otherwise>
                                             </c:choose>
                                             ]
-                                            &nbsp;
                                             <c:choose>
                                             	<c:when test="${re.PF_GRADE == '0'}">
                                             		디딤돌 
@@ -140,28 +134,43 @@
                                             		용마루 
                                             	</c:when>
                                             </c:choose>
-                                            &nbsp;
                                             ${re.EXPERT_NAME}
-                                            </a></h2>
-                                            
-                                            <div class="product-price">
-                                                <span>
-                                                <c:set var="date" value="${re.RS_DATE}"/>
-                                                	<fmt:formatDate value="${date}" type="date" dateStyle="long"/>
+                                            </a>
+                                            &nbsp;&nbsp;
+                                            <c:set var="date" value="${re.RS_DATE}"/>
+                                            	<fmt:formatDate value="${date}" type="date" dateStyle="long"/>
                                                  | 
-                                                 <c:set var="time" value="${re.RS_TIME}"/>
-                                                 	<fmt:formatDate value="${time}" type="time" timeStyle="short"/>
-                                                 </span>
-                                            </div>
+                                            <c:set var="time" value="${re.RS_TIME}"/>
+                                            	<fmt:formatDate value="${time}" type="time" timeStyle="short"/>
                                             <hr>
+
                                             <div class="product-rating">
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
+                                            	<c:choose>
+                                            		<c:when test="${re.RV_SUM == '0' }"><img src="resources/img/review/0.png"></c:when>
+                                            		<c:when test="${re.RV_SUM > '0' && re.RV_SUM < '1'}"><img src="resources/img/review/0.5.png"></c:when>
+                                            		<c:when test="${re.RV_SUM == '1' }"><img src="resources/img/review/1.png"></c:when>
+                                            		<c:when test="${re.RV_SUM > '1' && re.RV_SUM < '2'}"><img src="resources/img/review/1.5.png"></c:when>
+                                            		<c:when test="${re.RV_SUM == '2' }"><img src="resources/img/review/2.png"></c:when>
+                                            		<c:when test="${re.RV_SUM > '2' && re.RV_SUM < '3'}"><img src="resources/img/review/2.5.png"></c:when>
+                                            		<c:when test="${re.RV_SUM == '3' }"><img src="resources/img/review/3.png"></c:when>
+                                            		<c:when test="${re.RV_SUM > '3' && re.RV_SUM < '4'}"><img src="resources/img/review/3.5.png"></c:when>
+                                            		<c:when test="${re.RV_SUM == '4' }"><img src="resources/img/review/4.png"></c:when>
+                                            		<c:when test="${re.RV_SUM > '4' && re.RV_SUM < '5'}"><img src="resources/img/review/4.5.png"></c:when>
+                                            		<c:when test="${re.RV_SUM == '5' }"><img src="resources/img/review/5.png"></c:when>
+                                                </c:choose>
+                                                &nbsp;
+                                                <fmt:formatNumber value="${re.RV_SUM}" pattern=".00"/>
                                             </div>
-                                            <p>${fn:length re.rv_content > 14}...</p>
+                                            
+                                            <c:choose>
+		                                       <c:when test="${fn:length(re.RV_CONTENT) > 110}">
+		                                            <c:out value="${fn:substring(re.RV_CONTENT,0,109)}"/>...
+		                                       </c:when>
+		                                       <c:otherwise>
+				                                    <c:out value="${re.RV_CONTENT}"/>
+		                                       </c:otherwise>
+		                                    </c:choose>
+		                                    
                                             <div class="shop-list-cart">
                                                 <a href="#"><i class="ti-shopping-cart"></i>상세 보기</a>
                                             </div>
@@ -169,6 +178,7 @@
                                     </div>
                                 </div>
                              </c:forEach>
+                           </div>
                             
 				 			<div class="pagination-style text-center mt-30" id="pagination">
 								<ul class="paging_align">
@@ -201,10 +211,18 @@
 							</div>
 							
                         </div>
-                    </div>
+              		  </c:if>
+              		  
+              		  <c:if test="${reviewCount == 0 }">
+	                  	<div class="col-lg-12 col-md-12 col-12 nodata">	
+					        <p>아직 작성한 후기가 없습니다😥</p>
+					        <p>받은 서비스에 대해 평가해주세요</p>
+					    	<button class="btn-style" onclick="location.href='userReservation.net';">후기 작성하러 가기</button>
+					    </div>
+                  	</c:if>
+                  </div>
                 </div>
-              </c:if>
-            </div>
+			 </div>
             
             
             <footer class="hm-4-padding">

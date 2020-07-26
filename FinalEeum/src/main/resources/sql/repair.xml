@@ -2,15 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
-
-
 <mapper namespace="Repairs">
 
 	<select id="repaircount" resultType="int">
 		select count(*)
 		from expert_table E,PORTFOLIO P
-		where e.expert_ID =  p.PF_EXID	and P.PF_CATE = 3
+		where e.expert_ID =  p.PF_EXID	and P.PF_CATE = 2
 	</select>
 	
 	
@@ -20,7 +17,7 @@
 			(select rownum rnum, b.* 
 	  		from (select E.* , P.PF_CATE , P.PF_ONE,P.PF_SAVEPROFILE
 				  from expert_table E,PORTFOLIO P
-				  where e.expert_ID =  p.PF_EXID and P.PF_CATE = 3	) 	
+				  where e.expert_ID =  p.PF_EXID and P.PF_CATE = 2) 	
 		b)	  
 		where rnum &gt; = #{start} and rnum &lt; =
 		#{end}

@@ -13,12 +13,8 @@ import com.kh.eeum.domain.Review;
 @Repository
 public class ReviewDAO {
 	
-	
-	
-	
 	@Autowired
 	SqlSessionTemplate sqlSession;
-
 	
 	public List<Review> selectReviewList(Map<String, Object> map) {
 		System.out.println("리뷰dao"+map.get("expert_id"));
@@ -51,7 +47,7 @@ public class ReviewDAO {
 		return sqlSession.selectOne("Reviews.reviewCount", user_id);
 	}
 
-	public List<Review> reviewList(HashMap<String, Object> map) {
+	public List<Map<String, Object>> reviewList(HashMap<String, Object> map) {
 		return sqlSession.selectList("Reviews.reviewList", map);
 	}
 }

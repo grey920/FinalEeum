@@ -20,7 +20,7 @@ USER_STATE NUMBER DEFAULT 0
 )
 
 select * from USER_TABLE
-delete user_table where user_id = 'hansol66'
+delete user_table where user_id = 'hansol22'
 alter table USER_TABLE modify(USER_SAVEPROFILE varchar2(4000))
 drop table user_table
 

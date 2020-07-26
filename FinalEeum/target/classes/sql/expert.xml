@@ -69,14 +69,14 @@
 	
 		INSERT INTO REQUEST			
 			(REQUEST_NO, EXPERT_ID, WRITER, WRITER_TYPE, BUILDING_TYPE, BUILDING_TEXT, REPAIR_TYPE, REPAIR_TEXT, SIMPLE_REQ_TEXT, REQUEST_DATE)	
-		VALUES(request_seq.NEXTVAL, #{expert_id}, #{writer}, #{writer_type}, #{building_type}, #{building_text}, #{repair_type}, #{repair_text}, #{simple_req_text}, SYSDATE)
+		VALUES(request_seq.NEXTVAL, #{expert_id}, #{writer}, #{writer_type}, #{building_type}, #{building_text}, #{repair_type}, #{repair_text}, #{simple_req_text}, (sysdate + (INTERVAL '9' HOUR)))
 	</insert>
 
 
 	<insert id="insertRequestFileData"  parameterType="java.util.Map">	       
 		INSERT INTO REQUEST_FILE	
 		(FILE_NO, REQUEST_NO, FILE_NAME, FILE_ORIGINAL, FILE_THUMB_NAME, REQUEST_FILE_DATE)	
-		VALUES (request_file_seq.NEXTVAL, #{request_no}, #{file_name}, #{file_original}, #{file_thumb_name}, SYSDATE)	
+		VALUES (request_file_seq.NEXTVAL, #{request_no}, #{file_name}, #{file_original}, #{file_thumb_name}, (sysdate + (INTERVAL '9' HOUR)))	
 	</insert>
 	
 	<select id="reserveCount" parameterType="String" resultType="int">
@@ -85,7 +85,7 @@
 		where RS_UID = #{user_id}
 	</select>
 	
-	<select id="reserveList" parameterType="map" resultType="map">
+	<select id="ureserveList" parameterType="map" resultType="map">
 		select *
 		from (select rownum rnum, r.*
 				  from (	select r.*, e.expert_name, p.pf_grade, p.pf_cate, p.pf_saveprofile
@@ -145,4 +145,49 @@
 		where expert_id = #{expert_id} and expert_name = #{expert_name} and expert_jumin1 = #{expert_jumin1}
 	</update>
 	
+	<select id="exreserveCount" parameterType="map" resultType="int">
+		select count(*)
+		from reservation
+		where rs_exid = #{expert_id} and rs_state = #{state}
+	</select>
+	
+	<select id="exreserveList" parameterType="map" resultType="map">
+		select *
+		from (select rownum rnum, re.*, u.*
+					from (select rs.*, rq.*
+								from reservation rs, request rq
+								where rs.rs_exid = rq.expert_id and rs.rs_uid = rq.writer and rs.rs_state = #{state}
+								) re
+								inner join user_table u on u.user_id = re.rs_uid
+					where re.expert_id = #{expert_id}
+					order by re.request_date asc
+					) 
+		where rnum &gt; = #{start} and rnum &lt; = #{end}
+	</select>
+	
+	<select id="reservingCount" parameterType="map" resultType="int">
+		select count(*)
+		from reservation
+		where rs_exid = #{expert_id} and rs_state &gt; = #{state1} and rs_state &lt; = #{state2}
+	</select>
+	
+	<select id="reservingList" parameterType="map" resultType="map">
+		select *
+		from (select rownum rnum, re.*, u.*
+					from (select rs.*, rq.*
+								from reservation rs, request rq
+								where rs.rs_exid = rq.expert_id and rs.rs_uid = rq.writer and rs.rs_state &gt; = #{state1} and rs.rs_state &lt; = #{state2}
+								) re
+								inner join user_table u on u.user_id = re.rs_uid
+					where re.expert_id = #{expert_id}
+					order by re.request_date asc
+					) 
+		where rnum &gt; = #{start} and rnum &lt; = #{end}
+	</select>
+	
+	<update id="reserveCancel" parameterType="map">
+		update reservation
+		set RS_STATE = #{rs_state}
+		where RS_NO = #{rs_no}
+	</update>
 </mapper>
