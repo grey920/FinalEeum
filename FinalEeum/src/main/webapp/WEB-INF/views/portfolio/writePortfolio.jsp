@@ -26,6 +26,15 @@
 <link rel="stylesheet" href="resources/css/responsive.css">
 <link rel="stylesheet" href="resources/css/service/portfolioForm.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
+
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script  src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js" defer></script>
 <%@ include file="../header.jsp" %>
 
 </head>
@@ -117,14 +126,6 @@
 									</div>
 
 
-									<div class="col-md-12">
-										<div class="checkout-form-list">
-											<label>경력 상세설명 <span class="required">*</span></label>
-											<textarea name="PF_DESC" cols="30" rows="5"
-												placeholder="경력에 대해 이야기 해주세요"></textarea>
-										</div>
-									</div>
-
 								</div>
 							</div>
 
@@ -165,6 +166,17 @@
 										placeholder="전문가 상세 페이지에 들어갑니다"></textarea>
 								</div>
 							</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-12">
+						
+
+									<div class="col-md-12">
+										<div class="checkout-form-list">
+											<label>경력 상세설명 <span class="required">*</span></label>
+											<textarea name="PF_DESC" cols="30" rows="5"
+												placeholder="경력에 대해 이야기 해주세요" id="summernote"></textarea>
+										</div>
+									</div>
 						</div>
 						<div class="row btnRow">
 							<div class="col-lg-12 col-md-12 col-12">
@@ -347,7 +359,14 @@
 
 	<!-- all js here -->
 	<script src="resources/js/jquery-3.5.0.js"></script>
-	<script type="text/javascript">
+	<script>
+		$(function() {
+			$("#summernote").summernote({
+				height : 500
+			});
+
+		});// document.ready
+
 		/*프로필 사진 업로드 처리*/
 		$('#expert_profile').on('change', preview);
 
@@ -378,6 +397,7 @@
 
 		}
 	</script>
+		
 	<script src="resources/js/sojaeji1.js"></script>
 	<script src="resources/js/PF_writeform.js"></script>
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
