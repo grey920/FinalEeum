@@ -14,9 +14,6 @@ import com.kh.eeum.domain.Oneday;
 @Repository
 public class ReportDAO {
 
-	
-	
-	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
@@ -37,11 +34,11 @@ public class ReportDAO {
 	}
 
 	public int boardModify(Report board) {
-		return sqlSession.update("Boards.modify",board);
+		return sqlSession.update("Reports.modify",board);
 	}
 
 	public Report isBoardWriter(Map<String, Object> map) {
-		return sqlSession.selectOne("Boards.BoardWriter",map);
+		return sqlSession.selectOne("Reports.BoardWriter",map);
 	}
 
 }

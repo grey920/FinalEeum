@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html class="no-js" lang="zxx">
@@ -37,6 +37,7 @@ var i =1;
 					<div class="col-lg-12">
 						<div class="contact-message-wrapper">
 							<h4 class="content-title">가격</h4>
+							<p>서비스 항목은 최대 10개까지 입력 가능합니다</p>
 							<div class="writeprice">
 								<form id="priceform" action="#" method="post">
 									<div class="row">
@@ -79,9 +80,12 @@ var i =1;
 	<script src="resources/js/main.js"></script>
 	<script>
 		$(".appbtn").on('click', function(){
+			<c:forEach var="price" items="${pri}">
+			for(i=0; i<10; i++){
 			$(".inssub").after('<div class="contact-form-style mb-20"><input name="subject'+i+'" placeholder="제공할 서비스를 입력하세요" type="text" id="inssub"></div>');
 			$(".inspric").after('<div class="contact-form-style mb-20"><input name="price'+i+'" placeholder="가격을 입력하세요" type="text" id="inspric"></div>');
-			i++;
+			}
+			</c:forEach>
 		})
 	</script>
 	<script src="resources/js/main.js"></script>
