@@ -28,7 +28,7 @@
 		<typeAlias alias="C" type="com.kh.eeum.domain.Comment"/>
 
 		<typeAlias alias="message" type="com.kh.eeum.domain.Message" />
-
+		<typeAlias alias="qna" type="com.kh.eeum.domain.Qna" />
 	</typeAliases>
 
 	<mappers>
@@ -48,6 +48,7 @@
 		<mapper resource="sql/comment.xml"/>
 
 		<mapper resource="sql/message.xml"/>
+		<mapper resource="sql/qna.xml"/>
 
 	</mappers>
 </configuration>
