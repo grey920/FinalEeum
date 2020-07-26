@@ -162,7 +162,7 @@
 														<span>견적확인</span>	
 													</button>
 													<c:if test="${r.RS_STATE == '1'}">
-														<button class="btn-style" onclick="">
+														<button class="btn-style" onclick="window.open('Pay.net?num=${r.RS_NO}','width=500, height=700');">
 															<span>결제하기</span>
 														</button>
 													</c:if>

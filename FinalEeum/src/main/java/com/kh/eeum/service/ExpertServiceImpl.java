@@ -494,4 +494,23 @@ public class ExpertServiceImpl implements ExpertService {
 		return exdao.reserveCancel(map);
 	}
 
+	@Override
+	public Reservation reserveCheck(String user_id, int num) {
+		Map<String, Object> map= new HashMap<String, Object>();
+		map.put("rs_uid", user_id);
+		map.put("rs_no", num);
+		System.out.println("rs_uid="+user_id+", rs_no="+num);
+		Reservation reserve = exdao.reserveCheck(map);
+		return reserve;
+	}
+
+	@Override
+	public int updateState(String id, int rsIndex) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("rs_uid", id);
+		map.put("rs_no", rsIndex);
+		System.out.println("ExImpl의 updateState()");
+		return exdao.updateState(map);
+	}
+
 }
