@@ -50,4 +50,8 @@ public class ReviewDAO {
 	public List<Map<String, Object>> reviewList(HashMap<String, Object> map) {
 		return sqlSession.selectList("Reviews.reviewList", map);
 	}
+
+	public Map<String, Object> getReview(int rv_no) {
+		return sqlSession.selectOne("Reviews.getReview", rv_no);
+	}
 }

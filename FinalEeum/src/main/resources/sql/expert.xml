@@ -104,10 +104,11 @@
 	  			 					 portfolio p on r.rs_exid = p.pf_exid
 	  						where r.rs_uid = #{user_id}
 	  						) r
+	  				order by r.rs_no desc
 	  			 )
 		where rnum &gt; = #{start} and rnum &lt; = #{end}
 	</select>
-	
+	 
 	<select id="poselect" resultType="portfolio" parameterType="String">
 		select * from PORTFOLIO where PF_EXID = #{expert_id}
 	</select>
@@ -128,7 +129,7 @@
 	<insert id="insertReservation" parameterType="reservation">
 		insert into RESERVATION
 		(RS_NO, RS_EXID, RS_UID)
-		values(RS_SEQ.NEXTVAL, #{rs_exid}, #{rs_uid})
+		values(#{rs_no}, #{rs_exid}, #{rs_uid})
 	</insert>
 	
 	<update id="cancelReserve" parameterType="map">
@@ -195,9 +196,36 @@
 		where rnum &gt; = #{start} and rnum &lt; = #{end}
 	</select>
 	
-	<update id="reserveCancel" parameterType="map">
+	<update id="reserveCancel" parameterType="int">
 		update reservation
-		set RS_STATE = #{rs_state}
+		set RS_STATE = 4
 		where RS_NO = #{rs_no}
 	</update>
+	
+	<select id="estimateList" parameterType="int" resultType="map">
+		select rq.*, rs.*
+		from (select r.*, rf.*
+				  from request r inner join request_file rf on r.request_no = rf.request_no
+				 ) rq inner join reservation rs on rq.request_no = rs.rs_no
+		where rq.request_no = #{request_no}
+	</select>
+	
+	<select id="serviceForm" parameterType="int" resultType="map">
+		select rs.*, u.*
+		from reservation rs inner join user_table u on rs.rs_uid = u.user_id
+		where rs.rs_no = #{rs_no}
+	</select>
+	
+	<update id="serviceYes" parameterType="reservation">
+		update reservation
+		set rs_date = #{rs_date}, rs_time = #{rs_time}, rs_money = #{rs_money}, rs_state = 1
+		where rs_no = #{rs_no}
+	</update>
+	
+	<update id="serviceOk" parameterType="int">
+		update reservation
+		set rs_state = 3
+		where rs_no = #{rs_no}
+	</update>
+	
 </mapper>

@@ -1003,6 +1003,17 @@ public class UEController {
 		return mv;
 	}
 	
+	@RequestMapping(value="estimateList.net")
+	public ModelAndView estimateList(int request_no, ModelAndView mv) {
+		Map<String, Object> estimateList = new HashMap<String, Object>();
+		
+		estimateList = expertservice.estimateList(request_no);
+		
+		mv.setViewName("UE/mypage_estimate");
+		mv.addObject("e", estimateList);
+		return mv;
+	}
+	
 	@RequestMapping(value="userRsCancel.net")
 	public void userReservationCancel(String rs_exid, String rs_no, 
 															HttpSession session, HttpServletResponse response) throws Exception {
@@ -1058,6 +1069,37 @@ public class UEController {
 		return mv;
 	}
 	
+	@RequestMapping(value="serviceYes.net")
+	public ModelAndView serviceYes(ModelAndView mv, int rs_no) throws Exception {
+		Map<String, Object> rslist = expertservice.serviceForm(rs_no);
+		
+		mv.setViewName("UE/expertpage_yesForm");
+		mv.addObject("rslist", rslist);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="serviceYesProcess.net")
+	public void serviceYesProcess(Reservation rv, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		int result = expertservice.serviceYes(rv);
+		out.println("<script>");
+		
+		if (result == 1)  {
+			out.println("alert('예약 확정이 완료되었습니다.');");
+			out.println("location.href='expertReserve.net';");
+			
+		} else if (result == -1) {
+			out.println("alert('예약 확정에 실패하였습니다.');");
+			out.println("history.back()");
+		}
+		
+		out.println("</script>");
+		out.close();
+	}
+	
 	@RequestMapping(value="expertReserve.net")
 	public ModelAndView expertReserve(@RequestParam(value="page", defaultValue="1", required=false) int page,
 													HttpSession session, ModelAndView mv) throws Exception {
@@ -1086,6 +1128,27 @@ public class UEController {
 		mv.addObject("limit", limit);
 		
 		return mv;
+	}
+	
+	@RequestMapping(value="serviceOk.net")
+	public void serviceOk(int rs_no, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		int result = expertservice.serviceOk(rs_no);
+		out.println("<script>");
+		
+		if (result == 1)  {
+			out.println("alert('선택된 예약이 서비스 완료 처리되었습니다.');");
+			out.println("location.href='expertComplete.net';");
+			
+		} else if (result == -1) {
+			out.println("alert('서비스 완료 처리가 실패되었습니다.');");
+			out.println("history.back()");
+		}
+		
+		out.println("</script>");
+		out.close();
 	}
 	
 	@RequestMapping(value="expertComplete.net")
@@ -1150,8 +1213,17 @@ public class UEController {
 		return mv;
 	}
 	
+	@RequestMapping(value="reviewDetail.net")
+	public ModelAndView reviewDetail(ModelAndView mv, int rv_no) throws Exception {
+		Map<String, Object> review = reviewservice.getReview(rv_no);
+		
+		mv.setViewName("UE/userpage_reviewForm");
+		mv.addObject("r", review);
+		return mv;
+	}
+	
 	@RequestMapping(value="exreserveCancel.net")
-	public void exreserveCancel(String rs_no, HttpServletResponse response) throws Exception {
+	public void exreserveCancel(int rs_no, HttpServletResponse response) throws Exception {
 		System.out.println(rs_no);
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -1173,8 +1245,7 @@ public class UEController {
 	}
 	
 	@RequestMapping(value="ureserveCancel.net")
-	public void ureserveCancel(String rs_no, HttpServletResponse response) throws Exception {
-		System.out.println(rs_no);
+	public void ureserveCancel(int rs_no, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");

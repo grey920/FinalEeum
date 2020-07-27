@@ -72,12 +72,15 @@ public interface ExpertService {
 	public List<Map<String, Object>> completeList(String expert_id, int page, int limit);
 	
 	//서비스 예약 취소
-	public int reserveCancel(String rs_no);
-	
+	public int reserveCancel(int rs_no);
+
+	public Map<String, Object> estimateList(int request_no);
+
 	// 서비스 결제 후 상태 업데이트
 	public int updateState(String id, int rsIndex);
-	
-	
 
+	public Map<String, Object> serviceForm(int rs_no);
+	public int serviceYes(Reservation rv);
+	public int serviceOk(int rs_no);
 
 }

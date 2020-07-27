@@ -157,6 +157,8 @@
                                             </td>
                                             <td class="product-name">
                                                 ${e.USER_ADDR2}
+                                                <br>
+                                                ${e.USER_ADDR3}
                                             </td>
                                             
                                             <td class="product-subtotal">
@@ -167,7 +169,7 @@
                                             <td class="product-subtotal class-state">
                                             	<div class="button-box" style="text-align:center;">
                                             	
-													<button class="btn-style" >
+													<button class="btn-style" onclick="location.href='serviceYes.net?rs_no=${e.REQUEST_NO}';">
 														<span>예약확정</span>	
 													</button>
 													<button class="btn-style" data-toggle="modal" data-target="#modalConfirmDelete">

@@ -23,6 +23,13 @@
         <link rel="stylesheet" href="resources/css/responsive.css">
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
         <%@ include file="header.jsp" %>
+        <style>
+        .pt-130{padding-top:30px}
+        .pb-125{padding-bottom:30px; margin-bottom:100px}
+        .theme-bg {background: #E4E8F0}
+        .single-testimonial>h4{font-size:20px !important}
+        h4{margin-top:30px}
+        </style>
     </head>
     <body>
         <div class="wrapper">
@@ -774,83 +781,41 @@
                     </div>
                 </div>
             </div>
+            
             <div class="testimonials-area">
                 <div class="container-fluid">
-                    <div class="testimonial-active owl-carousel pt-130 pb-125 theme-bg">
+                    <div class="testimonial-active owl-carousel pt-130 pb-125 theme-bg" >
+                    
                         <div class="single-testimonial text-center">
-                            <img alt="" src="resources/img/team/1.png">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</p>
-                            <div class="testimonial-icon">
-                                <i class="ti-direction-alt"></i>
-                            </div>
-                            <h4>Shakara Tasnim </h4>
-                            <span>Customer</span>
+                            <h4>가람휘 조장 정겨운 </h4>
                         </div>
+                        
                         <div class="single-testimonial text-center">
-                            <img alt="" src="resources/img/team/1.png">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</p>
-                            <div class="testimonial-icon">
-                                <i class="ti-direction-alt"></i>
-                            </div>
-                            <h4>Farhana Shuvo </h4>
-                            <span>Customer</span>
+                            <h4>가람휘 박우진 </h4>
                         </div>
+                        
                         <div class="single-testimonial text-center">
-                            <img alt="" src="resources/img/team/1.png">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</p>
-                            <div class="testimonial-icon">
-                                <i class="ti-direction-alt"></i>
-                            </div>
-                            <h4>Samia Robiul </h4>
-                            <span>Customer</span>
+                            <h4>가람휘 안연지 </h4>
                         </div>
+                        
+                        <div class="single-testimonial text-center">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</p>
+                            <h4>가람휘 안현빈 </h4>
+                        </div>
+                    
+                        <div class="single-testimonial text-center">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</p>
+                            <h4>가람휘 장한솔 </h4>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
-
-            <div class="services-area services-padding pb-100">
-                <div class="container-fluid">
-                    <div class="services-wrapper">
-                        <div class="single-services mb-30">
-                            <div class="services-icon">
-                                <img alt="" src="resources/img/icon-img/3.png">
-                            </div>
-                            <div class="services-text">
-                                <h5>FREE SHIPPING</h5>
-                                <p>Free shipping on all order</p>
-                            </div>
-                        </div>
-                        <div class="single-services mb-30">
-                            <div class="services-icon">
-                                <img alt="" src="resources/img/icon-img/4.png">
-                            </div>
-                            <div class="services-text">
-                                <h5>ONLINE SUPPORT</h5>
-                                <p>Online support 24 hours a day</p>
-                            </div>
-                        </div>
-                        <div class="single-services mb-30">
-                            <div class="services-icon">
-                                <img alt="" src="resources/img/icon-img/5.png">
-                            </div>
-                            <div class="services-text">
-                                <h5>MONEY RETURN</h5>
-                                <p>Back guarantee under 5 days</p>
-                            </div>
-                        </div>
-                        <div class="single-services mb-30">
-                            <div class="services-icon">
-                                <img alt="" src="resources/img/icon-img/6.png">
-                            </div>
-                            <div class="services-text">
-                                <h5>MEMBER DISCOUNT</h5>
-                                <p>Onevery order over $150</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <footer class="theme-bg footer-padding">
+            
+            <footer class="footer-padding">
                 <div class="container-fluid">
                     <div class="footer-top pt-85 pb-25">
                         <div class="row">

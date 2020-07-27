@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>사용자 - 채팅 목록</title>
+        <title>견적서 확인</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -26,21 +26,35 @@
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
         <%@ include file="../header.jsp" %>
         <style>
-select {font-size:13pt}
-.text-center h2{font-weight:900}
-.ptb-130 {padding-top:30px !important}
-.pt-120{padding-top:50px !important}
-.breadcrumb-content{padding-top:0;margin-top:1em}
-.breadcrumb-content ul > li{font-size:13pt}
-.login-form-container {box-shadow : none; 
-									border:1px solid #36518F;
-									border-radius:10px;
-									padding:0px 20px 20px}
-.col-lg-5 {padding:10px; float:left;
-				border-right-color: black;
-   				border-right-width: 1px;
-    			border-right-style: solid;}
-.col-lg-6{padding:10px;float:right}
+        body{font-size:20px}
+        .product-subtotal{font-size:18px !important}
+        .btn-style{margin-top:10px !important;
+       					 margin-right:0 !important; 
+       					 font-size:18px;
+         				 border-radius:20px;
+         				 background-color:white;
+         				 color:#72A0E0;
+         				 border:2px solid #72A0E0;
+         				 }
+        .btn-style:hover{background-color:#72A0E0;
+         					       color:white;
+         					       border:2px solid #72A0E0;
+         						  }
+        .nodata{padding:100px 0 100px 0;
+        			  display: flex;
+					  justify-content: center;
+					  align-items: center;
+					  flex-direction: column;}
+         .table-content table td {border-bottom:2px solid #e8e6e6; padding:30px 10px 30px}
+         .pt-120{padding-top:50px !important}
+         .breadcrumb-content{padding-top:0;margin-top:1em}
+         .breadcrumb-content ul > li{font-size:13pt}
+         tr td.class-state{padding-top:10px; padding-bottom:20px}
+         td.product-subtotal button.btn-style {padding-left:20px;padding-right:20px}
+         tr td.class-state{padding-top:10px; padding-bottom:20px}
+         .modal-footer a {font-size:13pt}
+         .modal-table table tbody tr td {border:1px solid #e8e6e6;
+         													padding:15px 10px}
         </style>
     </head>
     <body>
@@ -48,25 +62,6 @@ select {font-size:13pt}
             <!-- header start -->
             <div class="header-height"></div>
             
-            <!-- main-search start -->
-		<div class="main-search-active">
-			<div class="sidebar-search-icon">
-				<button class="search-close">
-					<span class="ti-close"></span>
-				</button>
-			</div>
-			<div class="sidebar-search-input">
-				<form>
-					<div class="form-search">
-						<input id="search" class="input-text" value=""
-							placeholder="Search Entire Store" type="search">
-						<button>
-							<i class="ti-search"></i>
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
 		   <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">

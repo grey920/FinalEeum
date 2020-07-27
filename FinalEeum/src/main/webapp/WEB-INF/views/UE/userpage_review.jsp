@@ -172,7 +172,7 @@
 		                                    </c:choose>
 		                                    
                                             <div class="shop-list-cart">
-                                                <a href="#"><i class="ti-shopping-cart"></i>상세 보기</a>
+                                                <a href="reviewDetail.net?rv_no=${re.RV_NO}"><i class="ti-shopping-cart"></i>상세 보기</a>
                                             </div>
                                         </div>
                                     </div>
