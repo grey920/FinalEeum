@@ -64,8 +64,8 @@ p{color:#303030}
 		<input type="text" id="msg_rid" name="msg_rid" value="<%=request.getParameter("msg_rid") %>" style="width:40%" readOnly>
 		<br>
 		<p>상담 내용</p>
-		<input type="text" id="msg_content" name="msg_content" placeholder="상담할 내용을 적어주세요"
-					style="width:97%;height:230px"><br>
+		<textarea id="msg_content" name="msg_content" placeholder="상담할 내용을 적어주세요"
+					style="width:97%;height:230px"></textarea><br>
 					
 		<div class="button-box" style="text-align:center;margin:0 auto;width:80%">
 			<button type="submit" class="btn-style check">

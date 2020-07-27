@@ -111,7 +111,7 @@ public class ExpertDAO {
 	public List<Reservation> ureserveList(HashMap<String, Object> map) {
 		return sqlSession.selectList("Experts.ureserveList", map);
 	}
-
+	
 	public int cancelReserve(Map<String, Object> map) {
 		return sqlSession.update("Experts.cancelReserve", map);
 	}
@@ -151,8 +151,24 @@ public class ExpertDAO {
 		return sqlSession.selectList("Experts.reservingList", map);
 	}
 
-	public int reserveCancel(HashMap<String, Object> map) {
-		return sqlSession.update("Experts.reserveCancel", map);
+	public int reserveCancel(int rs_no) {
+		return sqlSession.update("Experts.reserveCancel", rs_no);
+	}
+
+	public Map<String, Object> estimateList(int request_no) {
+		return sqlSession.selectOne("Experts.estimateList", request_no);
+	}
+
+	public Map<String, Object> serviceForm(int rs_no) {
+		return sqlSession.selectOne("Experts.serviceForm", rs_no);
+	}
+	
+	public int serviceYes(Reservation rv) {
+		return sqlSession.update("Experts.serviceYes", rv);
+	}
+
+	public int serviceOk(int rs_no) {
+		return sqlSession.update("Experts.serviceOk", rs_no);
 	}
 
 }

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  <!doctype html>
 <html>
     <head>
@@ -133,9 +134,17 @@
                                       <c:forEach var="r" items="${rlist}">
                                         <tr>
                                             <td class="product-subtotal">
-                                                2020. 7. 26<%-- ${r.RS_DATE} --%>
+                                                ${r.RS_DATE}
                                                 <br>
-                                                오전 6:07<%-- ${r.RS_TIME} --%>
+                                                <c:choose>
+                                                	<c:when test="${fn:length(r.RS_TIME) > 2}">
+                                                		<c:out value="${fn:substring(r.RS_TIME,0,2)}"/>시&nbsp;
+                                                		<c:out value="${fn:substring(r.RS_TIME,2,4)}" />분
+                                                	</c:when>
+                                                	<c:otherwise>
+                                                		${r.RS_TIME}시
+                                                	</c:otherwise>
+                                                </c:choose>
                                             </td>
                                             <td class="product-subtotal">
                                                 ${r.USER_NAME}
@@ -159,7 +168,7 @@
                                             		<button class="btn-style">
                                             			<span>&nbsp;견적보기&nbsp;</span>
                                             		</button>
-													<button class="btn-style" >
+													<button class="btn-style" onclick="location.href='serviceOk.net?rs_no=${r.RS_NO}'">
 														<span>서비스완료</span>	
 													</button>
 													<button class="btn-style" data-toggle="modal" data-target="#modalConfirmDelete">

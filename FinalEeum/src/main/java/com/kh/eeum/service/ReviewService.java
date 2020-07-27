@@ -22,6 +22,9 @@ public interface ReviewService {
 	//사용자 후기 리스트 내역
 	public int reviewCount(String user_id);
 	public List<Map<String, Object>> reviewList(String user_id, int page, int limit);
+	
+	//후기 상세보기
+	Map<String, Object> getReview(int rv_no);
 
 }
 

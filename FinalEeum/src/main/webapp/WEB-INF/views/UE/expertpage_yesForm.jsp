@@ -2,13 +2,12 @@
 	pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
- <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  <!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>전문가 - 서비스 완료 내역</title>
+        <title>전문가 - 예약 확정 폼</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -30,7 +29,8 @@
 		<%@ include file="../header.jsp" %>
         <style>
         body{font-size:20px}
-        .product-subtotal{font-size:18px !important}
+        input{border-radius:10px; margin-bottom:20px; margin-top:10px}
+        select{border-radius:10px; margin-bottom:20px; margin-top:10px}
         .btn-style{margin-top:10px !important;
        					 margin-right:0 !important; 
        					 font-size:18px;
@@ -43,29 +43,19 @@
          					       color:white;
          					       border:2px solid #72A0E0;
          						  }
-        .nodata{display: flex;
-					justify-content: center;
-					align-items: center;
-					flex-direction: column;}
-         .table-content table td {border-bottom:2px solid #e8e6e6; padding:30px 10px 30px}
-         .pt-120{padding-top:50px !important}
-         .breadcrumb-content{padding-top:0;margin-top:1em}
-         .breadcrumb-content ul > li{font-size:13pt}
+        .nodata{padding:100px 0 100px 0;
+        			  display: flex;
+					  justify-content: center;
+					  align-items: center;
+					  flex-direction: column;}
+         .pt-120{padding-top:20px !important}
+         .breadcrumb-content > h2{font-size:25px}
+         .breadcrumb-content{padding-top:0;margin-top:1.5em}
+         .table-content table th{padding:20px; font-size:20px;border:1px solid #e8e6e6;width:25%}
+         .table-content table td{padding:20px; font-size:18px;border:1px solid #e8e6e6;width:25%}
          tr td.class-state{padding-top:10px; padding-bottom:20px}
-         td.product-subtotal button.btn-style {padding-left:20px;padding-right:20px}
-         tr td.class-state{padding-top:10px; padding-bottom:20px}
-         .list tbody {font-size:17px}
+         .table-estimate table tr{border-collapse:collapse; border:1px solid #C1C8D9}
          .modal-footer a {font-size:13pt}
-         #msgbox{border-collapse: collapse;
-				border : 2px solid #72A0E0;
-				font-size:15pt;
-				margin: 30px 0 30px 0}
-		#msgbox tr th {padding:10px 50px 10px 50px;}
-		.check{background-color:#72A0E0;}
-		.check a {color:white}
-		.uncheck a{color:#72A0E0}
-		.uncheck.middle{border-left:2px solid #72A0E0;
-									padding:10px 60px !important}
         </style>
     </head>
     <body>
@@ -76,120 +66,37 @@
             <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
-                        <h2>RESERVATION LIST</h2>
-                        <ul>
-                            <li>견적 확인 ・ 예약 내역</li>
-                        </ul>
+                        <h2>서비스 예약 확정</h2>
                     </div>
                 </div>
             </div>
 
-			<div class="col-lg-12 col-md-12 col-12 nodata">	
-	            <table id="msgbox">
-	            	<tr>
-	            		<th class="uncheck"><a href="expertEstimate.net">미확정 예약</a></th>
-	            		<th class="uncheck middle"><a href="expertReserve.net">확정 예약</a></th>
-	            		<th class="check"><a href="expertComplete.net">완료된 예약</a></th>
-	            	</tr>
-	            </table>
-	        </div>
-
+			<c:set var="r" value="${rslist}" />
             <div class="product-cart-area hm-3-padding pt-120 pb-130">
                 <div class="container-fluid">
                     <div class="row">
-                       
-                       <c:if test="${completeCount > 0 }">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="table-content table-responsive">
-                                <table class="list" style="text-align:center">
-                                    <thead>
-                                        <tr>
-                                            <th class="product-quantity">예약 일자</th>
-                                            <th class="product-price">예약자 성함</th>
-                                            <th class="product-name">예약자 주소</th>
-                                            <th class="product-quantity">예약 가격</th>
-                                            <th class="product-quantity">예약 상태</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    
-                                      <c:forEach var="c" items="${clist}">
-                                        <tr>
-                                            <td class="product-subtotal">
-                                                ${c.RS_DATE}
-                                                <br>
-                                                <c:choose>
-                                                	<c:when test="${fn:length(c.RS_TIME) > 2}">
-                                                		<c:out value="${fn:substring(c.RS_TIME,0,2)}"/>시&nbsp;
-                                                		<c:out value="${fn:substring(c.RS_TIME,2,4)}" />분
-                                                	</c:when>
-                                                	<c:otherwise>
-                                                		${c.RS_TIME}시
-                                                	</c:otherwise>
-                                                </c:choose>
-                                            </td>
-                                            
-                                            <td class="product-subtotal">
-                                                ${c.USER_NAME}
-                                            </td>
-                                            
-                                            <td class="product-name">
-                                                ${c.USER_ADDR2}
-                                            </td>
-                                            
-                                            <td class="product-price">
-                                                ${c.RS_MONEY}원
-                                            </td>
-                                            
-                                            <td class="product-subtotal class-state">
-												서비스 완료
-                                            </td>
-                                        </tr>
-                                      </c:forEach>
-                                      
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-				 			<div class="pagination-style text-center mt-30" id="pagination">
-								<ul class="paging_align">
-									<c:if test="${page <= 1 }">
-										<li><i class="ion-chevron-left" style="display: none;"></i></li>
-									</c:if>
-									<c:if test="${page > 1}">
-										<li><a href="userOneday.net?page=${page-1}"><i
-												class="ion-chevron-left"></i></a></li>
-									</c:if>
-				
-									<c:forEach var="a" begin="${startpage}" end="${endpage}">
-										<c:if test="${a == page }">
-											<li><a class="active" href="#">${a}</a></li>
-										</c:if>
-										<c:if test="${a != page}">
-											<li><a href="userOneday.net?page=${a}">${a}</a></li>
-										</c:if>
-									</c:forEach>
-				
-									<c:if test="${page >= maxpage}">
-										<li><i class="ion-chevron-right" style="display: none;"></i></li>
-									</c:if>
-									<c:if test="${page < maxpage}">
-										<li><a href="userOneday.net?page=${page+1}"> <i
-												class="ion-chevron-right"></i>
-										</a></li>
-									</c:if>
-								</ul>
-							</div>
-                            
+                        <div class="col-lg-6 ml-auto mr-auto">
+							<form action="serviceYesProcess.net" method="post">
+								<input type="hidden" id="rs_no" name="rs_no" value="${r.RS_NO}">
+								<span>예약자 성함</span>
+								<input type="text" id="user_name" name="user_name" value="${r.USER_NAME}" disabled>
+								<span>예약자 주소</span>
+								<input type="text" id="user_addr2" name="user_addr2" value="${r.USER_ADDR2}" disabled>
+								<span>상세 주소</span>
+								<input type="text" id="user_addr3" name="user_addr3" value="${r.USER_ADDR3}" disabled>
+								<span>예약 날짜</span> 
+								<input type="date" name="rs_date" id="rs_date" required>
+								<span>예약 시간</span>
+								<select name="rs_time" id="rs_time"></select>
+								<span>서비스 가격</span>
+								<input type="text" id="rs_money" name="rs_money" placeholder="숫자로만 입력해주세요" required>
+
+								<div class="button-box" style="text-align:center; margin:30px auto;">
+									<button type="submit" class="btn-style" style="margin-right:10px !important">예약 확정</button>
+									<button type="reset" class="btn-style reset">다시 작성</button>
+								</div>
+							</form>
                         </div>
-                     </c:if>
-                       
-                       <c:if test="${completeCount == 0 }">
-			               <div class="col-lg-12 col-md-12 col-12 nodata">	
-				            	<p>서비스가 완료된 예약이 없습니다.</p>
-				            	<button class="btn-style" onclick="location.href='expertReserve.net';">서비스 완료하러 가기</button>
-				            </div>
-                       </c:if>
                     </div>
                 </div>
             </div>
@@ -345,16 +252,23 @@
 		<!-- all js here -->
 		<script src="resources/js/jquery-3.5.0.js"></script>
 		<script>
-			function message (url) {
-				var send = window.open(url, "send", "width=100, heigth=100, location=no");
-			};
-		</script>
-		<script src="resources/js/jquery-3.5.0.js"></script>
-		<script>
-			function message (url) {
-				var send = window.open(url, "", "width=100, heigth=100, location=no");
-				send.resizeTo(700,800);
-			};
+		$(document).ready(function() {
+			var Html = [];
+			var value="";
+
+			for(var i = 0; i < 24; i++) {
+				if (i > 9) {
+					value = i;
+				} else {
+					value = "0" + i ;
+				}
+				
+				Html[i] = "<option value=" + value +">"+value+" 시</option>"
+								+ "<option value='" + value +"30'>"+value+" 시 30분</option>";
+			}
+			$('#rs_time').append(Html.join(""));
+
+		});
 		</script>
         <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="resources/js/popper.js"></script>
