@@ -28,7 +28,7 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/responsive.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
-<%@ include file="../header.jsp" %>
+<%@ include file="../header.jsp"%>
 <style>
 .write_oneday {
 	border-style: none;
@@ -37,7 +37,6 @@
 	color: white;
 	cursor: pointer;
 }
-
 
 .paging_align {
 	display: flex;
@@ -76,11 +75,11 @@
 			<div class="container-fluid">
 				<div class="breadcrumb-content text-center">
 					<h2>신고 게시판</h2>
-					
+
 				</div>
 			</div>
 		</div>
-	
+
 		<div class="shop-wrapper hm-3-padding pt-120 pb-100">
 			<div class="container-fluid">
 				<div class="row">
@@ -94,7 +93,7 @@
 											class="ion-navicon"></i></a></li>
 								</ul>
 							</div>
-							<c:if test="${user_id=='admin'}">
+							<c:if test="${user_id=='admin1234'}">
 								<div class="shop-filter">
 									<button class="write_oneday">글쓰기</button>
 								</div>
@@ -148,105 +147,105 @@
 					</div>
 					<!-- 여기 -->
 					<input type="hidden" id="loginid" value="${user_id}" name="loginid">
-	<div class="container">
-	  <table class="table table-striped">
-	  	<tr><th colspan="2"> 신고 게시판 </th></tr>
-	  	<tr>
-	  		<td><div>글쓴이</div></td>
-	  		<td><div>${boarddata.REPORT_WRITER}</div></td>
-	  	</tr>
-	  	<tr>
-	  		<td><div>제목</div></td>
-	  		<td><div>${boarddata.REPORT_TITLE}</div></td>
-	  	</tr>
-	  	<tr>
-	  		<td><div>신고 대상 유저 아이디</div></td>
-	  		<td><div>${boarddata.REPORT_REPORT}</div></td>
-	  	</tr>
-	  	<tr>
-	  		<td><div>내용</div></td>
-	  		<td>${boarddata.REPORT_CONTENT}</td>
-	  	</tr>
-	  	
+					<div class="container">
+						<table class="table table-striped">
+							<tr>
+								<th colspan="2">신고 게시판</th>
+							</tr>
+							<tr>
+								<td><div>글쓴이</div></td>
+								<td><div>${boarddata.REPORT_WRITER}</div></td>
+							</tr>
+							<tr>
+								<td><div>제목</div></td>
+								<td><div>${boarddata.REPORT_TITLE}</div></td>
+							</tr>
+							<tr>
+								<td><div>신고 대상 유저 아이디</div></td>
+								<input value="${boarddata.REPORT_REPORT}" type="hidden" id="reportid">
+								<td><div>${boarddata.REPORT_REPORT}</div></td>
+							</tr>
+							<tr>
+								<td><div>내용</div></td>
+								<td>${boarddata.REPORT_CONTENT}</td>
+							</tr>
 
+							<tr>
+								<td colspan="2" class="center"><c:if
+										test="${boarddata.REPORT_WRITER == user_id || user_id == 'admin' }">
+										<a href="BoardModifyView.bo?num=${boarddata.REPORT_INDEX }">
+											<button class="btn btn-info">수정</button>
+										</a>
+									</c:if> <c:if test="${user_id == 'admin1234' }">
 
+										<button class ="btn btn-info" id="mea">처리</button>
+									</c:if> <a href="Report.net">
+										<button class="btn btn-primary">목록</button>
+								</a></td>
 
+							</tr>
+						</table>
+						<%--게시판 수정 end --%>
 
-	  	 <tr>	 
-	  	 	<td colspan="2" class="center">
-	  	 		
-	  	 	<c:if test="${boarddata.REPORT_WRITER == user_id || user_id == 'admin' }">
-		  	 	<a href="BoardModifyView.bo?num=${boarddata.REPORT_INDEX }">
-		  	 		<button class="btn btn-info">수정</button>
-		  	 	</a>
-
-	  	 	</c:if>
-	  	 	<a href="Report.net">
-	  	 		<button class="btn btn-primary">목록</button>
-	  	 	</a>
-	  	 	</td>
-	  	 	
-	  	 </tr>
-	  </table>
-	  	<%--게시판 수정 end --%>
-	  	
-	  	<%-- modal 시작  --%>
-	  	<div class="modal" id="myModal">
-	  	  <div class="modal-dialog">
-	  	    <div class="modal-content">
-	  	    <!-- Modal body -->
-	  	     <div class="modal-body">
-	  	       <form name="deleteForm" action="BoardDeleteAction.bo" method="post">
-	  	       	<%--http://localhost:8088/SEMI_PROJECT/BoardDetailAction.bo?num=22
+						<%-- modal 시작  --%>
+						<div class="modal" id="myModal">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<!-- Modal body -->
+									<div class="modal-body">
+										<form name="deleteForm" action="BoardDeleteAction.bo"
+											method="post">
+											<%--http://localhost:8088/SEMI_PROJECT/BoardDetailAction.bo?num=22
 	  	       		주소를 보면 num을 파라미터로 넘기고 있습니다.
 	  	       		이 값을 가져와서 ${param.num}를 사용
 	  	       		또는 ${boarddata.BOARD_NUM}
 	  	       	 --%>
-	  	       	 <input type="hidden" name="num" value="${param.num}" id="board_num">
-	  	       	 <div class="form-group">
-	  	       	 	<label for="pwd">비밀번호</label>
-	  	       	 	<input type="password"
-	  	       	 			class="form-control" placeholder="Enter password"
-	  	       	 			name="BOARD_PASS" id="board_pass">
-	  	       	 </div>
-	  	       	 <button type="submit" class="btn btn-primary">전송</button>
-	  	       	 <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
-	  	       </form>
-	  	     </div>
-	  	    </div>
-	  	  </div>
-	  	</div>
-	  	
-	  	<!-- 댓글 -->
-	  	<!-- 관리자면 댓글을 보여라.. -->
-	  	
-	  	 <div id="comment">
-	  	 <c:if test="${user_id == 'admin'}">
+											<input type="hidden" name="num" value="${param.num}"
+												id="board_num">
+											<div class="form-group">
+												<label for="pwd">비밀번호</label> <input type="password"
+													class="form-control" placeholder="Enter password"
+													name="BOARD_PASS" id="board_pass">
+											</div>
+											<button type="submit" class="btn btn-primary">전송</button>
+											<button type="button" class="btn btn-danger"
+												data-dismiss="modal">취소</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
 
-         <button id="write" class="btn btn-info float-right">등록</button>
-         <textarea rows=3 class="form-control" id="content" maxLength="300"
-            style="resize: none"></textarea>
-         <table class="table table_striped">
-            <thead>
-               <tr>
-                  <td>아이디</td>
-                  <td>내용</td>
-                  <td>날짜</td>
-               </tr>
-            </thead>
-            <tbody>
+						<!-- 댓글 -->
+						<!-- 관리자면 댓글을 보여라.. -->
 
-            </tbody>
-         </table>
-         </c:if>
-         <div id="message"></div>
-      </div>
-   </div>
+						<div id="comment">
+							<c:if test="${user_id == 'admin1234'}">
+
+								<button id="write" class="btn btn-info float-right">등록</button>
+								<textarea rows=3 class="form-control" id="content"
+									maxLength="300" style="resize: none"></textarea>
+								<table class="table table_striped">
+									<thead>
+										<tr>
+											<td>아이디</td>
+											<td>내용</td>
+											<td>날짜</td>
+										</tr>
+									</thead>
+									<tbody>
+
+									</tbody>
+								</table>
+							</c:if>
+							<div id="message"></div>
+						</div>
+					</div>
 				</div>
-				
-</div>
 
-	
+			</div>
+
+
 
 
 			<footer class="hm-4-padding">
@@ -495,34 +494,53 @@
 				</div>
 			</div>
 		</div>
-</div>
+	</div>
 
 
 
+	<script>
+		$(function() {
+			var id = $("#reportid").val();
+			$('body').on('click', '#mea', function() {
+				console.log(id);
+				$.ajax({
+					type : "POST",
+					url : "report.Ajax",
+					cache : false,
+					data : {
+						"REPORT_REPORT" : id
+					},
+					sucess : function() {
+						alert('처리 되었습니다.');
+					}
+				});
+				console.log("처리 ㅇㅋ");
+			})//#mea end
+		})
+	</script>
 
 
-
-		<!-- 
+	<!-- 
 		<script>
 	     var date = new Date();
 	     $('#poster').attr("src", "resources/upload${o.SAVEFILE}?"+date.getTime());
 		</script>
  -->
 
-		<!-- all js here -->
-		<script src="resources/js/jquery-3.5.0.js"></script>
-		<script src="resources/js/oneday_list.js"></script>
-		<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
-		<script src="resources/js/popper.js"></script>
-		<script src="resources/js/bootstrap.min.js"></script>
-		<script src="resources/js/isotope.pkgd.min.js"></script>
-		<script src="resources/js/imagesloaded.pkgd.min.js"></script>
-		<script src="resources/js/jquery.counterup.min.js"></script>
-		<script src="resources/js/waypoints.min.js"></script>
-		<script src="resources/js/ajax-mail.js"></script>
-		<script src="resources/js/owl.carousel.min.js"></script>
-		<script src="resources/js/plugins.js"></script>
-		<script src="resources/js/main.js"></script>
-		<script src="resources/js/report_board/view3.js"></script>
+	<!-- all js here -->
+	<script src="resources/js/jquery-3.5.0.js"></script>
+	<script src="resources/js/oneday_list.js"></script>
+	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
+	<script src="resources/js/popper.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/isotope.pkgd.min.js"></script>
+	<script src="resources/js/imagesloaded.pkgd.min.js"></script>
+	<script src="resources/js/jquery.counterup.min.js"></script>
+	<script src="resources/js/waypoints.min.js"></script>
+	<script src="resources/js/ajax-mail.js"></script>
+	<script src="resources/js/owl.carousel.min.js"></script>
+	<script src="resources/js/plugins.js"></script>
+	<script src="resources/js/main.js"></script>
+	<script src="resources/js/report_board/view3.js"></script>
 </body>
 </html>

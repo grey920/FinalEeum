@@ -87,6 +87,12 @@
 						style="font-size: 50px; padding-left: 50%;">${expertdata.expert_name}
 					</b>
 
+					 <c:choose>
+                  <c:when test="${expertdata.PF_GRADE == 0}"><b>디딤돌</b></c:when>
+                  <c:when test="${expertdata.PF_GRADE == 1}"><b>마루</b></c:when>
+                  <c:when test="${expertdata.PF_GRADE == 2}"><b>우주</b></c:when>
+                  <c:otherwise><b>용마루</b></c:otherwise>
+               </c:choose>
 					<!-- 전문가 아이디 -->
 					<input type="hidden" value="${expertdata.expert_id}" id="EXPERT_ID">
 					<!-- 사용자 아이디 -->

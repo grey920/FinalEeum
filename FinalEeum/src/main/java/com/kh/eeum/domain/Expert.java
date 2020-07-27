@@ -12,11 +12,19 @@ public class Expert {
 	private String expert_email1;
 	private String expert_email2;
 	private String joindate;
+	private int PF_GRADE;
 
 	
 	
 	
 	
+	public int getPF_GRADE() {
+		return PF_GRADE;
+	}
+	public void setPF_GRADE(int pF_GRADE) {
+		PF_GRADE = pF_GRADE;
+	}
+
 	//다른 테이블에 있는 컬럼이지만 조인해서 가져오기 때문에 domain에도 getter/setter 작성해야뎀 - yeonji
 	private String PF_CATE;
 	private String PF_One;

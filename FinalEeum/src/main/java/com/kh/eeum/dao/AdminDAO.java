@@ -1,11 +1,13 @@
 package com.kh.eeum.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.eeum.domain.Admin;
 import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.Report;
 
@@ -37,6 +39,22 @@ public class AdminDAO {
 	
 	public List<Report> getQnaList(){
 		return sqlSession.selectList("eeum.qna");
+	}
+	
+	public int sucRep(String id) {
+		return sqlSession.update("eeum.state", id);
+	}
+	
+	public int rejectRep(String id) {
+		return sqlSession.delete("eeum.reject", id);
+	}
+	
+	public int insertPrice(Admin admin){
+		return sqlSession.insert("eeum.priceIn",admin);
+	}
+	
+	public List<Admin> selPric(Map<String, Object> map){
+		return sqlSession.selectList("eeum.selPric",map);
 	}
 	
 }

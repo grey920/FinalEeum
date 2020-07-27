@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.eeum.domain.Admin;
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.Report;
@@ -96,8 +99,41 @@ public class AdminContorller {
 		return mv;
 	}
 
-	@RequestMapping(value = "/price.list")
-	public String goPrice() {
-		return "service/price_list";
+	@RequestMapping(value = "/pricelist.net")
+	public String goPrice(ModelAndView mv, Admin admin) {
+		return "service/pricelist_write";
 	}
+	
+	@RequestMapping(value="price.in")
+	public String price_insert_action(Admin admin) {
+		
+		System.out.println("글쓰기 값"+admin.getEXID());
+		adminservice.insertPrice(admin);
+		return "redirect:/expertDetail.service";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="report.Ajax")
+	public int reportSuc(@RequestParam("REPORT_REPORT") String id) {
+		int result = adminservice.sucRep(id);
+		System.out.println("신고 처리 성공 : "+result);
+		System.out.println("아이디 가져와?" + id);
+		return result;
+	}
+	
+	@GetMapping("/pricelist_detail")
+	public String pricelist_detail() {
+		return "service/pricelist_detail";
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="price.Ajax")
+	public List<Admin> selPric_Ajax(Admin admin, @RequestParam("EXPERT_ID") String id) {
+		List<Admin> list = adminservice.selPric(id);
+		System.out.println("가격 뿌리기 " + id);
+		return list;
+		
+	}
+	
 }

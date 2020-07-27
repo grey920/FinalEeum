@@ -146,7 +146,7 @@
                                         <div class="product-content">
                                             <div class="product-title-wishlist">
                                                 <div class="product-title-3">
-                                                    <h3><a href="#">서비스 가격 설정</a></h3>
+                                                    <h3><a href="pricelist.net">서비스 가격 설정</a></h3>
                                                 </div>
                                             </div>
                                         </div>

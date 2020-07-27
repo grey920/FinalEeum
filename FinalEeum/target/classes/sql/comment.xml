@@ -15,7 +15,7 @@
 
 <select id="getList" resultType="C" parameterType="map">
 	select * 
-	from ( select rownum rnum, num, id, content, reg_date
+	from ( select rownum rnum, num, id, content, TO_CHAR(reg_date,'YYYY-MM-DD') as reg_date
 			from(
 				select num, id, content,reg_date
 				from comments1 where QNA_INDEX1 = #{num}
