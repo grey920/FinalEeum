@@ -208,8 +208,10 @@ $(document).ready(
 						alert('통신실패!');
 					},
 					success : function(data) { // 통신 성공하면 가져옴.
-						$("#tabcontent").html(data);
-						console.log("1."+$("#EXPERT_ID").val());
+						 $("#tabcontent").html(data);
+		                  console.log("1.#EXPERT_ID.val()="+$("#EXPERT_ID").val());
+		                  $('.qnaexid').val($("#EXPERT_ID").val());
+		                  console.log("2."+$('#qnaexid').val());
 					}
 
 				});

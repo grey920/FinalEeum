@@ -61,7 +61,7 @@
 
 										<li><a href="OnedayList.one">원데이 클래스</a></li>
 										<li><a href="FAQ.net">FAQ</a></li>
-										
+										<li><a href="QnA.net">문의</a></li>
 									</ul>
 								</nav>
 							</div>
@@ -80,18 +80,26 @@
 										<li><a href="login.net">로그인</a></li>
 										<li><a href="userJoin.net">사용자 회원가입</a></li>
 										<li><a href="expertJoin.net">전문가 회원가입</a></li>
-									</ul></li>
+									</ul>
+								</li>
 							</div>
 							</c:if>
-<%-- 							<c:chosse>
-								<c:when test="${!empty user_id && empty expert_id}"> --%>
-								
 							
 							<c:if test="${!empty user_id && empty expert_id}">
 							<div class="header-login same-style"
 								style="margin-left: 13px; margin-right: 13px">
-								<li><a href="admin.net"><img src="resources/img/header/user.png"
-																						style="margin-bottom: 30px; width: 30px; filter: saturate(80%);" /></a>
+								<li>
+									<c:choose>
+										<c:when test="${user_id eq 'admin1234'}">
+											<a href="admin.net">
+										</c:when>
+										<c:otherwise>
+											<a href="userpage.net">
+										</c:otherwise>
+									</c:choose>
+									<img src="resources/img/header/user.png"
+											style="margin-bottom: 30px; width: 30px; filter: saturate(80%);" />
+									</a>
 									<ul style="width:240px">
 										<li><img src="resources/profile${user_saveprofile}" style="width:15%; height:auto;border-radius:50%;">&nbsp;&nbsp;${user_nick}&nbsp;님</li>
 										<li><a href="userpage.net">나의 정보</a></li>

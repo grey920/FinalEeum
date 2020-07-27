@@ -204,6 +204,9 @@ public class ExpertServiceImpl implements ExpertService {
 			System.out.println(expert_id);
 			String user_id = (String) paramMap.get("writer");
 			System.out.println(user_id);
+			int rs_no = (int) paramMap.get("request_no");
+			
+			reservation.setRs_no(rs_no);
 			reservation.setRs_exid(expert_id);
 			reservation.setRs_uid(user_id);
 			
@@ -314,7 +317,7 @@ public class ExpertServiceImpl implements ExpertService {
 	}
 
 	@Override
-	public List<Reservation> reserveList(String user_id, int page, int limit) {
+	public List<Reservation> ureserveList(String user_id, int page, int limit) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
 		int startrow = (page -1) * limit + 1;
@@ -324,13 +327,13 @@ public class ExpertServiceImpl implements ExpertService {
 		map.put("start", startrow);
 		map.put("end", endrow);
 		
-		return exdao.reserveList(map);
+		return exdao.ureserveList(map);
 	}
-
+	
 	@Override
 	public int cancelReserve(String rs_exid, String user_id, String rs_no) {
 		Map <String, Object> map = new HashMap<String, Object>();
-		int rs_state = 3;
+		int rs_state = 4;
 		map.put("rs_exid", rs_exid);
 		map.put("rs_uid", user_id);
 		map.put("rs_no", rs_no);
@@ -393,5 +396,136 @@ public class ExpertServiceImpl implements ExpertService {
 		
 		return exdao.updatePwd(map);
 	}
+
+	@Override
+	public int estimateCount(String expert_id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state = 0;
+		
+		map.put("expert_id", expert_id);
+		map.put("state", state);
+		
+		return exdao.exreserveCount(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> estimateList(String expert_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state = 0;
+		int startrow = (page -1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("expert_id", expert_id);
+		map.put("state", state);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return exdao.exreserveList(map);
+	}
+
+	@Override
+	public int exreserveCount(String expert_id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state1 = 1;
+		int state2 = 2;
+		
+		map.put("expert_id", expert_id);
+		map.put("state1", state1);
+		map.put("state2", state2);
+		
+		return exdao.reservingCount(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> exreserveList(String expert_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state1 = 1;
+		int state2 = 2;
+		int startrow = (page -1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("expert_id", expert_id);
+		map.put("state1", state1);
+		map.put("state2", state2);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return exdao.reservingList(map);
+	}
+
+	@Override
+	public int completeCount(String expert_id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state = 3;
+		
+		map.put("expert_id", expert_id);
+		map.put("state", state);
+		
+		return exdao.exreserveCount(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> completeList(String expert_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state = 3;
+		int startrow = (page -1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("expert_id", expert_id);
+		map.put("state", state);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return exdao.exreserveList(map);
+	}
+
+	@Override
+	public int reserveCancel(int rs_no) {
+		return exdao.reserveCancel(rs_no);
+	}
+
+	@Override
+	public Map<String, Object> estimateList(int request_no) {
+		return exdao.estimateList(request_no);
+	}
+
+	@Override
+	public Map<String, Object> serviceForm(int rs_no) {
+		return exdao.serviceForm(rs_no);
+	}
+	
+	@Override
+	public int serviceYes(Reservation rv) {
+		return exdao.serviceYes(rv);
+	}
+
+	public int serviceOk(int rs_no) {
+		return exdao.serviceOk(rs_no);
+	}
+
+	public Reservation reserveCheck(String user_id, int num) {
+		Map<String, Object> map= new HashMap<String, Object>();
+		map.put("rs_uid", user_id);
+		map.put("rs_no", num);
+		System.out.println("rs_uid="+user_id+", rs_no="+num);
+		Reservation reserve = exdao.reserveCheck(map);
+		return reserve;
+	}
+
+	@Override
+	public int updateState(String id, int rsIndex) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("rs_uid", id);
+		map.put("rs_no", rsIndex);
+		System.out.println("ExImpl의 updateState()");
+		return exdao.updateState(map);
+	}
+
 
 }

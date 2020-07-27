@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  <!doctype html>
 <html>
     <head>
@@ -62,22 +63,6 @@
             <!-- header start -->
             <div class="header-height"></div>
             
-            <!-- main-search start -->
-            <div class="main-search-active">
-                <div class="sidebar-search-icon">
-                    <button class="search-close"><span class="ti-close"></span></button>
-                </div>
-                <div class="sidebar-search-input">
-                    <form>
-                        <div class="form-search">
-                            <input id="search" class="input-text" value="" placeholder="Search Entire Store" type="search">
-                            <button>
-                                <i class="ti-search"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
             <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
@@ -112,7 +97,7 @@
                                       <c:forEach var="r" items="${rlist}">
                                         <tr>
                                             <td class="product-thumbnail">
-                                                <a href="expertDetail.service?expert=${r.RS_EXID}"><img src="resources/expert_profile${r.PF_SAVEPROFILE}" style="width:130px;height:160px"></a>
+                                                <a href="expertDetail.service?expert=${r.PF_EXID}"><img src="resources/expert_profile${r.PF_SAVEPROFILE}" style="width:130px;height:160px"></a>
                                                 <input type="hidden" name="rs_exid" value="${r.RS_EXID}"/>
                                                 <input type="hidden" name="rs_no" value="${r.RS_NO}"/>
                                             </td>
@@ -151,21 +136,37 @@
                                             </c:if>
                                    
                                             <c:if test="${!empty r.RS_DATE}">
-                                            <td class="product-name"><span class="amount">${r.RS_DATE} <br> ${r.RS_TIME}</span></td>
-                                            <td class="product-subtotal">${r.RS_PRICE}</td>
+                                            <td class="product-name">
+                                            <span class="amount">
+	                                            ${r.RS_DATE}
+	                                            <br>
+	                                            <c:choose>
+                                                	<c:when test="${fn:length(r.RS_TIME) > 2}">
+                                                		<c:out value="${fn:substring(r.RS_TIME,0,2)}"/>시&nbsp;
+                                                		<c:out value="${fn:substring(r.RS_TIME,2,4)}" />분
+                                                	</c:when>
+                                                	<c:otherwise>
+                                                		${r.RS_TIME}시
+                                                	</c:otherwise>
+                                                </c:choose>
+                                            </span>
+                                            </td>
+                                            <td class="product-subtotal">
+												${r.RS_MONEY}원
+                                            </td>
                                             </c:if>
                                             
                                             <td class="product-subtotal">
 	                                            <c:if test="${r.RS_STATE == '0'}">
 	                                            예약 대기
 	                                            </c:if>
-	                                            <c:if test="${r.RS_STATE == '1'}">
+	                                            <c:if test="${r.RS_STATE == '1' || r.RS_STATE == '2'}">
 	                                            예약 확정
 	                                            </c:if>
-	                                            <c:if test="${r.RS_STATE == '2'}">
+	                                            <c:if test="${r.RS_STATE == '3'}">
 	                                            서비스 완료
 	                                            </c:if>
-	                                            <c:if test="${r.RS_STATE == '3'}">
+	                                            <c:if test="${r.RS_STATE == '4'}">
 	                                            예약 취소
 	                                            </c:if>
                                             </td>
@@ -173,15 +174,20 @@
                                             <td class="product-subtotal class-state">
                                             	<div class="button-box" style="text-align:center;">
                                             	
-                                            	  <c:if test="${r.RS_STATE == '0' || r.RS_STATE == '1' }">
-													<button class="btn-style" id="message" onclick="javascript:message('msgWrite.net?msg_sid=${user_id}&msg_rid=${r.RS_EXID}')">
+                                            	  <c:if test="${r.RS_STATE == '0' || r.RS_STATE == '1' || r.RS_STATE == '2'}">
+													<button class="btn-style" onclick="location.href='estimateList.net?request_no=${r.RS_NO}';">
 														<span>견적확인</span>	
 													</button>
+													<c:if test="${r.RS_STATE == '1'}">
+														<button class="btn-style" onclick="window.open('Pay.net?num=${r.RS_NO}','width=500, height=700');">
+															<span>결제하기</span>
+														</button>
+													</c:if>
 													<button class="btn-style" data-toggle="modal" data-target="#modalConfirmDelete">
 														<span>예약취소</span>
 													</button>
 													
-													<!--Modal: modalConfirmDelete-->
+													<!-- 예약 취소 Modal-->
 													<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 														<div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
 															
@@ -200,7 +206,7 @@
 									
 																<!-- Footer -->
 																<div class="modal-footer flex-center" >
-												      				<a href="userRsCancel.net?rs_exid=${r.RS_EXID}&rs_no=${r.RS_NO}" class="btn  btn-outline-danger">예</a>
+												      				<a href="ureserveCancel.net?rs_no=${r.RS_NO}" class="btn  btn-outline-danger">예</a>
 												        			<a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal" style="color:white">아니요</a>
 												      			</div>
 												    		</div>
@@ -209,8 +215,8 @@
 													<!--/.Content-->
                                             	  </c:if>
                                             	  
-                                            	  <c:if test="${r.RS_STATE == '2'}">
-													<button class="btn-style" onclick="location.href='#';">
+                                            	  <c:if test="${r.RS_STATE == '3'}">
+													<button class="btn-style" onclick="location.href='expertDetail.service?expert=${r.RS_EXID}';">
 														<span>후기쓰기</span>
 													</button>
 													<button class="btn-style" onclick="location.href='#';">
@@ -218,7 +224,7 @@
 													</button>
                                             	  </c:if>
                                             	  
-                                            	  <c:if test="${r.RS_STATE == '3'}"></c:if>
+                                            	  <c:if test="${r.RS_STATE == '4'}"></c:if>
                                             	  
 												</div>
                                             </td>

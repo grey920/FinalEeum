@@ -5,23 +5,23 @@
 
 <mapper namespace="Applys">
  	<insert id="insert" parameterType="apply">
-	insert into apply
-	(AP_INDEX,AP_ID,AP_RDATE,AP_CINDEX,AP_TITLE,AP_LOCATE,AP_CDATE, AP_PRICE)
-	select
-		APPLY_SEQ.nextval as AP_INDEX, 
-		#{AP_ID },  
-		sysdate as AP_RDATE, 
-		ONE_INDEX as AP_CINDEX, 
-		ONE_TITLE AS AP_TITLE, 
-		ONE_LOCATE as AP_LOCATE, 
-		ONE_RDATE AS AP_CDATE,
-		ONE_PRICE AS AP_PRICE
-	from ONEDAY
-	where ONE_INDEX = #{AP_CINDEX}
+		insert into apply
+		(AP_INDEX,AP_ID,AP_RDATE,AP_CINDEX,AP_TITLE,AP_LOCATE,AP_CDATE, AP_PRICE)
+		select
+			APPLY_SEQ.nextval as AP_INDEX, 
+			#{AP_ID },  
+			sysdate as AP_RDATE, 
+			ONE_INDEX as AP_CINDEX, 
+			ONE_TITLE AS AP_TITLE, 
+			ONE_LOCATE as AP_LOCATE, 
+			ONE_RDATE AS AP_CDATE,
+			ONE_PRICE AS AP_PRICE
+		from ONEDAY
+		where ONE_INDEX = #{AP_CINDEX}
 	</insert>  
 
 	<select id="idcheck" resultType="apply">
-	select * from apply where AP_ID = #{AP_ID} and AP_CINDEX = #{AP_CINDEX}
+		select * from apply where AP_ID = #{AP_ID} and AP_CINDEX = #{AP_CINDEX}
 	</select>
 	
 	<select id="count" resultType="int">

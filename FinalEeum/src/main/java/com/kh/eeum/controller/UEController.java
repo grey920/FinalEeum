@@ -989,7 +989,7 @@ public class UEController {
 		if(endpage > maxpage)
 			endpage = maxpage;
 		
-		List<Reservation> reserveList =  expertservice.reserveList(user_id, page, limit);
+		List<Reservation> ureserveList =  expertservice.ureserveList(user_id, page, limit);
 		
 		mv.setViewName("UE/userpage_reservation");
 		mv.addObject("page", page);
@@ -997,9 +997,20 @@ public class UEController {
 		mv.addObject("startpage", startpage);
 		mv.addObject("endpage", endpage);
 		mv.addObject("reserveCount", reserveCount);
-		mv.addObject("rlist", reserveList);
+		mv.addObject("rlist", ureserveList);
 		mv.addObject("limit", limit);
 		
+		return mv;
+	}
+	
+	@RequestMapping(value="estimateList.net")
+	public ModelAndView estimateList(int request_no, ModelAndView mv) {
+		Map<String, Object> estimateList = new HashMap<String, Object>();
+		
+		estimateList = expertservice.estimateList(request_no);
+		
+		mv.setViewName("UE/mypage_estimate");
+		mv.addObject("e", estimateList);
 		return mv;
 	}
 	
@@ -1027,12 +1038,157 @@ public class UEController {
 		out.close();
 	}
 	
+	@RequestMapping(value="expertEstimate.net")
+	public ModelAndView expertEstimate(@RequestParam(value="page", defaultValue="1", required=false) int page,
+													HttpSession session, ModelAndView mv) throws Exception {
+		String expert_id = (String) session.getAttribute("expert_id");
+		
+		int estimateCount = expertservice.estimateCount(expert_id);
+		System.out.println(estimateCount);
+		
+		int limit = 20;
+		int maxpage = (estimateCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Map<String, Object>> estimateList = expertservice.estimateList(expert_id, page, limit);
+		System.out.println(estimateList);
+		
+		mv.setViewName("UE/expertpage_estimate");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("estimateCount", estimateCount);
+		mv.addObject("elist", estimateList);
+		mv.addObject("limit", limit);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="serviceYes.net")
+	public ModelAndView serviceYes(ModelAndView mv, int rs_no) throws Exception {
+		Map<String, Object> rslist = expertservice.serviceForm(rs_no);
+		
+		mv.setViewName("UE/expertpage_yesForm");
+		mv.addObject("rslist", rslist);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="serviceYesProcess.net")
+	public void serviceYesProcess(Reservation rv, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		int result = expertservice.serviceYes(rv);
+		out.println("<script>");
+		
+		if (result == 1)  {
+			out.println("alert('예약 확정이 완료되었습니다.');");
+			out.println("location.href='expertReserve.net';");
+			
+		} else if (result == -1) {
+			out.println("alert('예약 확정에 실패하였습니다.');");
+			out.println("history.back()");
+		}
+		
+		out.println("</script>");
+		out.close();
+	}
+	
+	@RequestMapping(value="expertReserve.net")
+	public ModelAndView expertReserve(@RequestParam(value="page", defaultValue="1", required=false) int page,
+													HttpSession session, ModelAndView mv) throws Exception {
+		String expert_id = (String) session.getAttribute("expert_id");
+		
+		int reserveCount = expertservice.exreserveCount(expert_id);
+		
+		int limit = 20;
+		int maxpage = (reserveCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Map<String, Object>> reserveList = expertservice.exreserveList(expert_id, page, limit);
+		System.out.println(reserveList);
+		
+		mv.setViewName("UE/expertpage_reserve");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("reserveCount", reserveCount);
+		mv.addObject("rlist", reserveList);
+		mv.addObject("limit", limit);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="serviceOk.net")
+	public void serviceOk(int rs_no, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		int result = expertservice.serviceOk(rs_no);
+		out.println("<script>");
+		
+		if (result == 1)  {
+			out.println("alert('선택된 예약이 서비스 완료 처리되었습니다.');");
+			out.println("location.href='expertComplete.net';");
+			
+		} else if (result == -1) {
+			out.println("alert('서비스 완료 처리가 실패되었습니다.');");
+			out.println("history.back()");
+		}
+		
+		out.println("</script>");
+		out.close();
+	}
+	
+	@RequestMapping(value="expertComplete.net")
+	public ModelAndView expertComplete(@RequestParam(value="page", defaultValue="1", required=false) int page,
+													HttpSession session, ModelAndView mv) throws Exception {
+		String expert_id = (String) session.getAttribute("expert_id");
+		
+		int completeCount = expertservice.completeCount(expert_id);
+		System.out.println("완성된 " + completeCount);
+		
+		int limit = 20;
+		int maxpage = (completeCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Map<String, Object>> completeList = expertservice.completeList(expert_id, page, limit);
+		System.out.println(completeList);
+		
+		mv.setViewName("UE/expertpage_complete");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("completeCount", completeCount);
+		mv.addObject("clist", completeList);
+		mv.addObject("limit", limit);
+		
+		return mv;
+	}
+	
 	@RequestMapping(value="userReview.net")
 	public ModelAndView userReview(@RequestParam(value="page", defaultValue="1", required=false) int page,
 															HttpSession session, ModelAndView mv) throws Exception {
 		String user_id = (String) session.getAttribute("user_id");
 		
 		int reviewCount = reviewservice.reviewCount(user_id);
+		System.out.println(reviewCount);
 		
 		int limit = 10;
 		int maxpage = (reviewCount + limit -1) / limit;
@@ -1042,7 +1198,8 @@ public class UEController {
 		if(endpage > maxpage)
 			endpage = maxpage;
 		
-		List<Review> reviewList = reviewservice.reviewList(user_id, page, limit);
+		List<Map<String, Object>> reviewList = reviewservice.reviewList(user_id, page, limit);
+		System.out.println(reviewList);
 		
 		mv.setViewName("UE/userpage_review");
 		mv.addObject("page", page);
@@ -1056,6 +1213,57 @@ public class UEController {
 		return mv;
 	}
 	
+	@RequestMapping(value="reviewDetail.net")
+	public ModelAndView reviewDetail(ModelAndView mv, int rv_no) throws Exception {
+		Map<String, Object> review = reviewservice.getReview(rv_no);
+		
+		mv.setViewName("UE/userpage_reviewForm");
+		mv.addObject("r", review);
+		return mv;
+	}
+	
+	@RequestMapping(value="exreserveCancel.net")
+	public void exreserveCancel(int rs_no, HttpServletResponse response) throws Exception {
+		System.out.println(rs_no);
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		int result = expertservice.reserveCancel(rs_no);
+		
+		if (result == 1) {
+			out.println("alert('예약이 정상적으로 취소되었습니다.');");	
+			out.println("location.href='expertEstimate.net';");
+			
+		} else {
+			out.println("alert('예약을 취소하는데 실패했습니다.');");
+			out.println("history.back();");
+		}
+		
+		out.println("</script>");
+		out.close();
+	}
+	
+	@RequestMapping(value="ureserveCancel.net")
+	public void ureserveCancel(int rs_no, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		int result = expertservice.reserveCancel(rs_no);
+		
+		if (result == 1) {
+			out.println("alert('예약이 정상적으로 취소되었습니다.');");	
+			out.println("location.href='userReservation.net';");
+			
+		} else {
+			out.println("alert('예약을 취소하는데 실패했습니다.');");
+			out.println("history.back();");
+		}
+		
+		out.println("</script>");
+		out.close();
+	}
 
 	@RequestMapping(value="userOneday.net")
 	public ModelAndView userOneday(@RequestParam(value="page", defaultValue="1", required=false) int page,

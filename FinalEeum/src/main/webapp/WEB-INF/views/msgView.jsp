@@ -80,8 +80,7 @@ p{color:#303030}
 		받은 시간&nbsp;
 		<input type="text" id="msg_time" name="msg_time" value="" style="width:40%" disabled><br>
 		<p>상담 내용</p>
-		<input type="text" id="msg_content" name="msg_content" value="<%=request.getParameter("msg_content") %>" 
-					style="width:97%;height:230px" disabled><br>
+		<textarea id="msg_content" name="msg_content" style="width:97%;height:230px" disabled><%=request.getParameter("msg_content") %></textarea><br>
 					
 		<div class="button-box" style="text-align:center;margin:0 auto;width:80%">
 			<button class="btn-style check" onclick="javascript:message('msgWrite.net?msg_rid=<%=msg_sid%>&msg_sid=<%=msg_rid%>')">
