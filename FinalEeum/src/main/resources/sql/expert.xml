@@ -85,6 +85,16 @@
 		where RS_UID = #{user_id}
 	</select>
 	
+	<select id="reserveCheck" resultType="reservation">
+		select * from RESERVATION where rs_uid = #{rs_uid} and rs_no = #{rs_no}
+	</select>
+	
+	<update id="updateStatePay" parameterType="map">
+		update reservation
+		set rs_state = 2
+		where rs_uid = #{rs_uid} and rs_no = #{rs_no}
+	</update>
+	
 	<select id="ureserveList" parameterType="map" resultType="map">
 		select *
 		from (select rownum rnum, r.*

@@ -171,4 +171,12 @@ public class ExpertDAO {
 		return sqlSession.update("Experts.serviceOk", rs_no);
 	}
 
+	public Reservation reserveCheck(Map<String, Object> map) {
+		return sqlSession.selectOne("Experts.reserveCheck", map);
+	}
+
+	public int updateState(Map<String, Object> map) {
+		return sqlSession.update("Experts.updateStatePay", map);
+	}
+
 }

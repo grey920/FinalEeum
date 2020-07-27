@@ -8,7 +8,7 @@ public class Reservation {
 	private String rs_time;
 	private String rs_money;
 	private String rs_state;
-	
+
 	public int getRs_no() {
 		return rs_no;
 	}
