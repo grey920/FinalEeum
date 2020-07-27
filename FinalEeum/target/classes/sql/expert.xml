@@ -58,8 +58,11 @@
 	
 
 	<select id="expertdetails" resultType="expert" parameterType="String">
-		select * from expert_table
-		where expert_id = #{expertid}
+	 select EX.*
+   from (select E.*, P.PF_GRADE
+      FROM EXPERT_TABLE E, PORTFOLIO P
+       WHERE E.EXPERT_ID = P.PF_EXID) EX
+   WHERE EX.EXPERT_ID = #{expert_id}
 	</select>
 	
 	<insert id="insertRequest"  parameterType="java.util.Map">	       

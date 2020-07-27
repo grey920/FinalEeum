@@ -1,5 +1,6 @@
 
 CREATE TABLE request(
+
    REQUEST_NO number  PRIMARY KEY NOT NULL ,
    EXPERT_ID VARCHAR2(40)  ,
    WRITER VARCHAR2(40) ,
@@ -10,6 +11,7 @@ CREATE TABLE request(
    REPAIR_TEXT VARCHAR2(2000),
    SIMPLE_REQ_TEXT VARCHAR2(2000),
    REQUEST_DATE date
+
 );
 
 CREATE SEQUENCE request_seq start with 1 increment by 1 ;

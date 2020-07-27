@@ -25,7 +25,7 @@ START WITH 1
 INCREMENT BY 1
 NOCYCLE;
 
-drop sequence reportboard_seq;
+drop sequence report_seq;
 
 
 
@@ -44,3 +44,6 @@ select * from
 		)
 		where rnum >= 1 and rnum <= 10;	
 
+		
+SELECT * FROM REPORTBOARD
+WHERE REPORT_REPORT='user5678';
