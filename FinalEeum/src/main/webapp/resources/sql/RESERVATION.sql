@@ -5,7 +5,7 @@ RS_UID VARCHAR2(40) NOT NULL,					-- 예약한 사용자
 RS_DATE VARCHAR2(100),				-- 예약 날짜
 RS_TIME VARCHAR2(40),					-- 예약 시간
 RS_MONEY VARCHAR2(100),			-- 예상 가격 
-RS_STATE NUMBER DEFAULT 0,		-- 예약 상태 (0: 예약 신청, 1: 예약 확정; 2:서비스 완료; 3:취소)
+RS_STATE NUMBER DEFAULT 0,		-- 예약 상태 (0: 예약 신청, 1: 예약 확정(미입금); 2: 예약 확정(입금) 3:서비스 완료; 4:취소,5: 후기 작성)
 CONSTRAINT FK_RS_EXID FOREIGN KEY(RS_EXID) REFERENCES EXPERT_TABLE(EXPERT_ID),
 CONSTRAINT FK_RS_UID FOREIGN KEY(RS_UID) REFERENCES USER_TABLE(USER_ID)
 );
@@ -17,12 +17,15 @@ NOCYCLE
 NOCACHE
 
 delete REVIEW;
-delete sequence 
+DROP sequence RS_SEQ
 
 select * from reservation
 delete reservation
 DROP TABLE RESERVATION
 
-
-
-select * from REVIEW;
+ select nvl(max(RS_STATE),0) from reservation where RS_EXID = 'aaa' and RS_UID = 'duswl0918'
+ 
+select * from reservation
+		where RS_EXID = 'aaa'
+ and RS_UID = 'aaa'
+ and RS_STATE = 3

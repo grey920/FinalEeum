@@ -52,20 +52,19 @@
 	</select>
 	
 	<!-- 관리자 사이트에서 신고 회원 -->
-	<select id="qna" resultMap="qnaMap">
-		SELECT REPORT_INDEX, REPORT_WRITER, REPORT_REPORT, REPORT_TYPE, REPORT_TIMES
+	<select id="qna" resultType="report">
+		SELECT REPORT_WRITER, REPORT_REPORT, REPORT_TYPE, REPORT_TIMES, REPORT_DATE
 		FROM REPORTBOARD
 	</select>
 	
-	<resultMap id="qnaMap" type="com.kh.eeum.domain.Repu">
-		<result property="QNA_REPORT" column="QNA_REPORT" />
-		<collection property="reportlist" ofType="com.kh.eeum.domain.Report">
-			<result property="REPORT_INDEX" column="REPORT_INDEX" />
-			<result property="REPORT_WRITER" column="REPORT_WRITER" />
-			<result property="REPORT_REPORT" column="REPORT_REPORT" />	
-			<result property="REPORT_TYPE" column="REPORT_TYPE"/>
-			<result property="REPORT_TIMES" column="REPORT_TIMES"/>
-		</collection>
-	</resultMap>
+	<update id="state">
+		UPDATE REPORTBOARD 
+		SET REPORT_TIMES = REPORT_TIMES+1 
+		WHERE REPORT_REPORT = #{REPORT_REPORT}
+	</update>
 	
+	<delete id="reject">
+		DELETE FROM REPORT
+		WHERE REPORT_REPORT=${REPORT_REPORT}
+	</delete>
 </mapper>

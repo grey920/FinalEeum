@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.eeum.dao.AdminDAO;
 import com.kh.eeum.domain.Portfolio;
-import com.kh.eeum.domain.QnA;
+import com.kh.eeum.domain.Report;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -41,7 +41,7 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public List<QnA> qnaUsers() {
+	public List<Report> repUsers() {
 		return asdao.getQnaList();
 	}
 

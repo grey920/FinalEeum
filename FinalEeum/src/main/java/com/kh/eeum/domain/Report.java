@@ -10,6 +10,11 @@ public class Report {
 	private String REPORT_WRITER;
 	private String REPORT_CONTENT;
 	private String REPORT_DATE;
+	private int REPORT_TYPE;
+	private int REPORT_TIMES;
+	private String REPORT_REPORT;
+	private List<Report> reportlist;
+	
 	public int getREPORT_INDEX() {
 		return REPORT_INDEX;
 	}
@@ -41,10 +46,11 @@ public class Report {
 	public void setREPORT_DATE(String rEPORT_DATE) {
 		REPORT_DATE = rEPORT_DATE;
 	}
-	public String getREPORT_TYPE() {
+	
+	public int getREPORT_TYPE() {
 		return REPORT_TYPE;
 	}
-	public void setREPORT_TYPE(String rEPORT_TYPE) {
+	public void setREPORT_TYPE(int rEPORT_TYPE) {
 		REPORT_TYPE = rEPORT_TYPE;
 	}
 	public int getREPORT_TIMES() {
@@ -65,10 +71,7 @@ public class Report {
 	public void setReportlist(List<Report> reportlist) {
 		this.reportlist = reportlist;
 	}
-	private String REPORT_TYPE;
-	private int REPORT_TIMES;
-	private String REPORT_REPORT;
-	private List<Report> reportlist;
+
 
 	
 

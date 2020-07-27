@@ -49,14 +49,30 @@ public interface ExpertService {
 	
 	//사용자 예약 리스트 내역 
 	public int reserveCount(String user_id);	
-	public List<Reservation> reserveList(String user_id, int page, int limit);
+	public List<Reservation> ureserveList(String user_id, int page, int limit);
 	public int cancelReserve(String rs_exid, String rs_uid, String rs_date);
 	public List<Review> ReviewRatingList(String expert_id);
 	
 	//전문가 아이디 / 비번 찾기
 	public String findId(String expert_name, String expert_jumin1, String expert_jumin2);
 	public int findPwd(String expert_id, String expert_name, String expert_jumin1, String expert_jumin2);
-	public int updatePwd(String expert_id, String expert_name, String expert_jumin1, String newPwd);
+	public int updatePwd(String expert_id, String expert_name, String expert_jumin1, String expert_pass);
+	
+	//전문가 미확정 예약
+	public int estimateCount(String expert_id);
+	public List<Map<String, Object>> estimateList(String expert_id, int page, int limit);
+	
+	//전문가 확정 예약
+	public int exreserveCount(String expert_id);
+	public List<Map<String, Object>> exreserveList(String expert_id, int page, int limit);
+	
+	//전문가 완료 예약
+	public int completeCount(String expert_id);
+	public List<Map<String, Object>> completeList(String expert_id, int page, int limit);
+	
+	//서비스 예약 취소
+	public int reserveCancel(String rs_no);
+	
 	
 
 

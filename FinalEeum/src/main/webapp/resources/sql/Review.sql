@@ -26,22 +26,14 @@ DELETE BOARD
 DELETE review
 DROP TABLE review
 drop sequence rev_seq;
+insert into table
 
 SELECT sum(RV_RATING1),sum(RV_RATING2),sum(RV_RATING3),sum(RV_RATING4),sum(RV_RATING5),  FROM review
 where rv_expert_id = 'aaa';
  
 select * from review;
 
-		select *
-		from (select rownum
-		rnum,rv_no,rv_user_id,rv_expert_id,rv_content,rv_rating,rv_date
-			from (
-				select rv_no, rv_user_id, rv_expert_id, rv_content, rv_rating, rv_date
-				from review where rv_expert_id = 'aaa'
-				order by rv_date desc
-				)
-			)
-			where rnum between 1 and 10;
+	
 
 
 insert into review
@@ -54,3 +46,7 @@ values (rev_seq.nextval,'duswl0918','aaa','지대다',null,null);
 	select  NVL(TRIM(TO_CHAR(avg(rv_sum), '99999999.99')),0)  as rv_sum
 		from review
 		where rv_expert_id = 'aaa'
+		
+		update RESERVATION
+		set rs_state = 1
+		where rs_uid = 'admin'

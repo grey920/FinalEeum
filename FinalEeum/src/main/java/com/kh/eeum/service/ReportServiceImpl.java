@@ -14,9 +14,6 @@ import com.kh.eeum.domain.Report;
 @Service
 public class ReportServiceImpl implements ReportService {
 
-	
-	
-	
 	@Autowired
 	private ReportDAO dao;
 	
@@ -44,6 +41,23 @@ public class ReportServiceImpl implements ReportService {
 	@Override
 	public Report getDetail(int num) {
 		return dao.getDetail(num);
+	}
+
+	@Override
+	public boolean isBoardWriter(int report_INDEX, String report_WRITER) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("num", report_INDEX);
+		map.put("writer",report_WRITER);
+		Report result = dao.isBoardWriter(map);
+		if(result == null)
+			return false;
+		else
+			return true;
+	}
+
+	@Override
+	public int boardModify(Report board) {
+		return dao.boardModify(board);
 	}
 
 	

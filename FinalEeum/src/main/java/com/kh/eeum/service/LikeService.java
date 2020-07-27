@@ -1,5 +1,6 @@
 package com.kh.eeum.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.kh.eeum.domain.Like;
@@ -12,5 +13,6 @@ public interface LikeService {
 	List<Object> wishlist(String user_id, int page, int limit);
 	int wishCheckCount(String user_id, int cate);
 	List<Object> wishCheck(String user_id, int cate, int page, int limit);
+	int memberRegisterDept(HashMap<String, String> paraMap);
 	
 }

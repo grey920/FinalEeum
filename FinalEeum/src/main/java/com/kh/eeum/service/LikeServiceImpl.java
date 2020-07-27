@@ -86,6 +86,11 @@ public class LikeServiceImpl implements LikeService {
 		return likedao.wishCheck(map);
 	}
 
+	@Override
+	public int memberRegisterDept(HashMap<String, String> paraMap) {
+		return likedao.insertLike(paraMap);
+	}
+
 
 
 }
