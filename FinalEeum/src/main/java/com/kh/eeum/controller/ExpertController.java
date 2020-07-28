@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -36,6 +37,7 @@ import com.kh.eeum.service.LikeService;
 import com.kh.eeum.service.QnaService;
 import com.kh.eeum.service.ReviewService;
 
+
 @Controller
 public class ExpertController {
 
@@ -59,7 +61,7 @@ public class ExpertController {
 	
 	@Autowired
 	QnaService qnaService; //qna
-
+	
 	private static final Logger logger = LoggerFactory.getLogger(ExpertServiceImpl.class);
 
 
@@ -82,7 +84,7 @@ public class ExpertController {
 			ModelAndView mv, @RequestParam(value = "page", defaultValue = "1", required = false) int page)
 			throws Exception {
 		// 한 페이지에 보여줄 개수
-		int limit = 8;
+		int limit = 9;
 
 		
 		System.out.println("전문가리스트 페이지이잉" + page);
@@ -100,12 +102,12 @@ public class ExpertController {
 		
 		// 현재 페이지에 보여줄 시작 페이지수
 		
-		int startpage = ((page - 1) / 8) * 8 + 1;
+		int startpage = ((page - 1) / 9) * 9 + 1;
 		// ((1-1) / 8 ) * 8 + 1 = 1;
 		System.out.println("현재 페이지에서 보여줄 시작페이지 수(startpage) : " + startpage);
 
 		// 현재 페이지에서 보여줄 마지막 수
-		int endpage = startpage + 8 - 1;
+		int endpage = startpage + 9 - 1;
 		// endpage = 1 + 8 - 1 = 8;
 		System.out.println("현재 페이지에서 보여줄 마지막 페이지 수(endpage) : " + endpage);
 
@@ -248,6 +250,11 @@ public class ExpertController {
 		
 		
 		int result = reviewservice.insertReview(review);
+		System.out.println("================____________"+result);
+		if(result == 1) {
+			reviewservice.updateReservation(review.getRv_expert_id(),review.getRv_user_id());
+
+		}
 		response.getWriter().print(result);
 	}
 
@@ -380,7 +387,7 @@ public class ExpertController {
 			ModelAndView mv, @RequestParam(value = "page", required = false, defaultValue = "1") Integer page)
 			throws Exception {
 		// 한 페이지에 보여줄 개수
-		int limit = 8;
+		int limit = 9;
 
 		// 전문가 리스트 개수 가져옴. - 수리
 		int listcount = repairService.getExpertListCountRepair();
@@ -393,12 +400,12 @@ public class ExpertController {
 		System.out.println("총 페이지수(maxpage): " + maxpage);
 
 		// 현재 페이지에 보여줄 시작 페이지수
-		int startpage = ((page - 1) / 8) * 8 + 1;
+		int startpage = ((page - 1) / 9) * 9 + 1;
 		// ((1-1) / 8 ) * 8 + 1 = 1;
 		System.out.println("현재 페이지에서 보여줄 시작페이지 수(startpage) : " + startpage);
 
 		// 현재 페이지에서 보여줄 마지막 수
-		int endpage = startpage + 8 - 1;
+		int endpage = startpage + 9 - 1;
 		// endpage = 1 + 8 - 1 = 8;
 		System.out.println("현재 페이지에서 보여줄 마지막 페이지 수(endpage) : " + endpage);
 
@@ -441,7 +448,7 @@ public class ExpertController {
 		// 예약 건수
 		int requestCount = expertservice.getRequestCount(expertid);
 		
-
+		String expert_id_login = (String) session.getAttribute("expert_id");
 		
 
 		System.out.println("찜등록 아이디 :" + expertid + user_id);
@@ -466,6 +473,7 @@ public class ExpertController {
 		mv.addObject("portfolio", portfolio);
 		mv.addObject("count", count);
 		mv.addObject("RequestCount", requestCount);
+		mv.addObject("expert_id_login", expert_id_login);
 		mv.addObject("review_rating",review_rating);
 		return mv;
 	}
@@ -479,7 +487,7 @@ public class ExpertController {
 			ModelAndView mv, @RequestParam(value = "page", defaultValue = "1", required = false) Integer page)
 			throws Exception {
 		// 한 페이지에 보여줄 개수
-		int limit = 8;
+		int limit = 9;
 
 		// 전문가 리스트 개수 가져옴. - 수리
 		int listcount = cleaningService.getExpertListCountCleaning();
@@ -492,12 +500,12 @@ public class ExpertController {
 		System.out.println("총 페이지수(maxpage): " + maxpage);
 
 		// 현재 페이지에 보여줄 시작 페이지수
-		int startpage = ((page - 1) / 8) * 8 + 1;
+		int startpage = ((page - 1) / 9) * 9 + 1;
 		// ((1-1) / 8 ) * 8 + 1 = 1;
 		System.out.println("현재 페이지에서 보여줄 시작페이지 수(startpage) : " + startpage);
 
 		// 현재 페이지에서 보여줄 마지막 수
-		int endpage = startpage + 8 - 1;
+		int endpage = startpage + 9 - 1;
 		// endpage = 1 + 8 - 1 = 8;
 		System.out.println("현재 페이지에서 보여줄 마지막 페이지 수(endpage) : " + endpage);
 
@@ -540,6 +548,7 @@ public class ExpertController {
 		// 예약 건수
 		int requestCount = expertservice.getRequestCount(expertid);
 
+		String expert_id_login = (String) session.getAttribute("expert_id");
 		System.out.println("찜등록 아이디 :" + expertid + user_id);
 		System.out.println("찜등록 데이터+" + result);
 
@@ -553,7 +562,7 @@ public class ExpertController {
 
 		// 포폴 출력
 		Portfolio portfolio = expertservice.poexpertListOne(expertid);
-
+		mv.addObject("expert_id_login", expert_id_login);
 		mv.setViewName("cleaning_service/cleaning_details");
 		mv.addObject("expertdata", expert);
 		mv.addObject("user_id", user_id); // 지금 로그인 한 사용자의 아이디 가져옴
@@ -574,7 +583,7 @@ public class ExpertController {
 			ModelAndView mv, @RequestParam(value = "page", required = false, defaultValue = "1") Integer page)
 			throws Exception {
 		// 한 페이지에 보여줄 개수
-		int limit = 8;
+		int limit = 9;
 
 		// 전문가 리스트 개수 가져옴. - 수리
 		int listcount = insectService.getExpertListCountCleaning();
@@ -587,12 +596,12 @@ public class ExpertController {
 		System.out.println("총 페이지수(maxpage): " + maxpage);
 
 		// 현재 페이지에 보여줄 시작 페이지수
-		int startpage = ((page - 1) / 8) * 8 + 1;
+		int startpage = ((page - 1) / 9) * 9 + 1;
 		// ((1-1) / 8 ) * 8 + 1 = 1;
 		System.out.println("현재 페이지에서 보여줄 시작페이지 수(startpage) : " + startpage);
 
 		// 현재 페이지에서 보여줄 마지막 수
-		int endpage = startpage + 8 - 1;
+		int endpage = startpage + 9 - 1;
 		// endpage = 1 + 8 - 1 = 8;
 		System.out.println("현재 페이지에서 보여줄 마지막 페이지 수(endpage) : " + endpage);
 
@@ -633,6 +642,7 @@ public class ExpertController {
 		int result = likeservice.selectLike(expertid, user_id);
 		int count = reviewservice.getReviewCount(expertid);
 		// 예약 건수
+		String expert_id_login = (String) session.getAttribute("expert_id");
 		int requestCount = expertservice.getRequestCount(expertid);
 
 		System.out.println("찜등록 아이디 :" + expertid + user_id);
@@ -650,6 +660,7 @@ public class ExpertController {
 		Portfolio portfolio = expertservice.poexpertListOne(expertid);
 
 		mv.setViewName("insect_service/insect_details");
+		mv.addObject("expert_id_login", expert_id_login);
 		mv.addObject("expertdata", expert);
 		mv.addObject("user_id", user_id); // 지금 로그인 한 사용자의 아이디 가져옴
 		mv.addObject("like", result); // 찜등록 데이터
@@ -746,5 +757,15 @@ public class ExpertController {
 		return map;
 	}
 	
+	//견적 요청 번호
+	@ResponseBody
+	@RequestMapping("UserReview.Ajax")
+	public int UserReview_Ajax(@RequestParam(value = "user_id") String user_id,@RequestParam(value = "expert_id") String expert_id) {
+		int result = reviewservice.selectReservation(user_id,expert_id);
+		return result;
+		
+	}
 
+	
+	
 }

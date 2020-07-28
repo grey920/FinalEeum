@@ -10,12 +10,12 @@ CREATE TABLE request(
    REPAIR_TEXT VARCHAR2(2000),
    SIMPLE_REQ_TEXT VARCHAR2(2000),
    REQUEST_DATE date
-
 );
 
 CREATE SEQUENCE request_seq start with 1 increment by 1 ;
 
 drop table request
+
 drop sequence request_seq
 
 select * from request
@@ -31,3 +31,4 @@ CREATE TABLE request_file(
 );
 
 CREATE SEQUENCE request_file_seq start with 1 increment by 1 ;
+

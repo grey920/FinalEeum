@@ -28,7 +28,6 @@ NOCYCLE;
 drop sequence report_seq;
 
 
-
 drop table reportboard;
 drop sequence reportboard_seq;
 

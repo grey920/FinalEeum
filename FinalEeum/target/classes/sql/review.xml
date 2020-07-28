@@ -77,4 +77,21 @@
 		where rv.rv_no = #{rv_no}
 	</select>
 	
+	<select id="reservation" parameterType="map" resultType="int">
+		select nvl(max(RS_STATE),0) as RS_STATE from 
+		reservation
+		where rs_uid = #{user_id} and rs_exid = #{expert_id} and rs_state = 3
+	</select>
+	
+	<update id="reservationupdate"  parameterType="map">
+		update reservation
+		set RS_STATE = #{num}
+		where RS_EXID = #{expert_id} and RS_UID = #{user_id} and RS_STATE = #{num1}
+	</update>
+	
+	<insert id="registerDept" parameterType="map">
+	insert into like_expert
+	values
+	(#{like_user_id}, #{like_expert_id}, #{like_state})
+</insert>
 </mapper>

@@ -51,7 +51,20 @@ public class ReviewDAO {
 		return sqlSession.selectList("Reviews.reviewList", map);
 	}
 
+	public int selectReservationList(Map<String, Object> map) {
+		return sqlSession.selectOne("Reviews.reservation",map);
+	}
+
+	public int updateReservation(Map<String, Object> map) {
+		return sqlSession.update("Reviews.reservationupdate",map);
+	}
+
+	public int memberRegisterDept(HashMap<String, String> paraMap) {
+		return sqlSession.insert("Reviews.registerDept", paraMap);
+	}	
+
 	public Map<String, Object> getReview(int rv_no) {
 		return sqlSession.selectOne("Reviews.getReview", rv_no);
+
 	}
 }

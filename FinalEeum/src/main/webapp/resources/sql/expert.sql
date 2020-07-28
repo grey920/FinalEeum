@@ -11,7 +11,3 @@ EXPERT_EMAIL1				VARCHAR2(50) NOT NULL,
 EXPERT_EMAIL2 				VARCHAR2(50) NOT NULL,
 EXPERT_STATE 				NUMBER DEFAULT 0 -- 일반 / 일시중단 / 영구정지 
 )
-
-select * from EXPERT_TABLE;
-delete expert_table
-where EXPERT_ID = 'hansol00'

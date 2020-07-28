@@ -29,8 +29,8 @@ $(function() {
 			output = '';
 			
 			$(rdata).each(function(){
-				output += "<tr><th id='career_th'>"
-					   + this.PF_INTRO
+				output += "<tr><th id='career_th' style='padding-top:15%; padding-left:20%;'>"
+					   + this.PF_DESC
 					   + "</th></tr>";
 			});
 			console.log(output);
@@ -46,14 +46,14 @@ $(function() {
 
 </script>
 <body>
-	<span id="career_text">경력</span>
+	<span id="career_text">경력 및 사진</span><br>
 	<table id="career_table">
 		<tbody>
 		<!-- 경력 출력 -->
 		</tbody>
 	</table>
 	<hr id="hr_1">
-	<span id="picture_text">사진</span>
+
 
 </body>
 </html>
