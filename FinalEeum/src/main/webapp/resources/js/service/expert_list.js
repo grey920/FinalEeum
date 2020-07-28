@@ -116,7 +116,7 @@ $(document).ready(
 							duration : 600
 						});
 					});
-
+			
 			$('.radio-group .radio').click(function() {
 				$(this).parent().find('.radio').removeClass('selected');
 				$(this).addClass('selected');
