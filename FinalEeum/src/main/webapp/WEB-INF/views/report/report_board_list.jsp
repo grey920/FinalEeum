@@ -120,16 +120,29 @@
 						BOARD_READCOUNT : property 이름
 	 	 			 
 	 	 			 --%>
-
 	 	 			 
+
+	 	 			 <c:if test="${user_id == b.REPORT_WRITER || user_id == 'admin1234'}">
 	 	 			 <a href="./BoardDetailAction.bo?num=${b.REPORT_INDEX}">
 	 	 			 	${b.REPORT_TITLE}
 	 	 			 </a>
+	 	 			 </c:if>
+	 	 			 
+	 	 			 	 <c:if test="${user_id != b.REPORT_WRITER && user_id != 'admin1234'}">
+	 	 			 신고합니다.
+	 	 			 </c:if>
 	 	 			 
 	 	 			 
 	 	 		</div>
 	 	 		</td>
-	 	 		<td><div>${b.REPORT_WRITER}</div></td>
+	 	 				<c:if test="${user_id == b.REPORT_WRITER || user_id == 'admin1234'}">
+	 	 			 	 	 	<td><div>${b.REPORT_WRITER}</div></td>
+	 	 			 </c:if>
+	 	 			 
+	 	 			 
+	 	 			  	<c:if test="${user_id != b.REPORT_WRITER && user_id != 'admin1234'}">
+	 	 			<td><div>일반사용자</div></td>
+	 	 			 </c:if>
 	 	 		<td><div>${b.REPORT_DATE}</div></td>
 	 	 	</tr>
 	 	 	</c:forEach>
