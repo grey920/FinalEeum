@@ -71,7 +71,6 @@
 													<c:otherwise>스팸 또는 오해의 소지가 있는 내용</c:otherwise>
 												</c:choose>
 												</td>
-												<td id="measure"><button type='submit' name='처리' id='mea'>처리</button><button type='button' id='reject' name='보류'>보류</button></td>
 											</tr>
 										</c:forEach>
 									</tbody>
