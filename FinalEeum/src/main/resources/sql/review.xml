@@ -15,7 +15,7 @@
 	from review  re inner join user_table u
 		on re.rv_USER_ID = U.USER_ID
 	WHERE RE.RV_EXPERT_ID = #{expert_id}
-	order by rv_date desc
+	order by rv_no desc
 				) t
 			)
 			where rnum between #{startrow} and #{endrow}
@@ -29,10 +29,11 @@
 	</insert>
 
 	<update id="update" parameterType="Review">
-		update review
-		set rv_content = #{rv_content}, rv_rating1 = #{rv_rating1}, rv_rating2 = #{rv_rating2}, rv_rating3 = #{rv_rating3}
-		, rv_rating4 = #{rv_rating4}, rv_rating5 = #{rv_rating5}, rv_rating6 = #{rv_rating6},rv_sum = #{rating_sum}rv_date = sysdate
-		where rv_no = #{rv_no}
+
+	update review
+	set rv_content = #{rv_content}, rv_rating1 = #{rv_rating1}, rv_rating2 = #{rv_rating2}, rv_rating3 = #{rv_rating3}
+	, rv_rating4 = #{rv_rating4}, rv_rating5 = #{rv_rating5}, rv_rating6 = #{rv_rating6},rv_sum = #{rv_sum}
+	where rv_no = #{rv_no}
 
 	</update>
 	

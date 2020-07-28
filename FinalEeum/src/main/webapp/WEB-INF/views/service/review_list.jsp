@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="resources/css/service/review_list.css">
 <link rel="stylesheet" type="text/css"
 	href="resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css">
 
 
 <link rel="stylesheet" type="text/css"
@@ -56,7 +57,7 @@
 </div>
 
 		<!-- 친절함  -->
-		
+	
 		<div id="div_1" >
 		<span id="tag1" style="background: #E4E8F0;padding: 5%;border-radius: 4px; padding-left: 12%; text-align: center;"><b>친절함: </b></span>
 		<span class="svg-star-rating1 jq-stars" style="position: absolute;  width: 950px; padding-left: 2%;"></span> 
@@ -101,6 +102,7 @@
 		<br>
 		<button id="write" class="btn btn-info"
 			style="background: #CADEE3; border: 0px; ">등록</button>
+			<button id="aa" class="btn btn-info" style="background: #blue; border: 0px; ">초기화</button>
 		<table class="table table_striped" id="user_review"
 			style="max-width: 120%;">
 

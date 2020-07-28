@@ -264,9 +264,15 @@ public class ExpertController {
 
 		System.out.println("===========================리뷰넣기 넘어온값update");
 
+		float rating_sum = (review.getRv_rating1() +  review.getRv_rating2() +  review.getRv_rating3()+
+				 review.getRv_rating4() +  review.getRv_rating5() +  review.getRv_rating6()) /6;
+		System.out.println("=========================="+rating_sum);
+		review.setRv_sum(rating_sum);
+		System.out.println("별점"+review.getRv_sum());
+		
 		int ok = reviewservice.update(review);
 
-		System.out.println(review.getRv_no());
+		System.out.println("번호======================================================================="+review.getRv_no());
 		response.getWriter().print(ok);
 	}
 
