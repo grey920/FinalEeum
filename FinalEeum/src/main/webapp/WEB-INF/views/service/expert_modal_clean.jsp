@@ -109,27 +109,27 @@
 														<div class="row">
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="building_type" value="아파트" id="structure1" checked="checked">
-																<label>아파트</label>
+																<span>아파트</span>
 															</div>
 															
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="building_type"  value="단독주택"  id="structure1"> 
-																<label>단독주택</label>
+																<span>단독주택</span>
 															</div>
 															
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="building_type"   value="빌라/연립주택" id="structure1">
-																<label>빌라/연립주택</label> 																
+																<span>빌라/연립주택</span> 																
 															</div>
 															
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="building_type"   value="빌딩/상가" id="structure1">
-																<label>빌딩/상가</label> 																
+																<span>빌딩/상가</span> 																
 															</div>
 															
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="building_type"   value="기타" id="structure1" class="etc1">
-																<label>기타</label>															
+																<span>기타</span> 																
 															</div>													
 															
 														</div>
@@ -154,38 +154,39 @@
 														<div class="row">
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="repair_type"  value="정리수납(의류,냉장고 속)"  id="structure1" checked="checked">
-																<label>정리수납(의류,냉장고 속)</label> 
+																<span>정리수납(의류,냉장고 속)</span> 
 															</div>
 		
 
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="repair_type"  value="가구 청소 (소파,침대/매트리스, 카페트)"  id="structure1" >
-																<label class='201'>가구 청소 (소파,침대/매트리스, 카페트)</label> 
+																<span class='201'>가구 청소 (소파,침대/매트리스, 카페트)</span> 
 															</div>
 
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="repair_type"  value="가전제품 청소(냉장고, 에어컨)"  id="structure1" >
-																<label>가전제품 청소(냉장고, 에어컨)</label>
+																<span>가전제품 청소(냉장고, 에어컨)</span> 
 															</div>														
 							
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="repair_type"  value="화장실 청소"  id="structure1" >
-																<label>화장실 청소</label> 
+																<span>화장실 청소</span> 
 															</div>																
 
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="repair_type" value="계단/바닥 청소"  id="structure1">
-																<label>계단/바닥 청소</label> 
+																<span>계단/바닥 청소</span> 
 															</div>											
 												
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="repair_type" value="보일러/수도 배관 청소"  id="structure1">
-																<label>보일러/수도 배관 청소</label> 
+																<span>보일러/수도 배관 청소</span> 
 															</div>															
 															
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="repair_type" value="기타"  id="structure1" class="etc2" >
-																<label>기타</label>																																												
+																<span>기타</span> 
+															</div>																																																	
 														</div>
 														
 														

@@ -34,4 +34,9 @@ QNA_SAVEFILE VARCHAR2(50), -- DB에 저장될 사진
 QNA_ORIGINALFILE VARCHAR2(50)	 -- 		
 )
 
-
+select r.*
+from (select ROWNUM RNUM, o.*
+			from ONEDAY o
+			where ONE_RDATE >= sysdate) r
+where RNUM <= 3
+			

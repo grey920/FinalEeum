@@ -90,5 +90,10 @@ public interface ExpertService {
 	public Map<String, Object> requestT(int request_no);
 	public Reservation reserveT(int request_no);
 	public List<Map<String, Object>> rfT(int request_no);
+	
+	//메인 화면
+	public int countGrade(int g);
+	public List<Map<String, Object>> pick3(int g, int count);
+	
 
 }

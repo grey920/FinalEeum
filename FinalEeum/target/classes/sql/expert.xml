@@ -230,6 +230,27 @@
 		where rs_no = #{rs_no}
 	</update>
 	
+	<select id="countGrade" parameterType="int" resultType="int">
+		select count(*)
+		from expert_table e inner join portfolio p on e.expert_id = p.pf_exid
+		where pf_grade = #{g}
+	</select>
+	
+	<select id="pick3" parameterType="map" resultType="map">
+		select ex.*
+		from (select rownum rnum, e.*, p.*
+				  from expert_table e inner join portfolio p on e.expert_id = p.pf_exid
+				  where pf_grade = #{g}
+				  ) ex
+		where ex.rnum = #{pick1} or ex.rnum = #{pick2} or ex.rnum = #{pick3}
+	</select>
+	
+	<select id="isJumin" parameterType="String" resultType="map">
+		select expert_jumin2
+		from user_table
+		where expert_jumin1 = #{expert_jumin1}
+	</select>
+	
 	<select id="getGrade" parameterType="String" resultType="String">
 		select pf_grade
 		from portfolio

@@ -70,37 +70,46 @@ public class UEController {
 	
 	@RequestMapping(value="/main")
 	public ModelAndView main(ModelAndView mv) {
+		//전문가 리스트 
+		int g0 = 0;
+		int count0 = expertservice.countGrade(g0);
+		List<Map<String, Object>> list0 = expertservice.pick3(g0, count0);
+		
+//		int g1 = 1;
+//		int count1 = expertservice.countGrade(g1);
+//		List<Map<String, Object>> list1 = expertservice.pick3(g1, count1);
 //		
-//		int g0 = 0;
-//		int count0 = expertservice.countGrade(g0);
-//		System.out.println(count0);
-//		List<Map<String, Object>> list0 = expertservice.pick3(g0, count0);
-//		System.out.println(list0);
+//		int g2 = 2;
+//		int count2 = expertservice.countGrade(g2);
+//		List<Map<String, Object>> list2 = expertservice.pick3(g2, count2);
+//		
+//		int g3 = 3;
+//		int count3 = expertservice.countGrade(g3);
+//		List<Map<String, Object>> list3 = expertservice.pick3(g3, count3);
 		
+		int allUsers = adminservice.cUsers();
+		int allReviews = adminservice.allReviews();
+		int cPosts = adminservice.cPosts();
+		int newUsers = adminservice.newUsers();
 		
-//		List<Map<String, Object>> list1 = expertservice.main1();
-//		List<Map<String, Object>> list2 = expertservice.main2();
-//		List<Map<String, Object>> list3 = expertservice.main3();
+		//원데이클래스 내역
+		List<Map<String, Object>> onelist = onedayservice.main();	
 		
-		//List<Map<String, Object>> onelist = onedayservice.main();	//원데이클래스 내역
-		
-//		int allUsers = adminservice.cUsers();
-//		int allReviews = adminservice.allReviews();
-//		int cPosts = adminservice.cPosts();
-//		int newUsers = adminservice.newUsers();
 		
 
 
 		mv.setViewName("main");
-//		mv.addObject("list0", list0);
+		mv.addObject("list0", list0);
 //		mv.addObject("list1", list1);
 //		mv.addObject("list2", list2);
 //		mv.addObject("list3", list3);
-//		mv.addObject("onelist", onelist);
-//		mv.addObject("allUsers", allUsers);
-//		mv.addObject("allReviews", allReviews);
-//		mv.addObject("cPosts", cPosts);
-//		mv.addObject("newUsers", newUsers);
+		
+		mv.addObject("allUsers", allUsers);
+		mv.addObject("allReviews", allReviews);
+		mv.addObject("cPosts", cPosts);
+		mv.addObject("newUsers", newUsers);
+		
+		mv.addObject("onelist", onelist);
 		
 		return mv;
 	}

@@ -199,4 +199,12 @@ public class ExpertDAO {
 		return sqlSession.selectList("Experts.rfT", request_no);
 	}
 
+	public int countGrade(int g) {
+		return sqlSession.selectOne("Experts.countGrade", g);
+	}
+
+	public List<Map<String, Object>> pick3(HashMap<String, Object> map) {
+		return sqlSession.selectList("Experts.pick3", map);
+	}
+
 }
