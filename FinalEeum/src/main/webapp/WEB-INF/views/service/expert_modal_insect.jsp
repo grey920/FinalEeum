@@ -78,7 +78,7 @@
 						<!-- 부모 모달 -->
 						<button type="button" class="close" data-dismiss="modal"
 							id="close1" aria-label="Close"
-							style="position: relative; bottom: 320px; left: 770px;">
+							style="position: relative; bottom: 320px; left: 770px; outline: 0">
 							<span class="ion-android-close" aria-hidden="true" style="color: #000; cursor: pointer;"></span>
 						</button>
 						<div class="row justify-content-center mt-0">

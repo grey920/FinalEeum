@@ -64,7 +64,6 @@
 			<div class="container-fluid">
 				<div class="breadcrumb-content text-center">
 					<h2>전문가 포트폴리오</h2>
-					<h3>프사 공간</h3>
 					<hr>
 				</div>
 			</div>
@@ -100,9 +99,9 @@
 										<div class="category-select">
 											<label>분야 <span class="required">*</span></label> <select
 												name="PF_CATE">
-												<option value="1">청소</option>
-												<option value="2">방역</option>
-												<option value="3">수리</option>
+												<option value="0">청소</option>
+												<option value="1">방역</option>
+												<option value="2">수리</option>
 											</select>
 										</div>
 

@@ -313,8 +313,12 @@ margin-bottom:30px;
 				height : 500,
 				lang:'ko-KR'
 			});
-			
-			$("#summernote").summernote('pasteHTML', HTMLstr);
+
+			var HTMLstring = '<h2>[상세 내용]</h2><br><br><h2>[추천 대상]</h2><br><br><h2>[강사 소개]</h2><br><br><h2>[안내사항]</h2><br><br><h2>[환불 규정]</h2><br><br><h2>[문의처]</h2>';
+			$('#summernote').summernote('pasteHTML', HTMLstring);
+
+
+
 		});// document.ready
 
 		function goWrite(frm) {

@@ -165,9 +165,9 @@
                                             
                                             <td class="product-subtotal class-state">
                                             	<div class="button-box" style="text-align:center;">
-                                            		<button class="btn-style">
-                                            			<span>&nbsp;견적보기&nbsp;</span>
-                                            		</button>
+	                                            		<button class="btn-style" onclick="location.href='estimateList.net?request_no=${r.RS_NO}';">
+	                                            			<span>&nbsp;견적보기&nbsp;</span>
+	                                            		</button>
 													<button class="btn-style" onclick="location.href='serviceOk.net?rs_no=${r.RS_NO}'">
 														<span>서비스완료</span>	
 													</button>

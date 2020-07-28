@@ -51,20 +51,15 @@ button.close {
 	display: block;
 	width: 165px;
 	height: 180px;
-	position: relative;
-	left: 57px;
-	top: 50px;
+	padding-top:21px;
+	padding-bottom:15px;
 	background-origin: border-box;
 	background-clip: content-box, border-box;
-	border-radius: 5px;
 	cursor: pointer;
 }
 
 #expert_name {
-	position: relative;
-	left: 90px;
-	top: 60px;
-	font-size: 30px;
+	font-size: 27px;
 	font-weight: 700;
 	cursor: pointer;
 	color: black;
@@ -72,12 +67,10 @@ button.close {
 /* 누르면 링크 작업 하기*/
 #expert_intro {
 	position: relative;
-	left: 30px;
-	top: 70px;
 	font-size: 15px;
 	font-weight: 700;
 	cursor: pointer;
-	color: black;
+	color: #646464;
 }
 
 #list-name {
@@ -437,12 +430,10 @@ input#structure2 {
 }
 
 .product-img {
-	width: 290px;
-	height: 375px;
-	background-color: #FAFAFA;
-	margin-bottom: 50px;
-	border: 8px solid #E4E8F0;
-	border-radius: 1px;
+	text-align:center; 
+	margin:0 auto;
+	border: 3px solid #E4E8F0;
+	border-radius: 10px;
 	
 }
 .shop-wrapper.hm-3-padding.pt-120{
@@ -451,6 +442,9 @@ input#structure2 {
 
 .product-wrapper.mb-35{
 	width: 290px;
+	margin-left:50px;
+	margin-right:50px;
+	margin-bottom:70px;
 }
 
 .heart_click2 {

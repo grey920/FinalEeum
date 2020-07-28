@@ -20,7 +20,7 @@ USER_STATE NUMBER DEFAULT 0
 )
 
 select * from USER_TABLE
-delete user_table where user_id = 'hansol22'
+delete expert_table where expert_id = 'hansol99'
 alter table USER_TABLE modify(USER_SAVEPROFILE varchar2(4000))
 drop table user_table
 
@@ -29,3 +29,5 @@ ADD JOINDATE TIMESTAMP DEFAULT SYSDATE;
 
 insert into user_table
 values('user3579', )
+
+select * from expert_table

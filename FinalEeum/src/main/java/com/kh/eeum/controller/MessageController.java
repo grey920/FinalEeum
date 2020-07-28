@@ -86,7 +86,7 @@ public class MessageController {
 		
 		if (result==1)  {
 			out.println("alert('메시지를 보냈습니다 💌');");
-			out.println("window.close();");
+			out.println("window.close();opener.location.reload();");
 			
 		} else if (result==-1) {
 			out.println("alert('메시지 전송에 실패했습니다.');");

@@ -1,5 +1,16 @@
 $(document).ready(function(){
 	
+	$("#aa").click(function(){
+		
+		for(var i = 1; i <= 6; i++){
+			$(".svg-star-rating"+i+".jq-stars").starRating('setRating', 0.5);
+			$(".svg-star-rating"+i+".jq-stars").starRating('getRating');
+			$(".svg-star-rating"+i+".jq-stars").starRating('setReadOnly', false);
+			$(".live-rating"+i).text('');
+		}
+	});
+		
+	
 // 친절함
 	$(".svg-star-rating1").starRating(
 			{
@@ -210,16 +221,17 @@ $(document).ready(function(){
 												var button = "";
 												if (user_id == this.RV_USER_ID) {
 													button = "<i class='fas fa-cut' id='delete_review' style='color=#4E8092;'></i>삭제"+
-													         "<i class='fas fa-pen' id='update_review'></i>수정<br>";
+													         "<i class='fas fa-pen' id='update_review'></i>수정<br>"+
+													         "<input type='hidden' value='"+this.RV_NO+"'>";
+															
 													         
 												}
 												output += "<tr id='rv_th'><td id='user_id'>"
 														+ "<p>"
-														+ this.RV_USER_ID
+														+ this.USER_NICK
 														+ "</p>" + "</td>";
 												output += "<td>"
 														+ "<pre  id='rv_content'>"
-														+ "<input type='hidden' id='RV_NO' name='RV_NO' value='"+this.RV_NO+"'>"
 														+ this.RV_CONTENT
 														+ "</pre>"  
 														+ "</td>";
@@ -230,7 +242,7 @@ $(document).ready(function(){
 														+ "<span style='position:relative; '>청결도 :" +this.RV_RATING3 +"</span><br>"
 														+ "<span style='position:relative; '>전문성 :" +this.RV_RATING4 +"</span><br>"
 														+ "<span style='position:relative;'>시간준수 :" +this.RV_RATING5 +"</span><br>"
-														+ "<span style='position:relative; '>가격의합리성 :" +this.RV_RATING5 +"</span><br>"
+														+ "<span style='position:relative; '>가격의합리성 :" +this.RV_RATING6 +"</span><br>"
 														"</td></tr>";
 											
 											});
@@ -286,7 +298,7 @@ $(document).ready(function(){
 		
 		var expert_id = $('#EXPERT_ID').val();
 		var user_id = $('#USER_ID').val();
-		var num = $("#RV_NO").val();
+		
 		//배열로 값 넣기
 		var rating = new Array($('.live-rating1').text(),
 				$('.live-rating2').text(),
@@ -316,11 +328,11 @@ $(document).ready(function(){
 			
 		}else{
 			buttonText = $("#write").text();
-			console.log(buttonText);
+			console.log(buttonText+"===============");
 			
 			url = "ReviewUpdate.Ajax";
-		
-			console.log("후기기기기긱"+content);
+			
+			console.log("후기기기기긱"+num);
 			
 			data = {
 					"rv_no"	  : num,
@@ -375,14 +387,15 @@ $(document).ready(function(){
 	   $("#comment").on('click','.fas.fa-pen', function(){
 		      before = $(this).parent().prev().text(); // 선택한 내용을 가져옵니다.
 		      $("#content").focus().val(before); // textarea에 수정전 내용을 보여줍니다.
-		      num = $('#RV_NO').val();
+		      num = $(this).next().next().val();
+		      console.log("수정"+num);
 		      $("#write").text("수정완료"); // 등록버튼의 라벨을 '수정완료' 로 변경합니다.
 		      $(this).parent().parent().css('background','lightgray'); // 수정할 행의배경색을 변경합니다.
 		   });
 	   
 	   //삭제
 	   $("#comment").on('click','.fas.fa-cut', function(){
-		   num = $('#RV_NO').val();
+		   num = $(this).next().next().next().val();
 		      console.log("리뷰 번호"+num);
 		      $.ajax({
 		         type : "post",
@@ -427,9 +440,8 @@ $(document).ready(function(){
 											var rv_rating4 = (this.rv_rating4);
 											var rv_rating5 = (this.rv_rating5);
 											var rv_rating6 = (this.rv_rating6);
-											console
-													.log("평점:"
-															+ rv_rating1);
+											console.log("평점1:"+ rv_rating1+"평점2:"+ rv_rating2+"평점3:"+ rv_rating3+"평점4:"+ rv_rating4
+													+"평점5:"+ rv_rating5+"평점6:"+ rv_rating6);
 
 											output = "<input type='hidden' value='"+rv_rating1+"' id='rating1'>";
 
@@ -457,7 +469,8 @@ $(document).ready(function(){
 															datasets : [ {
 																label : "My First dataset",
 																backgroundColor : [
-																		'rgba(255, 0, 0, 0.5)',
+														
+																	'rgba(255, 0, 0, 0.5)',
 																		'rgba(100, 255, 0, 0.5)',
 																		'rgba(200, 50, 255, 0.5)',
 																		'rgba(0, 100, 255, 0.5)',
@@ -467,6 +480,7 @@ $(document).ready(function(){
 																data : [
 																		rv_rating1,
 																		rv_rating2,
+																		rv_rating3,
 																		rv_rating4,
 																		rv_rating5,
 																		rv_rating6 ],
@@ -512,18 +526,20 @@ $(document).ready(function(){
 		success : function(rdata) {
 			console.log("딱들어와"+rdata);
 			if(rdata == 3){
-				alert('성공');	
 			}else{
 				$("#write").attr("disabled",true);
 				$("#content").text("견적요청 서비스를 받지 않은 사용자는 후기를 남길 수 없습니다.");
 				$("#content").attr("readonly",true);
-				$("#update_review").click(function(){
+				
+				$(".fa-pen").click(function(){
+					
 					$("#write").attr("disabled",false);
 					$("#content").attr("readonly",false);
 				});
 			}		
 		}	
 	});
+
 		
 			
 	

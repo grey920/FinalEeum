@@ -22,7 +22,7 @@
 		PF_SV_LI, PF_SV_OP, PF_INTRO, PF_One
 		FROM PORTFOLIO
 		WHERE
-		PF_EXID=#{PF_EXID}
+		PF_EXID=#{id}
 	</select>
 
 	<select id="allReviews" resultType="int">

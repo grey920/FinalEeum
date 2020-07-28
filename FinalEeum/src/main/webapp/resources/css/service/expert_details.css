@@ -72,13 +72,13 @@ html {
    box-shadow: none !important;
    border: none;
    font-weight: bold;
-   border-bottom: 2px solid #428092;
+   border-bottom: 2px solid #72A0E0;
    outline-width: 0
 }
 
 #msform .action-button {
    width: 100px;
-   background: #428092;
+   background: #72A0E0;
    font-weight: bold;
    color: white;
    border: 0 none;
@@ -89,7 +89,7 @@ html {
 }
 
 #msform .action-button:hover, #msform .action-button:focus {
-   box-shadow: 0 0 0 2px white, 0 0 0 3px #428092
+   box-shadow: 0 0 0 2px white, 0 0 0 3px #72A0E0
 }
 
 #msform .action-button-previous {
@@ -118,7 +118,7 @@ select.list-dt {
 }
 
 select.list-dt:focus {
-   border-bottom: 2px solid #428092
+   border-bottom: 2px solid #72A0E0
 }
 
 .card {
@@ -199,7 +199,7 @@ select.list-dt:focus {
 }
 
 #progressbar li.active:before, #progressbar li.active:after {
-   background: #428092
+   background: #72A0E0
 }
 
 .radio-group {
@@ -361,33 +361,39 @@ input#structure2 {
 
 .heart_click {
    box-sizing: border-box;
-   background-color: #CADEE3;
    width: 6%;
    height: 30%;
    margin-left: 50%;
    padding: 0.6%;
-   border-radius: 5%;
-      border: 0;
-      margin-top: 3%;
+   border: 0;
+   margin-top: 2%;
+	margin-right:5px !important; 
+	font-size:18px;
+	border-radius:20px;
+	background-color:white !important;
+	color:#72A0E0;
+	border:2px solid #72A0E0;
 }
 
 .heart_click2 {
    box-sizing: border-box;
-   background-color: #CADEE3;
+   background-color:white !important;
    padding: 0.7%;
-   border-radius: 5%;
+   font-size:18px;
+   border:2px solid #72A0E0 !important;
+   border-radius: 20px !important;
    outline: 0;
    border: 0;
 }
 .heart_click:hover{
-   background-color: #4EBDD0;
+   	background-color:#72A0E0 !important;
+	color:white !important;
 }
 
 
 .heart_click2:hover{
-   
-   background-color: #4EBDD0;
-
+   	background-color:#72A0E0 !important;
+	color:white !important;
 }
 
 .fa.fa-heart {
@@ -401,14 +407,14 @@ input#structure2 {
 
 .name_tag {
    box-sizing: border-box;
-   background-color: #CADEE3;
-   width: 50%;
+   background-color: #E4E8F0;
+   width: 40%;
    height: 95%;
-   padding: 2%;
-   border-radius: 1%;
+   border-radius: 10px;
    margin:0 auto;
-   padding-left: 10%;
-   margin-top: 4%;
+	margin-top:150px;
+	padding:20px 0
+	
 }
 
 .product-details-area {
@@ -469,7 +475,7 @@ div.col-md-12.mx-0{
 }
 
 .container1{
-   background-color:  #4E8092; 
+   background-color:  #72A0E0; 
    width: 109%;
    width: 100%;
    height: 60px;
