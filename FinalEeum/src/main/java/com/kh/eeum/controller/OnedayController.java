@@ -70,7 +70,7 @@ public class OnedayController {
 	public ModelAndView OnedayList(@RequestParam(value = "page", defaultValue = "1", required = false) int page,
 			ModelAndView mv) {
 
-		int limit = 8; // 한 화면에 출력할 레코드 갯수
+		int limit = 9; // 한 화면에 출력할 레코드 갯수
 
 		int listcount = onedayService.getListCount(); // 총 리스트 수(게시물의 갯수)를 받아옴
 
