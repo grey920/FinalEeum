@@ -88,12 +88,11 @@
                                 <!-- ACCORDION END -->
                                 
                                 <!-- ACCORDION START (4) -->
-                                <h3><span id="showlogin" class="faq4">남자는 서비스를 받을 수 없나요?</span></h3>
+                                <h3><span id="showlogin" class="faq4">남성은 이음에 가입할 수 없나요?</span></h3>
                                 <div id="checkout-login" class="coupon-content faq-content4">
                                     <div class="coupon-info">
                                         <p class="coupon-text">
-										이음은 여성 사용자만 이용하실 수 있는 사이트입니다.
-										뿐만 아니라 전문가들 또한 여성만 등록하실 수 있는 사이트입니다.                              
+                                        이음은 여성 사용자 뿐만 아니라 여성 전문가들만 가입할 수 있는 사이트입니다.
                                         </p>
                                     </div>
                                 </div>
@@ -105,7 +104,7 @@
                                     <div class="coupon-info">
                                         <p class="coupon-text">
                                         이음에 등록된 모든 전문가를 보실 수 있습니다. <br>
-                                       	다만, 전문가마다 활동하는 지역이 있기에 사용자의 지역에서 활동하는 전문가에게서만 서비스를 받으실 수는 있습니다.
+                                       	다만, 전문가마다 활동하는 지역이 다르기에 사용자의 지역에서 활동하는 전문가에게서만 서비스를 받으실 수는 있습니다.
                                        	</p>
                                     </div>
                                 </div>
