@@ -78,7 +78,7 @@
 						<!-- 부모 모달 -->
 						<button type="button" class="close" data-dismiss="modal"
 							id="close1" aria-label="Close"
-							style="position: relative; bottom: 320px; left: 770px;">
+							style="position: relative; bottom: 320px; left: 770px; outline: 0">
 							<span class="ion-android-close" aria-hidden="true" style="color: #000; cursor: pointer;"></span>
 						</button>
 						<div class="row justify-content-center mt-0">
@@ -109,27 +109,27 @@
 														<div class="row">
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="building_type" value="아파트" id="structure1" checked="checked">
-																<span>아파트</span>
+																<label>아파트</label>
 															</div>
 															
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="building_type"  value="단독주택"  id="structure1"> 
-																<span>단독주택</span>
+																<label>단독주택</label>
 															</div>
 															
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="building_type"   value="빌라/연립주택" id="structure1">
-																<span>빌라/연립주택</span> 																
+																<label>빌라/연립주택</label>															
 															</div>
 															
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="building_type"   value="빌딩/상가" id="structure1">
-																<span>빌딩/상가</span> 																
+																<label>빌딩/상가</label>																
 															</div>
 															
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="building_type"   value="기타" id="structure1" class="etc1">
-																<span>기타</span> 																
+																<label>기타</label>																
 															</div>													
 															
 														</div>
@@ -154,34 +154,34 @@
 														<div class="row">
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="repair_type"  value="해충 방역"  id="structure1" checked="checked">
-																<span>해충 방역</span> 
+																<label>해충 방역</label>
 															</div>
 		
 
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="repair_type"  value="바퀴벌레 퇴치"  id="structure1" >
-																<span>바퀴벌레 퇴치</span> 
+																<label>바퀴벌레 퇴치</label>
 															</div>
 
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="repair_type"  value="비둘기 퇴치"  id="structure1" >
-																<span>비둘기 퇴치</span> 
+																<label>비둘기 퇴치</label> 
 															</div>														
 							
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="repair_type"  value="개미 박멸"  id="structure1" >
-																<span>개미 박멸</span> 
+																<label>개미 박멸</label> 
 															</div>																
 
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="repair_type" value="방역소독"  id="structure1">
-																<span>방역소독</span> 
+																<label>방역소독</label>
 															</div>											
 																										
 															
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="repair_type" value="기타"  id="structure1" class="etc2" >
-																<span>기타</span> 
+																<label>기타</label> 
 															</div>																																																	
 														</div>
 														
