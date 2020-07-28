@@ -207,4 +207,8 @@ public class ExpertDAO {
 		return sqlSession.selectList("Experts.pick3", map);
 	}
 
+	public Map<String, Object> pick(HashMap<String, Object> map) {
+		return sqlSession.selectOne("Experts.pick", map);
+	}
+
 }

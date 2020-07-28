@@ -526,7 +526,6 @@ $(document).ready(function(){
 		success : function(rdata) {
 			console.log("딱들어와"+rdata);
 			if(rdata == 3){
-				alert('성공');	
 			}else{
 				$("#write").attr("disabled",true);
 				$("#content").text("견적요청 서비스를 받지 않은 사용자는 후기를 남길 수 없습니다.");

@@ -24,7 +24,13 @@ CREATE TABLE PORTFOLIO(
 
 SELECT * FROM PORTFOLIO;
 select * from PORTFOLIO
-where PF_EXID = 'bbb';
+where PF_EXID = 'hansol00'
+
+update portfolio
+set pf_cate = 1
+where PF_EXID = 'hansol22'
+
+
 DELETE PORTFOLIO;
 
 	select * from

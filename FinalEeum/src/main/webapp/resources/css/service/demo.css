@@ -1,5 +1,10 @@
 body {
-    font-family: helvetica, arial;
+    font-family: 'NanumSquareRound', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14pt;
+	color:#303030;
+}
 }
 
 h2 {

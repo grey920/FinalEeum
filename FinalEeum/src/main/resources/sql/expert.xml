@@ -99,14 +99,14 @@
 	
 	<select id="ureserveList" parameterType="map" resultType="map">
 		select *
-		from (select rownum rnum, r.*
+		from (select rownum rnum, re.*
 				  from (	select r.*, e.expert_name, p.pf_grade, p.pf_cate, p.pf_saveprofile
 	 						from reservation r inner join
 	  			 					 expert_table e on r.rs_exid = e.expert_id left outer join
 	  			 					 portfolio p on r.rs_exid = p.pf_exid
 	  						where r.rs_uid = #{user_id}
-	  						) r
-	  				order by r.rs_no desc
+	  						) re
+	  				order by re.rs_no desc
 	  			 )
 		where rnum &gt; = #{start} and rnum &lt; = #{end}
 	</select>
@@ -236,13 +236,13 @@
 		where pf_grade = #{g}
 	</select>
 	
-	<select id="pick3" parameterType="map" resultType="map">
+	<select id="pick" parameterType="map" resultType="map">
 		select ex.*
 		from (select rownum rnum, e.*, p.*
 				  from expert_table e inner join portfolio p on e.expert_id = p.pf_exid
 				  where pf_grade = #{g}
 				  ) ex
-		where ex.rnum = #{pick1} or ex.rnum = #{pick2} or ex.rnum = #{pick3}
+		where ex.rnum = #{pick}
 	</select>
 	
 	<select id="isJumin" parameterType="String" resultType="map">

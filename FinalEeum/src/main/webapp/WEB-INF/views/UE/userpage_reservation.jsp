@@ -97,7 +97,7 @@
                                       <c:forEach var="r" items="${rlist}">
                                         <tr>
                                             <td class="product-thumbnail">
-                                                <a href="expertDetail.service?expert=${r.PF_EXID}"><img src="resources/expert_profile${r.PF_SAVEPROFILE}" style="width:130px;height:160px"></a>
+                                                <a href="expertDetail.service?expert=${r.RS_EXID}"><img src="resources/expert_profile${r.PF_SAVEPROFILE}" style="width:130px;height:160px"></a>
                                                 <input type="hidden" name="rs_exid" value="${r.RS_EXID}"/>
                                                 <input type="hidden" name="rs_no" value="${r.RS_NO}"/>
                                             </td>
@@ -174,18 +174,22 @@
                                             <td class="product-subtotal class-state">
                                             	<div class="button-box" style="text-align:center;">
                                             	
-                                            	  <c:if test="${r.RS_STATE == '0' || r.RS_STATE == '1' || r.RS_STATE == '2' || r.RS_STATE == '3' || r.RS_STATE == '5'}">
+                                            	  <c:if test="${r.RS_STATE == '0' || r.RS_STATE == '1' || r.RS_STATE == '2' || r.RS_STATE == '3'}">
 													<button class="btn-style" onclick="location.href='estimateList.net?request_no=${r.RS_NO}';">
 														<span>견적확인</span>	
 													</button>
+													
 													<c:if test="${r.RS_STATE == '1'}">
 														<button class="btn-style" onclick="window.open('Pay.net?num=${r.RS_NO}','width=500, height=700');">
 															<span>결제하기</span>
 														</button>
 													</c:if>
+													
+													<c:if test="${r.RS_STATE == '0' || r.RS_STATE ==  '1' || r.RS_STATE == '2'}">
 													<button class="btn-style" data-toggle="modal" data-target="#modalConfirmDelete">
 														<span>예약취소</span>
 													</button>
+													</c:if>
 													
 													<!-- 예약 취소 Modal-->
 													<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -221,7 +225,7 @@
 													</button>
                                             	  </c:if>
                                             	  
-                                            	  <c:if test="${r.RS_STATE == '4'}"></c:if>
+                                            	  <c:if test="${r.RS_STATE == '4' || r.RS_STATE == '5'}"></c:if>
                                             	  
 												</div>
                                             </td>

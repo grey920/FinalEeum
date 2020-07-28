@@ -26,16 +26,32 @@
 <script src="resources/js/service/review_list.js"></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
-
-
-<title>Insert title here</title>
+<style>
+        .btn-style{margin-top:10px !important;
+       					 margin-right:0 !important; 
+       					 font-size:18px;
+         				 border-radius:20px;
+         				 background-color:white;
+         				 color:#72A0E0;
+         				 border:2px solid #72A0E0;
+         				 }
+        .btn-style:hover{background-color:#72A0E0;
+         					       color:white;
+         					       border:2px solid #72A0E0;
+         						  }
+        .nodata{padding:100px 0 100px 0;
+        			  display: flex;
+					  justify-content: center;
+					  align-items: center;
+					  flex-direction: column;}
+</style>
 </head>
 
 <body>
-	<span id="review_text" style="padding-left: 10%;">후기-</span>
+	<span id="review_text" style="padding-left: 10%;">후기</span>
 	<div id="chart">
 		<canvas id="myChart"
-			style="width: 30%; height: 30%; position: relative;"> </canvas>
+			style="width: 30%; height: 30%; position: relative;text-decoration: none"> </canvas>
 	</div>
 
 	<hr>
@@ -100,12 +116,12 @@
 		<br>
 		<br>
 		<br>
-		<button id="write" class="btn btn-info"
-			style="background: #CADEE3; border: 0px; ">등록</button>
-			<button id="aa" class="btn btn-info" style="background: #blue; border: 0px; ">초기화</button>
+		<button id="write" class="btn-style"
+			>등록</button>
+			<button id="aa" class="btn-style" >초기화</button>
+												
 		<table class="table table_striped" id="user_review"
 			style="max-width: 120%;">
-
 			<thead>
 				<tr>
 
@@ -117,8 +133,10 @@
 		</table>
 
 	</div>
+	
+	<div class="col-lg-12 col-md-12 col-12 nodata">	
 	<div id="message"></div>
-
+	</div>
 
 
 </body>
