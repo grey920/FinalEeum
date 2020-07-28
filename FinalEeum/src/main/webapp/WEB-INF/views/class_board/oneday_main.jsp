@@ -85,7 +85,7 @@
 					<div class="col-md-12">
 					
 						<div class="shop-topbar-wrapper">
-							<c:if test="${user_id=='admin'}">
+							<c:if test="${user_id=='admin1234'}">
 								<div class="shop-filter">
 									<button class="write_oneday">글쓰기</button>
 								</div>

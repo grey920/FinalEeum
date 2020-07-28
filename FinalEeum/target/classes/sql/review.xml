@@ -31,6 +31,7 @@
 		set rv_content = #{rv_content}, rv_rating1 = #{rv_rating1}, rv_rating2 = #{rv_rating2}, rv_rating3 = #{rv_rating3}
 		, rv_rating4 = #{rv_rating4}, rv_rating5 = #{rv_rating5}, rv_rating6 = #{rv_rating6},rv_sum = #{rating_sum}rv_date = sysdate
 		where rv_no = #{rv_no}
+
 	</update>
 	
 	<select id="count" resultType="int">
@@ -56,6 +57,13 @@
 		where rv_user_id = #{rv_user_id}
 	</select>
 	
+	
+	<select id="getReview" parameterType="int" resultType="map">
+		select rv.*, ex.expert_name
+		from review rv inner join expert_table ex on rv.rv_expert_id = ex.expert_id
+		where rv.rv_no = #{rv_no}
+	</select>
+	
 	<select id="reviewList" parameterType="map" resultType="map">
 		select *
 		from ( select rownum rnum, re.*
@@ -69,12 +77,6 @@
 					order by re.rv_date desc
 				  )
 		where rnum &gt; = #{start} and rnum &lt; = #{end}
-	</select>
-	
-	<select id="getReview" parameterType="int" resultType="map">
-		select rv.*, ex.expert_name
-		from review rv inner join expert_table ex on rv.rv_expert_id = ex.expert_id
-		where rv.rv_no = #{rv_no}
 	</select>
 	
 	<select id="reservation" parameterType="map" resultType="int">
