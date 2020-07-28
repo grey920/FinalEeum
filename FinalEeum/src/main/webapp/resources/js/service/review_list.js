@@ -215,7 +215,7 @@ $(document).ready(function(){
 												}
 												output += "<tr id='rv_th'><td id='user_id'>"
 														+ "<p>"
-														+ this.RV_USER_ID
+														+ this.USER_NICK
 														+ "</p>" + "</td>";
 												output += "<td>"
 														+ "<pre  id='rv_content'>"
@@ -230,7 +230,7 @@ $(document).ready(function(){
 														+ "<span style='position:relative; '>청결도 :" +this.RV_RATING3 +"</span><br>"
 														+ "<span style='position:relative; '>전문성 :" +this.RV_RATING4 +"</span><br>"
 														+ "<span style='position:relative;'>시간준수 :" +this.RV_RATING5 +"</span><br>"
-														+ "<span style='position:relative; '>가격의합리성 :" +this.RV_RATING5 +"</span><br>"
+														+ "<span style='position:relative; '>가격의합리성 :" +this.RV_RATING6 +"</span><br>"
 														"</td></tr>";
 											
 											});
@@ -427,9 +427,8 @@ $(document).ready(function(){
 											var rv_rating4 = (this.rv_rating4);
 											var rv_rating5 = (this.rv_rating5);
 											var rv_rating6 = (this.rv_rating6);
-											console
-													.log("평점:"
-															+ rv_rating1);
+											console.log("평점1:"+ rv_rating1+"평점2:"+ rv_rating2+"평점3:"+ rv_rating3+"평점4:"+ rv_rating4
+													+"평점5:"+ rv_rating5+"평점6:"+ rv_rating6);
 
 											output = "<input type='hidden' value='"+rv_rating1+"' id='rating1'>";
 
@@ -457,7 +456,8 @@ $(document).ready(function(){
 															datasets : [ {
 																label : "My First dataset",
 																backgroundColor : [
-																		'rgba(255, 0, 0, 0.5)',
+														
+																	'rgba(255, 0, 0, 0.5)',
 																		'rgba(100, 255, 0, 0.5)',
 																		'rgba(200, 50, 255, 0.5)',
 																		'rgba(0, 100, 255, 0.5)',
@@ -467,6 +467,7 @@ $(document).ready(function(){
 																data : [
 																		rv_rating1,
 																		rv_rating2,
+																		rv_rating3,
 																		rv_rating4,
 																		rv_rating5,
 																		rv_rating6 ],
