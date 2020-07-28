@@ -61,6 +61,7 @@ public class ReviewDAO {
 
 	public int memberRegisterDept(HashMap<String, String> paraMap) {
 		return sqlSession.insert("Reviews.registerDept", paraMap);
+	}	
 
 	public Map<String, Object> getReview(int rv_no) {
 		return sqlSession.selectOne("Reviews.getReview", rv_no);
