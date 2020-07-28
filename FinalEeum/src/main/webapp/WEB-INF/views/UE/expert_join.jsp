@@ -93,9 +93,9 @@
 											<form action="expertJoinProcess.net" method="post">
 												
 												<p>주민등록 번호 *</p><!-- 숫자만 -->
-												<input type="text" id="user_jumin1" name="expert_jumin1"  maxLength="6" style="width:32%;margin-bottom:10px;text-align:center">
+												<input type="text" id="expert_jumin1" name="expert_jumin1"  maxLength="6" style="width:32%;margin-bottom:10px;text-align:center">
 												<b>&nbsp;-&nbsp;</b>
-												<input type="password" id="user_jumin2" name="expert_jumin2" maxLength="7" style="width:32%;">
+												<input type="password" id="expert_jumin2" name="expert_jumin2" maxLength="7" style="width:32%;">
 												<input type="button" value="가입확인" id="checkJumin" style="width:26%;margin-left:5px;font-weight:600;cursor:pointer">
 												<span id="message_jumin"></span>
 												
@@ -325,6 +325,7 @@
 
 	<!-- all js here -->
 	<script src="resources/js/jquery-3.5.0.js"></script>
+	<script src="resources/js/expertValidate.js"></script>
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
 	<script src="resources/js/popper.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>

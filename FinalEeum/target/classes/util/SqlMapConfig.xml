@@ -26,6 +26,9 @@
 		<typeAlias alias="report" type="com.kh.eeum.domain.Report"/>
 		<typeAlias alias="C" type="com.kh.eeum.domain.Comment"/>
 		<typeAlias alias="message" type="com.kh.eeum.domain.Message" />
+		<typeAlias alias="qna" type="com.kh.eeum.domain.Qna" />
+		<typeAlias alias="pay" type="com.kh.eeum.domain.Pay" />
+
 		
 	</typeAliases>
 
@@ -44,6 +47,7 @@
 		<mapper resource="sql/report.xml"/>
 		<mapper resource="sql/comment.xml"/>
 		<mapper resource="sql/message.xml"/>
-
+		<mapper resource="sql/qna.xml"/>
+		<mapper resource="sql/pay.xml"/>
 	</mappers>
 </configuration>

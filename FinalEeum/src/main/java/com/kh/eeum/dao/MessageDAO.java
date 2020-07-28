@@ -39,4 +39,8 @@ public class MessageDAO {
 		return sqlSession.update("Messages.msgRead", map);
 	}
 
+	public Message msg(int msg_no) {
+		return sqlSession.selectOne("Messages.msg", msg_no);
+	}
+
 }

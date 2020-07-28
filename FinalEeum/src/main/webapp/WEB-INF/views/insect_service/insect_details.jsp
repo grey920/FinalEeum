@@ -87,12 +87,12 @@
 						style="font-size: 50px; padding-left: 50%;">${expertdata.expert_name}
 					</b>
 					
-										 <c:choose>
-                  <c:when test="${expertdata.PF_GRADE == 0}"><b>디딤돌</b></c:when>
-                  <c:when test="${expertdata.PF_GRADE == 1}"><b>마루</b></c:when>
-                  <c:when test="${expertdata.PF_GRADE == 2}"><b>우주</b></c:when>
-                  <c:otherwise><b>용마루</b></c:otherwise>
-               </c:choose>
+						<c:choose>
+						<c:when test="${expertdata.PF_GRADE == 0}"><b>디딤돌</b></c:when>
+						<c:when test="${expertdata.PF_GRADE == 1}"><b>마루</b></c:when>
+						<c:when test="${expertdata.PF_GRADE == 2}"><b>우주</b></c:when>
+						<c:otherwise><b>용마루</b></c:otherwise>
+					</c:choose>
 
 					<!-- 전문가 아이디 -->
 					<input type="hidden" value="${expertdata.expert_id}" id="EXPERT_ID">
@@ -131,7 +131,7 @@
 						<i class="fa fa-check" style="position: relative; left: 135px;"></i>
 						<b style="font-size: 25px; position: relative; left: 150px;">총
 							'${RequestCount}' 건 예약</b> <i class="fa fa-smile-o"
-							style="position: relative; right: 78px; top: 38px; font-size: 20px;"></i>
+							style="position: relative; right: 40px; top: 38px; font-size: 20px;"></i>
 
 							<div class="quick-view-rating">
 						
@@ -140,7 +140,7 @@
 							 (아직 평점이 없습니다.)
 						 	</c:if>
 						 	<c:if test="${review_rating != 0.0}">
-						 	(${review_rating})
+						 	<span style="padding-left: 24%; position: absolute; bottom: 0px; ">(${review_rating})</span>
 						 	</c:if>
 						</div>
 						<i class="fa fa-calendar"
@@ -169,12 +169,12 @@
 						상세설명</span>
 					<div class="details1">
 						<p style="font-size: 22px; color: black; white-space: inherit">
-							${po.PF_DESC}
+							${po.PF_INTRO}
 						</p>
 					</div>
 				</div>
 				<!-- 탭메뉴 들어간다. -->
-				<div class="container1">
+				<div class="container1" style="line-height: 40px;">
 					<ul class="tab">
 						<li data-tab="tab1" class='tabmenu tab1' id="default">
 						<b style="font-size: 20px; color: white;" id="tabText1">포트폴리오</b></li>

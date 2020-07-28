@@ -67,6 +67,7 @@ button.close {
 	font-size: 30px;
 	font-weight: 700;
 	cursor: pointer;
+	color: black;
 }
 /* 누르면 링크 작업 하기*/
 #expert_intro {
@@ -76,6 +77,7 @@ button.close {
 	font-size: 15px;
 	font-weight: 700;
 	cursor: pointer;
+	color: black;
 }
 
 #list-name {
@@ -435,10 +437,20 @@ input#structure2 {
 }
 
 .product-img {
-	width: 280px;
+	width: 290px;
 	height: 375px;
 	background-color: #FAFAFA;
 	margin-bottom: 50px;
+	border: 8px solid #E4E8F0;
+	border-radius: 1px;
+	
+}
+.shop-wrapper.hm-3-padding.pt-120{
+	padding-top: 10px;
+}
+
+.product-wrapper.mb-35{
+	width: 290px;
 }
 
 .heart_click2 {
@@ -542,3 +554,4 @@ input#structure2 {
 	right: 60px;
 	
 }
+

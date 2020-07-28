@@ -95,7 +95,7 @@
 								<c:forEach var="e" items="${expertlist}">
 									<!-- 포폴 시작!!!!!!!!!!!!!!!! -->
 								
-								<div class="product-width col-md-6 col-xl-3 col-lg-4z">
+								<div class="product-width col-md-6 col-xl-3 col-lg-4z"style="padding-left: 4%; margin: 2%; ">
 
 										<div class="product-wrapper mb-35">
 											<!-- 전문가 리스트 뽑아오기 시작 -->
@@ -109,7 +109,7 @@
 												</div>
 												
 												<b id="expert_name">${e.EXPERT_NAME }</b> <b
-													style="font-size: 10px; position: relative; top: 60px; left: 100px;">전문가</b>
+													style="font-size: 10px; position: relative; top: 60px; left: 100px; color: black;">전문가</b>
 												<br> <b id="expert_intro">${e.PF_ONE}</b>
 												<div class="modal fade" id="myModal" tabindex="-1"
 													role="dialog" aria-hidden="true">
@@ -194,13 +194,13 @@
 												<div class="price-decrease">
 												
 												<c:if test="${e.PF_CATE ==  1}">
-													<span style="font-family: NanumGothic; font-weight: bold;">[청소]</span>
+													<span style="font-family: NanumGothic; font-weight: bold; background-color: #36518F;">[청소]</span>
 												</c:if>
 												<c:if test="${e.PF_CATE ==  2}">
-													<span style="font-family: NanumGothic; font-weight: bold;">[해충]</span>
+													<span style="font-family: NanumGothic; font-weight: bold; background-color: #36518F;">[해충]</span>
 												</c:if>
 												<c:if test="${e.PF_CATE ==  3}">
-													<span style="font-family: NanumGothic; font-weight: bold;">[수리]</span>
+													<span style="font-family: NanumGothic; font-weight: bold; background-color: #36518F;">[수리]</span>
 												</c:if>
 												
 												</div>
@@ -211,13 +211,14 @@
 
 										</div>
 
-										<hr id="hr_3">
+										<hr id="hr_3" style="margin: 0">
 									</div>
 
 								</c:forEach>
 							
 
 							</div>
+							
 
 							<!-- 페이징 -->
 							<div class="pagination-style text-center mt-30">

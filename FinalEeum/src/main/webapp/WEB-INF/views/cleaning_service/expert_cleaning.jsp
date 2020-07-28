@@ -94,7 +94,7 @@
 								<c:forEach var="e" items="${expertlist}">
 									<!-- 포폴 시작!!!!!!!!!!!!!!!! -->
 								
-								<div class="product-width col-md-6 col-xl-3 col-lg-4z">
+								<div class="product-width col-md-6 col-xl-3 col-lg-4z" style="padding-left: 4%; margin: 2%;">
 
 										<div class="product-wrapper mb-35">
 											<!-- 전문가 리스트 뽑아오기 시작 -->
@@ -131,7 +131,7 @@
 																
 																	<div class="qwick-view-content" style="width: 550px;">
 																	
-																		<h3 style="font-weight: 700;">[청소]</h3>
+																		<h3 style="font-weight: 700; ">[청소]</h3>
 																	
 																	
 																	
@@ -195,13 +195,13 @@
 												<div class="price-decrease">
 												
 												<c:if test="${e.PF_CATE ==  1}">
-													<span style="font-family: NanumGothic; font-weight: bold;">[청소]</span>
+													<span style="font-family: NanumGothic; font-weight: bold; background-color: #36518F;">[청소]</span>
 												</c:if>
 												<c:if test="${e.PF_CATE ==  2}">
-													<span style="font-family: NanumGothic; font-weight: bold;">[방역]</span>
+													<span style="font-family: NanumGothic; font-weight: bold; background-color: #36518F;">[방역]</span>
 												</c:if>
 												<c:if test="${e.PF_CATE ==  3}">
-													<span style="font-family: NanumGothic; font-weight: bold;">[수리]</span>
+													<span style="font-family: NanumGothic; font-weight: bold; background-color: #36518F;">[수리]</span>
 												</c:if>
 												
 												</div>
@@ -211,7 +211,7 @@
 											</a>
 										</div>
 
-										<hr id="hr_3">
+										<hr id="hr_3" style="margin: 0">
 									</div>
 
 								</c:forEach>

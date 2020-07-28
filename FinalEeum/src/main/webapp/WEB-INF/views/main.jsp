@@ -23,6 +23,23 @@
         <link rel="stylesheet" href="resources/css/responsive.css">
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
         <%@ include file="header.jsp" %>
+        <style>
+        .slider-area{margin-top:150px; padding:0 200px}
+        .btn-style-2{border:3px solid #72A0E0;
+        					font-size:20px}
+		.pb-90{margin-top:150px}
+        .slider-2 {padding: 200px 0 70px;}
+        .pt-130{padding-top:30px}
+        .pb-125{padding-bottom:30px; margin-bottom:100px}
+        .theme-bg {background: #E4E8F0}
+        .single-testimonial>h4{font-size:20px !important}
+        h4{margin-top:30px}
+        .product-content h4{font-size:23px}
+        .product-tab-list a h4 {font-size:18px}
+        .col-lg-3{margin:0 auto; text-align:center}
+        .banner-img .num{color:#36518F; font-size:50pt ;margin-top:30px}
+        .banner-img p{color:#303030;}
+        </style>
     </head>
     <body>
         <div class="wrapper">
@@ -31,267 +48,121 @@
             <div class="slider-area">
                 <div class="slider-active owl-carousel">
                 
-                    <div class="single-slider slider-2 bg-img" style="background-image: url(resources/img/slider/1.jpg)">
+                    <div class="single-slider slider-2 bg-img" style="background-image: url(resources/img/main/main4.jpeg); border-radius:20px">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="slider-content-2 slider-animated-1 mt-150">
-                                        <a class="btn-style-2 animated" href="OnedayList.one"><span>자세히 보기</span></a>
+                                        <a class="btn-style-2 animated" href="about_us.net"><span>이음에 대해 알아보기</span></a>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="slider-single-img-2 slider-animated-1">
-                                        <img class="animated" src="assets/img/slider/2.png" alt="slider images">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="single-slider slider-2 bg-img" style="background-image: url(resources/img/slider/1.jpg)">
+                    <div class="single-slider slider-2 bg-img" style="background-image: url(resources/img/main/main1.jpeg); border-radius:20px">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="slider-content-2 slider-animated-2 mt-150">
-                                        <a class="btn-style-2 animated" href="shop.html"><span>신청하러 가기</span></a>
+                                    <div class="slider-content-2 slider-animated-1 mt-150">
+                                        <a class="btn-style-2 animated" href="expert_repair.service"><span>수리 전문가 만나러 가기</span></a>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="slider-single-img-2 slider-animated-1">
-                                        <img class="animated" src="assets/img/slider/2.png" alt="slider images">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="single-slider slider-2 bg-img" style="background-image: url(resources/img/main/main2.jpeg); border-radius:20px">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="slider-content-2 slider-animated-1 mt-150">
+                                        <a class="btn-style-2 animated" href="expert_cleaning.service"><span>청소 전문가 만나러 가기</span></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="slider-single-img-2 slider-animated-1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="single-slider slider-2 bg-img" style="background-image: url(resources/img/main/main3.jpeg); border-radius:20px">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="slider-content-2 slider-animated-1 mt-150">
+                                        <a class="btn-style-2 animated" href="expert_insect.service"><span>방역 전문가 만나러 가기</span></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="slider-single-img-2 slider-animated-1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
+
             
-            <div class="banner-area-2 pt-130 pb-100">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="banner-wrapper mb-30">
-                                <div class="banner-img overflow">
-                                    <a href="product-details.html"><img alt="" src="resources/img/banner/3.png"></a>
-                                    <div class="banner-content-6 banner-position-6">
-<!--                                         <h2>Pottery <br>Mug </h2>
-                                        <a href="shop.html">View Products</a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="banner-wrapper mb-30">
-                                <div class="banner-img overflow">
-                                    <a href="product-details.html"><img alt="" src="resources/img/banner/4.png"></a>
-                                    <div class="banner-content-6 banner-position-7">
-<!--                                         <h5>NEW COLLECTION </h5>
-                                        <h3>The Best <br>Pottery Products</h3> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="product-area pb-90 product-padding">
                 <div class="container-fluid">
                     <div class="section-title-2 text-center mb-25">
-                        <h2 class="m-0">Our Collection</h2>
+                        <h2 class="m-0">E:EUM EXPERT</h2>
                     </div>
                     <div class="product-tab-list text-center mb-60 nav product-menu-mrg" role="tablist">
                         <a class="active" href="#home4" data-toggle="tab">
-                            <h4>Featured </h4>
+                            <h4>디딤돌¹</h4>
                         </a>
                         <a href="#home5" data-toggle="tab">
-                            <h4> Latest </h4>
+                            <h4>마루²</h4>
                         </a>
                         <a href="#home6" data-toggle="tab">
-                            <h4>Best Seller</h4>
+                            <h4>우주³</h4>
+                        </a>
+                        <a href="#home7" data-toggle="tab">
+                            <h4>용마루⁴</h4>
                         </a>
                     </div>
+                    
                     <div class="tab-content">
+                       <!-- (1) -->
                         <div class="tab-pane active" id="home4" role="tabpanel">
                             <div class="row">
+                            
+<%--                               <c:forEach var="o" items="${list0}">
                                 <div class="col-lg-4 col-md-6 col-12">
                                     <div class="product-wrapper mb-35">
                                         <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/12.jpg" alt="">
+                                            <a href="expertDetail.service?expert=${0.PF_EXID}">
+                                                <img src="resources/expert_profile${0.PF_SAVEPROFILE}" alt="">
                                             </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
                                         </div>
                                         <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Ptttery Tea Mug</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$30.00</span>
-                                            </div>
+                                            <h4><a href="product-details.html">${0.EXPERT_NAME}</a></h4>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/13.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Showpiece</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$40.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/14.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Water Jug</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$50.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/15.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Flower Vase</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$60.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/16.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Flower Vase</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$70.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/17.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Ptttery Tea Mug</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$80.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                               </c:forEach> --%>
+                                
+                               </div>
+                             </div>
+                                
+                        <!-- (2) -->
                         <div class="tab-pane" id="home5" role="tabpanel">
                             <div class="row">
+                            
                                 <div class="col-lg-4 col-md-6 col-12">
                                     <div class="product-wrapper mb-35">
                                         <div class="product-img">
@@ -321,155 +192,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/16.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Flower Vase</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$40.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/15.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Flower Vase</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$50.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/14.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Water Jug</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$60.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/13.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Showpiece</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$70.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/12.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Ptttery Tea Mug</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$80.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
+                        
+                        <!-- (3) -->
                         <div class="tab-pane" id="home6" role="tabpanel">
                             <div class="row">
+                            
                                 <div class="col-lg-4 col-md-6 col-12">
                                     <div class="product-wrapper mb-35">
                                         <div class="product-img">
@@ -499,358 +228,121 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/12.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Showpiece</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$40.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/13.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Showpiece</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$50.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/17.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Flower Vase</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$60.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/15.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Flower Vase</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$70.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/16.jpg" alt="">
-                                            </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Ptttery Tea Mug</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$80.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
+            
+            
             <div class="banner-area pb-100">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <div class="banner-wrapper overflow mb-30">
                                 <div class="banner-img">
-                                    <a href="product-details.html">
-                                        <img alt="image" src="resources/img/banner/9.jpg">
-                                    </a>
-                                </div>
-                                <div class="banner-content-7">
-                                    <img alt="image" src="resources/img/icon-img/2.png">
-                                    <h2>Lovely Gift</h2>
-                                    <a href="product-details.html" class="banner-btn-2 cr-btn"><span>Shop Now</span></a>
+                                	<p>❛ 오늘의 이음 ❜</p>
+                                	<%-- <p class="num">${newUsers}</p> --%>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        
+                        <div class="col-lg-3">
                             <div class="banner-wrapper overflow mb-30">
                                 <div class="banner-img">
-                                    <a href="product-details.html">
-                                        <img alt="image" src="resources/img/banner/10.jpg">
-                                    </a>
-                                </div>
-                                <div class="banner-content-7">
-                                    <img alt="image" src="resources/img/icon-img/2.png">
-                                    <h2>Winter Gift </h2>
-                                    <a href="product-details.html" class="banner-btn-2 cr-btn"><span>Shop Now</span></a>
+                               		<p>❛ 오늘의 후기 ❜</p>
+                               		<%-- <p class="num">${cPosts}</p> --%>
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="col-lg-3">
+                            <div class="banner-wrapper overflow mb-30">
+                                <div class="banner-img">
+									<p>❛ 모두의 이음 ❜</p>
+									<%-- <p class="num">${allUsers}</p> --%>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3">
+                            <div class="banner-wrapper overflow mb-30">
+                                <div class="banner-img">
+                                	<p>❛ 모두의 후기 ❜</p>
+                                	<%-- <p class="num">${allReviews}</p> --%>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
+            
             <div class="product-area pb-125 product-padding">
                 <div class="container-fluid">
                     <div class="section-title-2 text-center mb-55">
-                        <h2 class="mb-12">New Collection</h2>
-                        <p>There are many variations of passages of Lorem Ipsum. </p>
+                        <h2 class="mb-12">NEW ONEDAY CLASS</h2>
                     </div>
+                    
                     <div class="collection-product-active owl-carousel">
+                    
+                      <c:forEach var="o" items="${onelist}">
                         <div class="product-wrapper">
                             <div class="product-img">
-                                <a href="product-details.html">
-                                    <img src="resources/img/product/18.jpg" alt="">
+                                <a href="OnedayDetailAction.one?num=${o.ONE_INDEX}">
+                                    <img src="resources/OBoardupload${o.SAVEFILE}" alt="">
                                 </a>
-                                <div class="product-wishlist">
-                                    <a href="#"><i class="ti-heart"></i></a>
-                                </div>
-                                <div class="product-action-2">
-                                    <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                        <i class="ti-plus"></i>
-                                    </a>
-                                    <a class="action-cart-2" title="Add To Cart" href="#">
-                                        <i class="ti-shopping-cart"></i>
-                                    </a>
-                                    <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                        <i class="ti-reload"></i>
-                                    </a>
-                                </div>
                             </div>
+                            
                             <div class="product-content text-center">
-                                <h4><a href="product-details.html">Ptttery Tea Mug</a></h4>
-                                <div class="product-price-2">
-                                    <span>$30.00</span>
-                                </div>
+                                <h4><a href="OnedayDetailAction.one?num=${o.ONE_INDEX}">${o.ONE_TITLE}</a></h4>
                             </div>
                         </div>
-                        <div class="product-wrapper">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img src="resources/img/product/19.jpg" alt="">
-                                </a>
-                                <div class="product-wishlist">
-                                    <a href="#"><i class="ti-heart"></i></a>
-                                </div>
-                                <div class="product-action-2">
-                                    <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                        <i class="ti-plus"></i>
-                                    </a>
-                                    <a class="action-cart-2" title="Add To Cart" href="#">
-                                        <i class="ti-shopping-cart"></i>
-                                    </a>
-                                    <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                        <i class="ti-reload"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="product-content text-center">
-                                <h4><a href="product-details.html">Pottery Water Jug</a></h4>
-                                <div class="product-price-2">
-                                    <span>$30.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-wrapper">
-                            <div class="product-img">
-                                <a href="product-details.html">
-                                    <img src="resources/img/product/20.jpg" alt="">
-                                </a>
-                                <div class="product-wishlist">
-                                    <a href="#"><i class="ti-heart"></i></a>
-                                </div>
-                                <div class="product-action-2">
-                                    <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                        <i class="ti-plus"></i>
-                                    </a>
-                                    <a class="action-cart-2" title="Add To Cart" href="#">
-                                        <i class="ti-shopping-cart"></i>
-                                    </a>
-                                    <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                        <i class="ti-reload"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="product-content text-center">
-                                <h4><a href="product-details.html"> Hand made Pot</a></h4>
-                                <div class="product-price-2">
-                                    <span>$30.00</span>
-                                </div>
-                            </div>
-                        </div>
+                       </c:forEach>
+                       
                     </div>
                 </div>
             </div>
+            
             <div class="testimonials-area">
                 <div class="container-fluid">
-                    <div class="testimonial-active owl-carousel pt-130 pb-125 theme-bg">
+                    <div class="testimonial-active owl-carousel pt-130 pb-125 theme-bg" >
+                    
                         <div class="single-testimonial text-center">
-                            <img alt="" src="resources/img/team/1.png">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</p>
-                            <div class="testimonial-icon">
-                                <i class="ti-direction-alt"></i>
-                            </div>
-                            <h4>Shakara Tasnim </h4>
-                            <span>Customer</span>
+                            <h4>가람휘 조장 정겨운 </h4>
                         </div>
+                        
                         <div class="single-testimonial text-center">
-                            <img alt="" src="resources/img/team/1.png">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</p>
-                            <div class="testimonial-icon">
-                                <i class="ti-direction-alt"></i>
-                            </div>
-                            <h4>Farhana Shuvo </h4>
-                            <span>Customer</span>
+                            <h4>가람휘 박우진 </h4>
                         </div>
+                        
                         <div class="single-testimonial text-center">
-                            <img alt="" src="resources/img/team/1.png">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</p>
-                            <div class="testimonial-icon">
-                                <i class="ti-direction-alt"></i>
-                            </div>
-                            <h4>Samia Robiul </h4>
-                            <span>Customer</span>
+                            <h4>가람휘 안연지 </h4>
                         </div>
+                        
+                        <div class="single-testimonial text-center">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</p>
+                            <h4>가람휘 안현빈 </h4>
+                        </div>
+                    
+                        <div class="single-testimonial text-center">
+                            <p>
+                            이음이라는 말 그대로, 많은 사람들을 연결해주는 끈끈한 사이트가 될 수 있도록 노력했습니다.<br>
+                            아직까지 부족한 점이 많더라도 넓은 아량으로 이해해주세요
+                            </p>
+                            <h4>가람휘 장한솔 </h4>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
-
-            <div class="services-area services-padding pb-100">
-                <div class="container-fluid">
-                    <div class="services-wrapper">
-                        <div class="single-services mb-30">
-                            <div class="services-icon">
-                                <img alt="" src="resources/img/icon-img/3.png">
-                            </div>
-                            <div class="services-text">
-                                <h5>FREE SHIPPING</h5>
-                                <p>Free shipping on all order</p>
-                            </div>
-                        </div>
-                        <div class="single-services mb-30">
-                            <div class="services-icon">
-                                <img alt="" src="resources/img/icon-img/4.png">
-                            </div>
-                            <div class="services-text">
-                                <h5>ONLINE SUPPORT</h5>
-                                <p>Online support 24 hours a day</p>
-                            </div>
-                        </div>
-                        <div class="single-services mb-30">
-                            <div class="services-icon">
-                                <img alt="" src="resources/img/icon-img/5.png">
-                            </div>
-                            <div class="services-text">
-                                <h5>MONEY RETURN</h5>
-                                <p>Back guarantee under 5 days</p>
-                            </div>
-                        </div>
-                        <div class="single-services mb-30">
-                            <div class="services-icon">
-                                <img alt="" src="resources/img/icon-img/6.png">
-                            </div>
-                            <div class="services-text">
-                                <h5>MEMBER DISCOUNT</h5>
-                                <p>Onevery order over $150</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <footer class="theme-bg footer-padding">
+            
+            <footer class="footer-padding">
                 <div class="container-fluid">
                     <div class="footer-top pt-85 pb-25">
                         <div class="row">

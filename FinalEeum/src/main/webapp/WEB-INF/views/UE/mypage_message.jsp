@@ -102,6 +102,8 @@ table thead tr th{font-size:21px !important}
             <div class="product-cart-area hm-3-padding pt-120 pb-130">
                 <div class="container-fluid">
                     <div class="row">
+                    
+                      <c:if test="${receiveCount > 0 }">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-content table-responsive">
                             
@@ -134,7 +136,6 @@ table thead tr th{font-size:21px !important}
 		                                            	</c:when>
 		                                            	<c:otherwise>
 				                                           		<c:out value="${r.MSG_CONTENT}"/>
-		                                            		</a>
 		                                            	</c:otherwise>
 		                                            </c:choose>
                                             	</span>
@@ -149,7 +150,7 @@ table thead tr th{font-size:21px !important}
 	                                        </c:if>
 	                                        
 	                                        <td class="product-subtotal">
-												<button class="btn-style" id="message" onclick="javascript:message('msgView.net?msg_no=${r.MSG_NO}&msg_sid=${r.MSG_SID}&msg_rid=${r.MSG_RID}&msg_content=${r.MSG_CONTENT}')">
+												<button class="btn-style" id="message" onclick="javascript:message('msgView.net?msg_no=${r.MSG_NO}')">
 													<span>상세보기</span>	
 												</button>
 											</td>
@@ -192,6 +193,14 @@ table thead tr th{font-size:21px !important}
 							</div>
                             
                         </div>
+                     </c:if>
+                        
+                      <c:if test="${receiveCount == 0 }">
+			               <div class="col-lg-12 col-md-12 col-12 nodata">	
+				            	<p>아직 받은 메시지가 없습니다 😥</p>
+				            	<p>조금만 더 답장을 기다려주세요</p>
+				            </div>
+                       </c:if>
                     </div>
                 </div>
             </div>

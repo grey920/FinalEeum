@@ -5,7 +5,6 @@
 
 <mapper namespace="Experts">
 
-
 	<insert id="insert" parameterType="expert">
 		insert into expert_table
 		(expert_jumin1, expert_jumin2, expert_name, expert_id, expert_pass, expert_phone1, expert_phone2, expert_phone3,
@@ -72,14 +71,14 @@
 	
 		INSERT INTO REQUEST			
 			(REQUEST_NO, EXPERT_ID, WRITER, WRITER_TYPE, BUILDING_TYPE, BUILDING_TEXT, REPAIR_TYPE, REPAIR_TEXT, SIMPLE_REQ_TEXT, REQUEST_DATE)	
-		VALUES(request_seq.NEXTVAL, #{expert_id}, #{writer}, #{writer_type}, #{building_type}, #{building_text}, #{repair_type}, #{repair_text}, #{simple_req_text}, SYSDATE)
+		VALUES(request_seq.NEXTVAL, #{expert_id}, #{writer}, #{writer_type}, #{building_type}, #{building_text}, #{repair_type}, #{repair_text}, #{simple_req_text}, (sysdate + (INTERVAL '9' HOUR)))
 	</insert>
 
 
 	<insert id="insertRequestFileData"  parameterType="java.util.Map">	       
 		INSERT INTO REQUEST_FILE	
 		(FILE_NO, REQUEST_NO, FILE_NAME, FILE_ORIGINAL, FILE_THUMB_NAME, REQUEST_FILE_DATE)	
-		VALUES (request_file_seq.NEXTVAL, #{request_no}, #{file_name}, #{file_original}, #{file_thumb_name}, SYSDATE)	
+		VALUES (request_file_seq.NEXTVAL, #{request_no}, #{file_name}, #{file_original}, #{file_thumb_name}, (sysdate + (INTERVAL '9' HOUR)))	
 	</insert>
 	
 	<select id="reserveCount" parameterType="String" resultType="int">
@@ -88,7 +87,17 @@
 		where RS_UID = #{user_id}
 	</select>
 	
-	<select id="reserveList" parameterType="map" resultType="map">
+	<select id="reserveCheck" resultType="reservation">
+		select * from RESERVATION where rs_uid = #{rs_uid} and rs_no = #{rs_no}
+	</select>
+	
+	<update id="updateStatePay" parameterType="map">
+		update reservation
+		set rs_state = 2
+		where rs_uid = #{rs_uid} and rs_no = #{rs_no}
+	</update>
+	
+	<select id="ureserveList" parameterType="map" resultType="map">
 		select *
 		from (select rownum rnum, r.*
 				  from (	select r.*, e.expert_name, p.pf_grade, p.pf_cate, p.pf_saveprofile
@@ -97,10 +106,11 @@
 	  			 					 portfolio p on r.rs_exid = p.pf_exid
 	  						where r.rs_uid = #{user_id}
 	  						) r
+	  				order by r.rs_no desc
 	  			 )
 		where rnum &gt; = #{start} and rnum &lt; = #{end}
 	</select>
-	
+	 
 	<select id="poselect" resultType="portfolio" parameterType="String">
 		select * from PORTFOLIO where PF_EXID = #{expert_id}
 	</select>
@@ -121,7 +131,7 @@
 	<insert id="insertReservation" parameterType="reservation">
 		insert into RESERVATION
 		(RS_NO, RS_EXID, RS_UID)
-		values(RS_SEQ.NEXTVAL, #{rs_exid}, #{rs_uid})
+		values(#{rs_no}, #{rs_exid}, #{rs_uid})
 	</insert>
 	
 	<update id="cancelReserve" parameterType="map">
@@ -147,5 +157,107 @@
 		set expert_pass = #{expert_pass}
 		where expert_id = #{expert_id} and expert_name = #{expert_name} and expert_jumin1 = #{expert_jumin1}
 	</update>
+	
+	<select id="exreserveCount" parameterType="map" resultType="int">
+		select count(*)
+		from reservation
+		where rs_exid = #{expert_id} and rs_state = #{state}
+	</select>
+	
+	<select id="exreserveList" parameterType="map" resultType="map">
+		select *
+		from (select rownum rnum, re.*, u.*
+					from (select rs.*, rq.*
+								from reservation rs inner join request rq on rs.rs_no = rq.request_no
+								where rs.rs_uid = rq.writer and rs.rs_state = #{state}
+							  ) re
+							  inner join user_table u on u.user_id = re.rs_uid
+					where re.expert_id = #{expert_id}
+					order by re.request_date asc
+					) 
+		where rnum &gt; = #{start} and rnum &lt; = #{end}
+	</select>
+	
+	<select id="reservingCount" parameterType="map" resultType="int">
+		select count(*)
+		from reservation
+		where rs_exid = #{expert_id} and rs_state &gt; = #{state1} and rs_state &lt; = #{state2}
+	</select>
+	
+	<select id="reservingList" parameterType="map" resultType="map">
+		select *
+		from (select rownum rnum, re.*, u.*
+					from (select rs.*, rq.*
+								from reservation rs inner join request rq on rs.rs_no = rq.request_no
+								where rs.rs_uid = rq.writer and rs.rs_state &gt; = #{state1} and rs.rs_state &lt; = #{state2}
+								) re
+								inner join user_table u on u.user_id = re.rs_uid
+					where re.expert_id = #{expert_id}
+					order by re.request_date asc
+					) 
+		where rnum &gt; = #{start} and rnum &lt; = #{end}
+	</select>
+	
+	<update id="reserveCancel" parameterType="int">
+		update reservation
+		set RS_STATE = 4
+		where RS_NO = #{rs_no}
+	</update>
+	
+	<select id="estimateList" parameterType="int" resultType="map">
+		select rq.*, rs.*
+		from (select r.*, rf.*
+				  from request r inner join request_file rf on r.request_no = rf.request_no
+				 ) rq inner join reservation rs on rq.request_no = rs.rs_no
+		where rq.request_no = #{request_no}
+	</select>
+	
+	<select id="serviceForm" parameterType="int" resultType="map">
+		select rs.*, u.*
+		from reservation rs inner join user_table u on rs.rs_uid = u.user_id
+		where rs.rs_no = #{rs_no}
+	</select>
+	
+	<update id="serviceYes" parameterType="reservation">
+		update reservation
+		set rs_date = #{rs_date}, rs_time = #{rs_time}, rs_money = #{rs_money}, rs_state = 1
+		where rs_no = #{rs_no}
+	</update>
+	
+	<update id="serviceOk" parameterType="int">
+		update reservation
+		set rs_state = 3
+		where rs_no = #{rs_no}
+	</update>
+	
+	<select id="getGrade" parameterType="String" resultType="String">
+		select pf_grade
+		from portfolio
+		where pf_exid = #{expert_id}
+	</select>
+	
+	<select id="getName" parameterType="String" resultType="String">
+		select expert_name
+		from expert_table
+		where expert_id = #{expert_id}
+	</select>
+	
+	<select id="requestT" parameterType="int" resultType="map">
+		select *
+		from request
+		where request_no = #{request_no}
+	</select>
+	
+	<select id="reserveT" parameterType="int" resultType="reservation">
+		select *
+		from reservation
+		where rs_no = #{request_no}
+	</select>
+	
+	<select id="rfT" parameterType="int" resultType="map">
+		select *
+		from request_file
+		where request_no = #{request_no}
+	</select>
 	
 </mapper>

@@ -161,12 +161,7 @@
 									</div>
 
 
-									<div class="col-md-12">
-										<div class="checkout-form-list">
-											<label>경력 상세설명 <span class="required">*</span></label>
-											<textarea name="PF_DESC" cols="30" rows="5" disabled>${p.PF_DESC}</textarea>
-										</div>
-									</div>
+									
 
 								</div>
 							</div>
@@ -218,6 +213,16 @@
 								</div>
 							</div>
 						</div>
+						
+						<div class="col-lg-12 col-md-12 col-12">
+						<div class="col-md-12">
+										<div class="checkout-form-list">
+											<label>경력 상세설명 <span class="required">*</span></label>
+											${p.PF_DESC}
+										</div>
+									</div>
+						</div>
+						
 						<div class="row btnAlign">
 							<div class="col-lg-12 col-md-12 col-12">
 								<div class="buttons">

@@ -4,10 +4,6 @@ like_expert_id varchar2(40),
 like_state number
 )
 
-
-delete from like_expert
-
 drop table like_expert;
-
 
 SELECT * FROM LIKE_EXPERT;

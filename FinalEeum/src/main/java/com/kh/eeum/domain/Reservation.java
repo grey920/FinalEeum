@@ -1,13 +1,20 @@
 package com.kh.eeum.domain;
 
 public class Reservation {
+	private int rs_no;
 	private String rs_exid;
 	private String rs_uid;
 	private String rs_date;
 	private String rs_time;
 	private String rs_money;
 	private String rs_state;
-	
+
+	public int getRs_no() {
+		return rs_no;
+	}
+	public void setRs_no(int rs_no) {
+		this.rs_no = rs_no;
+	}
 	public String getRs_exid() {
 		return rs_exid;
 	}
@@ -44,5 +51,6 @@ public class Reservation {
 	public void setRs_state(String rs_state) {
 		this.rs_state = rs_state;
 	}
+	
 	
 }

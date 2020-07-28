@@ -63,6 +63,12 @@
 		WHERE REPORT_REPORT = #{REPORT_REPORT}
 	</update>
 	
+
+	<delete id="reject">
+		DELETE FROM REPORT
+		WHERE REPORT_REPORT=${REPORT_REPORT}
+	</delete>
+
 	<insert id="priceIn" parameterType="Admin">
 		INSERT INTO PRICE(EXID, PRIC_CON)
 		VALUES(
@@ -74,6 +80,5 @@
 		SELECT * FROM PRICE
 		WHERE EXID=#{EXID}
 	</select>
-
 
 </mapper>

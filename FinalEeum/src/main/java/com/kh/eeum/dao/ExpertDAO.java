@@ -108,10 +108,10 @@ public class ExpertDAO {
 		return sqlSession.selectOne("Experts.reserveCount", user_id);
 	}
 
-	public List<Reservation> reserveList(HashMap<String, Object> map) {
-		return sqlSession.selectList("Experts.reserveList", map);
+	public List<Reservation> ureserveList(HashMap<String, Object> map) {
+		return sqlSession.selectList("Experts.ureserveList", map);
 	}
-
+	
 	public int cancelReserve(Map<String, Object> map) {
 		return sqlSession.update("Experts.cancelReserve", map);
 	}
@@ -135,5 +135,68 @@ public class ExpertDAO {
 		return sqlSession.update("Experts.updatePwd", map);
 	}
 
+	public int exreserveCount(HashMap<String, Object> map) {
+		return sqlSession.selectOne("Experts.exreserveCount", map);
+	}
+
+	public List<Map<String, Object>> exreserveList(HashMap<String, Object> map) {
+		return sqlSession.selectList("Experts.exreserveList", map);
+	}
+
+	public int reservingCount(HashMap<String, Object> map) {
+		return sqlSession.selectOne("Experts.reservingCount", map);
+	}
+
+	public List<Map<String, Object>> reservingList(HashMap<String, Object> map) {
+		return sqlSession.selectList("Experts.reservingList", map);
+	}
+
+	public int reserveCancel(int rs_no) {
+		return sqlSession.update("Experts.reserveCancel", rs_no);
+	}
+
+	public Map<String, Object> estimateList(int request_no) {
+		return sqlSession.selectOne("Experts.estimateList", request_no);
+	}
+
+	public Map<String, Object> serviceForm(int rs_no) {
+		return sqlSession.selectOne("Experts.serviceForm", rs_no);
+	}
+	
+	public int serviceYes(Reservation rv) {
+		return sqlSession.update("Experts.serviceYes", rv);
+	}
+
+	public int serviceOk(int rs_no) {
+		return sqlSession.update("Experts.serviceOk", rs_no);
+	}
+
+	public Reservation reserveCheck(Map<String, Object> map) {
+		return sqlSession.selectOne("Experts.reserveCheck", map);
+	}
+
+	public int updateState(Map<String, Object> map) {
+		return sqlSession.update("Experts.updateStatePay", map);
+	}
+
+	public String getGrade(String expert_id) {
+		return sqlSession.selectOne("Experts.getGrade", expert_id);
+	}
+	
+	public String getName(String expert_id) {
+		return sqlSession.selectOne("Experts.getName", expert_id);
+	}
+
+	public Map<String, Object> requestT(int request_no) {
+		return sqlSession.selectOne("Experts.requestT", request_no);
+	}
+
+	public Reservation reserveT(int request_no) {
+		return sqlSession.selectOne("Experts.reserveT", request_no);
+	}
+
+	public List<Map<String, Object>> rfT(int request_no) {
+		return sqlSession.selectList("Experts.rfT", request_no);
+	}
 
 }
