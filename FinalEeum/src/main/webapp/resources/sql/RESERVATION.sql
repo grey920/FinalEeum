@@ -15,13 +15,7 @@ DROP sequence RS_SEQ
 
 select * from reservation
 
-delete reservation
-DROP TABLE RESERVATION
-
 select * from REVIEW;
 
-----------------------------------
 CREATE sequence RS_SEQ;
 
-update RESERVATION set RS_STATE = '1', RS_MONEY = '100'
-where RS_NO=3;

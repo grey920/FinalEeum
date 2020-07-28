@@ -36,6 +36,7 @@ public class OnedayController {
 
 	@Autowired
 	private OnedayService onedayService;
+	
 	@Autowired
 	private ApplyService applyService;
 	

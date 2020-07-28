@@ -120,7 +120,7 @@
                                                 <br>
                                                 <c:choose>
                                                 	<c:when test="${fn:length(c.RS_TIME) > 2}">
-                                                		<c:out value="${fn:substring(c.RS_TIME,0,2)}"/>시&nbsp;
+                                                		<c:out value="${fn:substring(c.RS_TIME,0,2)}"/>시
                                                 		<c:out value="${fn:substring(c.RS_TIME,2,4)}" />분
                                                 	</c:when>
                                                 	<c:otherwise>

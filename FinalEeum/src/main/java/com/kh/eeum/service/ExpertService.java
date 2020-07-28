@@ -82,5 +82,13 @@ public interface ExpertService {
 	public Map<String, Object> serviceForm(int rs_no);
 	public int serviceYes(Reservation rv);
 	public int serviceOk(int rs_no);
+	
+	public String getGrade(String expert_id);
+	public String getName (String expert_id);
+	
+	//견적확인서
+	public Map<String, Object> requestT(int request_no);
+	public Reservation reserveT(int request_no);
+	public List<Map<String, Object>> rfT(int request_no);
 
 }

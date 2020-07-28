@@ -99,9 +99,9 @@ button{height:50px}
                                                 	<p>사용자 이름 *</p>
                                                     <input type="text" id="user_name" name="user_name" placeholder="사용자 이름">
                                                     <p>사용자 주민등록번호 *</p>
-                                                    <input type="password" id="user_jumin1" name="user_jumin1" style="width:48%">
+                                                    <input type="text" id="user_jumin1" name="user_jumin1" style="width:48%" maxLength="6" >
                                                     -
-                                                    <input type="password" id="user_jumin2" name="user_jumin2" style="width:48%">
+                                                    <input type="password" id="user_jumin2" name="user_jumin2" style="width:48%" maxLength="7" >
                                                     <div class="button-box">
                                                         <div style="text-align:center; margin:0 auto; margin-top:15px">
                                                         <button type="submit" class="btn-style" style="border-radius:50px"><span>아이디 찾기</span></button>
@@ -127,9 +127,9 @@ button{height:50px}
                                                 	<p>사용자 이름 *</p>
                                                     <input type="text" id="user_name" name="user_name" placeholder="사용자 이름">
                                                     <p>사용자 주민등록번호 *</p>
-                                                    <input type="password" id="user_jumin1" name="user_jumin1" style="width:48%">
+                                                    <input type="text" id="user_jumin1" name="user_jumin1" style="width:48%" maxLength="6" >
                                                     -
-                                                    <input type="password" id="user_jumin2" name="user_jumin2" style="width:48%">
+                                                    <input type="password" id="user_jumin2" name="user_jumin2" style="width:48%" maxLength="7" >
                                                     <div class="button-box">
                                                         <div style="text-align:center; margin:0 auto; margin-top:15px">
                                                         <button type="submit" class="btn-style" style="border-radius:50px"><span>비밀번호 찾기</span></button>

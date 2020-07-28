@@ -49,9 +49,10 @@
          .pt-120{padding-top:20px !important}
          .breadcrumb-content > h2{font-size:25px}
          .breadcrumb-content{padding-top:0;margin-top:1.5em}
-         .table-content table th{padding:20px}
+         .table-content table th{padding:20px; border-right:2px solid #C1C8D9}
+         .table-content table td{padding:10px; border-right:2px solid #C1C8D9}
          tr td.class-state{padding-top:10px; padding-bottom:20px}
-         .table-estimate table tr{border-collapse:collapse; border:1px solid #C1C8D9}
+         .table-estimate table tr{border-collapse:collapse; border:2px solid #C1C8D9}
          .modal-footer a {font-size:13pt}
          .modal-table table tbody tr td{border:1px solid #e8e6e6;
          													padding:15px 10px}
@@ -67,7 +68,7 @@
             <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
-                        <h2>견적서 확인 및 예약 내역 확인</h2>
+                        <h2>견적서 확인</h2>
                     </div>
                 </div>
             </div>
@@ -75,36 +76,75 @@
             <div class="product-cart-area hm-3-padding pt-120 pb-130">
                 <div class="container-fluid">
                     <div class="row">
+                    
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-content table-responsive table-estimate">
-                                <table style="text-align:center">
+                                <table style="text-align:center; width:85%; margin:0 auto">
+                                
+                                  <c:set var="rq" value="${requestT}" />
+                                  <c:set var="rs" value="${reserveT}" />
+                                  
                                     <tbody>
                                         <tr>
-                                        	<th>전문가 이름</th>
-                                        	<td>${e.EXPERT_NAME}</td>
-                                        	<th>사용자 이름</th>
-                                        	<td>${e.USER_NAME}</td>
-                                        	<th>예약 상태</th>
-                                        	<td>${e.RS_STATE}</td>
+                                        	<td style="width:16%">전문가 이름</td>
+                                        	<th style="width:17%">${ex_name}</th>
+                                        	<td style="width:17%">사용자 이름</td>
+                                        	<th style="width:16%">${u_name}</th>
+                                        	<td style="width:16%">예약 상태</td>
+                                        	<th style="width:17%">
+                                        		<c:choose>
+                                        			<c:when test="${rs.rs_state == '0'}">예약 대기</c:when>
+                                        			<c:when test="${rs.rs_state == '1'}">예약 확정 (미입금)</c:when>
+                                        			<c:when test="${rs.rs_state == '2'}">예약 확정</c:when>
+                                        			<c:when test="${rs.rs_state == '3'}">예약 취소</c:when>
+                                        			<c:when test="${rs.rs_state == '4' || rs.rs_state == '5'}">서비스 완료</c:when>
+                                        		</c:choose>
+                                        	</th>
                                         </tr>
+                                        
                                         <tr>
-                                        	<th>건물 타입</th>
-                                        	<td colspan="2">${e.BUILDING_TYPE}</td>
-                                        	<th>신청 서비스</th>
-                                        	<td colspan="2">${e.REPAIR_TYPE}</td>
+                                        	<td>건물 타입</td>
+                                        	<th colspan="2">
+                                        		<c:choose>
+                                        			<c:when test="${rq.BUILDING_TYPE == '기타'}">기타 - ${rq.BUILDING_TEXT}</c:when>
+                                        			<c:otherwise>${rq.BUILDING_TYPE}</c:otherwise>
+                                        		</c:choose>
+                                        	</th>
+                                        	<td>신청 서비스</td>
+                                        	<th colspan="2">
+											<c:choose>
+                                        			<c:when test="${rq.REPAIR_TYPE == '기타'}">기타 - ${rq.REPAIR_TEXT}</c:when>
+                                        			<c:otherwise>${rq.REPAIR_TYPE}</c:otherwise>
+                                        		</c:choose>
+                                        	</th>
                                         </tr>
+                                        
                                         <tr>
-                                        	<th>첨부 사진</th>
-                                        	<td colspan="5"></td>
+                                        	<td>첨부 사진</td>
+                                        	<th colspan="5" style="height:auto; text-align:left">
+                                        		<c:forEach var="rf" items="${rfT}">
+                                        			<a href="javascript:photo('detailPhoto?photo=${rf.FILE_NAME}')">
+                                        			<img src="resources/Requestupload${rf.FILE_THUMB_NAME}">
+                                        			</a>
+                                        		</c:forEach>
+                                        	</th>
                                         </tr>
+                                        
                                         <tr>
-                                        	<th>요청 사항</th>
-                                        	<td colspan="5">${e.SIMPLE_REQ_TEXT}</td>
+                                        	<td>요청 사항</td>
+                                        	<th colspan="5" style="text-align:left">${rq.SIMPLE_REQ_TEXT}</th>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                        
+                       	<div class="button-box" style="margin:30px auto; text-align:center">
+							<button class="btn-style" onClick="history.go(-1)">
+								<span>이전 페이지로 이동</span>
+							</button>
+						</div> 
+                        
                     </div>
                 </div>
             </div>
@@ -262,6 +302,10 @@
 		<script>
 			function message (url) {
 				var send = window.open(url, "send", "width=100, heigth=100, location=no");
+			};
+
+			function photo (url) {
+				var send = window.open(url, "", "width=500, location=no");
 			};
 		</script>
         <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>

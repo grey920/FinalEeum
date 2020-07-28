@@ -14,6 +14,7 @@
 <style>
 .header-area{background-color:white}
 .header-site-icon{padding-right:50px !important}
+.header-site-icon .header-login>li> ul > li > span {color:#72A0E0;}
 </style>
 <body>
 		<div class="header-area transparent-bar">
@@ -44,7 +45,7 @@
 													<ul style="text-align: center;">
 														<li style="margin-bottom: 10px;"><a href="no_id.service">수리</a></li>
 														<li style="margin-bottom: 10px;"><a href="no_id.service">청소</a></li>
-														<li><a href="no_id.service">해충</a></li>
+														<li><a href="no_id.service">방역</a></li>
 													</ul>
 												</li>
 											</c:when>
@@ -53,7 +54,7 @@
 												<ul style="text-align: center;">
 													<li style="margin-bottom: 10px;"><a href="expert_repair.service">수리</a></li>
 													<li style="margin-bottom: 10px;"><a href="expert_cleaning.service">청소</a></li>
-													<li><a href="expert_insect.service">해충</a></li>
+													<li><a href="expert_insect.service">방역</a></li>
 												</ul>
 											</li>
 											</c:otherwise>
@@ -61,7 +62,7 @@
 
 										<li><a href="OnedayList.one">원데이 클래스</a></li>
 										<li><a href="FAQ.net">FAQ</a></li>
-										<li><a href="QnA.net">문의</a></li>
+										<li><a href="Report.net">문의</a></li>
 									</ul>
 								</nav>
 							</div>
@@ -122,7 +123,27 @@
 								<li><a href="expertpage.net"><img src="resources/img/header/user.png"
 																						style="margin-bottom: 30px; width: 30px; filter: saturate(80%);" /></a>
 									<ul style="width:200px">
-										<li>전문가&nbsp;${expert_name}</li>
+										<li>
+											<span>
+											<c:choose>
+												<c:when test="${pf_grade ==  '0'}">
+													디딤돌¹
+												</c:when>
+												<c:when test="${pf_grade ==  '1'}">
+													마루²
+												</c:when>
+												<c:when test="${pf_grade ==  '2'}">
+													우주³
+												</c:when>
+												<c:when test="${pf_grade ==  '3'}">
+													용마루⁴
+												</c:when>
+												<c:otherwise>
+													${pf_grade}
+												</c:otherwise>
+											</c:choose>
+											</span>
+										&nbsp;${expert_name}</li>
 										<li><a href="expertpage.net">나의 정보</a></li>
 										<li><a href="logout.net">이음 나가기</a></li>
 									</ul>
@@ -152,7 +173,7 @@
 											<ul>
 												<li><a href="no_id.service">수리</a></li>
 												<li><a href="no_id.service">청소</a></li>
-												<li><a href="no_id.service">해충</a></li>
+												<li><a href="no_id.service">방역</a></li>
 											</ul>
 										</li>
 									</c:when>
@@ -161,7 +182,7 @@
 										<ul>
 											<li><a href="expert_repair.service">수리</a></li>
 											<li><a href="expert_cleaning.service">청소</a></li>
-											<li><a href="expert_insect.service">해충</a></li>
+											<li><a href="expert_insect.service">방역</a></li>
 										</ul>
 									</li>
 									</c:otherwise>
@@ -169,7 +190,7 @@
 							
 									<li><a href="OnedayList.one">원데이 클래스</a></li>
 									<li><a href="FAQ.net">FAQ</a></li>
-									<li><a href="QnA.net">문의</a></li>
+									<li><a href="Report.net">문의</a></li>
 								</ul>
 							</nav>
 						</div>

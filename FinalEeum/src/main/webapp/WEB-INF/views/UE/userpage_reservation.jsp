@@ -142,7 +142,7 @@
 	                                            <br>
 	                                            <c:choose>
                                                 	<c:when test="${fn:length(r.RS_TIME) > 2}">
-                                                		<c:out value="${fn:substring(r.RS_TIME,0,2)}"/>시&nbsp;
+                                                		<c:out value="${fn:substring(r.RS_TIME,0,2)}"/>시
                                                 		<c:out value="${fn:substring(r.RS_TIME,2,4)}" />분
                                                 	</c:when>
                                                 	<c:otherwise>
@@ -163,7 +163,7 @@
 	                                            <c:if test="${r.RS_STATE == '1' || r.RS_STATE == '2'}">
 	                                            예약 확정
 	                                            </c:if>
-	                                            <c:if test="${r.RS_STATE == '3'}">
+	                                            <c:if test="${r.RS_STATE == '3' || r.RS_STATE == '5'}">
 	                                            서비스 완료
 	                                            </c:if>
 	                                            <c:if test="${r.RS_STATE == '4'}">
@@ -174,7 +174,7 @@
                                             <td class="product-subtotal class-state">
                                             	<div class="button-box" style="text-align:center;">
                                             	
-                                            	  <c:if test="${r.RS_STATE == '0' || r.RS_STATE == '1' || r.RS_STATE == '2'}">
+                                            	  <c:if test="${r.RS_STATE == '0' || r.RS_STATE == '1' || r.RS_STATE == '2' || r.RS_STATE == '3' || r.RS_STATE == '5'}">
 													<button class="btn-style" onclick="location.href='estimateList.net?request_no=${r.RS_NO}';">
 														<span>견적확인</span>	
 													</button>
@@ -218,9 +218,6 @@
                                             	  <c:if test="${r.RS_STATE == '3'}">
 													<button class="btn-style" onclick="location.href='expertDetail.service?expert=${r.RS_EXID}';">
 														<span>후기쓰기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>신고하기</span>
 													</button>
                                             	  </c:if>
                                             	  
