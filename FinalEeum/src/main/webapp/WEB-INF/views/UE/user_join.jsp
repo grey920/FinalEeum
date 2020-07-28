@@ -348,7 +348,7 @@
 
 	<!-- all js here -->
 	<script src="resources/js/jquery-3.5.0.js"></script>
-	
+	<script src="resources/js/userValidate.js"></script>
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
 	<script src="resources/js/popper.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>

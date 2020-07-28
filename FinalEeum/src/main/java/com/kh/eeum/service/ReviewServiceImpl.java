@@ -13,16 +13,11 @@ import com.kh.eeum.domain.Review;
 @Service
 public class ReviewServiceImpl implements ReviewService{
 	
-	
 	@Autowired
 	ReviewDAO dao;
 	
-
-
 	@Override
 	public List<Review> selectReviewList( String expert_id, int page) {
-		
-		
 		System.out.println("리뷰 서비스"+expert_id);
 		
 		int startrow = (page - 1) * 10 + 1;
@@ -38,7 +33,6 @@ public class ReviewServiceImpl implements ReviewService{
 
 	@Override
 	public int insertReview(Review review) {
-		
 		return dao.insertReview(review);
 	}
 
@@ -59,13 +53,13 @@ public class ReviewServiceImpl implements ReviewService{
 
 	@Override
 	public float selectReviewList(String expertid) {
-	
 		float rating = dao.selectReviewList1(expertid);
+		
 		if(rating == 0) {
 			return 0;
 		}
+		
 		return rating;
-
 	}
 
 	public int reviewCount(String user_id) {
@@ -93,10 +87,11 @@ public class ReviewServiceImpl implements ReviewService{
 		map.put("user_id", user_id);
 		map.put("expert_id", expert_id);
 		map.put("num", 3);
-		
-
-
 		return dao.selectReservationList(map);
+	}
+	@Override
+	public Map<String, Object> getReview(int rv_no) {
+		return dao.getReview(rv_no);
 	}
 
 	@Override

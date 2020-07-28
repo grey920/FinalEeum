@@ -181,7 +181,7 @@ $(document).ready(
 					}
 
 				} else if (active.toString() == 'tab3') {
-					tab = "price_list";
+					tab = "pricelist_detail";
 					for (var i = 1; i <= 4; i++) {
 						$('#tabText' + i).css('text-decoration', 'none');
 						$('#tabText' + i).css('color', 'white');

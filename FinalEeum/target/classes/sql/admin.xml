@@ -57,7 +57,7 @@
 		FROM REPORTBOARD
 	</select>
 	
-	<update id="state">
+	<update id="state" parameterType="String">
 		UPDATE REPORTBOARD 
 		SET REPORT_TIMES = REPORT_TIMES+1 
 		WHERE REPORT_REPORT = #{REPORT_REPORT}
@@ -67,4 +67,17 @@
 		DELETE FROM REPORT
 		WHERE REPORT_REPORT=${REPORT_REPORT}
 	</delete>
+	<insert id="priceIn" parameterType="Admin">
+		INSERT INTO PRICE(EXID, PRIC_CON)
+		VALUES(
+		#{EXID}, #{PRIC_CON}
+		)
+	</insert>
+	
+	<select id="selPric" resultType="map" parameterType="hashMap">
+		SELECT * FROM PRICE
+		WHERE EXID=#{EXID}
+	</select>
+
+
 </mapper>

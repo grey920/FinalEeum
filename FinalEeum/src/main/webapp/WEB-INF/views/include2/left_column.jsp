@@ -72,7 +72,7 @@ body {
 						</ul></li>
 
 					<!-- 신고회원 관리 -->
-					<li class="nav-item has-treeview"><a href="qnaUser.list" class="nav-link"
+					<li class="nav-item has-treeview"><a href="reportU.net" class="nav-link"
 						style="color: white"> <i class="nav-icon fas fa-edit"
 							style="color: white"></i>
 							<p>신고 회원 관리</p></a></li>

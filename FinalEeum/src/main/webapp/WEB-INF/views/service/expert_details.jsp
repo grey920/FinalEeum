@@ -46,7 +46,7 @@
 
 </head>
 <body>
-   <div class="wrapper">
+      <div class="wrapper">
       <!-- header start -->
       <div class="header-height"></div>
       <!-- main-search start -->
@@ -159,15 +159,15 @@
 
                <!-- 모달 : ㅇ-->
                      <!-- 수리 : -->
-               <c:if test="${po.PF_CATE == 3}">
+               <c:if test="${po.PF_CATE == 2}">
                <%@include file="expert_modal.jsp" %>
                </c:if>
                <!-- 청소 -->
-               <c:if test="${po.PF_CATE == 1}">
+               <c:if test="${po.PF_CATE == 0}">
                <%@include file="expert_modal_clean.jsp" %>
                </c:if>
                <!-- 해충 -->
-                  <c:if test="${po.PF_CATE == 2}">
+                  <c:if test="${po.PF_CATE == 1}">
             <%@include file="expert_modal_insect.jsp" %>
                </c:if>
 

@@ -13,24 +13,3 @@ EXPERT_STATE 				NUMBER DEFAULT 0 -- 일반 / 일시중단 / 영구정지
 )
 
 select * from EXPERT_TABLE;
-		select EX.*
-	from (select E.*, P.PF_GRADE
-		FROM EXPERT_TABLE E, PORTFOLIO P
-		 WHERE E.EXPERT_ID = P.PF_EXID) EX
-	WHERE EX.EXPERT_ID = 'aaa'
-	
-	
-			select R*,U.USER_ID
-		from (select rownum
-		rnum,rv_no,rv_user_id,rv_expert_id,rv_content,TO_CHAR(rv_rating1, 'FM999999999.0') AS RV_RATING1,TO_CHAR(rv_rating2, 'FM999999999.0') AS RV_RATING2,
-		TO_CHAR(rv_rating3, 'FM999999999.0') AS RV_RATING3,TO_CHAR(rv_rating4, 'FM999999999.0') AS RV_RATING4,
-		TO_CHAR(rv_rating5, 'FM999999999.0') AS RV_RATING5,TO_CHAR(rv_rating6, 'FM999999999.0') AS RV_RATING6,TRIM(TO_CHAR(rv_sum, '99999999.99')) as rv_sum,TO_CHAR(rv_date,'YYYY-MM-DD') as RV_DATE,
-		USER_NICK 
-			from (
-				select *
-				from REVIEW R, USER_TABLE U
-				where rv_expert_id = #{expert_id} 
-				order by rv_date desc
-				)
-			)
-			where rnum between 0 and 5

@@ -27,10 +27,11 @@
 	</insert>
 
 	<update id="update" parameterType="Review">
-	update review
-	set rv_content = #{rv_content}, rv_rating1 = #{rv_rating1}, rv_rating2 = #{rv_rating2}, rv_rating3 = #{rv_rating3}
-	, rv_rating4 = #{rv_rating4}, rv_rating5 = #{rv_rating5}, rv_rating6 = #{rv_rating6},rv_sum = #{rating_sum}rv_date = sysdate
-	where rv_no = #{rv_no}
+		update review
+		set rv_content = #{rv_content}, rv_rating1 = #{rv_rating1}, rv_rating2 = #{rv_rating2}, rv_rating3 = #{rv_rating3}
+		, rv_rating4 = #{rv_rating4}, rv_rating5 = #{rv_rating5}, rv_rating6 = #{rv_rating6},rv_sum = #{rating_sum}rv_date = sysdate
+		where rv_no = #{rv_no}
+
 	</update>
 	
 	<select id="count" resultType="int">
@@ -54,6 +55,27 @@
 		select count(*)
 		from review
 		where rv_user_id = #{rv_user_id}
+	</select>
+	
+	<select id="reviewList" parameterType="map" resultType="map">
+		select *
+		from ( select rownum rnum, re.*
+					from ( select e.*, p.*, r.*, rev.*
+								from review rev
+										left outer join expert_table e on e.expert_id = rev.rv_expert_id
+										left outer join portfolio p on p.pf_exid = rev.rv_expert_id
+										full outer join reservation r on r.rs_uid = rev.rv_expert_id
+								where rev.rv_user_id = #{rv_user_id}
+							  ) re
+					order by re.rv_date desc
+				  )
+		where rnum &gt; = #{start} and rnum &lt; = #{end}
+	</select>
+	
+	<select id="getReview" parameterType="int" resultType="map">
+		select rv.*, ex.expert_name
+		from review rv inner join expert_table ex on rv.rv_expert_id = ex.expert_id
+		where rv.rv_no = #{rv_no}
 	</select>
 	
 	<select id="reviewList" parameterType="map" resultType="map">

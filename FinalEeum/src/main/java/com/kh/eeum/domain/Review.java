@@ -2,9 +2,6 @@ package com.kh.eeum.domain;
 
 import java.util.Date;
 
-
-
-
 public class Review {
 	
 	private int rv_no;

@@ -111,7 +111,7 @@
                                 <div class="product-width col-md-6 col-xl-3 col-lg-4">
                                     <div class="product-wrapper mb-35">
                                         <div class="product-img" style="text-align:center;width:250px">
-                                            <a href="#">
+                                            <a href="expertDetail.service?expert=${w.EXPERT_ID}">
                                                 <img src="resources/expert_profile${w.PF_SAVEPROFILE}" style="height:auto">
                                             </a>
 	                                        <div class="price-decrease">

@@ -204,6 +204,9 @@ public class ExpertServiceImpl implements ExpertService {
 			System.out.println(expert_id);
 			String user_id = (String) paramMap.get("writer");
 			System.out.println(user_id);
+			int rs_no = (int) paramMap.get("request_no");
+			
+			reservation.setRs_no(rs_no);
 			reservation.setRs_exid(expert_id);
 			reservation.setRs_uid(user_id);
 			
@@ -326,7 +329,7 @@ public class ExpertServiceImpl implements ExpertService {
 		
 		return exdao.ureserveList(map);
 	}
-
+	
 	@Override
 	public int cancelReserve(String rs_exid, String user_id, String rs_no) {
 		Map <String, Object> map = new HashMap<String, Object>();
@@ -483,15 +486,46 @@ public class ExpertServiceImpl implements ExpertService {
 	}
 
 	@Override
-	public int reserveCancel(String rs_no) {
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		
-		int rs_state = 4;
-	
-		map.put("rs_state", rs_state);
-		map.put("rs_no", rs_no);
-		
-		return exdao.reserveCancel(map);
+	public int reserveCancel(int rs_no) {
+		return exdao.reserveCancel(rs_no);
 	}
+
+	@Override
+	public Map<String, Object> estimateList(int request_no) {
+		return exdao.estimateList(request_no);
+	}
+
+	@Override
+	public Map<String, Object> serviceForm(int rs_no) {
+		return exdao.serviceForm(rs_no);
+	}
+	
+	@Override
+	public int serviceYes(Reservation rv) {
+		return exdao.serviceYes(rv);
+	}
+
+	public int serviceOk(int rs_no) {
+		return exdao.serviceOk(rs_no);
+	}
+
+	public Reservation reserveCheck(String user_id, int num) {
+		Map<String, Object> map= new HashMap<String, Object>();
+		map.put("rs_uid", user_id);
+		map.put("rs_no", num);
+		System.out.println("rs_uid="+user_id+", rs_no="+num);
+		Reservation reserve = exdao.reserveCheck(map);
+		return reserve;
+	}
+
+	@Override
+	public int updateState(String id, int rsIndex) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("rs_uid", id);
+		map.put("rs_no", rsIndex);
+		System.out.println("ExImpl의 updateState()");
+		return exdao.updateState(map);
+	}
+
 
 }

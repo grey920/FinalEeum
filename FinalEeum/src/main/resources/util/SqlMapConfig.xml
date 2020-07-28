@@ -13,7 +13,7 @@
 		<typeAlias alias="user" type="com.kh.eeum.domain.User" />
 		<typeAlias alias="expert" type="com.kh.eeum.domain.Expert" />
 		<typeAlias alias="oneday" type="com.kh.eeum.domain.Oneday"/>
-		<typeAlias alias="admin" type="com.kh.eeum.domain.Admin"/>
+		<typeAlias alias="Admin" type="com.kh.eeum.domain.Admin"/>
 		<typeAlias alias="apply" type="com.kh.eeum.domain.Apply"/>
 		<typeAlias alias="like" type="com.kh.eeum.domain.Like"/>
 		<typeAlias alias="portfolio" type="com.kh.eeum.domain.Portfolio"/>
@@ -24,11 +24,12 @@
 		<typeAlias alias="Integer" type="java.lang.Integer"/>
 		<typeAlias alias="reservation" type="com.kh.eeum.domain.Reservation" />
 		<typeAlias alias="report" type="com.kh.eeum.domain.Report"/>
-
 		<typeAlias alias="C" type="com.kh.eeum.domain.Comment"/>
-
 		<typeAlias alias="message" type="com.kh.eeum.domain.Message" />
+		<typeAlias alias="qna" type="com.kh.eeum.domain.Qna" />
+		<typeAlias alias="pay" type="com.kh.eeum.domain.Pay" />
 
+		
 	</typeAliases>
 
 	<mappers>
@@ -43,11 +44,10 @@
 		<mapper resource="sql/repair.xml"/>
 		<mapper resource="sql/cleaning.xml"/>
 		<mapper resource="sql/insect.xml"/>
-
 		<mapper resource="sql/report.xml"/>
 		<mapper resource="sql/comment.xml"/>
-
 		<mapper resource="sql/message.xml"/>
-
+		<mapper resource="sql/qna.xml"/>
+		<mapper resource="sql/pay.xml"/>
 	</mappers>
 </configuration>

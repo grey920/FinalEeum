@@ -373,9 +373,9 @@
     
     
     /*--- showlogin toggle function ----*/
-    $('#showlogin').on('click', function() {
-        $('#checkout-login').slideToggle(900);
-    });
+//    $('#showlogin').on('click', function() {
+//        $('#checkout-login').slideToggle(900);
+//    });
     
     
     /*--- showlogin toggle function ----*/

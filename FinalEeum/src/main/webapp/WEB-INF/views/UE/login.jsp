@@ -42,7 +42,7 @@ button{height:50px}
 .breadcrumb-content {padding-top:0;}
 .btn-style.btn-login{background-color:#C1C8D9;
 				 color:#303030;
-				 border:2px solid #C1C8D9;
+				 border:2px solid #C1C8D9 !important;
 				 border-radius:50px}
 .btn-style.btn-login:hover{color:#303030;
 						   background-color:white;
@@ -53,7 +53,7 @@ button{height:50px}
          		border-radius:20px;
          		background-color:white;
          		color:#72A0E0;
-         		border:2px solid #72A0E0;
+         		border:2px solid #72A0E0 !important;
          		}
 .btn-style:hover{background-color:#72A0E0;
          					color:white;

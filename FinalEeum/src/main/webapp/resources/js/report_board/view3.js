@@ -42,19 +42,12 @@ $(function() {
                      output = '';
                      $(rdata).each(
                                  function() {
-                                    img = '';
-                                    if ($("#loginid").val() == this.id) {
-                                       img = "<img src='resources/image/pencil2.png' width='15px' class='update'>"
-                                             + "<img src='resources/image/remove.png' width='15px' class='remove'>"
-                                             + "<input type='hidden' value='"
-                                             + this.num + "' >";
-                                    }
                                     output += "<tr><td>" + this.id
                                           + "</td>";
                                     output += "<td>" + this.content
                                           + "</td>";
                                     output += "<td>"
-                                          + this.reg_date + img
+                                          + this.reg_date
                                           + "</td></tr>";
                                  });
                      console.log(output);
