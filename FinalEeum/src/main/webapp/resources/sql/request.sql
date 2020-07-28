@@ -19,6 +19,7 @@ drop table request
 drop sequence request_seq
 
 select * from request
+select * from REQUEST_FILE
 
 
 CREATE TABLE request_file(
@@ -31,4 +32,6 @@ CREATE TABLE request_file(
 );
 
 CREATE SEQUENCE request_file_seq start with 1 increment by 1 ;
-
+select *
+		from request_file
+		where request_no =13

@@ -73,36 +73,39 @@ public class UEController {
 		//전문가 리스트 
 		int g0 = 0;
 		int count0 = expertservice.countGrade(g0);
-		List<Map<String, Object>> list0 = expertservice.pick3(g0, count0);
+		Map<String, Object> list0 = expertservice.pick(g0, count0);
+		System.out.println(list0);
 		
-//		int g1 = 1;
-//		int count1 = expertservice.countGrade(g1);
-//		List<Map<String, Object>> list1 = expertservice.pick3(g1, count1);
-//		
-//		int g2 = 2;
-//		int count2 = expertservice.countGrade(g2);
-//		List<Map<String, Object>> list2 = expertservice.pick3(g2, count2);
-//		
-//		int g3 = 3;
-//		int count3 = expertservice.countGrade(g3);
-//		List<Map<String, Object>> list3 = expertservice.pick3(g3, count3);
+		int g1 = 1;
+		int count1 = expertservice.countGrade(g1);
+		Map<String, Object> list1 = expertservice.pick(g1, count1);
+		System.out.println(list1);
+		
+		int g2 = 2;
+		int count2 = expertservice.countGrade(g2);
+		Map<String, Object> list2 = expertservice.pick(g2, count2);
+		System.out.println(list2);
+		
+		int g3 = 3;
+		int count3 = expertservice.countGrade(g3);
+		Map<String, Object> list3 = expertservice.pick(g3, count3);
+		System.out.println(list3);
 		
 		int allUsers = adminservice.cUsers();
 		int allReviews = adminservice.allReviews();
 		int cPosts = adminservice.cPosts();
 		int newUsers = adminservice.newUsers();
+		System.out.println(allUsers + allReviews + cPosts + newUsers);
 		
 		//원데이클래스 내역
 		List<Map<String, Object>> onelist = onedayservice.main();	
 		
-		
-
 
 		mv.setViewName("main");
 		mv.addObject("list0", list0);
-//		mv.addObject("list1", list1);
-//		mv.addObject("list2", list2);
-//		mv.addObject("list3", list3);
+		mv.addObject("list1", list1);
+		mv.addObject("list2", list2);
+		mv.addObject("list3", list3);
 		
 		mv.addObject("allUsers", allUsers);
 		mv.addObject("allReviews", allReviews);
@@ -352,7 +355,7 @@ public class UEController {
 			}
 			
 			out.println("alert('수정되었습니다.');");
-			out.println("location.href='userpage.net';");
+			out.println("location.href='expertpage.net';");
 			
 		} else {
 			out.println("alert('회원 정보 수정에 실패했습니다.');");
@@ -553,10 +556,24 @@ public class UEController {
 			System.out.println("expert_id 뭐야" + expert_id);
 			int result = expertservice.insert(pf);
 			
+			
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
+			
 			if(result == 1) {
+				
+				String expert_name = expertservice.getName(expert_id);
+				session.setAttribute("expert_name", expert_name);
+				
+				String pf_grade = expertservice.getGrade(expert_id);
+				
+				if(pf_grade == null) {
+					session.setAttribute("pf_grade", "미등록 전문가");
+				} else {
+					session.setAttribute("pf_grade", pf_grade);
+				} 
+				
 				out.println("alert('포트폴리오가 정상적으로 등록되었습니다.');");
 				out.println("location.href='expertpage.net';");
 			}else {

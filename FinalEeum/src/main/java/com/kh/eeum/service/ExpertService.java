@@ -93,7 +93,7 @@ public interface ExpertService {
 	
 	//메인 화면
 	public int countGrade(int g);
-	public List<Map<String, Object>> pick3(int g, int count);
+	public Map<String, Object> pick(int g, int count);
 	
 
 }

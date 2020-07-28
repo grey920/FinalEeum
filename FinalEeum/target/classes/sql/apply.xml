@@ -9,7 +9,7 @@
 		(AP_INDEX,AP_ID,AP_RDATE,AP_CINDEX,AP_TITLE,AP_LOCATE,AP_CDATE, AP_PRICE)
 		select
 			APPLY_SEQ.nextval as AP_INDEX, 
-			#{AP_ID },  
+			#{AP_ID},  
 			sysdate as AP_RDATE, 
 			ONE_INDEX as AP_CINDEX, 
 			ONE_TITLE AS AP_TITLE, 

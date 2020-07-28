@@ -28,8 +28,6 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 
-<title>Insert title here</title>
-
 </head>
 <body>
 	<span id="review_text" style="padding-left: 10%;">후기</span>

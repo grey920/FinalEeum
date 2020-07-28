@@ -162,7 +162,7 @@
                                             </td>
                                             
                                             <td class="product-subtotal">
-                                            	<button class="btn-style grey">견적보기</button>
+                                            	<button class="btn-style grey" onclick="location.href='estimateList.net?request_no=${e.RS_NO}';">견적보기</button>
                                             	<button class="btn-style grey" onclick="javascript:message('msgWrite.net?msg_sid=${e.EXPERT_ID}&msg_rid=${e.USER_ID}&rname=${e.USER_NAME}')">상담하기</button>
                                             </td>
                                             

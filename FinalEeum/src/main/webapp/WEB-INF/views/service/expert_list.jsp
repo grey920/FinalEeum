@@ -195,7 +195,7 @@
 													<span>청소</span>
 												</c:if>
 												<c:if test="${e.PF_CATE ==  1}">
-													<span>해충</span>
+													<span>방역</span>
 												</c:if>
 												<c:if test="${e.PF_CATE ==  2}">
 													<span>수리</span>

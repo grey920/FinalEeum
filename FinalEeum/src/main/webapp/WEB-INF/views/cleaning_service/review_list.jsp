@@ -28,7 +28,20 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 
-<title>Insert title here</title>
+<style>
+        .btn-style{margin-top:10px !important;
+       					 margin-right:0 !important; 
+       					 font-size:18px;
+         				 border-radius:20px;
+         				 background-color:white;
+         				 color:#72A0E0;
+         				 border:2px solid #72A0E0;
+         				 }
+        .btn-style:hover{background-color:#72A0E0;
+         					       color:white;
+         					       border:2px solid #72A0E0;
+         						  }
+</style>
 
 </head>
 <body>
@@ -60,8 +73,7 @@
 
 		<textarea rows=6 class="form-control" id="content" maxLength="400"
 			cols="50" style="resize: none" wrap="hard"></textarea>
-		<button id="write" class="btn btn-info float-right"
-			style="background: #CADEE3; border: 0px; ">등록</button>
+		<button id="write" class="btn-style btn btn-info float-right">등록</button>
 
 		<!-- 친절함  -->
 		

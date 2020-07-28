@@ -90,7 +90,7 @@
 	               	<c:choose>
 							<c:when test="${po.PF_CATE == 0}"><b>[청소]</b></c:when>
 							<c:when test="${po.PF_CATE == 1}"><b>[방역]</b></c:when>
-							<c:otherwise><b>수리</b></c:otherwise>
+							<c:otherwise><b>[수리]</b></c:otherwise>
 					</c:choose>
                	</span>
                	
