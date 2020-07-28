@@ -92,8 +92,8 @@ public class AdminContorller {
 
 	@RequestMapping(value = "/expertDetail.net")
 	public ModelAndView expert_detail(@RequestParam("id") String id, ModelAndView mv) throws Exception {
+		System.out.println(id);
 		Portfolio p = adminservice.getList(id);
-		System.out.println("p:" + p.getPF_EXID());
 		mv.setViewName("user/expertDetail");
 		mv.addObject("deExperts", p);
 		return mv;

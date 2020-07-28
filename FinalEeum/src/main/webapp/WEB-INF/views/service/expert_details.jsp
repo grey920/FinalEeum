@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Nokshi - Minimalist eCommerce HTML5 Template</title>
+<title>전문가 상세 페이지</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
@@ -37,8 +37,6 @@
 		src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  <script type="text/javascript" src="resources/js/service/jstars.js"></script>
-
-
 <%@ include file="../header.jsp" %>
 <style>
 
@@ -77,26 +75,35 @@
                   <c:set var="po" value="${portfolio}"/>
                   <c:set var="rating" value="${review_rating}"/>
                   <div class="grad_wrapper">
-               <div class="grad">
-                  <img src="resources/expert_profile${po.PF_SAVEPROFILE}" alt="" id="userimg">
-                  <c:if test="${expert_id_login == null}">
-                  <input type="hidden" value="0" id="expert_id_login">
-                  </c:if>
-                  <c:if test="${expert_id_login != null}">
-                  <input type="hidden" value="1" id="expert_id_login">
-                  </c:if>
+	               <div class="grad" style="width:200px;">
+	                  <img src="resources/expert_profile${po.PF_SAVEPROFILE}" style="width:100%; height:auto"id="userimg">
+	                  <c:if test="${expert_id_login == null}">
+	                  <input type="hidden" value="0" id="expert_id_login">
+	                  </c:if>
+	                  <c:if test="${expert_id_login != null}">
+	                  <input type="hidden" value="1" id="expert_id_login">
+	                  </c:if>
+	               </div>
                </div>
-               </div>
-               <b
-                  style="font-size: 50px; padding-left: 50%;">${expertdata.expert_name} 
-               </b>
-            
-               	<c:choose>
-						<c:when test="${expertdata.PF_GRADE == 0}"><b>디딤돌</b></c:when>
-						<c:when test="${expertdata.PF_GRADE == 1}"><b>마루</b></c:when>
-						<c:when test="${expertdata.PF_GRADE == 2}"><b>우주</b></c:when>
-						<c:otherwise><b>용마루</b></c:otherwise>
+               
+               	<span style="font-size: 40px; padding-left: 51%; margin-bottom:10px">
+	               	<c:choose>
+							<c:when test="${po.PF_CATE == 0}"><b>[청소]</b></c:when>
+							<c:when test="${po.PF_CATE == 1}"><b>[방역]</b></c:when>
+							<c:otherwise><b>수리</b></c:otherwise>
 					</c:choose>
+               	</span>
+               	
+               <span style="font-size: 40px; padding-left: 51%; padding-top:50px">
+               	<c:choose>
+						<c:when test="${expertdata.PF_GRADE == 0}"><b>디딤돌&nbsp;</b></c:when>
+						<c:when test="${expertdata.PF_GRADE == 1}"><b>마루&nbsp;</b></c:when>
+						<c:when test="${expertdata.PF_GRADE == 2}"><b>우주&nbsp;</b></c:when>
+						<c:otherwise><b>용마루&nbsp;</b></c:otherwise>
+				</c:choose>
+               ${expertdata.expert_name} 
+               </span>
+            
          
 
                <!-- 전문가 아이디 -->
@@ -111,8 +118,7 @@
                   <c:if test="${like ==1 }">
                      <i id="fa-heart-o" class="fa fa-heart"
                         style="padding-bottom: 2%"></i>
-                     <span
-                        style="color: black; font-size: 18px; font-weight: 700;">찜하기</span>
+                     <span style="color: black; font-size: 18px; font-weight: 700;">찜하기</span>
                   </c:if>
                   <c:if test="${like == 0 }">
                      <i id="fa-heart-o" class="fa fa-heart-o"
@@ -126,8 +132,8 @@
                <button style="font-weight: 700; font-size: 16px;"
                   data-toggle="modal" data-target="#myModal1" class="heart_click2"
                   id="request_btn">
-                  <i id="fa-pencil-square-o" class="fa fa-pencil-square-o"></i> <b
-                     style="color: black;">견적요청</b>
+                  <i id="fa-pencil-square-o" class="fa fa-pencil-square-o"></i> 
+                  <b style="color: black;">견적 요청</b>
                </button>
 
 
@@ -181,25 +187,26 @@
 
             <hr class="hr_2">
             <div class="detailDESC">
-               <span style="font-size: 40px; font-weight: 700;">서비스
-                  상세설명</span>
+               <span style="font-size: 30px; font-weight: 700;">
+               ❮ 서비스 상세설명 ❯
+               </span>
                <div class="details1">
-                  <p style="font-size: 22px; color: black; white-space: inherit">
+                  <p style="font-size: 22px; color: black; white-space: inherit;margin-top:20px">
                      ${po.PF_INTRO}
                   </p>
                </div>
             </div>
             <!-- 탭메뉴 들어간다. -->
-            <div class="container1" style="line-height: 40px;">
+            <div class="container1" style="line-height: 59px;">
                <ul class="tab">
                   <li data-tab="tab1" class='tabmenu tab1' id="default">
-                  <b style="font-size: 20px; color: white;" id="tabText1">포트폴리오</b></li>
+                  <b style="font-size: 25px; color: white;" id="tabText1">포트폴리오</b></li>
                   <li data-tab="tab2" class='tabmenu tab2'>
-                  <b style="font-size: 20px; color: white;" id="tabText2">후기</b></li>
+                  <b style="font-size: 25px; color: white;" id="tabText2">후기</b></li>
                   <li data-tab="tab3" class='tabmenu tab3'>
-                  <b style="font-size: 20px; color: white;" id="tabText3">가격</b></li>
+                  <b style="font-size: 25px; color: white;" id="tabText3">가격</b></li>
                   <li data-tab="tab4" class='tabmenu tab4'>
-                  <b style="font-size: 20px; color: white;" id="tabText4">Q&A</b></li>
+                  <b style="font-size: 25px; color: white;" id="tabText4">Q&A</b></li>
                </ul>
                <div id="tabcontent" style="margin-top:50px;"></div>
                <!-- 내용 들어갈 공간 -->

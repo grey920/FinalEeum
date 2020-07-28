@@ -243,6 +243,7 @@
 			<div class="section-title-2 text-center mb-55">
 				<h2 class="mb-12">개발팀 소개</h2>
 				<p>이:음을 기획 및 개발한 가람휘 팀을 소개합니다</p>
+				<p><b style="color:#72a0e0">'가람휘'</b>는 강을 가리키는 옛말 '가람'과 곡식을 되는 그릇의 한 가지로 20말, 혹은 15말 들어가 있는 '휘'를 합친 것으로<br><b style="color:#72a0e0">'강물을 가득 채울 수 있을 만큼 큰 그릇'</b>이라는 뜻입니다.</p>
 			</div>
 			<div class="row">
 				<div class="col-lg-2 col-md-6 col-12"></div>

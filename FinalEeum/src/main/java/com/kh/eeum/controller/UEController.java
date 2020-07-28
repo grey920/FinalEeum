@@ -315,8 +315,51 @@ public class UEController {
 		Expert expert = expertservice.expert_info(expert_id);
 		mv.setViewName("UE/expertpage_info");
 		mv.addObject("expertinfo", expert);
+		
 		return mv;
+	}
 	
+	@RequestMapping(value="expertUpdateProcess.net", method=RequestMethod.POST)
+	public void userUpdateProcess(@RequestParam("expert_id") String expert_id, Expert ex,
+														HttpServletRequest request,HttpServletResponse response, HttpSession session) 
+														throws Exception {
+		
+		String encPassword = passwordEncoder.encode(ex.getExpert_pass());
+		
+		System.out.println(encPassword);
+		ex.setExpert_pass(encPassword);
+	
+		response.setContentType("text/html;charset=utf-8");
+		int result = expertservice.expert_update(ex);
+				
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		
+		if (result == 1) {
+			session.setAttribute("expert_id", expert_id);
+			Cookie savecookie = new Cookie("saveid", expert_id);
+			
+			String expert_name = expertservice.getName(expert_id);
+			session.setAttribute("expert_name", expert_name);
+			
+			String pf_grade = expertservice.getGrade(expert_id);
+			
+			if(pf_grade == null) {
+				session.setAttribute("pf_grade", "미등록 전문가");
+			} else {
+				session.setAttribute("pf_grade", pf_grade);
+			}
+			
+			out.println("alert('수정되었습니다.');");
+			out.println("location.href='userpage.net';");
+			
+		} else {
+			out.println("alert('회원 정보 수정에 실패했습니다.');");
+			out.println("history.back();");
+		}
+		out.println("</script>");
+		out.close();
 	}
 	
 	@RequestMapping("viewPortfolio")
