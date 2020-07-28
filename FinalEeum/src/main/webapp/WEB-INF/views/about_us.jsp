@@ -155,7 +155,7 @@
 							<!-- <h5>MEMBER DISCOUNT</h5> -->
 							<p>
 								사용자와 전문가를<br>매칭합니다.
-							</p>
+							</p> 
 						</div>
 					</div>
 				</div>
