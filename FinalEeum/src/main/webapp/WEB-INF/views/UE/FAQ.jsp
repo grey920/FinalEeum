@@ -40,25 +40,6 @@
             <!-- header start -->
             <div class="header-height"></div>
             
-            <!-- main-search start -->
-		<div class="main-search-active">
-			<div class="sidebar-search-icon">
-				<button class="search-close">
-					<span class="ti-close"></span>
-				</button>
-			</div>
-			<div class="sidebar-search-input">
-				<form>
-					<div class="form-search">
-						<input id="search" class="input-text" value=""
-							placeholder="Search Entire Store" type="search">
-						<button>
-							<i class="ti-search"></i>
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
 		   <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
@@ -81,18 +62,20 @@
                                 <div id="checkout-login" class="coupon-content faq-content5">
                                     <div class="coupon-info">
                                         <p class="coupon-text">
-                                        저희 이음은 사용자들에 대한 만족도와 신뢰도를 높이기 위해 전문가들의 경력과 예약 건수, 평점을 통해 전문가들의 등급이 나누어져 있습니다.
+                                        이음은 사용자들의 만족도와 신뢰도를 높이기 위해 전문가들의 예약 건수, 평점을 통해 전문가들의 등급을 나눕니다.<br>
+                                        	등급은 디딤돌, 마루, 우주, 용마루 순으로 이루어져 있으며, 각 등급에 대한 의미는 '이음 소개'의 전문가 분류 안내에 상세히 설명되어 있습니다.
                                         </p>
                                     </div>
                                 </div>
                                 <!-- ACCORDION END -->
                                 
                                 <!-- ACCORDION START (4) -->
-                                <h3><span id="showlogin" class="faq4">남성은 이음에 가입할 수 없나요?</span></h3>
+                                <h3><span id="showlogin" class="faq4">여성만 이음에 가입할 수 있나요?</span></h3>
                                 <div id="checkout-login" class="coupon-content faq-content4">
                                     <div class="coupon-info">
                                         <p class="coupon-text">
-                                        이음은 여성 사용자 뿐만 아니라 여성 전문가들만 가입할 수 있는 사이트입니다.
+                                        이음은 청소, 수리, 방역 분야의 소수의 여성 기술자들의 사회 진출을 장려하고 여성들 사이의 연대를 지향하는 사이트입니다.<br>
+                                         이에 대한 상세 설명은 이음 소개에 상세히 설명되어 있습니다.
                                         </p>
                                     </div>
                                 </div>
@@ -114,7 +97,7 @@
                                 <h3><span id="showlogin" class="faq2">서비스 후, 추가된 결제 금액은 어떻게 결제하나요?</span></h3>
                                 <div id="checkout-login" class="coupon-content faq-content2">
                                     <div class="coupon-info">
-                                        <p class="coupon-text">추가 금액의 경우, </p>
+                                        <p class="coupon-text">추가 금액의 경우, 추후 결제 정보가 담긴 QR코드를 전문가 사용자에게 제공할 예정입니다.<br>추가 금액 발생시, 일반 사용자가 QR코드를 통해 결제를 가능하게 할 예정입니다.</p>
                                     </div>
                                 </div>
                                 <!-- ACCORDION END -->	

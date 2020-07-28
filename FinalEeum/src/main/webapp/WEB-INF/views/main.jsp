@@ -24,9 +24,13 @@
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
         <%@ include file="header.jsp" %>
         <style>
-        .slider-area{margin-top:150px; padding:0 200px}
+        .slider-area{margin-top:180px; padding:0 200px}
         .btn-style-2{border:3px solid #72A0E0;
-        					font-size:20px}
+        						font-size:20px;
+        						color:white;
+        						background-color:#72A0E0}
+        	.btn-style-2:hover{background-color:white;
+        									color: #72A0E0;}
 		.pb-90{margin-top:150px}
         .slider-2 {padding: 200px 0 70px;}
         .pt-130{padding-top:30px}
@@ -49,8 +53,8 @@
             <div class="slider-area">
                 <div class="slider-active owl-carousel">
                 
-                    <div class="single-slider slider-2 bg-img" style="background-image: url(resources/img/main/main4.jpeg); border-radius:20px">
-                        <div class="container">
+                    <div class="single-slider slider-2 bg-img" style="background-image: url(resources/img/main/main.jpg); border-radius:20px">
+                        <div class="container" style="margin-left:100px; padding-left:0">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="slider-content-2 slider-animated-1 mt-150">
@@ -66,7 +70,7 @@
                     </div>
                     
                     <div class="single-slider slider-2 bg-img" style="background-image: url(resources/img/main/main1.jpeg); border-radius:20px">
-                        <div class="container">
+                        <div class="container"  style="margin-left:100px; padding-left:0">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="slider-content-2 slider-animated-1 mt-150">
@@ -82,7 +86,7 @@
                     </div>
                     
                     <div class="single-slider slider-2 bg-img" style="background-image: url(resources/img/main/main2.jpeg); border-radius:20px">
-                        <div class="container">
+                        <div class="container"  style="margin-left:100px; padding-left:0">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="slider-content-2 slider-animated-1 mt-150">
@@ -98,7 +102,7 @@
                     </div>
                     
                     <div class="single-slider slider-2 bg-img" style="background-image: url(resources/img/main/main3.jpeg); border-radius:20px">
-                        <div class="container">
+                        <div class="container"  style="margin-left:100px; padding-left:0">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="slider-content-2 slider-animated-1 mt-150">

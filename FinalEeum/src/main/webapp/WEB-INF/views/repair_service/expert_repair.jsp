@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Nokshi - Minimalist eCommerce HTML5 Template</title>
+<title>수리 전문가 리스트</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
@@ -30,6 +30,13 @@
 <!-- js끝 -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+.breadcrumb-content{padding-top:0;margin-top:1em}
+.price-decrease > span {font-size : 25px;
+        									padding:5px 10px;
+        									border-radius:10px;}
+.pt-120{padding-top:50px !important}
+</style>
 <%@ include file="../header.jsp" %>
 </head>
 <body>
@@ -93,24 +100,27 @@
 								<c:forEach var="e" items="${expertlist}">
 									<!-- 포폴 시작!!!!!!!!!!!!!!!! -->
 								
-								<div class="product-width col-md-6 col-xl-3 col-lg-4z" style="padding-left: 4%; margin: 2%;">
+								<div class="product-width col-md-6 col-xl-3 col-lg-4z" style="margin-left:30px; margin-right:30px">
 
 										<div class="product-wrapper mb-35">
 											<!-- 전문가 리스트 뽑아오기 시작 -->
 										<a href="./repairDetail.service?expert=${e.EXPERT_ID}">
-											<div class="product-img">
+											<div class="product-img" style="text-align:center; margin:0 auto;">
 
-												<div id="circle">
+												<div id="circle" style="width:230px; padding-right:0; text-align:center; margin:0 auto">
 												<input type="hidden" id="page" value="${page}" name="page">
 												
-													<img src="resources/expert_profile${e.PF_SAVEPROFILE}" alt=""
+													<img src="resources/expert_profile${e.PF_SAVEPROFILE}" style="width:100%;height:auto"
 														id="userimg">
 
 												</div>
 												
-												<b id="expert_name">${e.EXPERT_NAME }</b> <b
-													style="font-size: 10px; position: relative; top: 60px; left: 100px;">전문가</b>
-												<br> <b id="expert_intro">${e.PF_ONE}</b>
+												<p>
+													<b id="expert_name">
+													전문가&nbsp;${e.EXPERT_NAME}
+													</b>
+												</p>
+												<b id="expert_intro">${e.PF_ONE}</b>
 												<div class="modal fade" id="myModal" tabindex="-1"
 													role="dialog" aria-hidden="true">
 
@@ -193,14 +203,14 @@
 												
 												<div class="price-decrease">
 												
+												<c:if test="${e.PF_CATE ==  0}">
+													<span>청소</span>
+												</c:if>
 												<c:if test="${e.PF_CATE ==  1}">
-													<span style="font-family: NanumGothic; font-weight: bold; background-color: #36518F;">[청소]</span>
+													<span>해충</span>
 												</c:if>
 												<c:if test="${e.PF_CATE ==  2}">
-													<span style="font-family: NanumGothic; font-weight: bold; background-color: #36518F;">[방역]</span>
-												</c:if>
-												<c:if test="${e.PF_CATE ==  3}">
-													<span style="font-family: NanumGothic; font-weight: bold; background-color: #36518F;">[수리]</span>
+													<span>수리</span>
 												</c:if>
 												
 												</div>
@@ -208,7 +218,6 @@
 										</a>
 										</div>
 
-										<hr id="hr_3" style="margin: 0">
 									</div>
 
 								</c:forEach>
