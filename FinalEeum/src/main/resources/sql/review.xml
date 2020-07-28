@@ -5,16 +5,18 @@
 
 
 <select id="selectReviewList" resultType="map" >
-		select *
+	select *
 		from (select rownum
-		rnum,rv_no,rv_user_id,rv_expert_id,rv_content,TO_CHAR(rv_rating1, 'FM999999999.0') AS RV_RATING1,TO_CHAR(rv_rating2, 'FM999999999.0') AS RV_RATING2,
-		TO_CHAR(rv_rating3, 'FM999999999.0') AS RV_RATING3,TO_CHAR(rv_rating4, 'FM999999999.0') AS RV_RATING4,
-		TO_CHAR(rv_rating5, 'FM999999999.0') AS RV_RATING5,TO_CHAR(rv_rating6, 'FM999999999.0') AS RV_RATING6,TRIM(TO_CHAR(rv_sum, '99999999.99')) as rv_sum,TO_CHAR(rv_date,'YYYY-MM-DD') as RV_DATE
+		rnum , t.*
 			from (
-				select *
-				from review where rv_expert_id = #{expert_id}
-				order by rv_date desc
-				)
+				select re.rv_no,re.rv_user_id,re.rv_expert_id,re.rv_content,TO_CHAR(re.rv_rating1, 'FM999999999.0') AS RV_RATING1,TO_CHAR(re.rv_rating2, 'FM999999999.0') AS RV_RATING2,
+		TO_CHAR(re.rv_rating3, 'FM999999999.0') AS RV_RATING3,TO_CHAR(re.rv_rating4, 'FM999999999.0') AS RV_RATING4,
+		TO_CHAR(re.rv_rating5, 'FM999999999.0') AS RV_RATING5,TO_CHAR(re.rv_rating6, 'FM999999999.0') AS RV_RATING6,TRIM(TO_CHAR(re.rv_sum, '99999999.99')) as rv_sum,TO_CHAR(re.rv_date,'YYYY-MM-DD') as RV_DATE, u.user_nick
+	from review  re inner join user_table u
+		on re.rv_USER_ID = U.USER_ID
+	WHERE RE.RV_EXPERT_ID = #{expert_id}
+	order by rv_date desc
+				) t
 			)
 			where rnum between #{startrow} and #{endrow}
 	</select>
