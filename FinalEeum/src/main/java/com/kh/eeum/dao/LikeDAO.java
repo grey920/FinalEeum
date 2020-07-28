@@ -47,4 +47,9 @@ public class LikeDAO {
 		return sqlSession.selectList("Likes.wishCheck", map);
 	}
 
+
+	public int insertLike(HashMap<String, String> paraMap) {
+		return sqlSession.insert("Likes.insertLike",paraMap);
+	}
+
 }

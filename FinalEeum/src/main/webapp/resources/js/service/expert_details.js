@@ -1,16 +1,12 @@
 $(document).ready(
-		function() {
-
-		
-			
-			
-	        
+		function() {  
 	        
 			var current_fs, next_fs, previous_fs; // fieldsets
 			var opacity;
 			var expert_id = $('#EXPERT_ID').val();
 			// 전문가 찜 불가
 			var expert_id_login = $('#expert_id_login').val();
+			console.log("여기 나오니..?"+expert_id_login);
 			if (expert_id_login == 1) {
 				$('.heart_click').attr('disabled', true);
 				$('.heart_click').css('cursor', 'auto');
@@ -181,6 +177,7 @@ $(document).ready(
 						$('#tabText' + i).css('color', 'white');
 						$('#tabText2').css('text-decoration', 'underline');
 						$('#tabText2').css('color', 'black');
+						
 					}
 
 				} else if (active.toString() == 'tab3') {

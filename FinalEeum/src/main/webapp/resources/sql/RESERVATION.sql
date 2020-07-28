@@ -15,17 +15,7 @@ DROP sequence RS_SEQ
 
 select * from reservation
 
-delete reservation where rs_exid = 'hansol00'
-DROP TABLE RESERVATION
-
 select * from REVIEW;
 
-delete reservation
-where rs_no = 9
-
-delete REQUEST_file
-where request_no = 9
-
-----------------------------------
 CREATE sequence RS_SEQ;
 

@@ -82,16 +82,30 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
+	public int selectReservation(String user_id,String expert_id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("user_id", user_id);
+		map.put("expert_id", expert_id);
+		map.put("num", 3);
+		return dao.selectReservationList(map);
+	}
+	@Override
 	public Map<String, Object> getReview(int rv_no) {
 		return dao.getReview(rv_no);
 	}
 
+	@Override
+	public int updateReservation(String rv_expert_id, String rv_user_id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("expert_id", rv_expert_id);
+		map.put("user_id", rv_user_id);
+		map.put("num", 5);
+		map.put("num1", 3);
+		return dao.updateReservation(map);
+	}
 
-
-
-
-	
-
-	
-	
+	@Override
+	public int memberRegisterDept(HashMap<String, String> paraMap) {
+		  return dao.memberRegisterDept(paraMap);
+	}	
 }

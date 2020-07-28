@@ -52,4 +52,5 @@ public class Reservation {
 		this.rs_state = rs_state;
 	}
 	
+	
 }

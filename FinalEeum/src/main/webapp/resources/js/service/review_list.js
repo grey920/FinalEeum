@@ -1,4 +1,4 @@
-$(function() {
+$(document).ready(function(){
 	
 // 친절함
 	$(".svg-star-rating1").starRating(
@@ -207,7 +207,7 @@ $(function() {
 							output = '';
 							$(rdata).each(function() {
 												// 출력시 id='update_review'
-												
+												var button = "";
 												if (user_id == this.RV_USER_ID) {
 													button = "<i class='fas fa-cut' id='delete_review' style='color=#4E8092;'></i>삭제"+
 													         "<i class='fas fa-pen' id='update_review'></i>수정<br>";
@@ -223,14 +223,14 @@ $(function() {
 														+ this.RV_CONTENT
 														+ "</pre>"  
 														+ "</td>";
-												output += "<td>" + this.RV_DATE
+												output += "<td colspan='6'>" + this.RV_DATE + "&nbsp;&nbsp;작성"
 														+"<br>" +button
-														+ "<span style='font-size:90%;'>청결도 :" +this.RV_RATING1 +"</span><br>"
-														+ "<span style='font-size:90%;'>명확한설명 :" +this.RV_RATING2 +"</span><br>"
-														+ "<span style='font-size:90%;'>청결도 :" +this.RV_RATING3 +"</span><br>"
-														+ "<span style='font-size:90%;'>전문성 :" +this.RV_RATING4 +"</span><br>"
-														+ "<span style='font-size:90%;'>시간준수 :" +this.RV_RATING5 +"</span><br>"
-														+ "<span style='font-size:90%;'>가격의합리성 :" +this.RV_RATING6 +"</span><br>"
+														+ "<span style='position:relative; '>청결도 :" +this.RV_RATING1 +"</span><br>"
+														+ "<span style='position:relative; '>명확한설명 :" +this.RV_RATING2 +"</span><br>"
+														+ "<span style='position:relative; '>청결도 :" +this.RV_RATING3 +"</span><br>"
+														+ "<span style='position:relative; '>전문성 :" +this.RV_RATING4 +"</span><br>"
+														+ "<span style='position:relative;'>시간준수 :" +this.RV_RATING5 +"</span><br>"
+														+ "<span style='position:relative; '>가격의합리성 :" +this.RV_RATING5 +"</span><br>"
 														"</td></tr>";
 											
 											});
@@ -371,8 +371,6 @@ $(function() {
 
 	});
 	   
-	
-	
 		//수정
 	   $("#comment").on('click','.fas.fa-pen', function(){
 		      before = $(this).parent().prev().text(); // 선택한 내용을 가져옵니다.
@@ -401,13 +399,14 @@ $(function() {
 		            }
 		         }
 		      })
-		   })
+		   })//#comment end
 
 	   
 	   //그거
 		   var expert = $('#EXPERT_ID').val();
 		var expert_login_id = $("#expert_id_login").val();
 		console.log("현재 로그인했니 전문가가.." + expert_login_id);
+		console.log("expert=" + expert);
 
 		//통계
 		$.ajax({
@@ -468,7 +467,6 @@ $(function() {
 																data : [
 																		rv_rating1,
 																		rv_rating2,
-																		rv_rating3,
 																		rv_rating4,
 																		rv_rating5,
 																		rv_rating6 ],
@@ -495,18 +493,36 @@ $(function() {
 		success : function(rdata) {
 			console.log("딱들어와");
 			if(rdata == 1){
-				alert('불가');
+		
 				$("#write").attr("disabled",true);
 				$("#content").text("전문가는 후기를 남길 수 없습니다.");
 				$("#content").attr("readonly",true);
-			}else{
-				
-				
 			}
-			
-			
-		}
-		
+		}	
+	});
+	
+	var user_id = $('#USER_ID').val();
+	var expert_id = $('#EXPERT_ID').val();
+	$.ajax({
+		type : 'POST',
+		url : "UserReview.Ajax",
+		data : {"user_id" : user_id,
+				"expert_id": expert_id	},
+		dataType : "json",
+		success : function(rdata) {
+			console.log("딱들어와"+rdata);
+			if(rdata == 3){
+				alert('성공');	
+			}else{
+				$("#write").attr("disabled",true);
+				$("#content").text("견적요청 서비스를 받지 않은 사용자는 후기를 남길 수 없습니다.");
+				$("#content").attr("readonly",true);
+				$("#update_review").click(function(){
+					$("#write").attr("disabled",false);
+					$("#content").attr("readonly",false);
+				});
+			}		
+		}	
 	});
 		
 			
