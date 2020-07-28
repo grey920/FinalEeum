@@ -245,7 +245,7 @@
 				<p>이:음을 기획 및 개발한 가람휘 팀을 소개합니다</p>
 			</div>
 			<div class="row">
-				<div class="col-lg-1 col-md-6 col-12"></div>
+				<div class="col-lg-2 col-md-6 col-12"></div>
 				<div class="col-lg-2 col-md-6 col-12">
 					<div class="team-wrapper mb-30">
 						<div class="team-img">
@@ -284,17 +284,6 @@
 				<div class="col-lg-2 col-md-6 col-12">
 					<div class="team-wrapper mb-30">
 						<div class="team-img">
-							<img src="resources/img/team/turtle.png" alt="">
-						</div>
-						<div class="team-content">
-							<h4>안현빈</h4>
-							<span>개발담당</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-6 col-12">
-					<div class="team-wrapper mb-30">
-						<div class="team-img">
 							<img src="resources/img/team/giraffe.png" alt="">
 						</div>
 						<div class="team-content">
@@ -303,7 +292,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-1 col-md-6 col-12"></div>
+				<div class="col-lg-2 col-md-6 col-12"></div>
 			</div>
 		</div>
 	</div>
