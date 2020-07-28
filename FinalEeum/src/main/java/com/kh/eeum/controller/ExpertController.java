@@ -37,7 +37,6 @@ import com.kh.eeum.service.LikeService;
 import com.kh.eeum.service.QnaService;
 import com.kh.eeum.service.ReviewService;
 
-import oracle.net.aso.i;
 
 @Controller
 public class ExpertController {
