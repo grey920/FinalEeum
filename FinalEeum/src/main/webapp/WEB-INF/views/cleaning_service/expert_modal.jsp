@@ -78,7 +78,7 @@
 						<!-- 부모 모달 -->
 						<button type="button" class="close" data-dismiss="modal"
 							id="close1" aria-label="Close"
-							style="position: relative; bottom: 320px; left: 770px;">
+							style="position: relative;bottom: 320px;left: 770px;outline: 0;">
 							<span class="ion-android-close" aria-hidden="true" style="color: #000; cursor: pointer;"></span>
 						</button>
 						<div class="row justify-content-center mt-0">
@@ -109,27 +109,27 @@
 														<div class="row">
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="building_type" value="아파트" id="structure1" checked="checked">
-																<span>아파트</span>
+																<label>아파트</label>
 															</div>
 															
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="building_type"  value="단독주택"  id="structure1"> 
-																<span>단독주택</span>
+																<label>단독주택</label>
 															</div>
 															
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="building_type"   value="빌라/연립주택" id="structure1">
-																<span>빌라/연립주택</span> 																
+																<label>빌라/연립주택</label> 																
 															</div>
 															
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="building_type"   value="빌딩/상가" id="structure1">
-																<span>빌딩/상가</span> 																
+																<label>빌딩/상가</label>																
 															</div>
 															
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="building_type"   value="기타" id="structure1" class="etc1">
-																<span>기타</span> 																
+																<label>기타</label> 																
 															</div>													
 															
 														</div>
@@ -154,38 +154,38 @@
 														<div class="row">
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="repair_type"  value="정리수납(의류,냉장고 속)"  id="structure1" checked="checked">
-																<span>정리수납(의류,냉장고 속)</span> 
+																<label>정리수납(의류,냉장고 속)</label> 
 															</div>
 		
 
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="repair_type"  value="가구 청소 (소파,침대/매트리스, 카페트)"  id="structure1" >
-																<span class='201'>가구 청소 (소파,침대/매트리스, 카페트)</span> 
+																<label class='201'>가구 청소 (소파,침대/매트리스, 카페트)</label>
 															</div>
 
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="repair_type"  value="가전제품 청소(냉장고, 에어컨)"  id="structure1" >
-																<span>가전제품 청소(냉장고, 에어컨)</span> 
+																<label>가전제품 청소(냉장고, 에어컨)</label>
 															</div>														
 							
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="repair_type"  value="화장실 청소"  id="structure1" >
-																<span>화장실 청소</span> 
+																<label>화장실 청소</label>
 															</div>																
 
 															<div class="col-8 col-sm-8">
 																<input type="radio" name="repair_type" value="계단/바닥 청소"  id="structure1">
-																<span>계단/바닥 청소</span> 
+																<label>계단/바닥 청소</label>
 															</div>											
 												
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="repair_type" value="보일러/수도 배관 청소"  id="structure1">
-																<span>보일러/수도 배관 청소</span> 
+																<label>보일러/수도 배관 청소</label>
 															</div>															
 															
 															<div class="col-4 col-sm-4">
 																<input type="radio" name="repair_type" value="기타"  id="structure1" class="etc2" >
-																<span>기타</span> 
+																<label>기타</label>
 															</div>																																																	
 														</div>
 														
