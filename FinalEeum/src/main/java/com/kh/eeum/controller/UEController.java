@@ -32,9 +32,11 @@ import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.Reservation;
 import com.kh.eeum.domain.Review;
 import com.kh.eeum.domain.User;
+import com.kh.eeum.service.AdminService;
 import com.kh.eeum.service.ApplyService;
 import com.kh.eeum.service.ExpertService;
 import com.kh.eeum.service.LikeService;
+import com.kh.eeum.service.OnedayService;
 import com.kh.eeum.service.ReviewService;
 import com.kh.eeum.service.UserService;
 
@@ -57,12 +59,50 @@ public class UEController {
 	private ReviewService reviewservice;
 	
 	@Autowired
+	private OnedayService onedayservice;
+	
+	@Autowired
+	private AdminService adminservice;
+	
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	
 	@RequestMapping(value="/main")
-	public String main() {
-		return "main";
+	public ModelAndView main(ModelAndView mv) {
+//		
+//		int g0 = 0;
+//		int count0 = expertservice.countGrade(g0);
+//		System.out.println(count0);
+//		List<Map<String, Object>> list0 = expertservice.pick3(g0, count0);
+//		System.out.println(list0);
+		
+		
+//		List<Map<String, Object>> list1 = expertservice.main1();
+//		List<Map<String, Object>> list2 = expertservice.main2();
+//		List<Map<String, Object>> list3 = expertservice.main3();
+		
+		//List<Map<String, Object>> onelist = onedayservice.main();	//원데이클래스 내역
+		
+//		int allUsers = adminservice.cUsers();
+//		int allReviews = adminservice.allReviews();
+//		int cPosts = adminservice.cPosts();
+//		int newUsers = adminservice.newUsers();
+		
+
+
+		mv.setViewName("main");
+//		mv.addObject("list0", list0);
+//		mv.addObject("list1", list1);
+//		mv.addObject("list2", list2);
+//		mv.addObject("list3", list3);
+//		mv.addObject("onelist", onelist);
+//		mv.addObject("allUsers", allUsers);
+//		mv.addObject("allReviews", allReviews);
+//		mv.addObject("cPosts", cPosts);
+//		mv.addObject("newUsers", newUsers);
+		
+		return mv;
 	}
 	
 	/* 회원가입 */
@@ -679,7 +719,17 @@ public class UEController {
 
 			session.setAttribute("expert_id", expert_id);
 			Cookie savecookie = new Cookie("saveid", expert_id);
-
+			
+			String expert_name = expertservice.getName(expert_id);
+			session.setAttribute("expert_name", expert_name);
+			
+			String pf_grade = expertservice.getGrade(expert_id);
+			
+			if(pf_grade == null) {
+				session.setAttribute("pf_grade", "미등록 전문가");
+			} else {
+				session.setAttribute("pf_grade", pf_grade);
+			}
 			
 			if( !expert_remember.equals("")) {
 				savecookie.setMaxAge(60*60);
@@ -1003,14 +1053,29 @@ public class UEController {
 		return mv;
 	}
 	
+	@RequestMapping(value="detailPhoto")
+	public ModelAndView detailPhoto(ModelAndView mv, String photo) {
+		mv.setViewName("UE/mypage_detailPhoto");
+		mv.addObject("photo", photo);
+		return mv;
+	}
+	
 	@RequestMapping(value="estimateList.net")
 	public ModelAndView estimateList(int request_no, ModelAndView mv) {
-		Map<String, Object> estimateList = new HashMap<String, Object>();
+		Map<String, Object> requestT = expertservice.requestT(request_no);	//견적 요청 테이블 
+		Reservation reserveT = expertservice.reserveT(request_no);					//예약 테이블 
+		List<Map<String, Object>> rfT = expertservice.rfT(request_no);
+		System.out.println(rfT);
 		
-		estimateList = expertservice.estimateList(request_no);
+		String expert_name = expertservice.getName(reserveT.getRs_exid());
+		String user_name = userservice.getName(reserveT.getRs_uid());
 		
 		mv.setViewName("UE/mypage_estimate");
-		mv.addObject("e", estimateList);
+		mv.addObject("requestT", requestT);
+		mv.addObject("reserveT", reserveT);
+		mv.addObject("rfT", rfT);
+		mv.addObject("ex_name", expert_name);
+		mv.addObject("u_name", user_name);
 		return mv;
 	}
 	
@@ -1044,7 +1109,7 @@ public class UEController {
 		String expert_id = (String) session.getAttribute("expert_id");
 		
 		int estimateCount = expertservice.estimateCount(expert_id);
-		System.out.println(estimateCount);
+		System.out.println("미확정" + estimateCount);
 		
 		int limit = 20;
 		int maxpage = (estimateCount + limit -1) / limit;
@@ -1106,6 +1171,7 @@ public class UEController {
 		String expert_id = (String) session.getAttribute("expert_id");
 		
 		int reserveCount = expertservice.exreserveCount(expert_id);
+		System.out.println("확정" + reserveCount);
 		
 		int limit = 20;
 		int maxpage = (reserveCount + limit -1) / limit;
@@ -1381,7 +1447,8 @@ public class UEController {
 	}
 	
 	@RequestMapping(value="userDelete.net", method=RequestMethod.GET)
-	public String delete(String user_id) throws Exception {
+	public String delete(String user_id, HttpSession session) throws Exception {
+		session.invalidate();
 		applyservice.deleteAll(user_id);			//원데이 클래스 신청 내역 삭제 후 
 		userservice.user_delete(user_id);			//회원 탈퇴 
 		return "redirect:/";

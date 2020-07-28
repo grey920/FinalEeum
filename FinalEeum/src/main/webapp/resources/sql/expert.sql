@@ -13,3 +13,5 @@ EXPERT_STATE 				NUMBER DEFAULT 0 -- 일반 / 일시중단 / 영구정지
 )
 
 select * from EXPERT_TABLE;
+delete expert_table
+where EXPERT_ID = 'hansol00'

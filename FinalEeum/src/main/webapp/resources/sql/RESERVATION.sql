@@ -15,13 +15,17 @@ DROP sequence RS_SEQ
 
 select * from reservation
 
-delete reservation
+delete reservation where rs_exid = 'hansol00'
 DROP TABLE RESERVATION
 
 select * from REVIEW;
 
+delete reservation
+where rs_no = 9
+
+delete REQUEST_file
+where request_no = 9
+
 ----------------------------------
 CREATE sequence RS_SEQ;
 
-update RESERVATION set RS_STATE = '1', RS_MONEY = '100'
-where RS_NO=3;

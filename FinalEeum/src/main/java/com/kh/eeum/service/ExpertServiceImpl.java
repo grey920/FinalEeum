@@ -28,6 +28,7 @@ import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
 import com.kh.eeum.domain.Reservation;
 import com.kh.eeum.domain.Review;
+import com.kh.eeum.domain.User;
 
 
 
@@ -525,6 +526,31 @@ public class ExpertServiceImpl implements ExpertService {
 		map.put("rs_no", rsIndex);
 		System.out.println("ExImpl의 updateState()");
 		return exdao.updateState(map);
+	}
+
+	@Override
+	public String getGrade (String expert_id) {
+		return exdao.getGrade(expert_id);
+	}
+	
+	@Override
+	public String getName (String expert_id) {
+		return exdao.getName(expert_id);
+	}
+
+	@Override
+	public Map<String, Object> requestT(int request_no) {
+		return exdao.requestT(request_no);
+	}
+
+	@Override
+	public Reservation reserveT(int request_no) {
+		return exdao.reserveT(request_no);
+	}
+
+	@Override
+	public List<Map<String, Object>> rfT(int request_no) {
+		return exdao.rfT(request_no);
 	}
 
 

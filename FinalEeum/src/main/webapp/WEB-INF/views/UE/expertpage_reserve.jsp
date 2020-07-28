@@ -138,7 +138,7 @@
                                                 <br>
                                                 <c:choose>
                                                 	<c:when test="${fn:length(r.RS_TIME) > 2}">
-                                                		<c:out value="${fn:substring(r.RS_TIME,0,2)}"/>시&nbsp;
+                                                		<c:out value="${fn:substring(r.RS_TIME,0,2)}"/>시
                                                 		<c:out value="${fn:substring(r.RS_TIME,2,4)}" />분
                                                 	</c:when>
                                                 	<c:otherwise>
@@ -151,7 +151,7 @@
                                             </td>
                                             
                                             <td class="product-price">
-                                            	${r.USER_PHONE1} - ${r.USER_PHONE2} - ${r.USER_PHONE3}
+                                            	${r.USER_PHONE1}-${r.USER_PHONE2}-${r.USER_PHONE3}
                                             </td>
                                             
                                             <td class="product-name">

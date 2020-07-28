@@ -26,10 +26,10 @@
 		<typeAlias alias="report" type="com.kh.eeum.domain.Report"/>
 		<typeAlias alias="C" type="com.kh.eeum.domain.Comment"/>
 		<typeAlias alias="message" type="com.kh.eeum.domain.Message" />
-
 		<typeAlias alias="qna" type="com.kh.eeum.domain.Qna" />
 		<typeAlias alias="pay" type="com.kh.eeum.domain.Pay" />
 
+		
 	</typeAliases>
 
 	<mappers>

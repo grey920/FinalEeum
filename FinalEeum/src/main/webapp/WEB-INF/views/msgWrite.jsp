@@ -59,9 +59,10 @@ p{color:#303030}
 		<img src="resources/img/logo/eeum_logo.png" style="width:110px; height:auto">
 	</div>
 	<form action="messageProcess.net" method="post">
-		<input type="hidden" id="msg_sid" name="msg_sid" value="<%=request.getParameter("msg_sid") %>">
 		받는 사람 &nbsp;
-		<input type="text" id="msg_rid" name="msg_rid" value="<%=request.getParameter("msg_rid") %>" style="width:40%" readOnly>
+		<input type="text" id="msg_rname" name="msg_rname" value="${rname}" style="width:40%" readOnly>
+		<input type="hidden" id="msg_rid" name="msg_rid" value="${msg_rid}">
+		<input type="hidden" id="msg_sid" name="msg_sid" value="${msg_sid}">
 		<br>
 		<p>상담 내용</p>
 		<textarea id="msg_content" name="msg_content" placeholder="상담할 내용을 적어주세요"

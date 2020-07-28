@@ -179,4 +179,24 @@ public class ExpertDAO {
 		return sqlSession.update("Experts.updateStatePay", map);
 	}
 
+	public String getGrade(String expert_id) {
+		return sqlSession.selectOne("Experts.getGrade", expert_id);
+	}
+	
+	public String getName(String expert_id) {
+		return sqlSession.selectOne("Experts.getName", expert_id);
+	}
+
+	public Map<String, Object> requestT(int request_no) {
+		return sqlSession.selectOne("Experts.requestT", request_no);
+	}
+
+	public Reservation reserveT(int request_no) {
+		return sqlSession.selectOne("Experts.reserveT", request_no);
+	}
+
+	public List<Map<String, Object>> rfT(int request_no) {
+		return sqlSession.selectList("Experts.rfT", request_no);
+	}
+
 }

@@ -5,7 +5,6 @@
 
 <mapper namespace="Experts">
 
-
 	<insert id="insert" parameterType="expert">
 		insert into expert_table
 		(expert_jumin1, expert_jumin2, expert_name, expert_id, expert_pass, expert_phone1, expert_phone2, expert_phone3,
@@ -169,10 +168,10 @@
 		select *
 		from (select rownum rnum, re.*, u.*
 					from (select rs.*, rq.*
-								from reservation rs, request rq
-								where rs.rs_exid = rq.expert_id and rs.rs_uid = rq.writer and rs.rs_state = #{state}
-								) re
-								inner join user_table u on u.user_id = re.rs_uid
+								from reservation rs inner join request rq on rs.rs_no = rq.request_no
+								where rs.rs_uid = rq.writer and rs.rs_state = #{state}
+							  ) re
+							  inner join user_table u on u.user_id = re.rs_uid
 					where re.expert_id = #{expert_id}
 					order by re.request_date asc
 					) 
@@ -189,8 +188,8 @@
 		select *
 		from (select rownum rnum, re.*, u.*
 					from (select rs.*, rq.*
-								from reservation rs, request rq
-								where rs.rs_exid = rq.expert_id and rs.rs_uid = rq.writer and rs.rs_state &gt; = #{state1} and rs.rs_state &lt; = #{state2}
+								from reservation rs inner join request rq on rs.rs_no = rq.request_no
+								where rs.rs_uid = rq.writer and rs.rs_state &gt; = #{state1} and rs.rs_state &lt; = #{state2}
 								) re
 								inner join user_table u on u.user_id = re.rs_uid
 					where re.expert_id = #{expert_id}
@@ -230,5 +229,35 @@
 		set rs_state = 3
 		where rs_no = #{rs_no}
 	</update>
+	
+	<select id="getGrade" parameterType="String" resultType="String">
+		select pf_grade
+		from portfolio
+		where pf_exid = #{expert_id}
+	</select>
+	
+	<select id="getName" parameterType="String" resultType="String">
+		select expert_name
+		from expert_table
+		where expert_id = #{expert_id}
+	</select>
+	
+	<select id="requestT" parameterType="int" resultType="map">
+		select *
+		from request
+		where request_no = #{request_no}
+	</select>
+	
+	<select id="reserveT" parameterType="int" resultType="reservation">
+		select *
+		from reservation
+		where rs_no = #{request_no}
+	</select>
+	
+	<select id="rfT" parameterType="int" resultType="map">
+		select *
+		from request_file
+		where request_no = #{request_no}
+	</select>
 	
 </mapper>
