@@ -78,21 +78,6 @@
 		where rv.rv_no = #{rv_no}
 	</select>
 	
-	<select id="reviewList" parameterType="map" resultType="map">
-		select *
-		from ( select rownum rnum, re.*
-					from ( select e.*, p.*, r.*, rev.*
-								from review rev
-										left outer join expert_table e on e.expert_id = rev.rv_expert_id
-										left outer join portfolio p on p.pf_exid = rev.rv_expert_id
-										full outer join reservation r on r.rs_uid = rev.rv_expert_id
-								where rev.rv_user_id = #{rv_user_id}
-							  ) re
-					order by re.rv_date desc
-				  )
-		where rnum &gt; = #{start} and rnum &lt; = #{end}
-	</select>
-	
 	<select id="reservation" parameterType="map" resultType="int">
 		select nvl(max(RS_STATE),0) as RS_STATE from 
 		reservation
