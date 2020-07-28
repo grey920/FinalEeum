@@ -129,7 +129,7 @@ h2, h3{margin-top:50px}
 											<div class="dec-img">
 												<img src="resources/OBoardupload${onedaydata.SAVEFILE}"
 													alt="oneday_poster" class="oneday_poster"
-													style="height: 500px; width: 500px; position: absolute; right: 20px;">
+													style="height: 475px; width: 410px; position: absolute; right: 20px;">
 											</div>
 										</div>
 										<div class="col-md-6" style="height: 500px;">

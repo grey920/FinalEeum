@@ -307,10 +307,14 @@ margin-bottom:30px;
 
 	<script>
 		$(function() {
+				var HTMLstr = '<h2>[상세 내용]<br><br>[추천 대상]<br><br>[강사 소개]<br><br>[프로그램 일시]<br><br>[장소]<br><br>[안내사항]<br><br>[환불 규정]<br><br>[문의처]</h2>';
 			$("#summernote").summernote({
-				height : 500
+				pasteHTML : 'HTMLstr',
+				height : 500,
+				lang:'ko-KR'
 			});
-
+			
+			$("#summernote").summernote('pasteHTML', HTMLstr);
 		});// document.ready
 
 		function goWrite(frm) {
