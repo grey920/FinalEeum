@@ -83,8 +83,6 @@
 													<option value="">분류 선택</option>
 													<option value="원데이클래스"
 														<c:if test="${onedaydata.ONE_TYPE == '원데이클래스'}">selected</c:if>>원데이클래스</option>
-													<option value="커피챗"
-														<c:if test="${onedaydata.ONE_TYPE == '커피챗'}">selected</c:if>>전문가 커피챗</option>
 												</select> 
 												제목 
 												<input type="text" name="ONE_TITLE" id="oneday_title" size="50" class="oneday_write_form" value="${onedaydata.ONE_TITLE}"> 

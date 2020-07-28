@@ -89,7 +89,6 @@ margin-bottom:30px;
 												<span>분류</span> <select name="ONE_TYPE" id="oneday_type" style="margin-bottom: 30px">
 													<option value="">분류 선택</option>
 													<option value="원데이클래스">원데이 클래스</option>
-													<option value="커피챗">전문가 커피챗</option>
 												</select>
 												
 												 <span>제목</span> <input type="text" name="ONE_TITLE"

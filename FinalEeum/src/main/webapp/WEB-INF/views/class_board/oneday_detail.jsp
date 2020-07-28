@@ -245,7 +245,7 @@ h2, h3{margin-top:50px}
 						</div>
 						<hr>
 
-						<c:if test="${user_id=='admin'}">
+						<c:if test="${user_id=='admin1234'}">
 							<a href="./OnedayModifyView.one?num=${onedaydata.ONE_INDEX}"
 								class="nounderline">
 								<button class="btn-style button">수정</button>
