@@ -553,5 +553,36 @@ public class ExpertServiceImpl implements ExpertService {
 		return exdao.rfT(request_no);
 	}
 
+	@Override
+	public int countGrade(int g) {
+		return exdao.countGrade(g);
+	}
+
+	@Override
+	public List<Map<String, Object>> pick3(int g, int count) {
+		Random random = new Random();
+		
+		int pick[] = new int[3];
+		
+		for(int i = 0; i < 3; i++) {
+			pick[i] = random.nextInt(count) + 1;
+			
+			for(int j = 0; j < i; j++) {
+				if(pick[i] == pick[j]) {
+					i--;
+				}
+			}
+			
+		}
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("g", g);
+			map.put("pick1", pick[0]);
+			map.put("pick2", pick[1]);
+			map.put("pick3", pick[2]);
+			
+		return exdao.pick3(map);
+	}
+
 
 }

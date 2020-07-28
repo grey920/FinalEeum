@@ -76,36 +76,17 @@
                         <div class="col-md-12">
                             <div class="coupon-accordion">
                             
-                                <!-- ACCORDION START (1) -->
-                                <h3><span id="showlogin" class="faq1">원데이 클래스 결제는 언제까지 해야하나요?</span></h3>
-                                <div id="checkout-login" class="coupon-content faq-content1">
-                                    <div class="coupon-info">
-                                        <p class="coupon-text">원데이 클래스는 신청한 금일 이내에 결제하셔야 하며, 미결제시 자동으로 취소됩니다.</p>
-                                    </div>
-                                </div>
-                                <!-- ACCORDION END -->	
-                            
-                                <!-- ACCORDION START (2) -->
-                                <h3><span id="showlogin" class="faq2">서비스 후, 추가된 결제 금액은 어떻게 결제하나요?</span></h3>
-                                <div id="checkout-login" class="coupon-content faq-content2">
-                                    <div class="coupon-info">
-                                        <p class="coupon-text">추가 금액의 경우, </p>
-                                    </div>
-                                </div>
-                                <!-- ACCORDION END -->	
-                            
-                                <!-- ACCORDION START (3) -->
-                                <h3><span id="showlogin" class="faq3">제 지역에서만 활동하는 전문가만 볼 수 있나요?</span></h3>
-                                <div id="checkout-login" class="coupon-content faq-content3">
+                                <!-- ACCORDION START (5) -->
+                                <h3><span id="showlogin" class="faq5">전문가 이름 앞에 붙은 단어는 무슨 뜻인가요?</span></h3>
+                                <div id="checkout-login" class="coupon-content faq-content5">
                                     <div class="coupon-info">
                                         <p class="coupon-text">
-                                        이음에 등록된 모든 전문가를 보실 수 있습니다. <br>
-                                       	다만, 전문가마다 활동하는 지역이 있기에 사용자의 지역에서 활동하는 전문가에게서만 서비스를 받으실 수는 있습니다.
-                                       	</p>
+                                        저희 이음은 사용자들에 대한 만족도와 신뢰도를 높이기 위해 전문가들의 경력과 예약 건수, 평점을 통해 전문가들의 등급이 나누어져 있습니다.
+                                        </p>
                                     </div>
                                 </div>
-                                <!-- ACCORDION END -->	
-                            
+                                <!-- ACCORDION END -->
+                                
                                 <!-- ACCORDION START (4) -->
                                 <h3><span id="showlogin" class="faq4">남자는 서비스를 받을 수 없나요?</span></h3>
                                 <div id="checkout-login" class="coupon-content faq-content4">
@@ -117,18 +98,37 @@
                                     </div>
                                 </div>
                                 <!-- ACCORDION END -->	
-                                
-                                <!-- ACCORDION START (5) -->
-                                <h3><span id="showlogin" class="faq5">전문가 이름 앞에 붙은 단어는 무슨 뜻인가요?</span></h3>
-                                <div id="checkout-login" class="coupon-content faq-content5">
+                               
+                                <!-- ACCORDION START (3) -->
+                                <h3><span id="showlogin" class="faq3">제 지역에서만 활동하는 전문가만 볼 수 있나요?</span></h3>
+                                <div id="checkout-login" class="coupon-content faq-content3">
                                     <div class="coupon-info">
                                         <p class="coupon-text">
-                                        저희 이음은 사용자들에 대한 만족도와 신뢰도를 높이기 위해 전문가들의 경력과 예약 건수, 평점을 통해 전문가들의 등급이 나누어져 있습니다.
-                                        </p>
+                                        이음에 등록된 모든 전문가를 보실 수 있습니다. <br>
+                                       	다만, 전문가마다 활동하는 지역이 있기에 사용자의 지역에서 활동하는 전문가에게서만 서비스를 받으실 수는 있습니다.
+                                       	</p>
                                     </div>
                                 </div>
                                 <!-- ACCORDION END -->	
                                 
+                                <!-- ACCORDION START (2) -->
+                                <h3><span id="showlogin" class="faq2">서비스 후, 추가된 결제 금액은 어떻게 결제하나요?</span></h3>
+                                <div id="checkout-login" class="coupon-content faq-content2">
+                                    <div class="coupon-info">
+                                        <p class="coupon-text">추가 금액의 경우, </p>
+                                    </div>
+                                </div>
+                                <!-- ACCORDION END -->	
+                               
+                                <!-- ACCORDION START (1) -->
+                                <h3><span id="showlogin" class="faq1">원데이 클래스 결제는 언제까지 해야하나요?</span></h3>
+                                <div id="checkout-login" class="coupon-content faq-content1">
+                                    <div class="coupon-info">
+                                        <p class="coupon-text">원데이 클래스는 신청한 금일 이내에 결제하셔야 하며, 미결제시 자동으로 취소됩니다.</p>
+                                    </div>
+                                </div>
+                                <!-- ACCORDION END -->	
+                            
 							</div>
 						</div>
 					</div>

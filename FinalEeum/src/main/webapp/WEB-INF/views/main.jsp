@@ -30,7 +30,8 @@
 		.pb-90{margin-top:150px}
         .slider-2 {padding: 200px 0 70px;}
         .pt-130{padding-top:30px}
-        .pb-125{padding-bottom:30px; margin-bottom:100px}
+        .pb-125{padding-bottom:30px; margin-bottom:100px; margin-top:150px}
+        .pb-100 {padding:50px 200px 30px; background-color:lightsteelblue;}
         .theme-bg {background: #E4E8F0}
         .single-testimonial>h4{font-size:20px !important}
         h4{margin-top:30px}
@@ -141,20 +142,20 @@
                         <div class="tab-pane active" id="home4" role="tabpanel">
                             <div class="row">
                             
-<%--                               <c:forEach var="o" items="${list0}">
+                              <c:forEach var="o" items="${list0}">
                                 <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
+                                    <div class="product-wrapper mb-35" style="text-align:center; margin:0 auto; width:250px">
                                         <div class="product-img">
-                                            <a href="expertDetail.service?expert=${0.PF_EXID}">
-                                                <img src="resources/expert_profile${0.PF_SAVEPROFILE}" alt="">
+                                            <a href="expertDetail.service?expert=${o.PF_EXID}">
+                                                <img src="resources/expert_profile${o.PF_SAVEPROFILE}" style="width:100%; height:auto">
                                             </a>
                                         </div>
                                         <div class="product-content text-center">
-                                            <h4><a href="product-details.html">${0.EXPERT_NAME}</a></h4>
+                                            <h4><a href="product-details.html">${o.EXPERT_NAME}</a></h4>
                                         </div>
                                     </div>
                                 </div>
-                               </c:forEach> --%>
+                               </c:forEach>
                                 
                                </div>
                              </div>
@@ -163,35 +164,21 @@
                         <div class="tab-pane" id="home5" role="tabpanel">
                             <div class="row">
                             
+<%--                               <c:forEach var="l" items="${list1}">
                                 <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
+                                    <div class="product-wrapper mb-35" style="text-align:center; margin:0 auto; width:250px">
                                         <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/17.jpg" alt="">
+                                            <a href="expertDetail.service?expert=${o.PF_EXID}">
+                                                <img src="resources/expert_profile${o.PF_SAVEPROFILE}" style="width:100%; height:auto">
                                             </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
                                         </div>
                                         <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Water Mug</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$30.00</span>
-                                            </div>
+                                            <h4><a href="product-details.html">${o.EXPERT_NAME}</a></h4>
                                         </div>
                                     </div>
                                 </div>
+                              </c:forEach> --%>
+                              
                             </div>
                         </div>
                         
@@ -199,35 +186,42 @@
                         <div class="tab-pane" id="home6" role="tabpanel">
                             <div class="row">
                             
+<%--                              <c:forEach var="r" items="${list2}">
                                 <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="product-wrapper mb-35">
+                                    <div class="product-wrapper mb-35" style="text-align:center; margin:0 auto; width:250px">
                                         <div class="product-img">
-                                            <a href="product-details.html">
-                                                <img src="resources/img/product/14.jpg" alt="">
+                                            <a href="expertDetail.service?expert=${r.PF_EXID}">
+                                                <img src="resources/expert_profile${r.PF_SAVEPROFILE}" style="width:100%; height:auto">
                                             </a>
-                                            <div class="product-wishlist">
-                                                <a href="#"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                                    <i class="ti-plus"></i>
-                                                </a>
-                                                <a class="action-cart-2" title="Add To Cart" href="#">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </a>
-                                                <a class="action-reload" title="Compare" data-toggle="modal" data-target="#exampleCompare" href="#">
-                                                    <i class="ti-reload"></i>
-                                                </a>
-                                            </div>
                                         </div>
                                         <div class="product-content text-center">
-                                            <h4><a href="product-details.html">Pottery Water Jug</a></h4>
-                                            <div class="product-price-2">
-                                                <span>$30.00</span>
-                                            </div>
+                                            <h4><a href="product-details.html">${r.EXPERT_NAME}</a></h4>
                                         </div>
                                     </div>
                                 </div>
+                              </c:forEach> --%>
+                                
+                            </div>
+                        </div>
+                        
+                        <!-- (4) -->
+                        <div class="tab-pane" id="home7" role="tabpanel">
+                            <div class="row">
+                            
+<%--                              <c:forEach var="e" items="${list3}">
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="product-wrapper mb-35" style="text-align:center; margin:0 auto; width:250px">
+                                        <div class="product-img">
+                                            <a href="expertDetail.service?expert=${e.PF_EXID}">
+                                                <img src="resources/expert_profile${e.PF_SAVEPROFILE}" style="width:100%; height:auto">
+                                            </a>
+                                        </div>
+                                        <div class="product-content text-center">
+                                            <h4><a href="product-details.html">${e.EXPERT_NAME}</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                              </c:forEach> --%>
                                 
                             </div>
                         </div>
@@ -243,8 +237,8 @@
                         <div class="col-lg-3">
                             <div class="banner-wrapper overflow mb-30">
                                 <div class="banner-img">
-                                	<p>❛ 오늘의 이음 ❜</p>
-                                	<%-- <p class="num">${newUsers}</p> --%>
+                                	<p style="font-size:23px; color:white; padding-bottom:5px">❛ 오늘의 이음 ❜</p>
+                                	<p class="num">${newUsers}</p>
                                 </div>
                             </div>
                         </div>
@@ -252,8 +246,8 @@
                         <div class="col-lg-3">
                             <div class="banner-wrapper overflow mb-30">
                                 <div class="banner-img">
-                               		<p>❛ 오늘의 후기 ❜</p>
-                               		<%-- <p class="num">${cPosts}</p> --%>
+                               		<p style="font-size:23px; color:white; padding-bottom:5px">❛ 오늘의 후기 ❜</p>
+                               		<p class="num">${cPosts}</p>
                                 </div>
                             </div>
                         </div>
@@ -261,8 +255,8 @@
                         <div class="col-lg-3">
                             <div class="banner-wrapper overflow mb-30">
                                 <div class="banner-img">
-									<p>❛ 모두의 이음 ❜</p>
-									<%-- <p class="num">${allUsers}</p> --%>
+									<p style="font-size:23px; color:white; padding-bottom:5px">❛ 모두의 이음 ❜</p>
+									<p class="num">${allUsers}</p>
                                 </div>
                             </div>
                         </div>
@@ -270,8 +264,8 @@
                         <div class="col-lg-3">
                             <div class="banner-wrapper overflow mb-30">
                                 <div class="banner-img">
-                                	<p>❛ 모두의 후기 ❜</p>
-                                	<%-- <p class="num">${allReviews}</p> --%>
+                                	<p style="font-size:23px; color:white; padding-bottom:5px">❛ 모두의 후기 ❜</p>
+                                	<p class="num">${allReviews}</p>
                                 </div>
                             </div>
                         </div>

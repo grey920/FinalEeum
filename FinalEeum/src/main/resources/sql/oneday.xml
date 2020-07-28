@@ -90,10 +90,18 @@
 	</update>
 	
 	<update id="updateProg" parameterType="oneday">
-	update oneday
-	set 
-		ONE_ACTUAL_SEAT = #{ONE_ACTUAL_SEAT}+1
-	where ONE_INDEX = #{ONE_INDEX}	
+		update oneday
+		set 
+			ONE_ACTUAL_SEAT = #{ONE_ACTUAL_SEAT}+1
+		where ONE_INDEX = #{ONE_INDEX}	
 	</update>
+	
+	<select id="main" resultType="map">
+		select r.*
+		from (select ROWNUM RNUM, o.*
+					from ONEDAY o
+					where ONE_RDATE &gt;= sysdate) r
+		where RNUM &lt;= 3
+	</select>
 	
 </mapper>
