@@ -74,5 +74,9 @@ public class UserDAO {
 	public int updatePwd(Map<String, String> map) {
 		return sqlSession.update("Users.updatePwd", map);
 	}
+
+	public String msgName(String msg_id) {
+		return sqlSession.selectOne("Users.msgName", msg_id);
+	}
 	
 }

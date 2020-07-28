@@ -171,4 +171,9 @@ public class UserServiceImpl implements UserService{
 		return udao.updatePwd(map);
 	}
 
+	@Override
+	public String getName(String rs_uid) {
+		return udao.msgName(rs_uid);
+	}
+
 }

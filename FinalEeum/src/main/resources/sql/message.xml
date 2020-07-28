@@ -4,6 +4,12 @@
 
 <mapper namespace="Messages">
 
+	<select id="msg" parameterType="int" resultType="message">
+		select *
+		from message
+		where msg_no = #{msg_no}
+	</select>
+	
 	<insert id="send" parameterType="message">
 		insert into message
 		(MSG_NO, MSG_SID, MSG_RID, MSG_CONTENT, MSG_TIME)

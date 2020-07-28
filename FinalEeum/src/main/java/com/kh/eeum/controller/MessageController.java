@@ -25,25 +25,49 @@ public class MessageController {
 	private MessageService messageservice;
 	
 	@RequestMapping(value="msgWrite.net")
-	public String msgWrite () {
-		return "msgWrite";
+	public ModelAndView msgWrite (ModelAndView mv, String msg_rid, String msg_sid, String rname) {
+		System.out.println(msg_rid);
+		System.out.println(msg_rid);
+		System.out.println(rname);
+		
+		mv.setViewName("msgWrite");
+		mv.addObject("msg_rid", msg_rid);
+		mv.addObject("msg_sid", msg_sid);
+		mv.addObject("rname", rname);
+		return mv;
 	}
 	
 	@RequestMapping(value="msgJustView.net")
-	public String msgJustView () {
-		return "msgView";
+	public ModelAndView msgJustView (int msg_no, ModelAndView mv) {
+		Message msg = messageservice.msg(msg_no);
+		String msg_rname = messageservice.msgName(msg.getMsg_rid());
+		String msg_sname = messageservice.msgName(msg.getMsg_sid());
+		
+		mv.setViewName("msgView");
+		mv.addObject("msg", msg);
+		mv.addObject("msg_rname", msg_rname);
+		mv.addObject("msg_sname", msg_sname);
+		
+		return mv;
+
 	}
 	
 	@RequestMapping(value="msgView.net")
-	public String msgView (HttpServletRequest request) {
-		int msg_no = Integer.parseInt(request.getParameter("msg_no"));
-		System.out.println(msg_no);
+	public ModelAndView msgView (int msg_no, ModelAndView mv) {
+		Message msg = messageservice.msg(msg_no);
+		String msg_sname = messageservice.msgName(msg.getMsg_sid());
+		String msg_rname = messageservice.msgName(msg.getMsg_rid());
 		
-		int result = messageservice.msgRead(msg_no);
+		int result = messageservice.msgRead(msg_no);	//읽음 상태로 변경
 		System.out.println(result);
 		
 		if (result == 1) {
-			return "msgView";
+			mv.setViewName("msgView");
+			mv.addObject("msg", msg);
+			mv.addObject("msg_sname", msg_sname);
+			mv.addObject("view", "view");
+			
+			return mv;
 			
 		} else {
 			return null;

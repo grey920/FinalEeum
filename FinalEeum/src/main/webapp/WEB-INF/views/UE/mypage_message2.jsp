@@ -101,6 +101,8 @@ table thead tr th{font-size:21px !important}
             <div class="product-cart-area hm-3-padding pt-120 pb-130">
                 <div class="container-fluid">
                     <div class="row">
+                    
+                       <c:if test="${sendCount > 0 }">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-content table-responsive">
                             
@@ -190,6 +192,14 @@ table thead tr th{font-size:21px !important}
 							</div>
                             
                         </div>
+                      </c:if>
+                      
+                      <c:if test="${sendCount == 0 }">
+			               <div class="col-lg-12 col-md-12 col-12 nodata">	
+				            	<p>보낸 메시지가 없습니다 😥</p>
+				            </div>
+                       </c:if>
+                      
                     </div>
                 </div>
             </div>

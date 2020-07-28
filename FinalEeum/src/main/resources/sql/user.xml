@@ -79,5 +79,11 @@
 		set user_pass = #{user_pass}
 		where user_id = #{user_id} and user_name = #{user_name} and user_jumin1 = #{user_jumin1}
 	</update>
+	
+	<select id="msgName" parameterType="String" resultType="String">
+		select user_name
+		from user_table
+		where user_id = #{msg_id}
+	</select>
 
 </mapper>

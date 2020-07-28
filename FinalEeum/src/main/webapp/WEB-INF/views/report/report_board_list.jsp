@@ -482,6 +482,6 @@
 		<script src="resources/js/owl.carousel.min.js"></script>
 		<script src="resources/js/plugins.js"></script>
 		<script src="resources/js/main.js"></script>
-		<script src="resources/js/qna_board/list.js"></script>
+		<script src="resources/js/report_board/list.js"></script>
 </body>
 </html>

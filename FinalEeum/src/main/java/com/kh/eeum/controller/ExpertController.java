@@ -37,7 +37,6 @@ import com.kh.eeum.service.LikeService;
 import com.kh.eeum.service.QnaService;
 import com.kh.eeum.service.ReviewService;
 
-import oracle.net.aso.i;
 
 @Controller
 public class ExpertController {
@@ -63,14 +62,8 @@ public class ExpertController {
 	@Autowired
 	QnaService qnaService; //qna
 	
-	
-
 	private static final Logger logger = LoggerFactory.getLogger(ExpertServiceImpl.class);
 
-
-	
-	
-	
 
 	@RequestMapping(value="no_id.service")
 	public void noid(HttpServletResponse response) throws Exception {
@@ -491,7 +484,7 @@ public class ExpertController {
 		return mv;
 	}
 
-	/*********************************** 창소 ************************************/
+	/*********************************** 청소 ************************************/
 	// 청소 리스트
 	@GetMapping("/expert_cleaning.service")
 	public ModelAndView expert_cleaning_service(HttpServletResponse response,
