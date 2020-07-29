@@ -139,7 +139,7 @@
                                 <div class="product-width col-md-6 col-lg-4">
                                     <div class="product-wrapper mb-35" style="width:200px">
                                         <div class="product-img">
-                                            <a href="#">
+                                            <a href="pricelist.net">
                                                 <img src="resources/img/mypage/price.png" alt="">
                                             </a>
                                         </div>

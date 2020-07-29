@@ -45,6 +45,24 @@ body{
 .oneday_write_form{
 margin-bottom:30px;
 }
+.nav {margin-bottom: 50px;}
+        .btn-style{margin-top:10px !important;
+       					 margin-right:0 !important; 
+       					 font-size:18px;
+         				 border-radius:20px;
+         				 background-color:white;
+         				 color:#72A0E0;
+         				 border:2px solid #72A0E0 !important;
+         				 }
+        .btn-style:hover{background-color:#72A0E0;
+         					       color:white;
+         					       border:2px solid #72A0E0;
+         						  }
+        .nodata{padding:100px 0 100px 0;
+        			  display: flex;
+					  justify-content: center;
+					  align-items: center;
+					  flex-direction: column;}
 </style>	
 </head>
 <body>
@@ -99,10 +117,10 @@ margin-bottom:30px;
 
 
 												<div class="button-box">
-													<button type="submit" class="btn-style cr-btn">
+													<button type="submit" class="btn-style">
 														<span>등록</span>
 													</button>
-													<button type="reset" class="btn-style cr-btn">
+													<button type="reset" class="btn-style">
 														<span>취소</span>
 													</button>
 												</div>
