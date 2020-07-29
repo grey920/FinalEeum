@@ -26,6 +26,10 @@
 <link rel="stylesheet" href="resources/css/responsive.css">
 <link rel="stylesheet" href="resources/css/service/portfolioForm.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
+<style>
+input{border-radius:10px}
+textarea{border-radius:10px}
+</style>
 <%@ include file="../header.jsp" %>
 <style>
 #upfile1, #upfile2{width:auto;height:150px;}

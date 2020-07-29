@@ -12,7 +12,7 @@
 
 
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>원데이 클래스</title>
+<title>문의하기</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
@@ -51,6 +51,23 @@
 .product-wrapper .end:after {
 	background: rgba(0, 0, 0, .53);
 }
+        .btn-style{margin-top:10px !important;
+       					 margin-right:0 !important; 
+       					 font-size:18px;
+         				 border-radius:20px;
+         				 background-color:white;
+         				 color:#72A0E0;
+         				 border:2px solid #72A0E0;
+         				 }
+        .btn-style:hover{background-color:#72A0E0;
+         					       color:white;
+         					       border:2px solid #72A0E0;
+         						  }
+ .nodata{padding:100px 0 100px 0;
+        			  display: flex;
+					  justify-content: center;
+					  align-items: center;
+					  flex-direction: column;}
 </style>
 </head>
 <body>
@@ -195,12 +212,16 @@
 	   </div>
 	 </div>
 	</c:if>
+	
+<button type="button" class="btn-style btn-info float-right">글 쓰 기</button>
+
 	<!-- 레코드가 없으면 -->
 	<c:if test="${listcount == 0}">
+		<div class="col-lg-12 col-md-12 col-12 nodata">	
 		<font size=5>등록된 글이 없습니다.</font>
+		</div>
 	</c:if>
 
-<button type="button" class="btn btn-info float-right">글 쓰 기</button>
 </div>
 
 <!-- 글쓰기 마지막 -->

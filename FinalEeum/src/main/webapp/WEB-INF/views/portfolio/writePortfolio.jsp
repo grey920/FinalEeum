@@ -35,6 +35,10 @@
 <!-- include summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script  src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js" defer></script>
+<style>
+input{border-radius:10px}
+textarea{border-radius:10px}
+</style>
 <%@ include file="../header.jsp" %>
 
 </head>

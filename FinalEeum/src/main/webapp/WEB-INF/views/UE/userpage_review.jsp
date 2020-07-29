@@ -137,10 +137,10 @@
                                             ${re.EXPERT_NAME}
                                             </a>
                                             &nbsp;&nbsp;
-                                            <c:set var="date" value="${re.RS_DATE}"/>
+                                            <c:set var="date" value="${re.rs_date}"/>
                                             	<fmt:formatDate value="${date}" type="date" dateStyle="long"/>
                                                  | 
-                                            <c:set var="time" value="${re.RS_TIME}"/>
+                                            <c:set var="time" value="${re.rs_time}"/>
                                             	<fmt:formatDate value="${time}" type="time" timeStyle="short"/>
                                             <hr>
 
