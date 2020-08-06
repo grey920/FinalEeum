@@ -324,144 +324,166 @@
                 </div>
             </div>
             
-            <footer class="footer-padding">
-                <div class="container-fluid">
-                    <div class="footer-top pt-85 pb-25">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-5">
-                                <div class="footer-widget mb-30">
-                                    <div class="footer-widget-title">
-                                        <h3>Get in Touch</h3>
-                                    </div>
-                                    <div class="food-info-wrapper">
-                                        <div class="food-address">
-                                            <div class="food-info-icon">
-                                                <i class="ion-ios-home-outline"></i>
-                                            </div>
-                                            <div class="food-info-content">
-                                                <p>2020 Willshire Glen, Out of <br>Alpharetta, GA-30009</p>
-                                            </div>
-                                        </div>
-                                        <div class="food-address">
-                                            <div class="food-info-icon">
-                                                <i class="ion-ios-telephone-outline"></i>
-                                            </div>
-                                            <div class="food-info-content">
-                                                <p>(+00) 121 025 0214 </p>
-                                            </div>
-                                        </div>
-                                        <div class="food-address">
-                                            <div class="food-info-icon">
-                                                <i class="ion-ios-email-outline"></i>
-                                            </div>
-                                            <div class="food-info-content">
-                                                <p><a href="#">info@example.com</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4">
-                                <div class="footer-widget mb-30">
-                                    <div class="footer-widget-title">
-                                        <h3>Information</h3>
-                                    </div>
-                                    <div class="food-widget-content">
-                                        <ul class="quick-link">
-                                            <li><a href="#">Delivery</a></li>
-                                            <li><a href="#">Legal Notice</a></li>
-                                            <li><a href="#">Terms & Conditions</a></li>
-                                            <li><a href="about-us.html">About Us</a></li>
-                                            <li><a href="#">Secure Payment</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-3">
-                                <div class="footer-widget mb-30">
-                                    <div class="footer-widget-title">
-                                        <h3>accounts</h3>
-                                    </div>
-                                    <div class="food-widget-content">
-                                        <ul class="quick-link">
-                                            <li><a href="login-register.html">Sign In</a></li>
-                                            <li><a href="cart.html">View Cart</a></li>
-                                            <li><a href="wishlist.html">My Wishlist</a></li>
-                                            <li><a href="#">Track My Order</a></li>
-                                            <li><a href="#">Help</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6">
-                                <div class="footer-widget mb-30">
-                                    <div class="footer-widget-title">
-                                        <h3>support</h3>
-                                    </div>
-                                    <div class="food-widget-content">
-                                        <ul class="quick-link">
-                                            <li><a href="contact.html">Hello & Contact</a></li>
-                                            <li><a href="#">Shipping & Tax</a></li>
-                                            <li><a href="#">Return Policy</a></li>
-                                            <li><a href="#">Affiliates</a></li>
-                                            <li><a href="#">Legal Notice</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="footer-widget mb-30">
-                                    <div class="footer-widget-title">
-                                        <h3>twitter feed</h3>
-                                    </div>
-                                    <div class="twitter-info-wrapper">
-                                        <div class="single-twitter">
-                                            <div class="twitter-icon">
-                                                <i class="ion-social-twitter-outline"></i>
-                                            </div>
-                                            <div class="twitter-content">
-                                                <p>A modern <a href="#">#Shopify theme </a> <a class="link1" href="#">@devitems</a> <a class="link2" href="#">https://twitter.com</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="single-twitter">
-                                            <div class="twitter-icon">
-                                                <i class="ion-social-twitter-outline"></i>
-                                            </div>
-                                            <div class="twitter-content">
-                                                <p>A modern <a href="#">#Shopify theme </a> <a class="link1" href="#">@devitems</a> <a class="link2" href="#">https://twitter.com</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="single-twitter">
-                                            <div class="twitter-icon">
-                                                <i class="ion-social-twitter-outline"></i>
-                                            </div>
-                                            <div class="twitter-content">
-                                                <p>A modern <a href="#">#Shopify theme </a> <a class="link1" href="#">@devitems</a> <a class="link2" href="#">https://twitter.com</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer-bottom border-top-1 ptb-15">
-                        <div class="row">
-                            <div class="col-md-6 col-12">
-                                <div class="copyright-payment">
-                                    <div class="copyright">
-                                        <p>Copyright ©  2018 <a href="#"> HasTech</a> All RIght Reserved.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="footer-payment-method">
-                                    <a href="#"><img alt="" src="resources/img/icon-img/7.png"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <!--  여기부터 푸터 -->
+			<footer class="hm-4-padding">
+				<div class="container-fluid">
+					<div class="footer-top pt-125 pb-25">
+						<div class="row">
+							<div class="col-lg-3 col-md-5">
+								<div class="footer-widget mb-30">
+									<div class="footer-widget-title">
+										<h3>Get in Touch</h3>
+									</div>
+									<div class="food-info-wrapper">
+										<div class="food-address">
+											<div class="food-info-icon">
+												<i class="ion-ios-home-outline"></i>
+											</div>
+											<div class="food-info-content">
+												<p>
+													서울특별시 중구 남대문로 120 <br> 대일빌딩 3층 D강의실 
+												</p>
+											</div>
+										</div>
+										<div class="food-address">
+											<div class="food-info-icon">
+												<i class="ion-ios-telephone-outline"></i>
+											</div>
+											<div class="food-info-content">
+												<p>(02) 1544 9970</p>
+											</div>
+										</div>
+										<div class="food-address">
+											<div class="food-info-icon">
+												<i class="ion-ios-email-outline"></i>
+											</div>
+											<div class="food-info-content">
+												<p>
+													<a href="http://www.khacademy.or.kr">www.khacademy.or.kr</a>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-1 col-md-4">
+								<div class="footer-widget mb-30 pl-10">
+									<div class="footer-widget-title">
+										<h3>Information</h3>
+									</div>
+									<div class="food-widget-content">
+										<ul class="quick-link">
+											<li><a href="about_us.net">이음소개</a></li>
+											<li><a href="expert.service">서비스</a></li>
+											<li><a href="OnedayList.one">원데이 클래스</a></li>
+											<li><a href="FAQ.net">FAQ</a></li>
+											<li><a href="Report.net">문의</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-3">
+								<div class="footer-widget mb-30 pl-100">
+									<div class="footer-widget-title">
+										<h3>accounts</h3>
+									</div>
+									<div class="food-widget-content">
+										<ul class="quick-link">
+											<li><a href="about_us.net">회사소개</a></li>
+											<li><a href="#">개인정보보호정책</a></li>
+											<li><a href="#">이용약관</a></li>
+											<li><a href="#">개인정보 처리방침</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="footer-widget mb-30 pl-125">
+									<div class="footer-widget-title">
+										<h3>DEV INFO</h3>
+									</div>
+									<div class="food-widget-content">
+										<div class="single-twitter">
+											<div class="twitter-icon">
+												<span class="iconify" data-icon="ion:desktop-outline" data-inline="false"></span>
+											</div>
+											<div class="twitter-content">
+												<p>
+													정겨운 #워너비#유노윤호 
+													<br>github <a class="link2" href="https://github.com/grey920">@grey920</a> 
+												</p>
+											</div>
+										</div>
+										<div class="single-twitter">
+											<div class="twitter-icon">
+												<span class="iconify" data-icon="ion:desktop-outline" data-inline="false"></span>
+											</div>
+											<div class="twitter-content">
+												<p>
+													장한솔 #워너비 #풀스텍 
+													<br>github <a class="link2" href="https://github.com/only-pine">@only-pine</a> 
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="footer-widget mb-30 f-right">
+									<div class="footer-widget-title">
+										<h3>DEV INFO</h3>
+									</div>
+									<div class="twitter-info-wrapper">
+										
+										<div class="single-twitter">
+											<div class="twitter-icon">
+												<span class="iconify" data-icon="ion:desktop-outline" data-inline="false"></span>
+											</div>
+											<div class="twitter-content">
+												<p>
+													안연지 #워너비 #부자 
+													<br>github <a class="link2" href="https://github.com/tlspak8899">@tlspak8899</a>
+												</p>
+											</div>
+										</div>
+										<div class="single-twitter">
+											<div class="twitter-icon">
+												<span class="iconify" data-icon="ion:desktop-outline" data-inline="false"></span>
+											</div>
+											<div class="twitter-content">
+												<p>
+													박우진 #워너비 #풀스텍 
+													<br>github <a class="link2" href="https://github.com/only-pine">@only-pine</a> 
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="footer-bottom border-top-1 ptb-15">
+						<div class="row">
+							<div class="col-md-6 col-12">
+								<div class="copyright-payment">
+									<div class="copyright">
+										<p>
+											Copyright © 2018 <a href="https://freethemescloud.com/">Free
+												themes Cloud</a> All RIght Reserved.
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-12">
+								<div class="footer-payment-method">
+									<a href="#"><img alt="" src="resources/img/icon-img/7.png"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+            
             <!-- modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

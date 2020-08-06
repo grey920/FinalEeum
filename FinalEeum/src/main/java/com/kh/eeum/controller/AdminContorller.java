@@ -109,7 +109,7 @@ public class AdminContorller {
 		
 		System.out.println("글쓰기 값"+admin.getEXID());
 		adminservice.insertPrice(admin);
-		return "redirect:/expertDetail.service";
+		return "redirect:/expert.service";
 	}
 	
 	@ResponseBody

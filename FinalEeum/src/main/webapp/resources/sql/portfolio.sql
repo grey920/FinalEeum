@@ -48,3 +48,7 @@ DELETE PORTFOLIO;
 		where rnum > = 1
  and rnum < =
 		8;
+		
+update portfolio
+set pf_grade = 3
+where pf_exid = 'sena12'
