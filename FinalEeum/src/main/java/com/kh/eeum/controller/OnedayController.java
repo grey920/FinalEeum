@@ -26,17 +26,44 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.eeum.domain.Apply;
 import com.kh.eeum.domain.Oneday;
+import com.kh.eeum.domain.User;
 import com.kh.eeum.service.ApplyService;
 import com.kh.eeum.service.OnedayService;
+import com.kh.eeum.service.UserService;
 
 @Controller
 public class OnedayController {
 
 	@Autowired
 	private OnedayService onedayService;
+	
 	@Autowired
 	private ApplyService applyService;
 	
+	@Autowired
+	private UserService userservice;
+	
+	@RequestMapping(value="onedayPay.one")
+	public ModelAndView onedayPay(ModelAndView mv, HttpSession session,int num) {
+		String id = (String) session.getAttribute("user_id");
+		Apply apply = applyService.isId(id, num);
+		System.out.println(apply.getAP_PRICE());
+		User user = userservice.user_info(id);
+		mv.setViewName("UE/oneday_pay");
+		mv.addObject("applyData", apply);
+		mv.addObject("userinfo", user);
+		System.out.println("컨트롤러입니다.");
+		return mv;
+	}
+	
+	@RequestMapping(value="/payments/complete")
+	public String paySuccess(String id, int apIndex, String price)  {
+		System.out.println("paySuccess들어왔니");
+		Apply apply = applyService.isId(id, apIndex);
+		int result = applyService.updateState(id,apIndex);	//1이면 상태 수정 완료
+		System.out.println("APPLY_PROG 업데이트 완료");
+		return "redirect:/userpage.net";
+	}
 
 	// 원데이 클래스 메인 (리스트보기)
 	@RequestMapping(value = "/OnedayList.one")
@@ -222,8 +249,8 @@ public class OnedayController {
 		String id = (String)session.getAttribute("user_id");
 		System.out.println("id, num="+id +num);
 		
-		boolean idcheck_result = applyService.isId(id, num);	
-		if(idcheck_result == false) {
+		Apply applyResult= applyService.isId(id, num);	
+		if(applyResult != null) {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
@@ -247,7 +274,7 @@ public class OnedayController {
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		out.println("alert('원데이 클래스 가신청 되었습니다. 입금이 완료되어야 신청됩니다.');");
-		out.println("location.href='OnedayList.one';"); //마이페이지로 넘기기
+		out.println("location.href='userOneday.net';"); //마이페이지로 넘기기
 		out.println("</script>");
 		out.close();
 		return null;

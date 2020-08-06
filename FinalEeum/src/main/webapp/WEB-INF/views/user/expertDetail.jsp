@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="resources/dist/img/eeumLogo2.png" rel="shortcut icon" type="image/x-icon">
+<link rel="shortcut icon" type="image/x-icon" href="resources/img/favicon.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>회원 기본 정보 - 전문가 사용자</title>
 <%@ include file ="../include2/head.jsp" %>
@@ -42,7 +42,7 @@
               <h3 class="card-title" >전문가 회원 포트폴리오</h3>
             </div>
             <div class="card-body">
-            <c:set var="d" value="${ deExperts}" />
+            <c:set var="d" value="${deExperts}" />
 
               <div class="form-group">
              		<table class="table table-striped">
@@ -85,11 +85,11 @@
              		</tr>
              		<tr>
              			<td>전문가 자격증</td>
-             			<td>${d.PF_LI}</td>
+             			<td>${d.PF_SV_LI}</td>
              		</tr>
              		<tr>
              			<td>전문가 사업자 번호</td>
-             			<td>${d.PF_OP }</td>
+             			<td>${d.PF_SV_OP }</td>
              		</tr>
              		<tr>
              			<td>전문가 소개말</td>

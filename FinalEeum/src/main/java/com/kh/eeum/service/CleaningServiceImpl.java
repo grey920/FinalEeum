@@ -13,6 +13,8 @@ import com.kh.eeum.domain.Expert;
 @Service
 public class CleaningServiceImpl implements CleaningService {
 	
+	
+	
 	@Autowired
 	private CleaningRepairDAO cleaningdao;
 
@@ -24,6 +26,7 @@ public class CleaningServiceImpl implements CleaningService {
 		int endrow = startrow + limit - 1;
 		map.put("start", startrow);
 		map.put("end", endrow);
+		System.out.println("리스트");
 		return cleaningdao.getexpertList(map);
 	}
 

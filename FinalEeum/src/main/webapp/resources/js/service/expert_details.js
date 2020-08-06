@@ -1,9 +1,22 @@
 $(document).ready(
-		function() {
-
+		function() {  
+	        
 			var current_fs, next_fs, previous_fs; // fieldsets
 			var opacity;
 			var expert_id = $('#EXPERT_ID').val();
+			// 전문가 찜 불가
+			var expert_id_login = $('#expert_id_login').val();
+			console.log("여기 나오니..?"+expert_id_login);
+			if (expert_id_login == 1) {
+				$('.heart_click').attr('disabled', true);
+				$('.heart_click').css('cursor', 'auto');
+				$('.heart_click').css('background-color', '#CADEE3');
+				$('.heart_click2').attr('disabled', true);
+				$('.heart_click2').css('cursor', 'auto');
+				$('.heart_click2').css('background-color', '#CADEE3');
+
+			}
+			
 
 			$('#top').addClass('step-1');
 
@@ -32,6 +45,20 @@ $(document).ready(
 								$("#top").removeClass('step-' + i);
 							}
 						}
+
+						var pf_cate = $("#PF_CATE").val();
+						if (pf_cate == 1) {
+
+							if (current_fs_index == 1) {
+								$('step-2.step-2_1').removeClass();
+								$('#top').addClass('step-2_1');
+
+							}
+
+						}
+
+						// 전문가 별로 모달 내용이 달라짐
+
 						// show the next fieldset
 						next_fs.show();
 						// hide the current fieldset with style
@@ -54,6 +81,7 @@ $(document).ready(
 							},
 							duration : 600
 						});
+
 					});
 
 			$(".previous").click(
@@ -73,6 +101,7 @@ $(document).ready(
 						if (current_fs_index == 2) {
 							$("#top").removeClass('step-2');
 							$('#top').addClass('step-1'); // 1이 나와야함.
+						
 						}
 
 						if (current_fs_index == 3) {
@@ -148,10 +177,11 @@ $(document).ready(
 						$('#tabText' + i).css('color', 'white');
 						$('#tabText2').css('text-decoration', 'underline');
 						$('#tabText2').css('color', 'black');
+						
 					}
 
 				} else if (active.toString() == 'tab3') {
-					tab = "price_list";
+					tab = "pricelist_detail";
 					for (var i = 1; i <= 4; i++) {
 						$('#tabText' + i).css('text-decoration', 'none');
 						$('#tabText' + i).css('color', 'white');
@@ -167,20 +197,18 @@ $(document).ready(
 						$('#tabText4').css('color', 'black');
 					}
 				}
-				
-				
+
 				$.ajax({
-					
 					type : 'GET',
 					url : tab, // ~~.jsp 파일이 들어옴
 					error : function() { // 통신 실패시
 						alert('통신실패!');
 					},
 					success : function(data) { // 통신 성공하면 가져옴.
-
-						$("#tabcontent").html(data);
-						
-						
+						 $("#tabcontent").html(data);
+		                  console.log("1.#EXPERT_ID.val()="+$("#EXPERT_ID").val());
+		                  $('.qnaexid').val($("#EXPERT_ID").val());
+		                  console.log("2."+$('#qnaexid').val());
 					}
 
 				});
@@ -190,7 +218,7 @@ $(document).ready(
 			$('#tabText1').css('text-decoration', 'underline');
 			$('#tabText1').css('color', 'black');
 			$('#tabcontent').load("portfolio_list");
-
+			var expert_id = $('#EXPERT_ID').val();
 			// 찜등록
 			$(".heart_click").click(
 					function() {
@@ -205,7 +233,8 @@ $(document).ready(
 							'USER_ID' : user_id
 						}; // 현재 로그인한 사용자 아이디, 찜등록하려는 전문가 아이디
 
-						$.ajax({
+						$
+								.ajax({
 									type : 'POST',
 									url : "LikeExpert.Ajax", // 찜등록 db로 들어가는
 									// 주소 ,
@@ -213,6 +242,7 @@ $(document).ready(
 									dataType : "json",
 									data : senddata,
 									success : function(sdata) {
+
 										if (sdata == 0) {
 											alert("찜 등록했습니다."); // db에는 잘 들어가고
 											// 디테일은 나중에 여기
@@ -222,11 +252,11 @@ $(document).ready(
 													'fa fa-heart');
 										} else if (sdata == 1) {
 											alert("찜 등록해제 했습니다.");
-											
+
 											$("#fa-heart-o").removeClass(
 													'fa fa-heart');
 											$("#fa-heart-o").addClass(
-											'fa fa-heart-o');
+													'fa fa-heart-o');
 										}
 
 									},
@@ -239,5 +269,7 @@ $(document).ready(
 					}); // 찜
 
 			// 견적
+			//별점
+			
 
 		});

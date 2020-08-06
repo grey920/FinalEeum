@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- SQL 맵퍼 파일은 xml이기 때문에 제일 먼저 xml 선언이 옵니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Qnas">
+	<insert id="insert" parameterType="qna">
+		 <selectKey resultType="int" order="BEFORE"
+			keyProperty="QNA_NUM">
+			select nvl(max(QNA_NUM), 0) + 1 from qna
+		</selectKey> 
+		insert into QNA
+		values
+		(#{QNA_NUM}, #{QNA_ID},#{QNA_EXID}, #{QNA_TITLE}, #{QNA_CONTENT}, 
+		#{QNA_PASS}, #{QNA_SEQURE}, #{QNA_NUM}, #{QNA_RE_LEV}, #{QNA_RE_SEQ}, 
+		sysdate, #{QNA_READCOUNT})
+	</insert>
+	
+	<select id="count" resultType="int">
+		select count(*) from QNA
+	</select>
+	<select id="list" parameterType="map" resultType="qna">
+		select * from 
+			(select rownum rnum, q.*
+			 from 
+				(select * from qna
+				order by QNA_RE_REF desc, QNA_RE_SEQ asc) q
+				)
+		where rnum &gt; = #{start} and rnum &lt; = #{end}
+	</select>
+	
+	<update id="ReadCountUpdate" parameterType="int">
+		update qna
+		set QNA_READCOUNT = QNA_READCOUNT+1
+		where QNA_NUM = #{number}
+	</update>
+	
+	<update id="reply_update" parameterType="qna">
+		update qna
+		set QNA_RE_SEQ = QNA_RE_SEQ + 1
+		where QNA_RE_REF = #{QNA_RE_REF}
+		and QNA_RE_SEQ <![CDATA[>]]> #{QNA_RE_SEQ}
+	</update>
+	
+	<insert id="reply_insert" parameterType="qna">
+		 <selectKey resultType="int" order="BEFORE"
+			keyProperty="QNA_NUM">
+			select nvl(max(QNA_NUM), 0) + 1 from qna
+		</selectKey>
+		insert into QNA
+		values
+		(#{QNA_NUM}, #{QNA_ID},#{QNA_EXID}, #{QNA_TITLE}, #{QNA_CONTENT}, 
+		#{QNA_PASS}, #{QNA_SEQURE}, #{QNA_RE_REF}, #{QNA_RE_LEV}, #{QNA_RE_SEQ}, 
+		sysdate, #{QNA_READCOUNT})
+	</insert>
+		<select id="Detail" resultType="qna" parameterType="int">
+		select * from qna where QNA_NUM = #{number}
+	</select>
+</mapper>

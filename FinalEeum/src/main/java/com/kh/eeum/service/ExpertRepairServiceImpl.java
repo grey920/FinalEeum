@@ -13,13 +13,16 @@ import com.kh.eeum.domain.Portfolio;
 @Service
 public class ExpertRepairServiceImpl implements ExpertRepairService {
 
+	
 	@Autowired
 	private ExpertRepairDAO repairdao;
+	
 	
 	
 	@Override
 	public int getExpertListCountRepair() {
 		return repairdao.expert_RepairCount();
+	
 	}
 
 	@Override

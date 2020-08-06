@@ -1,20 +1,14 @@
 package com.kh.eeum.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.kh.eeum.dao.ExpertDAO;
 import com.kh.eeum.dao.ReviewDAO;
-import com.kh.eeum.dao.UserDAO;
-import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Review;
-import com.kh.eeum.domain.User;
 
 @Service
 public class ReviewServiceImpl implements ReviewService{
@@ -22,11 +16,8 @@ public class ReviewServiceImpl implements ReviewService{
 	@Autowired
 	ReviewDAO dao;
 	
-
-
 	@Override
 	public List<Review> selectReviewList( String expert_id, int page) {
-		
 		System.out.println("리뷰 서비스"+expert_id);
 		
 		int startrow = (page - 1) * 10 + 1;
@@ -55,12 +46,66 @@ public class ReviewServiceImpl implements ReviewService{
 		return dao.getReviewCount(expert_id);
 	}
 
+	@Override
+	public int reviewDelete(int num) {
+		return dao.reviewDelete(num);
+	}
 
+	@Override
+	public float selectReviewList(String expertid) {
+		float rating = dao.selectReviewList1(expertid);
+		
+		if(rating == 0) {
+			return 0;
+		}
+		
+		return rating;
+	}
 
+	public int reviewCount(String user_id) {
+		return dao.reviewCount(user_id);
+	}
 
+	@Override
+	public List<Map<String, Object>> reviewList (String user_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int startrow = (page -1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("rv_user_id", user_id);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return dao.reviewList(map);
 
-	
+	}
 
-	
-	
+	@Override
+	public int selectReservation(String user_id,String expert_id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("user_id", user_id);
+		map.put("expert_id", expert_id);
+		map.put("num", 3);
+		return dao.selectReservationList(map);
+	}
+	@Override
+	public Map<String, Object> getReview(int rv_no) {
+		return dao.getReview(rv_no);
+	}
+
+	@Override
+	public int updateReservation(String rv_expert_id, String rv_user_id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("expert_id", rv_expert_id);
+		map.put("user_id", rv_user_id);
+		map.put("num", 5);
+		map.put("num1", 3);
+		return dao.updateReservation(map);
+	}
+
+	@Override
+	public int memberRegisterDept(HashMap<String, String> paraMap) {
+		  return dao.memberRegisterDept(paraMap);
+	}	
 }

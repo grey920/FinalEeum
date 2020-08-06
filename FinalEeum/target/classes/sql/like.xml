@@ -3,24 +3,23 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
+
 <mapper namespace="Likes">
 
-<insert id="insertlike" parameterType="like">
-	insert into like_expert
-	values (#{user_id},#{expert_id},#{like_state})
-</insert>
-
-<select id="listLike" resultType="map">
-	select * from like_expert
-	where like_expert_id = #{expert_id} and like_user_id = #{user_id}
-
-</select>
-
-<delete id="deleteLike" parameterType="like">
-	delete from like_expert
-	where like_expert_id = #{expert_id} and like_user_id = #{user_id}
-
-</delete>
+	<insert id="insertlike" parameterType="like">
+		insert into like_expert
+		values (#{user_id},#{expert_id},#{like_state})
+	</insert>
+	
+	<select id="listLike" resultType="map">
+		select * from like_expert
+		where like_expert_id = #{expert_id} and like_user_id = #{user_id}
+	</select>
+	
+	<delete id="deleteLike" parameterType="like">
+		delete from like_expert
+		where like_expert_id = #{expert_id} and like_user_id = #{user_id}
+	</delete>
 
 	<select id="wishlistCount" parameterType="String" resultType="int">
 		select count(*)
@@ -36,9 +35,33 @@
 										expert_table e on l.like_expert_id = e.expert_id left outer join
 										PORTFOLIO p on l.like_expert_id = p.pf_exid
 							   where l.like_user_id = #{user_id}
-							   order by l.likeno desc) w
+							   ) w
+				)
+		where rnum &gt; = #{start} and rnum &lt; = #{end}
+		
+	</select>
+	
+	<select id="wishCheckCount" parameterType="map" resultType="int">
+		select count(*)
+		from (select l.like_user_id, p.pf_cate
+				  from like_expert l, portfolio p
+				  where l.like_user_id = #{user_id} and p.pf_cate = #{cate}
+				  )
+	</select>
+	
+	<select id="wishCheck" parameterType="map" resultType="map">
+		select * 
+		from (select rownum rnum, w.*
+				  from (select l.like_expert_id, e.expert_name, p.pf_saveprofile, p.pf_grade, p.pf_cate
+				  			from like_expert l inner join
+									 expert_table e on l.like_expert_id = e.expert_id left outer join
+									 PORTFOLIO p on l.like_expert_id = p.pf_exid
+							where l.like_user_id = #{user_id} and p.pf_cate = #{cate}
+							) w
 				)
 		where rnum &gt; = #{start} and rnum &lt; = #{end}
 	</select>
+	
+	
 	
 </mapper>

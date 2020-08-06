@@ -40,6 +40,25 @@ input{border-radius:30px;}
 button{height:50px}
 .login-toggle-btn{font-size:15pt}
 .breadcrumb-content {padding-top:0;}
+.btn-style.btn-login{background-color:#C1C8D9;
+				 color:#303030;
+				 border:2px solid #C1C8D9 !important;
+				 border-radius:50px}
+.btn-style.btn-login:hover{color:#303030;
+						   background-color:white;
+						   animation:none}
+.btn-style{margin-top:10px !important;
+       			margin-right:0 !important; 
+       			font-size:18px;
+         		border-radius:20px;
+         		background-color:white;
+         		color:#72A0E0;
+         		border:2px solid #72A0E0 !important;
+         		}
+.btn-style:hover{background-color:#72A0E0;
+         					color:white;
+         					border:2px solid #72A0E0;
+         					}
 </style>
 </head>
 <body>
@@ -47,25 +66,6 @@ button{height:50px}
 		<!-- header start -->
 		<div class="header-height"></div>
 		
-		<!-- main-search start -->
-		<div class="main-search-active">
-			<div class="sidebar-search-icon">
-				<button class="search-close">
-					<span class="ti-close"></span>
-				</button>
-			</div>
-			<div class="sidebar-search-input">
-				<form>
-					<div class="form-search">
-						<input id="search" class="input-text" value=""
-							placeholder="Search Entire Store" type="search">
-						<button>
-							<i class="ti-search"></i>
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
 		   <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
@@ -73,6 +73,7 @@ button{height:50px}
                     </div>
                 </div>
             </div>
+            
 		<!-- 회원가입폼-->
             <div class="login-register-area ptb-130 hm-3-padding">
                 <div class="container-fluid">
@@ -108,15 +109,15 @@ button{height:50px}
                                                             	</c:if>
                                                             >
                                                             <label>ID 기억하기</label>
-                                                            <a href="#">아이디 / 비밀번호 찾기</a>
+                                                            <a href="userFind.net">아이디 / 비밀번호 찾기</a>
                                                         </div>
                                                         <div style="text-align:center; margin:0 auto">
-                                                        <button type="submit" class="btn-style cr-btn" style="border-radius:50px"><span>&nbsp;사용자 LOGIN&nbsp;</span></button>
+                                                        <button type="submit" class="btn-style" style="border-radius:50px"><span>&nbsp;사용자 LOGIN&nbsp;</span></button>
                                                         </div>
                                                     </div>
                                                 </form>
                                                 <div style="text-align:center; margin:0 auto">
-                                                   <button class="btn-style cr-btn" onclick="location.href='userJoin.net';" style="background-color:#C1C8D9;color:#303030;border-radius:50px">
+                                                   <button class="btn-style btn-login" onclick="location.href='userJoin.net';">
                                                    <span>사용자 회원가입</span></button>
                                                 </div>
                                             </div>
@@ -142,15 +143,15 @@ button{height:50px}
                                                             	</c:if>
                                                             >
                                                             <label>ID 기억하기</label>
-                                                            <a href="#">아이디 / 비밀번호 찾기</a>
+                                                            <a href="expertFind.net">아이디 / 비밀번호 찾기</a>
                                                         </div>
                                                         <div style="text-align:center; margin:0 auto">
-                                                        <button type="submit" class="btn-style cr-btn" style="border-radius:50px"><span>&nbsp;전문가 LOGIN&nbsp;</span></button>
+                                                        <button type="submit" class="btn-style" style="border-radius:50px"><span>&nbsp;전문가 LOGIN&nbsp;</span></button>
                                                         </div>
                                                     </div>
                                                 </form>
                                                 <div style="text-align:center; margin:0 auto">
-                                                   <button class="btn-style cr-btn" onclick="location.href='expertJoin.net';" style="background-color:#C1C8D9;color:#303030;border-radius:50px">
+                                                   <button class="btn-style btn-login" onclick="location.href='expertJoin.net';">
                                                    <span>전문가 회원가입</span></button>
                                                 </div>
                                             </div>

@@ -15,13 +15,11 @@ public class ReviewDAO {
 	
 	@Autowired
 	SqlSessionTemplate sqlSession;
-
+	
 	public List<Review> selectReviewList(Map<String, Object> map) {
 		System.out.println("리뷰dao"+map.get("expert_id"));
 		return sqlSession.selectList("Reviews.selectReviewList", map);
 	}
-
-
 
 	public int insertReview(Review review) {
 		return sqlSession.insert("Reviews.insert",review);
@@ -33,5 +31,40 @@ public class ReviewDAO {
 
 	public int getReviewCount(String expert_id) {
 		return sqlSession.selectOne("Reviews.count",expert_id);
+	}
+
+	public int reviewDelete(int num) {
+		return sqlSession.delete("Reviews.delete",num);
+	}
+
+
+	public float selectReviewList1(String expertid) {
+		
+		return sqlSession.selectOne("Reviews.selectRating", expertid);
+	}
+
+	public int reviewCount(String user_id) {
+		return sqlSession.selectOne("Reviews.reviewCount", user_id);
+	}
+
+	public List<Map<String, Object>> reviewList(HashMap<String, Object> map) {
+		return sqlSession.selectList("Reviews.reviewList", map);
+	}
+
+	public int selectReservationList(Map<String, Object> map) {
+		return sqlSession.selectOne("Reviews.reservation",map);
+	}
+
+	public int updateReservation(Map<String, Object> map) {
+		return sqlSession.update("Reviews.reservationupdate",map);
+	}
+
+	public int memberRegisterDept(HashMap<String, String> paraMap) {
+		return sqlSession.insert("Reviews.registerDept", paraMap);
+	}	
+
+	public Map<String, Object> getReview(int rv_no) {
+		return sqlSession.selectOne("Reviews.getReview", rv_no);
+
 	}
 }

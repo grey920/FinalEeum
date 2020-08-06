@@ -8,6 +8,7 @@ public class Like {
 
 	
 
+	
 	public int getLike_state() {
 		return like_state;
 	}

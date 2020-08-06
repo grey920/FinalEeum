@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  <!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>사용자 - 별점 / 후기 내역</title>
+        <title>사용자 - 후기 내역</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -23,6 +25,7 @@
         <link rel="stylesheet" href="resources/css/bundle.css">
         <link rel="stylesheet" href="resources/css/style.css">
         <link rel="stylesheet" href="resources/css/responsive.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 		<%@ include file="../header.jsp" %>
         <style>
@@ -30,48 +33,52 @@
 		.border-top-2 {border-top:0}
 		.product-img img{transition:none}
 		.product-img{width:250px !important}
-		.product-list-details h2{font-size:33px}
+		.product-list-details {padding-right:100px}
+		.product-list-details a{font-size:28px}
 		.shop-list-cart > a {font-size: 18px;
 										border:2px solid #72A0E0;
 										border-radius:20px}
-		hr{margin:15px 0}
-		.shop-topbar-wrapper {border-bottom: 1px solid #868e96;}
-		.product-list-details > p {margin: 18px 0 15px;}
-		h2{margin-top:30px}
+		hr{margin:15px 0;}
+		.shop-topbar-wrapper {border-bottom: 1px solid #868e96; border-width:80%}
+		h2{margin-top:5px}
 		.product-list-details > h2 {margin-bottom: 10px;}
          .pt-120{padding-top:50px !important}
          .breadcrumb-content{padding-top:0;margin-top:1em}
          .breadcrumb-content ul > li{font-size:13pt}
+         .product-rating{margin-bottom:15px}
+         .shop-list-cart{margin-top:8px}
+         .product-rating img {width:140px}
+                 .nodata{padding:100px 0 100px 0;
+        			  display: flex;
+					  justify-content: center;
+					  align-items: center;
+					  flex-direction: column;}
+        .btn-style{margin-top:10px !important;
+       					 margin-right:0 !important; 
+       					 font-size:18px;
+         				 border-radius:20px;
+         				 background-color:white;
+         				 color:#72A0E0;
+         				 border:2px solid #72A0E0;
+         				 }
+        .btn-style:hover{background-color:#72A0E0;
+         					       color:white;
+         					       border:2px solid #72A0E0;
+         						  }
         </style>
     </head>
     <body>
-        <div class="wrapper">
+      <div class="wrapper">
             <!-- header start -->
 		 	<%@ include file="../header.jsp" %>
             <div class="header-height"></div>
             
-            <!-- main-search start -->
-            <div class="main-search-active">
-                <div class="sidebar-search-icon">
-                    <button class="search-close"><span class="ti-close"></span></button>
-                </div>
-                <div class="sidebar-search-input">
-                    <form>
-                        <div class="form-search">
-                            <input id="search" class="input-text" value="" placeholder="Search Entire Store" type="search">
-                            <button>
-                                <i class="ti-search"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
             <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center border-top-2">
                         <h2>REVIEW LIST</h2>
                         <ul>
-                            <li>작성한 서비스 후기 목록</li>
+                            <li>작성한 후기 목록</li>
                         </ul>
                     </div>
                 </div>
@@ -79,153 +86,143 @@
 
             <div class="shop-wrapper hm-3-padding pt-120 pb-100">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
+                  <div class="row">
+                
+                  <c:if test="${reviewCount > 0 }">
+                        <div class="col-md-12" style="padding:0 45px">
                             <div class="shop-topbar-wrapper">
-                                <div class="shop-filter">
-                                    <button class="product-filter-toggle">filter</button>
-                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="product-filter-wrapper">
-                                <div class="row">
-                                    <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-                                        <h5>Sort by</h5>
-                                        <ul class="sort-by">
-                                            <li><a href="#">Default</a></li>
-                                            <li><a href="#">Popularity</a></li>
-                                            <li><a href="#">Average rating</a></li>
-                                            <li><a href="#">Newness</a></li>
-                                            <li><a href="#">Price: Low to High</a></li>
-                                            <li><a href="#">Price: High to Low</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-                                        <h5>color filters</h5>
-                                        <ul class="color-filter">
-                                            <li><a href="#"><i style="background-color: #000000;"></i>Black</a></li>
-                                            <li><a href="#"><i style="background-color: #663300;"></i>Brown</a></li>
-                                            <li><a href="#"><i style="background-color: #FF6801;"></i>Orange</a></li>
-                                            <li><a href="#"><i style="background-color: #ff0000;"></i>red</a></li>
-                                            <li><a href="#"><i style="background-color: #FFEE00;"></i>Yellow</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-                                        <h5>product tags</h5>
-                                        <div class="product-tags">
-                                            <a href="#">New ,</a>
-                                            <a href="#">brand ,</a>
-                                            <a href="#">black ,</a>
-                                            <a href="#">white ,</a>
-                                            <a href="#">chire ,</a>
-                                            <a href="#">table ,</a>
-                                            <a href="#">Lorem ,</a>
-                                            <a href="#">ipsum ,</a>
-                                            <a href="#">dolor ,</a>
-                                            <a href="#">sit ,</a>
-                                            <a href="#">amet ,</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-                                        <h5>Filter by price</h5>
-                                        <div id="price-range"></div>
-                                        <div class="price-values">
-                                            <span>Price:</span>
-                                            <input type="text" class="price-amount">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     
                     <div class="grid-list-product-wrapper">
                         <div class="product-list product-view">
-                            <div class="row">
                             
+                              <c:forEach var="re" items="${relist}">
                                 <div class="product-width col-md-6 col-xl-3 col-lg-4">
                                     <div class="product-wrapper mb-35">
                                         <div class="product-img">
-                                            <a href="#">
-                                                <img src="resources/img/profile/profile_ex1.png" style="">
+                                            <a href="expertDetail.service?expert=${re.EXPERT_ID}">
+                                                <img src="resources/expert_profile${re.PF_SAVEPROFILE}" style="width:170px; float:right">
                                             </a>
                                         </div>
                                         <div class="product-list-details">
-                                            <h2><a href="product-details.html">[청소] 디딤돌 최유정님</a></h2>
-                                            <div class="product-price">
-                                                <span>2020년 6월 20일 | 오후 4시</span>
-                                            </div>
-                                            <hr>
-                                            <div class="product-rating">
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                            </div>
-                                            <p style="font-size:15pt;">정말 최고였습니다</p>
-                                            <p>하루에 세 번 Um 아니 열 번쯤 (We got that We got that) 문득 니 생각이 나 멈칫 난 내게 놀라 No no no 감정의 롤러코스터 그 안에 갇혀 어지러 아찔해 (Hmm Now) 그동안 셀 수 없이 모른 척했던 서툰 니 표현이 신경 쓰여 ...</p>
-                                            <div class="shop-list-cart">
-                                                <a href="cart.html"><i class="ti-shopping-cart"></i>상세 보기</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-width col-md-6 col-xl-3 col-lg-4">
-                                    <div class="product-wrapper mb-35">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="resources/img/profile/profile_ex2.png" alt="">
+                                            <a href="expertDetail.service?expert=${re.EXPERT_ID}">
+                                            [
+                                            <c:choose>
+                                            	<c:when test="${re.PF_CATE == '0'}">
+                                            	청소
+                                            	</c:when>
+                                            	<c:when test="${re.PF_CATE == '1'}">
+                                            	방역
+                                            	</c:when>
+                                            	<c:otherwise>
+                                            	수리
+                                            	</c:otherwise>
+                                            </c:choose>
+                                            ]
+                                            <c:choose>
+                                            	<c:when test="${re.PF_GRADE == '0'}">
+                                            		디딤돌 
+                                            	</c:when>
+                                            	<c:when test="${re.PF_GRADE == '1'}">
+                                            		마루 
+                                            	</c:when>
+                                            	<c:when test="${re.PF_GRADE == '2'}">
+                                            		우주 
+                                            	</c:when>
+                                            	<c:when test="${re.PF_GRADE == '3'}">
+                                            		용마루 
+                                            	</c:when>
+                                            </c:choose>
+                                            ${re.EXPERT_NAME}
                                             </a>
-                                        </div>
-                                         <div class="product-list-details">
-                                            <h2><a href="product-details.html">[수리] 용마루 김도연님</a></h2>
-                                            <div class="product-price">
-                                                <span>2020년 7월 1일 | 오전 11시</span>
-                                            </div>
+                                            &nbsp;&nbsp;
+                                            <c:set var="date" value="${re.rs_date}"/>
+                                            	<fmt:formatDate value="${date}" type="date" dateStyle="long"/>
+                                                 | 
+                                            <c:set var="time" value="${re.rs_time}"/>
+                                            	<fmt:formatDate value="${time}" type="time" timeStyle="short"/>
                                             <hr>
+
                                             <div class="product-rating">
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
+                                            	<c:choose>
+                                            		<c:when test="${re.RV_SUM == '0' }"><img src="resources/img/review/0.png"></c:when>
+                                            		<c:when test="${re.RV_SUM > '0' && re.RV_SUM < '1'}"><img src="resources/img/review/0.5.png"></c:when>
+                                            		<c:when test="${re.RV_SUM == '1' }"><img src="resources/img/review/1.png"></c:when>
+                                            		<c:when test="${re.RV_SUM > '1' && re.RV_SUM < '2'}"><img src="resources/img/review/1.5.png"></c:when>
+                                            		<c:when test="${re.RV_SUM == '2' }"><img src="resources/img/review/2.png"></c:when>
+                                            		<c:when test="${re.RV_SUM > '2' && re.RV_SUM < '3'}"><img src="resources/img/review/2.5.png"></c:when>
+                                            		<c:when test="${re.RV_SUM == '3' }"><img src="resources/img/review/3.png"></c:when>
+                                            		<c:when test="${re.RV_SUM > '3' && re.RV_SUM < '4'}"><img src="resources/img/review/3.5.png"></c:when>
+                                            		<c:when test="${re.RV_SUM == '4' }"><img src="resources/img/review/4.png"></c:when>
+                                            		<c:when test="${re.RV_SUM > '4' && re.RV_SUM < '5'}"><img src="resources/img/review/4.5.png"></c:when>
+                                            		<c:when test="${re.RV_SUM == '5' }"><img src="resources/img/review/5.png"></c:when>
+                                                </c:choose>
+                                                &nbsp;
+                                                <fmt:formatNumber value="${re.RV_SUM}" pattern=".00"/>
                                             </div>
-                                            <div class="shop-list-cart" style="margin-top:15px"> <!-- 후기없을 때만 적용되게 해야함 -->
-                                                <a href="cart.html"><i class="ti-shopping-cart"></i>상세 보기</a>
+                                            
+                                            <c:choose>
+		                                       <c:when test="${fn:length(re.RV_CONTENT) > 110}">
+		                                            <c:out value="${fn:substring(re.RV_CONTENT,0,109)}"/>...
+		                                       </c:when>
+		                                       <c:otherwise>
+				                                    <c:out value="${re.RV_CONTENT}"/>
+		                                       </c:otherwise>
+		                                    </c:choose>
+		                                    
+                                            <div class="shop-list-cart">
+                                                <a href="reviewDetail.net?rv_no=${re.RV_NO}"><i class="ti-shopping-cart"></i>상세 보기</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                             </c:forEach>
+                           </div>
                             
-                            
-                            <div class="pagination-style text-center mt-30">
-                                <ul>
-                                    <li>
-                                        <a class="active" href="#">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ion-chevron-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+				 			<div class="pagination-style text-center mt-30" id="pagination">
+								<ul class="paging_align">
+									<c:if test="${page <= 1 }">
+										<li><i class="ion-chevron-left" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page > 1}">
+										<li><a href="userOneday.net?page=${page-1}"><i
+												class="ion-chevron-left"></i></a></li>
+									</c:if>
+				
+									<c:forEach var="a" begin="${startpage}" end="${endpage}">
+										<c:if test="${a == page }">
+											<li><a class="active" href="#">${a}</a></li>
+										</c:if>
+										<c:if test="${a != page}">
+											<li><a href="userOneday.net?page=${a}">${a}</a></li>
+										</c:if>
+									</c:forEach>
+				
+									<c:if test="${page >= maxpage}">
+										<li><i class="ion-chevron-right" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page < maxpage}">
+										<li><a href="userOneday.net?page=${page+1}"> <i
+												class="ion-chevron-right"></i>
+										</a></li>
+									</c:if>
+								</ul>
+							</div>
+							
                         </div>
-                    </div>
+              		  </c:if>
+              		  
+              		  <c:if test="${reviewCount == 0 }">
+	                  	<div class="col-lg-12 col-md-12 col-12 nodata">	
+					        <p>아직 작성한 후기가 없습니다😥</p>
+					        <p>받은 서비스에 대해 평가해주세요</p>
+					    	<button class="btn-style" onclick="location.href='userReservation.net';">후기 작성하러 가기</button>
+					    </div>
+                  	</c:if>
+                  </div>
                 </div>
-            </div>
+			 </div>
             
             
             <footer class="hm-4-padding">

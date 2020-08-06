@@ -26,6 +26,10 @@
 <link rel="stylesheet" href="resources/css/responsive.css">
 <link rel="stylesheet" href="resources/css/service/portfolioForm.css">
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
+<style>
+input{border-radius:10px}
+textarea{border-radius:10px}
+</style>
 <%@ include file="../header.jsp" %>
 <style>
 #upfile1, #upfile2{width:auto;height:150px;}
@@ -38,7 +42,18 @@
 	width: 100%;
 	margin: 0;
 }
-
+.btn-style{margin-top:10px !important;
+       			margin-right:0 !important; 
+       			font-size:18px;
+         		border-radius:20px;
+         		background-color:white;
+         		color:#72A0E0;
+         		border:2px solid #72A0E0;
+         		}
+.btn-style:hover{background-color:#72A0E0;
+         				color:white;
+         				border:2px solid #72A0E0;
+         				}
 </style>
 </head>
 <body>
@@ -101,7 +116,7 @@
 												<img
 													src="resources/expert_profile${p.PF_SAVEPROFILE}" alt="profile"
 													id="profile"
-													style="width: 170px; height: 170px; border-radius: 50%; cursor: pointer">
+													style="width: 150px; height: auto; cursor: pointer">
 										</div>
 									</div>
 
@@ -150,12 +165,7 @@
 									</div>
 
 
-									<div class="col-md-12">
-										<div class="checkout-form-list">
-											<label>경력 상세설명 <span class="required">*</span></label>
-											<textarea name="PF_DESC" cols="30" rows="5" disabled>${p.PF_DESC}</textarea>
-										</div>
-									</div>
+									
 
 								</div>
 							</div>
@@ -207,6 +217,16 @@
 								</div>
 							</div>
 						</div>
+						
+						<div class="col-lg-12 col-md-12 col-12">
+						<div class="col-md-12">
+										<div class="checkout-form-list">
+											<label>경력 상세설명 <span class="required">*</span></label>
+											${p.PF_DESC}
+										</div>
+									</div>
+						</div>
+						
 						<div class="row btnAlign">
 							<div class="col-lg-12 col-md-12 col-12">
 								<div class="buttons">

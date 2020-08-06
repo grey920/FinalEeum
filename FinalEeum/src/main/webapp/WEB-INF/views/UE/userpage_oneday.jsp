@@ -113,8 +113,8 @@
                                             <td class="product-name">
                                                 <a href="OnedayDetailAction.one?num=${o.AP_CINDEX}" style="margin-bottom:0">${o.AP_TITLE}</a>
                                             </td>
-                                            <c:set var="date" value="${o.AP_CDATE }"/>
-                                            <td class="product-subtotal">
+                                            <c:set var="date" value="${o.AP_CDATE}"/>
+                                            <td class="product-subtotal" style="width:150px">
 	                                           	 <span class="amount">
 	                                           	 	<fmt:formatDate value="${date}" type="date" dateStyle="full" />
 	                                           	 </span>
@@ -124,7 +124,7 @@
 	                                        <c:if test="${o.AP_PROG == '1' }">
 	                                            <td class="product-subtotal">결제 대기</td>
 	                                            <td class="product-subtotal class-state">
-	                                            	<button class="btn-style" onclick="location.href='#';">
+	                                            	<button class="btn-style" onclick="window.open('onedayPay.one?num=${o.AP_CINDEX}','width=500, height=700');">
 															<span>결제하기</span>
 													</button>
 	                                            	<button class="btn-style"  data-toggle="modal" data-target="#modalConfirmDelete">
@@ -161,41 +161,11 @@
                                         
 	                                        <c:if test="${o.AP_PROG == '2' }">
 	                                            <td class="product-subtotal">결제 완료</td>
-	                                            <td class="product-subtotal">
-	                                            	<button class="btn-style"  data-toggle="modal" data-target="#modalConfirmDelete">
-															<span>취소하기</span>
-													</button>
-													<!--Modal: modalConfirmDelete-->
-													<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-														<div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-															
-															<!--Content-->
-															<div class="modal-content text-center" style="width: 40%; margin: 0 auto;">
-																
-																<!--Header-->
-																<div class="modal-header d-flex justify-content-center" style="margin-top:15px">
-																	<p class="heading" style="margin-bottom:10px;color:#303030">신청한 클래스를 취소하시겠습니까?</p>
-																</div>
-									
-																<!--Body-->
-																<div class="modal-body">
-																	<i class="fa fa-times fa-4x animated rotateIn" style="width: auto; margin: 0 auto; color: #dc3545;"></i>
-																</div>
-									
-																<!-- Footer -->
-																<div class="modal-footer flex-center" >
-												      				<a href="userOnedayCancel.net?ap_id=${o.AP_ID}&ap_cindex=${o.AP_CINDEX}" class="btn  btn-outline-danger">예</a>
-												        			<a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal" style="color:white">아니요</a>
-												      			</div>
-												    		</div>
-														</div>
-													</div>
-													<!--/.Content-->
-												</td>
+	                                            <td class="product-subtotal"></td>
 	                                        </c:if>
                                         
 	                                        <c:if test="${o.AP_PROG == '0' }">
-	                                            <td class="product-subtotal">취소</td>
+	                                            <td class="product-subtotal">신청 취소</td>
 	                                            <td class="product-subtotal"></td>
 	                                        </c:if>
                                           </tr>
@@ -380,13 +350,8 @@
                 </div>
             </footer>
         </div>
+      
         
-        
-        
-		
-		
-		
-		
 		<!-- all js here -->
         <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="resources/js/popper.js"></script>

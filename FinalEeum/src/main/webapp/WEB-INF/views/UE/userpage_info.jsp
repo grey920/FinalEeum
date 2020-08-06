@@ -82,7 +82,7 @@ input:read-only{background-color:#d2d3d6}
             </div>
 		<!-- 회원가입폼 -->
 		<c:set var="u" value="${userinfo}"/>
-		<input type="hidden" name="user_profile" value="${u.user_profile}">
+		
 		<div class="login-register-area ptb-130 hm-3-padding">
 			<div class="container-fluid">
 				<div class="row">
@@ -93,7 +93,7 @@ input:read-only{background-color:#d2d3d6}
 									<div class="login-form-container">
 										<div class="login-form">
 											<form action="userUpdateProcess.net" method="post" enctype="multipart/form-data">
-											
+											<input type="hidden" name="user_profile" value="${u.user_profile}">
 												<!--프로필 사진 -->
 												<div class="profile_image" style="width:200px;text-align:center;margin:0 auto">
 												<input type="file" id="user_profile" name="uploadfile" 

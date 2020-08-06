@@ -4,7 +4,8 @@ $(document).ready(
 
 			var current_fs, next_fs, previous_fs; // fieldsets
 			var opacity;
-
+		
+			
 			$('#top').addClass('step-1');
 
 			$(".next").click(
@@ -115,7 +116,7 @@ $(document).ready(
 							duration : 600
 						});
 					});
-
+			
 			$('.radio-group .radio').click(function() {
 				$(this).parent().find('.radio').removeClass('selected');
 				$(this).addClass('selected');

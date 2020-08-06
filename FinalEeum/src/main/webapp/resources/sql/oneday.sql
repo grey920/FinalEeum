@@ -25,17 +25,18 @@ CREATE SEQUENCE ONEDAY_SEQ;
 select * from ONEDAY;
 
 
-	
-	select to_char(sysdate, 'YYYY/MM/DD HH24:MI:SS') from dual;
+CREATE TABLE QNABOARD(
+QNA_INDEX NUMBER NOT NULL,	-- 게시판 번호
+QNA_TITLE VARCHAR2(100)NOT NULL, -- 게시판 제목
+QNA_WRITER VARCHAR2(40) NOT NULL, -- 게시판 글쓴이
+QNA_DATE TIMESTAMP NOT NULL, -- 게시판 작성 날짜
+QNA_SAVEFILE VARCHAR2(50), -- DB에 저장될 사진
+QNA_ORIGINALFILE VARCHAR2(50)	 -- 		
+)
 
-	select * from 
-		(select rownum rnum, b.*
-		from
-		(select * from board order by BOARD_RE_REF desc,
-		BOARD_RE_SEQ asc) b
-		)
-		where rnum < =10 and rnum >= 1
-
---------------------------------------------------------------------
--- board에서 page와 limit값에 따른 데이터들 구해옵니다.
--- 1단계
+select r.*
+from (select ROWNUM RNUM, o.*
+			from ONEDAY o
+			where ONE_RDATE >= sysdate) r
+where RNUM <= 3
+			

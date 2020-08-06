@@ -12,6 +12,7 @@ import com.kh.eeum.domain.Like;
 @Repository
 public class LikeDAO {
 
+	
 	@Autowired
 	SqlSessionTemplate sqlSession;
 
@@ -36,6 +37,19 @@ public class LikeDAO {
 	
 	public List<Object> wishlist(HashMap<String, Object> map) {
 		return sqlSession.selectList("Likes.wishlist", map);
+	}
+
+	public int wishCheckCount(HashMap<String, Object> map) {
+		return sqlSession.selectOne("Likes.wishCheckCount", map);
+	}
+
+	public List<Object> wishCheck(HashMap<String, Object> map) {
+		return sqlSession.selectList("Likes.wishCheck", map);
+	}
+
+
+	public int insertLike(HashMap<String, String> paraMap) {
+		return sqlSession.insert("Likes.insertLike",paraMap);
 	}
 
 }

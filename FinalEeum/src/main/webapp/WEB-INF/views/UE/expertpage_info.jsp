@@ -90,7 +90,7 @@ input:read-only{background-color:#d2d3d6}
 							</div>
 							<div class="tab-content">
 								<div id="lg1" class="tab-pane active">
-									<div class="login-form-container">
+									<div class="login-form-container" style="padding-top:30px">
 										<div class="login-form">
 											<form action="expertUpdateProcess.net" method="post">
 												
@@ -361,7 +361,7 @@ input:read-only{background-color:#d2d3d6}
 
 	<!-- all js here -->
 	<script src="resources/js/jquery-3.5.0.js"></script>
-	<script src="resources/js/userUpdate.js"></script>
+	<script src="resources/js/expertUpdate.js"></script>
 	<script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
 	<script src="resources/js/popper.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>

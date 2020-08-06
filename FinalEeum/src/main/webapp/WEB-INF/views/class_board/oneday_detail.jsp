@@ -35,12 +35,12 @@
 }
 
 .oneday-title_h2 {
-	font-size: 18px;
+	font-size: 20px;
 }
 
 .oneday-title_h3 {
 	font-size: 24px;
-	margin: 100px 0 30px 0;
+	margin: 50px 0 30px 0;
 }
 
 .quickview-btn-cart {
@@ -85,51 +85,33 @@
     display: flex;
     justify-content: center;
 }
+.seat{font-size:18pt; margin-top:40px}
+.pt-130{padding-top:30px}
+.btn-style{margin-top:20px !important;
+       			margin-right:0 !important; 
+       			font-size:18px;
+         		border-radius:20px;
+         		background-color:white;
+         		color:#72A0E0;
+         		border:2px solid #72A0E0;
+         		}
+.btn-style:hover{background-color:#72A0E0;
+         				color:white;
+         				border:2px solid #72A0E0;
+         				}
+.btn-style.end{color:white;
+						background-color:#C1C8D9;
+						border:2px solid #C1C8D9}
+h1 {margin-top:30px}
+h5{margin-top:20px; color:#575555}
+h2, h3{margin-top:50px}
 </style>
 </head>
 <body>
-	<%-- <input type="hidden" id="loginid" value="${user_id}" name="loginid">
- --%>
 	<div class="wrapper">
 		<!-- header start -->
 		<div class="header-height"></div>
-		<!-- main-search start -->
-		<div class="main-search-active">
-			<div class="sidebar-search-icon">
-				<button class="search-close">
-					<span class="ti-close"></span>
-				</button>
-			</div>
-			<div class="sidebar-search-input">
-				<form>
-					<div class="form-search">
-						<input id="search" class="input-text" value=""
-							placeholder="Search Entire Store" type="search">
-						<button>
-							<i class="ti-search"></i>
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="breadcrumb-area mt-37 hm-4-padding">
-			<div class="container-fluid">
-				<div class="breadcrumb-content text-center">
-					<h2>standerd post</h2>
-					<ul>
-						<li><a href="#">home</a></li>
-						<li>standerd post</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="banner-area hm-4-padding">
-			<div class="container-fluid">
-				<div class="banner-img">
-					<a href="#"><img src="resources/img/banner/16.jpg" alt=""></a>
-				</div>
-			</div>
-		</div>
+
 		<!-- blog-area start -->
 		<div class="blog-area pt-130 pb-125 hm-3-padding">
 			<div class="container-fluid">
@@ -153,19 +135,18 @@
 										<div class="col-md-6" style="height: 500px;">
 											<!-- 중요 정보 부분  -->
 											<div class="dec-img dec-mrg">
-												<p>
+<%-- 												<p>
 													<a href="./OnedayList.one">원데이 클래스</a> >
 													${onedaydata.ONE_TYPE}
-												</p>
+												</p> --%>
 												<h1 class="oneday-title oneday-title_h1">${onedaydata.ONE_TITLE}</h1>
-												<h2 class="oneday-title oneday-title_h2">${onedaydata.ONE_LINE}</h2>
+												<h5 class="oneday-title oneday-title_h4">${onedaydata.ONE_LINE}</h5>
 												<h2 class="oneday-title oneday-title_h2">일시 |
 													${onedaydata.ONE_RDATE}</h2>
 												<h2 class="oneday-title oneday-title_h2">장소 |
 													${onedaydata.ONE_LOCATE}</h2>
-												<h3 class="oneday-title oneday-title_h3">${onedaydata.ONE_PRICE}원</h3>
-												<div class="seat">가능 인원 ${onedaydata.ONE_SEAT - classCount}명&nbsp;&nbsp;|&nbsp;&nbsp;정원
-													${onedaydata.ONE_SEAT}명</div>
+												<h2 class="oneday-title oneday-title_h2">가격 | ${onedaydata.ONE_PRICE}원</h2>
+												<div class="seat">정원 ${onedaydata.ONE_SEAT}명&nbsp;&nbsp;|&nbsp;&nbsp;가능 인원 ❛ ${onedaydata.ONE_SEAT - classCount} ❜ 명</div>
 													<div style="display:none">
 											<jsp:useBean id="now" class="java.util.Date"/>
 											<fmt:formatDate value="${now}" pattern="yyyyMMdd" />
@@ -173,7 +154,7 @@
 											<fmt:formatDate value="${rdate}" pattern="yyyyMMdd" />
 											</div>
 											<c:if test="${rdate >= now}">
-												<button class="btn-style cr-btn button" data-toggle="modal" data-target="#applyModal">
+												<button class="btn-style button button-box" data-toggle="modal" data-target="#applyModal">
 													<c:if test="${user_id != null}">
 													<span>신청하기</span>
 													</c:if>
@@ -183,7 +164,7 @@
 												</button>
 											</c:if>
 											<c:if test="${rdate < now}">
-											<button class="btn-style cr-btn"> 종료된 이벤트입니다</button>
+											<button class="btn-style end button-box"> 종료된 이벤트입니다</button>
 											</c:if>
 											
 												<c:if test="${user_id != null}">
@@ -264,15 +245,15 @@
 						</div>
 						<hr>
 
-						<c:if test="${user_id=='admin'}">
+						<c:if test="${user_id=='admin1234'}">
 							<a href="./OnedayModifyView.one?num=${onedaydata.ONE_INDEX}"
 								class="nounderline">
-								<button class="btn-style cr-btn button">수정</button>
+								<button class="btn-style button">수정</button>
 							</a>
 							<%-- href의 주소를 #으로 설정합니다. --%>
 
 							<a href="#" class="nounderline">
-								<button class="btn-style cr-btn button" data-toggle="modal"
+								<button class="btn-style button" data-toggle="modal"
 									data-target="#modalConfirmDelete"
 									style="position: absolute; right: 0;">삭제</button>
 							</a>

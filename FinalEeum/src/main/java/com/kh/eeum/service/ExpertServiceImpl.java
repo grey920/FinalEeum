@@ -26,10 +26,16 @@ import com.kh.eeum.dao.ExpertDAO;
 import com.kh.eeum.dao.PortfolioDAO;
 import com.kh.eeum.domain.Expert;
 import com.kh.eeum.domain.Portfolio;
+import com.kh.eeum.domain.Reservation;
+import com.kh.eeum.domain.Review;
+import com.kh.eeum.domain.User;
+
+
 
 @Service
 public class ExpertServiceImpl implements ExpertService {
 
+	
 	@Autowired
 	private ExpertDAO exdao;
 	
@@ -122,7 +128,7 @@ public class ExpertServiceImpl implements ExpertService {
 	
 	@Override
 	@Transactional
-	public int requestAjax(List<String> realFiles , MultipartHttpServletRequest request, Map<String, Object> paramMap) {
+	public int requestAjax(List<String> realFiles , MultipartHttpServletRequest request, Map<String, Object> paramMap, Reservation reservation) {
 		logger.info("\n\n requestAjax  요청 파라미터 값 reqMap : " + paramMap.toString());
 
 		//1.Request 테이블에 데이터 등록
@@ -134,9 +140,6 @@ public class ExpertServiceImpl implements ExpertService {
 
 		/** 파일이 존재할 경우 **/
 		if (realFiles!=null && request.getFiles("request_file").get(0).getSize() != 0) {
-
-
-			
 			fileList = request.getFiles("request_file");
 			Calendar c = Calendar.getInstance();
 			int year = c.get(Calendar.YEAR);
@@ -151,15 +154,11 @@ public class ExpertServiceImpl implements ExpertService {
 				path1.mkdir();
 			}
 			
-			
 			for(String realImage : realFiles) {           
-						
 						for (MultipartFile mf : fileList) {
-															
 								String originalFilename = mf.getOriginalFilename();
+								
 								if(realImage.equals(originalFilename)) {
-									
-									
 										Random r = new Random();
 										int random = r.nextInt(100000000);
 					
@@ -183,7 +182,6 @@ public class ExpertServiceImpl implements ExpertService {
 											paramMap.put("file_original", fileOriginal);
 											paramMap.put("file_thumb_name", fileThumbName);
 											
-											
 											System.out.println("\n\n파일이름 . 위치 = " + index);
 											System.out.println("원본 파일 명  = " + originalFilename);
 											System.out.println("이미지 확장자 = " + fileExtension);
@@ -199,15 +197,21 @@ public class ExpertServiceImpl implements ExpertService {
 											e.printStackTrace();
 											result = 5;
 										}
-								
-									
 								}
-			
-						
 						}
-	            
 	        }
-	
+			
+			String expert_id = (String) paramMap.get("expert_id");
+			System.out.println(expert_id);
+			String user_id = (String) paramMap.get("writer");
+			System.out.println(user_id);
+			int rs_no = (int) paramMap.get("request_no");
+			
+			reservation.setRs_no(rs_no);
+			reservation.setRs_exid(expert_id);
+			reservation.setRs_uid(user_id);
+			
+			exdao.insertReservation(reservation);
 		}
 		return result;
 	}
@@ -260,6 +264,11 @@ public class ExpertServiceImpl implements ExpertService {
 	}
 
 	@Override
+	public int insertReservation(Reservation reservation) {
+		return exdao.insertReservation(reservation);
+	}
+	
+	@Override
 	public int insert(Portfolio pf) {
 		return pfDao.insert(pf);
 	}
@@ -301,6 +310,265 @@ public class ExpertServiceImpl implements ExpertService {
 	@Override
 	public int getExpertListCountRepair() {
 		return exdao.expert_listCountRepair();
+	}
+
+	@Override
+	public int reserveCount(String user_id) {
+		return exdao.reserveCount(user_id);
+	}
+
+	@Override
+	public List<Reservation> ureserveList(String user_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int startrow = (page -1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("user_id"	, user_id);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return exdao.ureserveList(map);
+	}
+	
+	@Override
+	public int cancelReserve(String rs_exid, String user_id, String rs_no) {
+		Map <String, Object> map = new HashMap<String, Object>();
+		int rs_state = 4;
+		map.put("rs_exid", rs_exid);
+		map.put("rs_uid", user_id);
+		map.put("rs_no", rs_no);
+		map.put("rs_state", rs_state);
+		
+		return exdao.cancelReserve(map);
+	}
+
+	@Override
+	public List<Review> ReviewRatingList(String expert_id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("expert_id", expert_id);
+		
+		return exdao.ReviewRatingList(map);
+	}
+
+	@Override
+	public String findId(String expert_name, String expert_jumin1, String expert_jumin2) {
+		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+		list = exdao.findId(expert_name, expert_jumin1);
+		
+		String result_id = null;
+		
+		for(int i = 0; i <list.size(); i++) {
+			String result_jumin = list.get(i).get("EXPERT_JUMIN2");
+			
+			if(passwordEncoder.matches(expert_jumin2, result_jumin)) {
+				result_id = list.get(i).get("EXPERT_ID");
+				break;
+			}
+		}
+		
+		return result_id;
+	}
+
+	@Override
+	public int findPwd(String expert_id, String expert_name, String expert_jumin1, String expert_jumin2) {
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map = exdao.findPwd(expert_id, expert_name, expert_jumin1);
+		
+		int result = 0;
+		
+		String result_jumin2 = map.get("EXPERT_JUMIN2");
+			
+		if(passwordEncoder.matches(expert_jumin2, result_jumin2)) {
+			result = 1;
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int updatePwd(String expert_id, String expert_name, String expert_jumin1, String expert_pass) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("expert_id", expert_id);
+		map.put("expert_name", expert_name);
+		map.put("expert_jumin1", expert_jumin1);
+		map.put("expert_pass", expert_pass);
+		
+		return exdao.updatePwd(map);
+	}
+
+	@Override
+	public int estimateCount(String expert_id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state = 0;
+		
+		map.put("expert_id", expert_id);
+		map.put("state", state);
+		
+		return exdao.exreserveCount(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> estimateList(String expert_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state = 0;
+		int startrow = (page -1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("expert_id", expert_id);
+		map.put("state", state);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return exdao.exreserveList(map);
+	}
+
+	@Override
+	public int exreserveCount(String expert_id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state1 = 1;
+		int state2 = 2;
+		
+		map.put("expert_id", expert_id);
+		map.put("state1", state1);
+		map.put("state2", state2);
+		
+		return exdao.reservingCount(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> exreserveList(String expert_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state1 = 1;
+		int state2 = 2;
+		int startrow = (page -1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("expert_id", expert_id);
+		map.put("state1", state1);
+		map.put("state2", state2);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return exdao.reservingList(map);
+	}
+
+	@Override
+	public int completeCount(String expert_id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state = 3;
+		
+		map.put("expert_id", expert_id);
+		map.put("state", state);
+		
+		return exdao.exreserveCount(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> completeList(String expert_id, int page, int limit) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int state = 3;
+		int startrow = (page -1) * limit + 1;
+		int endrow = startrow + limit -1;
+		
+		map.put("expert_id", expert_id);
+		map.put("state", state);
+		map.put("start", startrow);
+		map.put("end", endrow);
+		
+		return exdao.exreserveList(map);
+	}
+
+	@Override
+	public int reserveCancel(int rs_no) {
+		return exdao.reserveCancel(rs_no);
+	}
+
+	@Override
+	public Map<String, Object> estimateList(int request_no) {
+		return exdao.estimateList(request_no);
+	}
+
+	@Override
+	public Map<String, Object> serviceForm(int rs_no) {
+		return exdao.serviceForm(rs_no);
+	}
+	
+	@Override
+	public int serviceYes(Reservation rv) {
+		return exdao.serviceYes(rv);
+	}
+
+	public int serviceOk(int rs_no) {
+		return exdao.serviceOk(rs_no);
+	}
+
+	public Reservation reserveCheck(String user_id, int num) {
+		Map<String, Object> map= new HashMap<String, Object>();
+		map.put("rs_uid", user_id);
+		map.put("rs_no", num);
+		System.out.println("rs_uid="+user_id+", rs_no="+num);
+		Reservation reserve = exdao.reserveCheck(map);
+		return reserve;
+	}
+
+	@Override
+	public int updateState(String id, int rsIndex) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("rs_uid", id);
+		map.put("rs_no", rsIndex);
+		System.out.println("ExImpl의 updateState()");
+		return exdao.updateState(map);
+	}
+
+	@Override
+	public String getGrade (String expert_id) {
+		return exdao.getGrade(expert_id);
+	}
+	
+	@Override
+	public String getName (String expert_id) {
+		return exdao.getName(expert_id);
+	}
+
+	@Override
+	public Map<String, Object> requestT(int request_no) {
+		return exdao.requestT(request_no);
+	}
+
+	@Override
+	public Reservation reserveT(int request_no) {
+		return exdao.reserveT(request_no);
+	}
+
+	@Override
+	public List<Map<String, Object>> rfT(int request_no) {
+		return exdao.rfT(request_no);
+	}
+
+	@Override
+	public int countGrade(int g) {
+		return exdao.countGrade(g);
+	}
+
+	@Override
+	public Map<String, Object> pick(int g, int count) {
+		Random random = new Random();
+		
+		int pick = random.nextInt(count) + 1;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("g", g);
+			map.put("pick", pick);
+
+		return exdao.pick(map);
 	}
 
 

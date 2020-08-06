@@ -40,25 +40,6 @@
             <!-- header start -->
             <div class="header-height"></div>
             
-            <!-- main-search start -->
-		<div class="main-search-active">
-			<div class="sidebar-search-icon">
-				<button class="search-close">
-					<span class="ti-close"></span>
-				</button>
-			</div>
-			<div class="sidebar-search-input">
-				<form>
-					<div class="form-search">
-						<input id="search" class="input-text" value=""
-							placeholder="Search Entire Store" type="search">
-						<button>
-							<i class="ti-search"></i>
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
 		   <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
@@ -76,42 +57,60 @@
                         <div class="col-md-12">
                             <div class="coupon-accordion">
                             
-                                <!-- ACCORDION START (1) -->
-                                <h3><span id="showlogin">원데이 클래스 입금 언제까지 해야하나요?</span></h3>
-                                <div id="checkout-login" class="coupon-content">
+                                <!-- ACCORDION START (5) -->
+                                <h3><span id="showlogin" class="faq5">전문가 이름 앞에 붙은 단어는 무슨 뜻인가요?</span></h3>
+                                <div id="checkout-login" class="coupon-content faq-content5">
                                     <div class="coupon-info">
-                                        <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
+                                        <p class="coupon-text">
+                                        이음은 사용자들의 만족도와 신뢰도를 높이기 위해 전문가들의 예약 건수, 평점을 통해 전문가들의 등급을 나눕니다.<br>
+                                        	등급은 디딤돌, 마루, 우주, 용마루 순으로 이루어져 있으며, 각 등급에 대한 의미는 '이음 소개'의 전문가 분류 안내에 상세히 설명되어 있습니다.
+                                        </p>
                                     </div>
                                 </div>
-                                <!-- ACCORDION END -->	
-                            
-                                <!-- ACCORDION START (2) -->
-                                <h3><span id="showlogin">서비스 후, 추가된 결제 금액은 어떻게 결제하나요?</span></h3>
-                                <div id="checkout-login" class="coupon-content">
-                                    <div class="coupon-info">
-                                        <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
-                                    </div>
-                                </div>
-                                <!-- ACCORDION END -->	
-                            
-                                <!-- ACCORDION START (3) -->
-                                <h3><span id="showlogin">제 지역에서만 활동하는 전문가만 볼 수 있나요?</span></h3>
-                                <div id="checkout-login" class="coupon-content">
-                                    <div class="coupon-info">
-                                        <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
-                                    </div>
-                                </div>
-                                <!-- ACCORDION END -->	
-                            
+                                <!-- ACCORDION END -->
+                                
                                 <!-- ACCORDION START (4) -->
-                                <h3><span id="showlogin">집에 남자가 있으면 서비스를 받을 수 없나요?</span></h3>
-                                <div id="checkout-login" class="coupon-content">
+                                <h3><span id="showlogin" class="faq4">여성만 이음에 가입할 수 있나요?</span></h3>
+                                <div id="checkout-login" class="coupon-content faq-content4">
                                     <div class="coupon-info">
-                                        <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
+                                        <p class="coupon-text">
+                                        이음은 청소, 수리, 방역 분야의 소수의 여성 기술자들의 사회 진출을 장려하고 여성들 사이의 연대를 지향하는 사이트입니다.<br>
+                                         이에 대한 상세 설명은 이음 소개에 상세히 설명되어 있습니다.
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- ACCORDION END -->	
+                               
+                                <!-- ACCORDION START (3) -->
+                                <h3><span id="showlogin" class="faq3">제 지역에서만 활동하는 전문가만 볼 수 있나요?</span></h3>
+                                <div id="checkout-login" class="coupon-content faq-content3">
+                                    <div class="coupon-info">
+                                        <p class="coupon-text">
+                                        이음에 등록된 모든 전문가를 보실 수 있습니다. <br>
+                                       	다만, 전문가마다 활동하는 지역이 다르기에 사용자의 지역에서 활동하는 전문가에게서만 서비스를 받으실 수는 있습니다.
+                                       	</p>
                                     </div>
                                 </div>
                                 <!-- ACCORDION END -->	
                                 
+                                <!-- ACCORDION START (2) -->
+                                <h3><span id="showlogin" class="faq2">서비스 후, 추가된 결제 금액은 어떻게 결제하나요?</span></h3>
+                                <div id="checkout-login" class="coupon-content faq-content2">
+                                    <div class="coupon-info">
+                                        <p class="coupon-text">추가 금액의 경우, 추후 결제 정보가 담긴 QR코드를 전문가 사용자에게 제공할 예정입니다.<br>추가 금액 발생시, 일반 사용자가 QR코드를 통해 결제를 가능하게 할 예정입니다.</p>
+                                    </div>
+                                </div>
+                                <!-- ACCORDION END -->	
+                               
+                                <!-- ACCORDION START (1) -->
+                                <h3><span id="showlogin" class="faq1">원데이 클래스 결제는 언제까지 해야하나요?</span></h3>
+                                <div id="checkout-login" class="coupon-content faq-content1">
+                                    <div class="coupon-info">
+                                        <p class="coupon-text">원데이 클래스는 신청한 금일 이내에 결제하셔야 하며, 미결제시 자동으로 취소됩니다.</p>
+                                    </div>
+                                </div>
+                                <!-- ACCORDION END -->	
+                            
 							</div>
 						</div>
 					</div>
@@ -283,6 +282,30 @@
 
 
 		<!-- all js here -->
+		<script src="resources/js/jquery-3.5.0.js"></script>
+		<script>
+			$(document).ready(function() {
+			    $('.faq1').on('click', function() {
+			        $('.faq-content1').slideToggle(900);
+			    });
+			    
+			    $('.faq2').on('click', function() {
+			        $('.faq-content2').slideToggle(900);
+			    });
+			    
+			    $('.faq3').on('click', function() {
+			        $('.faq-content3').slideToggle(900);
+			    });
+			    
+			    $('.faq4').on('click', function() {
+			        $('.faq-content4').slideToggle(900);
+			    });
+			    
+			    $('.faq5').on('click', function() {
+			        $('.faq-content5').slideToggle(900);
+			    });
+			});
+		</script>
         <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="resources/js/popper.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>

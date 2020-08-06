@@ -1,5 +1,6 @@
 package com.kh.eeum.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -54,4 +55,28 @@ public class UserDAO {
 	public String getProfile(String user_id) {
 		return sqlSession.selectOne("Users.getProfile", user_id);
 	}
+
+	public List<Map<String, String>> findId(String user_name, String user_jumin1) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("user_name", user_name);
+		map.put("user_jumin1", user_jumin1);
+		return sqlSession.selectList("Users.findId", map);
+	}
+
+	public Map<String, String> findPwd(String user_id, String user_name, String user_jumin1) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("user_id", user_id);
+		map.put("user_name", user_name);
+		map.put("user_jumin1", user_jumin1);
+		return sqlSession.selectOne("Users.findPwd", map);
+	}
+
+	public int updatePwd(Map<String, String> map) {
+		return sqlSession.update("Users.updatePwd", map);
+	}
+
+	public String msgName(String msg_id) {
+		return sqlSession.selectOne("Users.msgName", msg_id);
+	}
+	
 }

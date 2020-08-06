@@ -29,54 +29,43 @@
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 <%@ include file="../header.jsp" %>
 <style>
-.write_oneday {
-	border-style: none;
-	padding: 3px 10px;
-	background-color: #CADEE3;
-	color: white;
-	cursor: pointer;
-}
-
-.paging_align {
-	display: flex;
-	justify-content: center;
-}
-
-.product-wrapper .end:after {
-	background: rgba(0, 0, 0, .53);
-}
+.write_oneday {border-style: none;
+						padding: 3px 10px;
+						background-color: #CADEE3;
+						color: white;
+						cursor: pointer;}
+.paging_align {display: flex;
+						justify-content: center;}
+.product-wrapper .end:after {background: rgba(0, 0, 0, .53);}
+.breadcrumb-content{padding-top:0;margin-top:1em}
+.breadcrumb-content ul > li{font-size:13pt}
+.pt-120{padding-top:50px}
+.product-content {padding:10px 15px 10px;
+								margin-bottom: 70px; 
+								border :2px solid #C1C8D9;
+								border-radius:0 0 10px 10px;
+								border-top:none}
+.product-title-3 a {font-weight:700; color:#303030}
+.price-decrease > span {font-size : 25px;
+        								padding:5px 10px;
+        								border-radius:10px;}
+.description-oneday{text-align:center;
+								font-size:13pt;
+								color:#575555;
+								margin-bottom:5px}
 </style>
 </head>
 <body>
 	<div class="wrapper">
 		<!-- header start -->
 		<div class="header-height"></div>
-		<!-- main-search start -->
-		<div class="main-search-active">
-			<div class="sidebar-search-icon">
-				<button class="search-close">
-					<span class="ti-close"></span>
-				</button>
-			</div>
-			<div class="sidebar-search-input">
-				<form>
-					<div class="form-search">
-						<input id="search" class="input-text" value=""
-							placeholder="Search Entire Store" type="search">
-						<button>
-							<i class="ti-search"></i>
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
+		
 		<div class="breadcrumb-area mt-37 hm-4-padding">
 			<div class="container-fluid">
 				<div class="breadcrumb-content text-center">
-					<h2>원데이 클래스</h2>
+					<h2>ONE DAY CLASS</h2>
 					<ul>
-						<li><a href="#">home</a></li>
-						<li>One day Class</li>
+						<li>원데이 클래스</li>
 					</ul>
 				</div>
 			</div>
@@ -89,73 +78,22 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="shop-wrapper hm-3-padding pt-120 pb-100">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12">
+					
 						<div class="shop-topbar-wrapper">
-							<div class="grid-list-options">
-								<ul class="view-mode">
-									<li class="active"><a href="#product-grid"
-										data-view="product-grid"><i class="ion-grid"></i></a></li>
-									<li><a href="#product-list" data-view="product-list"><i
-											class="ion-navicon"></i></a></li>
-								</ul>
-							</div>
-							<c:if test="${user_id=='admin'}">
+							<c:if test="${user_id=='admin1234'}">
 								<div class="shop-filter">
 									<button class="write_oneday">글쓰기</button>
 								</div>
 							</c:if>
 						</div>
+						
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="product-filter-wrapper">
-							<div class="row">
-								<div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-									<h5>Sort by</h5>
-									<ul class="sort-by">
-										<li><a href="#">Default</a></li>
-										<li><a href="#">Popularity</a></li>
-										<li><a href="#">Average rating</a></li>
-										<li><a href="#">Newness</a></li>
-										<li><a href="#">Price: Low to High</a></li>
-										<li><a href="#">Price: High to Low</a></li>
-									</ul>
-								</div>
-								<div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-									<h5>color filters</h5>
-									<ul class="color-filter">
-										<li><a href="#"><i style="background-color: #000000;"></i>Black</a></li>
-										<li><a href="#"><i style="background-color: #663300;"></i>Brown</a></li>
-										<li><a href="#"><i style="background-color: #FF6801;"></i>Orange</a></li>
-										<li><a href="#"><i style="background-color: #ff0000;"></i>red</a></li>
-										<li><a href="#"><i style="background-color: #FFEE00;"></i>Yellow</a></li>
-									</ul>
-								</div>
-								<div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-									<h5>product tags</h5>
-									<div class="product-tags">
-										<a href="#">New ,</a> <a href="#">brand ,</a> <a href="#">black
-											,</a> <a href="#">white ,</a> <a href="#">chire ,</a> <a href="#">table
-											,</a> <a href="#">Lorem ,</a> <a href="#">ipsum ,</a> <a href="#">dolor
-											,</a> <a href="#">sit ,</a> <a href="#">amet ,</a>
-									</div>
-								</div>
-								<div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-									<h5>Filter by price</h5>
-									<div id="price-range"></div>
-									<div class="price-values">
-										<span>Price:</span> <input type="text" class="price-amount">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
 
 				<!-- 여기부터 반복문 시작 -->
 				<div class="grid-list-product-wrapper">
@@ -169,8 +107,7 @@
 										<div style="display: none">
 											<jsp:useBean id="now" class="java.util.Date" />
 											<fmt:formatDate value="${now}" pattern="yyyyMMdd" />
-											<fmt:parseDate value="${o.ONE_RDATE}" var="rdate"
-												pattern="yyyy-MM-dd" />
+											<fmt:parseDate value="${o.ONE_RDATE}" var="rdate" pattern="yyyy-MM-dd" />
 											<fmt:formatDate value="${rdate}" pattern="yyyyMMdd" />
 										</div>
 										<c:if test="${rdate >= now}">
@@ -214,20 +151,21 @@
 												</a>
 											</div> --%>
 
-										<div class="product-content" style="padding-bottom: 30px; margin-bottom: 10px; padding-top: 10px; border :2px solid black;">
+										<div class="product-content" >
 											<div class="product-title-wishlist">
-												<div class="product-title-3">
+												<div class="product-title-3" style="text-align:center; margin:0 auto; font-size:25px;">
 													<a href="./OnedayDetailAction.one?num=${o.ONE_INDEX}">
-														${o.ONE_TITLE}</a>
+														❮ ${o.ONE_TITLE} ❯
+													</a>
 												</div>
 
 											</div>
 											<div class="product-peice-addtocart">
+												<div class="description-oneday">- ${o.ONE_LINE} -</div>
+												<span> 일시 : ${o.ONE_RDATE} | ${o.ONE_PRICE}원</span>
 												<div>
 													<span>장소 : ${o.ONE_LOCATE}</span>
 												</div>
-												<span> 일시 :${o.ONE_RDATE} ${o.ONE_PRICE}원</span>
-												<div class="description-oneday">${o.ONE_LINE}</div>
 											</div>
 										</div>
 										<div class="product-list-details">
@@ -237,17 +175,7 @@
 											<div class="product-price">
 												<span class="old">$22.00 </span> <span>$19.00</span>
 											</div>
-											<p>Lorem ipsum dolor sit amet, consectetur adipic it, sed
-												do eiusmod tempor incididunt ut labore et dolore magna
-												aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-												ullamco laboris nisi ut aliquip ex ea commodo consequat.
-												Duis aute irure dolor in reprehenderit in voluptate velit
-												esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-												occaecat cupidatat</p>
-											<div class="shop-list-cart">
-												<a href="cart.html"><i class="ti-shopping-cart"></i> Add
-													to cart</a>
-											</div>
+											<p></p>
 										</div>
 									</div>
 								</div>

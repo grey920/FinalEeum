@@ -12,6 +12,8 @@ public class PortfolioDAO {
 	private SqlSessionTemplate sqlSession;
 	
 
+
+	
 	public Portfolio getPortfolio(String expert_id) {
 		return sqlSession.selectOne("Portfolios.getPfInfo", expert_id);
 	}

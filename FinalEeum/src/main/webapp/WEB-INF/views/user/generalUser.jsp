@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="resources/dist/img/eeumLogo2.png" rel="shortcut icon" type="image/x-icon">
+<link rel="shortcut icon" type="image/x-icon" href="resources/img/favicon.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>일반 사용자 보기</title>
 <%@ include file="../include2/head.jsp" %>

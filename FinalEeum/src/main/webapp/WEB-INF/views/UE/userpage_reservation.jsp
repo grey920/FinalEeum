@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  <!doctype html>
 <html>
     <head>
@@ -23,27 +25,37 @@
         <link rel="stylesheet" href="resources/css/bundle.css">
         <link rel="stylesheet" href="resources/css/style.css">
         <link rel="stylesheet" href="resources/css/responsive.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 		<%@ include file="../header.jsp" %>
         <style>
         body{font-size:20px}
-        .product-subtotal{font-size:20px !important}
+        .product-subtotal{font-size:18px !important}
         .btn-style{margin-top:10px !important;
        					 margin-right:0 !important; 
        					 font-size:18px;
          				 border-radius:20px;
          				 background-color:white;
-         				 color:#797979;
+         				 color:#72A0E0;
          				 border:2px solid #72A0E0;
          				 }
         .btn-style:hover{background-color:#72A0E0;
          					       color:white;
          					       border:2px solid #72A0E0;
          						  }
+        .nodata{padding:100px 0 100px 0;
+        			  display: flex;
+					  justify-content: center;
+					  align-items: center;
+					  flex-direction: column;}
          .table-content table td {border-bottom:2px solid #e8e6e6; padding:30px 10px 30px}
          .pt-120{padding-top:50px !important}
          .breadcrumb-content{padding-top:0;margin-top:1em}
          .breadcrumb-content ul > li{font-size:13pt}
+         tr td.class-state{padding-top:10px; padding-bottom:20px}
+         td.product-subtotal button.btn-style {padding-left:20px;padding-right:20px}
+         tr td.class-state{padding-top:10px; padding-bottom:20px}
+         .modal-footer a {font-size:13pt}
         </style>
     </head>
     <body>
@@ -51,22 +63,6 @@
             <!-- header start -->
             <div class="header-height"></div>
             
-            <!-- main-search start -->
-            <div class="main-search-active">
-                <div class="sidebar-search-icon">
-                    <button class="search-close"><span class="ti-close"></span></button>
-                </div>
-                <div class="sidebar-search-input">
-                    <form>
-                        <div class="form-search">
-                            <input id="search" class="input-text" value="" placeholder="Search Entire Store" type="search">
-                            <button>
-                                <i class="ti-search"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
             <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
@@ -81,6 +77,8 @@
             <div class="product-cart-area hm-3-padding pt-120 pb-130">
                 <div class="container-fluid">
                     <div class="row">
+                       
+                       <c:if test="${reserveCount > 0 }">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-content table-responsive">
                                 <table style="text-align:center">
@@ -91,128 +89,193 @@
                                             <th class="product-name">예약 날짜</th>
                                             <th class="product-quantity">가격</th>
                                             <th class="product-quantity">예약 상태</th>
-                                            <th class="product-subtotal">버튼</th>
+                                            <th class="product-quantity"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    
+                                      <c:forEach var="r" items="${rlist}">
                                         <tr>
                                             <td class="product-thumbnail">
-                                                <a href="#"><img src="resources/img/profile/profile_ex1.png" style="width:120px;height:150px"></a>
+                                                <a href="expertDetail.service?expert=${r.RS_EXID}"><img src="resources/expert_profile${r.PF_SAVEPROFILE}" style="width:130px;height:160px"></a>
+                                                <input type="hidden" name="rs_exid" value="${r.RS_EXID}"/>
+                                                <input type="hidden" name="rs_no" value="${r.RS_NO}"/>
                                             </td>
                                             <td class="product-price">
-                                                <a href="#">[청소]<br>디딤돌 최유정님</a>
+                                                <span>[
+	                                                <c:if test="${r.PF_CATE == '0'}">
+	                                                청소
+	                                                </c:if>
+	                                                <c:if test="${r.PF_CATE == '1'}">
+	                                                방역
+	                                                </c:if>
+	                                                <c:if test="${r.PF_CATE == '2'}">
+	                                                수리
+	                                                </c:if>
+                                                ]</span><br>
+                                                
+                                                	<c:if test="${r.PF_GRADE == '0'}">
+                                                	디딤돌
+                                                	</c:if>
+                                                	<c:if test="${r.PF_GRADE == '1'}">
+                                                	마루
+                                                	</c:if>
+                                                	<c:if test="${r.PF_GRADE == '2'}">
+                                                	우주
+                                                	</c:if>
+                                                	<c:if test="${r.PF_GRADE == '3'}">
+                                                	용마루
+                                                	</c:if>
+                                                
+                                                ${r.EXPERT_NAME}</a>
                                             </td>
-                                            <td class="product-name"><span class="amount">2020년 6월 27일 <br> 오후 11시</span></td>
-                                            <td class="product-subtotal">50,000원</td>
-                                            <td class="product-subtotal">예약 대기</td>
+                                            
+                                            <c:if test="${empty r.RS_DATE}">
+                                            <td class="product-name"><span class="amount"> - </span></td>
+                                            <td class="product-subtotal"> - </td>
+                                            </c:if>
+                                   
+                                            <c:if test="${!empty r.RS_DATE}">
+                                            <td class="product-name">
+                                            <span class="amount">
+	                                            ${r.RS_DATE}
+	                                            <br>
+	                                            <c:choose>
+                                                	<c:when test="${fn:length(r.RS_TIME) > 2}">
+                                                		<c:out value="${fn:substring(r.RS_TIME,0,2)}"/>시
+                                                		<c:out value="${fn:substring(r.RS_TIME,2,4)}" />분
+                                                	</c:when>
+                                                	<c:otherwise>
+                                                		${r.RS_TIME}시
+                                                	</c:otherwise>
+                                                </c:choose>
+                                            </span>
+                                            </td>
                                             <td class="product-subtotal">
+												${r.RS_MONEY}원
+                                            </td>
+                                            </c:if>
+                                            
+                                            <td class="product-subtotal">
+	                                            <c:if test="${r.RS_STATE == '0'}">
+	                                            예약 대기
+	                                            </c:if>
+	                                            <c:if test="${r.RS_STATE == '1' || r.RS_STATE == '2'}">
+	                                            예약 확정
+	                                            </c:if>
+	                                            <c:if test="${r.RS_STATE == '3' || r.RS_STATE == '5'}">
+	                                            서비스 완료
+	                                            </c:if>
+	                                            <c:if test="${r.RS_STATE == '4'}">
+	                                            예약 취소
+	                                            </c:if>
+                                            </td>
+                                            
+                                            <td class="product-subtotal class-state">
                                             	<div class="button-box" style="text-align:center;">
-													<button class="btn-style" onclick="location.href='#';">
-														<span>별점주기</span>
+                                            	
+                                            	  <c:if test="${r.RS_STATE == '0' || r.RS_STATE == '1' || r.RS_STATE == '2' || r.RS_STATE == '3'}">
+													<button class="btn-style" onclick="location.href='estimateList.net?request_no=${r.RS_NO}';">
+														<span>견적확인</span>	
 													</button>
-													<button class="btn-style" onclick="location.href='#';">
+													
+													<c:if test="${r.RS_STATE == '1'}">
+														<button class="btn-style" onclick="window.open('Pay.net?num=${r.RS_NO}','width=500, height=700');">
+															<span>결제하기</span>
+														</button>
+													</c:if>
+													
+													<c:if test="${r.RS_STATE == '0' || r.RS_STATE ==  '1' || r.RS_STATE == '2'}">
+													<button class="btn-style" data-toggle="modal" data-target="#modalConfirmDelete">
+														<span>예약취소</span>
+													</button>
+													</c:if>
+													
+													<!-- 예약 취소 Modal-->
+													<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+														<div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+															
+															<!--Content-->
+															<div class="modal-content text-center" style="width: 50%; margin: 0 auto;">
+																
+																<!--Header-->
+																<div class="modal-header d-flex justify-content-center" style="margin-top:15px">
+																	<p class="heading" style="margin-bottom:10px;color:#303030">서비스 예약을 취소하시겠습니까?</p>
+																</div>
+									
+																<!--Body-->
+																<div class="modal-body">
+																	<i class="fa fa-times fa-4x animated rotateIn" style="width: auto; margin: 0 auto; color: #dc3545;"></i>
+																</div>
+									
+																<!-- Footer -->
+																<div class="modal-footer flex-center" >
+												      				<a href="ureserveCancel.net?rs_no=${r.RS_NO}" class="btn  btn-outline-danger">예</a>
+												        			<a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal" style="color:white">아니요</a>
+												      			</div>
+												    		</div>
+														</div>
+													</div>
+													<!--/.Content-->
+                                            	  </c:if>
+                                            	  
+                                            	  <c:if test="${r.RS_STATE == '3'}">
+													<button class="btn-style" onclick="location.href='expertDetail.service?expert=${r.RS_EXID}';">
 														<span>후기쓰기</span>
 													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>신고하기</span>
-													</button>
+                                            	  </c:if>
+                                            	  
+                                            	  <c:if test="${r.RS_STATE == '4' || r.RS_STATE == '5'}"></c:if>
+                                            	  
 												</div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img src="resources/img/profile/profile_ex2.png" style="width:120px;height:150px"></a>
-                                            </td>
-                                            <td class="product-price">
-                                                <a href="#">[수리]<br>마루 김도연님</a>
-                                            </td>
-                                            <td class="product-name"><span class="amount">2020년 7월 21일 <br> 오전 8시</span></td>
-                                            <td class="product-subtotal">100,000원</td>
-                                            <td class="product-subtotal">예약 확정</td>
-                                            <td class="product-subtotal">
-                                            	<div class="button-box" style="text-align:center;">
-													<button class="btn-style" onclick="location.href='#';">
-														<span>별점주기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>후기쓰기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>신고하기</span>
-													</button>
-												</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img src="resources/img/profile/profile_ex3.png" style="width:120px;height:150px"></a>
-                                            </td>
-                                            <td class="product-price">
-                                                <a href="#">[해충]<br>우주 임보라님</a>
-                                            </td>
-                                            <td class="product-name"><span class="amount">2020년 7월 8일 <br> 오후 1시</span></td>
-                                            <td class="product-subtotal">150,000원</td>
-                                            <td class="product-subtotal">서비스 완료</td>
-                                            <td class="product-subtotal">
-                                            	<div class="button-box" style="text-align:center;">
-													<button class="btn-style" onclick="location.href='#';">
-														<span>별점주기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>후기쓰기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>신고하기</span>
-													</button>
-												</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img src="resources/img/profile/profile_ex4.png" style="width:120px;height:150px"></a>
-                                            </td>
-                                            <td class="product-price">
-                                                <a href="#">[청소]<br>용마루 이주빈님</a>
-                                            </td>
-                                            <td class="product-name"><span class="amount">2020년 8월 1일 <br> 오후 7시</span></td>
-                                            <td class="product-subtotal">70,000원</td>
-                                            <td class="product-subtotal">예약 대기</td>
-                                            <td class="product-subtotal">
-                                            	<div class="button-box" style="text-align:center;">
-													<button class="btn-style" onclick="location.href='#';">
-														<span>별점주기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>후기쓰기</span>
-													</button>
-													<button class="btn-style" onclick="location.href='#';">
-														<span>신고하기</span>
-													</button>
-												</div>
-                                            </td>
-                                        </tr>
+                                      </c:forEach>
+                                      
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="pagination-style text-center mt-30">
-                                <ul>
-                                    <li>
-                                        <a class="active" href="#">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ion-chevron-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                            
+				 			<div class="pagination-style text-center mt-30" id="pagination">
+								<ul class="paging_align">
+									<c:if test="${page <= 1 }">
+										<li><i class="ion-chevron-left" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page > 1}">
+										<li><a href="userOneday.net?page=${page-1}"><i
+												class="ion-chevron-left"></i></a></li>
+									</c:if>
+				
+									<c:forEach var="a" begin="${startpage}" end="${endpage}">
+										<c:if test="${a == page }">
+											<li><a class="active" href="#">${a}</a></li>
+										</c:if>
+										<c:if test="${a != page}">
+											<li><a href="userOneday.net?page=${a}">${a}</a></li>
+										</c:if>
+									</c:forEach>
+				
+									<c:if test="${page >= maxpage}">
+										<li><i class="ion-chevron-right" style="display: none;"></i></li>
+									</c:if>
+									<c:if test="${page < maxpage}">
+										<li><a href="userOneday.net?page=${page+1}"> <i
+												class="ion-chevron-right"></i>
+										</a></li>
+									</c:if>
+								</ul>
+							</div>
+                            
                         </div>
+                       </c:if>
+                       
+                       <c:if test="${reserveCount == 0 }">
+			               <div class="col-lg-12 col-md-12 col-12 nodata">	
+				            	<p>아직 예약하신 내역이 없습니다😥</p>
+				            	<p>이음을 통해 더 멋진 집으로 바꿔보세요</p>
+				            	<button class="btn-style" onclick="location.href='expert.service';">서비스 예약하기</button>
+				            </div>
+                       </c:if>
                     </div>
                 </div>
             </div>
@@ -366,6 +429,12 @@
 		
 		
 		<!-- all js here -->
+		<script src="resources/js/jquery-3.5.0.js"></script>
+		<script>
+			function message (url) {
+				var send = window.open(url, "send", "width=100, heigth=100, location=no");
+			};
+		</script>
         <script src="resources/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="resources/js/popper.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>

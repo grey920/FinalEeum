@@ -1,6 +1,7 @@
 package com.kh.eeum.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.kh.eeum.domain.Oneday;
 
@@ -22,4 +23,5 @@ public interface OnedayService {
 
 	public int updateProg(int num);
 	
+	public List<Map<String, Object>> main();
 }

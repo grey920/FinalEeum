@@ -28,11 +28,25 @@
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 <%@ include file="../header.jsp"%>
 <style>
+.breadcrumb-content{padding-top:0;margin-top:1em}
 input[type='file']{
 border : none;
 background : none;
 }
-
+select{border-radius:10px}
+textarea{border-radius:10px}
+        .btn-style{margin-top:10px !important;
+       					 margin-right:0 !important; 
+       					 font-size:18px;
+         				 border-radius:20px;
+         				 background-color:white;
+         				 color:#72A0E0;
+         				 border:2px solid #72A0E0;
+         				 }
+        .btn-style:hover{background-color:#72A0E0;
+         					       color:white;
+         					       border:2px solid #72A0E0;
+         						  }
 </style>
 </head>
 <body>
@@ -88,7 +102,7 @@ background : none;
 												<label for="expert_profile"> 
 												<img src="resources/expert_profile${PFdata.PF_SAVEPROFILE}"
 													alt="profile" id="profile"
-													style="width: 170px; height: 170px; border-radius: 50%; cursor: pointer"><br>
+													style="width: 150px; height: auto; cursor: pointer"><br>
 												<span id="filevalue" style="visibility: hidden">${PFdata.PF_PROFILE}</span>
 												</label>
 										</div>

@@ -3,7 +3,9 @@ package com.kh.eeum.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -14,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -27,12 +28,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.eeum.domain.Apply;
 import com.kh.eeum.domain.Expert;
-import com.kh.eeum.domain.Oneday;
 import com.kh.eeum.domain.Portfolio;
+import com.kh.eeum.domain.Reservation;
+import com.kh.eeum.domain.Review;
 import com.kh.eeum.domain.User;
+import com.kh.eeum.service.AdminService;
 import com.kh.eeum.service.ApplyService;
 import com.kh.eeum.service.ExpertService;
 import com.kh.eeum.service.LikeService;
+import com.kh.eeum.service.OnedayService;
+import com.kh.eeum.service.ReviewService;
 import com.kh.eeum.service.UserService;
 
 @Controller
@@ -51,12 +56,65 @@ public class UEController {
 	private LikeService likeservice;
 	
 	@Autowired
+	private ReviewService reviewservice;
+	
+	@Autowired
+	private OnedayService onedayservice;
+	
+	@Autowired
+	private AdminService adminservice;
+	
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	
-	@RequestMapping("/main")
-	public String main() {
-		return "../../main";
+	@RequestMapping(value="/main")
+	public ModelAndView main(ModelAndView mv) {
+		//전문가 리스트 
+		int g0 = 0;
+		int count0 = expertservice.countGrade(g0);
+		Map<String, Object> list0 = expertservice.pick(g0, count0);
+		System.out.println(list0);
+		
+		int g1 = 1;
+		int count1 = expertservice.countGrade(g1);
+		Map<String, Object> list1 = expertservice.pick(g1, count1);
+		System.out.println(list1);
+		
+		int g2 = 2;
+		int count2 = expertservice.countGrade(g2);
+		Map<String, Object> list2 = expertservice.pick(g2, count2);
+		System.out.println(list2);
+		
+		int g3 = 3;
+		int count3 = expertservice.countGrade(g3);
+		Map<String, Object> list3 = expertservice.pick(g3, count3);
+		System.out.println(list3);
+		
+		int allUsers = adminservice.cUsers();
+		int allReviews = adminservice.allReviews();
+		int cPosts = adminservice.cPosts();
+		int newUsers = adminservice.newUsers();
+		System.out.println(allUsers + allReviews + cPosts + newUsers);
+		
+		//원데이클래스 내역
+		List<Map<String, Object>> onelist = onedayservice.main();	
+		
+
+		mv.setViewName("main");
+		mv.addObject("list0", list0);
+		mv.addObject("list1", list1);
+		mv.addObject("list2", list2);
+		mv.addObject("list3", list3);
+		
+		mv.addObject("allUsers", allUsers);
+		mv.addObject("allReviews", allReviews);
+		mv.addObject("cPosts", cPosts);
+		mv.addObject("newUsers", newUsers);
+		
+		mv.addObject("onelist", onelist);
+		
+		return mv;
 	}
 	
 	/* 회원가입 */
@@ -227,7 +285,7 @@ public class UEController {
 			}
 			
 			response.addCookie(savecookie);
-			return "redirect:/";
+			return "redirect:/main";
 			
 		} else {
 			String message = "비밀번호가 일치하지 않습니다.";	//result == 0
@@ -260,8 +318,51 @@ public class UEController {
 		Expert expert = expertservice.expert_info(expert_id);
 		mv.setViewName("UE/expertpage_info");
 		mv.addObject("expertinfo", expert);
+		
 		return mv;
+	}
 	
+	@RequestMapping(value="expertUpdateProcess.net", method=RequestMethod.POST)
+	public void userUpdateProcess(@RequestParam("expert_id") String expert_id, Expert ex,
+														HttpServletRequest request,HttpServletResponse response, HttpSession session) 
+														throws Exception {
+		
+		String encPassword = passwordEncoder.encode(ex.getExpert_pass());
+		
+		System.out.println(encPassword);
+		ex.setExpert_pass(encPassword);
+	
+		response.setContentType("text/html;charset=utf-8");
+		int result = expertservice.expert_update(ex);
+				
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		
+		if (result == 1) {
+			session.setAttribute("expert_id", expert_id);
+			Cookie savecookie = new Cookie("saveid", expert_id);
+			
+			String expert_name = expertservice.getName(expert_id);
+			session.setAttribute("expert_name", expert_name);
+			
+			String pf_grade = expertservice.getGrade(expert_id);
+			
+			if(pf_grade == null) {
+				session.setAttribute("pf_grade", "미등록 전문가");
+			} else {
+				session.setAttribute("pf_grade", pf_grade);
+			}
+			
+			out.println("alert('수정되었습니다.');");
+			out.println("location.href='expertpage.net';");
+			
+		} else {
+			out.println("alert('회원 정보 수정에 실패했습니다.');");
+			out.println("history.back();");
+		}
+		out.println("</script>");
+		out.close();
 	}
 	
 	@RequestMapping("viewPortfolio")
@@ -455,10 +556,24 @@ public class UEController {
 			System.out.println("expert_id 뭐야" + expert_id);
 			int result = expertservice.insert(pf);
 			
+			
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
+			
 			if(result == 1) {
+				
+				String expert_name = expertservice.getName(expert_id);
+				session.setAttribute("expert_name", expert_name);
+				
+				String pf_grade = expertservice.getGrade(expert_id);
+				
+				if(pf_grade == null) {
+					session.setAttribute("pf_grade", "미등록 전문가");
+				} else {
+					session.setAttribute("pf_grade", pf_grade);
+				} 
+				
 				out.println("alert('포트폴리오가 정상적으로 등록되었습니다.');");
 				out.println("location.href='expertpage.net';");
 			}else {
@@ -673,7 +788,17 @@ public class UEController {
 
 			session.setAttribute("expert_id", expert_id);
 			Cookie savecookie = new Cookie("saveid", expert_id);
-
+			
+			String expert_name = expertservice.getName(expert_id);
+			session.setAttribute("expert_name", expert_name);
+			
+			String pf_grade = expertservice.getGrade(expert_id);
+			
+			if(pf_grade == null) {
+				session.setAttribute("pf_grade", "미등록 전문가");
+			} else {
+				session.setAttribute("pf_grade", pf_grade);
+			}
 			
 			if( !expert_remember.equals("")) {
 				savecookie.setMaxAge(60*60);
@@ -699,6 +824,172 @@ public class UEController {
 			out.println("<script>");
 			out.println("alert('" + message + "');");
 			out.println("location.href='login.net';");
+			out.println("</script>");
+			out.close();
+			return null;
+		}
+	}
+	
+	/* 사용자 아이디 / 비밀번호 찾기 */
+	@RequestMapping(value="userFind.net")
+	public String userFind() {
+		return "UE/user_find";
+	}
+	
+	@RequestMapping(value="userIdProcess.net", method=RequestMethod.POST)
+	public ModelAndView userIdProcess(String user_name, String user_jumin1, String user_jumin2, 
+																ModelAndView mv, HttpServletResponse response) throws Exception {
+		String user_id = userservice.findId(user_name, user_jumin1, user_jumin2);
+		
+		
+		if (user_id != null) {
+			mv.setViewName("UE/user_showId");
+			mv.addObject("user_id", user_id);
+			return mv;
+			
+		} else {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('올바르지 않은 정보를 입력하셨습니다.\\n 다시 한 번 확인해주세요.');");
+			out.println("location.href='userFind.net';");
+			out.println("</script>");
+			out.close();
+			return null;
+		}
+	}
+	
+	@RequestMapping(value="userPwdProcess.net", method=RequestMethod.POST)
+	public ModelAndView userPwdProcess(String user_id, String user_name, String user_jumin1, String user_jumin2, 
+																	ModelAndView mv, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		int result1 = userservice.findPwd(user_id, user_name, user_jumin1,user_jumin2);
+		int result2 = 0;
+		
+		if (result1 == 1) {
+			Random random = new Random();
+			String newPwd = null;
+			
+			for (int i = 0; i < 10; i++) {
+			    int index = random.nextInt(3);
+			    switch (index) {
+				    case 0:
+				    	newPwd = newPwd + ((char) ((int) (random.nextInt(26)) + 97));
+				        break;
+				    case 1:
+				    	newPwd = newPwd + (random.nextInt(10));
+				        break;
+				    case 2:
+				    	newPwd = newPwd + ((char) ((int) (random.nextInt(6)) + 33));
+				        break;
+			    }
+			}
+			
+			String user_pass = passwordEncoder.encode(newPwd);
+			
+			result2 = userservice.updatePwd(user_id, user_name, user_jumin1, user_pass);
+			
+			if (result2 == 1) {
+				mv.setViewName("UE/user_showPwd");
+				mv.addObject("user_pass", newPwd);
+				return mv;
+			} else {
+				out.println("alert('임시 비밀번호 발급에 실패했습니다.\\n 다시 한 번 시도해주세요.');");
+				out.println("location.href='userFind.net';");
+				out.println("</script>");
+				out.close();
+				return null;
+			}
+			
+		} else {
+			out.println("alert('올바르지 않은 정보를 입력하셨습니다.\\n 다시 한 번 확인해주세요.');");
+			out.println("location.href='userFind.net';");
+			out.println("</script>");
+			out.close();
+			return null;
+		}
+	}
+	
+	/* 전문가 아이디 / 비밀번호 찾기 */
+	@RequestMapping(value="expertFind.net")
+	public String expertFind() {
+		return "UE/expert_find";
+	}
+	
+	@RequestMapping(value="expertIdProcess.net", method=RequestMethod.POST)
+	public ModelAndView expertIdProcess(String expert_name, String expert_jumin1, String expert_jumin2, 
+																	ModelAndView mv, HttpServletResponse response) throws Exception {
+		String expert_id = expertservice.findId(expert_name, expert_jumin1, expert_jumin2);
+		
+		
+		if (expert_id != null) {
+			mv.setViewName("UE/expert_showId");
+			mv.addObject("expert_id", expert_id);
+			return mv;
+			
+		} else {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('올바르지 않은 정보를 입력하셨습니다.\\n 다시 한 번 확인해주세요.');");
+			out.println("location.href='expertFind.net';");
+			out.println("</script>");
+			out.close();
+			return null;
+		}
+	}
+	
+	
+	@RequestMapping(value="expertPwdProcess.net", method=RequestMethod.POST)
+	public ModelAndView expertPwdProcess(String expert_id, String expert_name, String expert_jumin1, String expert_jumin2, 
+																		ModelAndView mv, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		int result1 = expertservice.findPwd(expert_id, expert_name, expert_jumin1, expert_jumin2);
+		int result2 = 0;
+		
+		if (result1 == 1) {
+			Random random = new Random();
+			String newPwd = null;
+			
+			for (int i = 0; i < 10; i++) {
+			    int index = random.nextInt(3);
+			    switch (index) {
+				    case 0:
+				    	newPwd = newPwd + ((char) ((int) (random.nextInt(26)) + 97));
+				        break;
+				    case 1:
+				    	newPwd = newPwd + (random.nextInt(10));
+				        break;
+				    case 2:
+				    	newPwd = newPwd + ((char) ((int) (random.nextInt(6)) + 33));
+				        break;
+			    }
+			}
+			
+			String expert_pass = passwordEncoder.encode(newPwd);
+			result2 = expertservice.updatePwd(expert_id, expert_name, expert_jumin1, expert_pass);
+			
+			if (result2 == 1) {
+				mv.setViewName("UE/expert_showPwd");
+				mv.addObject("expert_pass", newPwd);
+				return mv;
+			} else {
+				out.println("alert('임시 비밀번호 발급에 실패했습니다.\\n 다시 한 번 시도해주세요.');");
+				out.println("location.href='expertFind.net';");
+				out.println("</script>");
+				out.close();
+				return null;
+			}
+			
+		} else {
+			out.println("alert('올바르지 않은 정보를 입력하셨습니다.\\n 다시 한 번 확인해주세요.');");
+			out.println("location.href='expertFind.net';");
 			out.println("</script>");
 			out.close();
 			return null;
@@ -803,15 +1094,312 @@ public class UEController {
 	}
 	
 	@RequestMapping(value="userReservation.net")
-	public String userReservation() {
-		return "UE/userpage_reservation";
+	public ModelAndView userReservation(@RequestParam(value="page", defaultValue="1", required=false) int page,
+																	HttpSession session, ModelAndView mv) throws Exception {
+		String user_id = (String) session.getAttribute("user_id");
+		
+		int reserveCount = expertservice.reserveCount(user_id);
+		
+		int limit = 10;
+		int maxpage = (reserveCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Reservation> ureserveList =  expertservice.ureserveList(user_id, page, limit);
+		
+		mv.setViewName("UE/userpage_reservation");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("reserveCount", reserveCount);
+		mv.addObject("rlist", ureserveList);
+		mv.addObject("limit", limit);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="detailPhoto")
+	public ModelAndView detailPhoto(ModelAndView mv, String photo) {
+		mv.setViewName("UE/mypage_detailPhoto");
+		mv.addObject("photo", photo);
+		return mv;
+	}
+	
+	@RequestMapping(value="estimateList.net")
+	public ModelAndView estimateList(int request_no, ModelAndView mv) {
+		Map<String, Object> requestT = expertservice.requestT(request_no);	//견적 요청 테이블 
+		Reservation reserveT = expertservice.reserveT(request_no);					//예약 테이블 
+		List<Map<String, Object>> rfT = expertservice.rfT(request_no);
+		System.out.println(rfT);
+		
+		String expert_name = expertservice.getName(reserveT.getRs_exid());
+		String user_name = userservice.getName(reserveT.getRs_uid());
+		
+		mv.setViewName("UE/mypage_estimate");
+		mv.addObject("requestT", requestT);
+		mv.addObject("reserveT", reserveT);
+		mv.addObject("rfT", rfT);
+		mv.addObject("ex_name", expert_name);
+		mv.addObject("u_name", user_name);
+		return mv;
+	}
+	
+	@RequestMapping(value="userRsCancel.net")
+	public void userReservationCancel(String rs_exid, String rs_no, 
+															HttpSession session, HttpServletResponse response) throws Exception {
+		String user_id = (String) session.getAttribute("user_id");
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		int result = expertservice.cancelReserve(rs_exid, user_id, rs_no);
+		
+		if (result == 1) {
+			out.println("alert('예약하신 서비스가 취소되었습니다.');");	
+			out.println("location.href='userReservation.net';");
+			
+		} else {
+			out.println("alert('예약 취소 실패했습니다.');");
+			out.println("history.back();");
+		}
+		
+		out.println("</script>");
+		out.close();
+	}
+	
+	@RequestMapping(value="expertEstimate.net")
+	public ModelAndView expertEstimate(@RequestParam(value="page", defaultValue="1", required=false) int page,
+													HttpSession session, ModelAndView mv) throws Exception {
+		String expert_id = (String) session.getAttribute("expert_id");
+		
+		int estimateCount = expertservice.estimateCount(expert_id);
+		System.out.println("미확정" + estimateCount);
+		
+		int limit = 20;
+		int maxpage = (estimateCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Map<String, Object>> estimateList = expertservice.estimateList(expert_id, page, limit);
+		System.out.println(estimateList);
+		
+		mv.setViewName("UE/expertpage_estimate");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("estimateCount", estimateCount);
+		mv.addObject("elist", estimateList);
+		mv.addObject("limit", limit);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="serviceYes.net")
+	public ModelAndView serviceYes(ModelAndView mv, int rs_no) throws Exception {
+		Map<String, Object> rslist = expertservice.serviceForm(rs_no);
+		
+		mv.setViewName("UE/expertpage_yesForm");
+		mv.addObject("rslist", rslist);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="serviceYesProcess.net")
+	public void serviceYesProcess(Reservation rv, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		int result = expertservice.serviceYes(rv);
+		out.println("<script>");
+		
+		if (result == 1)  {
+			out.println("alert('예약 확정이 완료되었습니다.');");
+			out.println("location.href='expertReserve.net';");
+			
+		} else if (result == -1) {
+			out.println("alert('예약 확정에 실패하였습니다.');");
+			out.println("history.back()");
+		}
+		
+		out.println("</script>");
+		out.close();
+	}
+	
+	
+	@RequestMapping(value="expertReserve.net")
+	public ModelAndView expertReserve(@RequestParam(value="page", defaultValue="1", required=false) int page,
+													HttpSession session, ModelAndView mv) throws Exception {
+		String expert_id = (String) session.getAttribute("expert_id");
+		
+		int reserveCount = expertservice.exreserveCount(expert_id);
+		System.out.println("확정" + reserveCount);
+		
+		int limit = 20;
+		int maxpage = (reserveCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Map<String, Object>> reserveList = expertservice.exreserveList(expert_id, page, limit);
+		System.out.println(reserveList);
+		
+		mv.setViewName("UE/expertpage_reserve");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("reserveCount", reserveCount);
+		mv.addObject("rlist", reserveList);
+		mv.addObject("limit", limit);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="serviceOk.net")
+	public void serviceOk(int rs_no, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		int result = expertservice.serviceOk(rs_no);
+		out.println("<script>");
+		
+		if (result == 1)  {
+			out.println("alert('선택된 예약이 서비스 완료 처리되었습니다.');");
+			out.println("location.href='expertComplete.net';");
+			
+		} else if (result == -1) {
+			out.println("alert('서비스 완료 처리가 실패되었습니다.');");
+			out.println("history.back()");
+		}
+		
+		out.println("</script>");
+		out.close();
+	}
+	
+	@RequestMapping(value="expertComplete.net")
+	public ModelAndView expertComplete(@RequestParam(value="page", defaultValue="1", required=false) int page,
+													HttpSession session, ModelAndView mv) throws Exception {
+		String expert_id = (String) session.getAttribute("expert_id");
+		
+		int completeCount = expertservice.completeCount(expert_id);
+		System.out.println("완성된 " + completeCount);
+		
+		int limit = 20;
+		int maxpage = (completeCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Map<String, Object>> completeList = expertservice.completeList(expert_id, page, limit);
+		System.out.println(completeList);
+		
+		mv.setViewName("UE/expertpage_complete");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("completeCount", completeCount);
+		mv.addObject("clist", completeList);
+		mv.addObject("limit", limit);
+		
+		return mv;
 	}
 	
 	@RequestMapping(value="userReview.net")
-	public String userReview() {
-		return "UE/userpage_review";
+	public ModelAndView userReview(@RequestParam(value="page", defaultValue="1", required=false) int page,
+															HttpSession session, ModelAndView mv) throws Exception {
+		String user_id = (String) session.getAttribute("user_id");
+		
+		int reviewCount = reviewservice.reviewCount(user_id);
+		System.out.println(reviewCount);
+		
+		int limit = 10;
+		int maxpage = (reviewCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Map<String, Object>> reviewList = reviewservice.reviewList(user_id, page, limit);
+		System.out.println(reviewList);
+		
+		mv.setViewName("UE/userpage_review");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("reviewCount", reviewCount);
+		mv.addObject("relist", reviewList);
+		mv.addObject("limit", limit);
+		
+		return mv;
 	}
 	
+	@RequestMapping(value="reviewDetail.net")
+	public ModelAndView reviewDetail(ModelAndView mv, int rv_no) throws Exception {
+		Map<String, Object> review = reviewservice.getReview(rv_no);
+		
+		mv.setViewName("UE/userpage_reviewForm");
+		mv.addObject("r", review);
+		return mv;
+	}
+	
+	@RequestMapping(value="exreserveCancel.net")
+	public void exreserveCancel(int rs_no, HttpServletResponse response) throws Exception {
+		System.out.println(rs_no);
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		int result = expertservice.reserveCancel(rs_no);
+		
+		if (result == 1) {
+			out.println("alert('예약이 정상적으로 취소되었습니다.');");	
+			out.println("location.href='expertEstimate.net';");
+			
+		} else {
+			out.println("alert('예약을 취소하는데 실패했습니다.');");
+			out.println("history.back();");
+		}
+		
+		out.println("</script>");
+		out.close();
+	}
+	
+	@RequestMapping(value="ureserveCancel.net")
+	public void ureserveCancel(int rs_no, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		int result = expertservice.reserveCancel(rs_no);
+		
+		if (result == 1) {
+			out.println("alert('예약이 정상적으로 취소되었습니다.');");	
+			out.println("location.href='userReservation.net';");
+			
+		} else {
+			out.println("alert('예약을 취소하는데 실패했습니다.');");
+			out.println("history.back();");
+		}
+		
+		out.println("</script>");
+		out.close();
+	}
 
 	@RequestMapping(value="userOneday.net")
 	public ModelAndView userOneday(@RequestParam(value="page", defaultValue="1", required=false) int page,
@@ -873,7 +1461,6 @@ public class UEController {
 		String user_id = (String) session.getAttribute("user_id");
 		
 		int wishlistCount = likeservice.wishlistCount(user_id);
-		System.out.println(wishlistCount);
 		
 		int limit = 12;
 		int maxpage = (wishlistCount + limit -1) / limit;
@@ -898,20 +1485,67 @@ public class UEController {
 		return mv;
 	}
 	
+	@RequestMapping(value="userWishCheck.net", method=RequestMethod.GET)
+	public ModelAndView userWishCheck (@RequestParam(value="value") int cate, 
+																   @RequestParam(value="page", defaultValue="1", required=false) int page,
+																   HttpSession session,ModelAndView mv) throws Exception {
+		String user_id = (String) session.getAttribute("user_id");
+		
+		int wishCheckCount = likeservice.wishCheckCount(user_id, cate);
+		
+		int limit = 12;
+		int maxpage = (wishCheckCount + limit -1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1;
+		int endpage = startpage + 10 -1;
+		
+		if(endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Object> wishCheck = likeservice.wishCheck(user_id, cate, page, limit);
+		System.out.println(wishCheck);
+		
+		mv.setViewName("UE/userpage_wishlist2");
+		mv.addObject("page", page);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("wishCheckCount", wishCheckCount);
+		mv.addObject("wishCheck", wishCheck);
+		mv.addObject("limit", limit);
+		
+		return mv;
+	}
+	
 	@RequestMapping(value="userDelete.net", method=RequestMethod.GET)
-	public String delete(String user_id) throws Exception {
+	public String delete(String user_id, HttpSession session) throws Exception {
+		session.invalidate();
 		applyservice.deleteAll(user_id);			//원데이 클래스 신청 내역 삭제 후 
 		userservice.user_delete(user_id);			//회원 탈퇴 
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="userChat.net", method=RequestMethod.GET)
-	public String chat() {
-		return "UE/userpage_base";
+	@RequestMapping(value="userMessage.net", method=RequestMethod.GET)
+	public String message() {
+		return "UE/userpage_message";
 	}
 	
 	@RequestMapping(value="FAQ.net")
 	public String faq() {
 		return "UE/FAQ";
+	}
+	
+	//로그아웃
+	@RequestMapping(value="logout.net", method=RequestMethod.GET)
+	public void loginout(HttpSession session, HttpServletResponse response) throws Exception {
+		session.invalidate();
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('로그아웃이 되었습니다. 내일 또 봬요 🥰');");
+		out.println("location.href='main';");
+		out.println("</script>");
+		out.close();
+		
 	}
 }

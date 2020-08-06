@@ -4,6 +4,9 @@ $(function() {
 			{
 				totalStars : 5,
 
+				
+				
+				
 				emptyColor : 'lightgray',
 				hoverColor : 'salmon',
 				initialRating: 0.5,
@@ -370,6 +373,8 @@ $(function() {
 		      $("#write").text("수정완료"); // 등록버튼의 라벨을 '수정완료' 로 변경합니다.
 		      $(this).parent().parent().css('background','lightgray'); // 수정할 행의배경색을 변경합니다.
 		   });
+	   
+	   //평점
 	   
 	
 		   
